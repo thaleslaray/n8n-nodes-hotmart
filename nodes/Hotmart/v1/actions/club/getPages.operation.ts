@@ -3,20 +3,6 @@ import { hotmartApiRequest } from '../../transport/request';
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'ID do Módulo',
-		name: 'module_id',
-		type: 'string',
-		required: true,
-		default: '',
-		description: 'ID do Módulo (use o endpoint de módulos para obter)',
-		displayOptions: {
-			show: {
-				resource: ['club'],
-				operation: ['getPages'],
-			},
-		},
-	},
-	{
 		displayName: 'ID do Produto',
 		name: 'product_id',
 		type: 'options',
@@ -26,6 +12,20 @@ export const description: INodeProperties[] = [
 		typeOptions: {
 			loadOptionsMethod: 'getProducts',
 		},
+		displayOptions: {
+			show: {
+				resource: ['club'],
+				operation: ['getPages'],
+			},
+		},
+	},
+	{
+		displayName: 'ID do Módulo',
+		name: 'module_id',
+		type: 'string',
+		required: true,
+		default: '',
+		description: 'ID do Módulo (use o endpoint de módulos para obter)',
 		displayOptions: {
 			show: {
 				resource: ['club'],
@@ -43,8 +43,8 @@ export const execute = async function (
 
 	for (let i = 0; i < items.length; i++) {
 		try {
-			const moduleId = this.getNodeParameter('module_id', i) as string;
 			const productId = this.getNodeParameter('product_id', i) as string;
+			const moduleId = this.getNodeParameter('module_id', i) as string;
 
 			const qs: Record<string, any> = { 
 				product_id: productId
