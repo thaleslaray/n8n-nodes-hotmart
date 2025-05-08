@@ -6,10 +6,13 @@ export const description: INodeProperties[] = [
 	{
 		displayName: 'ID do Evento',
 		name: 'event_id',
-		type: 'string',
+		type: 'options',
 		required: true,
 		default: '',
-		description: 'ID do evento (produto do tipo ingresso)',
+		description: 'Selecione o evento ou especifique um ID usando uma <a href="https://docs.n8n.io/code-examples/expressions/">expressão</a>',
+		typeOptions: {
+			loadOptionsMethod: 'getEventProducts',
+		},
 		displayOptions: {
 			show: {
 				resource: ['tickets'],
