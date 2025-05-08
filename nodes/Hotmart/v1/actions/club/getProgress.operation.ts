@@ -22,7 +22,7 @@ export const description: INodeProperties[] = [
 		type: 'string',
 		required: true,
 		default: '',
-		description: 'ID do aluno (use o endpoint de alunos para obter)',
+		description: 'ID do Aluno (use o endpoint de alunos para obter)',
 		displayOptions: {
 			show: {
 				resource: ['club'],

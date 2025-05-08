@@ -65,7 +65,7 @@ export const description: INodeProperties[] = [
 				type: 'string',
 				default: '',
 				placeholder: 'name@email.com',
-				description: 'Filtrar por e-mail do aluno',
+				description: 'Filtrar por e-mail do Aluno',
 			},
 		],
 	},

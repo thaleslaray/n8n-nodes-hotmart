@@ -12,38 +12,20 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: ['club'],
-				operation: ['getPages'],
+				operation: ['getModules'],
 			},
 		},
 	},
 	{
-		displayName: 'ID do Módulo',
-		name: 'module_id',
-		type: 'string',
-		required: true,
-		default: '',
-		description: 'ID do Módulo (use o endpoint de módulos para obter)',
+		displayName: 'Módulos Extras',
+		name: 'is_extra',
+		type: 'boolean',
+		default: false,
+		description: 'Se habilitado, retorna apenas módulos extras',
 		displayOptions: {
 			show: {
 				resource: ['club'],
-				operation: ['getPages'],
-			},
-		},
-	},
-	{
-		displayName: 'ID do Produto',
-		name: 'product_id',
-		type: 'options',
-		required: true,
-		default: '',
-		description: 'ID do Produto associado ao módulo',
-		typeOptions: {
-			loadOptionsMethod: 'getProducts',
-		},
-		displayOptions: {
-			show: {
-				resource: ['club'],
-				operation: ['getPages'],
+				operation: ['getModules'],
 			},
 		},
 	},
@@ -58,19 +40,15 @@ export const execute = async function (
 	for (let i = 0; i < items.length; i++) {
 		try {
 			const subdomain = this.getNodeParameter('subdomain', i) as string;
-			const moduleId = this.getNodeParameter('module_id', i) as string;
-			const productId = this.getNodeParameter('product_id', i) as string;
+			const isExtra = this.getNodeParameter('is_extra', i, false) as boolean;
 
-			const qs: Record<string, any> = { 
-				subdomain,
-				product_id: productId
-			};
+			const qs: Record<string, any> = { subdomain };
+			if (isExtra) qs.is_extra = true;
 
-			// Usando a API v2 conforme solicitado
 			const response = await hotmartApiRequest.call(
 				this,
 				'GET',
-				`/club/api/v2/modules/${moduleId}/pages`,
+				'/club/api/v1/modules',
 				{},
 				qs,
 			);
