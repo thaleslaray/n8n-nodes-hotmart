@@ -29,6 +29,7 @@ export const description: INodeProperties[] = [
 			show: {
 				resource: ['club'],
 				operation: ['getAll'],
+				returnAll: [false],
 			},
 		},
 	},
@@ -80,7 +81,10 @@ export const execute = async function (
 	for (let i = 0; i < items.length; i++) {
 		try {
 			const returnAll = this.getNodeParameter('returnAll', i, false) as boolean;
-			const maxResults = this.getNodeParameter('maxResults', i, 50) as number;
+			// Quando returnAll=true, usamos o valor máximo (500) para maior eficiência
+			// Quando returnAll=false, usamos o valor configurado pelo usuário
+			const maxResults = returnAll ? 500 : this.getNodeParameter('maxResults', i, 100) as number;
+			
 			const subdomain = this.getNodeParameter('subdomain', i) as string;
 			const filters = this.getNodeParameter('filters', i, {}) as {
 				email?: string;
@@ -96,7 +100,7 @@ export const execute = async function (
 				responseData = await getAllItems.call(
 					this,
 					{
-						maxResults,
+						maxResults, // Aqui estamos passando 500 quando returnAll=true
 						resource: 'club',
 						operation: 'getStudents',
 						query: qs,

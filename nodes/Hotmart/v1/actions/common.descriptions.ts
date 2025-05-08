@@ -35,6 +35,11 @@ export const maxResultsOption: INodeProperties = {
 	},
 	default: 100,
 	description: 'Quantos resultados buscar por requisição (1-500)',
+	displayOptions: {
+		show: {
+			returnAll: [false],
+		},
+	},
 };
 
 export const dateRangeOptions: INodeProperties[] = [
