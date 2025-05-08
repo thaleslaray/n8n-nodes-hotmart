@@ -16,10 +16,11 @@ export async function getAllItems(
 	this: IExecuteFunctions,
 	options: PaginationOptions,
 ): Promise<any[]> {
-	const { resource, operation, query = {}, body = {} } = options;
+	const { maxResults, resource, operation, query = {}, body = {} } = options;
 	
-	// Sempre usar o valor máximo (500) para maximizar a eficiência quando returnAll=true
-	const maxResults = MAX_API_RESULTS;
+	// Quando returnAll=true, sempre usar o valor máximo (500) para maximizar a eficiência,
+	// independente do valor configurado na interface
+	const resultsPerPage = MAX_API_RESULTS;
 
 	const returnData: IDataObject[] = [];
 	let responseData: any; // Use 'any' for now, or define a more specific interface if possible
@@ -36,7 +37,7 @@ export async function getAllItems(
 		}
 		const queryParams = {
 			...query,
-			max_results: maxResults,
+			max_results: resultsPerPage, // Usar valor máximo quando returnAll=true
 			...(nextPageToken && { page_token: nextPageToken }),
 		};
 

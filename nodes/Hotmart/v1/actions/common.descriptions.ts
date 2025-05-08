@@ -33,8 +33,8 @@ export const maxResultsOption: INodeProperties = {
 		minValue: 1,
 		maxValue: 500,
 	},
-	default: 500,
-	description: 'Quantos resultados buscar por requisição (1-500, padrão: 500 para máxima eficiência)',
+	default: 100,
+	description: 'Quantos resultados buscar por requisição (1-500)',
 };
 
 export const dateRangeOptions: INodeProperties[] = [
