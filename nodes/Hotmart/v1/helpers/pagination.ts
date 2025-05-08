@@ -15,8 +15,12 @@ export async function getAllItems(
 ): Promise<any[]> {
 	const { resource, operation, query = {}, body = {} } = options;
 	
-	// Usamos o valor de maxResults fornecido na chamada
+	// Usamos o max_results que foi definido no query, que já deve incluir o valor correto
+	// O valor foi definido no arquivo getAll.operation.ts
 	const maxResults = options.maxResults;
+	
+	console.log(`\n[DEBUG] getAllItems iniciado - maxResults=${maxResults}`);
+	console.log(`\n[DEBUG] Query recebido em getAllItems:`, JSON.stringify(query, null, 2));
 
 	const returnData: IDataObject[] = [];
 	let responseData: any; // Use 'any' for now, or define a more specific interface if possible
@@ -31,11 +35,16 @@ export async function getAllItems(
 		if (!endpoint) {
 			throw new NodeOperationError(this.getNode(), `Endpoint not found for resource '${resource}' and operation '${operation}'`);
 		}
+		
+		// Se usamos qs.max_results na chamada original, não precisamos adicionar aqui
+		// mas vamos manter para garantir
 		const queryParams = {
 			...query,
-			max_results: maxResults,
 			...(nextPageToken && { page_token: nextPageToken }),
 		};
+		
+		// Log da query que será enviada
+		console.log(`\n[DEBUG] Enviando requisição com parâmetros:`, JSON.stringify(queryParams, null, 2));
 
 		// Fazer requisição para esta página
 		responseData = await hotmartApiRequest.call(
@@ -49,12 +58,19 @@ export async function getAllItems(
 		// Check if responseData is an object and has items
 		if (typeof responseData === 'object' && responseData !== null && responseData.items && Array.isArray(responseData.items)) {
 			returnData.push(...responseData.items);
+			console.log(`\n[DEBUG] Recebidos ${responseData.items.length} itens nesta página`);
 		}
 
 		// Check if responseData is an object and has page_info before accessing next_page_token
 		nextPageToken = (typeof responseData === 'object' && responseData !== null && responseData.page_info)
 			? responseData.page_info.next_page_token
 			: undefined;
+		
+		if (nextPageToken) {
+			console.log(`\n[DEBUG] Próxima página disponível com token: ${nextPageToken}`);
+		} else {
+			console.log(`\n[DEBUG] Não há mais páginas disponíveis`);
+		}
 
 		// Para evitar atingir rate limits, adicionar um pequeno atraso
 		if (nextPageToken) {
@@ -62,6 +78,8 @@ export async function getAllItems(
 		}
 
 	} while (nextPageToken);
+	
+	console.log(`\n[DEBUG] getAllItems concluído - total de itens: ${returnData.length}`);
 
 	return returnData;
 }
