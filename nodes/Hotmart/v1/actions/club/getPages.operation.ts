@@ -3,20 +3,6 @@ import { hotmartApiRequest } from '../../transport/request';
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Subdomínio',
-		name: 'subdomain',
-		type: 'string',
-		required: true,
-		default: '',
-		description: 'Nome do subdomínio da Área de Membros',
-		displayOptions: {
-			show: {
-				resource: ['club'],
-				operation: ['getPages'],
-			},
-		},
-	},
-	{
 		displayName: 'ID do Módulo',
 		name: 'module_id',
 		type: 'string',
@@ -57,12 +43,10 @@ export const execute = async function (
 
 	for (let i = 0; i < items.length; i++) {
 		try {
-			const subdomain = this.getNodeParameter('subdomain', i) as string;
 			const moduleId = this.getNodeParameter('module_id', i) as string;
 			const productId = this.getNodeParameter('product_id', i) as string;
 
 			const qs: Record<string, any> = { 
-				subdomain,
 				product_id: productId
 			};
 
