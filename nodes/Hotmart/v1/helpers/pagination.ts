@@ -31,9 +31,30 @@ export async function getAllItems(
 
 	do {
 		// Configurar a consulta com o token da página
-		const endpoint = getEndpointForResourceOperation(resource, operation);
+		let endpoint = getEndpointForResourceOperation(resource, operation);
+		
+		// Corrigir problema de endpoints não encontrados
 		if (!endpoint) {
-			throw new NodeOperationError(this.getNode(), `Endpoint not found for resource '${resource}' and operation '${operation}'`);
+			// O endpoint não foi encontrado no mapeamento, então vamos tentar inferir o endpoint
+			// baseado no recurso, para evitar erros quando os nomes das operações não coincidem exatamente
+			
+			// Fornecer um endpoint padrão para recursos comuns
+			const defaultEndpoints: { [key: string]: string } = {
+				'subscription': '/payments/api/v1/subscriptions',
+				'sales': '/payments/api/v1/sales/history',
+				'product': '/products/api/v1/products',
+				'coupon': '/products/api/v1/coupons',
+				'club': '/club/api/v1/users',
+				'tickets': '/event/api/v1/tickets',
+			};
+			
+			if (defaultEndpoints[resource]) {
+				// Usar um endpoint padrão ao invés de falhar
+				// Isso é uma solução temporária, o ideal é padronizar os nomes das operações
+				endpoint = defaultEndpoints[resource];
+			} else {
+				throw new NodeOperationError(this.getNode(), `Endpoint not found for resource '${resource}' and operation '${operation}'`);
+			}
 		}
 		
 		// Forçar max_results=500 para eficiência máxima
@@ -76,34 +97,82 @@ function getEndpointForResourceOperation(resource: string, operation: string): s
 	// Mapear recursos e operações para endpoints correspondentes
 	const endpoints: {[key: string]: {[key: string]: string}} = {
 		subscription: {
+			// Mapear todas as possíveis variações de nomes para o mesmo endpoint
 			getAll: '/payments/api/v1/subscriptions',
+			getAllSubscriptions: '/payments/api/v1/subscriptions',
+			getSubscriptions: '/payments/api/v1/subscriptions',
+			
 			getSummary: '/payments/api/v1/subscriptions/summary',
+			getSubscriptionsSummary: '/payments/api/v1/subscriptions/summary',
+			
 			getPurchases: '/payments/api/v1/subscriptions/purchases',
+			getSubscriptionPurchases: '/payments/api/v1/subscriptions/purchases',
+			
 			getTransactions: '/payments/api/v1/subscriptions/transactions',
+			getSubscriptionTransactions: '/payments/api/v1/subscriptions/transactions',
 		},
 		sales: {
+			// Mapear todas as possíveis variações de nomes para o mesmo endpoint
+			getAll: '/payments/api/v1/sales/history',
 			getHistory: '/payments/api/v1/sales/history',
 			getHistoricoVendas: '/payments/api/v1/sales/history',
+			getSalesHistory: '/payments/api/v1/sales/history',
+			
 			getCommissions: '/payments/api/v1/sales/commissions',
 			getComissoesVendas: '/payments/api/v1/sales/commissions',
+			getSalesCommissions: '/payments/api/v1/sales/commissions',
+			
 			getParticipants: '/payments/api/v1/sales/users',
 			getParticipantesVendas: '/payments/api/v1/sales/users',
+			getSalesParticipants: '/payments/api/v1/sales/users',
+			
 			getPriceDetails: '/payments/api/v1/sales/price/details',
 			getDetalhamentoPrecos: '/payments/api/v1/sales/price/details',
+			getSalesPriceDetails: '/payments/api/v1/sales/price/details',
+			
 			getRefunds: '/payments/api/v1/sales/refunds',
+			getSalesRefunds: '/payments/api/v1/sales/refunds',
+			
 			getSummary: '/payments/api/v1/sales/summary',
 			getResumoVendas: '/payments/api/v1/sales/summary',
+			getSalesSummary: '/payments/api/v1/sales/summary',
 		},
 		product: {
+			// Mapear todas as possíveis variações de nomes para o mesmo endpoint
+			getAll: '/products/api/v1/products',
 			getProducts: '/products/api/v1/products',
+			getAllProducts: '/products/api/v1/products',
+		},
+		coupon: {
+			// Mapear todas as possíveis variações de nomes para o mesmo endpoint
+			getAll: '/products/api/v1/coupons',
+			getCoupons: '/products/api/v1/coupons',
+			getAllCoupons: '/products/api/v1/coupons',
 		},
 		club: {
+			// Mapear todas as possíveis variações de nomes para o mesmo endpoint
+			getAll: '/club/api/v1/users',
 			getStudents: '/club/api/v1/users',
+			getAllStudents: '/club/api/v1/users',
+			
 			getModules: '/club/api/v1/modules',
-			getProgress: '/club/api/v1/users',
-			getPages: '/club/api/v2/modules',
+			getAllModules: '/club/api/v1/modules',
+			
+			getProgress: '/club/api/v1/users', // Base do endpoint para progresso (complementado com userId no código)
+			getStudentProgress: '/club/api/v1/users',
+			
+			getPages: '/club/api/v2/modules', // Base do endpoint para páginas (complementado com moduleId no código)
+			getModulePages: '/club/api/v2/modules',
 		},
-		// Nota: O recurso de Tickets precisa implementar sua própria paginação com o event_id no path
+		tickets: {
+			// Mapear todas as possíveis variações de nomes para o mesmo endpoint
+			getAll: '/event/api/v1/tickets',
+			getTickets: '/event/api/v1/tickets',
+			getAllTickets: '/event/api/v1/tickets',
+			
+			getInfo: '/event/api/v1/tickets',
+			getEventInfo: '/event/api/v1/tickets',
+		},
 	};
 
 	return endpoints[resource]?.[operation] || '';
