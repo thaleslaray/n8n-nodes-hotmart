@@ -1,4 +1,4 @@
-import { IExecuteFunctions, IDataObject, NodeOperationError } from 'n8n-workflow'; // Added NodeOperationError
+import { IExecuteFunctions, IDataObject, NodeOperationError } from 'n8n-workflow';
 import { hotmartApiRequest } from '../transport/request';
 
 interface PaginationOptions {
@@ -9,21 +9,21 @@ interface PaginationOptions {
 	body?: IDataObject;
 }
 
+// Valor máximo permitido pela API Hotmart para max_results
+const MAX_API_RESULTS = 500;
+
 export async function getAllItems(
 	this: IExecuteFunctions,
 	options: PaginationOptions,
 ): Promise<any[]> {
 	const { resource, operation, query = {}, body = {} } = options;
 	
-	// Usamos o max_results que foi definido no query, que já deve incluir o valor correto
-	// O valor foi definido no arquivo getAll.operation.ts
-	const maxResults = options.maxResults;
-	
-	console.log(`\n[DEBUG] getAllItems iniciado - maxResults=${maxResults}`);
-	console.log(`\n[DEBUG] Query recebido em getAllItems:`, JSON.stringify(query, null, 2));
+	// Quando usamos getAllItems, significa que returnAll=true, então
+	// sempre usamos o valor máximo (500) para otimizar, independente do valor que veio na chamada
+	const maxResults = MAX_API_RESULTS;
 
 	const returnData: IDataObject[] = [];
-	let responseData: any; // Use 'any' for now, or define a more specific interface if possible
+	let responseData: any;
 	let nextPageToken: string | undefined;
 
 	// Implementar controle de rate limit
@@ -36,15 +36,12 @@ export async function getAllItems(
 			throw new NodeOperationError(this.getNode(), `Endpoint not found for resource '${resource}' and operation '${operation}'`);
 		}
 		
-		// Se usamos qs.max_results na chamada original, não precisamos adicionar aqui
-		// mas vamos manter para garantir
+		// Forçar max_results=500 para eficiência máxima
 		const queryParams = {
 			...query,
+			max_results: maxResults, // Sempre usar valor máximo (500)
 			...(nextPageToken && { page_token: nextPageToken }),
 		};
-		
-		// Log da query que será enviada
-		console.log(`\n[DEBUG] Enviando requisição com parâmetros:`, JSON.stringify(queryParams, null, 2));
 
 		// Fazer requisição para esta página
 		responseData = await hotmartApiRequest.call(
@@ -58,19 +55,12 @@ export async function getAllItems(
 		// Check if responseData is an object and has items
 		if (typeof responseData === 'object' && responseData !== null && responseData.items && Array.isArray(responseData.items)) {
 			returnData.push(...responseData.items);
-			console.log(`\n[DEBUG] Recebidos ${responseData.items.length} itens nesta página`);
 		}
 
 		// Check if responseData is an object and has page_info before accessing next_page_token
 		nextPageToken = (typeof responseData === 'object' && responseData !== null && responseData.page_info)
 			? responseData.page_info.next_page_token
 			: undefined;
-		
-		if (nextPageToken) {
-			console.log(`\n[DEBUG] Próxima página disponível com token: ${nextPageToken}`);
-		} else {
-			console.log(`\n[DEBUG] Não há mais páginas disponíveis`);
-		}
 
 		// Para evitar atingir rate limits, adicionar um pequeno atraso
 		if (nextPageToken) {
@@ -78,8 +68,6 @@ export async function getAllItems(
 		}
 
 	} while (nextPageToken);
-	
-	console.log(`\n[DEBUG] getAllItems concluído - total de itens: ${returnData.length}`);
 
 	return returnData;
 }
@@ -91,8 +79,7 @@ function getEndpointForResourceOperation(resource: string, operation: string): s
 			getAll: '/payments/api/v1/subscriptions',
 			getSummary: '/payments/api/v1/subscriptions/summary',
 			getPurchases: '/payments/api/v1/subscriptions/purchases',
-			getTransactions: '/payments/api/v1/subscriptions/transactions', // Endpoint adicionado para a operação getTransactions
-			// Outros endpoints de assinaturas
+			getTransactions: '/payments/api/v1/subscriptions/transactions',
 		},
 		sales: {
 			getHistory: '/payments/api/v1/sales/history',
@@ -111,10 +98,10 @@ function getEndpointForResourceOperation(resource: string, operation: string): s
 			getProducts: '/products/api/v1/products',
 		},
 		club: {
-			getStudents: '/club/api/v1/users', // Endpoint correto para buscar alunos
+			getStudents: '/club/api/v1/users',
 			getModules: '/club/api/v1/modules',
-			getProgress: '/club/api/v1/users', // Base do endpoint para progresso (complementado com userId no código)
-			getPages: '/club/api/v2/modules', // Base do endpoint para páginas (complementado com moduleId no código)
+			getProgress: '/club/api/v1/users',
+			getPages: '/club/api/v2/modules',
 		},
 		// Nota: O recurso de Tickets precisa implementar sua própria paginação com o event_id no path
 	};

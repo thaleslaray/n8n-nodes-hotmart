@@ -81,17 +81,7 @@ export const execute = async function (
 	for (let i = 0; i < items.length; i++) {
 		try {
 			const returnAll = this.getNodeParameter('returnAll', i, false) as boolean;
-			
-			// Quando returnAll=true, forçamos o valor para 500 para eficiência máxima
-			// Quando returnAll=false, usamos o valor configurado pelo usuário
-			let maxResults = 100;
-			if (returnAll) {
-				maxResults = 500; // Valor máximo para eficiência
-				console.log('\n[DEBUG] Retornar Todos os Resultados está ativado, usando maxResults=500');
-			} else {
-				maxResults = this.getNodeParameter('maxResults', i, 100) as number;
-				console.log(`\n[DEBUG] Usando maxResults configurado pelo usuário: ${maxResults}`);
-			}
+			const maxResults = this.getNodeParameter('maxResults', i, 100) as number;
 			
 			const subdomain = this.getNodeParameter('subdomain', i) as string;
 			const filters = this.getNodeParameter('filters', i, {}) as {
@@ -105,11 +95,7 @@ export const execute = async function (
 
 			if (returnAll) {
 				// Usar o helper de paginação para buscar TODAS as páginas
-				console.log(`\n[DEBUG] Chamando getAllItems com maxResults=${maxResults}`);
-				
-				// Adicionando max_results explicitamente ao query
-				qs.max_results = maxResults;
-				
+				// O helper pagination.ts cuidará de usar 500 como max_results
 				responseData = await getAllItems.call(
 					this,
 					{
@@ -122,8 +108,6 @@ export const execute = async function (
 			} else {
 				const limit = this.getNodeParameter('limit', i, 50) as number;
 				qs.max_results = limit;
-				
-				console.log(`\n[DEBUG] Fazendo requisição única com limit=${limit}`);
 				
 				const response = await hotmartApiRequest.call(
 					this,
