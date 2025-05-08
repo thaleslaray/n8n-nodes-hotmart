@@ -219,31 +219,31 @@ export const versionDescription: INodeTypeDescription = {
 			},
 			options: [
 				{
-					name: 'Listar Alunos',
-					value: 'getAll',
-					description: 'Listar todos os alunos',
-					action: 'List all students',
-				},
-				{
-					name: 'Listar Módulos',
+					name: 'Obter Módulos',
 					value: 'getModules',
-					description: 'Listar todos os módulos',
-					action: 'List all modules',
+					description: 'Obter todos os módulos',
+					action: 'Get all modules',
 				},
 				{
-					name: 'Obter Progresso do Aluno',
+					name: 'Obter Páginas',
+					value: 'getPages',
+					description: 'Obter páginas de um módulo',
+					action: 'Get module pages',
+				},
+				{
+					name: 'Obter Alunos',
+					value: 'getAll',
+					description: 'Obter todos os alunos',
+					action: 'Get all students',
+				},
+				{
+					name: 'Obter o Progresso do Aluno',
 					value: 'getProgress',
 					description: 'Obter progresso de um aluno',
 					action: 'Get student progress',
 				},
-				{
-					name: 'Listar Páginas do Módulo',
-					value: 'getPages',
-					description: 'Listar páginas de um módulo',
-					action: 'List module pages',
-				},
 			],
-			default: 'getAll',
+			default: 'getModules',
 		},
 		{
 			displayName: 'Operação',
@@ -310,7 +310,7 @@ export const versionDescription: INodeTypeDescription = {
 					name: 'Lista de Ingressos e Participantes',
 					value: 'getAll',
 					description: 'Listar ingressos e participantes de um evento',
-					action: 'List all tickets',
+					action: 'List tickets and participants',
 				},
 				{
 					name: 'Informações do Evento',
