@@ -9,18 +9,14 @@ interface PaginationOptions {
 	body?: IDataObject;
 }
 
-// Valor máximo permitido pela API Hotmart para max_results
-const MAX_API_RESULTS = 500;
-
 export async function getAllItems(
 	this: IExecuteFunctions,
 	options: PaginationOptions,
 ): Promise<any[]> {
-	const { maxResults, resource, operation, query = {}, body = {} } = options;
+	const { resource, operation, query = {}, body = {} } = options;
 	
-	// Quando returnAll=true, sempre usar o valor máximo (500) para maximizar a eficiência,
-	// independente do valor configurado na interface
-	const resultsPerPage = MAX_API_RESULTS;
+	// Usamos o valor de maxResults fornecido na chamada
+	const maxResults = options.maxResults;
 
 	const returnData: IDataObject[] = [];
 	let responseData: any; // Use 'any' for now, or define a more specific interface if possible
@@ -37,7 +33,7 @@ export async function getAllItems(
 		}
 		const queryParams = {
 			...query,
-			max_results: resultsPerPage, // Usar valor máximo quando returnAll=true
+			max_results: maxResults,
 			...(nextPageToken && { page_token: nextPageToken }),
 		};
 
