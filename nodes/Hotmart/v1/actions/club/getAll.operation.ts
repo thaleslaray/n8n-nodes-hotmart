@@ -1,6 +1,5 @@
 import type { IExecuteFunctions, INodeExecutionData, INodeProperties } from 'n8n-workflow';
 import { hotmartApiRequest } from '../../transport/request';
-import { getAllItems } from '../../helpers/pagination';
 import { returnAllOption, limitOption, maxResultsOption } from '../common.descriptions';
 
 export const description: INodeProperties[] = [
@@ -81,8 +80,6 @@ export const execute = async function (
 	for (let i = 0; i < items.length; i++) {
 		try {
 			const returnAll = this.getNodeParameter('returnAll', i, false) as boolean;
-			const maxResults = this.getNodeParameter('maxResults', i, 100) as number;
-			
 			const subdomain = this.getNodeParameter('subdomain', i) as string;
 			const filters = this.getNodeParameter('filters', i, {}) as {
 				email?: string;
@@ -91,24 +88,63 @@ export const execute = async function (
 			const qs: Record<string, any> = { subdomain };
 			if (filters.email) qs.email = filters.email;
 
-			let responseData;
-
+			// SOLUÇÃO DIRETA: Implementação manual de paginação
 			if (returnAll) {
-				// Usar o helper de paginação para buscar TODAS as páginas
-				// O helper pagination.ts cuidará de usar 500 como max_results
-				responseData = await getAllItems.call(
-					this,
-					{
-						maxResults,
-						resource: 'club',
-						operation: 'getStudents',
-						query: qs,
-					},
+				// Inicializar com valor máximo permitido pela API (500)
+				qs.max_results = 500;
+				
+				// Resultados acumulados
+				const allItems: any[] = [];
+				let hasMorePages = true;
+				
+				// Loop manual de paginação
+				while (hasMorePages) {
+					// Log para depuração
+					console.log('\n[Paginação manual] Requisição com parâmetros:', JSON.stringify(qs, null, 2));
+					
+					// Fazer requisição
+					const response = await hotmartApiRequest.call(
+						this,
+						'GET',
+						'/club/api/v1/users',
+						{},
+						qs
+					);
+					
+					// Adicionar itens da página atual
+					if (response && response.items && Array.isArray(response.items)) {
+						console.log(`\n[Paginação manual] Recebidos ${response.items.length} itens`);
+						allItems.push(...response.items);
+					}
+					
+					// Verificar se há mais páginas
+					if (response && response.page_info && response.page_info.next_page_token) {
+						// Tem próxima página, atualizar token
+						qs.page_token = response.page_info.next_page_token;
+						console.log(`\n[Paginação manual] Próxima página disponível: ${qs.page_token}`);
+						
+						// Pequeno delay para evitar problemas de rate limit
+						await new Promise(resolve => setTimeout(resolve, 100));
+					} else {
+						// Não tem mais páginas
+						hasMorePages = false;
+						console.log('\n[Paginação manual] Fim da paginação');
+					}
+				}
+				
+				console.log(`\n[Paginação manual] Total de itens: ${allItems.length}`);
+				const executionData = this.helpers.constructExecutionMetaData(
+					this.helpers.returnJsonArray(allItems),
+					{ itemData: { item: i } },
 				);
+				
+				returnData.push(...executionData);
 			} else {
+				// Caso não queira retornar todos, usa o limit normal
 				const limit = this.getNodeParameter('limit', i, 50) as number;
 				qs.max_results = limit;
 				
+				// Fazer requisição única
 				const response = await hotmartApiRequest.call(
 					this,
 					'GET',
@@ -116,15 +152,16 @@ export const execute = async function (
 					{},
 					qs,
 				);
-				responseData = response.items || [];
+				
+				// Processar resultados
+				const items = response.items || [];
+				const executionData = this.helpers.constructExecutionMetaData(
+					this.helpers.returnJsonArray(items),
+					{ itemData: { item: i } },
+				);
+				
+				returnData.push(...executionData);
 			}
-
-			const executionData = this.helpers.constructExecutionMetaData(
-				this.helpers.returnJsonArray(responseData),
-				{ itemData: { item: i } },
-			);
-
-			returnData.push(...executionData);
 		} catch (error) {
 			if (this.continueOnFail()) {
 				returnData.push({ json: { error: (error as Error).message }, pairedItem: { item: i } });

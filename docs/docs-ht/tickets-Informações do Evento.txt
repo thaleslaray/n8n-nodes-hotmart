@@ -1,0 +1,53 @@
+Aqui estão as informações técnicas completas do endpoint que exibe dados de um evento (produto no formato Ingresso para Eventos) da Hotmart:
+
+## Parâmetros da requisição
+
+### Path
+- **event_id** (long, obrigatório):
+  - ID do produto (no formato Ingresso para Eventos)
+
+#### Exemplo de requisição:
+
+```
+curl --location 'https://developers.hotmart.com/events/api/v1/:event_id/info' \
+--header 'Authorization: Bearer :access_token'
+```
+
+---
+
+## Retorno da API
+
+- **product** (object):
+    - name: nome do produto
+    - id: id do produto
+- **start_event_date** (long): Data de início
+- **end_event_date** (long): Data de fim
+- **lots** (array de objetos): Lotes (categorias de ingressos)
+    - Cada objeto tem:
+      - id: id do lote
+      - name: nome do lote
+
+### Exemplo de resposta:
+
+```
+{
+    "product": {
+        "name": "Product Name",
+        "id": 4744896
+    },
+    "start_event_date": 1656007620000,
+    "end_event_date": 1677607680000,
+    "lots": [
+        {
+            "id": 234900,
+            "name": "Lote 1 - Teste"
+        },
+        {
+            "id": 234901,
+            "name": "Lote gratuito - Teste"
+        }
+    ]
+}
+```
+
+Todos os parâmetros e valores foram mantidos exatamente conforme a documentação original.

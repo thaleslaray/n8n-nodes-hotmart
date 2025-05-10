@@ -1,6 +1,5 @@
 import type { IExecuteFunctions, INodeExecutionData, INodeProperties } from 'n8n-workflow';
 import { hotmartApiRequest } from '../../transport/request';
-import { getAllItems } from '../../helpers/pagination';
 import { returnAllOption, limitOption, maxResultsOption, subscriptionStatusOptions } from '../common.descriptions';
 import { convertToTimestamp } from '../../helpers/dateUtils';
 
@@ -30,6 +29,7 @@ export const description: INodeProperties[] = [
 			show: {
 				resource: ['subscription'],
 				operation: ['getAll'],
+				returnAll: [false],
 			},
 		},
 	},
@@ -161,7 +161,6 @@ export const execute = async function (
 	for (let i = 0; i < items.length; i++) {
 		try {
 			const returnAll = this.getNodeParameter('returnAll', i, false) as boolean;
-			const maxResults = this.getNodeParameter('maxResults', i, 50) as number;
 			const filters = this.getNodeParameter('filters', i, {}) as {
 				productId?: string;
 				plan?: string;
@@ -252,18 +251,59 @@ export const execute = async function (
 				queryParams.subscriber_code = filters.subscriberCode;
 			}
 
-			let responseData;
-
 			if (returnAll) {
-				responseData = await getAllItems.call(
-					this,
-					{
-						maxResults,
-						resource: 'subscription',
-						operation: 'getAll',
-						query: queryParams,
-					},
+				// SOLUÇÃO DIRETA: Implementação manual de paginação
+				// Inicializar com valor máximo permitido pela API (500)
+				queryParams.max_results = 500;
+				
+				// Resultados acumulados
+				const allItems: any[] = [];
+				let hasMorePages = true;
+				
+				// Loop manual de paginação
+				while (hasMorePages) {
+					// Log para depuração
+					console.log('\n[Paginação manual] Requisição com parâmetros:', JSON.stringify(queryParams, null, 2));
+					
+					// Fazer requisição
+					const response = await hotmartApiRequest.call(
+						this,
+						'GET',
+						'/payments/api/v1/subscriptions',
+						{},
+						queryParams
+					);
+					
+					// Adicionar itens da página atual
+					if (response && response.items && Array.isArray(response.items)) {
+						console.log(`\n[Paginação manual] Recebidos ${response.items.length} itens`);
+						allItems.push(...response.items);
+					}
+					
+					// Verificar se há mais páginas
+					if (response && response.page_info && response.page_info.next_page_token) {
+						// Tem próxima página, atualizar token
+						queryParams.page_token = response.page_info.next_page_token;
+						console.log(`\n[Paginação manual] Próxima página disponível: ${queryParams.page_token}`);
+						
+						// Pequeno delay para evitar problemas de rate limit
+						await new Promise(resolve => setTimeout(resolve, 100));
+					} else {
+						// Não tem mais páginas
+						hasMorePages = false;
+						console.log('\n[Paginação manual] Fim da paginação');
+					}
+				}
+				
+				console.log(`\n[Paginação manual] Total de itens: ${allItems.length}`);
+				
+				// ALTERAÇÃO AQUI: Passando o array diretamente, como no getAll.operation.ts que funciona
+				const executionData = this.helpers.constructExecutionMetaData(
+					this.helpers.returnJsonArray(allItems),
+					{ itemData: { item: i } },
 				);
+				
+				allReturnData.push(...executionData);
 			} else {
 				const limit = this.getNodeParameter('limit', i, 50) as number;
 				queryParams.max_results = limit;
@@ -277,15 +317,15 @@ export const execute = async function (
 					queryParams,
 				);
 
-				responseData = response.items || [];
+				// Processar resultados para o caso onde returnAll=false
+				const items = response.items || [];
+				const executionData = this.helpers.constructExecutionMetaData(
+					this.helpers.returnJsonArray(items),
+					{ itemData: { item: i } },
+				);
+
+				allReturnData.push(...executionData);
 			}
-
-			const executionData = this.helpers.constructExecutionMetaData(
-				this.helpers.returnJsonArray(responseData),
-				{ itemData: { item: i } },
-			);
-
-			allReturnData.push(...executionData);
 		} catch (error) {
 			if (this.continueOnFail()) {
 				allReturnData.push({ json: { error: (error as Error).message }, pairedItem: { item: i } });

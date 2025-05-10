@@ -1,0 +1,150 @@
+Aqui estão todos os campos técnicos e seus significados conforme a documentação original da Hotmart Webhook versão 2.0.0:
+
+---
+
+### Identificação da Requisição
+- **hottok** (*string*): Token único por conta, enviado no header HTTP como `X-HOTMART-HOTTOK` para garantir segurança. Trocas só via suporte.
+- **id** (*string*): Código único do evento recebido.
+- **creation_date** (*long*): Data de criação do evento (em milissegundos desde 1970-01-01 00:00:00 UTC).
+- **event** (*integer*): Nome do evento recebido. Valores possíveis:
+  - `PURCHASE_CANCELED`
+  - `PURCHASE_COMPLETE`
+  - `PURCHASE_BILLET_PRINTED`
+  - `PURCHASE_APPROVED`
+  - `PURCHASE_PROTEST`
+  - `PURCHASE_REFUNDED`
+  - `PURCHASE_CHARGEBACK`
+  - `PURCHASE_EXPIRED`
+  - `PURCHASE_DELAYED`
+- **version** (*integer*): Sempre `2.0.0` para esta configuração.
+
+---
+
+### Objetos Aninhados
+
+#### data
+- **data** (*object*): Dados do evento de venda.
+
+#### product
+- **product.id** (*integer*): Identificador do produto adquirido.
+- **product.ucode** (*string*): Código único do produto para uso no seu sistema.
+- **product.name** (*string*): Nome do produto vendido, podendo variar se for Hotmart Club.
+- **product.has_co_production** (*boolean*): Se possui coprodutor (True/False).
+- **product.warranty_date** (*string*): Vencimento da garantia (`YYYY-MM-DDThh:mm:ssTZD`).
+- **product.support_email** (*string*): E-mail de suporte do produto.
+- **product.is_physical_product** (*boolean*): Identifica se é produto físico (True/False).
+
+##### product.content
+- **product.content.has_physical_products** (*boolean*): Se há produtos físicos no combo (True/False).
+- **product.content.products** (*array<object>*): Lista dos produtos do combo:
+  - **id** (*long*): Identificador interno do produto no combo.
+  - **ucode** (*string*): Código único do produto no combo.
+  - **name** (*string*): Nome do produto no combo.
+  - **is_physical_product** (*boolean*): Produto no combo é físico (True/False).
+
+---
+
+#### affiliates
+- **affiliates** (*array<object>*): Dados dos afiliados da venda:
+  - **affiliate_code** (*string*): Identificador do afiliado.
+  - **name** (*string*): Nome do afiliado.
+
+---
+
+#### buyer
+- **buyer.email** (*string*): E-mail do comprador.
+- **buyer.name** (*string*): Nome completo.
+- **buyer.first_name** (*string*): Primeiro nome.
+- **buyer.last_name** (*string*): Último nome.
+- **buyer.checkout_phone** (*string*): Telefone informado no checkout.
+- **buyer.checkout_phone_code** (*string*): DDD (apenas brasileiros).
+##### buyer.address
+- **buyer.address.country_iso** (*string*): Código de país ISO 3166-2.
+- **buyer.address.country** (*string*): País.
+- **buyer.address.zipcode** (*string*): CEP.
+- **buyer.address.state** (*string*): Estado.
+- **buyer.address.city** (*string*): Cidade.
+- **buyer.address.neighborhood** (*string*): Bairro.
+- **buyer.address.street** (*string*): Rua.
+- **buyer.address.complement** (*string*): Complemento.
+- **buyer.address.number** (*string*): Número.
+- **buyer.document** (*string*): Documento do comprador.
+- **buyer.document_type** (*string*): Tipo do documento (`CPF`, `CNPJ`, `DNI`, `CIF`, `DOCUMENT`).
+
+---
+
+#### producer
+- **producer.name** (*string*): Nome do produtor.
+- **producer.document** (*string*): Documento do produtor.
+- **producer.legal_nature** (*string*): Natureza jurídica (Pessoa Física/Jurídica, só para Brasil).
+
+---
+
+#### commissions
+- **commissions** (*array<object>*): Detalhes de comissão:
+  - **value** (*double*): Valor da comissão.
+  - **currency_value** (*string*): Moeda (ISO 4217, ex: BRL, USD).
+  - **source** (*string*): Fonte (`PRODUCER`, `COPRODUCER`, `AFFILIATE`, `ADDON`).
+  - **currency_conversion** (*object*):
+    - **converted_value** (*double*): Valor convertido.
+    - **converted_to_currency** (*string*): Moeda de conversão.
+    - **conversion_rate** (*double*): Taxa aplicada.
+
+---
+
+#### purchase
+- **purchase.approved_date** (*long*): Data de liberação em milissegundos desde 1970.
+- **purchase.full_price.value** (*double*): Valor total pago (com taxas e juros).
+- **purchase.full_price.currency_value** (*string*): Moeda (ISO 4217).
+- **purchase.original_offer_price.currency_value** (*string*): Moeda da oferta principal do produto.
+- **purchase.original_offer_price.value** (*double*): Valor da oferta principal.
+- **purchase.recurrence_number** (*integer*): Número da recorrência da assinatura.
+- **purchase.subscription_anticipation_purchase** (*boolean*): É renovação antecipada? (True/False).
+- **purchase.price.value** (*double*): Valor da oferta no momento da compra.
+- **purchase.price.currency_value** (*string*): Moeda do momento da compra.
+##### purchase.offer
+- **purchase.offer.code** (*string*): Código da oferta adquirida.
+- **purchase.offer.coupon_code** (*string*): Cupom de desconto utilizado.
+##### purchase.origin
+- **purchase.origin.src** (*string*): UTM origem da página de vendas.
+- **purchase.origin.sck** (*string*): UTM origem do checkout.
+- **purchase.origin.xcod** (*string*): Código UTM customizado.
+##### purchase.checkout_country
+- **purchase.checkout_country.name** (*string*): País selecionado na página de pagamento.
+- **purchase.checkout_country.iso** (*string*): País no formato ISO 3166-2.
+##### purchase.order_bump
+- **purchase.order_bump.is_order_bump** (*boolean*): Compra é Order Bump? (True/False).
+- **purchase.order_bump.parent_purchase_transaction** (*string*): Identificador do pedido pai no Order Bump.
+- **purchase.order_date** (*string*): Data do pedido/renovação.
+- **purchase.date_next_charge** (*long*): Próxima cobrança em milissegundos.
+- **purchase.status** (*string*): Status da compra.
+  - `APPROVED`, `BLOCKED`, `CANCELLED`, `CHARGEBACK`, `COMPLETE`, `EXPIRED`, `NO_FUNDS`, `OVERDUE`, `PARTIALLY_REFUNDED`, `PRE_ORDER`, `PRINTED_BILLET`, `PROCESSING_TRANSACTION`, `DISPUTE`, `REFUNDED`, `STARTED`, `UNDER_ANALISYS`, `WAITING_PAYMENT`. [Veja descrições](https://atendimento.hotmart.com.br/hc/pt-br/articles/216441297-Quais-status-uma-transa%C3%A7%C3%A3o-pode-assumir-)
+- **purchase.transaction** (*string*): Código da transação.
+##### purchase.payment
+- **purchase.payment.billet_barcode** (*string*): Código de barras do boleto (somente boleto).
+- **purchase.payment.billet_url** (*string*): Link de impressão do boleto.
+- **purchase.payment.installments_number** (*integer*): Total de parcelas (para BRL, MXN, COP).
+- **purchase.payment.pix_code** (*string*): Código Pix (Pix copia e cola).
+- **purchase.payment.pix_expiration_date** (*long*): Data limite pagamento Pix.
+- **purchase.payment.pix_qrcode** (*string*): Link para visualização QRCode Pix.
+- **purchase.payment.refusal_reason** (*string*): Motivo de recusa do pagamento.
+- **purchase.payment.type** (*string*): Tipo do pagamento. Valores possíveis: `BILLET`, `CASH_PAYMENT`, `CREDIT_CARD`, `DIRECT_BANK_TRANSFER`, `DIRECT_DEBIT`, `FINANCED_BILLET`, `FINANCED_INSTALLMENT`, `GOOGLE_PAY`, `HOTCARD`, `HYBRID`, `MANUAL_TRANSFER`, `PAYPAL`, `PAYPAL_INTERNACIONAL`, `PICPAY`, `PIX`, `SAMSUNG_PAY`, `WALLET`.
+- **purchase.invoice_by** (*string*): Responsável pela nota: `HOTMART` ou `SELLER`.
+- **purchase.is_funnel** (*boolean*): Fez parte de funil de vendas? (True/False).
+##### purchase.event_tickets
+- **purchase.event_tickets.amount** (*integer*): Quantidade de ingressos adquiridos.
+- **purchase.business_model** (*string*): Modelo fiscal: `R`, `A` ou `I`. [Mais informações](https://help.hotmart.com/pt-br/article/27142347940749/vendas-globais-responsabilidades-fiscais-para-vendas-feitas-atraves-da-hotmart)
+
+---
+
+#### subscription
+- **subscription.status** (*string*): Status da assinatura: `ACTIVE`, `INACTIVE`, `DELAYED`, `CANCELLED_BY_CUSTOMER`, `CANCELLED_BY_SELLER`, `CANCELLED_BY_ADMIN`, `STARTED`, `OVERDUE`.
+##### subscription.plan
+- **subscription.plan.id** (*long*): ID do plano.
+- **subscription.plan.name** (*string*): Nome do plano (para assinaturas).
+##### subscription.subscriber
+- **subscription.subscriber.code** (*string*): Código do assinante (usado para identificar a assinatura externamente).
+
+---
+
+Se precisar do significado exato de qualquer campo ou exemplos de uso e valores possíveis, me diga o nome do campo e eu listo!

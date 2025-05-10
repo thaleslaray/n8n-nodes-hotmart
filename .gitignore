@@ -6,3 +6,7 @@ dist
 npm-debug.log*
 yarn.lock
 .vscode/launch.json
+
+**/.claude/settings.local.json
+
+**/CLAUDE.local.md

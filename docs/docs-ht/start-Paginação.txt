@@ -1,0 +1,47 @@
+Na plataforma da Hotmart, coleções (ou listas) de recursos como usuários, assinaturas e produtos podem conter muitos itens. Para facilitar o acesso a grandes volumes de dados, a API da Hotmart utiliza paginação com a abordagem de cursor pagination.
+
+## Parâmetros da requisição
+
+- **max_results** (integer):
+  - O número máximo de itens por página a serem retornados.
+
+- **page_token** (string):
+  - O cursor utilizado na navegação entre páginas.
+  - Exemplo de uso: após uma requisição retornar 50 itens, se houver mais itens, o parâmetro `next_page_token` poderá ser usado em `page_token` para buscar os próximos registros. Para voltar aos anteriores, utilize o `prev_page_token`.
+
+### Exemplo de Requisição
+```bash
+curl --location --request GET 'https://developers.hotmart.com/payments/api/v1/subscriptions?page_token=:page_token' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer :access_token'
+```
+
+## Estrutura de Resposta
+
+- **items** (array):
+  - Coleção dos itens solicitados (por exemplo, lista de vendas).
+
+- **page_info** (object):
+  - **total_results**: Número total de itens disponíveis.
+  - **next_page_token**: Token para acessar a próxima página de resultados.
+  - **prev_page_token**: Token para retornar à página anterior.
+  - **results_per_page**: Quantidade de resultados por página.
+
+### Exemplo de Resposta
+```json
+{
+  "items": [...],
+  "page_info": {
+      "total_results": 30,
+      "next_page_token": "eyJwYWdlIjoyLCJyb3dzIjoxMH0=",
+      "prev_page_token": "eyJwYWdlIjoyLCJyb3dzIjoxMH0=",
+      "results_per_page": 10
+  }
+}
+```
+
+**Observações:**
+- Utilize sempre os parâmetros e tokens fornecidos para navegar entre as páginas sem perder ou pular itens.
+- Os valores devem ser utilizados exatamente como apresentados para garantir a consistência da navegação.
+
+Se precisar de exemplos mais detalhados de requisição ou sobre outros endpoints, basta pedir!

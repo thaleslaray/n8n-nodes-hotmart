@@ -1,0 +1,76 @@
+Aqui estão as informações completas, exatamente como estão na documentação oficial, sobre o endpoint que exibe as informações detalhadas das assinaturas/assinantes do produtor na Hotmart.
+
+## Parâmetros da requisição (Query)
+
+- **max_results** (integer): O número máximo de itens por página que podem ser retornados.
+- **page_token** (string): O cursor usado na paginação para navegar pela lista (utilize o valor de next_page_token para acessar a próxima página ou prev_page_token para voltar).
+- **product_id** (long): ID do produto de assinatura (7 dígitos).
+- **plan** (array containing strings): Nome(s) do(s) plano(s) nos quais o(a) assinante se inscreveu. Aceita múltiplos valores repetindo a chave.
+- **plan_id** (long): Identificador único do plano de assinatura.
+- **accession_date** (long): Data de início da assinatura (em milissegundos desde 1970-01-01 00:00:00 UTC). Se não informado, considera a data atual menos 30 dias.
+- **end_accession_date** (long): Data em que o assinante solicitou o cancelamento da assinatura (em milissegundos desde 1970-01-01 00:00:00 UTC).
+- **status** (string): Status atual da assinatura. Valores permitidos: `ACTIVE`, `INACTIVE`, `DELAYED`, `CANCELLED_BY_CUSTOMER`, `CANCELLED_BY_SELLER`, `CANCELLED_BY_ADMIN`, `STARTED`, `OVERDUE`.
+- **subscriber_code** (string): Código exclusivo de um assinante.
+- **subscriber_email** (string): Email do assinante.
+- **transaction** (string): Identificador único de uma transação.
+- **trial** (boolean): Indica se a assinatura possui período de teste.
+- **cancelation_date** (long): Assinaturas canceladas a partir desta data (milissegundos desde 1970-01-01 00:00:00 UTC). Se não informado, considera a data atual menos 30 dias.
+- **end_cancelation_date** (long): Assinaturas canceladas até esta data (milissegundos desde 1970-01-01 00:00:00 UTC). Se não informado, considera a data atual.
+- **date_next_charge** (date): Data de próxima tentativa de pagamento (milissegundos desde 1970-01-01 00:00:00 UTC). Para assinaturas canceladas, indica a última data de acesso ao produto. Se não informado, considera a data atual.
+- **end_date_next_charge** (date): Filtra assinaturas com tentativa de pagamento até esta data (milissegundos desde 1970-01-01 00:00:00 UTC). Se não informado, considera a data atual.
+
+## Exemplo de requisição
+
+```bash
+curl --location --request GET 'https://developers.hotmart.com/payments/api/v1/subscriptions?status=CANCELLED_BY_SELLER&status=ACTIVE' \
+	--header 'Content-Type: application/json' \
+	--header 'Authorization: Bearer :access_token'
+```
+
+## Exemplo de retorno JSON
+
+```json
+{
+  "items": [
+    {
+      "subscriber_code": "ABC12DEF",
+      "subscription_id": 123456,
+      "status": "ACTIVE",
+      "accession_date": 1577847600,
+      "end_accession_date": 1641005999,
+      "request_date": 1577847600,
+      "date_next_charge": 1580558059,
+      "trial": false,
+      "transaction": "HP16616613605324",
+      "plan": {
+        "name": "Plan name",
+        "id": 726420,
+        "recurrency_period": 30,
+        "max_charge_cycles": 6
+      },
+      "product": {
+        "id": 123456,
+        "name": "Product Name",
+        "ucode": "12a34bcd-56e7-4847-fg89-h1i23j4567l8"
+      },
+      "price": {
+        "value": 123.45,
+        "currency_code": "BRL"
+      },
+      "subscriber": {
+        "name": "Subscriber name",
+        "email": "subscriber@email.com.br",
+        "ucode": "10a98bcd-76e5-4321-fg09-h8i76j5432l1"
+      }
+    }
+  ],
+  "page_info": {
+    "total_results": 30,
+    "next_page_token": "05b60506b659c1c6e728db93eada6271e3adcfb4edf507b679874458e31577b3",
+    "prev_page_token": "cf1fg8bd082e2864069035c057eca0bac7eb5d604719c5a76e80f0933f49c217",
+    "results_per_page": 10
+  }
+}
+```
+
+Se precisar de mais detalhes sobre cada campo do retorno, basta pedir!

@@ -1,0 +1,36 @@
+### Solicitar reembolso de uma venda via API Hotmart
+
+Este endpoint permite solicitar o reembolso de uma venda, desde que as seguintes condições sejam atendidas:
+
+#### Critérios obrigatórios:
+- A venda deve ter status **Aprovada** ou **Completa**;
+- Não pode ser uma venda do tipo **trial** (período de teste);
+- Não pode ter sido realizada com os métodos de pagamento **BACS** ou **SEPA** (nestas opções, o comprador deve solicitar reembolso diretamente ao banco).
+
+#### Observações importantes:
+- O prazo para solicitar o reembolso deve ser de no mínimo 7 dias e no máximo 30 dias após a compra. Este prazo pode ser estendido para até 60 dias, se desejado, mas deve ser informado ao cliente antes da venda.
+  - Para mais detalhes sobre prazos, acesse: https://help.hotmart.com/pt-BR/article/solicitar-reembolso/360061973392
+- Se a venda tiver afiliação, o reembolso pode ser solicitado em até 30 dias após a compra.
+
+---
+
+## Parâmetros da requisição
+
+### Path
+- **transaction** (string, obrigatório): Código único de referência para uma transação (exemplo: HP17715690036014). Uma transação representa um pedido efetuado, incluindo geração de boleto, compras aprovadas, recorrências, etc.
+
+### Exemplo de requisição cURL
+```bash
+curl --location --request PUT 'https://developers.hotmart.com/payments/api/v1/sales/:transaction_code/refund' \
+    --header 'Authorization: Bearer :access_token' \
+    --header 'Content-Type: application/json'
+```
+
+---
+
+## Retorno
+O retorno dessa rota é vazio. Considere apenas os códigos HTTP como resposta.
+
+```json
+{}
+```

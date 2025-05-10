@@ -6,6 +6,7 @@ import * as product from './product/Product.resource';
 import * as coupon from './coupon/Coupon.resource';
 import * as club from './club/Club.resource';
 import * as tickets from './tickets/Tickets.resource';
+import * as negotiate from './negotiate/Negotiate.resource';
 
 /**
  * IMPORTANTE: Prevenção da injeção de "Custom API Call"
@@ -49,40 +50,44 @@ export const versionDescription: INodeTypeDescription = {
 	],
 	properties: [
 		{
-			displayName: 'Recurso',
+			displayName: 'Resource',
 			name: 'resource',
 			type: 'options',
 			noDataExpression: true,
 			options: [
 				{
-					name: 'Assinatura',
+					name: "Subscription",
 					value: 'subscription',
 				},
 				{
-					name: 'Vendas',
+					name: 'Sales',
 					value: 'sales',
 				},
 				{
-					name: 'Produto',
+					name: 'Product',
 					value: 'product',
 				},
 				{
-					name: 'Cupom',
+					name: "Coupon",
 					value: 'coupon',
 				},
 				{
-					name: 'Club',
+					name: "Club",
 					value: 'club',
 				},
 				{
-					name: 'Ingressos',
+					name: "Event Ticket",
 					value: 'tickets',
+				},
+				{
+					name: 'Payment Negotiation',
+					value: 'negotiate',
 				},
 			],
 			default: 'subscription',
 		},
 		{
-			displayName: 'Operação',
+			displayName: 'Operation',
 			name: 'operation',
 			type: 'options',
 			noDataExpression: true,
@@ -93,9 +98,9 @@ export const versionDescription: INodeTypeDescription = {
 			},
 			options: [
 				{
-					name: 'Obter Assinaturas',
+					name: 'Get Subscriptions',
 					value: 'getAll',
-					description: 'Listar todas as assinaturas',
+					description: 'List all subscriptions',
 					action: 'Get all subscriptions',
 				},
 				{
@@ -150,7 +155,7 @@ export const versionDescription: INodeTypeDescription = {
 			default: 'getAll',
 		},
 		{
-			displayName: 'Operação',
+			displayName: 'Operation',
 			name: 'operation',
 			type: 'options',
 			noDataExpression: true,
@@ -170,7 +175,7 @@ export const versionDescription: INodeTypeDescription = {
 			default: 'getAll',
 		},
 		{
-			displayName: 'Operação',
+			displayName: 'Operation',
 			name: 'operation',
 			type: 'options',
 			noDataExpression: true,
@@ -208,7 +213,7 @@ export const versionDescription: INodeTypeDescription = {
 			default: 'create',
 		},
 		{
-			displayName: 'Operação',
+			displayName: 'Operation',
 			name: 'operation',
 			type: 'options',
 			noDataExpression: true,
@@ -246,7 +251,7 @@ export const versionDescription: INodeTypeDescription = {
 			default: 'getModules',
 		},
 		{
-			displayName: 'Operação',
+			displayName: 'Operation',
 			name: 'operation',
 			type: 'options',
 			noDataExpression: true,
@@ -296,7 +301,7 @@ export const versionDescription: INodeTypeDescription = {
 			default: 'getHistoricoVendas',
 		},
 		{
-			displayName: 'Operação',
+			displayName: 'Operation',
 			name: 'operation',
 			type: 'options',
 			noDataExpression: true,
@@ -321,11 +326,32 @@ export const versionDescription: INodeTypeDescription = {
 			],
 			default: 'getAll',
 		},
+		{
+			displayName: 'Operation',
+			name: 'operation',
+			type: 'options',
+			noDataExpression: true,
+			displayOptions: {
+				show: {
+					resource: ['negotiate'],
+				},
+			},
+			options: [
+				{
+					name: "Gerar Negociação",
+					value: 'generateNegotiation',
+					description: 'Gerar uma negociação para pagamento de parcelas',
+					action: 'Generate negotiation for overdue payments',
+				},
+			],
+			default: 'generateNegotiation',
+		},
 		...subscription.description,
 		...sales.description,
 		...product.description,
 		...coupon.description,
 		...club.description,
 		...tickets.description,
+		...negotiate.description,
 	],
 };

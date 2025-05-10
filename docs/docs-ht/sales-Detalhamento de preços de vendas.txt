@@ -1,0 +1,124 @@
+Segue o detalhamento fiel da documentação sobre o endpoint de detalhamento de valores da compra da Hotmart:
+
+## Parâmetros da Requisição
+
+- **transaction** (string): Código único de referência para uma transação, por exemplo HP17715690036014. Uma transação acontece quando um pedido é efetuado. Um pedido pode ser um boleto gerado, uma compra aprovada, uma recorrência de compra e mais.
+- **transaction_status** (string): Status da transação. Valores possíveis:
+  - STARTED
+  - COMPLETE
+  - PRINTED_BILLET
+  - WAITING_PAYMENT
+  - APPROVED
+  - UNDER_ANALISYS
+  - CANCELLED
+  - PROTESTED
+  - REFUNDED
+  - CHARGEBACK
+  - BLOCKED
+  - OVERDUE
+  - EXPIRED
+  - PARTIALLY_REFUNDED
+- **max_results** (integer): O número máximo de itens por página que podem ser retornados.
+- **page_token** (string): Cursor de paginação para acessar outras páginas. Use o valor de next_page_token para pegar os próximos itens, e prev_page_token para acessar os anteriores.
+- **product_id** (long): Identificador único (ID) do produto vendido (número de 7 dígitos).
+- **start_date** (long): Data inicial do período para o filtro, em milissegundos desde 1970-01-01 00:00:00 UTC.
+- **end_date** (long): Data final do período para o filtro, em milissegundos desde 1970-01-01 00:00:00 UTC.
+- **payment_type** (string): Tipo de pagamento. Valores possíveis:
+  - BILLET
+  - CASH_PAYMENT
+  - CREDIT_CARD
+  - DIRECT_BANK_TRANSFER
+  - DIRECT_DEBIT
+  - FINANCED_BILLET
+  - FINANCED_INSTALLMENT
+  - GOOGLE_PAY
+  - HOTCARD
+  - HYBRID
+  - MANUAL_TRANSFER
+  - PAYPAL
+  - PAYPAL_INTERNACIONAL
+  - PICPAY
+  - PIX
+  - SAMSUNG_PAY
+  - WALLET
+
+**Importante:** Caso NÃO informe os filtros transaction ou transaction_status, só serão retornados os status "APPROVED" e "COMPLETE".
+
+## Exemplo de requisição
+
+```bash
+curl --location --request GET 'https://developers.hotmart.com/payments/api/v1/sales/price/details?transaction_status=CANCELLED&payment_type=CREDIT_CARD' \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer :access_token''
+```
+
+## Retorno (Exemplo)
+
+```json
+{
+  "items": [
+    {
+      "transaction": "HP14916251567230",
+      "product": {
+        "id": 8547854,
+        "name": "product1"
+      },
+      "base": {
+        "value": 930,
+        "currency_code": "MXN"
+      },
+      "total": {
+        "value": 486.25,
+        "currency_code": "MXN"
+      },
+      "vat": {
+        "value": 193.25,
+        "currency_code": "BRL"
+      },
+      "fee": {
+        "value": 55,
+        "currency_code": "USD"
+      },
+      "coupon": {
+        "code": "coupon1",
+        "value": 22.9
+      },
+      "real_conversion_rate": 708.75
+    }
+  ],
+  "page_info": {
+    "total_results": 14,
+    "next_page_token": "eyJyb3dzIjoxMCwicGFnZSI6Mn0=",
+    "results_per_page": 10
+  }
+}
+```
+
+### Retorno detalhado
+- **items**: array de objetos contendo os seguintes campos:
+  - **transaction**: código da transação
+  - **product**:
+    - **id**: ID do produto (long)
+    - **name**: nome do produto (string)
+  - **base**:
+    - **value**: valor base (number)
+    - **currency_code**: código da moeda (string)
+  - **total**:
+    - **value**: valor total (number)
+    - **currency_code**: código da moeda (string)
+  - **vat**:
+    - **value**: valor dos impostos (number)
+    - **currency_code**: código da moeda (string)
+  - **fee**:
+    - **value**: valor da taxa (number)
+    - **currency_code**: código da moeda (string)
+  - **coupon**:
+    - **code**: código do cupom (string)
+    - **value**: valor do desconto do cupom (number)
+  - **real_conversion_rate**: taxa real de conversão (number)
+- **page_info**:
+  - **total_results**: total de resultados (int)
+  - **next_page_token**: (string)
+  - **results_per_page**: (int)
+
+Todas as informações, opções e possíveis valores estão listadas acima, exatamente conforme aparecem na documentação original.

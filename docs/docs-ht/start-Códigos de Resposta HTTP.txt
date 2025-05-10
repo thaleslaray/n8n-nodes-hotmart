@@ -1,0 +1,52 @@
+Abaixo está um resumo completo e fiel sobre os códigos de resposta HTTP da API Hotmart e o formato de retorno de erros, conforme apresentado na documentação:
+
+## Padrão de resposta HTTP da API Hotmart
+
+- **Códigos 2xx**: Indicam sucesso na requisição.
+  - **200 - OK**: Sucesso. Tudo ocorreu como planejado.
+  - **201 - Created**: Sucesso. Um novo recurso foi criado.
+
+- **Códigos 4xx**: Erros causados por problemas do lado do cliente (requisição inválida, problema de autenticação, permissão, etc).
+  - **400 - Bad Request**: Erro 'invalid_parameter', 'invalid_value_parameter', 'invalid_value_headers' ou 'invalid_token' (parâmetro page_token inválido). Requisição ou parâmetros inválidos.
+  - **401 - Unauthorized**: Erro 'unauthorized', 'token_expired' ou 'invalid_token'. Requisição precisa de autenticação.
+  - **403 - Forbidden**: Erro 'unauthorized_client'. O usuário não possui permissões para a operação.
+  - **404 - Not Found**: Erro 'not_found'. URL não encontrada ou inválida.
+  - **429 - Too Many Requests**: Erro 'too_many_requests'. Excesso de requisições em curto período. Veja detalhes sobre [Rate Limit](https://developers.hotmart.com/docs/pt-BR/start/rate-limit/).
+
+- **Códigos 5xx**: Erros no serviço da Hotmart.
+  - **500 - Server Error**: Erro 'internal_server_error'. Erro interno inesperado, requisição não foi concluída.
+  - **502 - Bad Gateway**: Erro 'internal_server_error'. Demora superior a 30 segundos na busca dos dados. Revise datas e filtros. Veja [detalhes](https://developers.hotmart.com/docs/en/v1/sales/sales-history/#query).
+  - **503 - Service Unavailable**: Erro 'internal_server_error'. API indisponível. Tente novamente mais tarde.
+
+## Retorno de Erro da API
+
+Em caso de erro, a resposta contém JSON com os seguintes campos:
+
+- **error** *(string)*: Tipo de erro. Pode ser um dos valores a seguir:
+  - `invalid_token`
+  - `token_expired`
+  - `unauthorized`
+  - `unauthorized_client`
+  - `invalid_parameter`
+  - `invalid_value_parameter`
+  - `invalid_value_headers`
+  - `not_found`
+  - `too_many_requests`
+  - `internal_server_error`
+
+- **error_description** *(string)*: Mensagem de fácil entendimento, detalhando o erro.
+
+- **error_uri** *(string)*: Link para documentação detalhando o código de erro.
+
+#### Exemplo de resposta de erro:
+```json
+{
+  "error": "unauthorized",
+  "error_description": "Full authentication is required to access this resource.",
+  "error_uri": "https://developers.hotmart.com/docs/pt-BR/start/http-response-codes/"
+}
+```
+
+Se não conseguir resolver o erro, entre em contato com o suporte da Hotmart, enviando a requisição e o erro ocorrido.
+
+Se precisar de explicação detalhada sobre qualquer código ou campo acima, basta pedir!

@@ -1,0 +1,208 @@
+## Hotmart API – Transações de Assinatura: Documentação Completa
+
+O endpoint de **Transações de Assinatura** da Hotmart permite obter informações detalhadas de cada transação vinculada a assinaturas, Smart Installments e Smart Recovery. A seguir estão todos os parâmetros possíveis para requisição **exatamente como documentados**:
+
+### Parâmetros da Requisição
+
+#### Query Params
+- **max_results** (integer):
+  O número máximo de itens por página que podem ser retornados.
+
+- **page_token** (string):
+  Usado para paginação. Utilize o valor de `next_page_token` ou `prev_page_token` retornado para navegar entre as páginas.
+
+- **product_id** (long):
+  Identificador único (ID) do produto vendido (número de 7 dígitos).
+
+- **transaction** (string):
+  Código único de referência para uma transação, como HP17715690036014.
+
+- **subscriber_name** (string):
+  Nome do comprador envolvido na transação.
+
+- **subscriber_email** (string):
+  Email do comprador envolvido na transação.
+
+- **billing_type** (string):
+  Tipo da cobrança: `SUBSCRIPTION`, `SMART_INSTALLMENT` ou `SMART_RECOVERY`. (Mutuamente exclusivo para um mesmo `subscription_id`)
+
+- **subscription_status** (string):
+  Estado atual da assinatura, com as opções abaixo:
+  - Para **Assinatura**:
+    - `STARTED`
+    - `INACTIVE`
+    - `ACTIVE`
+    - `DELAYED`
+    - `CANCELLED_BY_ADMIN`
+    - `CANCELLED_BY_CUSTOMER`
+    - `CANCELLED_BY_SELLER`
+    - `OVERDUE`
+  - Para **Smart Installment/Smart Recovery**:
+    - `STARTED`
+    - `INACTIVE`
+    - `ACTIVE`
+    - `DELAYED`
+    - `CANCELLED_BY_ADMIN`
+    - `CANCELLED_BY_SELLER`
+
+- **recurrency_status** (string):
+  Situação do pagamento da recorrência:
+  - `PAID`
+  - `NOT_PAID`
+  - `CLAIMED`
+  - `REFUNDED`
+  - `CHARGEBACK`
+
+- **purchase_status** (string):
+  Situação da transação de compra.
+
+- **transaction_date** (long):
+  Data inicial do filtro, em milissegundos a partir de 1970-01-01 00:00:00 UTC.
+
+- **end_transaction_date** (long):
+  Data final do filtro, em milissegundos a partir de 1970-01-01 00:00:00 UTC.
+
+- **offer_code** (string):
+  Chave de oferta (identificador da assinatura/plano).
+
+- **purchase_payment_type** (string):
+  Tipo de pagamento utilizado, possíveis valores:
+  - `BILLET`
+  - `CASH_PAYMENT`
+  - `CREDIT_CARD`
+  - `DIRECT_BANK_TRANSFER`
+  - `DIRECT_DEBIT`
+  - `FINANCED_BILLET`
+  - `FINANCED_INSTALLMENT`
+  - `GOOGLE_PAY`
+  - `HOTCARD`
+  - `HYBRID`
+  - `MANUAL_TRANSFER`
+  - `PAYPAL`
+  - `PAYPAL_INTERNACIONAL`
+  - `PICPAY`
+  - `PIX`
+  - `SAMSUNG_PAY`
+  - `WALLET`
+
+- **subscriber_code** (string):
+  Identificador único do assinante, essencial para buscar transações específicas deste.
+
+### Exemplo de Requisição cURL
+```bash
+curl --location --request GET 'https://developers.hotmart.com/payments/api/v1/subscriptions/transactions?transaction_date=1262354400000&end_transaction_date=1735830000000&max_results=500' \
+	--header 'Content-Type: application/json' \
+	--header 'Authorization: Bearer :access_token'
+```
+
+### Formato de Retorno (Response 200 - Success)
+```json
+{
+  "items": [
+    {
+      "last_recurrency_start_date": 1694113403000,
+      "has_unpaid_recurrency": false,
+      "product": {
+        "name": "Product A",
+        "id": 1001
+      },
+      "subscriber": {
+        "phone": "1234567890",
+        "name": "Subscriber A",
+        "id": 10001,
+        "phone_ddd": "12",
+        "email": "subscriberA@example.com"
+      },
+      "recurrency": {
+        "number": 1,
+        "scheduled_retry": 1534204800000,
+        "number_list": "3, 4",
+        "transaction_sequence": 1,
+        "start_datetime": 1694113403000,
+        "payment_delays_days": 0,
+        "transaction_type": "RECURRING",
+        "is_current_purchase": true,
+        "has_retry": false,
+        "status": "PAID"
+      },
+      "last_recurrency_number": 1,
+      "trial_info": {
+        "trial_end": 1696705403000,
+        "trial_period": 30,
+        "trial": true
+      },
+      "purchase": {
+        "order_date": 1577890800000,
+        "price": {
+          "total_value": 29.99,
+          "currency": "USD",
+          "value": 29.99
+        },
+        "installment": {
+          "installment_number": 1,
+          "installment_type": "MONTHLY"
+        },
+        "payment": {
+          "refusal_message": "INSUFFICIENT FUNDS",
+          "refund_chargeback_date": 1558051200000,
+          "payment_type": "CREDIT_CARD",
+          "billet_expiration_date": 1639008000000,
+          "billet_recovery_type": "MANUAL",
+          "pix_expiration_date": 1639008000000,
+          "billet_reprint_code": "https://www.boletobancario.com/boletofacil/charge/boleto.html?token=9986502:m:4d70d7725a589dcc2351b8f13fa3066ccd87fc191f2190723666c5de4ae4832e",
+          "credit_card_flag": "VISA"
+        },
+        "commission": {
+          "original_value": 29.99,
+          "producer_paid_value": 20.0,
+          "currency": "USD",
+          "original_paid_value": 29.99,
+          "conversion_rate": 1.0,
+          "producer_value": 20.0
+        },
+        "approved_date": 1577890800000,
+        "transaction": "TXN000001",
+        "status": "APPROVED"
+      },
+      "cancellation_date": 1536883200000,
+      "is_paid_anticipation": false,
+      "max_cycles": 12,
+      "adoption_date": 1694113403000,
+      "subscriber_code": "SUB000001",
+      "date_next_charge": 1696705403000,
+      "is_paid_negotiation": false,
+      "last_update": 1577890800000,
+      "billing_type": "SUBSCRIPTION",
+      "producer": {
+        "name": "Producer A"
+      },
+      "subscription_id": 1,
+      "has_credit_card_change": false,
+      "plan": {
+        "offer": {
+          "code": "OFFER_CODE_A",
+          "description": "Offer A",
+          "key": "OFFER_KEY_A"
+        },
+        "recurrency_period": 30,
+        "coupon_code": "COUPON001",
+        "recurrency_type": "MONTHLY",
+        "name": "Plan A"
+      },
+      "status": "ACTIVE"
+    }
+  ],
+  "page_info": {
+    "results_per_page": 1,
+    "next_page_token": "05b60506b659c1c6e728db93eada6271e3adcfb4edf507b679874458e31577b3",
+    "prev_page_token": "cf1fg8bd082e2864069035c057eca0bac7eb5d604719c5a76e80f0933f49c217"
+  }
+}
+```
+
+### Observações Importantes
+- **Dados podem ter defasagem de até 24h.** Para informações em tempo real utilize o endpoint de "Obter Assinaturas".
+- Por padrão, retornos são referentes aos **últimos 30 dias**, exceto ao filtrar por `transaction`.
+- Para customizar o período, utilize `transaction_date` e `end_transaction_date`.
+
+Caso precise de instruções sobre retorno paginado, ou entendimento de cada campo do response, me avise!

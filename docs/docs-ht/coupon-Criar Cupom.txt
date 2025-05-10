@@ -1,0 +1,33 @@
+Aqui estão as informações completas para criação de cupons via API da Hotmart, mantendo 100% de fidelidade aos dados técnicos:
+
+## Endpoint
+POST `https://developers.hotmart.com/products/api/v1/product/:product_id/coupon`
+
+### Parâmetros da Requisição
+
+#### Path
+- **product_id** (long, obrigatório): Identificador único (ID) do produto vendido (número de 7 dígitos).
+
+#### Body
+- **code** (string, obrigatório): Código do cupom (máximo 25 caracteres).
+- **discount** (double, obrigatório): Precisa ser maior que 0 e menor que 0.99 (0 < discount < 0.99).
+- **start_date** (long): Data de ativação do cupom, em milissegundos desde 1970-01-01 00:00:00 UTC. O fuso horário do usuário será selecionado automaticamente pela API.
+- **end_date** (long): Data de desativação do cupom, em milissegundos desde 1970-01-01 00:00:00 UTC. O fuso horário do usuário será selecionado automaticamente pela API.
+- **affiliate** (long): O ID específico do afiliado para qual o cupom será exclusivo.
+- **offer_ids** (array contendo longs): Os códigos de oferta aos quais o cupom será aplicado.
+
+### Exemplo de cURL
+```bash
+curl --location --request POST 'https://developers.hotmart.com/products/api/v1/product/:product_id/coupon' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer :access_token'
+```
+
+### Retorno
+O retorno da API será um objeto vazio:
+```json
+{
+}
+```
+
+Se precisar de mais detalhes sobre uso dos parâmetros ou exemplos de payload, posso ajudar!

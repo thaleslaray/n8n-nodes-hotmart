@@ -1,0 +1,163 @@
+## Obter Alunos — Hotmart Club API
+
+Este é o endpoint para retornar todos os alunos de uma Área de Membros, incluindo aqueles que realizaram compra, foram importados ou cadastrados gratuitamente.
+
+### Papéis possíveis dos usuários (`role`):
+| Papel                 | Definição                                          |
+|-----------------------|---------------------------------------------------|
+| STUDENT               | Estudante                                         |
+| FREE_STUDENT          | Estudante gratuito                                |
+| OWNER                 | Proprietário da Área de Membros                   |
+| ADMIN                 | Administrador da Área de Membros                  |
+| CONTENT_EDITOR        | Editor de conteúdo                                |
+| MODERATOR             | Moderador da Área de Membros                      |
+
+### Status do Acesso Plus (`plus_access`):
+| Status                   | Definição                                     |
+|--------------------------|-----------------------------------------------|
+| WITHOUT_PLUS_ACCESS      | O aluno não tem Acesso Plus                   |
+| HOLDER                   | O aluno é o titular do Acesso Plus            |
+| HOLDER_WITH_DEPENDENTS   | O aluno é o titular com dependentes           |
+| HOLDER_WITHOUT_DEPENDENTS| O aluno é o titular sem dependentes           |
+| DEPENDENT                | O aluno é um dependente do titular            |
+
+### Status possíveis do aluno (`status`):
+| Status             | Definição                                               |
+|--------------------|--------------------------------------------------------|
+| ACTIVE             | Aluno ativo na Área de Membros                         |
+| BLOCKED            | Aluno bloqueado na Área de Membros                    |
+| BLOCKED_BY_OWNER   | Aluno bloqueado pelo produtor/administrador            |
+| OVERDUE            | Aluno com assinatura vencida                           |
+
+### Tipos de aluno (`type`):
+| Tipo      | Definição                                          |
+|-----------|----------------------------------------------------|
+| BUYER     | Aluno que realizou a compra da Área de Membros     |
+| IMPORTED  | Aluno importado para a Área de Membros             |
+| FREE      | Aluno gratuito                                     |
+| OWNER     | Proprietário da Área de Membros                    |
+| GUEST     | Convidado na Área de Membros                       |
+
+---
+
+## Parâmetros da requisição (Query):
+- `subdomain` _(string, obrigatório)_: Nome do subdomínio para identificar a Área de Membros.
+- `email` _(string, opcional)_: Para filtrar por e-mail (completo ou parcial) de um aluno.
+
+---
+
+## Exemplo de Requisição (cURL):
+```bash
+curl --location --request GET 'https://developers.hotmart.com/club/api/v1/users?subdomain=my-subdomain' \
+	--header 'Content-Type: application/json' \
+	--header 'Authorization: Bearer :access_token'
+```
+
+---
+
+## Estrutura de Resposta
+```json
+{
+  "items": [
+    {
+      "user_id": "n2OM623n46",
+      "engagement": "NONE",
+      "name": "Hotmart Example User One",
+      "email": "user.one@hotmart.com",
+      "last_access_date": 1546728645,
+      "role": "FREE_STUDENT",
+      "first_access_date": 1607054711,
+      "locale": "pt_BR",
+      "plus_access": "WITHOUT_PLUS_ACCESS",
+      "progress": {
+        "completed_percentage": 45,
+        "total": 11,
+        "completed": 5
+      },
+      "status": "ACTIVE",
+      "access_count": 1,
+      "is_deletable": true,
+      "class_id": "qV7y1Jm7Jn",
+      "type": "FREE"
+    },
+    {
+      "user_id": "ZYOmWXlded",
+      "engagement": "LOW",
+      "name": "Hotmart Example User Two",
+      "email": "user.two@hotmart.com",
+      "last_access_date": 1819975825,
+      "role": "STUDENT",
+      "first_access_date": 1532627687,
+      "locale": "pt_BR",
+      "plus_access": "WITHOUT_PLUS_ACCESS",
+      "progress": {
+        "completed_percentage": 0,
+        "total": 11,
+        "completed": 0
+      },
+      "status": "ACTIVE",
+      "purchase_date": 1616501263,
+      "access_count": 2,
+      "is_deletable": true,
+      "class_id": "qV7y1Jm7Jn",
+      "type": "BUYER"
+    },
+    {
+      "user_id": "wx7WpWrQO2",
+      "engagement": "MEDIUM",
+      "name": "Hotmart Example User Three",
+      "email": "user.three@hotmart.com",
+      "last_access_date": 1278881901,
+      "role": "STUDENT",
+      "first_access_date": 1607054711,
+      "locale": "pt_BR",
+      "plus_access": "WITHOUT_PLUS_ACCESS",
+      "progress": {
+        "completed_percentage": 0,
+        "total": 11,
+        "completed": 0
+      },
+      "status": "BLOCKED",
+      "purchase_date": 1616501263,
+      "access_count": 1,
+      "is_deletable": true,
+      "class_id": "qV7y1Jm7Jn",
+      "type": "IMPORTED"
+    }
+  ],
+  "page_info": {
+    "total_results": 111,
+    "next_page_token": "eyJwYWdlIjoyLCJyb3dzIjoxMH0=",
+    "prev_page_token": "eyJwYWdlIjoyLCJyb3dzIjoxMH0=",
+    "results_per_page": 3
+  }
+}
+```
+
+**Detalhes de cada aluno na lista `items`:**
+- `user_id`: ID do usuário
+- `engagement`: Nível de engajamento (`NONE`, `LOW`, `MEDIUM`, etc.)
+- `name`: Nome
+- `email`: E-mail
+- `last_access_date`: Timestamp do último acesso
+- `role`: Papel dentro da área de membros
+- `first_access_date`: Timestamp do primeiro acesso
+- `locale`: Localidade (ex: `pt_BR`)
+- `plus_access`: Tipo de acesso Plus
+- `progress`: Progresso do aluno (exibe `completed_percentage`, `total`, `completed`)
+- `status`: Status do aluno
+- `purchase_date`: Timestamp da compra (quando disponível)
+- `access_count`: Quantidade de acessos
+- `is_deletable`: Se o usuário pode ser deletado (`true` ou `false`)
+- `class_id`: ID da classe
+- `type`: Tipo do aluno
+
+**Detalhes de paginação (`page_info`):**
+- `total_results`: Total de alunos
+- `next_page_token`: Token para próxima página
+- `prev_page_token`: Token para página anterior
+- `results_per_page`: Quantidade de resultados por página
+
+---
+
+Para mais detalhes ou exemplos completos, consulte a [documentação oficial Hotmart Club](https://developers.hotmart.com/docs/pt-BR/v1/club/get-users-club#).

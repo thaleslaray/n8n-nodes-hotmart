@@ -1,0 +1,108 @@
+## Obter Módulos da Área de Membros (Hotmart Club)
+
+Abaixo estão todos os detalhes exatos do endpoint de recuperação de módulos dentro de uma Área de Membros do Hotmart Club, conforme a documentação oficial.
+
+### Endpoint
+**GET /club/api/v1/modules**
+
+### Parâmetros da Requisição
+**Query**
+- `subdomain` (string, obrigatório)
+  - Parâmetro obrigatório que indica de qual Área de Membros os dados serão requisitados. O valor é o nome do subdomínio definido na administração do Club.
+- `is_extra` (boolean, opcional)
+  - Indica se os módulos extras devem ser retornados.
+  - `true` retorna módulos extras
+  - `false` retorna apenas módulos principais
+  - Valor padrão: `false`
+
+#### Exemplo de requisição cURL
+```bash
+curl --location --request GET 'https://developers.hotmart.com/club/api/v1/modules?subdomain=my-subdomain&is_extra=false' \
+	--header 'Content-Type: application/json' \
+	--header 'Authorization: Bearer :access_token'
+```
+
+---
+
+### Estrutura da Resposta
+**200 - Success**
+A resposta retorna um array de módulos, sendo que cada módulo possui os seguintes campos:
+
+- `module_id` (string): Identificador único do módulo.
+- `name` (string): Nome do módulo definido pelo produtor.
+- `sequence` (integer): Ordem sequencial de exibição para os alunos.
+- `is_public` (boolean): Indica se o módulo é gratuito (`true`) ou não (`false`).
+- `is_extra` (boolean): Indica se o módulo é extra (`true`) ou principal (`false`).
+- `is_extra_paid` (boolean): Indica se o módulo extra é pago (`true`) ou gratuito (`false`).
+- `classes` (array): Lista dos IDs das aulas do módulo.
+- `total_pages` (integer): Quantidade total de páginas relacionadas ao módulo.
+
+#### Exemplo de Resposta
+```json
+[
+  {
+    "module_id": "2z7ramxejw",
+    "name": "Hotmart Club - Module 1",
+    "sequence": 1,
+    "is_extra": false,
+    "is_extra_paid": false,
+    "is_public": false,
+    "classes": ["qV7y1Jm7Jn"],
+    "total_pages": 2
+  },
+  {
+    "module_id": "j14okvB4pL",
+    "name": "Hotmart Club - Module 2",
+    "sequence": 2,
+    "is_extra": false,
+    "is_extra_paid": false,
+    "is_public": true,
+    "classes": ["qV7y1Jm7Jn"],
+    "total_pages": 4
+  },
+  {
+    "module_id": "v94JMxYOgZ",
+    "name": "Hotmart Club - Module 3",
+    "sequence": 3,
+    "is_extra": false,
+    "is_extra_paid": false,
+    "is_public": false,
+    "classes": ["qV7y1Jm7Jn"],
+    "total_pages": 3
+  },
+  {
+    "module_id": "d64l09Q4jW",
+    "name": "Hotmart Club - Module 4",
+    "sequence": 4,
+    "is_extra": false,
+    "is_extra_paid": false,
+    "is_public": false,
+    "classes": ["qV7y1Jm7Jn"],
+    "total_pages": 1
+  },
+  {
+    "module_id": "DPeA5MoeWE",
+    "name": "Hotmart Club - Module Dripping",
+    "sequence": 5,
+    "is_extra": false,
+    "is_extra_paid": false,
+    "is_public": true,
+    "classes": ["qV7y1Jm7Jn"],
+    "total_pages": 3
+  }
+]
+```
+
+---
+
+### Resumo dos Campos Retornados
+- **module_id**: Identificador único do módulo
+- **name**: Nome do módulo
+- **sequence**: Ordem sequencial do módulo
+- **is_public**: Módulo gratuito (`true`) ou não (`false`)
+- **is_extra**: Se é módulo extra (`true` ou `false`)
+- **is_extra_paid**: Se o módulo extra é pago (`true` ou `false`)
+- **classes**: Lista de aulas do módulo
+- **total_pages**: Quantidade de páginas relacionadas ao módulo
+
+Todos os valores, descrições e exemplos foram reproduzidos exatamente como na fonte oficial.

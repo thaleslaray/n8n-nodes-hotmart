@@ -1,0 +1,22 @@
+### O que são Assinaturas na Hotmart
+
+A modalidade de assinaturas implica em **cobrança recorrente** pelo acesso a um conteúdo. O comprador deve realizar pagamentos periódicos (mensal, bimestral, trimestral, semestral ou anual, conforme definido pelo produtor) para manter o acesso contínuo ao produto por um tempo determinado.
+
+- O produtor define o **intervalo de tempo** de cada recorrência. 
+- Caso não seja configurado um número de recorrências, as cobranças ocorrem até o comprador cancelar a assinatura.
+- A data de cobrança será no **mesmo dia da aquisição**, salvo se o assinante alterá-la. Exemplo: um plano semestral iniciado em 01/01/2020 terá sua segunda cobrança automaticamente em 01/07/2020.
+
+#### Status das Assinaturas
+
+Uma assinatura na Hotmart pode assumir diferentes status para facilitar o acompanhamento pelo sistema. São eles:
+
+| Status                      | Definição                                                                                                                                     |
+|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
+| **Ativa**                   | O pagamento da última recorrência está em dia e a assinatura está dentro do período de duração.                                              |
+| **Atrasada**                | O pagamento da última recorrência está atrasado, mas a assinatura ainda está no período vigente.                                             |
+| **Cancelada pelo Administrador** | O cancelamento foi feito pela Equipe de Suporte Hotmart.                                                                               |
+| **Cancelada pelo Cliente**  | O cancelamento foi feito pelo Comprador.                                                                                                    |
+| **Cancelada pelo Vendedor** | O cancelamento foi feito pelo Produtor ou pelo colaborador do Produtor.                                                                    |
+| **Inativa**                 | A primeira recorrência não teve o pagamento confirmado/aprovado.                                                                            |
+| **Iniciada**                | O boleto para pagamento da primeira recorrência foi gerado, mas ainda não está confirmado.                                                  |
+| **Vencida**                 | Acabou o período de duração da assinatura. As recorrências deste período podem estar todas quitadas ou ter alguma em atraso.                 |

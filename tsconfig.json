@@ -4,7 +4,7 @@
 		"module": "commonjs",
 		"moduleResolution": "node",
 		"target": "es2019",
-		"lib": ["es2019", "es2020", "es2022.error"],
+		"lib": ["es2019", "es2020", "es2022.error", "dom"], // Added "dom"
 		"removeComments": true,
 		"useUnknownInCatchVariables": false,
 		"forceConsistentCasingInFileNames": true,
@@ -23,8 +23,11 @@
 	},
 	"include": [
 		"credentials/**/*",
-		"nodes/**/*",
-		"nodes/**/*.json",
+		"nodes/Hotmart/**/*",
+		"nodes/Hotmart/**/*.json",
 		"package.json",
 	],
+	"exclude": [
+		"nodes/Airtable/**/*"
+	]
 }

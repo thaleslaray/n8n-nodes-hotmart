@@ -1,0 +1,16 @@
+Invalid value for N8N_LOG_LEVEL - Invalid enum value. Expected 'error' | 'warn' | 'info' | 'debug' | 'silent', received 'verbose'. Falling back to default value.
+Permissions 0644 for n8n settings file /Users/thaleslaray/.n8n/config are too wide. This is ignored for now, but in the future n8n will attempt to change the permissions automatically. To automatically enforce correct permissions now set N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true (recommended), or turn this check off set N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=false.
+User settings loaded from: /Users/thaleslaray/.n8n/config
+Initializing n8n process
+n8n ready on 0.0.0.0, port 5678
+n8n Task Broker ready on 127.0.0.1, port 5679
+Version: 1.91.2
+
+Editor is now accessible via:
+http://localhost:5678
+Registered runner "JS Task Runner" (aFLPe0kZwpASWx-V9MVyo) 
+Received SIGTERM. Shutting down...
+[Task Runner]: Received SIGTERM signal, shutting down...
+[Task Runner]: Task runner stopped
+
+Stopping n8n...

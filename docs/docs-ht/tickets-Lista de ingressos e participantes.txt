@@ -1,0 +1,101 @@
+## Endpoint: Obter lista de ingressos, compradores e participantes de um evento (Hotmart)
+
+Este endpoint retorna informações detalhadas sobre os ingressos de um determinado evento, incluindo dados dos compradores e dos participantes (quem irá utilizar o ingresso). Apenas ingressos com pagamento confirmado ou convites gratuitos serão listados.
+
+### Parâmetros da Requisição
+
+#### Path
+- **event_id** (long, obrigatório):
+  - ID do produto (formato Ingresso para Eventos).
+
+#### Query
+- **max_results** (integer):
+  - Número máximo de itens por página.
+- **page_token** (string):
+  - Cursor usado para paginação. Use o valor de `next_page_token` ou `prev_page_token` conforme necessidade.
+- **buyer_email** (string):
+  - E-mail do comprador do ingresso.
+- **participant_email** (string):
+  - E-mail do participante (quem vai usar o ingresso).
+- **last_update** (long):
+  - Data da última atualização do ingresso em milissegundos desde 1970-01-01 00:00:00 UTC.
+- **id_lot** (long):
+  - ID do lote ou categoria do ingresso.
+- **ticket_status** (string):
+  - `SOLD`: Ingresso com pagamento confirmado.
+  - `INVITE`: Convite enviado.
+  - `INVITE_CANCELED`: Convite removido.
+  - `REFUNDED`: Ingresso reembolsado e inválido.
+  - `CHARGEBACK`: Ingresso que sofreu chargeback.
+  - `EXCLUDED`: Ingresso excluído.
+  - `AVAILABLE`: Ingresso disponível, ainda não atribuído.
+  - `RESERVED`: Pagamento pendente ou convite gratuito atribuído.
+- **ticket_type** (object):
+  - Tipo de ingresso: `PAID`, `FREE`, `ALL`.
+- **checkin_status** (object):
+  - Status da inscrição: `PENDING`, `PARTIAL`, `CONCLUDED`, `ALL`.
+- **id_eticket** (long):
+  - ID sequencial do ingresso.
+- **ticket_qr_code** (string):
+  - Código único, representado no QR Code do ingresso.
+
+#### Exemplo de Requisição
+
+```bash
+curl --location 'https://developers.hotmart.com/events/api/v1/:event_id/participants \
+--header 'Authorization: Bearer :access_token'
+```
+
+### Retorno
+- **items** (array de objetos):
+  - Lista contendo informações completas do participante, comprador, ingresso (eticket), lote e produto.
+- **page_info** (objeto):
+  - Detalhes da paginação: `results_per_page`, `next_page_token`, `total_results`.
+
+#### Exemplo de Resposta
+
+```json
+{
+    "items": [
+        {
+            "participant": {
+                "email": "teste+1@teste.com",
+                "document": "68658197646",
+                "id": 2190,
+                "name": "Teste teste +1",
+                "phone": 31999999999
+            },
+            "buyer": {
+                "ucode": "ae9c122f-e7e1-4fc3-8ef7-d32ddb2bfa3a",
+                "email": "teste+1@teste.com",
+                "name": "Meu Teste"
+            },
+            "eticket": {
+                "ticket_qr_code": "132591264870940362",
+                "current_update": 1655906699333,
+                "checkin_status": "CONCLUDED",
+                "is_blocked": false,
+                "ticket_status": "SOLD",
+                "ticket_type": "PAID",
+                "id": 6892768,
+                "checkin_url": "https://sandbox-local.com/eticket/2e9c43a9-0aeb-48ed-9464-630f845c23af?invite=false"
+            },
+            "lot": {
+                "id": 234900,
+                "name": "Lote 1"
+            },
+            "product": {
+                "id": 4744896,
+                "name": "Product Name"
+            }
+        }
+    ],
+    "page_info": {
+        "results_per_page": 1,
+        "next_page_token": "eyJwYWdlIjoyLCJyb3dzIjoxfQ==",
+        "total_results": 5
+    }
+}
+```
+
+Todos os parâmetros disponíveis e valores possíveis foram incluídos exatamente conforme a documentação original.

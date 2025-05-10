@@ -1,0 +1,77 @@
+### O que é Custom Response?
+
+**Custom Response** permite customizar o retorno das APIs da Hotmart, tornando a integração mais ágil e fácil de compreender. Isso é feito utilizando o parâmetro de query `select`, onde você especifica os atributos que deseja receber no corpo da resposta da sua solicitação HTTP. Esse parâmetro pode ser usado em qualquer verbo HTTP (`GET`, `POST`, `PUT`, `PATCH`, `DELETE`) disponível nos endpoints da Hotmart.
+
+- Você recebe apenas os dados dos atributos informados no `select`.
+- Caso nenhum atributo seja encontrado, o retorno será um JSON vazio.
+
+---
+
+### Parâmetros da Requisição
+
+- **selectString:** Lista de atributos que você deseja selecionar, separados por vírgula.
+  - Para atributos dentro de um **objeto**: use, por exemplo, `address.country`.
+  - Para atributos dentro de um **array**: use, por exemplo, `products.name`.
+  - Em endpoints de **Paginação**, apenas atributos dentro de `items` podem ser customizados via `select`.
+
+#### Exemplo de requisição:
+
+```bash
+curl --location --request POST 'https://developers.hotmart.com/payments/api/v1/subscriptions/:subscriber_code/cancel?select=subscriber_code,date_last_recurrence,status' \
+--header 'Content-Type: application / json' \
+--header 'Authorization: Bearer: access_token'
+```
+
+---
+
+### Seleção de Dados
+
+Tipos de seleção disponíveis e exemplos:
+
+| Tipo       | Query param                  | Retorno                           |
+|------------|-----------------------------|-----------------------------------|
+| simples    | select=id,name              | Dados de `id` e `name`            |
+| objetos    | select=address              | Dados do objeto `address`         |
+| arrays     | select=products             | Dados do array `products`         |
+
+#### Seleção de atributos em estruturas complexas:
+
+| Atributos  | Query param                 | Retorno                                      |
+|------------|----------------------------|-----------------------------------------------|
+| objetos    | select=address.country     | Dados de `country` do `address`              |
+| arrays     | select=products.name       | Dados de `name` do array de `products`       |
+
+---
+
+### Exemplo de JSON completo:
+
+```json
+{
+  "id": 123,
+  "name": "Producer 01",
+  "address": {
+    "country": "Brazil",
+    "city": "Belo Horizonte"
+  },
+  "products": [
+    {
+      "id": 1,
+      "name": "Product Name 01"
+    },
+    {
+      "id": 2,
+      "name": "Product Name 02"
+    },
+    {
+      "id": 3,
+      "name": "Product Name 03"
+    }
+  ]
+}
+```
+
+- Se você usar `select=id,name`, recebe apenas `id` e `name`.
+- Se usar `select=address.country`, recebe apenas o `country` do objeto `address`.
+- Se usar `select=products.name`, recebe apenas os nomes dos produtos dentro do array `products`.
+
+Para dúvidas específicas sobre como montar o parâmetro `select`, consulte sempre o exemplo do endpoint desejado.

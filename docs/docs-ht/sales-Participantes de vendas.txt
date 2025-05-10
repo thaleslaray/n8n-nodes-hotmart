@@ -1,0 +1,125 @@
+### Endpoint: Informações dos Participantes das Vendas (Hotmart)
+
+Este endpoint retorna informações detalhadas sobre os participantes das vendas — como compradores, produtores, afiliados e co-produtores que estejam ligados à produção ou venda do produto. Os dados retornados incluem nome, endereço, telefone e outros detalhes dos participantes.
+
+---
+
+**Parâmetros de Requisição:**
+
+- **transaction** (string): Código único de referência da transação (ex: HP17715690036014).
+- **transaction_status** (string): Status da compra. Valores possíveis: `APPROVED`, `BLOCKED`, `CANCELLED`, `CHARGEBACK`, `COMPLETE`, `EXPIRED`, `NO_FUNDS`, `OVERDUE`, `PARTIALLY_REFUNDED`, `PRE_ORDER`, `PRINTED_BILLET`, `PROCESSING_TRANSACTION`, `PROTESTED`, `REFUNDED`, `STARTED`, `UNDER_ANALISYS`, `WAITING_PAYMENT`.
+- **max_results** (integer): Número máximo de itens por página.
+- **page_token** (string): Cursor de paginação (valor de next_page_token ou prev_page_token).
+- **product_id** (long): ID único do produto (7 dígitos).
+- **start_date** (long): Data inicial do filtro, em milissegundos desde 1970-01-01 00:00:00 UTC.
+- **end_date** (long): Data final do filtro, em milissegundos desde 1970-01-01 00:00:00 UTC.
+- **buyer_email** (string): E-mail do comprador para buscar vendas específicas.
+- **sales_source** (string): Código SRC usado na página de pagamento para identificação de origem.
+- **buyer_name** (string): Nome do comprador.
+- **affiliate_name** (string): Nome do afiliado responsável pela venda.
+- **commission_as** (string): Como o usuário foi comissionado (`PRODUCER`, `COPRODUCER`, `AFFILIATE`).
+
+Observações importantes sobre os parâmetros:
+
+- Os filtros **transaction** e **transaction_status** devem ser incluídos na query para consultar todos os status desejados. Se não forem informados, serão retornados apenas os status “APPROVED” e “COMPLETE”.
+
+---
+
+**Resposta do Endpoint:**
+
+- **items**: array de objetos, cada um referente a uma venda/transação.
+  - **transaction**: código da transação.
+  - **product**: objeto com `name` (nome do produto) e `id` (ID do produto).
+  - **users**: array contendo objetos para cada participante (ex: produtor, afiliado).
+    - **role**: papel do usuário na venda (`PRODUCER`, `AFFILIATE`, `COPRODUCER`).
+    - **user**: dados do participante:
+      - **ucode**: UUID do usuário
+      - **locale**: código do idioma/país
+      - **name**: nome
+      - **trade_name**: nome fantasia
+      - **cellphone**: celular
+      - **phone**: telefone
+      - **email**: e-mail
+      - **documents**: array de documentos (cada um com `type` e `value`, ex: `DOCUMENT`, `CPF`)
+      - **address**: objeto com
+        - **city**: cidade
+        - **state**: estado
+        - **country**: país
+        - **zip_code**: CEP
+        - **address**: logradouro
+        - **complement**: complemento
+        - **neighborhood**: bairro
+        - **number**: número
+- **page_info**: objeto contendo as informações de paginação:
+  - **total_results**: total de resultados encontrados
+  - **next_page_token**: token para próxima página
+  - **results_per_page**: quantidade de resultados por página
+
+---
+
+**Exemplo de chamada cURL:**
+
+```bash
+curl --location --request GET 'https://developers.hotmart.com/payments/api/v1/sales/users?product_id=123' \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer :access_token''
+```
+
+**Exemplo de resposta:**
+
+```json
+{
+  "items": [
+    {
+      "transaction": "HP10014546320130",
+      "product": {
+        "name": "Product 1",
+        "id": 178598
+      },
+      "users": [
+        {
+          "role": "PRODUCER",
+          "user": {
+            "ucode": "c9e5e3f4-097e-11e4-be45-22000b409f8a",
+            "locale": "FR",
+            "name": "Producer Name",
+            "trade_name": "Producer Trade Name",
+            "cellphone": "1199999999",
+            "phone": "6825565681",
+            "email": "producerEmail@email.com",
+            "documents": [
+              {
+                "value": "564654",
+                "type": "DOCUMENT"
+              },
+              {
+                "value": "68658197646",
+                "type": "CPF"
+              }
+            ],
+            "address": {
+              "city": "Campo Grande",
+              "state": "Campo Grande",
+              "country": "Brasil",
+              "zip_code": "1213454",
+              "address": "Rua Carlos Fortunato Paiva",
+              "complement": "",
+              "neighborhood": "",
+              "number": "123"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "page_info": {
+    "total_results": 55,
+    "next_page_token": "eyJwYWdlIjoyLCJyb3dzIjozfQ==",
+    "results_per_page": 1
+  }
+}
+```
+
+Todos os valores apresentados nos parâmetros e na resposta devem ser usados exatamente como na documentação oficial.
+
+Para detalhes sobre os status possíveis da transação, consulte: [Status de Transação na Hotmart](https://atendimento.hotmart.com.br/hc/pt-br/articles/216441297-Quais-status-uma-transa%C3%A7%C3%A3o-pode-assumir-)

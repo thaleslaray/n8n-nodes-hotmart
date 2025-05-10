@@ -1,0 +1,104 @@
+﻿Investigação sobre a Injeção da Opção "Custom API Call" em Nós Personalizados do n8n e Métodos de Remoção
+Introdução
+Este relatório aborda a questão levantada por utilizadores sobre a impossibilidade de remover a referência ou opção "Custom API Call" (Chamada de API Personalizada) ao criar um nó personalizado para a plataforma n8n. O objetivo é investigar a afirmação de que esta opção é injetada automaticamente pelo sistema central do n8n, verificar a veracidade dessa afirmação e explorar potenciais soluções ou contornos para ocultar esta opção da interface do utilizador do nó. A análise considera o papel das credenciais partilhadas e a funcionalidade central do nó HTTP Request na plataforma.
+Compreendendo a Opção "Custom API Call"
+A opção "Custom API Call", quando presente num nó (seja ele um nó incorporado ou personalizado), representa uma funcionalidade poderosa dentro do ecossistema n8n. Ela permite que os utilizadores aproveitem as credenciais já configuradas para um serviço específico (por exemplo, Asana, Google Drive) para realizar chamadas genéricas à API desse serviço através do nó HTTP Request.1
+Esta capacidade está intrinsecamente ligada ao conceito de "Predefined Credential Types" (Tipos de Credenciais Predefinidas) disponível no nó HTTP Request. Em vez de configurar manualmente a autenticação (como tokens de API, OAuth2) no nó HTTP Request, os utilizadores podem selecionar um tipo de credencial predefinido correspondente ao serviço que desejam contactar. Se uma credencial válida para esse serviço já existir na instância n8n, ela pode ser selecionada diretamente, simplificando enormemente o processo de autenticação para operações de API personalizadas.
+A plataforma n8n também inclui "credential-only nodes" (nós apenas de credenciais). Estes são essencialmente definições de credenciais para serviços que não possuem um nó dedicado com operações predefinidas. A sua única finalidade é permitir que os utilizadores configurem e armazenem credenciais para esses serviços, para que possam ser usadas posteriormente com a opção "Predefined Credential Type" no nó HTTP Request para realizar chamadas de API personalizadas.2
+A existência da opção "Custom API Call" (ou a capacidade de usar credenciais predefinidas no HTTP Request) reflete uma filosofia de design do n8n focada na flexibilidade e na reutilização de credenciais. Permite aos utilizadores estender a funcionalidade de qualquer integração para além das operações explicitamente implementadas pelo desenvolvedor do nó. Se um nó do Asana não tiver uma operação para uma funcionalidade específica da API do Asana, o utilizador pode ainda assim realizar essa operação usando o nó HTTP Request com as credenciais do Asana existentes, sem necessidade de configuração de autenticação adicional.1
+O Mecanismo de Injeção Automática
+A análise confirma que a opção "Custom API Call" não é um elemento que o desenvolvedor de um nó personalizado define explicitamente no ficheiro de descrição do nó. Em vez disso, ela é injetada dinamicamente no nó pelo sistema central do n8n durante o processo de carregamento dos nós e credenciais.12
+A função responsável por este comportamento é denominada injectCustomApiCallOptions, localizada no ficheiro packages/cli/src/load-nodes-and-credentials.ts dentro da base de código do n8n.12 O mecanismo de injeção opera da seguinte forma:
+1. A função itera sobre todos os tipos de nós carregados na instância n8n.12
+2. Para cada nó, verifica se ele representa a 'versão mais recente' desse tipo de nó. Esta verificação é feita comparando as propriedades version e defaultVersion da descrição do nó: a condição é node.defaultVersion === undefined | | node.defaultVersion === node.version.12
+3. Se a condição for verdadeira (ou seja, é a versão mais recente ou a única versão) e, potencialmente, se outras condições forem satisfeitas (como o suporte a autenticação por proxy mencionado no código fonte 12), a função adiciona programaticamente a opção "Custom API Call" às propriedades resource e operation do nó.12
+É relevante notar um contexto histórico: um registo de alterações (changelog) de uma versão anterior do n8n menciona explicitamente a reversão desta lógica de injeção: "core: Revert custom API option injecting".13 O facto de esta funcionalidade ter sido adicionada, depois revertida e, aparentemente, reintroduzida ou modificada posteriormente, sugere que a sua implementação pode ter sido objeto de debate interno ou ter apresentado desafios. Esta evolução histórica implica que a lógica de injeção atual, incluindo a verificação de versão, pode não ser totalmente estável a longo prazo, e quaisquer soluções baseadas em detalhes de implementação não documentados podem ser frágeis face a futuras atualizações do n8n.
+Personalização Padrão da Interface do Nó vs. Opções Injetadas
+Os desenvolvedores de nós personalizados no n8n têm mecanismos padrão para controlar a visibilidade dos elementos da interface do utilizador (UI) que definem. A propriedade displayOptions, utilizada dentro da matriz properties no ficheiro de descrição base do nó, permite mostrar ou ocultar campos ou operações com base nos valores de outros campos.14 Por exemplo, uma operação "Avançada" poderia ser definida para aparecer apenas se uma caixa de seleção "Modo Avançado" estiver marcada.
+No entanto, este mecanismo padrão falha no caso da opção "Custom API Call". Como esta opção é injetada pelo sistema central após o processamento da definição do nó fornecida pelo desenvolvedor, as regras displayOptions definidas no código do nó não têm efeito sobre ela.12 A opção injetada não faz parte da estrutura original à qual displayOptions se aplica.
+Existem outros mecanismos de controlo, mas operam a um nível diferente. A variável de ambiente NODES_EXCLUDE permite que os administradores de uma instância n8n desativem completamente nós específicos, impedindo que os utilizadores os vejam ou utilizem.16 Isto é útil por razões de segurança ou política, mas é um controlo grosseiro ao nível do sistema. Contrasta com a ausência de um mecanismo documentado e refinado que permita ao desenvolvedor de um nó específico ocultar operações individuais, especialmente aquelas que são injetadas pelo sistema como a "Custom API Call". Esta lacuna nos níveis de controlo disponíveis força os desenvolvedores que desejam ocultar esta opção a recorrer a métodos não padrão.
+Solução: Prevenindo a Injeção da "Custom API Call"
+A investigação identificou um método eficaz, embora não documentado, para prevenir a injeção da opção "Custom API Call" num nó personalizado. A solução consiste em criar intencionalmente uma discrepância entre as propriedades version e defaultVersion no objeto de descrição do nó (INodeTypeDescription).12
+A razão pela qual este método funciona reside na lógica interna da função injectCustomApiCallOptions. Ao garantir que version não é estritamente igual a defaultVersion, a verificação isLatestVersion (node.defaultVersion === undefined | | node.defaultVersion === node.version) avalia como false. Consequentemente, a lógica de injeção para esse nó específico é ignorada.12
+Exemplo de Implementação:
+Para implementar este contorno, modifique a descrição do seu nó da seguinte forma:
+
+
+JavaScript
+
+
+
+
+// Dentro da interface INodeTypeDescription
+import {
+   INodeType,
+   INodeTypeDescription,
+   //... outras importações
+} from 'n8n-workflow';
+
+export class MeuNoPersonalizado implements INodeType {
+ description: INodeTypeDescription = {
+   displayName: 'Meu Nó Personalizado',
+   name: 'meuNoPersonalizado',
+   //... outras propriedades (icon, group, description, inputs, outputs)
+   version: , // Usar uma matriz ou um número diferente da defaultVersion
+   defaultVersion: 1, // Manter como número
+   credentials: [
+     //... definição de credenciais
+   ],
+   properties: [
+     //... definição de recursos, operações e campos
+   ]
+ };
+ //... método execute
+}
+
+
+A tabela seguinte compara a estrutura relevante da descrição do nó antes e depois da modificação, destacando o impacto na injeção:
+Tabela 1: Comparação de Descrições de Nó para Controlo de Injeção
+Característica
+	Descrição Padrão do Nó (Injeção Ocorre)
+	Descrição Modificada do Nó (Injeção Prevenida)
+	Propriedade version
+	version: 1,
+	version: , (ou version: 2, etc.)
+	defaultVersion
+	defaultVersion: 1,
+	defaultVersion: 1,
+	Resultado Lógico
+	version === defaultVersion é VERDADEIRO
+	version === defaultVersion é FALSO
+	Estado da Injeção
+	"Custom API Call" É injetada
+	"Custom API Call" NÃO É injetada
+	Considerações e Advertências:
+É crucial ter em mente os seguintes pontos ao utilizar esta solução:
+* Natureza Não Documentada: Este é um contorno baseado num detalhe de implementação interna do n8n e não é uma funcionalidade oficialmente documentada ou suportada.
+* Potencial Fragilidade: Como mencionado anteriormente, a lógica de injeção ou o sistema de versionamento do n8n podem mudar em futuras atualizações.13 Tais mudanças poderiam invalidar este contorno. Os desenvolvedores que o utilizam devem estar preparados para rever e ajustar a sua implementação após atualizações do n8n.
+* Significado Semântico: Manipular os números de versão desta forma pode ser considerado um ligeiro desvio do seu propósito semântico original (indicar versões funcionais distintas), embora o impacto prático dentro do n8n para este fim específico seja provavelmente mínimo. Essencialmente, este método explora um artefacto da verificação de versionamento, não utilizando uma funcionalidade desenhada para o controlo da UI.
+Conclusão e Recomendações
+A análise confirma que a opção "Custom API Call" é, de facto, injetada automaticamente pelo sistema n8n em nós personalizados considerados a 'versão mais recente', validando a dificuldade encontrada pelos utilizadores em removê-la através de métodos de configuração padrão como displayOptions. Esta injeção decorre da filosofia de design do n8n que promove a flexibilidade e a reutilização de credenciais, permitindo aos utilizadores interagir com APIs para além das operações predefinidas num nó, principalmente através do nó HTTP Request.1
+A solução mais eficaz identificada atualmente para prevenir esta injeção é o contorno que envolve a criação de uma discrepância entre as propriedades version e defaultVersion na descrição do nó personalizado.12
+Recomenda-se vivamente a implementação deste método para os desenvolvedores que necessitam ocultar a opção "Custom API Call". No entanto, devido à sua natureza não documentada e à possibilidade de alterações futuras no núcleo do n8n 13, é prudente monitorizar o comportamento do nó após cada atualização da plataforma.
+Finalmente, aconselha-se os desenvolvedores a considerar cuidadosamente a experiência de utilizador desejada para os seus nós personalizados. Se um controlo granular sobre as operações visíveis é fundamental, devem estar cientes de comportamentos centrais como esta injeção. Encoraja-se a participação na comunidade n8n 18 para discussões contínuas e para acompanhar potenciais futuras soluções oficialmente suportadas que possam oferecer um controlo mais refinado sobre a interface do utilizador dos nós personalizados, talvez através da submissão de um pedido de funcionalidade (semelhante a 20) para controlo oficial sobre opções injetadas.
+Referências citadas
+1. Custom API actions for existing nodes - n8n Docs, acessado em maio 5, 2025, https://docs.n8n.io/integrations/custom-operations/
+2. n8n Integrations Documentation and Guides, acessado em maio 5, 2025, https://docs.n8n.io/integrations/
+3. ConvertAPI credentials - n8n Docs, acessado em maio 5, 2025, https://docs.n8n.io/integrations/builtin/credentials/convertapi/
+4. Filescan credentials - n8n Docs, acessado em maio 5, 2025, https://docs.n8n.io/integrations/builtin/credentials/filescan/
+5. Datadog credentials - n8n Docs, acessado em maio 5, 2025, https://docs.n8n.io/integrations/builtin/credentials/datadog/
+6. Mist credentials - n8n Docs, acessado em maio 5, 2025, https://docs.n8n.io/integrations/builtin/credentials/mist/
+7. VirusTotal credentials - n8n Docs, acessado em maio 5, 2025, https://docs.n8n.io/integrations/builtin/credentials/virustotal/
+8. CrowdStrike credentials - n8n Docs, acessado em maio 5, 2025, https://docs.n8n.io/integrations/builtin/credentials/crowdstrike/
+9. Miro credentials - n8n Docs, acessado em maio 5, 2025, https://docs.n8n.io/integrations/builtin/credentials/miro/
+10. LinkedIn delete post - Questions - n8n Community, acessado em maio 5, 2025, https://community.n8n.io/t/linkedin-delete-post/59009
+11. HTTP Request node documentation - n8n Docs, acessado em maio 5, 2025, https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.httprequest/
+12. How to hide 'Custom API Call' option in a custom node? - Questions ..., acessado em maio 5, 2025, https://community.n8n.io/t/how-to-hide-custom-api-call-option-in-a-custom-node/84352
+13. raw.githubusercontent.com, acessado em maio 5, 2025, https://raw.githubusercontent.com/n8n-io/n8n/master/CHANGELOG.md
+14. Standard parameters | n8n Docs, acessado em maio 5, 2025, https://docs.n8n.io/integrations/creating-nodes/build/reference/node-base-files/standard-parameters/
+15. Node UI elements - n8n Docs, acessado em maio 5, 2025, https://docs.n8n.io/integrations/creating-nodes/build/reference/ui-elements/
+16. Block access to nodes - n8n Docs, acessado em maio 5, 2025, https://docs.n8n.io/hosting/securing/blocking-nodes/
+17. How to disable n8n nodes available by default? - Questions, acessado em maio 5, 2025, https://community.n8n.io/t/how-to-disable-n8n-nodes-available-by-default/18168
+18. n8n-editor-ui | Yarn, acessado em maio 5, 2025, https://classic.yarnpkg.com/en/package/n8n-editor-ui
+19. Yearly - n8n Community, acessado em maio 5, 2025, https://community.n8n.io/top?page=128
+20. Environment Variable to default remove "Append n8n Attribution"? - Feature Requests, acessado em maio 5, 2025, https://community.n8n.io/t/environment-variable-to-default-remove-append-n8n-attribution/52836

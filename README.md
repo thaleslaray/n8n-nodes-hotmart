@@ -1,46 +1,126 @@
-![Banner image](https://user-images.githubusercontent.com/10284570/173569848-c624317f-42b1-45a6-ab09-f0ea3c247648.png)
+# n8n-nodes-hotmart
 
-# n8n-nodes-starter
+Este pacote contém nós personalizados para integrar a [API Hotmart](https://developers.hotmart.com/docs/pt-BR/) com o [n8n](https://n8n.io/).
 
-This repo contains example nodes to help you get started building your own custom integrations for [n8n](n8n.io). It includes the node linter and other dependencies.
+## Instalação
 
-To make your custom node available to the community, you must create it as an npm package, and [submit it to the npm registry](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry).
+### Instalação Local Recomendada
 
-## Prerequisites
+Para compilar e instalar o pacote no diretório de nós personalizados do n8n:
 
-You need the following installed on your development machine:
+```bash
+# Torna o script executável
+chmod +x build-and-install.sh
 
-* [git](https://git-scm.com/downloads)
-* Node.js and pnpm. Minimum version Node 18. You can find instructions on how to install both using nvm (Node Version Manager) for Linux, Mac, and WSL [here](https://github.com/nvm-sh/nvm). For Windows users, refer to Microsoft's guide to [Install NodeJS on Windows](https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows).
-* Install n8n with:
-  ```
-  pnpm install n8n -g
-  ```
-* Recommended: follow n8n's guide to [set up your development environment](https://docs.n8n.io/integrations/creating-nodes/build/node-development-environment/).
+# Executa o script
+./build-and-install.sh
+```
 
-## Using this starter
+Este script:
+1. Remove qualquer instalação anterior
+2. Compila o código TypeScript
+3. Cria um pacote com apenas os arquivos necessários (excluindo nós de exemplo)
+4. Instala o pacote no diretório `~/.n8n/custom/n8n-nodes-hotmart`
 
-These are the basic steps for working with the starter. For detailed guidance on creating and publishing nodes, refer to the [documentation](https://docs.n8n.io/integrations/creating-nodes/).
+Após a instalação, reinicie o n8n para carregar os novos nós.
 
-1. [Generate a new repository](https://github.com/n8n-io/n8n-nodes-starter/generate) from this template repository.
-2. Clone your new repo:
-   ```
-   git clone https://github.com/<your organization>/<your-repo-name>.git
-   ```
-3. Run `pnpm i` to install dependencies.
-4. Open the project in your editor.
-5. Browse the examples in `/nodes` and `/credentials`. Modify the examples, or replace them with your own nodes.
-6. Update the `package.json` to match your details.
-7. Run `pnpm lint` to check for errors or `pnpm lintfix` to automatically fix errors when possible.
-8. Test your node locally. Refer to [Run your node locally](https://docs.n8n.io/integrations/creating-nodes/test/run-node-locally/) for guidance.
-9. Replace this README with documentation for your node. Use the [README_TEMPLATE](README_TEMPLATE.md) to get started.
-10. Update the LICENSE file to use your details.
-11. [Publish](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry) your package to npm.
+### Instalação para Desenvolvimento (Não Recomendada)
 
-## More information
+Para desenvolvimento e testes rápidos, você pode criar um link simbólico para o diretório de nós personalizados do n8n:
 
-Refer to our [documentation on creating nodes](https://docs.n8n.io/integrations/creating-nodes/) for detailed information on building your own nodes.
+```bash
+# Torna o script executável
+chmod +x dev-link.sh
 
-## License
+# Executa o script
+./dev-link.sh
+```
 
-[MIT](https://github.com/n8n-io/n8n-nodes-starter/blob/master/LICENSE.md)
+Este método pode causar problemas se o projeto contiver nós de exemplo ou dependências ausentes.
+
+### Instalação via npm
+
+```bash
+npm install n8n-nodes-hotmart
+```
+
+## Recursos Disponíveis
+
+### Assinaturas
+
+- **Obter Assinaturas**: Lista todas as assinaturas com suporte a filtros e paginação
+- **Cancelar Assinatura**: Cancela uma assinatura específica
+- **Cancelar Lista de Assinaturas**: Cancela múltiplas assinaturas
+- **Alterar Dia de Cobrança**: Modifica a data de cobrança de uma assinatura
+- **Obter Compras de Assinantes**: Lista compras de um assinante específico
+- **Reativar e Cobrar Assinatura**: Reativa uma assinatura cancelada
+- **Sumário de Assinaturas**: Obtém dados sumarizados de assinaturas
+
+## Autenticação
+
+Este pacote utiliza autenticação OAuth 2.0 com client credentials. Para configurar:
+
+1. Acesse o [Hotmart Developers](https://app-vlc.hotmart.com/tools/credentials)
+2. Crie uma credencial para o ambiente desejado (produção ou sandbox)
+3. Anote o Client ID, Client Secret e o token Basic
+4. Configure essas credenciais no n8n
+
+## Exemplos de Uso
+
+### Listar Assinaturas Ativas e Enviar Notificação
+
+1. **Nó Trigger**: Agendamento (a cada dia)
+2. **Nó Hotmart**: 
+   - Recurso: Assinatura
+   - Operação: Obter Assinaturas
+   - Retornar Todos os Resultados: Sim
+   - Filtros: Status = ACTIVE
+3. **Nó Filter**: Filtrar assinaturas que vencem em 3 dias
+4. **Nó Slack/Email**: Enviar notificação com lista de assinaturas
+
+### Cancelar Assinaturas Atrasadas
+
+1. **Nó Trigger**: Webhook ou Agendamento
+2. **Nó Hotmart**:
+   - Recurso: Assinatura
+   - Operação: Obter Assinaturas
+   - Filtros: Status = DELAYED
+3. **Nó Loop**: Iterar sobre as assinaturas atrasadas
+4. **Nó Hotmart**:
+   - Recurso: Assinatura
+   - Operação: Cancelar Assinatura
+   - ID da Assinatura: =item.json.id
+   - Motivo: "Cancelamento automático por atraso"
+
+## Desenvolvimento
+
+### Estrutura do Projeto
+
+```
+n8n-nodes-hotmart/
+├── credentials/
+│   └── HotmartOAuth2Api.credentials.ts
+├── nodes/
+│   ├── Hotmart/
+│   │   ├── Hotmart.node.json
+│   │   ├── Hotmart.node.ts
+│   │   ├── hotmart.svg
+│   │   ├── v1/
+│   │   │   ├── HotmartV1.node.ts
+│   │   │   ├── actions/
+│   │   │   ├── methods/
+│   │   │   ├── transport/
+│   │   │   └── helpers/
+```
+
+### Comandos
+
+- `pnpm build`: Compila o código TypeScript
+- `pnpm dev`: Compila em modo watch para desenvolvimento
+- `pnpm lint`: Executa o linter
+- `pnpm lintfix`: Corrige automaticamente problemas de lint
+- `./build-and-install.sh`: Compila e instala no diretório de nós personalizados do n8n
+
+## Licença
+
+[MIT](LICENSE.md)

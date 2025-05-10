@@ -1,0 +1,29 @@
+Aqui estão todos os campos disponíveis no webhook de alteração da data de cobrança de assinatura (UPDATE_SUBSCRIPTION_CHARGE_DATE) da Hotmart, com suas descrições originais e exatamente como aparecem na documentação:
+
+| **Campo** | **Tipo** | **Descrição** |
+|---|---|---|
+| hottok | string | Cada conta possui um token único. Ele é a principal garantia de que a requisição está sendo feita pela Hotmart, o que é uma questão de segurança para evitar fraudes e ataques. Este campo vai ser enviado com o nome `X-HOTMART-HOTTOK` no cabeçalho HTTP de todas as requisições e recomendamos validá-lo antes de tratar os dados recebidos. Se precisar trocar esta chave, entre em contato com nosso suporte. |
+| id | integer | Código único de identificação do evento recebido. |
+| creation_date | long | Data de criação do evento. Essa data está em milissegundos, contando a partir de 1970-01-01 00:00:00 UTC (Unix Epoch). |
+| event | integer | Nome do evento recebido, que neste caso vai ser `UPDATE_SUBSCRIPTION_CHARGE_DATE`. |
+| version | integer | Versão do evento recebido. Essa versão é escolhida no momento de criação de uma configuração no Webhook. Neste caso o valor vai ser sempre 2.0.0. |
+| data | object | Dados relacionados ao evento de troca de data de cobrança de assinatura. |
+| data.subscriber | object | Dados relacionados ao assinante. |
+| data.subscriber.name | string | Nome completo do assinante. |
+| data.subscriber.email | string | E-mail do assinante. |
+| data.subscriber.code | string | Código exclusivo de um assinante. Este campo é usado pelo sistema externo para identificar um assinante de uma assinatura. Uma mesma pessoa compradora vai ter 2 códigos diferentes se ela assinar dois produtos diferentes. |
+| data.subscription | object | Dados relacionados à assinatura. |
+| data.subscription.product | object | Dados relacionados ao produto da assinatura. |
+| data.subscription.product.name | string | Nome do produto da assinatura. |
+| data.subscription.product.id | integer | Código único de identificação do produto da assinatura. |
+| data.subscription.old_charge_day | integer | Dia do mês em que a pessoa assinante era cobrada antes de realizar a alteração. |
+| data.subscription.new_charge_day | integer | Novo dia do mês em que a pessoa assinante vai ser cobrada após realizar a alteração. |
+| data.subscription.date_next_charge | integer | Data de tentativa do próximo pagamento. No caso de assinaturas canceladas, vai indicar a última data de acesso do assinante ao produto e, portanto, nenhuma cobrança será efetuada após este período. Exemplo: o assinante comprou um produto que é cobrado todo dia 10 do mês. Se no dia 20 deste mês o assinante decidiu cancelar a assinatura, a data mostrada neste campo vai ser o dia 10 do mês subsequente. Esse dado vai ser retornado em milissegundos, contando a partir de 1970-01-01 00:00:00 UTC (Unix Epoch). Importante: essa data já considera a alteração do dia de cobrança feita pela pessoa assinante, porém, em alguns casos, isso poderá valer somente no próximo ciclo de cobrança. |
+| data.subscription.status | string | Mostra o status em que aquela assinatura se encontra no momento em que foi feita a alteração do dia de cobrança. Estes status podem ser: `ACTIVE`, `INACTIVE`, `CANCELED_BY_CUSTOMER`, `CANCELED_BY_VENDOR`, `CANCELED_BY_ADMIN`, `OVERDUE`, `STARTED`, `EXPIRED`. A descrição de cada status pode ser encontrada em nossa [página de suporte](https://help.hotmart.com/pt-BR/article/quais-sao-os-diferentes-status-de-uma-assinatura-/360015852651). |
+| data.plan | object | Dados relacionados ao plano da assinatura. |
+| data.plan.offer | object | Dados relacionados à oferta do plano da assinatura. |
+| data.plan.offer.code | string | Código único de identificação da oferta que gerou a assinatura. |
+| data.plan.name | string | Nome do plano de assinatura. |
+| data.plan.id | integer | Código único de identificação do plano de assinatura. |
+
+Caso deseje uma explicação detalhada de algum campo específico ou exemplos de payload, é só pedir!

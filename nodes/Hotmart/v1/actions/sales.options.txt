@@ -1,0 +1,37 @@
+			options: [
+				{
+					name: 'Histórico de Vendas',
+					value: 'getHistoricoVendas',
+					description: 'Obtém o histórico de vendas',
+					action: 'Get sales history',
+				},
+				{
+					name: 'Sumário de Vendas',
+					value: 'getResumoVendas',
+					description: 'Obtém um sumário das vendas',
+					action: 'Get sales summary',
+				},
+				{
+					name: 'Participantes de Vendas',
+					value: 'getParticipantesVendas',
+					description: 'Obtém os participantes das vendas',
+					action: 'Get sales participants',
+				},
+				{
+					name: 'Comissões de Vendas',
+					value: 'getComissoesVendas',
+					description: 'Obtém as comissões de vendas',
+					action: 'Get sales commissions',
+				},
+				{
+					name: 'Detalhamento de Preços de Vendas',
+					value: 'getDetalhamentoPrecos',
+					description: 'Obtém detalhamento dos preços das vendas',
+					action: 'Get price details',
+				},
+				{
+					name: 'Reembolso de Vendas',
+					value: 'solicitarReembolso',
+					description: 'Solicita reembolso de uma venda',
+					action: 'Request refund',
+				},

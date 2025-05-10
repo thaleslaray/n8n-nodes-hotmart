@@ -1,0 +1,1501 @@
+Invalid value for N8N_LOG_LEVEL - Invalid enum value. Expected 'error' | 'warn' | 'info' | 'debug' | 'silent', received 'verbose'. Falling back to default value.
+Permissions 0644 for n8n settings file /Users/thaleslaray/.n8n/config are too wide. This is ignored for now, but in the future n8n will attempt to change the permissions automatically. To automatically enforce correct permissions now set N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true (recommended), or turn this check off set N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=false.
+User settings loaded from: /Users/thaleslaray/.n8n/config
+Initializing n8n process
+n8n ready on 0.0.0.0, port 5678
+n8n Task Broker ready on 127.0.0.1, port 5679
+Version: 1.91.2
+
+Editor is now accessible via:
+http://localhost:5678
+Registered runner "JS Task Runner" (82Dr_RbrcXY5SCeREve62) 
+Todos os filtros: {}
+Filters recebidos: {}
+Query params finais: {
+  "max_results": 50
+}
+
+[Hotmart API Request]
+URL: https://developers.hotmart.com/payments/api/v1/subscriptions
+Method: GET
+Query Parameters: {
+  "max_results": 50
+}
+
+[Hotmart API Response]
+Status: 200
+Headers: {
+  "content-type": "application/json",
+  "content-length": "4441",
+  "connection": "close",
+  "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+  "date": "Fri, 09 May 2025 23:21:41 GMT",
+  "expires": "0",
+  "pragma": "no-cache",
+  "ratelimit-limit": "500",
+  "ratelimit-remaining": "499",
+  "ratelimit-reset": "19",
+  "strict-transport-security": "max-age=31536000 ; includeSubDomains",
+  "x-content-type-options": "nosniff",
+  "x-frame-options": "DENY",
+  "x-ratelimit-limit-minute": "500",
+  "x-ratelimit-remaining-minute": "499",
+  "x-xss-protection": "0",
+  "x-cache": "Miss from cloudfront",
+  "via": "1.1 5985d8116780186e3289a0963b5145b4.cloudfront.net (CloudFront)",
+  "x-amz-cf-pop": "GIG51-P1",
+  "x-amz-cf-id": "dsW8IzyP8yZL7QhQOerVHPmTLzhMwdT3GlsKcEkVynsbwohIM7I0UQ=="
+}
+Response: {
+  "items": [
+    {
+      "subscriber_code": "14SAIO0F",
+      "subscription_id": 34634596,
+      "status": "ACTIVE",
+      "accession_date": 1744205973000,
+      "request_date": 1744205970000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1497
+      },
+      "subscriber": {
+        "name": "RAFAEL CONDE FERREIRA FARIAS",
+        "ucode": "c2fed104-097e-11e4-be45-22000b409f8a",
+        "email": "rafaelconde.adm@gmail.com"
+      },
+      "date_next_charge": 1775736000000,
+      "transaction": "HP2764145735"
+    },
+    {
+      "subscriber_code": "5BR0RDZ3",
+      "subscription_id": 34636419,
+      "status": "CANCELLED_BY_CUSTOMER",
+      "accession_date": 1744211112000,
+      "request_date": 1744211109000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1497
+      },
+      "subscriber": {
+        "name": "Luciana Lopes da Silva",
+        "ucode": "e7490e41-235a-4c18-9985-c4e10ecfbce7",
+        "email": "lucianalopes0408@gmail.com"
+      },
+      "end_accession_date": 1744291285000,
+      "date_next_charge": 1775736000000,
+      "transaction": "HP3964608276"
+    },
+    {
+      "subscriber_code": "MLSV5KZE",
+      "subscription_id": 34639840,
+      "status": "ACTIVE",
+      "accession_date": 1744220943000,
+      "request_date": 1744220942000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1497
+      },
+      "subscriber": {
+        "name": "Suelyn Sanábia Pereira",
+        "ucode": "760ed965-cb63-43e6-ad74-6fb3d0d1a81a",
+        "email": "suh.sanabia@me.com"
+      },
+      "date_next_charge": 1775736000000,
+      "transaction": "HP3297863623"
+    },
+    {
+      "subscriber_code": "WONE7BOR",
+      "subscription_id": 34640538,
+      "status": "INACTIVE",
+      "accession_date": 1744222901000,
+      "request_date": 1744222898000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1497
+      },
+      "subscriber": {
+        "name": "Fernanda Moranho Rodrigues",
+        "ucode": "a133c181-e3db-471c-ac68-812490e889ad",
+        "email": "fernanda.moranho@gmail.com"
+      },
+      "transaction": "HP3789972791"
+    },
+    {
+      "subscriber_code": "VYRSD8GU",
+      "subscription_id": 34640573,
+      "status": "INACTIVE",
+      "accession_date": 1744222993000,
+      "request_date": 1744222991000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1497
+      },
+      "subscriber": {
+        "name": "Fernanda Moranho Rodrigues",
+        "ucode": "a133c181-e3db-471c-ac68-812490e889ad",
+        "email": "fernanda.moranho@gmail.com"
+      },
+      "transaction": "HP3877310791"
+    },
+    {
+      "subscriber_code": "91YNNU98",
+      "subscription_id": 34640710,
+      "status": "ACTIVE",
+      "accession_date": 1744223381000,
+      "request_date": 1744223378000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1497
+      },
+      "subscriber": {
+        "name": "Fernanda Moranho Rodrigues",
+        "ucode": "a133c181-e3db-471c-ac68-812490e889ad",
+        "email": "fernanda.moranho@gmail.com"
+      },
+      "date_next_charge": 1775736000000,
+      "transaction": "HP3531421530"
+    },
+    {
+      "subscriber_code": "UHS9KNHH",
+      "subscription_id": 34641958,
+      "status": "ACTIVE",
+      "accession_date": 1744227242000,
+      "request_date": 1744227241000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1
+      },
+      "subscriber": {
+        "name": "Raysom Pinheiro Delgado",
+        "ucode": "355ad9be-ba79-431a-be26-319264d6b3c1",
+        "email": "raysom@outlook.com"
+      },
+      "date_next_charge": 1775736000000,
+      "transaction": "HP1181375248"
+    },
+    {
+      "subscriber_code": "90HFKZKV",
+      "subscription_id": 34644640,
+      "status": "ACTIVE",
+      "accession_date": 1744235647000,
+      "request_date": 1744235646000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1
+      },
+      "subscriber": {
+        "name": "Emanuelle Silveira Nunes",
+        "ucode": "bafbfac9-bbcf-4396-8676-ebd0b424554b",
+        "email": "emanuelle_sn@outlook.com"
+      },
+      "date_next_charge": 1775736000000,
+      "transaction": "HP2892985187"
+    },
+    {
+      "subscriber_code": "ND3EWXTR",
+      "subscription_id": 34644770,
+      "status": "ACTIVE",
+      "accession_date": 1744236094000,
+      "request_date": 1744236093000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1
+      },
+      "subscriber": {
+        "name": "Karina de Paula Domingos ",
+        "ucode": "f3dc02b3-6565-4da4-b20e-474039c0ecd0",
+        "email": "ka.paula.domingos@gmail.com"
+      },
+      "date_next_charge": 1775736000000,
+      "transaction": "HP3716347833"
+    },
+    {
+      "subscriber_code": "317ZG4E2",
+      "subscription_id": 34644777,
+      "status": "ACTIVE",
+      "accession_date": 1744236111000,
+      "request_date": 1744236111000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1
+      },
+      "subscriber": {
+        "name": "PAUL WILLIAM PEREIRA PORTO",
+        "ucode": "e32360a5-d787-4198-b743-98c6263360d7",
+        "email": "paulwilliampp@gmail.com"
+      },
+      "date_next_charge": 1775736000000,
+      "transaction": "HP3788680626"
+    },
+    {
+      "subscriber_code": "SCGKUUUR",
+      "subscription_id": 34644809,
+      "status": "ACTIVE",
+      "accession_date": 1744236226000,
+      "request_date": 1744236225000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1
+      },
+      "subscriber": {
+        "name": "Alexandre da Conceição Batista",
+        "ucode": "a09a0595-361d-46a8-8a80-a379d33947c9",
+        "email": "batista.alexandre@gmail.com"
+      },
+      "date_next_charge": 1775736000000,
+      "transaction": "HP3879481367"
+    },
+    {
+      "subscriber_code": "GRLAT17L",
+      "subscription_id": 34645575,
+      "status": "ACTIVE",
+      "accession_date": 1744238746000,
+      "request_date": 1744238743000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 797
+      },
+      "subscriber": {
+        "name": "Shara Ferraz Corbolan",
+        "ucode": "618587b0-ae07-42b5-989a-390d4370f7a6",
+        "email": "sharaferraz@gmail.com"
+      },
+      "date_next_charge": 1775736000000,
+      "transaction": "HP3972990674"
+    },
+    {
+      "subscriber_code": "T9VYK3M5",
+      "subscription_id": 34646487,
+      "status": "CANCELLED_BY_CUSTOMER",
+      "accession_date": 1744241696000,
+      "request_date": 1744241693000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1497
+      },
+      "subscriber": {
+        "name": "Virgnia Maria",
+        "ucode": "5f753000-317a-4de3-b6d0-fe44dbbcb008",
+        "email": "virgniamaria12@outlook.com"
+      },
+      "end_accession_date": 1745053483000,
+      "date_next_charge": 1775736000000,
+      "transaction": "HP0603359807"
+    },
+    {
+      "subscriber_code": "A4J6MSGA",
+      "subscription_id": 34646719,
+      "status": "ACTIVE",
+      "accession_date": 1744242472000,
+      "request_date": 1744242471000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1
+      },
+      "subscriber": {
+        "name": "Raybson de Souza Lima",
+        "ucode": "b1f06366-9df8-4dd3-8a24-bebbe0671f16",
+        "email": "raybson.lima7891@gmail.com"
+      },
+      "date_next_charge": 1775736000000,
+      "transaction": "HP1412101995"
+    },
+    {
+      "subscriber_code": "HBU9509F",
+      "subscription_id": 34660370,
+      "status": "ACTIVE",
+      "accession_date": 1744294566000,
+      "request_date": 1744294564000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1497
+      },
+      "subscriber": {
+        "name": "João Paulo Muniz Palma",
+        "ucode": "6cea1041-2749-4b37-818a-62a3d7017274",
+        "email": "joaopaulo.mp2@gmail.com"
+      },
+      "date_next_charge": 1775822400000,
+      "transaction": "HP1531590337"
+    },
+    {
+      "subscriber_code": "JLJYAC1E",
+      "subscription_id": 34664123,
+      "status": "ACTIVE",
+      "accession_date": 1744305084000,
+      "request_date": 1744305083000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1
+      },
+      "subscriber": {
+        "name": "Douglas Issa",
+        "ucode": "456003b4-980e-4e59-a33d-42fa8a491bab",
+        "email": "douglas@simplislab.com.br"
+      },
+      "date_next_charge": 1775822400000,
+      "transaction": "HP2613778434"
+    },
+    {
+      "subscriber_code": "DJYGLMR2",
+      "subscription_id": 34664473,
+      "status": "ACTIVE",
+      "accession_date": 1744306195000,
+      "request_date": 1744306194000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1
+      },
+      "subscriber": {
+        "name": "Tamires Nunes",
+        "ucode": "ad5ab173-6daa-466d-9f6b-4c24fc6c084f",
+        "email": "tamiresnunesl@yahoo.com.br"
+      },
+      "date_next_charge": 1775822400000,
+      "transaction": "HP0745437775"
+    },
+    {
+      "subscriber_code": "ECN6H5ZI",
+      "subscription_id": 34665972,
+      "status": "INACTIVE",
+      "accession_date": 1744310786000,
+      "request_date": 1744310782000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1997
+      },
+      "subscriber": {
+        "name": "Lucas Silva",
+        "ucode": "385928e1-f0f1-46d0-9b8f-0aaeebe6cc83",
+        "email": "dentinho.98@gmail.com"
+      },
+      "transaction": "HP0546769425"
+    },
+    {
+      "subscriber_code": "71RL1GCB",
+      "subscription_id": 34665978,
+      "status": "INACTIVE",
+      "accession_date": 1744310807000,
+      "request_date": 1744310804000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1997
+      },
+      "subscriber": {
+        "name": "Lucas Silva",
+        "ucode": "385928e1-f0f1-46d0-9b8f-0aaeebe6cc83",
+        "email": "dentinho.98@gmail.com"
+      },
+      "transaction": "HP0585244315"
+    },
+    {
+      "subscriber_code": "A2YSXSLQ",
+      "subscription_id": 34666057,
+      "status": "INACTIVE",
+      "accession_date": 1744311052000,
+      "request_date": 1744311044000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1497
+      },
+      "subscriber": {
+        "name": "Willian David",
+        "ucode": "c0f9d2cb-50e2-40a9-98d7-9d5e2f0d9e01",
+        "email": "willian.david@hotmail.com.br"
+      },
+      "transaction": "HP1544808072"
+    },
+    {
+      "subscriber_code": "F7KDXZB1",
+      "subscription_id": 34666088,
+      "status": "INACTIVE",
+      "accession_date": 1744311151000,
+      "request_date": 1744311144000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1497
+      },
+      "subscriber": {
+        "name": "Willian David",
+        "ucode": "c0f9d2cb-50e2-40a9-98d7-9d5e2f0d9e01",
+        "email": "willian.david@hotmail.com.br"
+      },
+      "transaction": "HP1323192706"
+    },
+    {
+      "subscriber_code": "UVVA43AZ",
+      "subscription_id": 34666467,
+      "status": "ACTIVE",
+      "accession_date": 1744312293000,
+      "request_date": 1744312289000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1497
+      },
+      "subscriber": {
+        "name": "Willian David",
+        "ucode": "c0f9d2cb-50e2-40a9-98d7-9d5e2f0d9e01",
+        "email": "willian.david@hotmail.com.br"
+      },
+      "date_next_charge": 1775822400000,
+      "transaction": "HP1253953228"
+    },
+    {
+      "subscriber_code": "69X1E5DJ",
+      "subscription_id": 34666781,
+      "status": "INACTIVE",
+      "accession_date": 1744313235000,
+      "request_date": 1744313231000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1997
+      },
+      "subscriber": {
+        "name": "Lucas Silva",
+        "ucode": "385928e1-f0f1-46d0-9b8f-0aaeebe6cc83",
+        "email": "dentinho.98@gmail.com"
+      },
+      "transaction": "HP2091182159"
+    },
+    {
+      "subscriber_code": "W5LLJFD8",
+      "subscription_id": 34668124,
+      "status": "ACTIVE",
+      "accession_date": 1744317030000,
+      "request_date": 1744317027000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 997
+      },
+      "subscriber": {
+        "name": "Luana Franco",
+        "ucode": "ca6bfef3-3fc3-45b7-9372-f3b30f4adef5",
+        "email": "eu.luanafranco@gmail.com"
+      },
+      "date_next_charge": 1775822400000,
+      "transaction": "HP0239801100"
+    },
+    {
+      "subscriber_code": "5VCJ68LB",
+      "subscription_id": 34670297,
+      "status": "INACTIVE",
+      "accession_date": 1744323604000,
+      "request_date": 1744323599000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1497
+      },
+      "subscriber": {
+        "name": "Larissa",
+        "ucode": "65f423ce-7719-4c11-a812-c4cbfd917305",
+        "email": "fogassalarissa@gmail.com"
+      },
+      "transaction": "HP1692475029"
+    },
+    {
+      "subscriber_code": "QHUWKPX8",
+      "subscription_id": 34670324,
+      "status": "INACTIVE",
+      "accession_date": 1744323677000,
+      "request_date": 1744323675000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1497
+      },
+      "subscriber": {
+        "name": "Larissa",
+        "ucode": "65f423ce-7719-4c11-a812-c4cbfd917305",
+        "email": "fogassalarissa@gmail.com"
+      },
+      "transaction": "HP1537421222"
+    },
+    {
+      "subscriber_code": "C5NRJ2Z1",
+      "subscription_id": 34681514,
+      "status": "ACTIVE",
+      "accession_date": 1744372860000,
+      "request_date": 1744372858000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1497
+      },
+      "subscriber": {
+        "name": "Gerllan Porfirio",
+        "ucode": "46afc62a-d56c-4b67-9ec2-59634f11b939",
+        "email": "gerllan90@gmail.com"
+      },
+      "date_next_charge": 1775908800000,
+      "transaction": "HP2317074091"
+    },
+    {
+      "subscriber_code": "EC4YW2DG",
+      "subscription_id": 34681546,
+      "status": "ACTIVE",
+      "accession_date": 1744372912000,
+      "request_date": 1744372909000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1497
+      },
+      "subscriber": {
+        "name": "JOÃO JUNIOR",
+        "ucode": "fd8d39be-e24b-48c4-93c8-0d36b038df07",
+        "email": "evotelhafilial@gmail.com"
+      },
+      "date_next_charge": 1775908800000,
+      "transaction": "HP2115850416"
+    },
+    {
+      "subscriber_code": "QXTM83TX",
+      "subscription_id": 34681553,
+      "status": "ACTIVE",
+      "accession_date": 1744372931000,
+      "request_date": 1744372926000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1497
+      },
+      "subscriber": {
+        "name": "RUTE FERREIRA DEL REI DE SOUZA",
+        "ucode": "2ca005f8-ead8-40a5-be49-a4820a1a543f",
+        "email": "ruttedrei@gmail.com"
+      },
+      "date_next_charge": 1775908800000,
+      "transaction": "HP3429383161"
+    },
+    {
+      "subscriber_code": "M7HHR70S",
+      "subscription_id": 34681586,
+      "status": "INACTIVE",
+      "accession_date": 1744373024000,
+      "request_date": 1744373021000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1497
+      },
+      "subscriber": {
+        "name": "Tamires Ribeiro Leme",
+        "ucode": "ae0d3164-60b8-4148-b075-40b5592af524",
+        "email": "tata_jag@hotmail.com"
+      },
+      "transaction": "HP3368208086"
+    },
+    {
+      "subscriber_code": "8JR4SV89",
+      "subscription_id": 34681617,
+      "status": "CANCELLED_BY_ADMIN",
+      "accession_date": 1744373150000,
+      "request_date": 1744373144000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1497
+      },
+      "subscriber": {
+        "name": "Eduardo A Costa",
+        "ucode": "b7860572-534f-42df-b35e-5759ff39a733",
+        "email": "eduandradecosta@gmail.com"
+      },
+      "end_accession_date": 1744934698000,
+      "date_next_charge": 1775908800000,
+      "transaction": "HP2846103829"
+    },
+    {
+      "subscriber_code": "Y5ALWIDH",
+      "subscription_id": 34681619,
+      "status": "ACTIVE",
+      "accession_date": 1744373158000,
+      "request_date": 1744373155000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1497
+      },
+      "subscriber": {
+        "name": "Fernando Garcia Fávaro Filho",
+        "ucode": "e566ba5f-ee44-46ff-8d51-30cad601ba73",
+        "email": "fernando.krrasco@gmail.com"
+      },
+      "date_next_charge": 1775908800000,
+      "transaction": "HP2927670596"
+    },
+    {
+      "subscriber_code": "1N7FTIQL",
+      "subscription_id": 34681635,
+      "status": "INACTIVE",
+      "accession_date": 1744373225000,
+      "request_date": 1744373221000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1497
+      },
+      "subscriber": {
+        "name": "Fabio dos Santos Monteiro Junior",
+        "ucode": "4c2cb520-c2a1-45a7-8c13-8132336b5734",
+        "email": "fabiomonteiromkt@gmail.com"
+      },
+      "transaction": "HP4221965896"
+    },
+    {
+      "subscriber_code": "289R11B4",
+      "subscription_id": 34681653,
+      "status": "ACTIVE",
+      "accession_date": 1744373264000,
+      "request_date": 1744373261000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1497
+      },
+      "subscriber": {
+        "name": "Fabio dos Santos Monteiro Junior",
+        "ucode": "4c2cb520-c2a1-45a7-8c13-8132336b5734",
+        "email": "fabiomonteiromkt@gmail.com"
+      },
+      "date_next_charge": 1775908800000,
+      "transaction": "HP4010354000"
+    },
+    {
+      "subscriber_code": "H7EVNXUN",
+      "subscription_id": 34681661,
+      "status": "INACTIVE",
+      "accession_date": 1744373280000,
+      "request_date": 1744373274000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1497
+      },
+      "subscriber": {
+        "name": "Caio Júlio Mendonça Macedo",
+        "ucode": "278a8af6-e1f9-4b1a-866a-4c4476addce7",
+        "email": "caiojulio.macedo@gmail.com"
+      },
+      "transaction": "HP4071913824"
+    },
+    {
+      "subscriber_code": "7JK93OUP",
+      "subscription_id": 34681711,
+      "status": "ACTIVE",
+      "accession_date": 1744373440000,
+      "request_date": 1744373436000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1497
+      },
+      "subscriber": {
+        "name": "53.342.293 DARIO BARBOSA MONTEIRO",
+        "ucode": "cc0446f3-c854-4d50-91fa-c92fa53f4441",
+        "email": "ti.dariobr@gmail.com"
+      },
+      "date_next_charge": 1775908800000,
+      "transaction": "HP3631376334"
+    },
+    {
+      "subscriber_code": "IQUN4M85",
+      "subscription_id": 34681745,
+      "status": "ACTIVE",
+      "accession_date": 1744373541000,
+      "request_date": 1744373539000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1497
+      },
+      "subscriber": {
+        "name": "João Rafael",
+        "ucode": "62813264-fb3d-403f-83ac-8e3f9038ffda",
+        "email": "joaorafa75@hotmail.com"
+      },
+      "date_next_charge": 1775908800000,
+      "transaction": "HP3058115797"
+    },
+    {
+      "subscriber_code": "HXNELDB4",
+      "subscription_id": 34681771,
+      "status": "ACTIVE",
+      "accession_date": 1744373633000,
+      "request_date": 1744373632000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1497
+      },
+      "subscriber": {
+        "name": "Bruno Eduardo Ribeiro Pereira",
+        "ucode": "d25a2ab2-03ed-436c-8ea9-19f592b96741",
+        "email": "brunoerpereira@gmail.com"
+      },
+      "date_next_charge": 1775908800000,
+      "transaction": "HP2601034104"
+    },
+    {
+      "subscriber_code": "34KCPK9P",
+      "subscription_id": 34681868,
+      "status": "ACTIVE",
+      "accession_date": 1744373879000,
+      "request_date": 1744373877000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1
+      },
+      "subscriber": {
+        "name": "Diogo Soares Caldeira",
+        "ucode": "15b0d141-8200-4786-82de-cf68a5a11d99",
+        "email": "diogorjsdc@yahoo.com.br"
+      },
+      "date_next_charge": 1775908800000,
+      "transaction": "HP3597533755"
+    },
+    {
+      "subscriber_code": "C2NLN7J6",
+      "subscription_id": 34681956,
+      "status": "INACTIVE",
+      "accession_date": 1744374228000,
+      "request_date": 1744374226000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1497
+      },
+      "subscriber": {
+        "name": "CAMILA DA CONCEICAO ALMEIDA",
+        "ucode": "a7174f64-96da-469e-905e-5c3c65a6bb3f",
+        "email": "camilaalmeida.tdb@gmail.com"
+      },
+      "transaction": "HP4220826973"
+    },
+    {
+      "subscriber_code": "20BBPGXS",
+      "subscription_id": 34682122,
+      "status": "ACTIVE",
+      "accession_date": 1744374703000,
+      "request_date": 1744374701000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 997
+      },
+      "subscriber": {
+        "name": "Alessandra Barboza Costa",
+        "ucode": "4c19e4c1-e2f6-42ec-94bb-7a9de969a408",
+        "email": "alejaensch@gmail.com"
+      },
+      "date_next_charge": 1775908800000,
+      "transaction": "HP4256239196"
+    },
+    {
+      "subscriber_code": "YA8KKUYI",
+      "subscription_id": 34682137,
+      "status": "ACTIVE",
+      "accession_date": 1744374733000,
+      "request_date": 1744374730000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1497
+      },
+      "subscriber": {
+        "name": "CIDY ALAN GASS TORRES",
+        "ucode": "3a329bcf-6e74-4e0c-9cc1-be055b839f26",
+        "email": "needfing@gmail.com"
+      },
+      "date_next_charge": 1775908800000,
+      "transaction": "HP3984221724"
+    },
+    {
+      "subscriber_code": "95548UGZ",
+      "subscription_id": 34682701,
+      "status": "ACTIVE",
+      "accession_date": 1744376301000,
+      "request_date": 1744376298000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 400
+      },
+      "subscriber": {
+        "name": "Ryan Fernandes",
+        "ucode": "3966c94f-b180-4377-8e68-0434ab5c71e1",
+        "email": "ryyanfernaandes@gmail.com"
+      },
+      "date_next_charge": 1775908800000,
+      "transaction": "HP1294442163"
+    },
+    {
+      "subscriber_code": "33CASG8O",
+      "subscription_id": 34683539,
+      "status": "INACTIVE",
+      "accession_date": 1744378410000,
+      "request_date": 1744378407000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1497
+      },
+      "subscriber": {
+        "name": "Caio Júlio Mendonça Macedo",
+        "ucode": "278a8af6-e1f9-4b1a-866a-4c4476addce7",
+        "email": "caiojulio.macedo@gmail.com"
+      },
+      "transaction": "HP3721468873"
+    },
+    {
+      "subscriber_code": "T2CWEL1S",
+      "subscription_id": 34684041,
+      "status": "ACTIVE",
+      "accession_date": 1744379589000,
+      "request_date": 1744379588000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1
+      },
+      "subscriber": {
+        "name": "moises araujo oliveira lima",
+        "ucode": "d4961908-ad96-4261-b85f-04bc0cb541df",
+        "email": "mtxxb07@gmail.com"
+      },
+      "date_next_charge": 1775908800000,
+      "transaction": "HP0556340531"
+    },
+    {
+      "subscriber_code": "74P64EWP",
+      "subscription_id": 34685738,
+      "status": "ACTIVE",
+      "accession_date": 1744384000000,
+      "request_date": 1744383998000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1497
+      },
+      "subscriber": {
+        "name": "Larissa",
+        "ucode": "65f423ce-7719-4c11-a812-c4cbfd917305",
+        "email": "fogassalarissa@gmail.com"
+      },
+      "date_next_charge": 1775908800000,
+      "transaction": "HP0935364170"
+    },
+    {
+      "subscriber_code": "Y7KKUIE8",
+      "subscription_id": 34686457,
+      "status": "ACTIVE",
+      "accession_date": 1744386110000,
+      "request_date": 1744386104000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1497
+      },
+      "subscriber": {
+        "name": "Felipe Fiuza",
+        "ucode": "c4db5e11-c15e-4e8c-920a-63abde15d333",
+        "email": "felipefiuza2022@gmail.com"
+      },
+      "date_next_charge": 1775908800000,
+      "transaction": "HP2332787499"
+    },
+    {
+      "subscriber_code": "AYHB64B6",
+      "subscription_id": 34687618,
+      "status": "ACTIVE",
+      "accession_date": 1744389534000,
+      "request_date": 1744389529000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1497
+      },
+      "subscriber": {
+        "name": "Rodrigo Cézare Moreira Araujo",
+        "ucode": "9a781597-b995-490e-839f-f63bf2349649",
+        "email": "ewigstudios@gmail.com"
+      },
+      "date_next_charge": 1775908800000,
+      "transaction": "HP2218547724"
+    },
+    {
+      "subscriber_code": "BNCGMWXJ",
+      "subscription_id": 34689065,
+      "status": "ACTIVE",
+      "accession_date": 1744393736000,
+      "request_date": 1744393732000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1
+      },
+      "subscriber": {
+        "name": "RONALDO HABERLY PEREIRA",
+        "ucode": "2f476e22-0ac9-4ba9-af94-0a9c5c0cf85b",
+        "email": "ronaldo.rhp.rhp@gmail.com"
+      },
+      "date_next_charge": 1775908800000,
+      "transaction": "HP3938591491"
+    },
+    {
+      "subscriber_code": "RY0IDZQ9",
+      "subscription_id": 34689275,
+      "status": "ACTIVE",
+      "accession_date": 1744394408000,
+      "request_date": 1744394407000,
+      "trial": false,
+      "plan": {
+        "name": "Renovação - EA - 997",
+        "id": 558689,
+        "recurrency_period": 360
+      },
+      "product": {
+        "name": "Escola de Automação",
+        "id": 1355458,
+        "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+      },
+      "price": {
+        "currency_code": "BRL",
+        "value": 1
+      },
+      "subscriber": {
+        "name": "Pablo",
+        "ucode": "1fbd2086-362f-4b59-9a2b-c1fd30185d2c",
+        "email": "pablotramontini504@gmail.com"
+      },
+      "date_next_charge": 1775908800000,
+      "transaction": "HP0390806559"
+    }
+  ],
+  "page_info": {
+    "results_per_page": 50,
+    "total_results": 133,
+    "next_page_token": "cdc59c76fc4c02f94b613419f8c4cfca89b169fffa52cdd08ac6be061d361054431cdfd138394f35084156d77ca2d740"
+  }
+}
+Received SIGTERM. Shutting down...
+[Task Runner]: Received SIGTERM signal, shutting down...
+[Task Runner]: Task runner stopped
+
+Stopping n8n...

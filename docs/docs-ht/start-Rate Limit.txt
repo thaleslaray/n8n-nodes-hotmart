@@ -1,0 +1,20 @@
+### O que é Rate Limit na API Hotmart?
+
+Rate limit é o número de chamadas à API que o usuário ou aplicação pode realizar dentro de um período de tempo, sendo uma medida para evitar a sobrecarga dos sistemas, além de garantir estabilidade e segurança.
+
+#### Limite Padrão
+- São permitidas **500 chamadas por minuto**, considerando operações de leitura e escrita.
+- Caso o limite seja ultrapassado, será retornada uma mensagem de erro com status code **429**.
+
+#### Informações no Header da Resposta
+Ao fazer requisições, você receberá no header da resposta os seguintes campos:
+
+- **RateLimit-Limit:** Indica quantas chamadas podem ser feitas à API por janela de tempo (1 minuto).
+- **RateLimit-Remaining:** Indica o total de requisições restantes disponíveis dentro da janela de tempo.
+- **RateLimit-Reset:** Informa o tempo restante (em segundos) para que o limite de requisições seja redefinido.
+
+Além disso, para controlar limites por períodos específicos:
+- **X-RateLimit-Limit-Minute:** Indica a quantidade máxima de chamadas por minuto.
+- **X-RateLimit-Remaining-Minute:** Mostra quantas requisições ainda restam para serem feitas naquele minuto corrente.
+
+Esses campos permitem que sua aplicação saiba exatamente quantas requisições ainda pode fazer e o tempo até o reset do limite.

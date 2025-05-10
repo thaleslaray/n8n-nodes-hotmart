@@ -1,0 +1,105 @@
+### Cancelamento de Assinaturas - Hotmart API
+
+Este endpoint permite cancelar uma lista de assinaturas, interromper o ciclo de cobranças e notificar subsistemas como Club e Webhook.
+
+---
+
+#### Parâmetros da Requisição (Body)
+
+- **subscriber_code** (array de strings, obrigatório):
+  - Lista de códigos exclusivos de assinantes (`subscriber_code`) cuja assinatura você deseja cancelar.
+
+- **send_mail** (boolean):
+  - Indica se será enviado um email notificando o cancelamento da assinatura aos compradores.
+  - Por padrão, o valor é `true` (email será enviado).
+  - Para não enviar o email, use `false`.
+
+##### Exemplo de chamada CURL
+
+```bash
+curl --location --request POST 'https://developers.hotmart.com/payments/api/v1/subscriptions/cancel' \
+--header 'Authorization: Bearer :access_token' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "subscriber_code": [":subscriber_code"],
+  "send_mail": :send_mail
+}'
+```
+
+---
+
+#### Retorno
+
+- **success_subscriptions** (array de objetos):
+  - Lista de assinaturas que foram canceladas com sucesso.
+  - Cada objeto contém:
+    - `status`: Status da assinatura (ex: "INACTIVE")
+    - `subscriber_code`: Código do assinante
+    - `creation_date`: Data de criação
+    - `current_recurrence`: Número da recorrência atual
+    - `date_last_recurrence`: Data da última recorrência
+    - `date_next_charge`: Data da próxima cobrança
+    - `due_day`: Dia do vencimento
+    - `trial_period`: Período de testes
+    - `interval_type_between_charges`: Tipo de intervalo entre cobranças (ex: "MONTH")
+    - `interval_between_charges`: Intervalo entre cobranças
+    - `max_charge_cycles`: Máximo de ciclos de cobrança
+    - `activation_date`: Data de ativação
+    - `shopper` (objeto):
+      - `email`: Email do comprador
+      - `phone`: Telefone do comprador
+
+- **fail_subscriptions** (array de objetos):
+  - Lista de assinaturas que não foram canceladas por algum erro (ex: código inválido, assinatura já cancelada).
+  - Cada objeto pode conter:
+    - `status`: Status da assinatura
+    - `error`: Motivo da falha (ex: "SUBSCRIPTION_ALREADY_CANCELED_OR_OVERDUE")
+    - `subscriber_code`: Código do assinante
+    - `creation_date`: Data de criação
+    - `interval_between_charges`: Intervalo entre cobranças
+    - `shopper` (objeto):
+      - `email`: Email do comprador
+      - `phone`: Telefone do comprador
+
+##### Exemplo de retorno
+
+```json
+{
+  "success_subscriptions": [
+    {
+      "status": "INACTIVE",
+      "subscriber_code": "9W2LNSG2",
+      "creation_date": "2020-07-20 17:57:42",
+      "current_recurrence": 1,
+      "date_last_recurrence": "2020-07-20 17:57:42",
+      "date_next_charge": "2020-08-24 12:00:00",
+      "due_day": 24,
+      "trial_period": 26,
+      "interval_type_between_charges": "MONTH",
+      "interval_between_charges": 1,
+      "max_charge_cycles": 13,
+      "activation_date": "2020-07-20 17:57:44",
+      "shopper": {
+        "email": "shopper@email.com.br",
+        "phone": "(31) 988888888"
+      }
+    }
+  ],
+  "fail_subscriptions": [
+    {
+      "status": "INACTIVE",
+      "error": "SUBSCRIPTION_ALREADY_CANCELED_OR_OVERDUE",
+      "subscriber_code": "RGT90XMB",
+      "creation_date": "2020-07-08 16:35:57",
+      "interval_between_charges": 30,
+      "shopper": {
+        "email": "shopper2@email.com.br",
+        "phone": "(31) 988888888"
+      }
+    }
+  ]
+}
+```
+
+---
+Caso precise de mais detalhes sobre implementação ou outros parâmetros, envie sua dúvida!

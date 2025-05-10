@@ -1,19 +1,22 @@
 {
-  "name": "n8n-nodes-<...>",
+  "name": "n8n-nodes-hotmart",
   "version": "0.1.0",
-  "description": "",
+  "description": "n8n nodes to interact with Hotmart API, including webhooks",
   "keywords": [
-    "n8n-community-node-package"
+    "n8n-community-node-package",
+    "hotmart",
+    "webhooks",
+    "n8n"
   ],
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://github.com/thaleslaray/n8n-nodes-hotmart",
   "author": {
-    "name": "",
-    "email": ""
+    "name": "Thales Laray",
+    "email": "thales.laray@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/<...>/n8n-nodes-<...>.git"
+    "url": "https://github.com/thaleslaray/n8n-nodes-hotmart.git"
   },
   "engines": {
     "node": ">=18.10",
@@ -36,12 +39,11 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "credentials": [
-      "dist/credentials/ExampleCredentialsApi.credentials.js",
-      "dist/credentials/HttpBinApi.credentials.js"
+      "dist/credentials/HotmartOAuth2Api.credentials.js"
     ],
     "nodes": [
-      "dist/nodes/ExampleNode/ExampleNode.node.js",
-      "dist/nodes/HttpBin/HttpBin.node.js"
+      "dist/nodes/Hotmart/Hotmart.node.js",
+      "dist/nodes/Hotmart/HotmartTrigger.node.js"
     ]
   },
   "devDependencies": {
