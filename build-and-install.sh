@@ -102,7 +102,7 @@ cat > "$TEMP_DIR/package.json" << EOF
     "nodes": [
       "dist/nodes/Hotmart/Hotmart.node.js",
       "dist/nodes/Hotmart/HotmartTrigger.node.js",
-      "dist/nodes/Hotmart/HotmartRouter.node.js"
+      "dist/nodes/Hotmart/HotmartSmartTrigger.node.js"
     ]
   },
   "files": [
@@ -119,7 +119,7 @@ module.exports = {
   nodes: [
     require('./nodes/Hotmart/Hotmart.node.js'),
     require('./nodes/Hotmart/HotmartTrigger.node.js'),
-    require('./nodes/Hotmart/HotmartRouter.node.js'),
+    require('./nodes/Hotmart/HotmartSmartTrigger.node.js'),
   ],
   credentials: [
     require('./credentials/HotmartOAuth2Api.credentials.js'),
