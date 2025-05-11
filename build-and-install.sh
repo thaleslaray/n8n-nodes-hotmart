@@ -101,7 +101,8 @@ cat > "$TEMP_DIR/package.json" << EOF
     ],
     "nodes": [
       "dist/nodes/Hotmart/Hotmart.node.js",
-      "dist/nodes/Hotmart/HotmartTrigger.node.js"
+      "dist/nodes/Hotmart/HotmartTrigger.node.js",
+      "dist/nodes/Hotmart/HotmartRouter.node.js"
     ]
   },
   "files": [
@@ -118,6 +119,7 @@ module.exports = {
   nodes: [
     require('./nodes/Hotmart/Hotmart.node.js'),
     require('./nodes/Hotmart/HotmartTrigger.node.js'),
+    require('./nodes/Hotmart/HotmartRouter.node.js'),
   ],
   credentials: [
     require('./credentials/HotmartOAuth2Api.credentials.js'),
@@ -143,4 +145,37 @@ echo -e "${YELLOW}Reiniciando o n8n em modo debug completo para carregar os novo
 pkill -f n8n
 sleep 2
 N8N_LOG_LEVEL=debug N8N_LOG_OUTPUT=console N8N_LOG_LABELS=true n8n start &
+# Configurar variáveis de ambiente para o n8n usar com o Cloudflare Tunnel
+echo -e "${YELLOW}Configurando variáveis de ambiente para o domínio n8n.laray.com.br...${NC}"
+N8N_ENV_FILE="$HOME/.n8n/n8n_env"
+cat > "$N8N_ENV_FILE" << EOF
+N8N_HOST=n8n.laray.com.br
+N8N_PROTOCOL=https
+N8N_PORT=443
+N8N_WEBHOOK_URL=https://n8n.laray.com.br
+EOF
+
+# Iniciar Cloudflare Tunnel
+echo -e "${YELLOW}Iniciando o Cloudflare Tunnel...${NC}"
+# Verificar se o tunnel já está em execução
+TUNNEL_PID=$(pgrep -f "cloudflared tunnel run 964f58f6-6dab-4997-b1fc-5a9b2edea379" || echo "")
+if [ -n "$TUNNEL_PID" ]; then
+  echo -e "${YELLOW}Cloudflare Tunnel já está em execução (PID: $TUNNEL_PID). Reiniciando...${NC}"
+  kill $TUNNEL_PID
+  sleep 2
+fi
+
+# Iniciar o tunnel em segundo plano
+nohup cloudflared tunnel run 964f58f6-6dab-4997-b1fc-5a9b2edea379 > $HOME/.n8n/tunnel.log 2>&1 &
+TUNNEL_PID=$!
+echo -e "${GREEN}Cloudflare Tunnel iniciado em segundo plano (PID: $TUNNEL_PID)${NC}"
+echo -e "${GREEN}Log do tunnel disponível em $HOME/.n8n/tunnel.log${NC}"
+
+echo -e "${YELLOW}Exportando variáveis de ambiente...${NC}"
+export N8N_HOST=n8n.laray.com.br
+export N8N_PROTOCOL=https
+export N8N_PORT=443
+export N8N_WEBHOOK_URL=https://n8n.laray.com.br
+
 echo -e "${GREEN}n8n iniciado em modo debug completo!${NC}"
+echo -e "${GREEN}Seu webhook está disponível em: https://n8n.laray.com.br/webhook-test/hotmart${NC}"

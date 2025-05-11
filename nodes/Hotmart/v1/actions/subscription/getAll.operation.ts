@@ -2,6 +2,7 @@ import type { IExecuteFunctions, INodeExecutionData, INodeProperties } from 'n8n
 import { hotmartApiRequest } from '../../transport/request';
 import { returnAllOption, limitOption, maxResultsOption, subscriptionStatusOptions } from '../common.descriptions';
 import { convertToTimestamp } from '../../helpers/dateUtils';
+import { formatOutput } from '../../helpers/outputFormatter';
 
 export const description: INodeProperties[] = [
 	{
@@ -297,11 +298,8 @@ export const execute = async function (
 				
 				console.log(`\n[Paginação manual] Total de itens: ${allItems.length}`);
 				
-				// ALTERAÇÃO AQUI: Passando o array diretamente, como no getAll.operation.ts que funciona
-				const executionData = this.helpers.constructExecutionMetaData(
-					this.helpers.returnJsonArray(allItems),
-					{ itemData: { item: i } },
-				);
+				// Usar formatação de saída padronizada
+				const executionData = formatOutput.call(this, allItems, i);
 				
 				allReturnData.push(...executionData);
 			} else {
@@ -319,11 +317,10 @@ export const execute = async function (
 
 				// Processar resultados para o caso onde returnAll=false
 				const items = response.items || [];
-				const executionData = this.helpers.constructExecutionMetaData(
-					this.helpers.returnJsonArray(items),
-					{ itemData: { item: i } },
-				);
-
+				
+				// Usar formatação de saída padronizada
+				const executionData = formatOutput.call(this, items, i);
+				
 				allReturnData.push(...executionData);
 			}
 		} catch (error) {

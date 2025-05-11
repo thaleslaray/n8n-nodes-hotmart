@@ -1,0 +1,136 @@
+import type {
+  IExecuteFunctions,
+  INodeExecutionData,
+  INodeParameters,
+  INodeType,
+  INodeTypeDescription,
+} from 'n8n-workflow';
+import { NodeOperationError } from 'n8n-workflow';
+
+// Função para configurar os nomes das saídas dinamicamente
+const configureOutputNames = (parameters: INodeParameters) => {
+  const customizeOutputs = parameters.customizeOutputs as boolean;
+
+  if (customizeOutputs) {
+    return [
+      {
+        type: 'main',
+        displayName: parameters.outputName0 || 'Aprovada',
+      },
+      {
+        type: 'main',
+        displayName: parameters.outputName1 || 'Outros',
+      },
+    ];
+  } else {
+    return [
+      {
+        type: 'main',
+        displayName: 'Aprovada',
+      },
+      {
+        type: 'main',
+        displayName: 'Outros',
+      },
+    ];
+  }
+};
+
+export class HotmartRouter implements INodeType {
+  description: INodeTypeDescription;
+
+  constructor() {
+    this.description = {
+      displayName: 'Hotmart Router',
+      name: 'hotmartRouter',
+      icon: 'file:hotmart.svg',
+      group: ['transform'],
+      version: 1,
+      subtitle: 'Direciona eventos Hotmart por tipo',
+      description: 'Encaminha eventos da Hotmart para saídas específicas baseado no tipo de evento',
+      defaults: {
+        name: 'Hotmart Router',
+      },
+      inputs: ['main'],
+      outputs: `={{(${configureOutputNames})($parameter)}}`,
+      properties: [
+        {
+          displayName: 'Campo do Evento',
+          name: 'eventField',
+          type: 'string',
+          default: 'event',
+          description: 'Nome do campo contendo o tipo de evento Hotmart',
+        },
+        {
+          displayName: 'Personalizar Nomes das Saídas',
+          name: 'customizeOutputs',
+          type: 'boolean',
+          default: false,
+          description: 'Opção para personalizar os nomes das saídas (visual apenas)',
+        },
+        {
+          displayName: 'Nome para Saída de Compra Aprovada',
+          name: 'outputName0',
+          type: 'string',
+          default: 'Aprovada',
+          description: 'Nome personalizado para a saída de Compra Aprovada',
+          displayOptions: {
+            show: {
+              customizeOutputs: [true],
+            },
+          },
+        },
+        {
+          displayName: 'Nome para Saída de Outros Eventos',
+          name: 'outputName1',
+          type: 'string',
+          default: 'Outros',
+          description: 'Nome personalizado para a saída de Outros Eventos',
+          displayOptions: {
+            show: {
+              customizeOutputs: [true],
+            },
+          },
+        },
+      ],
+    };
+  }
+
+  async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
+    // Criar arrays vazios para cada saída
+    const returnData: INodeExecutionData[][] = [[], []];
+
+    const items = this.getInputData();
+    const eventField = this.getNodeParameter('eventField', 0) as string;
+
+    for (let i = 0; i < items.length; i++) {
+      try {
+        let event: string | null = null;
+        
+        // Obter o valor do evento do campo apropriado
+        if (items[i].json && items[i].json[eventField] !== undefined) {
+          const eventValue = items[i].json[eventField];
+          event = eventValue !== null && eventValue !== undefined ? String(eventValue) : null;
+        }
+        
+        // Para simplificar, enviamos para a primeira saída apenas eventos de compra aprovada
+        // e todos os outros para a segunda saída
+        if (event === 'PURCHASE_APPROVED' || event === '1') {
+          returnData[0].push(items[i]);
+        } else {
+          returnData[1].push(items[i]);
+        }
+      } catch (error) {
+        if (this.continueOnFail()) {
+          console.error(`[HotmartRouter] Erro ao processar item ${i}: ${error.message}`);
+          continue;
+        }
+        throw new NodeOperationError(this.getNode(), error, {
+          itemIndex: i,
+        });
+      }
+    }
+
+    return returnData;
+  }
+}

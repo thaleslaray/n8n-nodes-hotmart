@@ -1,0 +1,14 @@
+{
+  "node": "n8n-nodes-hotmart.hotmartRouter",
+  "nodeVersion": "1.0",
+  "codexVersion": "1.0",
+  "categories": ["Marketing", "Sales"],
+  "icon": "hotmart.svg",
+  "resources": {
+    "primaryDocumentation": [
+      {
+        "url": "https://developers.hotmart.com/docs/pt-BR/webhooks/webhooks"
+      }
+    ]
+  }
+}

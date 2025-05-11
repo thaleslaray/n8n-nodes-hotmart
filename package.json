@@ -1,6 +1,6 @@
 {
-  "name": "n8n-nodes-hotmart",
-  "version": "0.1.0",
+  "name": "n8n-nodes-hotmart-thaleslaray",
+  "version": "0.1.1",
   "description": "n8n nodes to interact with Hotmart API, including webhooks",
   "keywords": [
     "n8n-community-node-package",
@@ -25,13 +25,13 @@
   "packageManager": "pnpm@9.1.4",
   "main": "index.js",
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
+    "preinstall": "",
     "build": "tsc && gulp build:icons",
     "dev": "tsc --watch",
     "format": "prettier nodes credentials --write",
     "lint": "eslint nodes credentials package.json",
     "lintfix": "eslint nodes credentials package.json --fix",
-    "prepublishOnly": "pnpm build && pnpm lint -c .eslintrc.prepublish.js nodes credentials package.json"
+    "prepublishOnly": "npm run build"
   },
   "files": [
     "dist"
@@ -43,7 +43,8 @@
     ],
     "nodes": [
       "dist/nodes/Hotmart/Hotmart.node.js",
-      "dist/nodes/Hotmart/HotmartTrigger.node.js"
+      "dist/nodes/Hotmart/HotmartTrigger.node.js",
+      "dist/nodes/Hotmart/HotmartRouter.node.js"
     ]
   },
   "devDependencies": {

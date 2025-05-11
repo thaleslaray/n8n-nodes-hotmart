@@ -371,7 +371,10 @@ export class HotmartTrigger implements INodeType {
 			// Adicionar o token hottok aos dados retornados para possível uso no workflow
 			const returnData = {
 				...bodyData as IDataObject,
-				event,
+				// Não substituir o evento original (mantém o valor de texto)
+				// event,
+				// Adicionar campo para debug
+				eventName: webhookEvents[event].name,
 				hottok,
 			};
 
