@@ -44,7 +44,7 @@
     "nodes": [
       "dist/nodes/Hotmart/Hotmart.node.js",
       "dist/nodes/Hotmart/HotmartTrigger.node.js",
-      "dist/nodes/Hotmart/HotmartRouter.node.js"
+      "dist/nodes/Hotmart/HotmartSmartTrigger.node.js"
     ]
   },
   "devDependencies": {

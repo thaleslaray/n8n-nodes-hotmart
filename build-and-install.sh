@@ -11,7 +11,21 @@ RED='\033[0;31m'
 YELLOW='\033[0;33m'
 NC='\033[0m' # No Color
 
+# Funções auxiliares
+check_command() {
+  if ! command -v $1 &> /dev/null; then
+    echo -e "${RED}Erro: $1 não está instalado. Por favor, instale-o para continuar.${NC}"
+    exit 1
+  fi
+}
+
+# Verificar se o pnpm está instalado
+check_command pnpm
+
 echo -e "${YELLOW}Iniciando processo de build e instalação...${NC}"
+
+# Criar diretórios necessários para o n8n
+mkdir -p "$N8N_CUSTOM_DIR"
 
 # Remover qualquer instalação anterior
 if [ -d "$N8N_CUSTOM_DIR/$PACKAGE_NAME" ]; then
@@ -30,10 +44,11 @@ echo -e "${YELLOW}Compilando o código...${NC}"
 pnpm install
 set -e  # Sair imediatamente se um comando falhar
 pnpm build
+COMPILE_RESULT=$?
 set +e  # Desabilitar saída imediata em caso de erro
 
 # Verificar se a compilação foi bem-sucedida
-if [ $? -ne 0 ]; then
+if [ $COMPILE_RESULT -ne 0 ]; then
   echo -e "${RED}Erro na compilação. Abortando instalação.${NC}"
   exit 1
 fi
@@ -41,13 +56,13 @@ fi
 # Criar diretório temporário
 echo -e "${YELLOW}Criando diretório temporário...${NC}"
 rm -rf "$TEMP_DIR"
-mkdir -p "$TEMP_DIR/nodes/Hotmart"
-mkdir -p "$TEMP_DIR/credentials"
+mkdir -p "$TEMP_DIR/dist/nodes/Hotmart"
+mkdir -p "$TEMP_DIR/dist/credentials"
 
 # Copiar apenas os arquivos do nó Hotmart
 echo -e "${YELLOW}Copiando arquivos do nó Hotmart...${NC}"
 if [ -d "./dist/nodes/Hotmart" ]; then
-  cp -r ./dist/nodes/Hotmart/* "$TEMP_DIR/nodes/Hotmart/"
+  cp -r ./dist/nodes/Hotmart/* "$TEMP_DIR/dist/nodes/Hotmart/"
 else
   echo -e "${RED}Diretório do nó Hotmart não encontrado. A compilação pode ter falhado.${NC}"
   exit 1
@@ -56,7 +71,7 @@ fi
 # Copiar apenas as credenciais do Hotmart
 echo -e "${YELLOW}Copiando credenciais do Hotmart...${NC}"
 if [ -f "./dist/credentials/HotmartOAuth2Api.credentials.js" ]; then
-  cp ./dist/credentials/HotmartOAuth2Api.credentials.js "$TEMP_DIR/credentials/"
+  cp ./dist/credentials/HotmartOAuth2Api.credentials.js "$TEMP_DIR/dist/credentials/"
 else
   echo -e "${RED}Arquivo de credenciais do Hotmart não encontrado. A compilação pode ter falhado.${NC}"
   exit 1
@@ -66,12 +81,12 @@ fi
 echo -e "${YELLOW}Copiando arquivos SVG...${NC}"
 if [ -f "./nodes/Hotmart/hotmart.svg" ]; then
   # Copia para o diretório raiz do Hotmart
-  mkdir -p "$TEMP_DIR/nodes/Hotmart/"
-  cp ./nodes/Hotmart/hotmart.svg "$TEMP_DIR/nodes/Hotmart/"
+  mkdir -p "$TEMP_DIR/dist/nodes/Hotmart/"
+  cp ./nodes/Hotmart/hotmart.svg "$TEMP_DIR/dist/nodes/Hotmart/"
 
   # Copia também para o diretório v1/icons
-  mkdir -p "$TEMP_DIR/nodes/Hotmart/v1/icons/"
-  cp ./nodes/Hotmart/hotmart.svg "$TEMP_DIR/nodes/Hotmart/v1/icons/"
+  mkdir -p "$TEMP_DIR/dist/nodes/Hotmart/v1/icons/"
+  cp ./nodes/Hotmart/hotmart.svg "$TEMP_DIR/dist/nodes/Hotmart/v1/icons/"
   echo -e "${GREEN}Arquivos SVG do Hotmart copiados com sucesso.${NC}"
 else
   echo -e "${YELLOW}Arquivo SVG do Hotmart não encontrado.${NC}"
@@ -89,10 +104,10 @@ cat > "$TEMP_DIR/package.json" << EOF
     "hotmart"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/yourusername/n8n-nodes-hotmart",
+  "homepage": "https://github.com/thaleslaray/n8n-nodes-hotmart",
   "author": {
-    "name": "Your Name",
-    "email": "your.email@example.com"
+    "name": "Thales Laray",
+    "email": "thales.laray@gmail.com"
   },
   "n8n": {
     "n8nNodesApiVersion": 1,
@@ -117,12 +132,12 @@ echo -e "${YELLOW}Criando index.js para instalação...${NC}"
 cat > "$TEMP_DIR/index.js" << EOF
 module.exports = {
   nodes: [
-    require('./nodes/Hotmart/Hotmart.node.js'),
-    require('./nodes/Hotmart/HotmartTrigger.node.js'),
-    require('./nodes/Hotmart/HotmartSmartTrigger.node.js'),
+    require('./dist/nodes/Hotmart/Hotmart.node.js'),
+    require('./dist/nodes/Hotmart/HotmartTrigger.node.js'),
+    require('./dist/nodes/Hotmart/HotmartSmartTrigger.node.js'),
   ],
   credentials: [
-    require('./credentials/HotmartOAuth2Api.credentials.js'),
+    require('./dist/credentials/HotmartOAuth2Api.credentials.js'),
   ],
 };
 EOF
@@ -141,41 +156,37 @@ rm -rf "$TEMP_DIR"
 
 echo -e "${GREEN}Instalação concluída!${NC}"
 echo -e "${GREEN}Os nós Hotmart foram instalados em $N8N_CUSTOM_DIR/$PACKAGE_NAME${NC}"
-echo -e "${YELLOW}Reiniciando o n8n em modo debug completo para carregar os novos nós...${NC}"
-pkill -f n8n
-sleep 2
-N8N_LOG_LEVEL=debug N8N_LOG_OUTPUT=console N8N_LOG_LABELS=true n8n start &
-# Configurar variáveis de ambiente para o n8n usar com o Cloudflare Tunnel
-echo -e "${YELLOW}Configurando variáveis de ambiente para o domínio n8n.laray.com.br...${NC}"
-N8N_ENV_FILE="$HOME/.n8n/n8n_env"
-cat > "$N8N_ENV_FILE" << EOF
-N8N_HOST=n8n.laray.com.br
-N8N_PROTOCOL=https
-N8N_PORT=443
-N8N_WEBHOOK_URL=https://n8n.laray.com.br
-EOF
 
-# Iniciar Cloudflare Tunnel
-echo -e "${YELLOW}Iniciando o Cloudflare Tunnel...${NC}"
-# Verificar se o tunnel já está em execução
-TUNNEL_PID=$(pgrep -f "cloudflared tunnel run 964f58f6-6dab-4997-b1fc-5a9b2edea379" || echo "")
-if [ -n "$TUNNEL_PID" ]; then
-  echo -e "${YELLOW}Cloudflare Tunnel já está em execução (PID: $TUNNEL_PID). Reiniciando...${NC}"
-  kill $TUNNEL_PID
-  sleep 2
+# Criar pacote npm para instalação direta (opcional)
+echo -e "${YELLOW}Criando pacote npm para referência...${NC}"
+pnpm pack
+
+# Limpar caches do n8n para garantir que detecte os novos nós
+echo -e "${YELLOW}Limpando caches do n8n...${NC}"
+if [ -d "$HOME/.n8n/.cache" ]; then
+  rm -rf "$HOME/.n8n/.cache"
 fi
 
-# Iniciar o tunnel em segundo plano
-nohup cloudflared tunnel run 964f58f6-6dab-4997-b1fc-5a9b2edea379 > $HOME/.n8n/tunnel.log 2>&1 &
-TUNNEL_PID=$!
-echo -e "${GREEN}Cloudflare Tunnel iniciado em segundo plano (PID: $TUNNEL_PID)${NC}"
-echo -e "${GREEN}Log do tunnel disponível em $HOME/.n8n/tunnel.log${NC}"
+# Instruções para reiniciar o n8n
+echo -e "${GREEN}============================================${NC}"
+echo -e "${GREEN}Instalação concluída com sucesso!${NC}"
+echo -e "${GREEN}Para aplicar as alterações:${NC}"
+echo -e "${YELLOW}1. Pare o n8n, se estiver em execução:${NC}"
+echo -e "   pkill -f n8n"
+echo -e "${YELLOW}2. Inicie o n8n novamente:${NC}"
+echo -e "   n8n start"
+echo -e "${GREEN}============================================${NC}"
 
-echo -e "${YELLOW}Exportando variáveis de ambiente...${NC}"
-export N8N_HOST=n8n.laray.com.br
-export N8N_PROTOCOL=https
-export N8N_PORT=443
-export N8N_WEBHOOK_URL=https://n8n.laray.com.br
+# Perguntar se o usuário quer reiniciar o n8n
+read -p "Deseja reiniciar o n8n agora? (s/n) " REINICIAR
 
-echo -e "${GREEN}n8n iniciado em modo debug completo!${NC}"
-echo -e "${GREEN}Seu webhook está disponível em: https://n8n.laray.com.br/webhook-test/hotmart${NC}"
+if [[ "$REINICIAR" =~ ^[Ss]$ ]]; then
+  echo -e "${YELLOW}Reiniciando o n8n...${NC}"
+  pkill -f n8n || true
+  sleep 2
+  n8n start &
+  echo -e "${GREEN}n8n reiniciado!${NC}"
+  echo -e "${GREEN}Acesse http://localhost:5678 para verificar os nós instalados.${NC}"
+else
+  echo -e "${YELLOW}Lembre-se de reiniciar o n8n manualmente para aplicar as alterações.${NC}"
+fi
