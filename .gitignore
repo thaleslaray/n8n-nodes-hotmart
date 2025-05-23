@@ -5,13 +5,10 @@ tmp
 dist
 npm-debug.log*
 yarn.lock
-.vscode/launch.json
+.vscode/
 
-**/.claude/settings.local.json
-
-**/CLAUDE.local.md
+# Pacotes
 *.tgz
-backups/
 
 # Arquivos compilados
 *.js
@@ -24,30 +21,32 @@ backups/
 !gulpfile.js
 !eslint.config.js
 
-# Arquivos de backup
+# Logs e backups
+logs/
+backups/
+*.log
 *.bak
 *.backup
-*.bkp
 *.old
-logs/
-CLAUDE.md
-
-# Documentação interna
-CLAUDE.md
-PLANO-*.md
-RELATORIO-*.md
-RFC-*.md
-NPM-PUBLISH-GUIDE.md
-BACKUP-GUIDE.md
 
 # Arquivos temporários
-*.txt
-lint.txt
-test.txt
+*.tmp
+*.temp
 
-# Scripts que foram movidos
-backup
-restore
+# Configurações locais/privadas
+CLAUDE.md
+.env
+.env.local
+*.local.*
+
+# Arquivos Python (tokens/scripts de teste)
+*.py
+
+# Diretórios adicionais para ignorar
+docs/
+scripts/
+archive/
+install
 clear
 publish
 debug-n8n
