@@ -27,11 +27,16 @@ export const description = [];
  * Ela existe apenas para evitar erros caso o Custom API Call seja selecionado
  */
 export async function execute(
-	this: IExecuteFunctions,
-	items: INodeExecutionData[],
+  this: IExecuteFunctions,
+  _items: INodeExecutionData[]
 ): Promise<INodeExecutionData[][]> {
-	// Retorna um array vazio para evitar erros
-	// Não execute nenhuma operação real aqui
-	console.log('Tentativa de usar Custom API Call no nó Hotmart. Esta funcionalidade está desativada.');
-	return [[]];
+  // Log usando o logger do n8n ao invés de console.log
+  this.logger.warn('Tentativa de usar Custom API Call no nó Hotmart. Esta funcionalidade está desativada.');
+  
+  // Retorna um array vazio para evitar erros
+  // Não execute nenhuma operação real aqui
+  this.logger.warn(
+    'Tentativa de usar Custom API Call no nó Hotmart. Esta funcionalidade está desativada.'
+  );
+  return [[]];
 }

@@ -1,0 +1,366 @@
+[drwxr-xr-x thaleslaray staff    May 20 23:42]  .
+├── [drwxr-xr-x thaleslaray staff    May 20 17:05]  backups
+├── [-rw-r--r-- thaleslaray staff    May  8 09:47]  CLAUDE.local.md
+├── [-rw-r--r-- thaleslaray staff    May 12 21:45]  CLAUDE.md
+├── [-rwxr-xr-x thaleslaray staff    May 20 22:46]  clear.sh
+├── [-rw-r--r-- thaleslaray staff    May  4 17:09]  CODE_OF_CONDUCT.md
+├── [drwxr-xr-x thaleslaray staff    May 20 17:23]  credentials
+│   └── [-rw-r--r-- thaleslaray staff    May  4 22:22]  HotmartOAuth2Api.credentials.ts
+├── [drwxr-xr-x thaleslaray staff    May 20 22:49]  dist
+│   ├── [drwxr-xr-x thaleslaray staff    May 20 22:49]  credentials
+│   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  HotmartOAuth2Api.credentials.d.ts
+│   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  HotmartOAuth2Api.credentials.js
+│   │   └── [-rw-r--r-- thaleslaray staff    May 20 22:49]  HotmartOAuth2Api.credentials.js.map
+│   ├── [drwxr-xr-x thaleslaray staff    May 20 22:49]  nodes
+│   │   └── [drwxr-xr-x thaleslaray staff    May 20 22:49]  Hotmart
+│   │       ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  Hotmart.node.d.ts
+│   │       ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  Hotmart.node.js
+│   │       ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  Hotmart.node.js.map
+│   │       ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  Hotmart.node.json
+│   │       ├── [-rw------- thaleslaray staff    May 20 23:01]  hotmart.svg
+│   │       ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  HotmartTrigger.node.d.ts
+│   │       ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  HotmartTrigger.node.js
+│   │       ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  HotmartTrigger.node.js.map
+│   │       ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  HotmartTrigger.node.json
+│   │       └── [drwxr-xr-x thaleslaray staff    May 20 22:49]  v1
+│   │           ├── [drwxr-xr-x thaleslaray staff    May 20 22:49]  actions
+│   │           │   ├── [drwxr-xr-x thaleslaray staff    May 20 22:49]  club
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  Club.resource.d.ts
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  Club.resource.js
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  Club.resource.js.map
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getAll.operation.d.ts
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getAll.operation.js
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getAll.operation.js.map
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getModules.operation.d.ts
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getModules.operation.js
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getModules.operation.js.map
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getPages.operation.d.ts
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getPages.operation.js
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getPages.operation.js.map
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getProgress.operation.d.ts
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getProgress.operation.js
+│   │           │   │   └── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getProgress.operation.js.map
+│   │           │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  common.descriptions.d.ts
+│   │           │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  common.descriptions.js
+│   │           │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  common.descriptions.js.map
+│   │           │   ├── [drwxr-xr-x thaleslaray staff    May 20 22:49]  coupon
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  Coupon.resource.d.ts
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  Coupon.resource.js
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  Coupon.resource.js.map
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  create.operation.d.ts
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  create.operation.js
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  create.operation.js.map
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  delete.operation.d.ts
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  delete.operation.js
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  delete.operation.js.map
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  get.operation.d.ts
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  get.operation.js
+│   │           │   │   └── [-rw-r--r-- thaleslaray staff    May 20 22:49]  get.operation.js.map
+│   │           │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  customApiCall.operation.d.ts
+│   │           │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  customApiCall.operation.js
+│   │           │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  customApiCall.operation.js.map
+│   │           │   ├── [drwxr-xr-x thaleslaray staff    May 20 22:49]  negotiate
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  generateNegotiation.operation.d.ts
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  generateNegotiation.operation.js
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  generateNegotiation.operation.js.map
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  Negotiate.resource.d.ts
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  Negotiate.resource.js
+│   │           │   │   └── [-rw-r--r-- thaleslaray staff    May 20 22:49]  Negotiate.resource.js.map
+│   │           │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  node.type.d.ts
+│   │           │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  node.type.js
+│   │           │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  node.type.js.map
+│   │           │   ├── [drwxr-xr-x thaleslaray staff    May 20 22:49]  product
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getAll.operation.d.ts
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getAll.operation.js
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getAll.operation.js.map
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  Product.resource.d.ts
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  Product.resource.js
+│   │           │   │   └── [-rw-r--r-- thaleslaray staff    May 20 22:49]  Product.resource.js.map
+│   │           │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  router.d.ts
+│   │           │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  router.js
+│   │           │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  router.js.map
+│   │           │   ├── [drwxr-xr-x thaleslaray staff    May 20 22:49]  sales
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getComissoesVendas.operation.d.ts
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getComissoesVendas.operation.js
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getComissoesVendas.operation.js.map
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getDetalhamentoPrecos.operation.d.ts
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getDetalhamentoPrecos.operation.js
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getDetalhamentoPrecos.operation.js.map
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getHistoricoVendas.operation.d.ts
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getHistoricoVendas.operation.js
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getHistoricoVendas.operation.js.map
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getParticipantesVendas.operation.d.ts
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getParticipantesVendas.operation.js
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getParticipantesVendas.operation.js.map
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getResumoVendas.operation.d.ts
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getResumoVendas.operation.js
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getResumoVendas.operation.js.map
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  Sales.resource.d.ts
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  Sales.resource.js
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  Sales.resource.js.map
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  solicitarReembolso.operation.d.ts
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  solicitarReembolso.operation.js
+│   │           │   │   └── [-rw-r--r-- thaleslaray staff    May 20 22:49]  solicitarReembolso.operation.js.map
+│   │           │   ├── [drwxr-xr-x thaleslaray staff    May 20 22:49]  subscription
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  cancel.operation.d.ts
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  cancel.operation.js
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  cancel.operation.js.map
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  cancelList.operation.d.ts
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  cancelList.operation.js
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  cancelList.operation.js.map
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  changeBillingDate.operation.d.ts
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  changeBillingDate.operation.js
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  changeBillingDate.operation.js.map
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  constants.d.ts
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  constants.js
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  constants.js.map
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getAll.operation.d.ts
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getAll.operation.js
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getAll.operation.js.map
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getPurchases.operation.d.ts
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getPurchases.operation.js
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getPurchases.operation.js.map
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getSummary.operation.d.ts
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getSummary.operation.js
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getSummary.operation.js.map
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getTransactions.operation.d.ts
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getTransactions.operation.js
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getTransactions.operation.js.map
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  reactivate.operation.d.ts
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  reactivate.operation.js
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  reactivate.operation.js.map
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  reactivateList.operation.d.ts
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  reactivateList.operation.js
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  reactivateList.operation.js.map
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  Subscription.resource.d.ts
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  Subscription.resource.js
+│   │           │   │   └── [-rw-r--r-- thaleslaray staff    May 20 22:49]  Subscription.resource.js.map
+│   │           │   ├── [drwxr-xr-x thaleslaray staff    May 20 22:49]  tickets
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getAll.operation.d.ts
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getAll.operation.js
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getAll.operation.js.map
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getInfo.operation.d.ts
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getInfo.operation.js
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  getInfo.operation.js.map
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  Tickets.resource.d.ts
+│   │           │   │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  Tickets.resource.js
+│   │           │   │   └── [-rw-r--r-- thaleslaray staff    May 20 22:49]  Tickets.resource.js.map
+│   │           │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  versionDescription.d.ts
+│   │           │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  versionDescription.js
+│   │           │   └── [-rw-r--r-- thaleslaray staff    May 20 22:49]  versionDescription.js.map
+│   │           ├── [drwxr-xr-x thaleslaray staff    May 20 22:49]  helpers
+│   │           │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  dateUtils.d.ts
+│   │           │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  dateUtils.js
+│   │           │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  dateUtils.js.map
+│   │           │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  outputFormatter.d.ts
+│   │           │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  outputFormatter.js
+│   │           │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  outputFormatter.js.map
+│   │           │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  pagination.d.ts
+│   │           │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  pagination.js
+│   │           │   └── [-rw-r--r-- thaleslaray staff    May 20 22:49]  pagination.js.map
+│   │           ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  HotmartV1.node.d.ts
+│   │           ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  HotmartV1.node.js
+│   │           ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  HotmartV1.node.js.map
+│   │           ├── [drwxr-xr-x thaleslaray staff    May 20 22:49]  icons
+│   │           │   └── [-rw------- thaleslaray staff    May 20 23:01]  hotmart.svg
+│   │           ├── [drwxr-xr-x thaleslaray staff    May 20 22:49]  methods
+│   │           │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  loadOptions.d.ts
+│   │           │   ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  loadOptions.js
+│   │           │   └── [-rw-r--r-- thaleslaray staff    May 20 22:49]  loadOptions.js.map
+│   │           └── [drwxr-xr-x thaleslaray staff    May 20 22:49]  transport
+│   │               ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  request.d.ts
+│   │               ├── [-rw-r--r-- thaleslaray staff    May 20 22:49]  request.js
+│   │               └── [-rw-r--r-- thaleslaray staff    May 20 22:49]  request.js.map
+│   ├── [-rw-r--r-- thaleslaray staff    May 20 23:01]  package.json
+│   └── [-rw-r--r-- thaleslaray staff    May 20 23:01]  tsconfig.tsbuildinfo
+├── [drwxr-xr-x thaleslaray staff    May 13 18:13]  docs
+│   ├── [-rw-r--r-- thaleslaray staff    May 12 16:54]  analise-ux-triggers.md
+│   ├── [-rw-r--r-- thaleslaray staff    May 12 16:38]  design-patterns-consolidacao.md
+│   ├── [drwxr-xr-x thaleslaray staff    May  9 20:35]  docs-ht
+│   │   ├── [-rwxr-xr-x thaleslaray staff    May  4 17:00]  club-Introdução.txt
+│   │   ├── [-rwxr-xr-x thaleslaray staff    May  4 17:01]  club-Obter alunos.txt
+│   │   ├── [-rwxr-xr-x thaleslaray staff    May  4 17:02]  club-Obter módulos.txt
+│   │   ├── [-rwxr-xr-x thaleslaray staff    May  4 17:02]  club-Obter o progresso do aluno.txt
+│   │   ├── [-rwxr-xr-x thaleslaray staff    May  4 17:01]  club-Obter Páginas.txt
+│   │   ├── [-rwxr-xr-x thaleslaray staff    May  4 04:09]  coupon-Criar Cupom.txt
+│   │   ├── [-rwxr-xr-x thaleslaray staff    May  4 04:10]  coupon-Excluir Cupom.txt
+│   │   ├── [-rwxr-xr-x thaleslaray staff    May  4 04:10]  coupon-Obter Cupom.txt
+│   │   ├── [-rwxr-xr-x thaleslaray staff    May  4 04:09]  product-Obter Produtos.txt
+│   │   ├── [-rwxr-xr-x thaleslaray staff    May  4 04:02]  sales-Comissões de vendas.txt
+│   │   ├── [-rwxr-xr-x thaleslaray staff    May  4 04:04]  sales-Detalhamento de preços de vendas.txt
+│   │   ├── [-rwxr-xr-x thaleslaray staff    May  4 04:03]  sales-Histórico de vendas.txt
+│   │   ├── [-rwxr-xr-x thaleslaray staff    May  4 04:04]  sales-Introdução.txt
+│   │   ├── [-rwxr-xr-x thaleslaray staff    May  4 04:02]  sales-Participantes de vendas.txt
+│   │   ├── [-rwxr-xr-x thaleslaray staff    May  4 04:04]  sales-Reembolso de vendas.txt
+│   │   ├── [-rwxr-xr-x thaleslaray staff    May  4 04:03]  sales-Sumário de vendas.txt
+│   │   ├── [-rwxr-xr-x thaleslaray staff    May  4 04:00]  start-Autenticação de Usuários.txt
+│   │   ├── [-rwxr-xr-x thaleslaray staff    May  4 03:59]  start-Autenticação.txt
+│   │   ├── [-rwxr-xr-x thaleslaray staff    May  4 04:01]  start-Códigos de Resposta HTTP.txt
+│   │   ├── [-rwxr-xr-x thaleslaray staff    May  4 04:00]  start-Custom Response.txt
+│   │   ├── [-rwxr-xr-x thaleslaray staff    May  4 03:59]  start-Paginação.txt
+│   │   ├── [-rwxr-xr-x thaleslaray staff    May  4 04:01]  start-Rate Limit.txt
+│   │   ├── [-rwxr-xr-x thaleslaray staff    May  4 03:58]  start-Sandbox.txt
+│   │   ├── [-rwxr-xr-x thaleslaray staff    May  4 03:58]  start-Sobre Hotmart Developers.txt
+│   │   ├── [-rwxr-xr-x thaleslaray staff    May  4 04:08]  subscription-Alterar dia de cobrança.txt
+│   │   ├── [-rwxr-xr-x thaleslaray staff    May  4 04:07]  subscription-Cancelar assinatura.txt
+│   │   ├── [-rwxr-xr-x thaleslaray staff    May  4 04:07]  subscription-Cancelar lista de assinaturas.txt
+│   │   ├── [-rwxr-xr-x thaleslaray staff    May  4 04:05]  subscription-Introdução.txt
+│   │   ├── [-rwxr-xr-x thaleslaray staff    May  4 04:05]  subscription-Obter assinaturas.txt
+│   │   ├── [-rwxr-xr-x thaleslaray staff    May  4 04:06]  subscription-Obter compras de assinantes.txt
+│   │   ├── [-rwxr-xr-x thaleslaray staff    May  4 04:07]  subscription-Reativar e cobrar assinatura.txt
+│   │   ├── [-rwxr-xr-x thaleslaray staff    May  4 04:08]  subscription-Reativar e cobrar lista de assinaturas.txt
+│   │   ├── [-rwxr-xr-x thaleslaray staff    May  4 04:06]  subscription-Sumário de Assinaturas.txt
+│   │   ├── [-rw-r--r-- thaleslaray staff    May  5 23:30]  subscription-Transações de Assinatura.txt
+│   │   ├── [-rwxr-xr-x thaleslaray staff    May  4 17:03]  tickets-Informações do Evento.txt
+│   │   ├── [-rwxr-xr-x thaleslaray staff    May  4 17:03]  tickets-Lista de ingressos e participantes.txt
+│   │   └── [drwx------ thaleslaray staff    May  9 20:35]  webhooks
+│   │       ├── [-rw-rw-r-- thaleslaray staff    May  9 19:17]  1.0.0-Códigos de Resposta HTTP.txt
+│   │       ├── [-rw-rw-r-- thaleslaray staff    May  9 19:16]  1.0.0-Usando Webhooks.txt
+│   │       ├── [-rw-rw-r-- thaleslaray staff    May  9 19:18]  2.0.0-Evento de abandono de carrinho.txt
+│   │       ├── [-rw-rw-r-- thaleslaray staff    May  9 19:17]  2.0.0-Evento de cancelamento de assinatura.txt
+│   │       ├── [-rw-rw-r-- thaleslaray staff    May  9 19:21]  2.0.0-Evento de módulo completo.txt
+│   │       ├── [-rw-rw-r-- thaleslaray staff    May  9 19:20]  2.0.0-Evento de primeiro acesso.txt
+│   │       ├── [-rw-rw-r-- thaleslaray staff    May  9 19:18]  2.0.0-Evento de troca de plano.txt
+│   │       ├── [-rw-rw-r-- thaleslaray staff    May  9 19:20]  2.0.0-Evento de troca do dia de cobrança de assinatura.txt
+│   │       └── [-rw-rw-r-- thaleslaray staff    May  9 19:19]  2.0.0-Eventos de pedido.txt
+│   ├── [drwxr-xr-x thaleslaray staff    May  5 20:28]  docs-n8n
+│   │   ├── [-rw-r--r-- thaleslaray staff    May  5 20:28]  Remover Custom API n8n nó_.txt
+│   │   └── [-rw-r--r-- thaleslaray staff    May  4 17:09]  Rules - Developing n8n Custom Nodes.md
+│   ├── [-rw------- thaleslaray staff    May  2 21:13]  hotmart.svg
+│   ├── [-rw-r--r-- thaleslaray staff    May 13 16:59]  HotmartSmartTrigger.md
+│   ├── [-rw-r--r-- thaleslaray staff    May 13 17:25]  issue-url-secreta.md
+│   ├── [-rw-r--r-- thaleslaray staff    May 13 17:29]  plano-remocao-url-secreta.md
+│   ├── [-rw-r--r-- thaleslaray staff    May 13 17:16]  relatorio-apis-hotmart.md
+│   ├── [-rw-r--r-- thaleslaray staff    May 13 17:22]  relatorio-implementacao-deteccao-assinaturas.md
+│   ├── [-rw-r--r-- thaleslaray staff    May 13 17:57]  remocao-url-secreta.md
+│   ├── [-rw-r--r-- thaleslaray staff    May 11 13:00]  renomeacao-outputs.md
+│   ├── [-rw-r--r-- thaleslaray staff    May 13 18:13]  testar-webhooks-hotmart.md
+│   └── [-rw-r--r-- thaleslaray staff    May 13 17:04]  Usando-campo-isSubscription.md
+├── [-rwxr-xr-x thaleslaray staff    May 20 17:21]  install.sh
+├── [-rw-r--r-- thaleslaray staff    May  4 21:21]  LICENSE.md
+├── [drwxr-xr-x thaleslaray staff    May 19 20:24]  logs
+│   ├── [-rw-r--r-- thaleslaray staff    May 19 20:24]  debug-hotmart.log
+│   ├── [-rw-r--r-- thaleslaray staff    May  7 20:40]  hotmart-debug-20250507-191559.log
+│   └── [-rw-r--r-- thaleslaray staff    May  9 20:21]  hotmart-debug-20250509-202106.log
+├── [-rw-r--r-- thaleslaray staff    May 20 23:01]  n8n-nodes-hotmart-0.4.3.tgz
+├── [drwxr-xr-x thaleslaray staff    May 20 22:31]  node_modules
+│   ├── [drwxr-xr-x thaleslaray staff    May 20 17:06]  @types
+│   │   ├── [lrwxr-xr-x thaleslaray staff    May 20 17:06]  express -> ../.pnpm/@types+express@4.17.17/node_modules/@types/express
+│   │   ├── [lrwxr-xr-x thaleslaray staff    May 20 17:06]  node -> ../.pnpm/@types+node@14.18.63/node_modules/@types/node
+│   │   └── [lrwxr-xr-x thaleslaray staff    May 20 17:06]  request-promise-native -> ../.pnpm/@types+request-promise-native@1.0.18/node_modules/@types/request-promise-native
+│   ├── [lrwxr-xr-x thaleslaray staff    May 20 17:06]  n8n-core -> .pnpm/n8n-core@1.0.1/node_modules/n8n-core
+│   ├── [lrwxr-xr-x thaleslaray staff    May 20 17:06]  n8n-workflow -> .pnpm/n8n-workflow@1.0.1/node_modules/n8n-workflow
+│   └── [lrwxr-xr-x thaleslaray staff    May 20 17:06]  typescript -> .pnpm/typescript@4.6.4/node_modules/typescript
+├── [drwxr-xr-x thaleslaray staff    May 11 11:02]  nodes
+│   └── [drwxr-xr-x thaleslaray staff    May 20 18:02]  Hotmart
+│       ├── [-rw-r--r-- thaleslaray staff    May 11 19:13]  Hotmart.node.json
+│       ├── [-rw-r--r-- thaleslaray staff    May 13 23:11]  Hotmart.node.ts
+│       ├── [-rw------- thaleslaray staff    May 11 19:13]  hotmart.svg
+│       ├── [-rw-r--r-- thaleslaray staff    May 11 19:13]  HotmartTrigger.node.json
+│       ├── [-rw-r--r-- thaleslaray staff    May 13 18:07]  HotmartTrigger.node.ts
+│       └── [drwxr-xr-x thaleslaray staff    May 20 17:23]  v1
+│           ├── [drwxr-xr-x thaleslaray staff    May 20 18:04]  actions
+│           │   ├── [drwxr-xr-x thaleslaray staff    May 20 17:23]  club
+│           │   │   ├── [-rw-r--r-- thaleslaray staff    May  8 13:29]  Club.resource.ts
+│           │   │   ├── [-rw-r--r-- thaleslaray staff    May  8 20:02]  getAll.operation.ts
+│           │   │   ├── [-rw-r--r-- thaleslaray staff    May  8 13:29]  getModules.operation.ts
+│           │   │   ├── [-rw-r--r-- thaleslaray staff    May  8 13:48]  getPages.operation.ts
+│           │   │   └── [-rw-r--r-- thaleslaray staff    May  8 13:27]  getProgress.operation.ts
+│           │   ├── [-rw-r--r-- thaleslaray staff    May  8 15:10]  common.descriptions.ts
+│           │   ├── [drwxr-xr-x thaleslaray staff    May 20 17:23]  coupon
+│           │   │   ├── [-rw-r--r-- thaleslaray staff    May 19 20:20]  Coupon.resource.ts
+│           │   │   ├── [-rw-r--r-- thaleslaray staff    May 19 19:41]  create.operation.ts
+│           │   │   ├── [-rw-r--r-- thaleslaray staff    May 19 20:51]  delete.operation.ts
+│           │   │   └── [-rw-r--r-- thaleslaray staff    May 19 20:25]  get.operation.ts
+│           │   ├── [-rw-r--r-- thaleslaray staff    May  5 20:32]  customApiCall.operation.ts
+│           │   ├── [drwxr-xr-x thaleslaray staff    May 20 17:23]  negotiate
+│           │   │   ├── [-rw-r--r-- thaleslaray staff    May  8 23:28]  generateNegotiation.operation.ts
+│           │   │   └── [-rw-r--r-- thaleslaray staff    May  8 22:54]  Negotiate.resource.ts
+│           │   ├── [-rw-r--r-- thaleslaray staff    May  4 23:30]  node.type.ts
+│           │   ├── [drwxr-xr-x thaleslaray staff    May 20 17:23]  product
+│           │   │   ├── [-rw-r--r-- thaleslaray staff    May  8 20:29]  getAll.operation.ts
+│           │   │   └── [-rw-r--r-- thaleslaray staff    May  4 23:30]  Product.resource.ts
+│           │   ├── [-rw-r--r-- thaleslaray staff    May  8 23:10]  router.ts
+│           │   ├── [drwxr-xr-x thaleslaray staff    May 20 18:04]  sales
+│           │   │   ├── [-rw-r--r-- thaleslaray staff    May  7 21:59]  getComissoesVendas.operation.ts
+│           │   │   ├── [-rw-r--r-- thaleslaray staff    May  7 22:03]  getDetalhamentoPrecos.operation.ts
+│           │   │   ├── [-rw-r--r-- thaleslaray staff    May 11 10:49]  getHistoricoVendas.operation.ts
+│           │   │   ├── [-rw-r--r-- thaleslaray staff    May  7 21:50]  getParticipantesVendas.operation.ts
+│           │   │   ├── [-rw-r--r-- thaleslaray staff    May  7 21:43]  getResumoVendas.operation.ts
+│           │   │   ├── [-rw-r--r-- thaleslaray staff    May  5 19:28]  Sales.resource.ts
+│           │   │   └── [-rw-r--r-- thaleslaray staff    May  7 22:23]  solicitarReembolso.operation.ts
+│           │   ├── [-rw-r--r-- thaleslaray staff    May  7 21:29]  sales.options.txt
+│           │   ├── [drwxr-xr-x thaleslaray staff    May 20 17:23]  subscription
+│           │   │   ├── [-rw-r--r-- thaleslaray staff    May  4 22:32]  cancel.operation.ts
+│           │   │   ├── [-rw-r--r-- thaleslaray staff    May  4 22:33]  cancelList.operation.ts
+│           │   │   ├── [-rw-r--r-- thaleslaray staff    May  7 20:39]  changeBillingDate.operation.ts
+│           │   │   ├── [-rw-r--r-- thaleslaray staff    May  7 11:12]  constants.ts
+│           │   │   ├── [-rw-r--r-- thaleslaray staff    May 11 10:49]  getAll.operation.ts
+│           │   │   ├── [-rw-r--r-- thaleslaray staff    May  4 22:34]  getPurchases.operation.ts
+│           │   │   ├── [-rw-r--r-- thaleslaray staff    May  6 23:28]  getSummary.operation.ts
+│           │   │   ├── [-rw-r--r-- thaleslaray staff    May  8 20:29]  getTransactions.operation.ts
+│           │   │   ├── [-rw-r--r-- thaleslaray staff    May  4 22:34]  reactivate.operation.ts
+│           │   │   ├── [-rw-r--r-- thaleslaray staff    May  4 22:53]  reactivateList.operation.ts
+│           │   │   └── [-rw-r--r-- thaleslaray staff    May  6 14:25]  Subscription.resource.ts
+│           │   ├── [drwxr-xr-x thaleslaray staff    May 20 17:23]  tickets
+│           │   │   ├── [-rw-r--r-- thaleslaray staff    May  8 10:24]  getAll.operation.ts
+│           │   │   ├── [-rw-r--r-- thaleslaray staff    May  8 10:24]  getInfo.operation.ts
+│           │   │   └── [-rw-r--r-- thaleslaray staff    May  4 23:53]  Tickets.resource.ts
+│           │   └── [-rw-r--r-- thaleslaray staff    May 13 14:04]  versionDescription.ts
+│           ├── [drwxr-xr-x thaleslaray staff    May 13 23:10]  config
+│           ├── [drwxr-xr-x thaleslaray staff    May 13 23:10]  errors
+│           ├── [drwxr-xr-x thaleslaray staff    May 20 18:03]  helpers
+│           │   ├── [-rw-r--r-- thaleslaray staff    May  6 23:18]  dateUtils.ts
+│           │   ├── [-rw-r--r-- thaleslaray staff    May 11 10:48]  outputFormatter.ts
+│           │   └── [-rw-r--r-- thaleslaray staff    May  8 19:41]  pagination.ts
+│           ├── [-rw-r--r-- thaleslaray staff    May 19 20:51]  HotmartV1.node.ts
+│           ├── [drwxr-xr-x thaleslaray staff    May  5 15:08]  icons
+│           │   └── [-rw------- thaleslaray staff    May 11 19:13]  hotmart.svg
+│           ├── [drwxr-xr-x thaleslaray staff    May 13 23:10]  logging
+│           ├── [drwxr-xr-x thaleslaray staff    May 20 17:23]  methods
+│           │   └── [-rw-r--r-- thaleslaray staff    May 19 20:50]  loadOptions.ts
+│           ├── [drwxr-xr-x thaleslaray staff    May 20 17:23]  transport
+│           │   └── [-rw-r--r-- thaleslaray staff    May 12 15:10]  request.ts
+│           └── [drwxr-xr-x thaleslaray staff    May 13 23:10]  types
+├── [-rw-r--r-- thaleslaray staff    May 20 23:01]  package.json
+├── [drwxr-xr-x thaleslaray staff    May 13 22:17]  plans
+│   ├── [-rw-rw-r-- thaleslaray staff    May 13 19:00]  analise-ux-triggers.md
+│   ├── [-rw-rw-r-- thaleslaray staff    May 13 19:00]  BOAS_PRATICAS_NODES_N8N.md
+│   ├── [-rw-rw-r-- thaleslaray staff    May 13 19:00]  debug-hotmart-logs.md
+│   ├── [-rw-rw-r-- thaleslaray staff    May 13 19:00]  diagnostico-custom-api-call.md
+│   ├── [-rw-rw-r-- thaleslaray staff    May 13 19:00]  documentacao-filtros-hotmart.md
+│   ├── [-rw-rw-r-- thaleslaray staff    May 13 19:00]  EXEMPLO_IMPLEMENTACAO.md
+│   ├── [-rw-rw-r-- thaleslaray staff    May 13 19:00]  EXEMPLO-IMPLEMENTACAO-ASSINATURAS.md
+│   ├── [-rw-rw-r-- thaleslaray staff    May 13 19:00]  guia-padronizacao-status.md
+│   ├── [-rw-rw-r-- thaleslaray staff    May 13 19:00]  HOTMART-PAGINATION.md
+│   ├── [-rw-rw-r-- thaleslaray staff    May 13 19:00]  pix-boleto.md
+│   ├── [-rw-rw-r-- thaleslaray staff    May 13 19:00]  PLANO_IMPLEMENTACAO.md
+│   ├── [-rw-rw-r-- thaleslaray staff    May 13 19:00]  plano_relatorio_filtros_hotmart.md
+│   ├── [-rw-rw-r-- thaleslaray staff    May 13 19:00]  plano-atualizacao-status-assinaturas.md
+│   ├── [-rw-rw-r-- thaleslaray staff    May 13 19:00]  plano-implementacao-filtros-transacoes.md
+│   ├── [-rw-rw-r-- thaleslaray staff    May 13 19:00]  plano-implementacao-remocao-custom-api.md
+│   ├── [-rw-rw-r-- thaleslaray staff    May 13 19:00]  PLANO-INTEGRACAO-HOTMART-N8N.md
+│   ├── [-rw-rw-r-- thaleslaray staff    May 13 19:00]  plano-remocao-custom-api-call.md
+│   ├── [-rw-rw-r-- thaleslaray staff    May 13 19:00]  plano-reorganizacao-operacoes.md
+│   ├── [-rw-rw-r-- thaleslaray staff    May 13 19:00]  Relatório de Melhorias de UX para Nós Hotmart .md
+│   ├── [-rw-rw-r-- thaleslaray staff    May 13 19:00]  relatorio_filtros_hotmart.md
+│   ├── [-rw-rw-r-- thaleslaray staff    May 13 19:00]  RELATORIO_MELHORIAS.md
+│   ├── [-rw-rw-r-- thaleslaray staff    May 13 19:00]  relatorio-implementacao-deteccao-assinaturas.md
+│   └── [-rw-rw-r-- thaleslaray staff    May 13 19:00]  relatorio.md
+├── [-rw-r--r-- thaleslaray staff    May 20 21:25]  pnpm-lock.yaml
+├── [-rw-rw-r-- thaleslaray staff    May 20 23:01]  README.md
+├── [drwxr-xr-x thaleslaray staff    May 20 18:04]  scripts
+│   ├── [-rwxr-xr-x thaleslaray staff    May  7 19:15]  capturar-logs.sh
+│   ├── [-rwxr-xr-x thaleslaray staff    May  4 21:24]  dev-link.sh
+│   ├── [-rwxr-xr-x thaleslaray staff    May 13 18:13]  enviar-webhook-assinatura.sh
+│   ├── [-rwxr-xr-x thaleslaray staff    May 13 18:13]  enviar-webhook-pix.sh
+│   ├── [-rwxr-xr-x thaleslaray staff    May 13 18:13]  enviar-webhook.sh
+│   ├── [-rw-r--r-- thaleslaray staff    May  7 19:35]  obter_token.py
+│   ├── [-rwxr-xr-x thaleslaray staff    May 12 11:53]  simple-install-improved.sh
+│   ├── [-rwxr-xr-x thaleslaray staff    May 12 11:57]  simple-test.sh
+│   ├── [-rw-r--r-- thaleslaray staff    May  7 19:37]  testar_filtros_assinaturas.py
+│   └── [-rw-r--r-- thaleslaray staff    May  7 19:36]  testar_obter_assinaturas.py
+├── [-rw-r--r-- thaleslaray staff    May 20 23:42]  tree.txt
+└── [-rw-r--r-- thaleslaray staff    May 20 16:57]  tsconfig.json
+
+54 directories, 310 files

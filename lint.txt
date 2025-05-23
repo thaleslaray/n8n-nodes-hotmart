@@ -1,0 +1,4 @@
+
+> n8n-nodes-hotmart@0.4.7 lint /Users/thaleslaray/code/projetos/n8n-hotmart
+> eslint nodes credentials --ext .ts,.js
+

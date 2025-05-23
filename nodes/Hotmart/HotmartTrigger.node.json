@@ -1,19 +1,19 @@
 {
-	"node": "n8n-nodes-hotmart.hotmartTrigger",
-	"nodeVersion": "1.0",
-	"codexVersion": "1.0",
-	"categories": ["Marketing", "Sales"],
-	"icon": "hotmart.svg",
-	"resources": {
-		"credentialDocumentation": [
-			{
-				"url": "https://developers.hotmart.com/docs/pt-BR/start/app-auth"
-			}
-		],
-		"primaryDocumentation": [
-			{
-				"url": "https://developers.hotmart.com/docs/pt-BR/webhooks/webhooks"
-			}
-		]
-	}
+  "node": "n8n-nodes-hotmart.hotmartTrigger",
+  "nodeVersion": "1.0",
+  "codexVersion": "1.0",
+  "categories": ["Marketing", "Sales"],
+  "icon": "hotmart.svg",
+  "resources": {
+    "credentialDocumentation": [
+      {
+        "url": "https://developers.hotmart.com/docs/pt-BR/start/app-auth"
+      }
+    ],
+    "primaryDocumentation": [
+      {
+        "url": "https://developers.hotmart.com/docs/pt-BR/webhooks/webhooks"
+      }
+    ]
+  }
 }

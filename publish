@@ -1,0 +1,5 @@
+#!/bin/bash
+# Script de conveniência para publicação NPM
+# Executa o script completo de publicação
+
+exec "$(dirname "$0")/scripts/publish.sh" "$@"

@@ -1,0 +1,53 @@
+name: Code Quality
+
+on:
+  pull_request:
+    branches: [ master, develop ]
+
+jobs:
+  quality:
+    name: Code Quality Checks
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout código
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18.x'
+
+    - name: Install pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        version: 10.10.0
+
+    - name: Install dependencies
+      run: pnpm install --frozen-lockfile
+
+    - name: Check code formatting
+      run: |
+        pnpm format:check || (echo "❌ Code formatting issues found. Run 'pnpm format' to fix." && exit 1)
+
+    - name: Run ESLint
+      run: pnpm lint
+
+    - name: Check for TypeScript errors
+      run: pnpm typecheck
+
+    - name: Check bundle size
+      run: |
+        pnpm pack
+        SIZE=$(stat -f%z n8n-nodes-hotmart-*.tgz 2>/dev/null || stat -c%s n8n-nodes-hotmart-*.tgz)
+        echo "📦 Package size: $((SIZE / 1024)) KB"
+        if [ $SIZE -gt 5242880 ]; then
+          echo "❌ Package too large (>5MB)"
+          exit 1
+        fi
+
+    - name: Security audit
+      run: pnpm audit --production
+      continue-on-error: true

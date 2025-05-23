@@ -1,0 +1,4 @@
+#!/bin/bash
+# Conveniência: inicia n8n sem warnings
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+exec "$SCRIPT_DIR/scripts/start-n8n.sh" "$@"

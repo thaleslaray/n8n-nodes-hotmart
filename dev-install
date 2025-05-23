@@ -1,0 +1,3 @@
+#!/bin/bash
+# Conveniência: chama o script de desenvolvimento
+exec "$(dirname "${BASH_SOURCE[0]}")/scripts/dev-install.sh" "$@"

@@ -1,0 +1,17 @@
+{
+  "entryPoints": ["./nodes"],
+  "entryPointStrategy": "expand",
+  "out": "./docs/api",
+  "exclude": ["**/*.test.ts", "**/node_modules/**"],
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "includeVersion": true,
+  "name": "n8n-nodes-hotmart API Documentation",
+  "readme": "./README.md",
+  "theme": "default",
+  "hideGenerator": true,
+  "navigationLinks": {
+    "GitHub": "https://github.com/thaleslaray/n8n-nodes-hotmart",
+    "NPM": "https://www.npmjs.com/package/n8n-nodes-hotmart"
+  }
+}

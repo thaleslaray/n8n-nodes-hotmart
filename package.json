@@ -1,41 +1,27 @@
 {
-  "name": "n8n-nodes-hotmart-thaleslaray",
-  "version": "0.1.1",
-  "description": "n8n nodes to interact with Hotmart API, including webhooks",
+  "name": "n8n-nodes-hotmart",
+  "version": "0.5.2",
+  "description": "Nós personalizados para integrar a API Hotmart com o n8n, permitindo automação completa de operações na plataforma líder de produtos digitais da América Latina",
   "keywords": [
     "n8n-community-node-package",
     "hotmart",
-    "webhooks",
-    "n8n"
+    "cursos",
+    "assinaturas",
+    "vendas",
+    "infoprodutos",
+    "produtos-digitais"
   ],
   "license": "MIT",
   "homepage": "https://github.com/thaleslaray/n8n-nodes-hotmart",
   "author": {
     "name": "Thales Laray",
-    "email": "thales.laray@gmail.com"
+    "email": "thales@laray.com.br",
+    "url": "https://instagram.com/thaleslaray"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/thaleslaray/n8n-nodes-hotmart.git"
+    "url": "git+https://github.com/thaleslaray/n8n-nodes-hotmart.git"
   },
-  "engines": {
-    "node": ">=18.10",
-    "pnpm": ">=9.1"
-  },
-  "packageManager": "pnpm@9.1.4",
-  "main": "index.js",
-  "scripts": {
-    "preinstall": "",
-    "build": "tsc && gulp build:icons",
-    "dev": "tsc --watch",
-    "format": "prettier nodes credentials --write",
-    "lint": "eslint nodes credentials package.json",
-    "lintfix": "eslint nodes credentials package.json --fix",
-    "prepublishOnly": "npm run build"
-  },
-  "files": [
-    "dist"
-  ],
   "n8n": {
     "n8nNodesApiVersion": 1,
     "credentials": [
@@ -43,19 +29,54 @@
     ],
     "nodes": [
       "dist/nodes/Hotmart/Hotmart.node.js",
-      "dist/nodes/Hotmart/HotmartTrigger.node.js",
-      "dist/nodes/Hotmart/HotmartSmartTrigger.node.js"
+      "dist/nodes/Hotmart/HotmartTrigger.node.js"
     ]
   },
-  "devDependencies": {
-    "@typescript-eslint/parser": "^7.15.0",
-    "eslint": "^8.56.0",
-    "eslint-plugin-n8n-nodes-base": "^1.16.1",
-    "gulp": "^4.0.2",
-    "prettier": "^3.3.2",
-    "typescript": "^5.5.3"
+  "files": [
+    "dist",
+    "package.json"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "clean": "gulp clean",
+    "build": "gulp clean && tsc && gulp build:icons && mkdir -p dist/credentials",
+    "lint": "eslint nodes credentials --ext .ts,.js",
+    "lint:fix": "eslint nodes credentials --ext .ts,.js --fix",
+    "format": "prettier --write nodes/ credentials/ *.json *.md",
+    "format:check": "prettier --check nodes/ credentials/ *.json *.md",
+    "typecheck": "tsc --noEmit",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:unit": "jest __tests__/unit",
+    "test:integration": "jest __tests__/integration",
+    "test:ci": "jest --ci --coverage --maxWorkers=2",
+    "docs": "typedoc",
+    "docs:watch": "typedoc --watch",
+    "prepublishOnly": "pnpm build && pnpm lint && pnpm typecheck"
   },
-  "peerDependencies": {
-    "n8n-workflow": "*"
-  }
+  "dependencies": {
+    "n8n-core": "^1.92.0",
+    "n8n-workflow": "^1.92.0"
+  },
+  "devDependencies": {
+    "@jest/globals": "^29.7.0",
+    "@types/express": "4.17.17",
+    "@types/jest": "^29.5.14",
+    "@types/node": "14.18.63",
+    "@types/request-promise-native": "1.0.18",
+    "@typescript-eslint/eslint-plugin": "^8.32.1",
+    "@typescript-eslint/parser": "^8.32.1",
+    "eslint": "^9.27.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-jsdoc": "^50.6.17",
+    "glob": "^11.0.2",
+    "gulp": "^5.0.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.5.3",
+    "ts-jest": "^29.3.4",
+    "typedoc": "^0.28.4",
+    "typescript": "^4.9.5"
+  },
+  "packageManager": "pnpm@10.10.0+sha512.d615db246fe70f25dcfea6d8d73dee782ce23e2245e3c4f6f888249fb568149318637dca73c2c5c8ef2a4ca0d5657fb9567188bfab47f566d1ee6ce987815c39"
 }

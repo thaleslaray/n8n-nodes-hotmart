@@ -1,4 +1,4 @@
-import { IExecuteFunctions, INodeExecutionData } from 'n8n-workflow';
+import { IExecuteFunctions, INodeExecutionData, IDataObject } from 'n8n-workflow';
 
 /**
  * Processa os resultados da API e retorna no formato esperado pelo n8n
@@ -10,21 +10,20 @@ import { IExecuteFunctions, INodeExecutionData } from 'n8n-workflow';
  * @param itemIndex - Índice do item atual na execução
  * @returns Array de objetos INodeExecutionData formatados para o n8n
  */
-export function formatOutput(
-	this: IExecuteFunctions,
-	items: any[], 
-	itemIndex: number
+export function formatOutput<T extends IDataObject = IDataObject>(
+  this: IExecuteFunctions,
+  items: T[],
+  itemIndex: number
 ): INodeExecutionData[] {
-	// Verificar se items é um array válido
-	if (!Array.isArray(items)) {
-		items = [];
-	}
+  // Verificar se items é um array válido
+  if (!Array.isArray(items)) {
+    items = [];
+  }
 
-	// Usar a função padrão do n8n para formatar a saída
-	// Esta abordagem simples e padronizada evita tentativas de personalização dinâmica
-	// que não são suportadas pela API do n8n
-	return this.helpers.constructExecutionMetaData(
-		this.helpers.returnJsonArray(items),
-		{ itemData: { item: itemIndex } },
-	);
+  // Usar a função padrão do n8n para formatar a saída
+  // Esta abordagem simples e padronizada evita tentativas de personalização dinâmica
+  // que não são suportadas pela API do n8n
+  return this.helpers.constructExecutionMetaData(this.helpers.returnJsonArray(items), {
+    itemData: { item: itemIndex },
+  });
 }

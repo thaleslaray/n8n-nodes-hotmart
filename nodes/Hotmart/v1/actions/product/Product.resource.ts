@@ -1,9 +1,7 @@
 import * as getAll from './getAll.operation';
 
 export const operations = {
-	getAll,
+  getAll,
 };
 
-export const description = [
-	...getAll.description,
-];
+export const description = [...getAll.description];

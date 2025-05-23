@@ -1,157 +1,178 @@
 import type { IExecuteFunctions, INodeExecutionData, INodeProperties } from 'n8n-workflow';
 import { hotmartApiRequest } from '../../transport/request';
+import { hotmartApiRequestTyped } from '../../transport/requestTyped';
 import { returnAllOption, limitOption, maxResultsOption } from '../common.descriptions';
+import type { CouponQueryParams, CouponItem, CouponListResponse } from '../../types';
 
 export const description: INodeProperties[] = [
-	{
-		...returnAllOption,
-		displayOptions: {
-			show: {
-				resource: ['coupon'],
-				operation: ['get'],
-			},
-		},
-	},
-	{
-		...limitOption,
-		displayOptions: {
-			show: {
-				resource: ['coupon'],
-				operation: ['get'],
-				returnAll: [false],
-			},
-		},
-	},
-	{
-		...maxResultsOption,
-		displayOptions: {
-			show: {
-				resource: ['coupon'],
-				operation: ['get'],
-			},
-		},
-	},
-	{
-		displayName: 'ID do Produto',
-		name: 'product_id',
-		type: 'options',
-		required: true,
-		default: '',
-		description: 'ID do produto vinculado ao cupom',
-		typeOptions: {
-			loadOptionsMethod: 'getProducts',
-		},
-		displayOptions: {
-			show: {
-				resource: ['coupon'],
-				operation: ['get'],
-			},
-		},
-	},
-	{
-		displayName: 'Filtros',
-		name: 'filters',
-		type: 'collection',
-		placeholder: 'Adicionar Filtro',
-		default: {},
-		displayOptions: {
-			show: {
-				resource: ['coupon'],
-				operation: ['get'],
-			},
-		},
-		options: [
-			{
-				displayName: 'Código do Cupom',
-				name: 'code',
-				type: 'string',
-				default: '',
-				description: 'Código do cupom',
-			},
-		],
-	},
+  {
+    ...returnAllOption,
+    displayOptions: {
+      show: {
+        resource: ['coupon'],
+        operation: ['get'],
+      },
+    },
+  },
+  {
+    ...limitOption,
+    displayOptions: {
+      show: {
+        resource: ['coupon'],
+        operation: ['get'],
+        returnAll: [false],
+      },
+    },
+  },
+  {
+    ...maxResultsOption,
+    displayOptions: {
+      show: {
+        resource: ['coupon'],
+        operation: ['get'],
+      },
+    },
+  },
+  {
+    displayName: 'ID do Produto',
+    name: 'product_id',
+    type: 'options',
+    required: true,
+    default: '',
+    description: 'Selecione o produto para listar todos os cupons vinculados a ele',
+    hint: 'Os cupons são organizados por produto. Selecione o produto para ver seus cupons ativos e inativos',
+    typeOptions: {
+      loadOptionsMethod: 'getProducts',
+    },
+    displayOptions: {
+      show: {
+        resource: ['coupon'],
+        operation: ['get'],
+      },
+    },
+  },
+  {
+    displayName: 'Filtros',
+    name: 'filters',
+    type: 'collection',
+    placeholder: 'Adicionar Filtro',
+    default: {},
+    description: 'Filtros opcionais para refinar a busca de cupons',
+    displayOptions: {
+      show: {
+        resource: ['coupon'],
+        operation: ['get'],
+      },
+    },
+    options: [
+      {
+        displayName: 'Código do Cupom',
+        name: 'code',
+        type: 'string',
+        default: '',
+        placeholder: 'Ex: PROMO2024, DESCONTO20',
+        description: 'Buscar cupom por código exato. Útil para verificar se um cupom específico existe',
+        hint: 'Digite o código exato do cupom. A busca é sensível a maiúsculas/minúsculas',
+      },
+    ],
+  },
 ];
 
 export const execute = async function (
-	this: IExecuteFunctions,
-	items: INodeExecutionData[],
+  this: IExecuteFunctions,
+  items: INodeExecutionData[]
 ): Promise<INodeExecutionData[][]> {
-	const returnData: INodeExecutionData[] = [];
+  const returnData: INodeExecutionData[] = [];
 
-	for (let i = 0; i < items.length; i++) {
-		try {
-			const returnAll = this.getNodeParameter('returnAll', i, false) as boolean;
-			const maxResults = this.getNodeParameter('maxResults', i, 50) as number;
-			const productId = this.getNodeParameter('product_id', i) as string;
-			const filters = this.getNodeParameter('filters', i, {}) as {
-				code?: string;
-			};
+  // Se não houver itens de entrada (comum quando usado via AI/MCP), cria um item vazio
+  const itemsToProcess = items.length === 0 ? [{ json: {} }] : items;
 
-			const qs: Record<string, any> = {};
-			if (filters.code) qs.code = filters.code;
+  for (let i = 0; i < itemsToProcess.length; i++) {
+    try {
+      const returnAll = this.getNodeParameter('returnAll', i, false) as boolean;
+      const maxResults = this.getNodeParameter('maxResults', i, 50) as number;
+      const productId = this.getNodeParameter('product_id', i) as string;
+      const filters = this.getNodeParameter('filters', i, {}) as {
+        code?: string;
+      };
 
-			let responseData;
+      const qs: CouponQueryParams = {};
+      if (filters.code) qs.code = filters.code;
 
-			if (returnAll) {
-				// Implementação manual da paginação para a API de cupons
-				const allItems: any[] = [];
-				let nextPageToken: string | undefined = undefined;
-				const rateLimitDelay = 100; // ms
+      let responseData;
 
-				do {
-					const currentQs: Record<string, any> = {
-						...qs,
-						max_results: maxResults,
-						...(nextPageToken && { page_token: nextPageToken }),
-					};
+      if (returnAll) {
+        // Implementação manual da paginação para a API de cupons
+        const allItems: CouponItem[] = [];
+        let nextPageToken: string | undefined = undefined;
+        const rateLimitDelay = 100; // ms
 
-					const pageResponse: any = await hotmartApiRequest.call(
-						this,
-						'GET',
-						`/products/api/v1/coupon/product/${productId}`,
-						{},
-						currentQs,
-					);
+        do {
+          const currentQs: CouponQueryParams = {
+            ...qs,
+            max_results: maxResults,
+            ...(nextPageToken && { page_token: nextPageToken }),
+          };
 
-					if (pageResponse.items && Array.isArray(pageResponse.items)) {
-						allItems.push(...pageResponse.items);
-					}
+          const pageResponse = await hotmartApiRequestTyped<CouponListResponse>(
+            this,
+            'GET',
+            `/products/api/v1/coupon/product/${productId}`,
+            {},
+            currentQs
+          );
 
-					nextPageToken = pageResponse.page_info?.next_page_token;
+          if (pageResponse.items && Array.isArray(pageResponse.items)) {
+            allItems.push(...pageResponse.items);
+          }
 
-					if (nextPageToken) {
-						await new Promise(resolve => setTimeout(resolve, rateLimitDelay));
-					}
+          nextPageToken = pageResponse.page_info?.next_page_token;
 
-				} while (nextPageToken);
+          if (nextPageToken) {
+            await new Promise((resolve) => setTimeout(resolve, rateLimitDelay));
+          }
+        } while (nextPageToken);
 
-				responseData = { items: allItems };
-			} else {
-				const limit = this.getNodeParameter('limit', i, 50) as number;
-				qs.max_results = limit;
-				responseData = await hotmartApiRequest.call(
-					this,
-					'GET',
-					`/products/api/v1/coupon/product/${productId}`,
-					{},
-					qs,
-				);
-			}
+        responseData = { items: allItems };
+      } else {
+        const limit = this.getNodeParameter('limit', i, 50) as number;
+        qs.max_results = limit;
+        responseData = await hotmartApiRequest.call(
+          this,
+          'GET',
+          `/products/api/v1/coupon/product/${productId}`,
+          {},
+          qs
+        );
+      }
 
-			const executionData = this.helpers.constructExecutionMetaData(
-				this.helpers.returnJsonArray(responseData.items || []),
-				{ itemData: { item: i } },
-			);
+      // Adicionar informações visuais amigáveis para cada cupom
+      const responseWithItems = responseData as { items?: CouponItem[] };
+      if (responseWithItems && responseWithItems.items && Array.isArray(responseWithItems.items)) {
+        responseWithItems.items.forEach((item: CouponItem) => {
+          if (item.discount) {
+            item.discount_percentage = `${(item.discount * 100).toFixed(0)}%`;
+          }
+          if (item.coupon_code && item.discount) {
+            item.coupon_info = `${item.coupon_code} - ${(item.discount * 100).toFixed(0)}% (${item.status || 'unknown'})`;
+          }
+        });
+      }
 
-			returnData.push(...executionData);
-		} catch (error) {
-			if (this.continueOnFail()) {
-				returnData.push({ json: { error: (error as Error).message }, pairedItem: { item: i } });
-				continue;
-			}
-			throw error;
-		}
-	}
+      const executionData = this.helpers.constructExecutionMetaData(
+        this.helpers.returnJsonArray(responseWithItems.items || []),
+        { itemData: { item: i } }
+      );
 
-	return [returnData];
+      returnData.push(...executionData);
+    } catch (error) {
+      if (this.continueOnFail()) {
+        returnData.push({ json: { error: (error as Error).message }, pairedItem: { item: i } });
+        continue;
+      }
+      throw error;
+    }
+  }
+
+  return [returnData];
 };

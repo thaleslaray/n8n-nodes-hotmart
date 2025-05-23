@@ -1,294 +1,346 @@
 import type { IExecuteFunctions, INodeExecutionData, INodeProperties } from 'n8n-workflow';
-import { hotmartApiRequest } from '../../transport/request';
-import { 
-	returnAllOption, 
-	limitOption, 
-	maxResultsOption, 
-	transactionStatusOptions, 
-	paymentTypeOptions, 
-	commissionAsOptions 
+import { hotmartApiRequestTyped } from '../../transport/requestTyped';
+import type { SalesQueryParams, SalesHistoryItem } from '../../types';
+import {
+  returnAllOption,
+  limitOption,
+  maxResultsOption,
+  transactionStatusOptions,
+  paymentTypeOptions,
+  commissionAsOptions,
 } from '../common.descriptions';
 import { convertToTimestamp } from '../../helpers/dateUtils';
 import { formatOutput } from '../../helpers/outputFormatter';
 
+type SalesHistoryResponse = { items: SalesHistoryItem[]; page_info?: { next_page_token?: string } };
+
 export const description: INodeProperties[] = [
-	{
-		...returnAllOption,
-		displayOptions: {
-			show: {
-				resource: ['sales'],
-				operation: ['getHistoricoVendas'],
-			},
-		},
-	},
-	{
-		...limitOption,
-		displayOptions: {
-			show: {
-				resource: ['sales'],
-				operation: ['getHistoricoVendas'],
-				returnAll: [false],
-			},
-		},
-	},
-	{
-		...maxResultsOption,
-		displayOptions: {
-			show: {
-				resource: ['sales'],
-				operation: ['getHistoricoVendas'],
-				returnAll: [false],
-			},
-		},
-	},
-	{
-		displayName: 'Filtros',
-		name: 'filters',
-		type: 'collection',
-		placeholder: 'Adicionar Filtro',
-		default: {},
-		displayOptions: {
-			show: {
-				resource: ['sales'],
-				operation: ['getHistoricoVendas'],
-			},
-		},
-		options: [
-			// 1. ID do Produto
-			{
-				displayName: 'ID do Produto',
-				name: 'productId',
-				type: 'options',
-				default: '',
-				description: 'Filtrar por ID do produto',
-				typeOptions: {
-					loadOptionsMethod: 'getProducts',
-				},
-			},
-			// 2. Data Inicial
-			{
-				displayName: 'Data Inicial',
-				name: 'startDate',
-				type: 'dateTime',
-				default: '',
-				description: 'Filtrar por data inicial',
-			},
-			// 3. Data Final
-			{
-				displayName: 'Data Final',
-				name: 'endDate',
-				type: 'dateTime',
-				default: '',
-				description: 'Filtrar por data final',
-			},
-			// 4. Origem da Venda (SRC)
-			{
-				displayName: 'Origem da Venda (SRC)',
-				name: 'salesSource',
-				type: 'string',
-				default: '',
-				description: 'Filtrar pelo código SRC da origem da venda (src=nomedacampanha)',
-			},
-			// 5. Código da Transação
-			{
-				displayName: 'Código da Transação',
-				name: 'transaction',
-				type: 'string',
-				default: '',
-				description: 'Filtrar por código da transação',
-			},
-			// 6. Nome do Comprador
-			{
-				displayName: 'Nome do Comprador',
-				name: 'buyerName',
-				type: 'string',
-				default: '',
-				description: 'Filtrar por nome do comprador',
-			},
-			// 7. E-mail do Comprador (corrigido)
-			{
-				displayName: 'E-mail do Comprador',
-				name: 'buyerEmail',
-				type: 'string',
-				default: '',
-				description: 'Filtrar por e-mail do comprador',
-			},
-			// 8. Status da Transação
-			{
-				displayName: 'Status da Transação',
-				name: 'transactionStatus',
-				type: 'options',
-				options: transactionStatusOptions,
-				default: '',
-				description: 'Filtrar por status da transação',
-			},
-			// 9. Tipo de Pagamento
-			{
-				displayName: 'Tipo de Pagamento',
-				name: 'paymentType',
-				type: 'options',
-				options: paymentTypeOptions,
-				default: '',
-				description: 'Filtrar pelo tipo de pagamento',
-			},
-			// 10. Código da Oferta
-			{
-				displayName: 'Código da Oferta',
-				name: 'offerCode',
-				type: 'string',
-				default: '',
-				description: 'Filtrar pelo código da oferta',
-			},
-			// 11. Comissionado como
-			{
-				displayName: 'Comissionado como',
-				name: 'commissionAs',
-				type: 'options',
-				options: commissionAsOptions,
-				default: '',
-				description: 'Filtrar por tipo de comissionamento',
-			},
-		],
-	},
+  {
+    ...returnAllOption,
+    displayOptions: {
+      show: {
+        resource: ['sales'],
+        operation: ['getHistoricoVendas'],
+      },
+    },
+    default: false,
+    description: 'Se ativado, retorna todas as vendas. Se desativado, retorna até o limite especificado',
+    hint: 'Use com cuidado - históricos grandes podem demorar para processar',
+  },
+  {
+    ...limitOption,
+    displayOptions: {
+      show: {
+        resource: ['sales'],
+        operation: ['getHistoricoVendas'],
+        returnAll: [false],
+      },
+    },
+    default: 50,
+    description: 'Número máximo de vendas a retornar por página',
+    hint: 'Máximo permitido pela API: 500 resultados por página',
+    typeOptions: {
+      minValue: 1,
+      maxValue: 500,
+    },
+  },
+  {
+    ...maxResultsOption,
+    displayOptions: {
+      show: {
+        resource: ['sales'],
+        operation: ['getHistoricoVendas'],
+        returnAll: [false],
+      },
+    },
+    default: 100,
+    description: 'Número total máximo de vendas a retornar',
+    hint: 'Para mais resultados, ative "Retornar Todos"',
+    typeOptions: {
+      minValue: 1,
+    },
+  },
+  {
+    displayName: 'Filtros',
+    name: 'filters',
+    type: 'collection',
+    placeholder: 'Adicionar Filtro',
+    default: {},
+    description: 'Configure filtros para refinar sua busca de vendas',
+    hint: 'Combine múltiplos filtros para resultados mais precisos',
+    displayOptions: {
+      show: {
+        resource: ['sales'],
+        operation: ['getHistoricoVendas'],
+      },
+    },
+    options: [
+      // 1. ID do Produto
+      {
+        displayName: 'ID do Produto',
+        name: 'productId',
+        type: 'options',
+        default: '',
+        description: 'Filtrar vendas por produto específico. Exemplo: prod_1234567890',
+        hint: 'Selecione um produto da lista ou digite o ID manualmente',
+        typeOptions: {
+          loadOptionsMethod: 'getProducts',
+        },
+      },
+      // 2. Data Inicial
+      {
+        displayName: 'Data Inicial',
+        name: 'startDate',
+        type: 'dateTime',
+        default: '',
+        description: 'Data inicial do período de vendas (formato: YYYY-MM-DD)',
+        hint: 'Deixe vazio para buscar desde o início',
+        placeholder: '2024-01-01',
+      },
+      // 3. Data Final
+      {
+        displayName: 'Data Final',
+        name: 'endDate',
+        type: 'dateTime',
+        default: '',
+        description: 'Data final do período de vendas (formato: YYYY-MM-DD)',
+        hint: 'Deixe vazio para buscar até hoje',
+        placeholder: '2024-12-31',
+      },
+      // 4. Origem da Venda (SRC)
+      {
+        displayName: 'Origem da Venda (SRC)',
+        name: 'salesSource',
+        type: 'string',
+        default: '',
+        description: 'Código de rastreamento da origem da venda (parâmetro src). Exemplo: facebook_ads',
+        hint: 'Use para rastrear vendas de campanhas específicas',
+        placeholder: 'nome_da_campanha',
+      },
+      // 5. Código da Transação
+      {
+        displayName: 'Código da Transação',
+        name: 'transaction',
+        type: 'string',
+        default: '',
+        description: 'Código único da transação na Hotmart. Exemplo: HP12345678901234',
+        hint: 'Útil para buscar uma venda específica',
+        placeholder: 'HP12345678901234',
+      },
+      // 6. Nome do Comprador
+      {
+        displayName: 'Nome do Comprador',
+        name: 'buyerName',
+        type: 'string',
+        default: '',
+        description: 'Nome completo ou parcial do comprador',
+        hint: 'A busca é case-insensitive',
+        placeholder: 'João Silva',
+      },
+      // 7. E-mail do Comprador (corrigido)
+      {
+        displayName: 'E-mail do Comprador',
+        name: 'buyerEmail',
+        type: 'string',
+        default: '',
+        description: 'E-mail completo do comprador',
+        hint: 'Digite o e-mail exato para resultados precisos',
+        placeholder: 'cliente@exemplo.com',
+        typeOptions: {
+          validation: {
+            email: true,
+          },
+        },
+      },
+      // 8. Status da Transação
+      {
+        displayName: 'Status da Transação',
+        name: 'transactionStatus',
+        type: 'options',
+        options: transactionStatusOptions,
+        default: '',
+        description: 'Status atual da venda na plataforma',
+        hint: 'APPROVED = Aprovada, COMPLETE = Completa, CANCELED = Cancelada',
+      },
+      // 9. Tipo de Pagamento
+      {
+        displayName: 'Tipo de Pagamento',
+        name: 'paymentType',
+        type: 'options',
+        options: paymentTypeOptions,
+        default: '',
+        description: 'Método de pagamento usado na compra',
+        hint: 'CREDIT_CARD = Cartão, BILLET = Boleto, PIX = Pix',
+      },
+      // 10. Código da Oferta
+      {
+        displayName: 'Código da Oferta',
+        name: 'offerCode',
+        type: 'string',
+        default: '',
+        description: 'Código da oferta/funil específico. Exemplo: offer_abc123',
+        hint: 'Encontre no painel Hotmart > Produto > Ofertas',
+        placeholder: 'offer_abc123',
+      },
+      // 11. Comissionado como
+      {
+        displayName: 'Comissionado como',
+        name: 'commissionAs',
+        type: 'options',
+        options: commissionAsOptions,
+        default: '',
+        description: 'Seu papel na venda (produtor, afiliado, co-produtor)',
+        hint: 'Filtra vendas onde você participou com esse papel',
+      },
+    ],
+  },
 ];
 
 export const execute = async function (
-	this: IExecuteFunctions,
-	items: INodeExecutionData[],
+  this: IExecuteFunctions,
+  items: INodeExecutionData[]
 ): Promise<INodeExecutionData[][]> {
-	const allReturnData: INodeExecutionData[] = [];
+  const allReturnData: INodeExecutionData[] = [];
 
-	for (let i = 0; i < items.length; i++) {
-		try {
-			const returnAll = this.getNodeParameter('returnAll', i, false) as boolean;
-			const filters = this.getNodeParameter('filters', i, {}) as {
-				productId?: string;
-				transactionStatus?: string;
-				startDate?: string;
-				endDate?: string;
-				buyerEmail?: string;
-				buyerName?: string;
-				transaction?: string;
-				salesSource?: string;
-				paymentType?: string;
-				offerCode?: string;
-				commissionAs?: string;
-			};
+  // Se não houver itens de entrada (comum quando usado via AI/MCP), cria um item vazio
+  const itemsToProcess = items.length === 0 ? [{ json: {} }] : items;
 
-			const queryParams: Record<string, any> = {};
+  for (let i = 0; i < itemsToProcess.length; i++) {
+    try {
+      const returnAll = this.getNodeParameter('returnAll', i, false) as boolean;
+      const filters = this.getNodeParameter('filters', i, {}) as {
+        productId?: string;
+        transactionStatus?: string;
+        startDate?: string;
+        endDate?: string;
+        buyerEmail?: string;
+        buyerName?: string;
+        transaction?: string;
+        salesSource?: string;
+        paymentType?: string;
+        offerCode?: string;
+        commissionAs?: string;
+      };
 
-			if (filters.productId) {
-				queryParams.product_id = filters.productId;
-			}
-			if (filters.transactionStatus) {
-				queryParams.transaction_status = filters.transactionStatus;
-			}
-			if (filters.startDate) {
-				queryParams.start_date = convertToTimestamp(filters.startDate);
-			}
-			if (filters.endDate) {
-				queryParams.end_date = convertToTimestamp(filters.endDate);
-			}
-			if (filters.buyerEmail) {
-				queryParams.buyer_email = filters.buyerEmail;
-			}
-			if (filters.buyerName) {
-				queryParams.buyer_name = filters.buyerName;
-			}
-			if (filters.transaction) {
-				queryParams.transaction = filters.transaction;
-			}
-			if (filters.salesSource) {
-				queryParams.sales_source = filters.salesSource;
-			}
-			if (filters.paymentType) {
-				queryParams.payment_type = filters.paymentType;
-			}
-			if (filters.offerCode) {
-				queryParams.offer_code = filters.offerCode;
-			}
-			if (filters.commissionAs) {
-				queryParams.commission_as = filters.commissionAs;
-			}
+      const queryParams: SalesQueryParams = {};
 
-			if (returnAll) {
-				// SOLUÇÃO DIRETA: Implementação manual de paginação
-				// Inicializar com valor máximo permitido pela API (500)
-				queryParams.max_results = 500;
-				
-				// Resultados acumulados
-				const allItems: any[] = [];
-				let hasMorePages = true;
-				
-				// Loop manual de paginação
-				while (hasMorePages) {
-					// Log para depuração
-					console.log('\n[Paginação manual] Requisição com parâmetros:', JSON.stringify(queryParams, null, 2));
-					
-					// Fazer requisição
-					const response = await hotmartApiRequest.call(
-						this,
-						'GET',
-						'/payments/api/v1/sales/history',
-						{},
-						queryParams
-					);
-					
-					// Adicionar itens da página atual
-					if (response && response.items && Array.isArray(response.items)) {
-						console.log(`\n[Paginação manual] Recebidos ${response.items.length} itens`);
-						allItems.push(...response.items);
-					}
-					
-					// Verificar se há mais páginas
-					if (response && response.page_info && response.page_info.next_page_token) {
-						// Tem próxima página, atualizar token
-						queryParams.page_token = response.page_info.next_page_token;
-						console.log(`\n[Paginação manual] Próxima página disponível: ${queryParams.page_token}`);
-						
-						// Pequeno delay para evitar problemas de rate limit
-						await new Promise(resolve => setTimeout(resolve, 100));
-					} else {
-						// Não tem mais páginas
-						hasMorePages = false;
-						console.log('\n[Paginação manual] Fim da paginação');
-					}
-				}
-				
-				console.log(`\n[Paginação manual] Total de itens: ${allItems.length}`);
-				
-				// Usar formatação de saída padronizada
-				const executionData = formatOutput.call(this, allItems, i);
-				
-				allReturnData.push(...executionData);
-			} else {
-				const limit = this.getNodeParameter('limit', i, 50) as number;
-				queryParams.max_results = limit;
-				
-				const response = await hotmartApiRequest.call(
-					this,
-					'GET',
-					'/payments/api/v1/sales/history',
-					{},
-					queryParams,
-				);
-				
-				// Processar resultados para o caso onde returnAll=false
-				const items = response.items || [];
-				
-				// Usar formatação de saída padronizada
-				const executionData = formatOutput.call(this, items, i);
-				
-				allReturnData.push(...executionData);
-			}
-		} catch (error) {
-			if (this.continueOnFail()) {
-				allReturnData.push({ json: { error: (error as Error).message }, pairedItem: { item: i } });
-				continue;
-			}
-			throw error;
-		}
-	}
+      if (filters.productId) {
+        queryParams.product_id = filters.productId;
+      }
+      if (filters.transactionStatus) {
+        queryParams.transaction_status = filters.transactionStatus;
+      }
+      if (filters.startDate) {
+        queryParams.start_date = convertToTimestamp(filters.startDate);
+      }
+      if (filters.endDate) {
+        queryParams.end_date = convertToTimestamp(filters.endDate);
+      }
+      if (filters.buyerEmail) {
+        queryParams.buyer_email = filters.buyerEmail;
+      }
+      if (filters.buyerName) {
+        queryParams.buyer_name = filters.buyerName;
+      }
+      if (filters.transaction) {
+        queryParams.transaction = filters.transaction;
+      }
+      if (filters.salesSource) {
+        queryParams.sales_source = filters.salesSource;
+      }
+      if (filters.paymentType) {
+        queryParams.payment_type = filters.paymentType;
+      }
+      if (filters.offerCode) {
+        queryParams.offer_code = filters.offerCode;
+      }
+      if (filters.commissionAs) {
+        queryParams.commission_as = filters.commissionAs;
+      }
 
-	return [allReturnData];
+      if (returnAll) {
+        // SOLUÇÃO DIRETA: Implementação manual de paginação
+        // Inicializar com valor máximo permitido pela API (500)
+        queryParams.max_results = 500;
+
+        // Resultados acumulados
+        const allItems: SalesHistoryItem[] = [];
+        let hasMorePages = true;
+
+        // Loop manual de paginação
+        while (hasMorePages) {
+          // Log para depuração
+          this.logger.debug(
+            '\n[Paginação manual] Requisição com parâmetros:',
+            queryParams
+          );
+
+          // Fazer requisição
+          const response = await hotmartApiRequestTyped<SalesHistoryResponse>(
+            this,
+            'GET',
+            '/payments/api/v1/sales/history',
+            {},
+            queryParams
+          );
+
+          // Adicionar itens da página atual
+          if (response && response.items && Array.isArray(response.items)) {
+            this.logger.debug(`\n[Paginação manual] Recebidos ${response.items.length} itens`);
+            allItems.push(...response.items);
+          }
+
+          // Verificar se há mais páginas
+          if (response && response.page_info && response.page_info.next_page_token) {
+            // Tem próxima página, atualizar token
+            queryParams.page_token = response.page_info.next_page_token;
+            this.logger.debug(
+              `\n[Paginação manual] Próxima página disponível: ${queryParams.page_token}`
+            );
+
+            // Pequeno delay para evitar problemas de rate limit
+            await new Promise((resolve) => setTimeout(resolve, 100));
+          } else {
+            // Não tem mais páginas
+            hasMorePages = false;
+            this.logger.debug('\n[Paginação manual] Fim da paginação');
+          }
+        }
+
+        this.logger.debug(`\n[Paginação manual] Total de itens: ${allItems.length}`);
+
+        // Usar formatação de saída padronizada
+        const executionData = formatOutput.call(this, allItems, i);
+
+        allReturnData.push(...executionData);
+      } else {
+        const limit = this.getNodeParameter('limit', i, 50) as number;
+        queryParams.max_results = limit;
+
+        const response = await hotmartApiRequestTyped<SalesHistoryResponse>(
+          this,
+          'GET',
+          '/payments/api/v1/sales/history',
+          {},
+          queryParams
+        );
+
+        // Processar resultados para o caso onde returnAll=false
+        const items = response.items || [];
+
+        // Usar formatação de saída padronizada
+        const executionData = formatOutput.call(this, items, i);
+
+        allReturnData.push(...executionData);
+      }
+    } catch (error) {
+      if (this.continueOnFail()) {
+        allReturnData.push({ json: { error: (error as Error).message }, pairedItem: { item: i } });
+        continue;
+      }
+      throw error;
+    }
+  }
+
+  return [allReturnData];
 };

@@ -1,0 +1,63 @@
+name: Build
+
+on:
+  push:
+    branches: [ master, develop ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    name: Build and Validate
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout código
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18.x'
+
+    - name: Install pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        version: 10.10.0
+
+    - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.pnpm-store
+        key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-
+
+    - name: Install dependencies
+      run: pnpm install --frozen-lockfile
+
+    - name: Clean previous build
+      run: pnpm clean
+
+    - name: Build project
+      run: pnpm build
+
+    - name: Verify build output
+      run: |
+        echo "📁 Checking build output..."
+        test -f dist/nodes/Hotmart/Hotmart.node.js || exit 1
+        test -f dist/nodes/Hotmart/HotmartTrigger.node.js || exit 1
+        test -f dist/credentials/HotmartOAuth2Api.credentials.js || exit 1
+        echo "✅ Build verification passed!"
+
+    - name: Create package
+      run: pnpm pack
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: build-artifacts
+        path: |
+          dist/
+          n8n-nodes-hotmart-*.tgz
+        retention-days: 7

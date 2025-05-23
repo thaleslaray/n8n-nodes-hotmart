@@ -1,0 +1,24 @@
+
+> n8n-nodes-hotmart@0.4.7 test /Users/thaleslaray/code/projetos/n8n-hotmart
+> jest
+
+PASS __tests__/unit/nodes/HotmartTrigger.node.test.ts
+PASS __tests__/integration/oauth.test.ts
+PASS __tests__/unit/actions/club/getAll.test.ts
+PASS __tests__/unit/actions/coupon/create.test.ts
+PASS __tests__/unit/actions/customApiCall.test.ts
+PASS __tests__/unit/helpers/outputFormatter.test.ts
+PASS __tests__/unit/helpers/dateUtils.test.ts
+PASS __tests__/unit/actions/sales/getHistoricoVendas.test.ts
+PASS __tests__/unit/actions/router.test.ts
+PASS __tests__/unit/actions/subscription/getAll.test.ts
+PASS __tests__/unit/actions/product/getAll.test.ts
+PASS __tests__/unit/nodes/Hotmart.node.test.ts
+PASS __tests__/unit/nodes/HotmartV1.node.test.ts
+PASS __tests__/unit/helpers/pagination.test.ts
+
+Test Suites: 14 passed, 14 total
+Tests:       3 skipped, 99 passed, 102 total
+Snapshots:   0 total
+Time:        1.943 s, estimated 2 s
+Ran all test suites.

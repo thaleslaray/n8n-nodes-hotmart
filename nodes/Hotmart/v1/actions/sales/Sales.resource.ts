@@ -8,19 +8,19 @@ import * as solicitarReembolso from './solicitarReembolso.operation';
 import * as getResumoVendas from './getResumoVendas.operation';
 
 export const operations = {
-	getHistoricoVendas,
-	getComissoesVendas,
-	getDetalhamentoPrecos,
-	getParticipantesVendas,
-	solicitarReembolso,
-	getResumoVendas,
+  getHistoricoVendas,
+  getComissoesVendas,
+  getDetalhamentoPrecos,
+  getParticipantesVendas,
+  solicitarReembolso,
+  getResumoVendas,
 };
 
 export const description: INodeProperties[] = [
-	...getHistoricoVendas.description,
-	...getComissoesVendas.description,
-	...getDetalhamentoPrecos.description,
-	...getParticipantesVendas.description,
-	...solicitarReembolso.description,
-	...getResumoVendas.description,
+  ...getHistoricoVendas.description,
+  ...getComissoesVendas.description,
+  ...getDetalhamentoPrecos.description,
+  ...getParticipantesVendas.description,
+  ...solicitarReembolso.description,
+  ...getResumoVendas.description,
 ];
