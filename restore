@@ -1,4 +1,0 @@
-#!/bin/bash
-# Conveniência: chama o script de restore da pasta scripts
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-exec "$SCRIPT_DIR/scripts/restore.sh" "$@"

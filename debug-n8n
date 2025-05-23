@@ -1,7 +1,0 @@
-#!/bin/bash
-# Conveniência: inicia n8n com debug ultra detalhado
-echo "🔥 INICIANDO N8N COM DEBUG ULTRA DETALHADO..."
-echo "LOG_LEVEL=verbose + N8N_LOG_LEVEL=debug"
-echo "🛑 Para parar: Ctrl+C"
-echo ""
-LOG_LEVEL=verbose N8N_LOG_LEVEL=debug n8n start
