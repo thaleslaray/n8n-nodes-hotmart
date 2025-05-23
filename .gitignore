@@ -10,5 +10,23 @@ yarn.lock
 **/.claude/settings.local.json
 
 **/CLAUDE.local.md
-.tgz
+*.tgz
 backups/
+
+# Arquivos compilados
+*.js
+*.js.map
+*.d.ts
+
+# Exceções para arquivos de configuração
+!jest.config.js
+!jest.setup.js
+!gulpfile.js
+!eslint.config.js
+
+# Arquivos de backup
+*.bak
+*.backup
+*.bkp
+*.old
+logs/
