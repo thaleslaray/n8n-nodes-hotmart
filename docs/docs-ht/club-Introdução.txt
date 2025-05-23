@@ -1,9 +1,0 @@
-A Área de Membros, também conhecida como Hotmart Club, é uma solução gratuita oferecida pela Hotmart para facilitar e potencializar o negócio de usuários da plataforma. Ela permite entregar conteúdos de maneira automática e inteligente, e oferece as seguintes características:
-
-- É ilimitada, permitindo ter quantos membros desejar.
-- Ajuda a aumentar as vendas, garantindo qualidade e alta performance.
-- Permite criar cursos, organizar e distribuir conteúdos conforme desejar, além de interagir com alunos.
-- A organização é feita em módulos, que podem ser subdivididos em páginas.
-- É possível disponibilizar módulos extras gratuitos ou pagos para os alunos.
-- Aceita conteúdos em diversos formatos, como vídeo, apresentações e imagens.
-- Os endpoints da área de membros permitem obter informações dos módulos e páginas, bem como dados dos alunos e seus respectivos progressos.

@@ -1,7 +1,0 @@
-A API da Hotmart disponibiliza seus serviços na forma de APIs REST, permitindo acesso a dados importantes do seu negócio, como informações de clientes, consumo de conteúdo e outras características relevantes. Todos os endpoints operam seguindo o padrão REST, utilizando verbos HTTP (`GET`, `POST`, `PUT`, `PATCH`, `DELETE`) e retornando respostas no formato JSON.
-
-Há também um ambiente de sandbox para testes de integração, completamente isolado do ambiente de produção. O sandbox possui todos os endpoints da API, permitindo testar suas implementações sem afetar dados reais, pois todos os dados nele são fictícios.
-
-- Todas as operações são realizadas por meio de URLs orientadas a recursos, com nomenclatura clara.
-- Você pode usar o ambiente sandbox para testar sem impactar recursos e dados da sua conta Hotmart de produção.
-- O formato das respostas é sempre JSON.
