@@ -9,27 +9,7 @@ import type {
   IWebhookResponseData,
 } from 'n8n-workflow';
 
-enum WebhookEventTypes {
-  PURCHASE_OUT_OF_SHOPPING_CART,
-  PURCHASE_APPROVED,
-  PURCHASE_COMPLETE,
-  PURCHASE_CANCELED,
-  PURCHASE_REFUNDED,
-  PURCHASE_CHARGEBACK,
-  PURCHASE_BILLET_PRINTED,
-  PURCHASE_PROTEST,
-  PURCHASE_EXPIRED,
-  PURCHASE_DELAYED,
-  SUBSCRIPTION_CANCELLATION,
-  SUBSCRIPTION_PLAN_CHANGE,
-  SUBSCRIPTION_BILLING_DATE_CHANGE,
-  CLUB_FIRST_ACCESS,
-  CLUB_MODULE_COMPLETED,
-  // Tipo personalizado para diferenciar PIX de Boleto
-  PURCHASE_PIX_GENERATED,
-}
-
-// Nova estrutura para RFC-002 - coexistindo com a antiga temporariamente
+// Enum de eventos do webhook usando string enums para evitar problemas com valor 0
 enum WebhookEventType {
   PURCHASE_OUT_OF_SHOPPING_CART = 'PURCHASE_OUT_OF_SHOPPING_CART',
   PURCHASE_APPROVED = 'PURCHASE_APPROVED',
@@ -50,84 +30,84 @@ enum WebhookEventType {
 
 interface EventConfig {
   displayName: string;
-  outputIndex: number;
+  smartIndex: number;  // Índice para modo smart
   category: 'purchase' | 'subscription' | 'club';
 }
 
 const EVENT_CONFIG: Record<WebhookEventType, EventConfig> = {
-  [WebhookEventType.PURCHASE_OUT_OF_SHOPPING_CART]: {
-    displayName: 'Abandono de Carrinho',
-    outputIndex: 0,
-    category: 'purchase',
-  },
   [WebhookEventType.PURCHASE_APPROVED]: {
     displayName: 'Compra Aprovada',
-    outputIndex: 1,
+    smartIndex: 0,
     category: 'purchase',
   },
   [WebhookEventType.PURCHASE_COMPLETE]: {
     displayName: 'Compra Completa',
-    outputIndex: 2,
+    smartIndex: 1,
     category: 'purchase',
   },
   [WebhookEventType.PURCHASE_CANCELED]: {
     displayName: 'Compra Cancelada',
-    outputIndex: 3,
+    smartIndex: 2,
     category: 'purchase',
   },
   [WebhookEventType.PURCHASE_REFUNDED]: {
     displayName: 'Compra Reembolsada',
-    outputIndex: 4,
+    smartIndex: 3,
     category: 'purchase',
   },
   [WebhookEventType.PURCHASE_CHARGEBACK]: {
     displayName: 'Compra Chargeback',
-    outputIndex: 5,
+    smartIndex: 4,
     category: 'purchase',
   },
   [WebhookEventType.PURCHASE_BILLET_PRINTED]: {
     displayName: 'Boleto Impresso',
-    outputIndex: 6,
+    smartIndex: 5,
     category: 'purchase',
   },
   [WebhookEventType.PURCHASE_PROTEST]: {
     displayName: 'Compra em Disputa',
-    outputIndex: 7,
+    smartIndex: 6,
     category: 'purchase',
   },
   [WebhookEventType.PURCHASE_EXPIRED]: {
     displayName: 'Compra Expirada',
-    outputIndex: 8,
+    smartIndex: 7,
     category: 'purchase',
   },
   [WebhookEventType.PURCHASE_DELAYED]: {
     displayName: 'Compra Atrasada',
-    outputIndex: 9,
+    smartIndex: 8,
+    category: 'purchase',
+  },
+  [WebhookEventType.PURCHASE_OUT_OF_SHOPPING_CART]: {
+    displayName: 'Abandono de Carrinho',
+    smartIndex: 9,
     category: 'purchase',
   },
   [WebhookEventType.SUBSCRIPTION_CANCELLATION]: {
     displayName: 'Assinatura Cancelada',
-    outputIndex: 10,
+    smartIndex: 10,
     category: 'subscription',
   },
   [WebhookEventType.SWITCH_PLAN]: {
     displayName: 'Troca de Plano de Assinatura',
-    outputIndex: 11,
+    smartIndex: 11,
     category: 'subscription',
   },
   [WebhookEventType.UPDATE_SUBSCRIPTION_CHARGE_DATE]: {
     displayName: 'Troca de dia de Cobrança',
-    outputIndex: 12,
+    smartIndex: 12,
     category: 'subscription',
   },
   [WebhookEventType.CLUB_FIRST_ACCESS]: {
     displayName: 'Primeiro Acesso',
-    outputIndex: 13,
+    smartIndex: 13,
     category: 'club',
   },
   [WebhookEventType.CLUB_MODULE_COMPLETED]: {
     displayName: 'Módulo Completo',
-    outputIndex: 14,
+    smartIndex: 14,
     category: 'club',
   },
 };
@@ -151,144 +131,27 @@ function getEventOptions() {
   return options;
 }
 
-const webhookEvents: Record<WebhookEventTypes | 'all', { name: string; value: string }> = {
-  [WebhookEventTypes.PURCHASE_OUT_OF_SHOPPING_CART]: {
-    name: 'Abandono de Carrinho',
-    value: 'PURCHASE_OUT_OF_SHOPPING_CART',
-  },
-  [WebhookEventTypes.PURCHASE_APPROVED]: {
-    name: 'Compra Aprovada',
-    value: 'PURCHASE_APPROVED',
-  },
-  [WebhookEventTypes.PURCHASE_COMPLETE]: {
-    name: 'Compra Completa',
-    value: 'PURCHASE_COMPLETE',
-  },
-  [WebhookEventTypes.PURCHASE_CANCELED]: {
-    name: 'Compra Cancelada',
-    value: 'PURCHASE_CANCELED',
-  },
-  [WebhookEventTypes.PURCHASE_REFUNDED]: {
-    name: 'Compra Reembolsada',
-    value: 'PURCHASE_REFUNDED',
-  },
-  [WebhookEventTypes.PURCHASE_CHARGEBACK]: {
-    name: 'Compra Chargeback',
-    value: 'PURCHASE_CHARGEBACK',
-  },
-  [WebhookEventTypes.PURCHASE_BILLET_PRINTED]: {
-    name: 'Boleto Impresso',
-    value: 'PURCHASE_BILLET_PRINTED',
-  },
-  [WebhookEventTypes.PURCHASE_PIX_GENERATED]: {
-    name: 'PIX Gerado',
-    value: 'PURCHASE_BILLET_PRINTED', // Mesmo valor do evento original para compatibilidade
-  },
-  [WebhookEventTypes.PURCHASE_PROTEST]: {
-    name: 'Compra em Disputa',
-    value: 'PURCHASE_PROTEST',
-  },
-  [WebhookEventTypes.PURCHASE_EXPIRED]: {
-    name: 'Compra Expirada',
-    value: 'PURCHASE_EXPIRED',
-  },
-  [WebhookEventTypes.PURCHASE_DELAYED]: {
-    name: 'Compra Atrasada',
-    value: 'PURCHASE_DELAYED',
-  },
-  [WebhookEventTypes.SUBSCRIPTION_CANCELLATION]: {
-    name: 'Assinatura Cancelada',
-    value: 'SUBSCRIPTION_CANCELLATION',
-  },
-  [WebhookEventTypes.SUBSCRIPTION_PLAN_CHANGE]: {
-    name: 'Troca de Plano de Assinatura',
-    value: 'SWITCH_PLAN',
-  },
-  [WebhookEventTypes.SUBSCRIPTION_BILLING_DATE_CHANGE]: {
-    name: 'Troca de dia de Cobrança',
-    value: 'UPDATE_SUBSCRIPTION_CHARGE_DATE',
-  },
-  [WebhookEventTypes.CLUB_FIRST_ACCESS]: {
-    name: 'Primeiro Acesso',
-    value: 'CLUB_FIRST_ACCESS',
-  },
-  [WebhookEventTypes.CLUB_MODULE_COMPLETED]: {
-    name: 'Módulo Completo',
-    value: 'CLUB_MODULE_COMPLETED',
-  },
-  all: {
-    name: 'Todos',
-    value: '*',
-  },
-};
-
-// Função para obter o tipo de evento a partir do corpo da requisição
-// TODO: Remover após refatorar modos smart e super-smart
-function getEvent(this: IWebhookFunctions): WebhookEventTypes | undefined {
-  const body = this.getBodyData() as IDataObject;
-
-  if (body.event === 'PURCHASE_CANCELED') {
-    return WebhookEventTypes.PURCHASE_CANCELED;
-  }
-
-  if (body.event === 'PURCHASE_COMPLETE') {
-    return WebhookEventTypes.PURCHASE_COMPLETE;
-  }
-
-  if (body.event === 'PURCHASE_APPROVED') {
-    return WebhookEventTypes.PURCHASE_APPROVED;
-  }
-
-  if (body.event === 'PURCHASE_EXPIRED') {
-    return WebhookEventTypes.PURCHASE_EXPIRED;
-  }
-
-  if (body.event === 'PURCHASE_REFUNDED') {
-    return WebhookEventTypes.PURCHASE_REFUNDED;
-  }
-
-  if (body.event === 'PURCHASE_CHARGEBACK') {
-    return WebhookEventTypes.PURCHASE_CHARGEBACK;
-  }
-
-  if (body.event === 'PURCHASE_BILLET_PRINTED') {
-    return WebhookEventTypes.PURCHASE_BILLET_PRINTED;
-  }
-
-  if (body.event === 'PURCHASE_PROTEST') {
-    return WebhookEventTypes.PURCHASE_PROTEST;
-  }
-
-  if (body.event === 'PURCHASE_DELAYED') {
-    return WebhookEventTypes.PURCHASE_DELAYED;
-  }
-
-  if (body.event === 'PURCHASE_OUT_OF_SHOPPING_CART') {
-    return WebhookEventTypes.PURCHASE_OUT_OF_SHOPPING_CART;
-  }
-
-  if (body.event === 'SUBSCRIPTION_CANCELLATION') {
-    return WebhookEventTypes.SUBSCRIPTION_CANCELLATION;
-  }
-
-  if (body.event === 'SWITCH_PLAN') {
-    return WebhookEventTypes.SUBSCRIPTION_PLAN_CHANGE;
-  }
-
-  if (body.event === 'UPDATE_SUBSCRIPTION_CHARGE_DATE') {
-    return WebhookEventTypes.SUBSCRIPTION_BILLING_DATE_CHANGE;
-  }
-
-  if (body.event === 'CLUB_FIRST_ACCESS') {
-    return WebhookEventTypes.CLUB_FIRST_ACCESS;
-  }
-
-  if (body.event === 'CLUB_MODULE_COMPLETED') {
-    return WebhookEventTypes.CLUB_MODULE_COMPLETED;
-  }
-
-  return undefined;
-}
+// Mapeamento de índices para o modo super-smart
+const SUPER_SMART_INDICES = {
+  PURCHASE_APPROVED_SINGLE: 0,     // Compra Única
+  PURCHASE_APPROVED_SUBSCRIPTION: 1, // Assinatura Nova
+  PURCHASE_APPROVED_RENEWAL: 2,    // Renovação
+  PURCHASE_COMPLETE: 3,
+  PURCHASE_CANCELED: 4,
+  PURCHASE_REFUNDED: 5,
+  PURCHASE_CHARGEBACK: 6,
+  PURCHASE_BILLET_PRINTED: 7,       // Boleto
+  PURCHASE_PIX_PRINTED: 8,          // PIX
+  PURCHASE_PROTEST: 9,
+  PURCHASE_EXPIRED: 10,
+  PURCHASE_DELAYED: 11,
+  PURCHASE_OUT_OF_SHOPPING_CART: 12,
+  SUBSCRIPTION_CANCELLATION: 13,
+  SWITCH_PLAN: 14,
+  UPDATE_SUBSCRIPTION_CHARGE_DATE: 15,
+  CLUB_FIRST_ACCESS: 16,
+  CLUB_MODULE_COMPLETED: 17,
+} as const;
 
 // Função para configurar os nomes das saídas dinamicamente
 const configureOutputNames = (parameters: INodeParameters) => {
@@ -1274,9 +1137,6 @@ export class HotmartTrigger implements INodeType {
         noWebhookResponse: true,
       };
     }
-    
-    // Para compatibilidade temporária com modo smart/super-smart
-    const event = getEvent.call(this);
 
     // Modo padrão (uma única saída)
     if (triggerMode === 'standard') {
@@ -1343,70 +1203,40 @@ export class HotmartTrigger implements INodeType {
 
     // Modo Smart normal
     if (triggerMode === 'smart') {
-      // Determinar para qual saída o evento deve ser direcionado
+      // Usar EVENT_CONFIG para determinar a saída
+      const eventConfig = getEventConfig(eventName);
+      
+      if (!eventConfig) {
+        this.logger.debug(`[${nodeName}] Evento não reconhecido: ${eventName}`);
+        res.status(400).send('Evento desconhecido');
+        return {
+          noWebhookResponse: true,
+        };
+      }
+      
+      // Criar arrays vazios para cada saída possível
       outputData = Array(15)
         .fill(0)
         .map(() => []);
-
-      switch ((bodyData as IDataObject).event) {
-        case 'PURCHASE_APPROVED':
-        case '1': // Compatibilidade com valor numérico
-          outputIndex = 0;
-          break;
-        case 'PURCHASE_COMPLETE':
-          outputIndex = 1;
-          break;
-        case 'PURCHASE_CANCELED':
-          outputIndex = 2;
-          break;
-        case 'PURCHASE_REFUNDED':
-          outputIndex = 3;
-          break;
-        case 'PURCHASE_CHARGEBACK':
-          outputIndex = 4;
-          break;
-        case 'PURCHASE_BILLET_PRINTED':
-          outputIndex = 5;
-          break;
-        case 'PURCHASE_PROTEST':
-          outputIndex = 6;
-          break;
-        case 'PURCHASE_EXPIRED':
-          outputIndex = 7;
-          break;
-        case 'PURCHASE_DELAYED':
-          outputIndex = 8;
-          break;
-        case 'PURCHASE_OUT_OF_SHOPPING_CART':
-          outputIndex = 9;
-          break;
-        case 'SUBSCRIPTION_CANCELLATION':
-          outputIndex = 10;
-          break;
-        case 'SWITCH_PLAN':
-          outputIndex = 11;
-          break;
-        case 'UPDATE_SUBSCRIPTION_CHARGE_DATE':
-          outputIndex = 12;
-          break;
-        case 'CLUB_FIRST_ACCESS':
-          outputIndex = 13;
-          break;
-        case 'CLUB_MODULE_COMPLETED':
-          outputIndex = 14;
-          break;
-        default:
-          // Se for um evento não mapeado, não enviamos para nenhuma saída
-          this.logger.debug(`[${nodeName}] Evento não reconhecido: ${(bodyData as IDataObject).event}`);
-          res.status(400).send('Evento desconhecido');
-          return {
-            noWebhookResponse: true,
-          };
-      }
-
+      
+      outputIndex = eventConfig.smartIndex;
+      
+      // Adicionar metadados do evento
+      const smartData = {
+        ...(bodyData as IDataObject),
+        eventName: eventConfig.displayName,
+        eventType: eventName,
+        eventCategory: eventConfig.category,
+        receivedAt: new Date().toISOString(),
+        metadata: {
+          hottok,
+          headers: headerData,
+        },
+      };
+      
       // Adicionar os dados apenas na saída correspondente ao evento
       if (outputIndex >= 0) {
-        const jsonData = this.helpers.returnJsonArray(bodyData);
+        const jsonData = this.helpers.returnJsonArray(smartData);
         outputData[outputIndex] = jsonData;
         return {
           workflowData: outputData,
@@ -1415,6 +1245,17 @@ export class HotmartTrigger implements INodeType {
     }
     // Modo Super Smart - separa compras normais, assinaturas novas e renovações
     else if (triggerMode === 'super-smart') {
+      // Verificar se o evento é válido
+      const eventConfig = getEventConfig(eventName);
+      
+      if (!eventConfig) {
+        this.logger.debug(`[${nodeName}] Evento não reconhecido: ${eventName}`);
+        res.status(400).send('Evento desconhecido');
+        return {
+          noWebhookResponse: true,
+        };
+      }
+      
       // Criar arrays vazios para cada saída possível (18 saídas, incluindo a nova saída para PIX)
       outputData = Array(18)
         .fill(0)
@@ -1427,19 +1268,11 @@ export class HotmartTrigger implements INodeType {
         : 0;
 
       // Verificar se é uma transação de assinatura
-      // Um evento é considerado assinatura se:
-      // 1. Contém dados de assinatura (subscription.subscriber.code)
-      // 2. Indica compra de assinatura (purchase.is_subscription = true)
-      // 3. É um evento específico de assinatura (SUBSCRIPTION_CANCELLATION, SWITCH_PLAN, UPDATE_SUBSCRIPTION_CHARGE_DATE)
-      const eventValue = String((bodyData as IDataObject).event || '');
-
       const isSubscription = Boolean(
         (dataObj.subscription &&
           ((dataObj.subscription as IDataObject)?.subscriber as IDataObject)?.code) ||
           (dataObj.purchase && (dataObj.purchase as IDataObject)?.is_subscription) ||
-          ['SUBSCRIPTION_CANCELLATION', 'SWITCH_PLAN', 'UPDATE_SUBSCRIPTION_CHARGE_DATE'].includes(
-            eventValue
-          )
+          ['SUBSCRIPTION_CANCELLATION', 'SWITCH_PLAN', 'UPDATE_SUBSCRIPTION_CHARGE_DATE'].includes(eventName)
       );
 
       // Determinar se é renovação ou nova assinatura
@@ -1448,8 +1281,9 @@ export class HotmartTrigger implements INodeType {
       // Adicionar aos dados retornados para debugging
       const superSmartData = {
         ...(bodyData as IDataObject),
-        eventName: event !== undefined ? webhookEvents[event as WebhookEventTypes].name : 'Unknown',
-        eventType: event !== undefined ? webhookEvents[event as WebhookEventTypes].value : 'UNKNOWN',
+        eventName: eventConfig.displayName,
+        eventType: eventName,
+        eventCategory: eventConfig.category,
         receivedAt: new Date().toISOString(),
         isSubscription,
         isRenewal,
@@ -1462,29 +1296,32 @@ export class HotmartTrigger implements INodeType {
       };
 
       // Determinar para qual saída o evento deve ser direcionado com base no tipo de compra
-      switch ((bodyData as IDataObject).event) {
-        case 'PURCHASE_APPROVED':
-        case '1': // Compatibilidade com valor numérico
+      switch (eventName) {
+        case WebhookEventType.PURCHASE_APPROVED:
           if (isSubscription) {
-            outputIndex = isRenewal ? 2 : 1; // Renovação ou Nova Assinatura
+            outputIndex = isRenewal ? SUPER_SMART_INDICES.PURCHASE_APPROVED_RENEWAL : SUPER_SMART_INDICES.PURCHASE_APPROVED_SUBSCRIPTION;
           } else {
-            outputIndex = 0; // Compra normal
+            outputIndex = SUPER_SMART_INDICES.PURCHASE_APPROVED_SINGLE;
           }
           break;
-        case 'PURCHASE_COMPLETE':
-          // Simplificado para uma única saída
-          outputIndex = 3;
+          
+        case WebhookEventType.PURCHASE_COMPLETE:
+          outputIndex = SUPER_SMART_INDICES.PURCHASE_COMPLETE;
           break;
-        case 'PURCHASE_CANCELED':
-          outputIndex = 4;
+          
+        case WebhookEventType.PURCHASE_CANCELED:
+          outputIndex = SUPER_SMART_INDICES.PURCHASE_CANCELED;
           break;
-        case 'PURCHASE_REFUNDED':
-          outputIndex = 5;
+          
+        case WebhookEventType.PURCHASE_REFUNDED:
+          outputIndex = SUPER_SMART_INDICES.PURCHASE_REFUNDED;
           break;
-        case 'PURCHASE_CHARGEBACK':
-          outputIndex = 6;
+          
+        case WebhookEventType.PURCHASE_CHARGEBACK:
+          outputIndex = SUPER_SMART_INDICES.PURCHASE_CHARGEBACK;
           break;
-        case 'PURCHASE_BILLET_PRINTED':
+          
+        case WebhookEventType.PURCHASE_BILLET_PRINTED:
           // Verificar se o método de pagamento é PIX
           const paymentData = dataObj.purchase
             ? ((dataObj.purchase as IDataObject)?.payment as IDataObject)
@@ -1502,51 +1339,59 @@ export class HotmartTrigger implements INodeType {
 
           // Rotear para saída específica com base no método de pagamento
           if (paymentType === 'PIX') {
-            outputIndex = 8; // Nova saída para PIX (logo após Boleto)
+            outputIndex = SUPER_SMART_INDICES.PURCHASE_PIX_PRINTED;
             this.logger.debug(`[${nodeName}] Detectado pagamento PIX, roteando para saída PIX`);
           } else {
-            outputIndex = 7; // Saída padrão para Boleto
+            outputIndex = SUPER_SMART_INDICES.PURCHASE_BILLET_PRINTED;
           }
           break;
-        case 'PURCHASE_PROTEST':
-          outputIndex = 9; // Incrementado por causa da nova saída PIX
+          
+        case WebhookEventType.PURCHASE_PROTEST:
+          outputIndex = SUPER_SMART_INDICES.PURCHASE_PROTEST;
           break;
-        case 'PURCHASE_EXPIRED':
-          outputIndex = 10; // Incrementado por causa da nova saída PIX
+          
+        case WebhookEventType.PURCHASE_EXPIRED:
+          outputIndex = SUPER_SMART_INDICES.PURCHASE_EXPIRED;
           break;
-        case 'PURCHASE_DELAYED':
-          outputIndex = 11; // Incrementado por causa da nova saída PIX
+          
+        case WebhookEventType.PURCHASE_DELAYED:
+          outputIndex = SUPER_SMART_INDICES.PURCHASE_DELAYED;
           break;
-        case 'PURCHASE_OUT_OF_SHOPPING_CART':
-          outputIndex = 12; // Incrementado por causa da nova saída PIX
+          
+        case WebhookEventType.PURCHASE_OUT_OF_SHOPPING_CART:
+          outputIndex = SUPER_SMART_INDICES.PURCHASE_OUT_OF_SHOPPING_CART;
           break;
-        case 'SUBSCRIPTION_CANCELLATION':
-          outputIndex = 13; // Incrementado por causa da nova saída PIX
+          
+        case WebhookEventType.SUBSCRIPTION_CANCELLATION:
+          outputIndex = SUPER_SMART_INDICES.SUBSCRIPTION_CANCELLATION;
           break;
-        case 'SWITCH_PLAN':
-          outputIndex = 14; // Incrementado por causa da nova saída PIX
+          
+        case WebhookEventType.SWITCH_PLAN:
+          outputIndex = SUPER_SMART_INDICES.SWITCH_PLAN;
           break;
-        case 'UPDATE_SUBSCRIPTION_CHARGE_DATE':
-          outputIndex = 15; // Incrementado por causa da nova saída PIX
+          
+        case WebhookEventType.UPDATE_SUBSCRIPTION_CHARGE_DATE:
+          outputIndex = SUPER_SMART_INDICES.UPDATE_SUBSCRIPTION_CHARGE_DATE;
           break;
-        case 'CLUB_FIRST_ACCESS':
-          outputIndex = 16; // Incrementado por causa da nova saída PIX
+          
+        case WebhookEventType.CLUB_FIRST_ACCESS:
+          outputIndex = SUPER_SMART_INDICES.CLUB_FIRST_ACCESS;
           break;
-        case 'CLUB_MODULE_COMPLETED':
-          outputIndex = 17; // Incrementado por causa da nova saída PIX
+          
+        case WebhookEventType.CLUB_MODULE_COMPLETED:
+          outputIndex = SUPER_SMART_INDICES.CLUB_MODULE_COMPLETED;
           break;
+          
         default:
-          // Se for um evento não mapeado, não enviamos para nenhuma saída
-          this.logger.debug(`[${nodeName}] Evento não reconhecido: ${(bodyData as IDataObject).event}`);
-          res.status(400).send('Evento desconhecido');
-          return {
-            noWebhookResponse: true,
-          };
+          // Não deveria chegar aqui pois já validamos o evento
+          outputIndex = -1;
       }
 
       // Logging específico para modo Super Smart
       this.logger.debug(`[${nodeName}] ============ SUPER SMART DEBUG ============`);
-      this.logger.debug(`[${nodeName}] Evento:`, { event: (bodyData as IDataObject).event });
+      this.logger.debug(`[${nodeName}] Evento:`, { event: eventConfig.displayName });
+      this.logger.debug(`[${nodeName}] Tipo:`, { eventType: eventName });
+      this.logger.debug(`[${nodeName}] Categoria:`, { category: eventConfig.category });
       this.logger.debug(`[${nodeName}] É assinatura:`, { isSubscription: isSubscription ? 'Sim' : 'Não' });
       this.logger.debug(`[${nodeName}] Número da recorrência:`, { recurrenceNumber });
       this.logger.debug(`[${nodeName}] É renovação:`, { isRenewal: isRenewal ? 'Sim' : 'Não' });
