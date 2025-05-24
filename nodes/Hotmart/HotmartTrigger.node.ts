@@ -223,6 +223,7 @@ const webhookEvents: Record<WebhookEventTypes | 'all', { name: string; value: st
 };
 
 // Função para obter o tipo de evento a partir do corpo da requisição
+// TODO: Remover após refatorar modos smart e super-smart
 function getEvent(this: IWebhookFunctions): WebhookEventTypes | undefined {
   const body = this.getBodyData() as IDataObject;
 
