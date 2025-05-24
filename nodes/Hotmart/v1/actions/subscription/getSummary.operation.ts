@@ -89,7 +89,7 @@ export const description: INodeProperties[] = [
         displayName: 'Data de Início',
         name: 'accessionDate',
         type: 'dateTime',
-        default: '={{ $now.minus(30, "days").toISO() }}',
+        default: '',
         description: 'Data inicial para filtrar assinaturas criadas. Formato: YYYY-MM-DD',
         hint: 'Considera assinaturas criadas a partir desta data',
       },

@@ -156,7 +156,7 @@ export const description: INodeProperties[] = [
         displayName: 'Data Inicial da Transação',
         name: 'transaction_date',
         type: 'dateTime',
-        default: '={{ $now.minus(30, "days").toISO() }}',
+        default: '',
         description: 'Data inicial para buscar transações. Formato: YYYY-MM-DD',
         hint: 'Busca transações realizadas a partir desta data',
       },
