@@ -20,19 +20,21 @@ describe('Sales - getResumoVendas', () => {
 
   it('deve buscar resumo de vendas com sucesso', async () => {
     (mockThis.getNodeParameter as jest.Mock).mockImplementation((param: string, index: number, defaultValue?: any) => {
-      if (param === 'options') return {};
+      if (param === 'filters') return {};
       return defaultValue;
     });
 
     const mockResponse = {
-      total_sales: 100,
-      total_amount: 50000.00,
-      total_commission: 15000.00,
-      conversion_rate: 0.25,
-      period: {
-        start_date: '2024-01-01',
-        end_date: '2024-01-31'
-      }
+      items: [{
+        total_sales: 100,
+        total_amount: 50000.00,
+        total_commission: 15000.00,
+        conversion_rate: 0.25,
+        period: {
+          start_date: '2024-01-01',
+          end_date: '2024-01-31'
+        }
+      }]
     };
 
     mockHotmartApiRequest.mockResolvedValue(mockResponse);
@@ -51,19 +53,24 @@ describe('Sales - getResumoVendas', () => {
       total_sales: 100,
       total_amount: 50000.00,
       total_commission: 15000.00,
+      conversion_rate: 0.25,
+      period: {
+        start_date: '2024-01-01',
+        end_date: '2024-01-31'
+      }
     });
   });
 
   it('deve aplicar filtros de data', async () => {
     (mockThis.getNodeParameter as jest.Mock).mockImplementation((param: string, index: number, defaultValue?: any) => {
-      if (param === 'options') return {
+      if (param === 'filters') return {
         startDate: '2024-01-01',
         endDate: '2024-01-31'
       };
       return defaultValue;
     });
 
-    mockHotmartApiRequest.mockResolvedValue({});
+    mockHotmartApiRequest.mockResolvedValue({ items: [] });
 
     await execute.call(mockThis, [{ json: {} }]);
 
@@ -71,16 +78,17 @@ describe('Sales - getResumoVendas', () => {
       'GET',
       '/payments/api/v1/sales/summary',
       {},
-      expect.objectContaining({
-        start_date: '2024-01-01',
-        end_date: '2024-01-31'
-      })
+      {
+        max_results: 50,
+        start_date: 1704067200000,
+        end_date: 1706659200000
+      }
     );
   });
 
   it('deve tratar erro de API', async () => {
     (mockThis.getNodeParameter as jest.Mock).mockImplementation((param: string, index: number, defaultValue?: any) => {
-      if (param === 'options') return {};
+      if (param === 'filters') return {};
       return defaultValue;
     });
 
