@@ -7,6 +7,16 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ## [Unreleased]
 
+### Adicionado
+
+- **RFC-002: Sistema de Eventos Refatorado (Parcial)** 🚀
+  - Novo enum `WebhookEventType` com valores string (elimina bug do evento 0)
+  - `EVENT_CONFIG` centralizado com metadados de cada evento
+  - Funções `isValidEvent()` e `getEventConfig()` para validação simples
+  - Modo standard totalmente refatorado (0 conversões vs 3 anteriores)
+  - 9 novos testes específicos para o sistema RFC-002
+  - Categoria de eventos adicionada aos metadados (purchase/subscription/club)
+
 ### Corrigido
 
 - **Bug Crítico no HotmartTrigger** 🐛
