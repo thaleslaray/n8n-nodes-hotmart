@@ -16,7 +16,7 @@ We take security seriously. If you discover a security vulnerability, please fol
 Security vulnerabilities should be reported privately to prevent exploitation.
 
 ### 2. Email us directly
-Send details to: security@thaleslaray.com
+Send details to: security@thales@laray.com.br
 
 ### 3. Include in your report:
 - Description of the vulnerability
@@ -95,7 +95,7 @@ npx secretlint
 
 ## Contact
 
-**Security Team**: security@thaleslaray.com  
+**Security Team**: security@thales@laray.com.br  
 **PGP Key**: [Coming soon]
 
 ---
