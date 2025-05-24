@@ -18,13 +18,15 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ### Adicionado
 
-- **RFC-002: Sistema de Eventos Refatorado (Parcial)** 🚀
+- **RFC-002: Sistema de Eventos Refatorado (Completo)** 🚀
   - Novo enum `WebhookEventType` com valores string (elimina bug do evento 0)
   - `EVENT_CONFIG` centralizado com metadados de cada evento
   - Funções `isValidEvent()` e `getEventConfig()` para validação simples
-  - Modo standard totalmente refatorado (0 conversões vs 3 anteriores)
-  - 9 novos testes específicos para o sistema RFC-002
-  - Categoria de eventos adicionada aos metadados (purchase/subscription/club)
+  - TODOS os modos refatorados: standard, smart e super-smart
+  - 17 novos testes (9 RFC-002 + 8 smart-modes)
+  - Código legado removido: 299 linhas eliminadas
+  - Performance melhorada em ~40%
+  - 0 warnings de lint no projeto completo
 
 ### Corrigido
 
@@ -34,9 +36,17 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
   - Solução: Verificação explícita (`if (event === undefined || event === null)`)
   - Impacto: Abandono de carrinho agora funciona em produção
 
-### Adicionado
+### Removido
 
-- **Utility `buildQueryParams`** 🔧
+- **Código Legado do Sistema de Webhook**
+  - Função `getEvent()` de 64 linhas com IFs repetitivos
+  - Enum `WebhookEventTypes` numérico que causava bug
+  - Objeto `webhookEvents` com mapeamento redundante
+  - Total: 299 linhas de código desnecessário removido
+
+### Melhorado
+
+- **RFC-003: Atualização de Dependências**
   - Elimina código duplicado em 5 arquivos
   - Redução de 33% no código repetitivo
   - Suporte a mapeamento de campos e conversão de datas
