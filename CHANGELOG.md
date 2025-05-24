@@ -7,6 +7,22 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ## [Unreleased]
 
+### Adicionado
+
+- **RFC-004: Script de Verificação de Build Aprimorado** 🔍
+  - Script `verify-build.js` melhorado com verificações detalhadas
+  - Verifica arquivos e diretórios obrigatórios
+  - Detecta source maps faltando
+  - Exclui arquivos .d.ts da verificação de TypeScript
+  - Exibe estatísticas do build (total de arquivos e tamanho)
+
+- **RFC-005: Limpeza de Código (Quick Wins)** 🧹
+  - Router simplificado: 213 → 125 linhas (-41%)
+  - Complexidade ciclomática reduzida de 15 para 3
+  - Utility `buildQueryParams` aplicada em operações-chave
+  - Eliminadas ~127 linhas de código duplicado
+  - 0 breaking changes, 360 testes passando
+
 ### Modificado
 
 - **RFC-003: Dependências Críticas Atualizadas** 📦
@@ -15,8 +31,6 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
   - @types/express: 4.17.17 → 5.0.2
   - @types/request-promise-native: 1.0.18 → 1.0.21
   - Correção de compatibilidade com TypeScript 5.x em `request.ts`
-
-### Adicionado
 
 - **RFC-002: Sistema de Eventos Refatorado (Completo)** 🚀
   - Novo enum `WebhookEventType` com valores string (elimina bug do evento 0)
