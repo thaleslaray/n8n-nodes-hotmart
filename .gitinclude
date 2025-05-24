@@ -1,0 +1,54 @@
+# Ignorar TUDO primeiro
+/*
+
+# Depois incluir apenas o que queremos compartilhar
+!package.json
+!pnpm-lock.yaml
+!tsconfig.json
+!jest.config.js
+!jest.setup.js
+!gulpfile.js
+!eslint.config.js
+!typedoc.json
+!README.md
+!LICENSE.md
+!CHANGELOG.md
+!CODE_OF_CONDUCT.md
+
+# Incluir diretórios importantes (mas ainda respeitar exclusões dentro deles)
+!nodes/
+!credentials/
+!__tests__/
+!docs/
+!scripts/
+
+# Re-ignorar arquivos sensíveis dentro dos diretórios incluídos
+nodes/**/CLAUDE.md
+docs/CLAUDE.md
+docs/PLANO-*.md
+docs/RELATORIO-*.md
+scripts/obter_token.py
+scripts/testar_*.py
+
+# Re-incluir arquivos importantes que podem estar em subpastas
+!nodes/**/*.ts
+!nodes/**/*.json
+!nodes/**/*.svg
+!credentials/**/*.ts
+!__tests__/**/*.ts
+!__tests__/**/*.fixtures.ts
+
+# Ignorar arquivos compilados mesmo nas pastas incluídas
+nodes/**/*.js
+nodes/**/*.js.map
+nodes/**/*.d.ts
+__tests__/**/*.js
+__tests__/**/*.js.map
+__tests__/**/*.d.ts
+
+# Certificar que alguns diretórios nunca entram
+backups/
+logs/
+coverage/
+archive/
+.vscode/

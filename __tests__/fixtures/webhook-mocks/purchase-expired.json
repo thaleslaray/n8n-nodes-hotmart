@@ -1,0 +1,98 @@
+{
+  "id": "mock-purchase-expired-001",
+  "creation_date": 1745948018771,
+  "event": "PURCHASE_EXPIRED",
+  "version": "2.0.0",
+  "hottok": "mock-token-expired",
+  "data": {
+    "product": {
+      "id": 1355458,
+      "name": "Escola de Automação",
+      "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d",
+      "has_co_production": false,
+      "support_email": "suporte@escoladeautomacao.com.br"
+    },
+    "affiliates": [],
+    "buyer": {
+      "email": "test-expired@example.com",
+      "name": "Test User Expired",
+      "first_name": "Test",
+      "last_name": "User Expired",
+      "checkout_phone": "11999999999",
+      "checkout_phone_code": "11",
+      "document": "12345678901",
+      "document_type": "CPF",
+      "address": {
+        "country": "Brasil",
+        "country_iso": "BR",
+        "state": "SP",
+        "city": "São Paulo",
+        "neighborhood": "Centro",
+        "street": "Rua Teste",
+        "number": "123",
+        "zipcode": "01234567"
+      }
+    },
+    "producer": {
+      "name": "AUTOMATIZE NEGOCIOS DIGITAIS LTDA",
+      "document": "12345678000190",
+      "legal_nature": "Pessoa Jurídica"
+    },
+    "commissions": [
+      {
+        "value": 74.78,
+        "currency_value": "BRL",
+        "source": "MARKETPLACE"
+      },
+      {
+        "value": 922.22,
+        "currency_value": "BRL",
+        "source": "PRODUCER"
+      }
+    ],
+    "purchase": {
+      "transaction": "HP9876543210",
+      "status": "EXPIRED",
+      "order_date": 1745343218000,
+      "approved_date": null,
+      "full_price": {
+        "value": 997,
+        "currency_value": "BRL"
+      },
+      "original_offer_price": {
+        "value": 997,
+        "currency_value": "BRL"
+      },
+      "price": {
+        "value": 997,
+        "currency_value": "BRL"
+      },
+      "offer": {
+        "code": "expired-test",
+        "coupon_code": null
+      },
+      "origin": {
+        "src": "organic",
+        "sck": "teste-expired"
+      },
+      "checkout_country": {
+        "name": "Brasil",
+        "iso": "BR"
+      },
+      "order_bump": {
+        "is_order_bump": false
+      },
+      "payment": {
+        "type": "BILLET",
+        "billet_url": "https://billet.hotmart.com/expired-test",
+        "billet_barcode": "12345678901234567890123456789012345678901234567890",
+        "installments_number": 1,
+        "refusal_reason": "Boleto expirado sem pagamento"
+      },
+      "invoice_by": "HOTMART",
+      "is_funnel": false,
+      "business_model": "R"
+    },
+    "subscription": null
+  }
+}

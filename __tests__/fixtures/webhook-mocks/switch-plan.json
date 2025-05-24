@@ -1,0 +1,40 @@
+{
+  "id": "mock-switch-plan-001",
+  "creation_date": 1745948018771,
+  "event": "SWITCH_PLAN",
+  "version": "2.0.0",
+  "hottok": "mock-token-switch",
+  "data": {
+    "switch_plan_date": 1745948018000,
+    "subscription": {
+      "subscriber_code": "MOCKUSER1",
+      "status": "ACTIVE",
+      "date_next_charge": 1748540018000,
+      "product": {
+        "id": 1355458,
+        "name": "Escola de Automação"
+      },
+      "user": {
+        "email": "test-switch@example.com"
+      }
+    },
+    "plans": [
+      {
+        "id": 558690,
+        "name": "Renovação - EA - 1497",
+        "offer": {
+          "key": "newplan123"
+        },
+        "current": true
+      },
+      {
+        "id": 558689,
+        "name": "Renovação - EA - 997",
+        "offer": {
+          "key": "oldplan456"
+        },
+        "current": false
+      }
+    ]
+  }
+}
