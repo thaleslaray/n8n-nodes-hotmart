@@ -141,6 +141,16 @@ function getEventConfig(eventName: string): EventConfig | undefined {
   return EVENT_CONFIG[eventName as WebhookEventType];
 }
 
+// Função para gerar opções do dropdown de eventos
+function getEventOptions() {
+  const options = Object.entries(EVENT_CONFIG).map(([value, config]) => ({
+    name: config.displayName,
+    value,
+  }));
+  options.push({ name: 'Todos', value: '*' });
+  return options;
+}
+
 const webhookEvents: Record<WebhookEventTypes | 'all', { name: string; value: string }> = {
   [WebhookEventTypes.PURCHASE_OUT_OF_SHOPPING_CART]: {
     name: 'Abandono de Carrinho',
@@ -674,7 +684,7 @@ export class HotmartTrigger implements INodeType {
         type: 'options',
         required: true,
         default: '*',
-        options: Object.values(webhookEvents),
+        options: getEventOptions(),
         description:
           'Selecione o evento específico que este webhook deve processar. Escolha "Todos" para receber qualquer tipo de evento da Hotmart. Eventos são notificações de ações como compras, assinaturas e acessos.',
         displayOptions: {
