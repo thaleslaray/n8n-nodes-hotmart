@@ -120,7 +120,6 @@ export const description: INodeProperties[] = [
         default: '',
         description: 'Data a partir da qual filtrar assinaturas criadas. Formato: YYYY-MM-DD',
         hint: 'Busca assinaturas criadas a partir desta data (inclusive)',
-        placeholder: 'Deixe vazio ou use uma expressão',
       },
       {
         displayName: 'Data Final da Assinatura',
