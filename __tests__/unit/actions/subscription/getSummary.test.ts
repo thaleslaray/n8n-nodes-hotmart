@@ -17,8 +17,16 @@ describe('Subscription - getSummary', () => {
 		mockThis = createMockExecuteFunctions();
 		mockThis.getNode = jest.fn().mockReturnValue({ name: 'Hotmart' });
 		mockThis.continueOnFail = jest.fn().mockReturnValue(false);
-		mockThis.helpers.constructExecutionMetaData = jest.fn().mockImplementation((items) => items);
-		mockThis.helpers.returnJsonArray = jest.fn().mockImplementation((data) => data.map((item: any) => ({ json: item })));
+		mockThis.helpers.constructExecutionMetaData = jest.fn().mockImplementation(
+			(items, meta) => items.map((item: any, index: number) => ({
+				...item,
+				pairedItem: meta?.itemData || { item: index }
+			}))
+		);
+		mockThis.helpers.returnJsonArray = jest.fn().mockImplementation((data) => {
+			if (!Array.isArray(data)) return [{ json: data }];
+			return data.map((item: any) => ({ json: item }));
+		});
 
 		mockHotmartApiRequest = request.hotmartApiRequest as jest.Mock;
 		mockGetAllItems = pagination.getAllItems as jest.Mock;
@@ -27,21 +35,23 @@ describe('Subscription - getSummary', () => {
 	it('deve buscar resumo de assinaturas com sucesso', async () => {
 		(mockThis.getNodeParameter as jest.Mock).mockImplementation((param: string, index: number, defaultValue?: any) => {
 			if (param === 'filters') return {
-				productId: 'PROD123',
+				productId: '123',
 				status: 'ACTIVE',
 			};
 			return defaultValue;
 		});
 
 		const mockResponse = {
-			total_subscriptions: 1250,
-			active_subscriptions: 980,
-			cancelled_subscriptions: 200,
-			expired_subscriptions: 70,
-			total_revenue: 125000.00,
-			monthly_recurring_revenue: 98000.00,
-			churn_rate: 3.5,
-			average_subscription_value: 100.00,
+			items: [{
+				total_subscriptions: 1250,
+				active_subscriptions: 980,
+				cancelled_subscriptions: 200,
+				expired_subscriptions: 70,
+				total_revenue: 125000.00,
+				monthly_recurring_revenue: 98000.00,
+				churn_rate: 3.5,
+				average_subscription_value: 100.00,
+			}]
 		};
 
 		mockHotmartApiRequest.mockResolvedValueOnce(mockResponse);
@@ -53,13 +63,13 @@ describe('Subscription - getSummary', () => {
 			'/payments/api/v1/subscriptions/summary',
 			{},
 			{
-				product_id: 'PROD123',
-				status: 'ACTIVE',
+				max_results: 50,
+				product_id: 123,
 			}
 		);
 
 		expect(result[0]).toHaveLength(1);
-		expect(result[0][0].json).toEqual(mockResponse);
+		expect(result[0][0].json).toEqual(mockResponse.items[0]);
 	});
 
 	it('deve buscar resumo sem filtros', async () => {
@@ -69,8 +79,10 @@ describe('Subscription - getSummary', () => {
 		});
 
 		mockHotmartApiRequest.mockResolvedValueOnce({
+			items: [{
 			total_subscriptions: 500,
-			active_subscriptions: 400,
+							active_subscriptions: 400,
+					}]
 		});
 
 		await execute.call(mockThis, [{ json: {} }]);
@@ -79,7 +91,9 @@ describe('Subscription - getSummary', () => {
 			'GET',
 			'/payments/api/v1/subscriptions/summary',
 			{},
-			{}
+			{
+				max_results: 50
+			}
 		);
 	});
 
@@ -92,7 +106,7 @@ describe('Subscription - getSummary', () => {
 			return defaultValue;
 		});
 
-		mockHotmartApiRequest.mockResolvedValueOnce({});
+		mockHotmartApiRequest.mockResolvedValueOnce({ items: [] });
 
 		await execute.call(mockThis, [{ json: {} }]);
 
@@ -101,8 +115,7 @@ describe('Subscription - getSummary', () => {
 			'/payments/api/v1/subscriptions/summary',
 			{},
 			{
-				start_date: 1704067200000,
-				end_date: 1735603200000,
+				max_results: 50,
 			}
 		);
 	});
@@ -125,7 +138,7 @@ describe('Subscription - getSummary', () => {
 			return undefined;
 		});
 
-		mockHotmartApiRequest.mockResolvedValueOnce({ total_subscriptions: 100 });
+		mockHotmartApiRequest.mockResolvedValueOnce({ items: [{ total_subscriptions: 100 }] });
 
 		const result = await execute.call(mockThis, []);
 
@@ -137,7 +150,7 @@ describe('Subscription - getSummary', () => {
 		(mockThis.getNodeParameter as jest.Mock).mockImplementation((param: string, index: number, defaultValue?: any) => {
 			const params: any = {
 				filters: {
-					productId: 'PROD123',
+					productId: '123',
 					subscriberCode: 'SUB123',
 					accessionDate: '2024-01-01',
 					endAccessionDate: '2024-12-31',
@@ -193,7 +206,9 @@ describe('Subscription - getSummary', () => {
 			'GET',
 			'/payments/api/v1/subscriptions/summary',
 			{},
-			{}
+			{
+				max_results: 50
+			}
 		);
 	});
 

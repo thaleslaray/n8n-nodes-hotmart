@@ -120,10 +120,12 @@ describe('Club - Get All Operation', () => {
     });
 
     it('should handle returnAll with pagination', async () => {
-      mockThis.getNodeParameter = jest.fn()
-        .mockReturnValueOnce(true) // returnAll
-        .mockReturnValueOnce('club_123') // subdomain
-        .mockReturnValueOnce({}); // filters
+      mockThis.getNodeParameter = jest.fn().mockImplementation((param: string) => {
+        if (param === 'returnAll') return true;
+        if (param === 'subdomain') return 'club_123';
+        if (param === 'filters') return {};
+        return undefined;
+      });
 
       const mockResponse1 = {
         items: [
@@ -218,13 +220,15 @@ describe('Club - Get All Operation', () => {
     });
 
     it('should handle returnAll with filters', async () => {
-      mockThis.getNodeParameter = jest.fn()
-        .mockReturnValueOnce(true) // returnAll
-        .mockReturnValueOnce('club_123') // subdomain
-        .mockReturnValueOnce({
+      mockThis.getNodeParameter = jest.fn().mockImplementation((param: string) => {
+        if (param === 'returnAll') return true;
+        if (param === 'subdomain') return 'club_123';
+        if (param === 'filters') return {
           email: 'test@example.com',
           status: 'ACTIVE'
-        }); // filters
+        };
+        return undefined;
+      });
 
       const mockResponse = {
         items: [{ id: 'student_1', name: 'Student 1' }],
