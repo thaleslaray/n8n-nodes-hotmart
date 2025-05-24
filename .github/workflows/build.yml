@@ -2,62 +2,129 @@ name: Build
 
 on:
   push:
-    branches: [ master, develop ]
+    branches: [ main, develop ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
+  release:
+    types: [ created ]
 
 jobs:
   build:
-    name: Build and Validate
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout código
-      uses: actions/checkout@v4
-
+    - uses: actions/checkout@v4
+    
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '18.x'
-
+        node-version: '20.x'
+        registry-url: 'https://registry.npmjs.org'
+    
     - name: Install pnpm
       uses: pnpm/action-setup@v2
       with:
         version: 10.10.0
-
-    - name: Cache dependencies
-      uses: actions/cache@v3
+    
+    - name: Get pnpm store directory
+      id: pnpm-cache
+      shell: bash
+      run: |
+        echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+    
+    - name: Setup pnpm cache
+      uses: actions/cache@v4
       with:
-        path: ~/.pnpm-store
-        key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+        path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
         restore-keys: |
-          ${{ runner.os }}-pnpm-
-
+          ${{ runner.os }}-pnpm-store-
+    
     - name: Install dependencies
       run: pnpm install --frozen-lockfile
-
-    - name: Clean previous build
+    
+    - name: Clean previous builds
       run: pnpm clean
-
-    - name: Build project
+    
+    - name: Build TypeScript
       run: pnpm build
-
+    
     - name: Verify build output
       run: |
-        echo "📁 Checking build output..."
-        test -f dist/nodes/Hotmart/Hotmart.node.js || exit 1
-        test -f dist/nodes/Hotmart/HotmartTrigger.node.js || exit 1
-        test -f dist/credentials/HotmartOAuth2Api.credentials.js || exit 1
-        echo "✅ Build verification passed!"
-
-    - name: Create package
-      run: pnpm pack
-
+        # Verificar se os arquivos necessários foram gerados
+        test -f dist/nodes/Hotmart/Hotmart.node.js
+        test -f dist/nodes/Hotmart/HotmartTrigger.node.js
+        test -f dist/credentials/HotmartOAuth2Api.credentials.js
+        
+        # Verificar se os ícones foram copiados
+        test -f dist/nodes/Hotmart/hotmart.svg
+        
+        # Listar estrutura do build
+        echo "Build structure:"
+        find dist -type f -name "*.js" | head -20
+    
+    - name: Validate n8n compatibility
+      run: |
+        # Verificar estrutura do package.json
+        node -e "
+        const pkg = require('./package.json');
+        if (!pkg.n8n) throw new Error('Missing n8n configuration');
+        if (!pkg.n8n.nodes || pkg.n8n.nodes.length === 0) throw new Error('No nodes defined');
+        if (!pkg.n8n.credentials || pkg.n8n.credentials.length === 0) throw new Error('No credentials defined');
+        console.log('✅ n8n configuration valid');
+        "
+    
+    - name: Create build artifact
+      run: |
+        pnpm pack
+        mkdir -p artifacts
+        mv *.tgz artifacts/
+    
     - name: Upload build artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
-        name: build-artifacts
-        path: |
-          dist/
-          n8n-nodes-hotmart-*.tgz
-        retention-days: 7
+        name: npm-package
+        path: artifacts/*.tgz
+        retention-days: 30
+    
+    - name: Dry run publish (non-release)
+      if: github.event_name != 'release'
+      run: pnpm publish --dry-run --no-git-checks
+    
+    - name: Publish to NPM (release only)
+      if: github.event_name == 'release'
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      run: pnpm publish --no-git-checks
+
+  validate-installation:
+    needs: build
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+    
+    - name: Download artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: npm-package
+        path: artifacts
+    
+    - name: Test package installation
+      run: |
+        # Criar diretório de teste
+        mkdir -p test-install
+        cd test-install
+        
+        # Instalar o pacote localmente
+        npm init -y
+        npm install ../artifacts/*.tgz
+        
+        # Verificar instalação
+        test -d node_modules/n8n-nodes-hotmart
+        test -f node_modules/n8n-nodes-hotmart/dist/nodes/Hotmart/Hotmart.node.js
+        
+        echo "✅ Package installed successfully"

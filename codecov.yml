@@ -1,0 +1,49 @@
+codecov:
+  require_ci_to_pass: yes
+  notify:
+    wait_for_ci: true
+
+coverage:
+  precision: 2
+  round: down
+  range: "70...100"
+  
+  status:
+    project:
+      default:
+        target: 80%
+        threshold: 2%
+        base: auto
+        if_not_found: success
+        if_ci_failed: error
+        only_pulls: false
+    
+    patch:
+      default:
+        target: 80%
+        threshold: 2%
+        base: auto
+        if_not_found: success
+        if_ci_failed: error
+
+parsers:
+  javascript:
+    enable_partials: yes
+
+comment:
+  layout: "reach,diff,flags,files,footer"
+  behavior: default
+  require_changes: false
+  require_base: false
+  require_head: true
+
+ignore:
+  - "**/*.d.ts"
+  - "**/*.spec.ts"
+  - "**/*.test.ts"
+  - "**/node_modules/**"
+  - "**/__tests__/**"
+  - "**/coverage/**"
+  - "**/dist/**"
+  - "gulpfile.js"
+  - "jest.*.js"

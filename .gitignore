@@ -18,6 +18,12 @@ yarn.lock
 # Exceções para arquivos de configuração
 !jest.config.js
 !jest.setup.js
+
+# Coverage
+coverage/
+.nyc_output/
+*.lcov
+junit.xml
 !gulpfile.js
 !eslint.config.js
 

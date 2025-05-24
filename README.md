@@ -1,8 +1,8 @@
 # n8n-nodes-hotmart 🤖
 
-![Tests](https://github.com/thaleslaray/n8n-nodes-hotmart/workflows/Tests/badge.svg)
-![Build](https://github.com/thaleslaray/n8n-nodes-hotmart/workflows/Build/badge.svg)
-![Coverage](https://codecov.io/gh/thaleslaray/n8n-nodes-hotmart/branch/master/graph/badge.svg)
+![Tests](https://github.com/thaleslaray/n8n-nodes-hotmart/actions/workflows/tests.yml/badge.svg)
+![Build](https://github.com/thaleslaray/n8n-nodes-hotmart/actions/workflows/build.yml/badge.svg)
+[![codecov](https://codecov.io/gh/thaleslaray/n8n-nodes-hotmart/graph/badge.svg?token=GTWV5GE10X)](https://codecov.io/gh/thaleslaray/n8n-nodes-hotmart)
 ![npm](https://img.shields.io/npm/v/n8n-nodes-hotmart)
 ![License](https://img.shields.io/npm/l/n8n-nodes-hotmart)
 ![Downloads](https://img.shields.io/npm/dm/n8n-nodes-hotmart)
