@@ -25,7 +25,7 @@ task('clean', clean);
 function clean(done) {
     try {
         // Remove arquivos .js, .js.map e .d.ts (exceto node_modules e dist)
-        execSync(`find . -type f -name '*.js' -not -path './node_modules/*' -not -path './dist/*' -not -name 'gulpfile.js' -not -name 'eslint.config.js' -not -name 'jest.config.js' -not -name 'jest.setup.js' -delete`, { stdio: 'inherit' });
+        execSync(`find . -type f -name '*.js' -not -path './node_modules/*' -not -path './dist/*' -not -name 'gulpfile.js' -not -name 'eslint.config.js' -not -name 'jest.config.js' -not -name 'jest.setup.js' -not -path './scripts/verify-build.js' -delete`, { stdio: 'inherit' });
         execSync(`find . -type f -name '*.js.map' -not -path './node_modules/*' -not -path './dist/*' -delete`, { stdio: 'inherit' });
         execSync(`find . -type f -name '*.d.ts' -not -path './node_modules/*' -not -path './dist/*' -delete`, { stdio: 'inherit' });
     } catch (error) {
