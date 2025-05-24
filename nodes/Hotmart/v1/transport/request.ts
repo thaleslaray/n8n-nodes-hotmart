@@ -80,7 +80,7 @@ export async function hotmartApiRequest<T>(
       body: fullResponse?.body || {}
     });
 
-    return fullResponse && fullResponse.body ? fullResponse.body : {};
+    return fullResponse && fullResponse.body ? fullResponse.body : {} as T;
   } catch (error) {
     this.logger.debug('\n[Hotmart API Error]');
     this.logger.debug('Error:', error);
