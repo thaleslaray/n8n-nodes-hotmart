@@ -71,7 +71,9 @@ describe('Tickets - getAll', () => {
 				{ max_results: 10 }
 			);
 
-			expect(result).toEqual([mockResponse.items]);
+			expect(result[0]).toHaveLength(2);
+			expect(result[0][0].json).toEqual(mockResponse.items[0]);
+			expect(result[0][1].json).toEqual(mockResponse.items[1]);
 		});
 
 		it('should handle returnAll with pagination', async () => {
@@ -152,7 +154,8 @@ describe('Tickets - getAll', () => {
 				}
 			);
 
-			expect(result).toEqual([mockResponse.items]);
+			expect(result[0]).toHaveLength(1);
+			expect(result[0][0].json).toEqual(mockResponse.items[0]);
 		});
 
 		it('should handle filters with last_update and id_lot', async () => {
@@ -190,7 +193,8 @@ describe('Tickets - getAll', () => {
 				}
 			);
 
-			expect(result).toEqual([mockResponse.items]);
+			expect(result[0]).toHaveLength(1);
+			expect(result[0][0].json).toEqual(mockResponse.items[0]);
 		});
 
 		it('should handle filters with id_eticket and ticket_qr_code', async () => {
@@ -228,7 +232,8 @@ describe('Tickets - getAll', () => {
 				}
 			);
 
-			expect(result).toEqual([mockResponse.items]);
+			expect(result[0]).toHaveLength(1);
+			expect(result[0][0].json).toEqual(mockResponse.items[0]);
 		});
 
 		it('should handle all filters together', async () => {
@@ -280,7 +285,8 @@ describe('Tickets - getAll', () => {
 				}
 			);
 
-			expect(result).toEqual([mockResponse.items]);
+			expect(result[0]).toHaveLength(1);
+				expect(result[0][0].json).toEqual(mockResponse.items[0]);
 		});
 
 		it('should handle response without page_info', async () => {
@@ -409,10 +415,10 @@ describe('Tickets - getAll', () => {
 				{ max_results: 50 }
 			);
 
-			expect(result).toEqual([mockResponse.items]);
+			expect(result[0]).toHaveLength(50);
 			// Em modo summarized, os campos extras devem estar presentes
-			expect(result[0][0]).toHaveProperty('extra_field_1');
-			expect(result[0][0]).toHaveProperty('users');
+			expect(result[0][0].json).toHaveProperty('extra_field_1');
+			expect(result[0][0].json).toHaveProperty('users');
 		});
 	});
 

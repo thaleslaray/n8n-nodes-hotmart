@@ -62,7 +62,7 @@ describe('Sales - getParticipantesVendas', () => {
 
     expect(mockHotmartApiRequest).toHaveBeenCalledWith(
       'GET',
-      '/payments/api/v1/sales/participants',
+      '/payments/api/v1/sales/users',
       {},
       expect.objectContaining({
         transaction_id: 'HP123456789'

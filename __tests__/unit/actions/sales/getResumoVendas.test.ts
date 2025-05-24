@@ -47,7 +47,7 @@ describe('Sales - getResumoVendas', () => {
     );
 
     expect(result[0]).toHaveLength(1);
-    expect(result[0][0].json).toMatchObject({
+    expect(result[0][0].json).toEqual({
       total_sales: 100,
       total_amount: 50000.00,
       total_commission: 15000.00,
