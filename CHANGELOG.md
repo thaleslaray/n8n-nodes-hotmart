@@ -5,6 +5,46 @@ Todas as alterações significativas deste projeto serão documentadas neste arq
 O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/),
 e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [Unreleased]
+
+### Adicionado
+
+- **Melhoria Significativa na Cobertura de Testes** 🎯
+  - Cobertura aumentada de 80.33% para 82.29%
+  - 100% de cobertura em módulos críticos:
+    - `aiDocumentation.ts` - Corrigido bug no categoryMap
+    - `transport/request.ts` - Testes completos incluindo edge cases
+    - `helpers/pagination.ts` - Cobertura de todos os branches
+    - `methods/loadOptions.ts` - Testes para valores undefined
+    - Operações de tickets - Cobertura completa
+  - Adicionados 50+ novos arquivos de teste
+  - Fixtures com respostas reais da API para testes realistas
+  - Documentação completa em `docs/TEST-COVERAGE-IMPROVEMENT.md`
+
+### Modificado
+
+- **Sistema Completo de Testes para Webhook** 🧪
+  - Parser CSV para extrair 626 eventos reais de produção
+  - Sistema de seleção estatística de fixtures (87 eventos representativos)
+  - Anonimizador automático de dados pessoais (18.633 campos protegidos)
+  - Gerador automático de testes Jest (133 testes em 16 arquivos)
+  - Cobertura de 100% dos tipos de eventos (15 tipos)
+  - Scripts NPM: `test:webhook`, `webhook:test-system`, etc.
+
+- **Segurança e Privacidade nos Testes** 🔒
+  - Anonimização determinística para consistência
+  - Separação clara entre dados sensíveis e seguros
+  - Diretórios `-anon` para dados seguros
+  - Configuração do .gitignore para proteção
+  - Documentação completa sobre segurança
+
+### Identificado
+
+- **Bug no HotmartTrigger**: Evento `PURCHASE_OUT_OF_SHOPPING_CART` retorna "evento desconhecido"
+  - Causa: Enum com valor 0 sendo tratado como falsy (`if (!event)`)
+  - Solução documentada na RFC-008
+  - Testes criados para validar a correção futura
+
 ## [0.5.0] - 2025-05-23
 
 ### 🎉 Major Release: AI Ready & MCP Support
