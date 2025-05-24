@@ -13,8 +13,8 @@ import {
   maxResultsOption,
   subscriptionStatusOptions,
 } from '../common.descriptions';
-import { convertToTimestamp } from '../../helpers/dateUtils';
 import { formatOutput } from '../../helpers/outputFormatter';
+import { buildQueryParams } from '../../helpers/queryBuilder';
 
 type SubscriptionListResponse = { items: SubscriptionItem[]; page_info?: { next_page_token?: string } };
 
@@ -261,79 +261,51 @@ export const execute = async function (
         endDateNextCharge?: string;
       };
 
-      const queryParams: SubscriptionQueryParams = {};
-      this.logger.debug('Todos os filtros:', filters);
-      this.logger.debug('Filters recebidos:', filters);
+      // Mapeamento de campos e campos de data
+      const fieldMapping = {
+        productId: 'product_id',
+        planId: 'plan_id',
+        subscriberEmail: 'subscriber_email',
+        subscriberCode: 'subscriber_code',
+        accessionDate: 'accession_date',
+        endAccessionDate: 'end_accession_date',
+        cancelationDate: 'cancelation_date',
+        endCancelationDate: 'end_cancelation_date',
+        dateNextCharge: 'date_next_charge',
+        endDateNextCharge: 'end_date_next_charge',
+      };
 
+      const dateFields = [
+        'accessionDate',
+        'endAccessionDate',
+        'cancelationDate',
+        'endCancelationDate',
+        'dateNextCharge',
+        'endDateNextCharge',
+      ];
+
+      // Usar buildQueryParams para campos simples
+      const queryParams = buildQueryParams(filters, fieldMapping, dateFields) as SubscriptionQueryParams;
+
+      // Tratamento especial para campos que precisam de lógica customizada
       if (filters.status?.length) {
         queryParams.status = filters.status.join(',');
       }
 
-      if (filters.productId) {
-        queryParams.product_id = filters.productId;
-      }
-
+      // Campos que não precisam de mapeamento
       if (filters.plan) {
-        // A API espera múltiplos parâmetros 'plan' ou separados por vírgula.
-        // A implementação do status usa join(','), então vamos manter a consistência.
-        // Se o usuário inserir múltiplos nomes separados por vírgula, passamos a string.
         queryParams.plan = filters.plan;
-      }
-
-      if (filters.planId) {
-        queryParams.plan_id = filters.planId;
-      }
-
-      if (filters.trial !== undefined) {
-        queryParams.trial = filters.trial;
-      }
-
-      if (filters.subscriberEmail) {
-        queryParams.subscriber_email = filters.subscriberEmail;
       }
 
       if (filters.transaction) {
         queryParams.transaction = filters.transaction;
       }
 
-      // Função auxiliar para converter datas usando Date.parse para ISO 8601
-
-      if (filters.accessionDate) {
-        this.logger.debug('Data recebida:', { accessionDate: filters.accessionDate });
-        const ts = convertToTimestamp(filters.accessionDate);
-        this.logger.debug('Timestamp convertido:', { ts });
-        if (ts) queryParams.accession_date = ts;
+      if (filters.trial !== undefined) {
+        queryParams.trial = filters.trial;
       }
 
-      if (filters.endAccessionDate) {
-        const ts = convertToTimestamp(filters.endAccessionDate);
-        if (ts) queryParams.end_accession_date = ts;
-      }
-
-      if (filters.cancelationDate) {
-        const ts = convertToTimestamp(filters.cancelationDate);
-        if (ts) queryParams.cancelation_date = ts;
-      }
-
-      if (filters.endCancelationDate) {
-        const ts = convertToTimestamp(filters.endCancelationDate);
-        if (ts) queryParams.end_cancelation_date = ts;
-      }
-
-      if (filters.dateNextCharge) {
-        const ts = convertToTimestamp(filters.dateNextCharge);
-        if (ts) queryParams.date_next_charge = ts;
-      }
-
-      if (filters.endDateNextCharge) {
-        const ts = convertToTimestamp(filters.endDateNextCharge);
-        if (ts) queryParams.end_date_next_charge = ts;
-      }
-
-      if (filters.subscriberCode) {
-        // Adicionado
-        queryParams.subscriber_code = filters.subscriberCode;
-      }
+      this.logger.debug('Query params finais:', queryParams);
 
       if (returnAll) {
         // SOLUÇÃO DIRETA: Implementação manual de paginação

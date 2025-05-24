@@ -9,8 +9,8 @@ import {
   paymentTypeOptions,
   commissionAsOptions,
 } from '../common.descriptions';
-import { convertToTimestamp } from '../../helpers/dateUtils';
 import { formatOutput } from '../../helpers/outputFormatter';
+import { buildQueryParams } from '../../helpers/queryBuilder';
 
 type SalesHistoryResponse = { items: SalesHistoryItem[]; page_info?: { next_page_token?: string } };
 
@@ -222,40 +222,28 @@ export const execute = async function (
         commissionAs?: string;
       };
 
-      const queryParams: SalesQueryParams = {};
+      // Mapeamento de campos e campos de data
+      const fieldMapping = {
+        productId: 'product_id',
+        transactionStatus: 'transaction_status',
+        startDate: 'start_date',
+        endDate: 'end_date',
+        buyerEmail: 'buyer_email',
+        buyerName: 'buyer_name',
+        salesSource: 'sales_source',
+        paymentType: 'payment_type',
+        offerCode: 'offer_code',
+        commissionAs: 'commission_as',
+      };
 
-      if (filters.productId) {
-        queryParams.product_id = filters.productId;
-      }
-      if (filters.transactionStatus) {
-        queryParams.transaction_status = filters.transactionStatus;
-      }
-      if (filters.startDate) {
-        queryParams.start_date = convertToTimestamp(filters.startDate);
-      }
-      if (filters.endDate) {
-        queryParams.end_date = convertToTimestamp(filters.endDate);
-      }
-      if (filters.buyerEmail) {
-        queryParams.buyer_email = filters.buyerEmail;
-      }
-      if (filters.buyerName) {
-        queryParams.buyer_name = filters.buyerName;
-      }
+      const dateFields = ['startDate', 'endDate'];
+
+      // Usar buildQueryParams para construir os parâmetros
+      const queryParams = buildQueryParams(filters, fieldMapping, dateFields) as SalesQueryParams;
+
+      // Campo que não precisa de mapeamento
       if (filters.transaction) {
         queryParams.transaction = filters.transaction;
-      }
-      if (filters.salesSource) {
-        queryParams.sales_source = filters.salesSource;
-      }
-      if (filters.paymentType) {
-        queryParams.payment_type = filters.paymentType;
-      }
-      if (filters.offerCode) {
-        queryParams.offer_code = filters.offerCode;
-      }
-      if (filters.commissionAs) {
-        queryParams.commission_as = filters.commissionAs;
       }
 
       if (returnAll) {
