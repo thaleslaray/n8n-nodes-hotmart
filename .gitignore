@@ -52,6 +52,9 @@ CLAUDE.md
 docs/
 scripts/
 archive/
+
+# Exceções para scripts essenciais
+!scripts/verify-build.js
 install
 clear
 publish
