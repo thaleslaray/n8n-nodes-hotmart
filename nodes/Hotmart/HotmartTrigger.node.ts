@@ -137,7 +137,6 @@ function isValidEvent(event: string): event is WebhookEventType {
 }
 
 // Função para obter configuração de evento pelo nome
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function getEventConfig(eventName: string): EventConfig | undefined {
   return EVENT_CONFIG[eventName as WebhookEventType];
 }
@@ -1257,34 +1256,21 @@ export class HotmartTrigger implements INodeType {
     // Verificar o evento
     const eventName = (bodyData as IDataObject).event as string;
     
-    // Usar sistema antigo para compatibilidade por enquanto
-    const event = getEvent.call(this);
-    
-    // Fazer log para debug da migração
-    if (isValidEvent(eventName)) {
-      const config = getEventConfig(eventName);
-      this.logger.debug(`[${nodeName}] RFC-002: Evento válido no novo sistema:`, { 
-        eventName,
-        displayName: config?.displayName,
-        outputIndex: config?.outputIndex 
-      });
-    }
-    
-    if (event === undefined || event === null) {
+    if (!eventName || !isValidEvent(eventName)) {
       this.logger.debug(`[${nodeName}] Evento desconhecido:`, { event: eventName || 'undefined' });
       res.status(400).send('Evento desconhecido');
       return {
         noWebhookResponse: true,
       };
     }
+    
+    // Para compatibilidade temporária com modo smart/super-smart
+    const event = getEvent.call(this);
 
     // Modo padrão (uma única saída)
     if (triggerMode === 'standard') {
-      if (
-        event !== undefined &&
-        (webhookEvents[event as WebhookEventTypes].value === this.getNodeParameter('event') ||
-        this.getNodeParameter('event') === '*')
-      ) {
+      const selectedEvent = this.getNodeParameter('event') as string;
+      if (selectedEvent === '*' || eventName === selectedEvent) {
         // Verificar se é uma transação de assinatura
         // Um evento é considerado assinatura se:
         // 1. Contém dados de assinatura (subscription.subscriber.code)
@@ -1305,9 +1291,12 @@ export class HotmartTrigger implements INodeType {
             ].includes(eventValue)
         );
 
+        // Obter configuração do evento
+        const eventConfig = getEventConfig(eventName);
+        
         // Logar informações para depuração
         this.logger.debug(`[${nodeName}] ============ DEBUG ============`);
-        this.logger.debug(`[${nodeName}] Evento recebido:`, { event: event !== undefined ? webhookEvents[event as WebhookEventTypes].name : 'Unknown' });
+        this.logger.debug(`[${nodeName}] Evento recebido:`, { event: eventConfig?.displayName || eventName });
         this.logger.debug(`[${nodeName}] É assinatura:`, { isSubscription: isSubscription ? 'Sim' : 'Não' });
         this.logger.debug(`[${nodeName}] Token de verificação recebido:`, { token: hottok });
         this.logger.debug(`[${nodeName}] ================================`);
@@ -1315,8 +1304,9 @@ export class HotmartTrigger implements INodeType {
         // Adicionar informações úteis aos dados retornados com metadados melhorados
         const returnData = {
           ...(bodyData as IDataObject),
-          eventName: event !== undefined ? webhookEvents[event as WebhookEventTypes].name : 'Unknown',
-          eventType: event !== undefined ? webhookEvents[event as WebhookEventTypes].value : 'UNKNOWN',
+          eventName: eventConfig?.displayName || eventName,
+          eventType: eventName,
+          eventCategory: eventConfig?.category,
           receivedAt: new Date().toISOString(),
           isSubscription,
           metadata: {
