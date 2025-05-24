@@ -17,6 +17,17 @@ interface IHotmartOperation {
   ) => Promise<INodeExecutionData[][]>;
 }
 
+// Mapa centralizado de recursos e suas operações
+const RESOURCE_HANDLERS = {
+  subscription: subscriptionResource.operations,
+  sales: salesResource.operations,
+  product: productResource.operations,
+  coupon: couponResource.operations,
+  club: clubResource.operations,
+  tickets: ticketsResource.operations,
+  negotiate: negotiateResource.operations,
+} as const;
+
 export async function router(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
   const items = this.getInputData();
   let resource: string;
@@ -80,115 +91,25 @@ export async function router(this: IExecuteFunctions): Promise<INodeExecutionDat
   let executionResult: INodeExecutionData[][] = [];
 
   try {
-    switch (resource) {
-      case 'subscription': {
-        const subscriptionOperation = subscriptionResource.operations[
-          operation as keyof typeof subscriptionResource.operations
-        ] as IHotmartOperation;
-
-        if (typeof subscriptionOperation?.execute === 'function') {
-          executionResult = await subscriptionOperation.execute.call(this, items);
-        } else {
-          throw new NodeOperationError(
-            this.getNode(),
-            `A operação "${operation}" não é suportada para o recurso "${resource}"!`
-          );
-        }
-        break;
-      }
-      case 'sales': {
-        const salesOperation = salesResource.operations[
-          operation as keyof typeof salesResource.operations
-        ] as IHotmartOperation;
-
-        if (typeof salesOperation?.execute === 'function') {
-          executionResult = await salesOperation.execute.call(this, items);
-        } else {
-          throw new NodeOperationError(
-            this.getNode(),
-            `A operação "${operation}" não é suportada para o recurso "${resource}"!`
-          );
-        }
-        break;
-      }
-      case 'product': {
-        const productOperation = productResource.operations[
-          operation as keyof typeof productResource.operations
-        ] as IHotmartOperation;
-
-        if (typeof productOperation?.execute === 'function') {
-          executionResult = await productOperation.execute.call(this, items);
-        } else {
-          throw new NodeOperationError(
-            this.getNode(),
-            `A operação "${operation}" não é suportada para o recurso "${resource}"!`
-          );
-        }
-        break;
-      }
-      case 'coupon': {
-        const couponOperation = couponResource.operations[
-          operation as keyof typeof couponResource.operations
-        ] as IHotmartOperation;
-
-        if (typeof couponOperation?.execute === 'function') {
-          executionResult = await couponOperation.execute.call(this, items);
-        } else {
-          throw new NodeOperationError(
-            this.getNode(),
-            `A operação "${operation}" não é suportada para o recurso "${resource}"!`
-          );
-        }
-        break;
-      }
-      case 'club': {
-        const clubOperation = clubResource.operations[
-          operation as keyof typeof clubResource.operations
-        ] as IHotmartOperation;
-
-        if (typeof clubOperation?.execute === 'function') {
-          executionResult = await clubOperation.execute.call(this, items);
-        } else {
-          throw new NodeOperationError(
-            this.getNode(),
-            `A operação "${operation}" não é suportada para o recurso "${resource}"!`
-          );
-        }
-        break;
-      }
-      case 'tickets': {
-        const ticketsOperation = ticketsResource.operations[
-          operation as keyof typeof ticketsResource.operations
-        ] as IHotmartOperation;
-
-        if (typeof ticketsOperation?.execute === 'function') {
-          executionResult = await ticketsOperation.execute.call(this, items);
-        } else {
-          throw new NodeOperationError(
-            this.getNode(),
-            `A operação "${operation}" não é suportada para o recurso "${resource}"!`
-          );
-        }
-        break;
-      }
-      case 'negotiate': {
-        const negotiateOperation = negotiateResource.operations[
-          operation as keyof typeof negotiateResource.operations
-        ] as IHotmartOperation;
-
-        if (typeof negotiateOperation?.execute === 'function') {
-          executionResult = await negotiateOperation.execute.call(this, items);
-        } else {
-          throw new NodeOperationError(
-            this.getNode(),
-            `A operação "${operation}" não é suportada para o recurso "${resource}"!`
-          );
-        }
-        break;
-      }
-      default:
-        throw new NodeOperationError(this.getNode(), `O recurso "${resource}" não é suportado!`);
+    // Buscar handlers do recurso
+    const resourceHandlers = RESOURCE_HANDLERS[resource as keyof typeof RESOURCE_HANDLERS];
+    
+    if (!resourceHandlers) {
+      throw new NodeOperationError(this.getNode(), `O recurso "${resource}" não é suportado!`);
     }
+
+    // Buscar operação específica
+    const operationHandler = resourceHandlers[operation as keyof typeof resourceHandlers] as IHotmartOperation;
+    
+    if (!operationHandler || typeof operationHandler.execute !== 'function') {
+      throw new NodeOperationError(
+        this.getNode(),
+        `A operação "${operation}" não é suportada para o recurso "${resource}"!`
+      );
+    }
+
+    // Executar operação
+    executionResult = await operationHandler.execute.call(this, items);
   } catch (error) {
     if (this.continueOnFail()) {
       const errorData = this.helpers.constructExecutionMetaData(
@@ -202,11 +123,3 @@ export async function router(this: IExecuteFunctions): Promise<INodeExecutionDat
 
   return executionResult;
 }
-
-// [INÍCIO DA IMPLEMENTAÇÃO DOS NOVOS NÓS HOTMART]
-// Este bloco é apenas um marcador para facilitar a navegação e controle das próximas etapas.
-// Próximos arquivos a criar:
-// - nodes/Hotmart/v1/actions/product/getAll.operation.ts
-// - nodes/Hotmart/v1/actions/coupon/getAll.operation.ts
-// - nodes/Hotmart/v1/actions/club/getAll.operation.ts
-// - nodes/Hotmart/v1/actions/tickets/getAll.operation.ts
