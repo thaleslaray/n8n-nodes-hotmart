@@ -2,7 +2,7 @@ import type { IExecuteFunctions, INodeExecutionData, INodeProperties } from 'n8n
 import { hotmartApiRequest } from '../../transport/request';
 import { returnAllOption, limitOption, maxResultsOption } from '../common.descriptions';
 import { getAllItems } from '../../helpers/pagination'; // Importar helper
-import { convertToTimestamp } from '../../helpers/dateUtils';
+import { buildQueryParams } from '../../helpers/queryBuilder';
 import type { SubscriptionQueryParams, SubscriptionSummary, ApiResponse } from '../../types';
 
 export const description: INodeProperties[] = [
@@ -149,29 +149,22 @@ export const execute = async function (
         dateNextCharge?: string;
       };
 
-      const qs: SubscriptionQueryParams = {};
+      // Usar a utility para construir os query parameters
+      const mapping = {
+        productId: 'product_id',
+        subscriberCode: 'subscriber_code',
+        accessionDate: 'accession_date',
+        endAccessionDate: 'end_accession_date',
+        dateNextCharge: 'date_next_charge',
+      };
 
-      if (filters.productId) {
-        qs.product_id = parseInt(filters.productId, 10);
-      }
-
-      if (filters.subscriberCode) {
-        qs.subscriber_code = filters.subscriberCode;
-      }
-
-      if (filters.accessionDate) {
-        const ts = convertToTimestamp(filters.accessionDate);
-        if (ts) qs.accession_date = ts;
-      }
-
-      if (filters.endAccessionDate) {
-        const ts = convertToTimestamp(filters.endAccessionDate);
-        if (ts) qs.end_accession_date = ts;
-      }
-
-      if (filters.dateNextCharge) {
-        const ts = convertToTimestamp(filters.dateNextCharge);
-        if (ts) qs.date_next_charge = ts;
+      const dateFields = ['accessionDate', 'endAccessionDate', 'dateNextCharge'];
+      
+      const qs = buildQueryParams(filters, mapping, dateFields) as SubscriptionQueryParams;
+      
+      // Tratamento especial para productId que precisa ser número
+      if (qs.product_id && typeof qs.product_id === 'string') {
+        qs.product_id = parseInt(qs.product_id, 10);
       }
 
       let responseData;

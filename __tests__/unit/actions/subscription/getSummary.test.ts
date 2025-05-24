@@ -36,7 +36,6 @@ describe('Subscription - getSummary', () => {
 		(mockThis.getNodeParameter as jest.Mock).mockImplementation((param: string, index: number, defaultValue?: any) => {
 			if (param === 'filters') return {
 				productId: '123',
-				status: 'ACTIVE',
 			};
 			return defaultValue;
 		});
@@ -100,8 +99,8 @@ describe('Subscription - getSummary', () => {
 	it('deve filtrar por período', async () => {
 		(mockThis.getNodeParameter as jest.Mock).mockImplementation((param: string, index: number, defaultValue?: any) => {
 			if (param === 'filters') return {
-				startDate: '2024-01-01',
-				endDate: '2024-12-31',
+				accessionDate: '2024-01-01T00:00:00Z',
+				endAccessionDate: '2024-12-31T23:59:59Z',
 			};
 			return defaultValue;
 		});
@@ -116,6 +115,8 @@ describe('Subscription - getSummary', () => {
 			{},
 			{
 				max_results: 50,
+				accession_date: 1704067200000,
+				end_accession_date: 1735689599000,
 			}
 		);
 	});

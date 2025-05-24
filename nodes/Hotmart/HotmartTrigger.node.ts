@@ -1143,7 +1143,7 @@ export class HotmartTrigger implements INodeType {
 
     // Verificar o evento
     const event = getEvent.call(this);
-    if (!event) {
+    if (event === undefined || event === null) {
       this.logger.debug(`[${nodeName}] Evento desconhecido:`, { event: (bodyData as IDataObject).event || 'undefined' });
       res.status(400).send('Evento desconhecido');
       return {

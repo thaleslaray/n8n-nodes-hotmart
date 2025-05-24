@@ -2,6 +2,7 @@ import type { IExecuteFunctions, INodeExecutionData, INodeProperties } from 'n8n
 import { hotmartApiRequestTyped } from '../../transport/requestTyped';
 import { returnAllOption, limitOption } from '../common.descriptions';
 import type { TicketQueryParams, TicketParticipant } from '../../types';
+import { buildQueryParams } from '../../helpers/queryBuilder';
 
 type TicketListResponse = { items: TicketParticipant[]; page_info?: { next_page_token?: string } };
 
@@ -202,16 +203,8 @@ export const execute = async function (
         ticket_qr_code?: string;
       };
 
-      const qs: TicketQueryParams = {};
-      if (filters.buyer_email) qs.buyer_email = filters.buyer_email;
-      if (filters.participant_email) qs.participant_email = filters.participant_email;
-      if (filters.last_update) qs.last_update = filters.last_update;
-      if (filters.id_lot) qs.id_lot = filters.id_lot;
-      if (filters.ticket_status) qs.ticket_status = filters.ticket_status;
-      if (filters.ticket_type) qs.ticket_type = filters.ticket_type;
-      if (filters.checkin_status) qs.checkin_status = filters.checkin_status;
-      if (filters.id_eticket) qs.id_eticket = filters.id_eticket;
-      if (filters.ticket_qr_code) qs.ticket_qr_code = filters.ticket_qr_code;
+      // Usar a utility - campos já estão com nomes corretos (snake_case)
+      const qs = buildQueryParams(filters) as TicketQueryParams;
 
       let responseData;
 

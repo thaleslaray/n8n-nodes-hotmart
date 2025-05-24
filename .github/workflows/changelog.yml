@@ -1,0 +1,108 @@
+name: Auto Changelog
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  changelog:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+          
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+          
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        
+      - name: Configure Git
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+      - name: Check for conventional commits
+        id: check_commits
+        run: |
+          # Pega a última tag
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          
+          if [ -z "$LATEST_TAG" ]; then
+            echo "No tags found, checking all commits"
+            COMMITS=$(git log --pretty=format:"%s" --no-merges)
+          else
+            echo "Checking commits since $LATEST_TAG"
+            COMMITS=$(git log $LATEST_TAG..HEAD --pretty=format:"%s" --no-merges)
+          fi
+          
+          # Verifica se há commits convencionais
+          if echo "$COMMITS" | grep -qE "^(feat|fix|docs|style|refactor|perf|test|chore|build|ci)(\(.+\))?: .+"; then
+            echo "has_conventional_commits=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_conventional_commits=false" >> $GITHUB_OUTPUT
+          fi
+          
+      - name: Generate changelog
+        if: steps.check_commits.outputs.has_conventional_commits == 'true'
+        run: |
+          # Gera o changelog sem criar release
+          npx standard-version --dry-run > /tmp/changelog.txt 2>&1
+          
+          # Extrai apenas a parte do CHANGELOG
+          sed -n '/CHANGELOG/,/---/p' /tmp/changelog.txt | sed '1d;$d' > /tmp/changelog_content.txt
+          
+          # Se houver conteúdo novo, atualiza o CHANGELOG.md
+          if [ -s /tmp/changelog_content.txt ]; then
+            echo "📝 Atualizando CHANGELOG.md..."
+            
+            # Gera o changelog real
+            npx standard-version --skip.tag --skip.commit
+            
+            # Commit das mudanças
+            git add CHANGELOG.md
+            git commit -m "docs: atualizar CHANGELOG.md [skip ci]" || echo "Sem mudanças no CHANGELOG"
+            git push origin main || echo "Nada para fazer push"
+          fi
+          
+      - name: Resumo das mudanças
+        if: steps.check_commits.outputs.has_conventional_commits == 'true'
+        run: |
+          echo "## 📋 Resumo das Mudanças" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Lista os tipos de mudanças
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          
+          if [ -z "$LATEST_TAG" ]; then
+            COMMITS=$(git log --pretty=format:"%s" --no-merges)
+          else
+            COMMITS=$(git log $LATEST_TAG..HEAD --pretty=format:"%s" --no-merges)
+          fi
+          
+          # Conta cada tipo
+          FEAT_COUNT=$(echo "$COMMITS" | grep -cE "^feat(\(.+\))?: " || true)
+          FIX_COUNT=$(echo "$COMMITS" | grep -cE "^fix(\(.+\))?: " || true)
+          DOCS_COUNT=$(echo "$COMMITS" | grep -cE "^docs(\(.+\))?: " || true)
+          TEST_COUNT=$(echo "$COMMITS" | grep -cE "^test(\(.+\))?: " || true)
+          
+          [ $FEAT_COUNT -gt 0 ] && echo "- ✨ **Features**: $FEAT_COUNT" >> $GITHUB_STEP_SUMMARY
+          [ $FIX_COUNT -gt 0 ] && echo "- 🐛 **Bug Fixes**: $FIX_COUNT" >> $GITHUB_STEP_SUMMARY
+          [ $DOCS_COUNT -gt 0 ] && echo "- 📚 **Documentação**: $DOCS_COUNT" >> $GITHUB_STEP_SUMMARY
+          [ $TEST_COUNT -gt 0 ] && echo "- ✅ **Testes**: $TEST_COUNT" >> $GITHUB_STEP_SUMMARY

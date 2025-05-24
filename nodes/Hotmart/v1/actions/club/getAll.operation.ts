@@ -2,6 +2,7 @@ import type { IExecuteFunctions, INodeExecutionData, INodeProperties } from 'n8n
 import { hotmartApiRequestTyped } from '../../transport/requestTyped';
 import { returnAllOption, limitOption, maxResultsOption } from '../common.descriptions';
 import type { ClubQueryParams, ClubStudent } from '../../types';
+import { buildQueryParams } from '../../helpers/queryBuilder';
 
 type ClubListResponse = { items: ClubStudent[]; page_info?: { next_page_token?: string } };
 
@@ -124,8 +125,9 @@ export const execute = async function (
         email?: string;
       };
 
-      const qs: ClubQueryParams = { subdomain };
-      if (filters.email) qs.email = filters.email;
+      // Usar a utility para filtros e adicionar subdomain depois
+      const filterParams = buildQueryParams(filters);
+      const qs: ClubQueryParams = { subdomain, ...filterParams };
 
       // SOLUÇÃO DIRETA: Implementação manual de paginação
       if (returnAll) {
