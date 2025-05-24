@@ -48,6 +48,8 @@
     "format": "prettier --write nodes/ credentials/ *.json *.md",
     "format:check": "prettier --check nodes/ credentials/ *.json *.md",
     "typecheck": "tsc --noEmit",
+    "validate": "node scripts/validate-fields.js",
+    "validate:fields": "jest __tests__/unit/nodes/field-validation.test.ts",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",

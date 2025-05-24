@@ -91,7 +91,6 @@ export const description: INodeProperties[] = [
         default: '',
         description: 'Data inicial do período de comissões (formato: YYYY-MM-DD)',
         hint: 'Deixe vazio para buscar desde o início',
-        placeholder: '2024-01-01',
       },
       /* 3 */
       {
@@ -101,7 +100,6 @@ export const description: INodeProperties[] = [
         default: '',
         description: 'Data final do período de comissões (formato: YYYY-MM-DD)',
         hint: 'Deixe vazio para buscar até hoje',
-        placeholder: '2024-12-31',
       },
       /* 4 */
       {

@@ -89,9 +89,8 @@ export const description: INodeProperties[] = [
         name: 'startDate',
         type: 'dateTime',
         default: '',
-        description: 'Data inicial para análise de métricas (formato: YYYY-MM-DD)',
+        description: 'Data inicial para análise de métricas. Formato: YYYY-MM-DD',
         hint: 'Defina períodos para comparação de resultados',
-        placeholder: '2024-01-01',
       },
       // 3. Data Final
       {
@@ -99,9 +98,8 @@ export const description: INodeProperties[] = [
         name: 'endDate',
         type: 'dateTime',
         default: '',
-        description: 'Data final para análise de métricas (formato: YYYY-MM-DD)',
+        description: 'Data final para análise de métricas. Formato: YYYY-MM-DD',
         hint: 'Compare diferentes períodos de vendas',
-        placeholder: '2024-12-31',
       },
       // 4. Origem da Venda (SRC)
       {

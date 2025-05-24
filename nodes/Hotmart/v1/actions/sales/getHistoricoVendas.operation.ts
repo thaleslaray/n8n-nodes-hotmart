@@ -95,7 +95,6 @@ export const description: INodeProperties[] = [
         default: '',
         description: 'Data inicial do período de vendas (formato: YYYY-MM-DD)',
         hint: 'Deixe vazio para buscar desde o início',
-        placeholder: '2024-01-01',
       },
       // 3. Data Final
       {
@@ -105,7 +104,6 @@ export const description: INodeProperties[] = [
         default: '',
         description: 'Data final do período de vendas (formato: YYYY-MM-DD)',
         hint: 'Deixe vazio para buscar até hoje',
-        placeholder: '2024-12-31',
       },
       // 4. Origem da Venda (SRC)
       {

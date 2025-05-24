@@ -91,7 +91,6 @@ export const description: INodeProperties[] = [
         default: '',
         description: 'Data inicial do período de análise (formato: YYYY-MM-DD)',
         hint: 'Analise performance de afiliados por período',
-        placeholder: '2024-01-01',
       },
       // 3. Data Final
       {
@@ -101,7 +100,6 @@ export const description: INodeProperties[] = [
         default: '',
         description: 'Data final do período de análise (formato: YYYY-MM-DD)',
         hint: 'Compare períodos para identificar melhores afiliados',
-        placeholder: '2024-12-31',
       },
       // 4. E-mail do Comprador
       {
