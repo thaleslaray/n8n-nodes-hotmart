@@ -2,12 +2,41 @@
 
 Todas as alterações significativas deste projeto serão documentadas neste arquivo.
 
-O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/),
+O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/),
 e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
 ## [Unreleased]
 
 ### Adicionado
+
+- **RFC-002: Sistema de Eventos Refatorado (Parcial)** 🚀
+  - Novo enum `WebhookEventType` com valores string (elimina bug do evento 0)
+  - `EVENT_CONFIG` centralizado com metadados de cada evento
+  - Funções `isValidEvent()` e `getEventConfig()` para validação simples
+  - Modo standard totalmente refatorado (0 conversões vs 3 anteriores)
+  - 9 novos testes específicos para o sistema RFC-002
+  - Categoria de eventos adicionada aos metadados (purchase/subscription/club)
+
+### Corrigido
+
+- **Bug Crítico no HotmartTrigger** 🐛
+  - Evento `PURCHASE_OUT_OF_SHOPPING_CART` agora é aceito corretamente
+  - Causa: Enum com valor 0 era tratado como falsy (`if (!event)`)
+  - Solução: Verificação explícita (`if (event === undefined || event === null)`)
+  - Impacto: Abandono de carrinho agora funciona em produção
+
+### Adicionado
+
+- **Utility `buildQueryParams`** 🔧
+  - Elimina código duplicado em 5 arquivos
+  - Redução de 33% no código repetitivo
+  - Suporte a mapeamento de campos e conversão de datas
+  - 100% de cobertura de testes
+
+- **Documentação de Segurança e Contribuição** 📚
+  - `SECURITY.md`: Política completa de segurança e reporte de vulnerabilidades
+  - `CONTRIBUTING.md`: Guia detalhado para contribuidores
+  - `LICENSE.md`: Copyright atualizado
 
 - **Melhoria Significativa na Cobertura de Testes** 🎯
   - Cobertura aumentada de 80.33% para 82.29%

@@ -29,6 +29,128 @@ enum WebhookEventTypes {
   PURCHASE_PIX_GENERATED,
 }
 
+// Nova estrutura para RFC-002 - coexistindo com a antiga temporariamente
+enum WebhookEventType {
+  PURCHASE_OUT_OF_SHOPPING_CART = 'PURCHASE_OUT_OF_SHOPPING_CART',
+  PURCHASE_APPROVED = 'PURCHASE_APPROVED',
+  PURCHASE_COMPLETE = 'PURCHASE_COMPLETE',
+  PURCHASE_CANCELED = 'PURCHASE_CANCELED',
+  PURCHASE_REFUNDED = 'PURCHASE_REFUNDED',
+  PURCHASE_CHARGEBACK = 'PURCHASE_CHARGEBACK',
+  PURCHASE_BILLET_PRINTED = 'PURCHASE_BILLET_PRINTED',
+  PURCHASE_PROTEST = 'PURCHASE_PROTEST',
+  PURCHASE_EXPIRED = 'PURCHASE_EXPIRED',
+  PURCHASE_DELAYED = 'PURCHASE_DELAYED',
+  SUBSCRIPTION_CANCELLATION = 'SUBSCRIPTION_CANCELLATION',
+  SWITCH_PLAN = 'SWITCH_PLAN',
+  UPDATE_SUBSCRIPTION_CHARGE_DATE = 'UPDATE_SUBSCRIPTION_CHARGE_DATE',
+  CLUB_FIRST_ACCESS = 'CLUB_FIRST_ACCESS',
+  CLUB_MODULE_COMPLETED = 'CLUB_MODULE_COMPLETED',
+}
+
+interface EventConfig {
+  displayName: string;
+  outputIndex: number;
+  category: 'purchase' | 'subscription' | 'club';
+}
+
+const EVENT_CONFIG: Record<WebhookEventType, EventConfig> = {
+  [WebhookEventType.PURCHASE_OUT_OF_SHOPPING_CART]: {
+    displayName: 'Abandono de Carrinho',
+    outputIndex: 0,
+    category: 'purchase',
+  },
+  [WebhookEventType.PURCHASE_APPROVED]: {
+    displayName: 'Compra Aprovada',
+    outputIndex: 1,
+    category: 'purchase',
+  },
+  [WebhookEventType.PURCHASE_COMPLETE]: {
+    displayName: 'Compra Completa',
+    outputIndex: 2,
+    category: 'purchase',
+  },
+  [WebhookEventType.PURCHASE_CANCELED]: {
+    displayName: 'Compra Cancelada',
+    outputIndex: 3,
+    category: 'purchase',
+  },
+  [WebhookEventType.PURCHASE_REFUNDED]: {
+    displayName: 'Compra Reembolsada',
+    outputIndex: 4,
+    category: 'purchase',
+  },
+  [WebhookEventType.PURCHASE_CHARGEBACK]: {
+    displayName: 'Compra Chargeback',
+    outputIndex: 5,
+    category: 'purchase',
+  },
+  [WebhookEventType.PURCHASE_BILLET_PRINTED]: {
+    displayName: 'Boleto Impresso',
+    outputIndex: 6,
+    category: 'purchase',
+  },
+  [WebhookEventType.PURCHASE_PROTEST]: {
+    displayName: 'Compra em Disputa',
+    outputIndex: 7,
+    category: 'purchase',
+  },
+  [WebhookEventType.PURCHASE_EXPIRED]: {
+    displayName: 'Compra Expirada',
+    outputIndex: 8,
+    category: 'purchase',
+  },
+  [WebhookEventType.PURCHASE_DELAYED]: {
+    displayName: 'Compra Atrasada',
+    outputIndex: 9,
+    category: 'purchase',
+  },
+  [WebhookEventType.SUBSCRIPTION_CANCELLATION]: {
+    displayName: 'Assinatura Cancelada',
+    outputIndex: 10,
+    category: 'subscription',
+  },
+  [WebhookEventType.SWITCH_PLAN]: {
+    displayName: 'Troca de Plano de Assinatura',
+    outputIndex: 11,
+    category: 'subscription',
+  },
+  [WebhookEventType.UPDATE_SUBSCRIPTION_CHARGE_DATE]: {
+    displayName: 'Troca de dia de Cobrança',
+    outputIndex: 12,
+    category: 'subscription',
+  },
+  [WebhookEventType.CLUB_FIRST_ACCESS]: {
+    displayName: 'Primeiro Acesso',
+    outputIndex: 13,
+    category: 'club',
+  },
+  [WebhookEventType.CLUB_MODULE_COMPLETED]: {
+    displayName: 'Módulo Completo',
+    outputIndex: 14,
+    category: 'club',
+  },
+};
+
+function isValidEvent(event: string): event is WebhookEventType {
+  return Object.values(WebhookEventType).includes(event as WebhookEventType);
+}
+
+// Função para obter configuração de evento pelo nome
+function getEventConfig(eventName: string): EventConfig | undefined {
+  return EVENT_CONFIG[eventName as WebhookEventType];
+}
+
+// Função para gerar opções do dropdown de eventos
+function getEventOptions() {
+  const options = Object.entries(EVENT_CONFIG).map(([value, config]) => ({
+    name: config.displayName,
+    value,
+  }));
+  options.push({ name: 'Todos', value: '*' });
+  return options;
+}
+
 const webhookEvents: Record<WebhookEventTypes | 'all', { name: string; value: string }> = {
   [WebhookEventTypes.PURCHASE_OUT_OF_SHOPPING_CART]: {
     name: 'Abandono de Carrinho',
@@ -101,6 +223,7 @@ const webhookEvents: Record<WebhookEventTypes | 'all', { name: string; value: st
 };
 
 // Função para obter o tipo de evento a partir do corpo da requisição
+// TODO: Remover após refatorar modos smart e super-smart
 function getEvent(this: IWebhookFunctions): WebhookEventTypes | undefined {
   const body = this.getBodyData() as IDataObject;
 
@@ -562,7 +685,7 @@ export class HotmartTrigger implements INodeType {
         type: 'options',
         required: true,
         default: '*',
-        options: Object.values(webhookEvents),
+        options: getEventOptions(),
         description:
           'Selecione o evento específico que este webhook deve processar. Escolha "Todos" para receber qualquer tipo de evento da Hotmart. Eventos são notificações de ações como compras, assinaturas e acessos.',
         displayOptions: {
@@ -1142,22 +1265,23 @@ export class HotmartTrigger implements INodeType {
     }
 
     // Verificar o evento
-    const event = getEvent.call(this);
-    if (event === undefined || event === null) {
-      this.logger.debug(`[${nodeName}] Evento desconhecido:`, { event: (bodyData as IDataObject).event || 'undefined' });
+    const eventName = (bodyData as IDataObject).event as string;
+    
+    if (!eventName || !isValidEvent(eventName)) {
+      this.logger.debug(`[${nodeName}] Evento desconhecido:`, { event: eventName || 'undefined' });
       res.status(400).send('Evento desconhecido');
       return {
         noWebhookResponse: true,
       };
     }
+    
+    // Para compatibilidade temporária com modo smart/super-smart
+    const event = getEvent.call(this);
 
     // Modo padrão (uma única saída)
     if (triggerMode === 'standard') {
-      if (
-        event !== undefined &&
-        (webhookEvents[event as WebhookEventTypes].value === this.getNodeParameter('event') ||
-        this.getNodeParameter('event') === '*')
-      ) {
+      const selectedEvent = this.getNodeParameter('event') as string;
+      if (selectedEvent === '*' || eventName === selectedEvent) {
         // Verificar se é uma transação de assinatura
         // Um evento é considerado assinatura se:
         // 1. Contém dados de assinatura (subscription.subscriber.code)
@@ -1178,9 +1302,12 @@ export class HotmartTrigger implements INodeType {
             ].includes(eventValue)
         );
 
+        // Obter configuração do evento
+        const eventConfig = getEventConfig(eventName);
+        
         // Logar informações para depuração
         this.logger.debug(`[${nodeName}] ============ DEBUG ============`);
-        this.logger.debug(`[${nodeName}] Evento recebido:`, { event: event !== undefined ? webhookEvents[event as WebhookEventTypes].name : 'Unknown' });
+        this.logger.debug(`[${nodeName}] Evento recebido:`, { event: eventConfig?.displayName || eventName });
         this.logger.debug(`[${nodeName}] É assinatura:`, { isSubscription: isSubscription ? 'Sim' : 'Não' });
         this.logger.debug(`[${nodeName}] Token de verificação recebido:`, { token: hottok });
         this.logger.debug(`[${nodeName}] ================================`);
@@ -1188,8 +1315,9 @@ export class HotmartTrigger implements INodeType {
         // Adicionar informações úteis aos dados retornados com metadados melhorados
         const returnData = {
           ...(bodyData as IDataObject),
-          eventName: event !== undefined ? webhookEvents[event as WebhookEventTypes].name : 'Unknown',
-          eventType: event !== undefined ? webhookEvents[event as WebhookEventTypes].value : 'UNKNOWN',
+          eventName: eventConfig?.displayName || eventName,
+          eventType: eventName,
+          eventCategory: eventConfig?.category,
           receivedAt: new Date().toISOString(),
           isSubscription,
           metadata: {
