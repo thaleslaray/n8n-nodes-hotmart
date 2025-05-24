@@ -31,11 +31,11 @@ import { convertToTimestamp } from './dateUtils';
  * // Resultado: { start_date: 1704067200 }
  */
 export function buildQueryParams(
-  filters: Record<string, any>,
+  filters: Record<string, unknown>,
   mapping?: Record<string, string>,
   dateFields?: string[]
-): Record<string, any> {
-  const params: Record<string, any> = {};
+): Record<string, unknown> {
+  const params: Record<string, unknown> = {};
 
   Object.entries(filters).forEach(([key, value]) => {
     // Ignorar valores undefined, null ou strings vazias
@@ -48,8 +48,8 @@ export function buildQueryParams(
 
     // Converter datas para timestamp se necessário
     if (dateFields?.includes(key)) {
-      const timestamp = convertToTimestamp(value);
-      if (timestamp) {
+      const timestamp = convertToTimestamp(value as string | number);
+      if (timestamp !== undefined) {
         params[paramKey] = timestamp;
       }
     } else {
