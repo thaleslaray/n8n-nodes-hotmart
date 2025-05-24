@@ -7,6 +7,15 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ## [Unreleased]
 
+### Modificado
+
+- **RFC-003: Dependências Críticas Atualizadas** 📦
+  - TypeScript: 4.9.5 → 5.8.3 (performance +30%, features modernas)
+  - @types/node: 14.18.63 → 22.15.21 (Node 14 está EOL)
+  - @types/express: 4.17.17 → 5.0.2
+  - @types/request-promise-native: 1.0.18 → 1.0.21
+  - Correção de compatibilidade com TypeScript 5.x em `request.ts`
+
 ### Adicionado
 
 - **RFC-002: Sistema de Eventos Refatorado (Parcial)** 🚀
