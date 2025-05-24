@@ -1,0 +1,90 @@
+{
+  "metadata": {
+    "recorded_at": "2025-05-24T04:41:00.000Z",
+    "endpoint": "club-getPages",
+    "api_path": "/club/api/v1/modules/{module_id}/pages",
+    "description": "Resposta real da API Hotmart para obter páginas de módulo (dados anonimizados)",
+    "anonymized": true,
+    "anonymized_at": "2025-05-24T04:41:00.000Z"
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      {
+        "page_id": "PAGE001",
+        "name": "Aula 1: Bem-vindo ao Curso",
+        "type": "CONTENT",
+        "page_order": 1,
+        "total_comments": 2,
+        "rates": [
+          {
+            "rate": 2,
+            "total": 1
+          },
+          {
+            "rate": 5,
+            "total": 20
+          },
+          {
+            "rate": 1,
+            "total": 4
+          }
+        ],
+        "rates_average": 4.2,
+        "published": true,
+        "has_media": false,
+        "dripping_configs": []
+      },
+      {
+        "page_id": "PAGE002",
+        "name": "Aula 2: Configurando seu Ambiente",
+        "type": "CONTENT",
+        "page_order": 2,
+        "total_comments": 5,
+        "rates": [
+          {
+            "rate": 2,
+            "total": 1
+          },
+          {
+            "rate": 5,
+            "total": 15
+          },
+          {
+            "rate": 1,
+            "total": 4
+          }
+        ],
+        "rates_average": 4,
+        "published": true,
+        "has_media": false,
+        "dripping_configs": []
+      },
+      {
+        "page_id": "PAGE003",
+        "name": "Aula 3: Recursos Premium",
+        "type": "CONTENT",
+        "page_order": 3,
+        "total_comments": 1,
+        "rates": [
+          {
+            "rate": 3,
+            "total": 1
+          },
+          {
+            "rate": 1,
+            "total": 3
+          },
+          {
+            "rate": 5,
+            "total": 9
+          }
+        ],
+        "rates_average": 3.9,
+        "published": true,
+        "has_media": false,
+        "dripping_configs": []
+      }
+    ]
+  }
+}

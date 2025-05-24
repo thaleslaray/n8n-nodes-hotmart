@@ -1,0 +1,74 @@
+{
+  "metadata": {
+    "recorded_at": "2025-05-24T02:40:00.000Z",
+    "endpoint": "subscription-getAll",
+    "api_path": "/payments/api/v1/subscriptions",
+    "description": "Resposta real da API Hotmart para listar assinaturas (dados anonimizados)",
+    "anonymized": true,
+    "anonymized_at": "2025-05-24T02:51:43.138Z"
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      {
+        "subscriber_code": "SUB67E6CDA0",
+        "subscription_id": 10000000,
+        "status": "CANCELLED_BY_SELLER",
+        "accession_date": 1745527299000,
+        "request_date": 1745527298000,
+        "trial": false,
+        "plan": {
+          "name": "Plano Teste 360 dias",
+          "id": 558689,
+          "recurrency_period": 360
+        },
+        "product": {
+          "name": "Produto de Teste 1",
+          "id": 1355458,
+          "ucode": "788B4B12"
+        },
+        "price": {
+          "currency_code": "BRL",
+          "value": 1
+        },
+        "subscriber": {
+          "name": "João Silva",
+          "ucode": "84B4848A",
+          "email": "joão.silva@hotmail.com"
+        },
+        "end_accession_date": 1745848600000,
+        "date_next_charge": 1777032000000,
+        "transaction": "TX5B929770"
+      },
+      {
+        "subscriber_code": "SUB740B37F5",
+        "subscription_id": 10000001,
+        "status": "ACTIVE",
+        "accession_date": 1745541919000,
+        "request_date": 1745541915000,
+        "trial": false,
+        "plan": {
+          "name": "Plano Teste 360 dias",
+          "id": 558689,
+          "recurrency_period": 360
+        },
+        "product": {
+          "name": "Produto de Teste 2",
+          "id": 1355458,
+          "ucode": "788B4B12"
+        },
+        "price": {
+          "currency_code": "BRL",
+          "value": 997
+        },
+        "subscriber": {
+          "name": "Maria Santos",
+          "ucode": "ABD5E9B1",
+          "email": "maria.santos@outlook.com"
+        },
+        "date_next_charge": 1777118400000,
+        "transaction": "TXBE50DDF5"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "metadata": {
+    "recorded_at": "2025-05-24T03:32:00.000Z",
+    "endpoint": "subscription-cancelList",
+    "api_path": "/payments/api/v1/subscriptions/cancel",
+    "description": "Resposta real da API Hotmart para cancelar lista de assinaturas (dados anonimizados)",
+    "anonymized": true,
+    "anonymized_at": "2025-05-24T03:32:00.000Z"
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      {
+        "success_subscriptions": [
+          {
+            "date_last_recurrence": 1,
+            "creation_date": "2024-12-11 15:35:02",
+            "subscriber_code": "SUBKGB81N",
+            "interval_between_charges": 12,
+            "shopper": {
+              "email": "teste.usuario@example.com",
+              "phone": "(11) 999999999"
+            },
+            "current_recurrence": 1,
+            "date_next_charge": "2025-12-11 12:00:00",
+            "due_day": 1,
+            "status": "INACTIVE",
+            "interval_type_between_charges": "MONTH",
+            "activation_date": "2024-12-11 15:35:43"
+          }
+        ]
+      }
+    ]
+  }
+}

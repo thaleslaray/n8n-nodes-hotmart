@@ -1,0 +1,16 @@
+{
+  "metadata": {
+    "recorded_at": "2025-05-24T04:37:00.000Z",
+    "endpoint": "coupon-delete",
+    "api_path": "/payments/api/v1/coupons/{coupon_code}",
+    "description": "Resposta real da API Hotmart para excluir cupom (dados anonimizados)",
+    "anonymized": true,
+    "anonymized_at": "2025-05-24T04:37:00.000Z"
+  },
+  "response": {
+    "status": 204,
+    "body": [
+      {}
+    ]
+  }
+}

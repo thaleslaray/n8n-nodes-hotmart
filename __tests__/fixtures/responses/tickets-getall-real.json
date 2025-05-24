@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "recorded_at": "2025-05-24T04:45:00.000Z",
+    "endpoint": "tickets-getAll",
+    "api_path": "/payments/api/v1/etickets",
+    "description": "Resposta real da API Hotmart para listar ingressos e participantes (dados anonimizados)",
+    "anonymized": true,
+    "anonymized_at": "2025-05-24T04:45:00.000Z"
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      {
+        "eticket": {
+          "category": null,
+          "checkin_url": "https://consumer.hotmart.com/eticket/TICKET-001",
+          "is_blocked": false,
+          "current_update": 1748056774000,
+          "ticket_status": "REFUNDED",
+          "ticket_type": "PAID",
+          "checkin_status": "PENDING",
+          "ticket_qr_code": "QR123456789",
+          "id": 49843911
+        },
+        "buyer": {
+          "ucode": "user-001",
+          "email": "joao.silva@example.com",
+          "document": null,
+          "name": "João Silva",
+          "phone": null
+        },
+        "lot": {
+          "id": 355310,
+          "name": "Lote Premium"
+        },
+        "product": {
+          "name": "Evento Digital de Tecnologia",
+          "id": 5485679
+        },
+        "participant": {
+          "phone": null,
+          "email": null,
+          "document": null,
+          "id": null,
+          "name": null
+        }
+      }
+    ]
+  }
+}

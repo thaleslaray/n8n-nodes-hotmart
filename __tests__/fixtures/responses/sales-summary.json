@@ -1,0 +1,150 @@
+{
+  "metadata": {
+    "recorded_at": "2024-10-23T11:00:00Z",
+    "endpoint": "sales/summary",
+    "api_path": "/payments/api/v1/sales/summary",
+    "description": "Resumo de vendas com totalizadores e estatísticas",
+    "anonymized": {
+      "fields": [],
+      "preserved": ["all_numeric_values", "dates", "counts", "percentages"]
+    }
+  },
+  "response": {
+    "period": {
+      "start_date": "2024-10-01T00:00:00.000Z",
+      "end_date": "2024-10-31T23:59:59.999Z"
+    },
+    "summary": {
+      "total_sales": 3481.00,
+      "total_transactions": 5,
+      "approved_sales": 3284.00,
+      "approved_transactions": 4,
+      "refunded_sales": 197.00,
+      "refunded_transactions": 1,
+      "waiting_payment_sales": 990.00,
+      "waiting_payment_transactions": 1,
+      "average_ticket": 696.20,
+      "conversion_rate": 80.00
+    },
+    "by_product": [
+      {
+        "product_id": 123456,
+        "product_name": "Curso Completo de Marketing Digital",
+        "total_sales": 500.00,
+        "transactions": 1,
+        "average_price": 500.00
+      },
+      {
+        "product_id": 123457,
+        "product_name": "E-book Estratégias de Vendas",
+        "total_sales": 297.00,
+        "transactions": 1,
+        "average_price": 297.00
+      },
+      {
+        "product_id": 123458,
+        "product_name": "Pacote Completo - Cursos Premium",
+        "total_sales": 990.00,
+        "transactions": 1,
+        "average_price": 990.00
+      },
+      {
+        "product_id": 123459,
+        "product_name": "Minicurso de Copywriting",
+        "total_sales": 197.00,
+        "transactions": 1,
+        "average_price": 197.00
+      },
+      {
+        "product_id": 123460,
+        "product_name": "Formação Completa em Design Digital",
+        "total_sales": 1497.00,
+        "transactions": 1,
+        "average_price": 1497.00
+      }
+    ],
+    "by_payment_method": [
+      {
+        "payment_type": "CREDIT_CARD",
+        "total_sales": 2491.00,
+        "transactions": 4,
+        "percentage": 71.58
+      },
+      {
+        "payment_type": "BILLET",
+        "total_sales": 990.00,
+        "transactions": 1,
+        "percentage": 28.42
+      }
+    ],
+    "by_source": [
+      {
+        "source": "ORGANIC",
+        "total_sales": 2194.00,
+        "transactions": 3,
+        "percentage": 63.03
+      },
+      {
+        "source": "PAID_TRAFFIC",
+        "total_sales": 297.00,
+        "transactions": 1,
+        "percentage": 8.53
+      },
+      {
+        "source": "AFFILIATE",
+        "total_sales": 990.00,
+        "transactions": 1,
+        "percentage": 28.44
+      }
+    ],
+    "by_status": [
+      {
+        "status": "APPROVED",
+        "total_sales": 2294.00,
+        "transactions": 3,
+        "percentage": 65.90
+      },
+      {
+        "status": "WAITING_PAYMENT",
+        "total_sales": 990.00,
+        "transactions": 1,
+        "percentage": 28.44
+      },
+      {
+        "status": "REFUNDED",
+        "total_sales": 197.00,
+        "transactions": 1,
+        "percentage": 5.66
+      }
+    ],
+    "commissions_summary": {
+      "total_commissions": 711.55,
+      "affiliate_commissions": 422.00,
+      "coproducer_commissions": 149.70,
+      "marketplace_commissions": 139.85,
+      "vendor_commissions": 0.00
+    },
+    "daily_sales": [
+      {
+        "date": "2024-10-28",
+        "total_sales": 500.00,
+        "transactions": 1
+      },
+      {
+        "date": "2024-10-29",
+        "total_sales": 297.00,
+        "transactions": 1
+      },
+      {
+        "date": "2024-10-30",
+        "total_sales": 990.00,
+        "transactions": 1
+      },
+      {
+        "date": "2024-10-31",
+        "total_sales": 1694.00,
+        "transactions": 2
+      }
+    ]
+  }
+}

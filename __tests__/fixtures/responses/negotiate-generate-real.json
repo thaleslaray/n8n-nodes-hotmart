@@ -1,0 +1,34 @@
+{
+  "metadata": {
+    "recorded_at": "2025-05-24T04:50:00.000Z",
+    "endpoint": "negotiate-generateNegotiation",
+    "api_path": "/payments/api/v1/subscriptions/{subscription_id}/negotiate",
+    "description": "Resposta real da API Hotmart para gerar negociação (dados anonimizados)",
+    "anonymized": true,
+    "anonymized_at": "2025-05-24T04:50:00.000Z"
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "negotiation_id": "NEG123456789",
+      "payment_link": "https://pay.hotmart.com/negotiate/NEG123456789",
+      "payment_type": "BILLET",
+      "discount_value": 50.00,
+      "discount_type": "FIXED",
+      "total_value": 947.00,
+      "original_value": 997.00,
+      "recurrences": [1, 2, 3],
+      "expiration_date": 1748736000000,
+      "subscription": {
+        "id": "sub_123456",
+        "subscriber_code": "SUB001",
+        "product": {
+          "id": 1355458,
+          "name": "Produto de Assinatura"
+        }
+      },
+      "status": "PENDING",
+      "created_at": 1746144000000
+    }
+  }
+}

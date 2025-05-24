@@ -1,0 +1,109 @@
+{
+  "metadata": {
+    "recorded_at": "2024-10-23T12:30:00Z",
+    "endpoint": "sales/refund",
+    "api_path": "/payments/api/v1/sales/refund",
+    "description": "Solicitação de reembolso de vendas com resposta de sucesso ou erro",
+    "anonymized": {
+      "fields": ["buyer_name", "buyer_email", "transaction", "refund_transaction"],
+      "preserved": ["status", "dates", "values", "reason", "product_info"]
+    }
+  },
+  "response": {
+    "success_example": {
+      "transaction": "HP12345678901234567893",
+      "buyer": {
+        "name": "Carlos Oliveira",
+        "email": "carlos.oliveira@example.com"
+      },
+      "product": {
+        "id": 123459,
+        "name": "Minicurso de Copywriting"
+      },
+      "refund": {
+        "status": "REFUNDED",
+        "refund_date": 1730401200000,
+        "refund_date_iso": "2024-10-31T15:00:00.000Z",
+        "refund_transaction": "RF98765432109876543210",
+        "refund_amount": 197.00,
+        "refund_reason": "CUSTOMER_REQUEST",
+        "refund_notes": "Cliente solicitou reembolso dentro do prazo de garantia"
+      },
+      "original_purchase": {
+        "purchase_date": 1730314800000,
+        "original_value": 197.00,
+        "payment_method": "CREDIT_CARD",
+        "installments": 2
+      },
+      "message": "Reembolso processado com sucesso"
+    },
+    "error_examples": [
+      {
+        "error": "TRANSACTION_NOT_FOUND",
+        "message": "Transação não encontrada",
+        "transaction": "HP99999999999999999999",
+        "details": "A transação informada não existe ou não pertence a este produtor"
+      },
+      {
+        "error": "REFUND_PERIOD_EXPIRED",
+        "message": "Período de reembolso expirado",
+        "transaction": "HP12345678901234567890",
+        "details": "O prazo para solicitar reembolso desta transação já expirou. Prazo máximo: 30 dias",
+        "purchase_date": 1727463600000,
+        "warranty_expire_date": 1730055600000
+      },
+      {
+        "error": "ALREADY_REFUNDED",
+        "message": "Transação já reembolsada",
+        "transaction": "HP12345678901234567893",
+        "details": "Esta transação já foi reembolsada anteriormente",
+        "refund_date": 1730401200000,
+        "refund_transaction": "RF98765432109876543210"
+      },
+      {
+        "error": "SUBSCRIPTION_ACTIVE",
+        "message": "Assinatura ativa",
+        "transaction": "HP12345678901234567894",
+        "details": "Não é possível reembolsar uma compra com assinatura ativa. Cancele a assinatura primeiro",
+        "subscription": {
+          "subscriber_code": "SUB789016",
+          "status": "ACTIVE"
+        }
+      },
+      {
+        "error": "INVALID_PAYMENT_STATUS",
+        "message": "Status de pagamento inválido",
+        "transaction": "HP12345678901234567892",
+        "details": "Não é possível reembolsar uma transação com status WAITING_PAYMENT",
+        "current_status": "WAITING_PAYMENT"
+      }
+    ],
+    "refund_rules": {
+      "max_refund_period_days": 30,
+      "allowed_payment_types": ["CREDIT_CARD", "DEBIT_CARD", "PIX", "BILLET"],
+      "non_refundable_statuses": ["REFUNDED", "CANCELLED", "WAITING_PAYMENT", "EXPIRED"],
+      "refund_reasons": [
+        {
+          "code": "CUSTOMER_REQUEST",
+          "description": "Solicitação do cliente"
+        },
+        {
+          "code": "PRODUCT_DEFECT",
+          "description": "Defeito no produto"
+        },
+        {
+          "code": "DUPLICATE_PURCHASE",
+          "description": "Compra duplicada"
+        },
+        {
+          "code": "FRAUD",
+          "description": "Fraude identificada"
+        },
+        {
+          "code": "OTHER",
+          "description": "Outro motivo"
+        }
+      ]
+    }
+  }
+}

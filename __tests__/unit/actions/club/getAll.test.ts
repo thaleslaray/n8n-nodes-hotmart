@@ -1,17 +1,17 @@
 import { execute } from '../../../../nodes/Hotmart/v1/actions/club/getAll.operation';
 import { createMockExecuteFunctions } from '../../../helpers/testHelpers';
-import * as request from '../../../../nodes/Hotmart/v1/transport/request';
+import * as requestTyped from '../../../../nodes/Hotmart/v1/transport/requestTyped';
 import { IExecuteFunctions, INodeExecutionData } from 'n8n-workflow';
 
 // Mock dos módulos
-jest.mock('../../../../nodes/Hotmart/v1/transport/request');
+jest.mock('../../../../nodes/Hotmart/v1/transport/requestTyped');
 
 // Mock do console.log
 global.console.log = jest.fn();
 
 describe('Club - Get All Operation', () => {
   let mockThis: IExecuteFunctions;
-  let mockHotmartApiRequest: jest.Mock;
+  let mockHotmartApiRequestTyped: jest.Mock;
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -19,8 +19,16 @@ describe('Club - Get All Operation', () => {
     mockThis.getNode = jest.fn().mockReturnValue({ name: 'Hotmart' });
     mockThis.continueOnFail = jest.fn().mockReturnValue(false);
     
-    // Mock hotmartApiRequest
-    mockHotmartApiRequest = request.hotmartApiRequest as jest.Mock;
+    // Mock logger
+    mockThis.logger = {
+      debug: jest.fn(),
+      error: jest.fn(),
+      info: jest.fn(),
+      warn: jest.fn(),
+    };
+    
+    // Mock hotmartApiRequestTyped
+    mockHotmartApiRequestTyped = requestTyped.hotmartApiRequestTyped as jest.Mock;
   });
 
   describe('execute', () => {
@@ -40,12 +48,13 @@ describe('Club - Get All Operation', () => {
         ]
       };
 
-      mockHotmartApiRequest.mockResolvedValueOnce(mockResponse);
+      mockHotmartApiRequestTyped.mockResolvedValueOnce(mockResponse);
 
       const result = await execute.call(mockThis, testItems);
 
-      expect(mockHotmartApiRequest).toHaveBeenCalledTimes(1);
-      expect(mockHotmartApiRequest).toHaveBeenCalledWith(
+      expect(mockHotmartApiRequestTyped).toHaveBeenCalledTimes(1);
+      expect(mockHotmartApiRequestTyped).toHaveBeenCalledWith(
+        mockThis,
         'GET',
         '/club/api/v1/users',
         {},
@@ -70,7 +79,7 @@ describe('Club - Get All Operation', () => {
       mockThis.continueOnFail = jest.fn().mockReturnValue(true);
 
       const error = new Error('API Error');
-      mockHotmartApiRequest.mockRejectedValueOnce(error);
+      mockHotmartApiRequestTyped.mockRejectedValueOnce(error);
 
       const result = await execute.call(mockThis, testItems);
 
@@ -91,7 +100,7 @@ describe('Club - Get All Operation', () => {
       mockThis.continueOnFail = jest.fn().mockReturnValue(false);
 
       const error = new Error('API Error');
-      mockHotmartApiRequest.mockRejectedValueOnce(error);
+      mockHotmartApiRequestTyped.mockRejectedValueOnce(error);
 
       await expect(execute.call(mockThis, testItems)).rejects.toThrow('API Error');
     });
@@ -103,11 +112,142 @@ describe('Club - Get All Operation', () => {
         .mockReturnValueOnce({}) // filters
         .mockReturnValueOnce(10); // limit
 
-      mockHotmartApiRequest.mockResolvedValueOnce({ items: [] });
+      mockHotmartApiRequestTyped.mockResolvedValueOnce({ items: [] });
 
       const result = await execute.call(mockThis, testItems);
 
       expect(result).toEqual([[]]);
+    });
+
+    it('should handle returnAll with pagination', async () => {
+      mockThis.getNodeParameter = jest.fn()
+        .mockReturnValueOnce(true) // returnAll
+        .mockReturnValueOnce('club_123') // subdomain
+        .mockReturnValueOnce({}); // filters
+
+      const mockResponse1 = {
+        items: [
+          { id: 'student_1', name: 'Student 1' },
+          { id: 'student_2', name: 'Student 2' }
+        ],
+        page_info: {
+          next_page_token: 'page2',
+          results_per_page: 2
+        }
+      };
+
+      const mockResponse2 = {
+        items: [
+          { id: 'student_3', name: 'Student 3' }
+        ],
+        page_info: {
+          next_page_token: null,
+          results_per_page: 1
+        }
+      };
+
+      mockHotmartApiRequestTyped
+        .mockResolvedValueOnce(mockResponse1)
+        .mockResolvedValueOnce(mockResponse2);
+
+      const result = await execute.call(mockThis, testItems);
+
+      expect(mockHotmartApiRequestTyped).toHaveBeenCalledTimes(2);
+      expect(mockHotmartApiRequestTyped).toHaveBeenNthCalledWith(
+        1,
+        mockThis,
+        'GET',
+        '/club/api/v1/users',
+        {},
+        { subdomain: 'club_123', max_results: 500 }
+      );
+      expect(mockHotmartApiRequestTyped).toHaveBeenNthCalledWith(
+        2,
+        mockThis,
+        'GET',
+        '/club/api/v1/users',
+        {},
+        { subdomain: 'club_123', max_results: 500, page_token: 'page2' }
+      );
+
+      expect(result[0]).toHaveLength(3);
+      expect(mockThis.logger.debug).toHaveBeenCalled();
+    });
+
+    it('should handle returnAll without page_info', async () => {
+      mockThis.getNodeParameter = jest.fn()
+        .mockReturnValueOnce(true) // returnAll
+        .mockReturnValueOnce('club_123') // subdomain
+        .mockReturnValueOnce({}); // filters
+
+      const mockResponse = {
+        items: [
+          { id: 'student_1', name: 'Student 1' },
+          { id: 'student_2', name: 'Student 2' }
+        ]
+        // No page_info
+      };
+
+      mockHotmartApiRequestTyped.mockResolvedValueOnce(mockResponse);
+
+      const result = await execute.call(mockThis, testItems);
+
+      expect(mockHotmartApiRequestTyped).toHaveBeenCalledTimes(1);
+      expect(result[0]).toHaveLength(2);
+    });
+
+    it('should handle returnAll with no items in response', async () => {
+      mockThis.getNodeParameter = jest.fn()
+        .mockReturnValueOnce(true) // returnAll
+        .mockReturnValueOnce('club_123') // subdomain
+        .mockReturnValueOnce({}); // filters
+
+      const mockResponse = {
+        page_info: {
+          next_page_token: null,
+          results_per_page: 0
+        }
+        // No items
+      };
+
+      mockHotmartApiRequestTyped.mockResolvedValueOnce(mockResponse);
+
+      const result = await execute.call(mockThis, testItems);
+
+      expect(result[0]).toHaveLength(0);
+    });
+
+    it('should handle returnAll with filters', async () => {
+      mockThis.getNodeParameter = jest.fn()
+        .mockReturnValueOnce(true) // returnAll
+        .mockReturnValueOnce('club_123') // subdomain
+        .mockReturnValueOnce({
+          email: 'test@example.com',
+          status: 'ACTIVE'
+        }); // filters
+
+      const mockResponse = {
+        items: [{ id: 'student_1', name: 'Student 1' }],
+        page_info: { next_page_token: null }
+      };
+
+      mockHotmartApiRequestTyped.mockResolvedValueOnce(mockResponse);
+
+      const result = await execute.call(mockThis, testItems);
+
+      expect(mockHotmartApiRequestTyped).toHaveBeenCalledWith(
+        mockThis,
+        'GET',
+        '/club/api/v1/users',
+        {},
+        {
+          subdomain: 'club_123',
+          max_results: 500,
+          email: 'test@example.com',
+          status: 'ACTIVE'
+        }
+      );
+      expect(result[0]).toHaveLength(1);
     });
   });
 });

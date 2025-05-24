@@ -1,0 +1,231 @@
+{
+  "metadata": {
+    "recorded_at": "2024-10-23T11:30:00Z",
+    "endpoint": "sales/users",
+    "api_path": "/payments/api/v1/sales/users",
+    "description": "Participantes de vendas com detalhes de compradores e suas transações",
+    "anonymized": {
+      "fields": ["name", "email", "phone", "document", "address", "ucode"],
+      "preserved": ["total_purchases", "total_value", "products", "dates", "status"]
+    }
+  },
+  "response": {
+    "items": [
+      {
+        "buyer": {
+          "name": "Maria Silva",
+          "email": "maria.silva@example.com",
+          "phone": "(11) 98765-4321",
+          "document": "123.456.789-00",
+          "ucode": "USR123456",
+          "address": {
+            "street": "Rua das Flores",
+            "number": "123",
+            "complement": "Apto 456",
+            "neighborhood": "Jardim Primavera",
+            "city": "São Paulo",
+            "state": "SP",
+            "country": "Brasil",
+            "zipcode": "01234-567"
+          }
+        },
+        "purchases": [
+          {
+            "transaction": "HP12345678901234567890",
+            "product_id": 123456,
+            "product_name": "Curso Completo de Marketing Digital",
+            "purchase_date": 1730055300000,
+            "approved_date": 1730055600000,
+            "value": 500.00,
+            "status": "APPROVED",
+            "payment_type": "CREDIT_CARD",
+            "affiliate": {
+              "name": "Afiliado Premium",
+              "email": "afiliado.premium@example.com",
+              "ucode": "AFF123456"
+            }
+          }
+        ],
+        "summary": {
+          "total_purchases": 1,
+          "total_value": 500.00,
+          "first_purchase": 1730055300000,
+          "last_purchase": 1730055300000,
+          "active_subscriptions": 0
+        }
+      },
+      {
+        "buyer": {
+          "name": "João Santos",
+          "email": "joao.santos@example.com",
+          "phone": "(21) 99876-5432",
+          "document": "987.654.321-00",
+          "ucode": "USR123457",
+          "address": {
+            "street": "Avenida Atlântica",
+            "number": "456",
+            "complement": null,
+            "neighborhood": "Copacabana",
+            "city": "Rio de Janeiro",
+            "state": "RJ",
+            "country": "Brasil",
+            "zipcode": "22070-000"
+          }
+        },
+        "purchases": [
+          {
+            "transaction": "HP12345678901234567891",
+            "product_id": 123457,
+            "product_name": "E-book Estratégias de Vendas",
+            "purchase_date": 1730141700000,
+            "approved_date": 1730142000000,
+            "value": 297.00,
+            "status": "APPROVED",
+            "payment_type": "CREDIT_CARD",
+            "affiliate": null
+          }
+        ],
+        "summary": {
+          "total_purchases": 1,
+          "total_value": 297.00,
+          "first_purchase": 1730141700000,
+          "last_purchase": 1730141700000,
+          "active_subscriptions": 0
+        }
+      },
+      {
+        "buyer": {
+          "name": "Ana Costa",
+          "email": "ana.costa@example.com",
+          "phone": "(31) 98765-1234",
+          "document": "456.789.123-00",
+          "ucode": "USR123458",
+          "address": {
+            "street": "Rua Pampulha",
+            "number": "789",
+            "complement": "Casa",
+            "neighborhood": "Pampulha",
+            "city": "Belo Horizonte",
+            "state": "MG",
+            "country": "Brasil",
+            "zipcode": "31270-000"
+          }
+        },
+        "purchases": [
+          {
+            "transaction": "HP12345678901234567892",
+            "product_id": 123458,
+            "product_name": "Pacote Completo - Cursos Premium",
+            "purchase_date": 1730228100000,
+            "approved_date": null,
+            "value": 990.00,
+            "status": "WAITING_PAYMENT",
+            "payment_type": "BILLET",
+            "affiliate": {
+              "name": "Super Afiliado",
+              "email": "super.afiliado@example.com",
+              "ucode": "AFF123457"
+            }
+          }
+        ],
+        "summary": {
+          "total_purchases": 1,
+          "total_value": 990.00,
+          "first_purchase": 1730228100000,
+          "last_purchase": 1730228100000,
+          "active_subscriptions": 0
+        }
+      },
+      {
+        "buyer": {
+          "name": "Carlos Oliveira",
+          "email": "carlos.oliveira@example.com",
+          "phone": "(48) 99999-8888",
+          "document": "789.123.456-00",
+          "ucode": "USR123459",
+          "address": {
+            "street": "Rua das Gaivotas",
+            "number": "321",
+            "complement": null,
+            "neighborhood": "Canasvieiras",
+            "city": "Florianópolis",
+            "state": "SC",
+            "country": "Brasil",
+            "zipcode": "88054-000"
+          }
+        },
+        "purchases": [
+          {
+            "transaction": "HP12345678901234567893",
+            "product_id": 123459,
+            "product_name": "Minicurso de Copywriting",
+            "purchase_date": 1730314800000,
+            "approved_date": null,
+            "value": 197.00,
+            "status": "REFUNDED",
+            "payment_type": "CREDIT_CARD",
+            "affiliate": null
+          }
+        ],
+        "summary": {
+          "total_purchases": 1,
+          "total_value": 0.00,
+          "first_purchase": 1730314800000,
+          "last_purchase": 1730314800000,
+          "active_subscriptions": 0
+        }
+      },
+      {
+        "buyer": {
+          "name": "Fernanda Lima",
+          "email": "fernanda.lima@example.com",
+          "phone": "(85) 98888-7777",
+          "document": "12.345.678/0001-90",
+          "ucode": "USR123460",
+          "address": {
+            "street": "Avenida Beira Mar",
+            "number": "1500",
+            "complement": "Sala 301",
+            "neighborhood": "Meireles",
+            "city": "Fortaleza",
+            "state": "CE",
+            "country": "Brasil",
+            "zipcode": "60165-121"
+          }
+        },
+        "purchases": [
+          {
+            "transaction": "HP12345678901234567894",
+            "product_id": 123460,
+            "product_name": "Formação Completa em Design Digital",
+            "purchase_date": 1730400900000,
+            "approved_date": 1730401200000,
+            "value": 1497.00,
+            "status": "APPROVED",
+            "payment_type": "CREDIT_CARD",
+            "affiliate": null,
+            "subscription": {
+              "subscriber_code": "SUB789016",
+              "plan_id": 456789,
+              "plan_name": "Plano Anual Premium",
+              "status": "ACTIVE"
+            }
+          }
+        ],
+        "summary": {
+          "total_purchases": 1,
+          "total_value": 1497.00,
+          "first_purchase": 1730400900000,
+          "last_purchase": 1730400900000,
+          "active_subscriptions": 1
+        }
+      }
+    ],
+    "page_info": {
+      "total_results": 5,
+      "next_page_token": null,
+      "prev_page_token": null,
+      "results_per_page": 50
+    }
+  }
+}

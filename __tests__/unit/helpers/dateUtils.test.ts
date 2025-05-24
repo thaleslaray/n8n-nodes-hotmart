@@ -47,5 +47,15 @@ describe('DateUtils', () => {
       // With uppercase Z
       expect(convertToTimestamp('2024-01-01T00:00:00Z')).toBe(1704067200000);
     });
+
+    it('should return undefined for non-string and non-number inputs', () => {
+      // Testing line 34 - when input is neither string nor number
+      expect(convertToTimestamp(null as any)).toBeUndefined();
+      expect(convertToTimestamp(undefined as any)).toBeUndefined();
+      expect(convertToTimestamp({} as any)).toBeUndefined();
+      expect(convertToTimestamp([] as any)).toBeUndefined();
+      expect(convertToTimestamp(true as any)).toBeUndefined();
+      expect(convertToTimestamp(false as any)).toBeUndefined();
+    });
   });
 });

@@ -1,0 +1,255 @@
+{
+  "metadata": {
+    "recorded_at": "2025-05-24T04:30:00.000Z",
+    "endpoint": "product-getAll",
+    "api_path": "/payments/api/v1/products",
+    "description": "Resposta real da API Hotmart para listar produtos (dados anonimizados)",
+    "anonymized": true,
+    "anonymized_at": "2025-05-24T04:30:00.000Z"
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      {
+        "warranty_period": 7,
+        "created_at": 1716746675000,
+        "id": 4168346,
+        "format": "ONLINE_EVENT",
+        "name": "Workshop de Automação Digital",
+        "status": "PAUSED",
+        "is_subscription": false,
+        "ucode": "prod-b287b19e"
+      },
+      {
+        "warranty_period": 15,
+        "created_at": 1730996272000,
+        "id": 4713431,
+        "format": "ONLINE_COURSE",
+        "name": "Curso Completo de Automação - Acesso Vitalício",
+        "status": "PAUSED",
+        "is_subscription": false,
+        "ucode": "prod-28ebbbef"
+      },
+      {
+        "warranty_period": 7,
+        "created_at": 1620753202000,
+        "id": 1458881,
+        "format": "ONLINE_COURSE",
+        "name": "Assinatura Mensal Premium",
+        "status": "ACTIVE",
+        "is_subscription": true,
+        "ucode": "prod-1bf2431c"
+      },
+      {
+        "warranty_period": 7,
+        "created_at": 1662656114000,
+        "id": 2317200,
+        "format": "ONLINE_EVENT",
+        "name": "Evento Digital de Tecnologia",
+        "status": "PAUSED",
+        "is_subscription": false,
+        "ucode": "prod-ff54e24b"
+      },
+      {
+        "warranty_period": 7,
+        "created_at": 1706894444000,
+        "id": 3787236,
+        "format": "ONLINE_COURSE",
+        "name": "Laboratório Avançado - VIP",
+        "status": "PAUSED",
+        "is_subscription": false,
+        "ucode": "prod-9ff357ab"
+      },
+      {
+        "warranty_period": 7,
+        "created_at": 1616021520000,
+        "id": 1349369,
+        "format": "ONLINE_SERVICE",
+        "name": "Consultoria Personalizada",
+        "status": "PAUSED",
+        "is_subscription": false,
+        "ucode": "prod-4a4738fd"
+      },
+      {
+        "warranty_period": 7,
+        "created_at": 1718474425000,
+        "id": 4227870,
+        "format": "ONLINE_COURSE",
+        "name": "Templates Prontos para Infoprodutos",
+        "status": "PAUSED",
+        "is_subscription": false,
+        "ucode": "prod-f54b3a3a"
+      },
+      {
+        "warranty_period": 7,
+        "created_at": 1718475035000,
+        "id": 4227903,
+        "format": "ONLINE_COURSE",
+        "name": "Templates Prontos para Negócio Local",
+        "status": "PAUSED",
+        "is_subscription": false,
+        "ucode": "prod-e98df8d9"
+      },
+      {
+        "warranty_period": 7,
+        "created_at": 1680533963000,
+        "id": 2813708,
+        "format": "ONLINE_COURSE",
+        "name": "Curso Intensivo de Tecnologia",
+        "status": "PAUSED",
+        "is_subscription": false,
+        "ucode": "prod-45090737"
+      },
+      {
+        "warranty_period": 7,
+        "created_at": 1706894168000,
+        "id": 3787212,
+        "format": "ONLINE_COURSE",
+        "name": "Desafio de 5 dias",
+        "status": "PAUSED",
+        "is_subscription": false,
+        "ucode": "prod-9b874cee"
+      },
+      {
+        "warranty_period": 7,
+        "created_at": 1720654254000,
+        "id": 4305117,
+        "format": "ONLINE_COURSE",
+        "name": "Ebook - Guia Completo de Tecnologia",
+        "status": "PAUSED",
+        "is_subscription": false,
+        "ucode": "prod-03204912"
+      },
+      {
+        "warranty_period": 7,
+        "created_at": 1616277286000,
+        "id": 1355458,
+        "format": "ONLINE_COURSE",
+        "name": "Escola Digital Premium",
+        "status": "ACTIVE",
+        "is_subscription": true,
+        "ucode": "prod-42f81a37"
+      },
+      {
+        "warranty_period": 7,
+        "created_at": 1738286515000,
+        "id": 5036092,
+        "format": "ONLINE_COURSE",
+        "name": "Escola Digital - Condição Especial",
+        "status": "ACTIVE",
+        "is_subscription": false,
+        "ucode": "prod-0bb356d1"
+      },
+      {
+        "warranty_period": 7,
+        "created_at": 1664617631000,
+        "id": 2364716,
+        "format": "ONLINE_COURSE",
+        "name": "Imersão Completa",
+        "status": "PAUSED",
+        "is_subscription": false,
+        "ucode": "prod-8ebd076d"
+      },
+      {
+        "warranty_period": 7,
+        "created_at": 1690828270000,
+        "id": 3189424,
+        "format": "ONLINE_COURSE",
+        "name": "Ingresso Personalizado",
+        "status": "PAUSED",
+        "is_subscription": false,
+        "ucode": "prod-b1f6d499"
+      },
+      {
+        "warranty_period": 7,
+        "created_at": 1700579009000,
+        "id": 3553118,
+        "format": "ONLINE_COURSE",
+        "name": "Curso de Ferramentas Digitais",
+        "status": "ACTIVE",
+        "is_subscription": false,
+        "ucode": "prod-4339a479"
+      },
+      {
+        "warranty_period": 7,
+        "created_at": 1722426326000,
+        "id": 4367827,
+        "format": "ONLINE_COURSE",
+        "name": "Produto Demonstração",
+        "status": "PAUSED",
+        "is_subscription": false,
+        "ucode": "prod-77db90e0"
+      },
+      {
+        "warranty_period": 7,
+        "created_at": 1722429624000,
+        "id": 4367930,
+        "format": "ONLINE_COURSE",
+        "name": "Produto Rascunho",
+        "status": "DRAFT",
+        "is_subscription": false,
+        "ucode": "prod-7d28e3ff"
+      },
+      {
+        "warranty_period": 7,
+        "created_at": 1717074518000,
+        "id": 4180314,
+        "format": "ONLINE_COURSE",
+        "name": "Replay Completo - Workshop Digital",
+        "status": "PAUSED",
+        "is_subscription": false,
+        "ucode": "prod-0803d0d5"
+      },
+      {
+        "warranty_period": 7,
+        "created_at": 1719030791000,
+        "id": 4248279,
+        "format": "ONLINE_COURSE",
+        "name": "Pacote Completo de Templates",
+        "status": "PAUSED",
+        "is_subscription": false,
+        "ucode": "prod-302b43d8"
+      },
+      {
+        "warranty_period": 7,
+        "created_at": 1690639103000,
+        "id": 3182621,
+        "format": "ONLINE_EVENT",
+        "name": "Evento de Demonstração",
+        "status": "DRAFT",
+        "is_subscription": false,
+        "ucode": "prod-a7976fbc"
+      },
+      {
+        "warranty_period": 7,
+        "created_at": 1746670499000,
+        "id": 5485679,
+        "format": "ETICKET",
+        "name": "Ingresso Digital",
+        "status": "ACTIVE",
+        "is_subscription": false,
+        "ucode": "prod-f0c248ab"
+      },
+      {
+        "warranty_period": 7,
+        "created_at": 1713873563000,
+        "id": 4062912,
+        "format": "ONLINE_COURSE",
+        "name": "Treinamento Profissional Completo",
+        "status": "PAUSED",
+        "is_subscription": false,
+        "ucode": "prod-3f232134"
+      },
+      {
+        "warranty_period": 15,
+        "created_at": 1713876048000,
+        "id": 4063004,
+        "format": "ONLINE_COURSE",
+        "name": "Treinamento Profissional - VIP ⭐️",
+        "status": "PAUSED",
+        "is_subscription": false,
+        "ucode": "prod-1aef5393"
+      }
+    ]
+  }
+}

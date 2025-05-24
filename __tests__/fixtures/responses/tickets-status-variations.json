@@ -1,0 +1,356 @@
+{
+  "active_tickets": {
+    "items": [
+      {
+        "event_id": "EVT2024001",
+        "event_name": "Summit de Marketing Digital 2024",
+        "event_date": 1743278400000,
+        "tickets": [
+          {
+            "ticket_id": "TKT001234567890",
+            "ticket_status": "ACTIVE",
+            "ticket_type": "VIP",
+            "attendee": {
+              "name": "João Silva",
+              "email": "joao.silva@example.com",
+              "document": "123.456.789-00",
+              "phone": "+5511999888777"
+            },
+            "purchase": {
+              "transaction": "HP53176668642345",
+              "order_date": 1734983932000,
+              "price": {
+                "value": 497.0,
+                "currency_value": "BRL"
+              }
+            },
+            "checkin_status": "NOT_CHECKED_IN"
+          },
+          {
+            "ticket_id": "TKT001234567891",
+            "ticket_status": "ACTIVE",
+            "ticket_type": "STANDARD",
+            "attendee": {
+              "name": "Maria Oliveira",
+              "email": "maria.oliveira@example.com",
+              "document": "234.567.890-11",
+              "phone": "+5521988877666"
+            },
+            "purchase": {
+              "transaction": "HP53176668642346",
+              "order_date": 1735070332000,
+              "price": {
+                "value": 297.0,
+                "currency_value": "BRL"
+              }
+            },
+            "checkin_status": "NOT_CHECKED_IN"
+          }
+        ]
+      }
+    ],
+    "page_info": {
+      "total_results": 1
+    }
+  },
+  "checked_in_tickets": {
+    "items": [
+      {
+        "event_id": "EVT2024002",
+        "event_name": "Workshop Presencial de Vendas",
+        "event_date": 1735574400000,
+        "tickets": [
+          {
+            "ticket_id": "TKT002345678901",
+            "ticket_status": "ACTIVE",
+            "ticket_type": "GENERAL",
+            "attendee": {
+              "name": "Carlos Santos",
+              "email": "carlos.santos@example.com",
+              "document": "345.678.901-22"
+            },
+            "purchase": {
+              "transaction": "HP53176668642347",
+              "order_date": 1732999740000,
+              "price": {
+                "value": 197.0,
+                "currency_value": "BRL"
+              }
+            },
+            "checkin_status": "CHECKED_IN",
+            "checkin_date": 1735574400000
+          }
+        ]
+      }
+    ],
+    "page_info": {
+      "total_results": 1
+    }
+  },
+  "canceled_tickets": {
+    "items": [
+      {
+        "event_id": "EVT2024003",
+        "event_name": "Conferência de Empreendedorismo",
+        "event_date": 1740686400000,
+        "tickets": [
+          {
+            "ticket_id": "TKT003456789012",
+            "ticket_status": "CANCELED",
+            "ticket_type": "PREMIUM",
+            "attendee": {
+              "name": "Ana Paula Ribeiro",
+              "email": "ana.ribeiro@example.com",
+              "document": "456.789.012-33"
+            },
+            "purchase": {
+              "transaction": "HP53176668642348",
+              "order_date": 1730408140000,
+              "price": {
+                "value": 597.0,
+                "currency_value": "BRL"
+              }
+            },
+            "cancellation_date": 1733086800000,
+            "cancellation_reason": "Conflito de agenda"
+          }
+        ]
+      }
+    ],
+    "page_info": {
+      "total_results": 1
+    }
+  },
+  "transferred_tickets": {
+    "items": [
+      {
+        "event_id": "EVT2024004",
+        "event_name": "Masterclass de Copywriting",
+        "event_date": 1738094400000,
+        "tickets": [
+          {
+            "ticket_id": "TKT004567890123",
+            "ticket_status": "TRANSFERRED",
+            "ticket_type": "STANDARD",
+            "original_attendee": {
+              "name": "Roberto Lima",
+              "email": "roberto.lima@example.com",
+              "document": "567.890.123-44"
+            },
+            "current_attendee": {
+              "name": "Pedro Alves",
+              "email": "pedro.alves@example.com",
+              "document": "678.901.234-55"
+            },
+            "purchase": {
+              "transaction": "HP53176668642349",
+              "order_date": 1733499740000,
+              "price": {
+                "value": 297.0,
+                "currency_value": "BRL"
+              }
+            },
+            "transfer_date": 1735488000000,
+            "checkin_status": "NOT_CHECKED_IN"
+          }
+        ]
+      }
+    ],
+    "page_info": {
+      "total_results": 1
+    }
+  },
+  "expired_tickets": {
+    "items": [
+      {
+        "event_id": "EVT2023001",
+        "event_name": "Summit de Marketing Digital 2023",
+        "event_date": 1703116800000,
+        "tickets": [
+          {
+            "ticket_id": "TKT005678901234",
+            "ticket_status": "EXPIRED",
+            "ticket_type": "VIP",
+            "attendee": {
+              "name": "Patricia Mendes",
+              "email": "patricia.mendes@example.com",
+              "document": "678.901.234-55"
+            },
+            "purchase": {
+              "transaction": "HP53176668642350",
+              "order_date": 1695222940000,
+              "price": {
+                "value": 497.0,
+                "currency_value": "BRL"
+              }
+            },
+            "checkin_status": "NOT_CHECKED_IN"
+          }
+        ]
+      }
+    ],
+    "page_info": {
+      "total_results": 1
+    }
+  },
+  "pending_tickets": {
+    "items": [
+      {
+        "event_id": "EVT2024005",
+        "event_name": "Imersão de Vendas Online",
+        "event_date": 1745870400000,
+        "tickets": [
+          {
+            "ticket_id": "TKT006789012345",
+            "ticket_status": "PENDING",
+            "ticket_type": "EARLY_BIRD",
+            "attendee": {
+              "name": "Fernando Costa",
+              "email": "fernando.costa@example.com",
+              "document": "789.012.345-66"
+            },
+            "purchase": {
+              "transaction": "HP53176668642351",
+              "order_date": 1735656732000,
+              "price": {
+                "value": 197.0,
+                "currency_value": "BRL"
+              },
+              "payment_status": "PENDING"
+            },
+            "checkin_status": "NOT_CHECKED_IN"
+          }
+        ]
+      }
+    ],
+    "page_info": {
+      "total_results": 1
+    }
+  },
+  "mixed_status_tickets": {
+    "items": [
+      {
+        "event_id": "EVT2024006",
+        "event_name": "Mega Evento de Negócios 2024",
+        "event_date": 1748462400000,
+        "tickets": [
+          {
+            "ticket_id": "TKT007890123456",
+            "ticket_status": "ACTIVE",
+            "ticket_type": "VIP",
+            "attendee": {
+              "name": "Juliana Costa",
+              "email": "juliana.costa@example.com",
+              "document": "890.123.456-77"
+            },
+            "purchase": {
+              "transaction": "HP53176668642352",
+              "order_date": 1735742132000,
+              "price": {
+                "value": 997.0,
+                "currency_value": "BRL"
+              }
+            },
+            "checkin_status": "NOT_CHECKED_IN"
+          },
+          {
+            "ticket_id": "TKT007890123457",
+            "ticket_status": "ACTIVE",
+            "ticket_type": "STANDARD",
+            "attendee": {
+              "name": "Ricardo Souza",
+              "email": "ricardo.souza@example.com",
+              "document": "901.234.567-88"
+            },
+            "purchase": {
+              "transaction": "HP53176668642353",
+              "order_date": 1735828532000,
+              "price": {
+                "value": 497.0,
+                "currency_value": "BRL"
+              }
+            },
+            "checkin_status": "CHECKED_IN",
+            "checkin_date": 1748462400000
+          },
+          {
+            "ticket_id": "TKT007890123458",
+            "ticket_status": "CANCELED",
+            "ticket_type": "GENERAL",
+            "attendee": {
+              "name": "Amanda Lima",
+              "email": "amanda.lima@example.com",
+              "document": "012.345.678-99"
+            },
+            "purchase": {
+              "transaction": "HP53176668642354",
+              "order_date": 1734222332000,
+              "price": {
+                "value": 297.0,
+                "currency_value": "BRL"
+              }
+            },
+            "cancellation_date": 1736900732000,
+            "cancellation_reason": "Reembolso solicitado"
+          },
+          {
+            "ticket_id": "TKT007890123459",
+            "ticket_status": "TRANSFERRED",
+            "ticket_type": "STANDARD",
+            "original_attendee": {
+              "name": "Bruno Martins",
+              "email": "bruno.martins@example.com",
+              "document": "123.456.789-01"
+            },
+            "current_attendee": {
+              "name": "Daniel Ferreira",
+              "email": "daniel.ferreira@example.com",
+              "document": "234.567.890-12"
+            },
+            "purchase": {
+              "transaction": "HP53176668642355",
+              "order_date": 1734308732000,
+              "price": {
+                "value": 497.0,
+                "currency_value": "BRL"
+              }
+            },
+            "transfer_date": 1736986132000,
+            "checkin_status": "NOT_CHECKED_IN"
+          }
+        ]
+      },
+      {
+        "event_id": "EVT2024007",
+        "event_name": "Workshop Online de Tráfego Pago",
+        "event_date": 1741190400000,
+        "tickets": [
+          {
+            "ticket_id": "TKT008901234567",
+            "ticket_status": "PENDING",
+            "ticket_type": "ONLINE_ACCESS",
+            "attendee": {
+              "name": "Gabriela Santos",
+              "email": "gabriela.santos@example.com",
+              "document": "345.678.901-23"
+            },
+            "purchase": {
+              "transaction": "HP53176668642356",
+              "order_date": 1735914932000,
+              "price": {
+                "value": 97.0,
+                "currency_value": "BRL"
+              },
+              "payment_status": "PENDING"
+            },
+            "checkin_status": "NOT_CHECKED_IN"
+          }
+        ]
+      }
+    ],
+    "page_info": {
+      "total_results": 2,
+      "next_page_token": "eyJuZXh0IjoxNzM1OTE0OTMyMDAwfQ=="
+    }
+  }
+}

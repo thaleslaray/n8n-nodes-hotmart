@@ -1,0 +1,235 @@
+{
+  "metadata": {
+    "recorded_at": "2025-05-24T04:42:00.000Z",
+    "endpoint": "club-getAll",
+    "api_path": "/club/api/v1/students",
+    "description": "Resposta real da API Hotmart para obter alunos (dados anonimizados)",
+    "anonymized": true,
+    "anonymized_at": "2025-05-24T04:42:00.000Z"
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      {
+        "purchase_date": 1724776252000,
+        "plus_access": "WITHOUT_PLUS_ACCESS",
+        "first_access_date": 1724776688000,
+        "name": "João Silva",
+        "last_access_date": 1732387024000,
+        "locale": "pt",
+        "user_id": "USR001",
+        "email": "joao.silva@example.com",
+        "status": "ACTIVE",
+        "access_count": 8,
+        "type": "BUYER",
+        "class_id": "CLASS004",
+        "progress": {
+          "total": 0,
+          "completed_percentage": 0,
+          "completed": 0
+        },
+        "role": "STUDENT",
+        "engagement": "NONE",
+        "is_deletable": false
+      },
+      {
+        "purchase_date": 1730545255000,
+        "plus_access": "WITHOUT_PLUS_ACCESS",
+        "first_access_date": 1730551853000,
+        "name": "Maria Santos",
+        "last_access_date": 1730551853000,
+        "locale": "pt_BR",
+        "user_id": "USR002",
+        "email": "maria.santos@example.com",
+        "status": "ACTIVE",
+        "access_count": 1,
+        "type": "BUYER",
+        "class_id": "CLASS003",
+        "progress": {
+          "total": 0,
+          "completed_percentage": 0,
+          "completed": 0
+        },
+        "role": "STUDENT",
+        "engagement": "NONE",
+        "is_deletable": false
+      },
+      {
+        "purchase_date": 1715188803000,
+        "plus_access": "WITHOUT_PLUS_ACCESS",
+        "first_access_date": 1715777728000,
+        "name": "Pedro Oliveira",
+        "last_access_date": 1724525330000,
+        "locale": "pt_BR",
+        "user_id": "USR003",
+        "email": "pedro.oliveira@example.com",
+        "status": "ACTIVE",
+        "access_count": 2,
+        "type": "BUYER",
+        "class_id": "CLASS005",
+        "progress": {
+          "total": 0,
+          "completed_percentage": 0,
+          "completed": 0
+        },
+        "role": "STUDENT",
+        "engagement": "NONE",
+        "is_deletable": false
+      },
+      {
+        "purchase_date": 1715602155000,
+        "plus_access": "WITHOUT_PLUS_ACCESS",
+        "first_access_date": 1715602204000,
+        "name": "Ana Costa",
+        "last_access_date": 1726884271000,
+        "locale": "pt_BR",
+        "user_id": "USR004",
+        "email": "ana.costa@example.com",
+        "status": "ACTIVE",
+        "access_count": 8,
+        "type": "BUYER",
+        "class_id": "CLASS005",
+        "progress": {
+          "total": 0,
+          "completed_percentage": 0,
+          "completed": 0
+        },
+        "role": "STUDENT",
+        "engagement": "NONE",
+        "is_deletable": false
+      },
+      {
+        "purchase_date": 1737322709000,
+        "plus_access": "WITHOUT_PLUS_ACCESS",
+        "first_access_date": 1737322749000,
+        "name": "Carlos Ferreira",
+        "last_access_date": 1737322749000,
+        "locale": "pt_BR",
+        "user_id": "USR005",
+        "email": "carlos.ferreira@example.com",
+        "status": "ACTIVE",
+        "access_count": 1,
+        "type": "BUYER",
+        "class_id": "CLASS001",
+        "progress": {
+          "total": 3,
+          "completed_percentage": 33,
+          "completed": 1
+        },
+        "role": "STUDENT",
+        "engagement": "MEDIUM",
+        "is_deletable": false
+      },
+      {
+        "purchase_date": 1742849420000,
+        "plus_access": "WITHOUT_PLUS_ACCESS",
+        "first_access_date": 1743459381000,
+        "name": "Juliana Lima",
+        "last_access_date": 1743633935000,
+        "locale": "pt_BR",
+        "user_id": "USR006",
+        "email": "juliana.lima@example.com",
+        "status": "ACTIVE",
+        "access_count": 2,
+        "type": "BUYER",
+        "class_id": "CLASS002",
+        "progress": {
+          "total": 3,
+          "completed_percentage": 100,
+          "completed": 3
+        },
+        "role": "STUDENT",
+        "engagement": "MEDIUM",
+        "is_deletable": false
+      },
+      {
+        "purchase_date": 1729551013000,
+        "plus_access": "WITHOUT_PLUS_ACCESS",
+        "first_access_date": 1730136735000,
+        "name": "Roberto Almeida",
+        "last_access_date": 1730136735000,
+        "locale": "pt_BR",
+        "user_id": "USR007",
+        "email": "roberto.almeida@example.com",
+        "status": "ACTIVE",
+        "access_count": 1,
+        "type": "BUYER",
+        "class_id": "CLASS003",
+        "progress": {
+          "total": 0,
+          "completed_percentage": 0,
+          "completed": 0
+        },
+        "role": "STUDENT",
+        "engagement": "NONE",
+        "is_deletable": false
+      },
+      {
+        "purchase_date": 1724970108000,
+        "plus_access": "WITHOUT_PLUS_ACCESS",
+        "first_access_date": 1724970229000,
+        "name": "Fernanda Souza",
+        "last_access_date": 1743029750000,
+        "locale": "pt_BR",
+        "user_id": "USR008",
+        "email": "fernanda.souza@example.com",
+        "status": "ACTIVE",
+        "access_count": 5,
+        "type": "BUYER",
+        "class_id": "CLASS004",
+        "progress": {
+          "total": 0,
+          "completed_percentage": 0,
+          "completed": 0
+        },
+        "role": "STUDENT",
+        "engagement": "NONE",
+        "is_deletable": false
+      },
+      {
+        "purchase_date": 1715992886000,
+        "plus_access": "WITHOUT_PLUS_ACCESS",
+        "first_access_date": 1715993630000,
+        "name": "Lucas Pereira",
+        "last_access_date": 1720189957000,
+        "locale": "pt_BR",
+        "user_id": "USR009",
+        "email": "lucas.pereira@example.com",
+        "status": "ACTIVE",
+        "access_count": 18,
+        "type": "BUYER",
+        "class_id": "CLASS005",
+        "progress": {
+          "total": 0,
+          "completed_percentage": 0,
+          "completed": 0
+        },
+        "role": "STUDENT",
+        "engagement": "NONE",
+        "is_deletable": false
+      },
+      {
+        "purchase_date": 1737586064000,
+        "plus_access": "WITHOUT_PLUS_ACCESS",
+        "first_access_date": 1737586494000,
+        "name": "Beatriz Rodrigues",
+        "last_access_date": 1743124460000,
+        "locale": "pt_BR",
+        "user_id": "USR010",
+        "email": "beatriz.rodrigues@example.com",
+        "status": "ACTIVE",
+        "access_count": 2,
+        "type": "BUYER",
+        "class_id": "CLASS001",
+        "progress": {
+          "total": 3,
+          "completed_percentage": 0,
+          "completed": 0
+        },
+        "role": "STUDENT",
+        "engagement": "NONE",
+        "is_deletable": false
+      }
+    ]
+  }
+}

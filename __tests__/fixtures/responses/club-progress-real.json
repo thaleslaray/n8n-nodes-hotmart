@@ -1,0 +1,37 @@
+{
+  "metadata": {
+    "recorded_at": "2025-05-24T04:43:00.000Z",
+    "endpoint": "club-getProgress",
+    "api_path": "/club/api/v1/students/{student_id}/progress",
+    "description": "Resposta real da API Hotmart para obter progresso do aluno (dados anonimizados)",
+    "anonymized": true,
+    "anonymized_at": "2025-05-24T04:43:00.000Z"
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      {
+        "is_completed": true,
+        "page_name": "Aula 1: Bem-vindo ao Curso",
+        "module_name": "Módulo 1: Introdução ao Curso",
+        "is_module_extra": false,
+        "page_id": "PAGE001",
+        "completed_date": 1738675743943
+      },
+      {
+        "is_completed": false,
+        "page_name": "Aula 2: Configurando seu Ambiente",
+        "is_module_extra": false,
+        "page_id": "PAGE002",
+        "module_name": "Módulo 1: Introdução ao Curso"
+      },
+      {
+        "is_completed": false,
+        "page_name": "Aula 3: Recursos Premium",
+        "is_module_extra": false,
+        "page_id": "PAGE003",
+        "module_name": "Módulo 1: Introdução ao Curso"
+      }
+    ]
+  }
+}

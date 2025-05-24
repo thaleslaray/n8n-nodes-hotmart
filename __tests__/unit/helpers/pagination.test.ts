@@ -241,5 +241,41 @@ describe('Pagination Helper', () => {
       // Should have at least 100ms delay between requests
       expect(duration).toBeGreaterThanOrEqual(100);
     });
+
+    it('should handle response without page_info', async () => {
+      const mockResponse = {
+        items: [{ id: 1 }, { id: 2 }]
+        // No page_info property
+      };
+
+      mockHotmartApiRequest.mockResolvedValueOnce(mockResponse);
+
+      const result = await getAllItems.call(mockThis, {
+        maxResults: 100,
+        resource: 'subscription',
+        operation: 'getAll'
+      });
+
+      expect(mockHotmartApiRequest).toHaveBeenCalledTimes(1);
+      expect(result).toEqual(mockResponse.items);
+    });
+
+    it('should handle response with page_info but no next_page_token', async () => {
+      const mockResponse = {
+        items: [{ id: 1 }, { id: 2 }],
+        page_info: {} // page_info exists but no next_page_token
+      };
+
+      mockHotmartApiRequest.mockResolvedValueOnce(mockResponse);
+
+      const result = await getAllItems.call(mockThis, {
+        maxResults: 100,
+        resource: 'subscription',
+        operation: 'getAll'
+      });
+
+      expect(mockHotmartApiRequest).toHaveBeenCalledTimes(1);
+      expect(result).toEqual(mockResponse.items);
+    });
   });
 });

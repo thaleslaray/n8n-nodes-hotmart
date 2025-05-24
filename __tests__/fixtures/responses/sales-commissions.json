@@ -1,0 +1,149 @@
+{
+  "metadata": {
+    "recorded_at": "2024-10-23T10:30:00Z",
+    "endpoint": "sales/commissions",
+    "api_path": "/payments/api/v1/sales/commissions",
+    "description": "Comissões de vendas detalhadas por tipo de participante",
+    "anonymized": {
+      "fields": ["name", "email", "ucode", "document"],
+      "preserved": ["commission_base", "commission_percentage", "commission_value", "product_id", "product_name", "transaction", "purchase_date", "status"]
+    }
+  },
+  "response": {
+    "items": [
+      {
+        "commission_base": 500.00,
+        "commission_percentage": 25.00,
+        "commission_value": 125.00,
+        "participant": {
+          "name": "Afiliado Premium",
+          "email": "afiliado.premium@example.com",
+          "ucode": "AFF123456",
+          "type": "AFFILIATE"
+        },
+        "product": {
+          "id": 123456,
+          "name": "Curso Completo de Marketing Digital"
+        },
+        "transaction": "HP12345678901234567890",
+        "purchase_date": 1730055300000,
+        "buyer": {
+          "name": "Maria Silva",
+          "email": "maria.silva@example.com"
+        },
+        "status": "APPROVED",
+        "payment_date": 1730055600000,
+        "payment_status": "PAID"
+      },
+      {
+        "commission_base": 990.00,
+        "commission_percentage": 30.00,
+        "commission_value": 297.00,
+        "participant": {
+          "name": "Super Afiliado",
+          "email": "super.afiliado@example.com",
+          "ucode": "AFF123457",
+          "type": "AFFILIATE"
+        },
+        "product": {
+          "id": 123458,
+          "name": "Pacote Completo - Cursos Premium"
+        },
+        "transaction": "HP12345678901234567892",
+        "purchase_date": 1730228100000,
+        "buyer": {
+          "name": "Ana Costa",
+          "email": "ana.costa@example.com"
+        },
+        "status": "WAITING_PAYMENT",
+        "payment_date": null,
+        "payment_status": "PENDING"
+      },
+      {
+        "commission_base": 1497.00,
+        "commission_percentage": 10.00,
+        "commission_value": 149.70,
+        "participant": {
+          "name": "Co-produtor Digital",
+          "email": "coprodutor@example.com",
+          "ucode": "COP123456",
+          "type": "COPRODUCER"
+        },
+        "product": {
+          "id": 123460,
+          "name": "Formação Completa em Design Digital"
+        },
+        "transaction": "HP12345678901234567894",
+        "purchase_date": 1730400900000,
+        "buyer": {
+          "name": "Fernanda Lima",
+          "email": "fernanda.lima@example.com"
+        },
+        "status": "APPROVED",
+        "payment_date": 1730401200000,
+        "payment_status": "PAID"
+      },
+      {
+        "commission_base": 500.00,
+        "commission_percentage": 5.00,
+        "commission_value": 25.00,
+        "participant": {
+          "name": "Hotmart",
+          "email": "marketplace@hotmart.com",
+          "ucode": "HOTMART",
+          "type": "MARKETPLACE"
+        },
+        "product": {
+          "id": 123456,
+          "name": "Curso Completo de Marketing Digital"
+        },
+        "transaction": "HP12345678901234567890",
+        "purchase_date": 1730055300000,
+        "buyer": {
+          "name": "Maria Silva",
+          "email": "maria.silva@example.com"
+        },
+        "status": "APPROVED",
+        "payment_date": 1730055600000,
+        "payment_status": "PAID"
+      },
+      {
+        "commission_base": 297.00,
+        "commission_percentage": 5.00,
+        "commission_value": 14.85,
+        "participant": {
+          "name": "Hotmart",
+          "email": "marketplace@hotmart.com",
+          "ucode": "HOTMART",
+          "type": "MARKETPLACE"
+        },
+        "product": {
+          "id": 123457,
+          "name": "E-book Estratégias de Vendas"
+        },
+        "transaction": "HP12345678901234567891",
+        "purchase_date": 1730141700000,
+        "buyer": {
+          "name": "João Santos",
+          "email": "joao.santos@example.com"
+        },
+        "status": "APPROVED",
+        "payment_date": 1730142000000,
+        "payment_status": "PAID"
+      }
+    ],
+    "page_info": {
+      "total_results": 5,
+      "next_page_token": null,
+      "prev_page_token": null,
+      "results_per_page": 50
+    },
+    "summary": {
+      "total_commissions": 711.55,
+      "total_affiliate": 422.00,
+      "total_coproducer": 149.70,
+      "total_marketplace": 139.85,
+      "total_vendor": 0.00
+    }
+  }
+}

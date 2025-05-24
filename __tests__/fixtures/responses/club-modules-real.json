@@ -1,0 +1,111 @@
+{
+  "metadata": {
+    "recorded_at": "2025-05-24T04:40:00.000Z",
+    "endpoint": "club-getModules",
+    "api_path": "/club/api/v1/modules",
+    "description": "Resposta real da API Hotmart para obter módulos da área de membros (dados anonimizados)",
+    "anonymized": true,
+    "anonymized_at": "2025-05-24T04:40:00.000Z"
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      {
+        "name": "Módulo 1: Introdução ao Curso",
+        "module_id": "MOD001",
+        "sequence": 1,
+        "is_public": false,
+        "is_extra_paid": false,
+        "is_extra": false,
+        "classes": [
+          "CLASS001"
+        ],
+        "total_pages": 3
+      },
+      {
+        "name": "Módulo 2: Conceitos Fundamentais",
+        "module_id": "MOD002",
+        "sequence": 2,
+        "is_public": false,
+        "is_extra_paid": false,
+        "is_extra": false,
+        "classes": [
+          "CLASS002"
+        ],
+        "total_pages": 3
+      },
+      {
+        "name": "Módulo 3: Comunidade e Networking",
+        "module_id": "MOD003",
+        "sequence": 3,
+        "is_public": false,
+        "is_extra_paid": false,
+        "is_extra": false,
+        "classes": [
+          "CLASS003"
+        ],
+        "total_pages": 1
+      },
+      {
+        "name": "Módulo 4: Primeiros Passos Práticos",
+        "module_id": "MOD004",
+        "sequence": 4,
+        "is_public": false,
+        "is_extra_paid": false,
+        "is_extra": false,
+        "classes": [
+          "CLASS004"
+        ],
+        "total_pages": 3
+      },
+      {
+        "name": "Módulo 5: Gravações e Conteúdo Extra",
+        "module_id": "MOD005",
+        "sequence": 5,
+        "is_public": false,
+        "is_extra_paid": false,
+        "is_extra": false,
+        "classes": [
+          "CLASS004"
+        ],
+        "total_pages": 5
+      },
+      {
+        "name": "Módulo 6: Configuração Inicial",
+        "module_id": "MOD006",
+        "sequence": 6,
+        "is_public": false,
+        "is_extra_paid": false,
+        "is_extra": false,
+        "classes": [
+          "CLASS005"
+        ],
+        "total_pages": 3
+      },
+      {
+        "name": "Módulo 7: Setup de Ferramentas",
+        "module_id": "MOD007",
+        "sequence": 7,
+        "is_public": false,
+        "is_extra_paid": false,
+        "is_extra": false,
+        "classes": [
+          "CLASS005"
+        ],
+        "total_pages": 8
+      },
+      {
+        "name": "Módulo 8: Conteúdo Avançado",
+        "module_id": "MOD008",
+        "sequence": 8,
+        "is_public": false,
+        "is_extra_paid": false,
+        "is_extra": false,
+        "classes": [
+          "CLASS005"
+        ],
+        "total_pages": 5
+      }
+    ]
+  }
+}
