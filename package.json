@@ -65,13 +65,20 @@
     "webhook:test-system": "ts-node scripts/webhook-test-system/index.ts",
     "docs": "typedoc",
     "docs:watch": "typedoc --watch",
-    "prepublishOnly": "pnpm build && pnpm lint && pnpm typecheck"
+    "prepublishOnly": "pnpm build && pnpm lint && pnpm typecheck",
+    "release": "standard-version",
+    "release:minor": "standard-version --release-as minor",
+    "release:patch": "standard-version --release-as patch",
+    "release:major": "standard-version --release-as major",
+    "prepare": "husky"
   },
   "dependencies": {
     "n8n-core": "^1.92.0",
     "n8n-workflow": "^1.92.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
     "@jest/globals": "^29.7.0",
     "@types/express": "4.17.17",
     "@types/jest": "^29.5.14",
@@ -85,9 +92,11 @@
     "eslint-plugin-jsdoc": "^50.6.17",
     "glob": "^11.0.2",
     "gulp": "^5.0.0",
+    "husky": "^9.1.7",
     "jest": "^29.7.0",
     "jest-junit": "^16.0.0",
     "prettier": "^3.5.3",
+    "standard-version": "^9.5.0",
     "ts-jest": "^29.3.4",
     "typedoc": "^0.28.4",
     "typescript": "^4.9.5"

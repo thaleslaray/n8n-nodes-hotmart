@@ -1,0 +1,16 @@
+{
+  "types": [
+    {"type": "feat", "section": "✨ Features"},
+    {"type": "fix", "section": "🐛 Bug Fixes"},
+    {"type": "test", "section": "✅ Tests"},
+    {"type": "docs", "section": "📚 Documentation"},
+    {"type": "style", "section": "💎 Styles"},
+    {"type": "refactor", "section": "♻️ Code Refactoring"},
+    {"type": "perf", "section": "⚡ Performance Improvements"},
+    {"type": "chore", "section": "🔧 Chores"},
+    {"type": "ci", "section": "🚀 CI/CD"},
+    {"type": "build", "section": "📦 Build System"}
+  ],
+  "commitUrlFormat": "https://github.com/thaleslaray/n8n-nodes-hotmart/commit/{{hash}}",
+  "compareUrlFormat": "https://github.com/thaleslaray/n8n-nodes-hotmart/compare/{{previousTag}}...{{currentTag}}"
+}
