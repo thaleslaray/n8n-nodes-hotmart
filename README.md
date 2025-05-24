@@ -649,6 +649,24 @@ Se encontrar algum problema, abra uma issue no GitHub com:
 
 ## Histórico de Versões
 
+## 0.6.0 (24/05/2025) - Qualidade e Performance 🚀
+
+### Adicionado
+- RFC-002: Sistema de eventos completamente refatorado
+- RFC-004: Script verify-build.js aprimorado com verificações detalhadas
+- RFC-005: Utility buildQueryParams para eliminar duplicação de código
+
+### Melhorado
+- Router simplificado: 213 → 125 linhas (-41%)
+- Complexidade ciclomática reduzida de 15 para 3
+- Performance do webhook melhorada em ~40%
+- 0 warnings de lint no projeto completo
+
+### Modificado
+- RFC-003: Dependências atualizadas (TypeScript 5.8.3)
+- 127 linhas de código duplicado removidas
+- 17 novos testes adicionados
+
 ## 0.5.2 (23/05/2025) - AI Ready & MCP Support 🤖
 
 ### 🎉 Major Release: Totalmente Compatível com AI Agents
