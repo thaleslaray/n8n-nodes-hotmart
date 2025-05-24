@@ -7,6 +7,8 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ## [Unreleased]
 
+## [0.6.1] - 2025-05-24
+
 ### Adicionado
 
 - **RFC-004: Script de Verificação de Build Aprimorado** 🔍
@@ -48,6 +50,12 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
   - Evento `PURCHASE_OUT_OF_SHOPPING_CART` agora é aceito corretamente
   - Causa: Enum com valor 0 era tratado como falsy (`if (!event)`)
   - Solução: Verificação explícita (`if (event === undefined || event === null)`)
+
+- **Bug Crítico em Campos dateTime** 🗓️
+  - Removido expressões n8n (`{{ $now }}`) de valores default que não eram processadas
+  - Removido propriedade `placeholder` de 12 campos dateTime que interferia com o date picker
+  - Afetados: 6 arquivos de operações (coupon, sales)
+  - Adicionado teste de validação para prevenir regressões
   - Impacto: Abandono de carrinho agora funciona em produção
 
 ### Removido
