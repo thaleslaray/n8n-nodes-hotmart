@@ -1,0 +1,90 @@
+{
+  "data": {
+    "product": {
+      "support_email": "user_d9ed2356@example.br",
+      "has_co_production": false,
+      "name": "Julia Santos",
+      "warranty_date": "2025-05-04T00:00:00Z",
+      "id": 1355458,
+      "ucode": "ucode_4038161c"
+    },
+    "commissions": [
+      {
+        "currency_value": "BRL",
+        "source": "MARKETPLACE",
+        "value": 148.78
+      },
+      {
+        "currency_value": "BRL",
+        "source": "PRODUCER",
+        "value": 1848.22
+      }
+    ],
+    "purchase": {
+      "original_offer_price": {
+        "currency_value": "BRL",
+        "value": 1997
+      },
+      "recurrence_number": 1,
+      "subscription_anticipation_purchase": "192.168.97.20",
+      "checkout_country": {
+        "iso": "BR",
+        "name": "Ana Oliveira"
+      },
+      "order_bump": {
+        "is_order_bump": false
+      },
+      "approved_date": 1745799381000,
+      "offer": {
+        "code": "0rgmjkb1",
+        "coupon_code": "Preço Padrão - Escola de Automação e I.A."
+      },
+      "is_funnel": false,
+      "order_date": 1745799376000,
+      "date_next_charge": 1777377600000,
+      "price": {
+        "currency_value": "BRL",
+        "value": 1997
+      },
+      "payment": {
+        "installments_number": 1,
+        "type": "CREDIT_CARD"
+      },
+      "full_price": {
+        "currency_value": "BRL",
+        "value": 1997
+      },
+      "business_model": "I",
+      "invoice_by": "HOTMART",
+      "transaction": "HP3104492504",
+      "status": "DISPUTE"
+    },
+    "affiliates": [
+      {
+        "affiliate_code": "",
+        "name": "Pedro Rodrigues"
+      }
+    ],
+    "producer": {
+      "legal_nature": "Pessoa Jurídica",
+      "document": "73c.0c2.875-9c",
+      "name": "João Lima"
+    },
+    "subscription": "192.168.4.57",
+    "buyer": {
+      "checkout_phone_code": "+55 11 9f7c1-e1ad",
+      "address": "192.168.4.57",
+      "document": "7c7.050.b47-9e",
+      "name": "Julia Lima",
+      "last_name": "Pedro Souza",
+      "checkout_phone": "+55 11 9fdf2-f022",
+      "first_name": "Pedro Souza",
+      "email": "user_c7744f04@example.com",
+      "document_type": "1e6.d33.a10-0d"
+    }
+  },
+  "id": "84b9f4cb-9e81-4a93-82a5-4a12096ef1fd",
+  "creation_date": 1745966619057,
+  "event": "PURCHASE_PROTEST",
+  "version": "2.0.0"
+}

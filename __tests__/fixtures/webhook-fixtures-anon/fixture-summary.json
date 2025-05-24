@@ -1,0 +1,93 @@
+{
+  "generatedAt": "2025-05-24T01:47:17.523Z",
+  "totalEventTypes": 15,
+  "totalSelectedEvents": 87,
+  "selections": [
+    {
+      "eventType": "SUBSCRIPTION_CANCELLATION",
+      "totalEvents": 77,
+      "selectedCount": 9,
+      "selectionStrategy": "edge-cases"
+    },
+    {
+      "eventType": "PURCHASE_BILLET_PRINTED",
+      "totalEvents": 56,
+      "selectedCount": 8,
+      "selectionStrategy": "edge-cases"
+    },
+    {
+      "eventType": "PURCHASE_APPROVED",
+      "totalEvents": 81,
+      "selectedCount": 9,
+      "selectionStrategy": "edge-cases"
+    },
+    {
+      "eventType": "PURCHASE_PROTEST",
+      "totalEvents": 9,
+      "selectedCount": 5,
+      "selectionStrategy": "sample"
+    },
+    {
+      "eventType": "PURCHASE_OUT_OF_SHOPPING_CART",
+      "totalEvents": 17,
+      "selectedCount": 9,
+      "selectionStrategy": "sample"
+    },
+    {
+      "eventType": "PURCHASE_COMPLETE",
+      "totalEvents": 83,
+      "selectedCount": 10,
+      "selectionStrategy": "edge-cases"
+    },
+    {
+      "eventType": "PURCHASE_DELAYED",
+      "totalEvents": 191,
+      "selectedCount": 10,
+      "selectionStrategy": "edge-cases"
+    },
+    {
+      "eventType": "CLUB_FIRST_ACCESS",
+      "totalEvents": 68,
+      "selectedCount": 9,
+      "selectionStrategy": "edge-cases"
+    },
+    {
+      "eventType": "PURCHASE_CANCELED",
+      "totalEvents": 28,
+      "selectedCount": 6,
+      "selectionStrategy": "edge-cases"
+    },
+    {
+      "eventType": "PURCHASE_REFUNDED",
+      "totalEvents": 7,
+      "selectedCount": 4,
+      "selectionStrategy": "sample"
+    },
+    {
+      "eventType": "CLUB_MODULE_COMPLETED",
+      "totalEvents": 6,
+      "selectedCount": 3,
+      "selectionStrategy": "sample"
+    },
+    {
+      "eventType": "UPDATE_SUBSCRIPTION_CHARGE_DATE",
+      "totalEvents": 2,
+      "selectedCount": 2,
+      "selectionStrategy": "all"
+    },
+    {
+      "eventType": "PURCHASE_CHARGEBACK",
+      "totalEvents": 1,
+      "selectedCount": 1,
+      "selectionStrategy": "all"
+    }
+  ],
+  "mockedEvents": [
+    "PURCHASE_EXPIRED",
+    "SWITCH_PLAN"
+  ],
+  "config": {
+    "maxEventsPerType": 10,
+    "includeEdgeCases": true
+  }
+}

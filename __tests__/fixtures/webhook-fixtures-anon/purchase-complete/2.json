@@ -1,0 +1,90 @@
+{
+  "data": {
+    "product": {
+      "support_email": "user_d9ed2356@example.br",
+      "has_co_production": false,
+      "name": "Julia Santos",
+      "warranty_date": "2025-05-20T00:00:00Z",
+      "is_physical_product": false,
+      "id": 1355458,
+      "ucode": "ucode_4038161c"
+    },
+    "commissions": [
+      {
+        "currency_value": "BRL",
+        "source": "MARKETPLACE",
+        "value": 74.78
+      },
+      {
+        "currency_value": "BRL",
+        "source": "PRODUCER",
+        "value": 922.22
+      }
+    ],
+    "purchase": {
+      "original_offer_price": {
+        "currency_value": "BRL",
+        "value": 997
+      },
+      "recurrence_number": 2,
+      "subscription_anticipation_purchase": "192.168.97.20",
+      "checkout_country": {
+        "iso": "BR",
+        "name": "Ana Oliveira"
+      },
+      "order_bump": {
+        "is_order_bump": false
+      },
+      "approved_date": 1747153328000,
+      "offer": {
+        "code": "ffwqvtyv"
+      },
+      "is_funnel": false,
+      "order_date": 1747153325000,
+      "date_next_charge": 1778673600000,
+      "price": {
+        "currency_value": "BRL",
+        "value": 997
+      },
+      "payment": {
+        "installments_number": 1,
+        "type": "CREDIT_CARD"
+      },
+      "full_price": {
+        "currency_value": "BRL",
+        "value": 997
+      },
+      "business_model": "I",
+      "invoice_by": "HOTMART",
+      "transaction": "HP0592365647",
+      "status": "COMPLETED"
+    },
+    "affiliates": [
+      {
+        "affiliate_code": "",
+        "name": "Pedro Rodrigues"
+      }
+    ],
+    "producer": {
+      "legal_nature": "Pessoa Jurídica",
+      "document": "73c.0c2.875-9c",
+      "name": "João Lima"
+    },
+    "subscription": "192.168.4.57",
+    "buyer": {
+      "checkout_phone_code": "+55 11 971c4-e63c",
+      "address": "192.168.4.57",
+      "document": "ffa.931.cbe-ad",
+      "name": "Julia Lima",
+      "last_name": "João Souza",
+      "checkout_phone": "+55 11 9f6e4-a91f",
+      "first_name": "Carlos Silva",
+      "email": "user_0b2bc3bf@example.com",
+      "document_type": "1e6.d33.a10-0d"
+    }
+  },
+  "id": "8c266552-6dd5-4b09-9c15-25257873732a",
+  "creation_date": 1747818398285,
+  "event": "PURCHASE_COMPLETE",
+  "version": "2.0.0"
+}

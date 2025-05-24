@@ -1,0 +1,92 @@
+{
+  "data": {
+    "product": {
+      "support_email": "user_d9ed2356@example.br",
+      "has_co_production": false,
+      "name": "Julia Santos",
+      "is_physical_product": false,
+      "id": 1355458,
+      "ucode": "ucode_4038161c"
+    },
+    "commissions": [
+      {
+        "currency_value": "BRL",
+        "source": "MARKETPLACE",
+        "value": 148.78
+      },
+      {
+        "currency_value": "BRL",
+        "source": "PRODUCER",
+        "value": 1848.22
+      }
+    ],
+    "purchase": {
+      "original_offer_price": {
+        "currency_value": "BRL",
+        "value": 1997
+      },
+      "recurrence_number": 1,
+      "subscription_anticipation_purchase": "192.168.97.20",
+      "checkout_country": {
+        "iso": "BR",
+        "name": "Ana Oliveira"
+      },
+      "origin": {
+        "sck": "comercial-EA-whatsapp-0425"
+      },
+      "order_bump": {
+        "is_order_bump": false
+      },
+      "offer": {
+        "code": "ljw69kyn",
+        "coupon_code": "ESCOLA DE AUTOMACAO - Regular - OFICIAL"
+      },
+      "is_funnel": false,
+      "order_date": 1747513640000,
+      "price": {
+        "currency_value": "BRL",
+        "value": 1997
+      },
+      "payment": {
+        "refusal_reason": "Transaction refused",
+        "installments_number": 1,
+        "type": "CREDIT_CARD"
+      },
+      "full_price": {
+        "currency_value": "BRL",
+        "value": 1997
+      },
+      "business_model": "I",
+      "invoice_by": "HOTMART",
+      "transaction": "HP3508633662",
+      "status": "CANCELED"
+    },
+    "affiliates": [
+      {
+        "affiliate_code": "",
+        "name": "Pedro Rodrigues"
+      }
+    ],
+    "producer": {
+      "legal_nature": "Pessoa Jurídica",
+      "document": "73c.0c2.875-9c",
+      "name": "João Lima"
+    },
+    "subscription": "192.168.4.57",
+    "buyer": {
+      "checkout_phone_code": "+55 11 94ab8-4ed8",
+      "address": "192.168.4.57",
+      "document": "38a.565.a94-53",
+      "name": "Ana Souza",
+      "last_name": "João Santos",
+      "checkout_phone": "+55 11 9e528-515a",
+      "first_name": "Julia Rodrigues",
+      "email": "user_77f04f13@example.com",
+      "document_type": "1e6.d33.a10-0d"
+    }
+  },
+  "id": "7a07e07f-b988-4c44-864a-5eb39c1c3b31",
+  "creation_date": 1747513644870,
+  "event": "PURCHASE_CANCELED",
+  "version": "2.0.0"
+}

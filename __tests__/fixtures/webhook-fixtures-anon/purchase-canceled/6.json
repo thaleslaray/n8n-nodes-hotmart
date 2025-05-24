@@ -1,0 +1,89 @@
+{
+  "data": {
+    "product": {
+      "support_email": "user_d9ed2356@example.br",
+      "has_co_production": false,
+      "name": "Julia Santos",
+      "is_physical_product": false,
+      "id": 1355458,
+      "ucode": "ucode_4038161c"
+    },
+    "commissions": [
+      {
+        "currency_value": "BRL",
+        "source": "MARKETPLACE",
+        "value": 148.78
+      },
+      {
+        "currency_value": "BRL",
+        "source": "PRODUCER",
+        "value": 1848.22
+      }
+    ],
+    "purchase": {
+      "original_offer_price": {
+        "currency_value": "BRL",
+        "value": 1997
+      },
+      "recurrence_number": 1,
+      "subscription_anticipation_purchase": "192.168.97.20",
+      "checkout_country": {
+        "iso": "BR",
+        "name": "Ana Oliveira"
+      },
+      "order_bump": {
+        "is_order_bump": false
+      },
+      "offer": {
+        "code": "0rgmjkb1",
+        "coupon_code": "Preço Padrão - Escola de Automação e I.A."
+      },
+      "is_funnel": false,
+      "order_date": 1747513446000,
+      "price": {
+        "currency_value": "BRL",
+        "value": 1997
+      },
+      "payment": {
+        "refusal_reason": "Transaction refused",
+        "installments_number": 12,
+        "type": "CREDIT_CARD"
+      },
+      "full_price": {
+        "currency_value": "BRL",
+        "value": 2626.56
+      },
+      "business_model": "I",
+      "invoice_by": "HOTMART",
+      "transaction": "HP2121229128",
+      "status": "CANCELED"
+    },
+    "affiliates": [
+      {
+        "affiliate_code": "",
+        "name": "Pedro Rodrigues"
+      }
+    ],
+    "producer": {
+      "legal_nature": "Pessoa Jurídica",
+      "document": "73c.0c2.875-9c",
+      "name": "João Lima"
+    },
+    "subscription": "192.168.4.57",
+    "buyer": {
+      "checkout_phone_code": "+55 11 94ab8-4ed8",
+      "address": "192.168.4.57",
+      "document": "38a.565.a94-53",
+      "name": "João Silva",
+      "last_name": "João Silva",
+      "checkout_phone": "+55 11 9e528-515a",
+      "first_name": "João Rodrigues",
+      "email": "user_43995096@example.com",
+      "document_type": "1e6.d33.a10-0d"
+    }
+  },
+  "id": "2c7be490-de2c-44d6-a4a5-590ba45b7462",
+  "creation_date": 1747513451108,
+  "event": "PURCHASE_CANCELED",
+  "version": "2.0.0"
+}

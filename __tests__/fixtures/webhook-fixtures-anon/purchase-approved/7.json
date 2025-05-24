@@ -1,0 +1,92 @@
+{
+  "data": {
+    "product": {
+      "support_email": "user_d9ed2356@example.br",
+      "has_co_production": false,
+      "name": "Julia Santos",
+      "is_physical_product": false,
+      "id": 1355458,
+      "ucode": "ucode_4038161c"
+    },
+    "commissions": [
+      {
+        "currency_value": "BRL",
+        "source": "MARKETPLACE",
+        "value": 70.55
+      },
+      {
+        "currency_value": "BRL",
+        "source": "PRODUCER",
+        "value": 869.26
+      }
+    ],
+    "purchase": {
+      "original_offer_price": {
+        "currency_value": "BRL",
+        "value": 939.81
+      },
+      "recurrence_number": 2,
+      "subscription_anticipation_purchase": "192.168.97.20",
+      "checkout_country": {
+        "iso": "BR",
+        "name": "Ana Oliveira"
+      },
+      "origin": {
+        "sck": "ADS-FB-ig|PE-VSL_NOVA|EDA-VEND|EDA-EXT-00_ABERTO-VEND-VID-072-12-10-23-PAG-12-V3|VEND-VID-072-ESQUECE_O_INGRESSO_PERSONALIZADO|VEND-PAG_12"
+      },
+      "order_bump": {
+        "is_order_bump": false
+      },
+      "approved_date": 1746561249000,
+      "offer": {
+        "code": "ffwqvtyv"
+      },
+      "is_funnel": false,
+      "order_date": 1746561247000,
+      "date_next_charge": 1760529600000,
+      "price": {
+        "currency_value": "BRL",
+        "value": 939.81
+      },
+      "payment": {
+        "installments_number": 12,
+        "type": "CREDIT_CARD"
+      },
+      "full_price": {
+        "currency_value": "BRL",
+        "value": 1194
+      },
+      "business_model": "I",
+      "invoice_by": "HOTMART",
+      "transaction": "HP3399780969",
+      "status": "APPROVED"
+    },
+    "affiliates": [
+      {
+        "affiliate_code": "",
+        "name": "Pedro Rodrigues"
+      }
+    ],
+    "producer": {
+      "legal_nature": "Pessoa Jurídica",
+      "document": "73c.0c2.875-9c",
+      "name": "João Lima"
+    },
+    "subscription": "192.168.4.57",
+    "buyer": {
+      "checkout_phone_code": "+55 11 9315c-db8b",
+      "address": "192.168.4.57",
+      "document": "312.15c.021-18",
+      "name": "Julia Santos",
+      "last_name": "Maria Santos",
+      "checkout_phone": "+55 11 9214c-74ca",
+      "first_name": "João Souza",
+      "email": "user_48923579@example.com",
+      "document_type": "1e6.d33.a10-0d"
+    }
+  },
+  "id": "510de29e-8892-48a6-8e1a-d8f264be6cb4",
+  "creation_date": 1746561253944,
+  "event": "PURCHASE_APPROVED",
+  "version": "2.0.0"
+}

@@ -1,0 +1,92 @@
+{
+  "data": {
+    "product": {
+      "support_email": "user_d9ed2356@example.br",
+      "has_co_production": false,
+      "name": "Carlos Lima",
+      "is_physical_product": false,
+      "id": 4713431,
+      "ucode": "ucode_7a3ae22f"
+    },
+    "commissions": [
+      {
+        "currency_value": "BRL",
+        "source": "MARKETPLACE",
+        "value": 12.73
+      },
+      {
+        "currency_value": "BRL",
+        "source": "PRODUCER",
+        "value": 145.76
+      }
+    ],
+    "purchase": {
+      "original_offer_price": {
+        "currency_value": "BRL",
+        "value": 158.49
+      },
+      "recurrence_number": 7,
+      "subscription_anticipation_purchase": "192.168.97.20",
+      "checkout_country": {
+        "iso": "BR",
+        "name": "Ana Oliveira"
+      },
+      "origin": {
+        "sck": "grupo-dia-5-ea-vitalicio"
+      },
+      "order_bump": {
+        "is_order_bump": false
+      },
+      "offer": {
+        "code": "37g9evfj"
+      },
+      "is_funnel": false,
+      "order_date": 1746764690000,
+      "date_next_charge": 1749384000000,
+      "price": {
+        "currency_value": "BRL",
+        "value": 158.49
+      },
+      "payment": {
+        "refusal_reason": "UNKNOWN",
+        "installments_number": 12,
+        "type": "CREDIT_CARD"
+      },
+      "full_price": {
+        "currency_value": "BRL",
+        "value": 158.49
+      },
+      "business_model": "I",
+      "invoice_by": "HOTMART",
+      "transaction": "HP1387589073",
+      "status": "DELAYED"
+    },
+    "affiliates": [
+      {
+        "affiliate_code": "",
+        "name": "Pedro Rodrigues"
+      }
+    ],
+    "producer": {
+      "legal_nature": "Pessoa Jurídica",
+      "document": "73c.0c2.875-9c",
+      "name": "João Lima"
+    },
+    "subscription": "192.168.4.57",
+    "buyer": {
+      "checkout_phone_code": "+55 11 96e8a-ae9b",
+      "address": "192.168.4.57",
+      "document": "524.6ab.5e9-19",
+      "name": "Julia Santos",
+      "last_name": "Pedro Lima",
+      "checkout_phone": "+55 11 93783-afb4",
+      "first_name": "Maria Oliveira",
+      "email": "user_e9a636df@example.com",
+      "document_type": "1e6.d33.a10-0d"
+    }
+  },
+  "id": "725f86b6-67c8-43a9-966a-f4aa34c0504c",
+  "creation_date": 1746764791921,
+  "event": "PURCHASE_DELAYED",
+  "version": "2.0.0"
+}

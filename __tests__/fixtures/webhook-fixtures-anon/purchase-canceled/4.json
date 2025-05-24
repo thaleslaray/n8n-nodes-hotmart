@@ -1,0 +1,86 @@
+{
+  "data": {
+    "product": {
+      "has_co_production": false,
+      "name": "João Lima",
+      "is_physical_product": false,
+      "id": 5485679,
+      "ucode": "ucode_a07f8f8a"
+    },
+    "commissions": [
+      {
+        "currency_value": "BRL",
+        "source": "MARKETPLACE",
+        "value": 2
+      },
+      {
+        "currency_value": "BRL",
+        "source": "PRODUCER",
+        "value": 8
+      }
+    ],
+    "purchase": {
+      "original_offer_price": {
+        "currency_value": "BRL",
+        "value": 10
+      },
+      "subscription_anticipation_purchase": "192.168.97.20",
+      "checkout_country": {
+        "iso": "BR",
+        "name": "Ana Oliveira"
+      },
+      "order_bump": {
+        "is_order_bump": false
+      },
+      "offer": {
+        "code": "ei60jobh"
+      },
+      "is_funnel": false,
+      "event_tickets": {
+        "amount": 1
+      },
+      "order_date": 1746709847000,
+      "price": {
+        "currency_value": "BRL",
+        "value": 10
+      },
+      "payment": {
+        "refusal_reason": "Transaction refused",
+        "installments_number": 1,
+        "type": "PIX"
+      },
+      "full_price": {
+        "currency_value": "BRL",
+        "value": 10
+      },
+      "business_model": "I",
+      "invoice_by": "HOTMART",
+      "transaction": "HP0611705428",
+      "status": "CANCELED"
+    },
+    "affiliates": [
+      {
+        "affiliate_code": "",
+        "name": "Pedro Rodrigues"
+      }
+    ],
+    "producer": {
+      "legal_nature": "Pessoa Jurídica",
+      "document": "73c.0c2.875-9c",
+      "name": "João Lima"
+    },
+    "buyer": {
+      "address": "192.168.4.57",
+      "document": "17e.c05.fc5-55",
+      "name": "João Souza",
+      "last_name": "João Rodrigues",
+      "first_name": "Julia Rodrigues",
+      "email": "user_cfd646a8@example.br",
+      "document_type": "1e6.d33.a10-0d"
+    }
+  },
+  "id": "753ff1ab-789e-47ae-863a-61159b16bfc5",
+  "creation_date": 1746709855760,
+  "event": "PURCHASE_CANCELED",
+  "version": "2.0.0"
+}

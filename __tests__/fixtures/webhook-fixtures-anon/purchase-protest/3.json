@@ -1,0 +1,90 @@
+{
+  "data": {
+    "product": {
+      "support_email": "user_d9ed2356@example.br",
+      "has_co_production": false,
+      "name": "Julia Santos",
+      "warranty_date": "2025-05-07T00:00:00Z",
+      "id": 1355458,
+      "ucode": "ucode_4038161c"
+    },
+    "commissions": [
+      {
+        "currency_value": "BRL",
+        "source": "MARKETPLACE",
+        "value": 111.78
+      },
+      {
+        "currency_value": "BRL",
+        "source": "PRODUCER",
+        "value": 1385.22
+      }
+    ],
+    "purchase": {
+      "original_offer_price": {
+        "currency_value": "BRL",
+        "value": 1497
+      },
+      "recurrence_number": 1,
+      "subscription_anticipation_purchase": "192.168.97.20",
+      "checkout_country": {
+        "iso": "BR",
+        "name": "Ana Oliveira"
+      },
+      "order_bump": {
+        "is_order_bump": false
+      },
+      "approved_date": 1746015756000,
+      "offer": {
+        "code": "tdl7nakn",
+        "coupon_code": "Escola de Automação - Comercial Treinamento"
+      },
+      "is_funnel": false,
+      "order_date": 1746015754000,
+      "date_next_charge": 1777550400000,
+      "price": {
+        "currency_value": "BRL",
+        "value": 1497
+      },
+      "payment": {
+        "installments_number": 10,
+        "type": "CREDIT_CARD"
+      },
+      "full_price": {
+        "currency_value": "BRL",
+        "value": 1891
+      },
+      "business_model": "I",
+      "invoice_by": "HOTMART",
+      "transaction": "HP3286246106",
+      "status": "DISPUTE"
+    },
+    "affiliates": [
+      {
+        "affiliate_code": "",
+        "name": "Pedro Rodrigues"
+      }
+    ],
+    "producer": {
+      "legal_nature": "Pessoa Jurídica",
+      "document": "73c.0c2.875-9c",
+      "name": "João Lima"
+    },
+    "subscription": "192.168.4.57",
+    "buyer": {
+      "checkout_phone_code": "+55 11 9dba1-817f",
+      "address": "192.168.4.57",
+      "document": "ad6.ded.800-42",
+      "name": "Carlos Silva",
+      "last_name": "Maria Lima",
+      "checkout_phone": "+55 11 914b4-c90b",
+      "first_name": "Julia Oliveira",
+      "email": "user_d2a89c0a@example.com",
+      "document_type": "1e6.d33.a10-0d"
+    }
+  },
+  "id": "3287b393-508f-48f2-8f0b-edf69d542f03",
+  "creation_date": 1746284861112,
+  "event": "PURCHASE_PROTEST",
+  "version": "2.0.0"
+}

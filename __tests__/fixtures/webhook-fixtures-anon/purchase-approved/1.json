@@ -1,0 +1,93 @@
+{
+  "data": {
+    "product": {
+      "support_email": "user_d9ed2356@example.br",
+      "has_co_production": false,
+      "name": "Julia Santos",
+      "warranty_date": "2025-05-06T00:00:00Z",
+      "id": 1355458,
+      "ucode": "ucode_4038161c"
+    },
+    "commissions": [
+      {
+        "currency_value": "BRL",
+        "source": "MARKETPLACE",
+        "value": 111.78
+      },
+      {
+        "currency_value": "BRL",
+        "source": "PRODUCER",
+        "value": 1385.22
+      }
+    ],
+    "purchase": {
+      "original_offer_price": {
+        "currency_value": "BRL",
+        "value": 1497
+      },
+      "recurrence_number": 1,
+      "subscription_anticipation_purchase": "192.168.97.20",
+      "checkout_country": {
+        "iso": "BR",
+        "name": "Ana Oliveira"
+      },
+      "order_bump": {
+        "is_order_bump": false
+      },
+      "approved_date": 1745952627000,
+      "offer": {
+        "code": "tdl7nakn",
+        "coupon_code": "Escola de Automação - Comercial Treinamento"
+      },
+      "is_funnel": false,
+      "order_date": 1745952557000,
+      "date_next_charge": 1777464000000,
+      "price": {
+        "currency_value": "BRL",
+        "value": 1497
+      },
+      "payment": {
+        "pix_qrcode": "https://live-us.adyen.com/hpp/generateQRCodeImage.shtml?url=00020101021226900014br.gov.bcb.pix2568pix.adyen.com%2Fpixqrcodelocation%2Fpixloc%2Fv1%2Floc%2FdX4PUvzmQyiFyB1vGFKEPg5204000053039865802BR5902HT6009SAO+PAULO62070503***6304C56F",
+        "pix_expiration_date": 1746125358000,
+        "installments_number": 1,
+        "type": "PIX",
+        "pix_code": "00020101021226900014br.gov.bcb.pix2568pix.adyen.com/pixqrcodelocation/pixloc/v1/loc/dX4PUvzmQyiFyB1vGFKEPg5204000053039865802BR5902HT6009SAO PAULO62070503***6304C56F"
+      },
+      "full_price": {
+        "currency_value": "BRL",
+        "value": 1497
+      },
+      "business_model": "I",
+      "invoice_by": "HOTMART",
+      "transaction": "HP0967750879",
+      "status": "APPROVED"
+    },
+    "affiliates": [
+      {
+        "affiliate_code": "",
+        "name": "Pedro Rodrigues"
+      }
+    ],
+    "producer": {
+      "legal_nature": "Pessoa Jurídica",
+      "document": "73c.0c2.875-9c",
+      "name": "João Lima"
+    },
+    "subscription": "192.168.4.57",
+    "buyer": {
+      "checkout_phone_code": "+55 11 94ab8-4ed8",
+      "address": "192.168.4.57",
+      "document": "e31.719.e7a-8f",
+      "name": "Maria Rodrigues",
+      "last_name": "Julia Rodrigues",
+      "checkout_phone": "+55 11 99344-078a",
+      "first_name": "Julia Oliveira",
+      "email": "user_78903a16@example.com",
+      "document_type": "1e6.d33.a10-0d"
+    }
+  },
+  "id": "a51689a6-8e24-4b9a-b8b6-9214cb0ec15e",
+  "creation_date": 1745952631331,
+  "event": "PURCHASE_APPROVED",
+  "version": "2.0.0"
+}

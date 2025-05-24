@@ -1,0 +1,93 @@
+{
+  "data": {
+    "product": {
+      "support_email": "user_d9ed2356@example.br",
+      "has_co_production": false,
+      "name": "Carlos Lima",
+      "warranty_date": "2025-05-11T00:00:00Z",
+      "is_physical_product": false,
+      "id": 4713431,
+      "ucode": "ucode_7a3ae22f"
+    },
+    "commissions": [
+      {
+        "currency_value": "BRL",
+        "source": "MARKETPLACE",
+        "value": 12.73
+      },
+      {
+        "currency_value": "BRL",
+        "source": "PRODUCER",
+        "value": 145.76
+      }
+    ],
+    "purchase": {
+      "original_offer_price": {
+        "currency_value": "BRL",
+        "value": 158.49
+      },
+      "recurrence_number": 6,
+      "subscription_anticipation_purchase": "192.168.97.20",
+      "checkout_country": {
+        "iso": "BR",
+        "name": "Ana Oliveira"
+      },
+      "origin": {
+        "sck": "Instagram_Feed|[BF2024] [VENDAS] [Q] [ENVOLVIMENTO   SEGUIDORES] [C2]|00 - [20-55] [AUTO] [Q] Envolvimento   Seguidores Thales|Paid_MetaAds|THALES_NOV24_RMKTBLACKFRIDAY_05"
+      },
+      "order_bump": {
+        "is_order_bump": false
+      },
+      "approved_date": 1745676583000,
+      "offer": {
+        "code": "jui0v4dx"
+      },
+      "is_funnel": false,
+      "order_date": 1745676580000,
+      "date_next_charge": 1748260800000,
+      "price": {
+        "currency_value": "BRL",
+        "value": 158.49
+      },
+      "payment": {
+        "installments_number": 12,
+        "type": "CREDIT_CARD"
+      },
+      "full_price": {
+        "currency_value": "BRL",
+        "value": 158.49
+      },
+      "business_model": "I",
+      "invoice_by": "HOTMART",
+      "transaction": "HP3340498466",
+      "status": "COMPLETED"
+    },
+    "affiliates": [
+      {
+        "affiliate_code": "",
+        "name": "Pedro Rodrigues"
+      }
+    ],
+    "producer": {
+      "legal_nature": "Pessoa Jurídica",
+      "document": "73c.0c2.875-9c",
+      "name": "João Lima"
+    },
+    "subscription": "192.168.4.57",
+    "buyer": {
+      "checkout_phone_code": "+55 11 94ab8-4ed8",
+      "address": "192.168.4.57",
+      "document": "ad0.cd3.b3a-38",
+      "name": "João Oliveira",
+      "last_name": "Carlos Silva",
+      "checkout_phone": "+55 11 9b45d-eeb7",
+      "first_name": "Carlos Lima",
+      "email": "user_fe6971fe@example.com",
+      "document_type": "e81.58a.87f-64"
+    }
+  },
+  "id": "ba4d91d0-0882-4d94-b355-42546f399231",
+  "creation_date": 1747023840725,
+  "event": "PURCHASE_COMPLETE",
+  "version": "2.0.0"
+}

@@ -1,0 +1,92 @@
+{
+  "data": {
+    "product": {
+      "support_email": "user_d9ed2356@example.br",
+      "has_co_production": false,
+      "name": "Julia Santos",
+      "id": 1355458,
+      "ucode": "ucode_4038161c"
+    },
+    "commissions": [
+      {
+        "currency_value": "BRL",
+        "source": "MARKETPLACE",
+        "value": 74.78
+      },
+      {
+        "currency_value": "BRL",
+        "source": "PRODUCER",
+        "value": 922.22
+      }
+    ],
+    "purchase": {
+      "original_offer_price": {
+        "currency_value": "BRL",
+        "value": 997
+      },
+      "recurrence_number": 3,
+      "subscription_anticipation_purchase": "192.168.97.20",
+      "checkout_country": {
+        "iso": "BR",
+        "name": "Ana Oliveira"
+      },
+      "origin": {
+        "sck": "rec-v"
+      },
+      "order_bump": {
+        "is_order_bump": false
+      },
+      "offer": {
+        "code": "vlk6o3mj"
+      },
+      "is_funnel": false,
+      "order_date": 1746112731000,
+      "date_next_charge": 1777377600000,
+      "price": {
+        "currency_value": "BRL",
+        "value": 997
+      },
+      "payment": {
+        "billet_url": "https://hotm.art/bHP0970394859",
+        "billet_barcode": "34191096693696710054089356830003510720000099700",
+        "installments_number": 1,
+        "type": "BILLET"
+      },
+      "full_price": {
+        "currency_value": "BRL",
+        "value": 997
+      },
+      "business_model": "I",
+      "invoice_by": "HOTMART",
+      "transaction": "HP0970394859",
+      "status": "BILLET_PRINTED"
+    },
+    "affiliates": [
+      {
+        "affiliate_code": "",
+        "name": "Pedro Rodrigues"
+      }
+    ],
+    "producer": {
+      "legal_nature": "Pessoa Jurídica",
+      "document": "73c.0c2.875-9c",
+      "name": "João Lima"
+    },
+    "subscription": "192.168.4.57",
+    "buyer": {
+      "checkout_phone_code": "+55 11 9c150-eeca",
+      "address": "192.168.4.57",
+      "document": "e97.ca3.d38-b9",
+      "name": "Ana Souza",
+      "last_name": "Ana Souza",
+      "checkout_phone": "+55 11 97529-1fd3",
+      "first_name": "João Oliveira",
+      "email": "user_fa639fd4@example.com",
+      "document_type": "1e6.d33.a10-0d"
+    }
+  },
+  "id": "3ca6a5d1-e7ad-41fd-ad49-3910cef2dae2",
+  "creation_date": 1746112738300,
+  "event": "PURCHASE_BILLET_PRINTED",
+  "version": "2.0.0"
+}

@@ -1,0 +1,93 @@
+{
+  "data": {
+    "product": {
+      "support_email": "user_d9ed2356@example.br",
+      "has_co_production": false,
+      "name": "Julia Santos",
+      "is_physical_product": false,
+      "id": 1355458,
+      "ucode": "ucode_4038161c"
+    },
+    "commissions": [
+      {
+        "currency_value": "BRL",
+        "source": "MARKETPLACE",
+        "value": 10.23
+      },
+      {
+        "currency_value": "BRL",
+        "source": "PRODUCER",
+        "value": 114.52
+      }
+    ],
+    "purchase": {
+      "original_offer_price": {
+        "currency_value": "BRL",
+        "value": 124.75
+      },
+      "recurrence_number": 13,
+      "subscription_anticipation_purchase": "192.168.97.20",
+      "checkout_country": {
+        "iso": "BR",
+        "name": "Ana Oliveira"
+      },
+      "origin": {
+        "src": "closer_igor",
+        "sck": "vendamensal_closer_igor"
+      },
+      "order_bump": {
+        "is_order_bump": false
+      },
+      "offer": {
+        "code": "v3gy3sekDRP"
+      },
+      "is_funnel": false,
+      "order_date": 1746728492000,
+      "date_next_charge": 1748433600000,
+      "price": {
+        "currency_value": "BRL",
+        "value": 124.75
+      },
+      "payment": {
+        "refusal_reason": "Existe algum tipo de restrição no cartão. Tente realizar a compra novamente com outro cartão ou meio de pagamento.",
+        "installments_number": 1,
+        "type": "CREDIT_CARD"
+      },
+      "full_price": {
+        "currency_value": "BRL",
+        "value": 124.75
+      },
+      "business_model": "I",
+      "invoice_by": "HOTMART",
+      "transaction": "HP0864701638",
+      "status": "DELAYED"
+    },
+    "affiliates": [
+      {
+        "affiliate_code": "",
+        "name": "Pedro Rodrigues"
+      }
+    ],
+    "producer": {
+      "legal_nature": "Pessoa Jurídica",
+      "document": "73c.0c2.875-9c",
+      "name": "João Lima"
+    },
+    "subscription": "192.168.4.57",
+    "buyer": {
+      "checkout_phone_code": "+55 11 9f7c1-e1ad",
+      "address": "192.168.4.57",
+      "document": "075.58d.052-00",
+      "name": "Pedro Santos",
+      "last_name": "Ana Oliveira",
+      "checkout_phone": "+55 11 9189e-dec7",
+      "first_name": "Ana Rodrigues",
+      "email": "user_9570e64a@example.com",
+      "document_type": "1e6.d33.a10-0d"
+    }
+  },
+  "id": "955de68d-6684-4829-ac8d-856e907f97aa",
+  "creation_date": 1746728593844,
+  "event": "PURCHASE_DELAYED",
+  "version": "2.0.0"
+}

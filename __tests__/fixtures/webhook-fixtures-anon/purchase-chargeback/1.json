@@ -1,0 +1,91 @@
+{
+  "data": {
+    "product": {
+      "support_email": "user_d9ed2356@example.br",
+      "has_co_production": false,
+      "name": "Julia Santos",
+      "warranty_date": "2025-04-25T00:00:00Z",
+      "is_physical_product": false,
+      "id": 1355458,
+      "ucode": "ucode_4038161c"
+    },
+    "commissions": [
+      {
+        "currency_value": "BRL",
+        "source": "MARKETPLACE",
+        "value": 148.78
+      },
+      {
+        "currency_value": "BRL",
+        "source": "PRODUCER",
+        "value": 1848.22
+      }
+    ],
+    "purchase": {
+      "original_offer_price": {
+        "currency_value": "BRL",
+        "value": 1997
+      },
+      "recurrence_number": 1,
+      "subscription_anticipation_purchase": "192.168.97.20",
+      "checkout_country": {
+        "iso": "BR",
+        "name": "Ana Oliveira"
+      },
+      "order_bump": {
+        "is_order_bump": false
+      },
+      "approved_date": 1745026818000,
+      "offer": {
+        "code": "0rgmjkb1",
+        "coupon_code": "Preço Padrão - Escola de Automação e I.A."
+      },
+      "is_funnel": false,
+      "order_date": 1745026815000,
+      "date_next_charge": 1776600000000,
+      "price": {
+        "currency_value": "BRL",
+        "value": 1997
+      },
+      "payment": {
+        "installments_number": 12,
+        "type": "CREDIT_CARD"
+      },
+      "full_price": {
+        "currency_value": "BRL",
+        "value": 2626.56
+      },
+      "business_model": "I",
+      "invoice_by": "HOTMART",
+      "transaction": "HP3654648971",
+      "status": "CHARGEBACK"
+    },
+    "affiliates": [
+      {
+        "affiliate_code": "",
+        "name": "Pedro Rodrigues"
+      }
+    ],
+    "producer": {
+      "legal_nature": "Pessoa Jurídica",
+      "document": "73c.0c2.875-9c",
+      "name": "João Lima"
+    },
+    "subscription": "192.168.4.57",
+    "buyer": {
+      "checkout_phone_code": "+55 11 96e8a-ae9b",
+      "address": "192.168.4.57",
+      "document": "886.4c2.a69-fb",
+      "name": "Ana Souza",
+      "last_name": "Ana Silva",
+      "checkout_phone": "+55 11 91a80-19e4",
+      "first_name": "João Santos",
+      "email": "user_050b5655@example.com",
+      "document_type": "1e6.d33.a10-0d"
+    }
+  },
+  "id": "483d5fd0-b0c1-4f96-ad66-6ffb65d3ca9c",
+  "creation_date": 1747773619843,
+  "event": "PURCHASE_CHARGEBACK",
+  "version": "2.0.0"
+}

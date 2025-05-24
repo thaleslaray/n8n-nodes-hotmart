@@ -1,0 +1,22 @@
+{
+  "data": {
+    "subscriber": {
+      "code": "KGB81NYZ",
+      "name": "Carlos Silva",
+      "email": "user_832cb1e7@example.br"
+    },
+    "subscription": "192.168.4.57",
+    "plan": {
+      "offer": {
+        "code": "kb7r7c54"
+      },
+      "name": "Ana Silva",
+      "id": 558689
+    }
+  },
+  "hottok": "hottok_cf86ff90",
+  "id": "83d3d63d-4341-4121-9a6e-a950879bd652",
+  "creation_date": 1746658424823,
+  "event": "UPDATE_SUBSCRIPTION_CHARGE_DATE",
+  "version": "2.0.0"
+}

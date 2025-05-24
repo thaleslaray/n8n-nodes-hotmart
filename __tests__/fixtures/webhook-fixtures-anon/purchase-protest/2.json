@@ -1,0 +1,89 @@
+{
+  "data": {
+    "product": {
+      "support_email": "user_d9ed2356@example.br",
+      "has_co_production": false,
+      "name": "Julia Santos",
+      "warranty_date": "2025-04-24T00:00:00Z",
+      "id": 1355458,
+      "ucode": "ucode_4038161c"
+    },
+    "commissions": [
+      {
+        "currency_value": "BRL",
+        "source": "MARKETPLACE",
+        "value": 74.78
+      },
+      {
+        "currency_value": "BRL",
+        "source": "PRODUCER",
+        "value": 922.22
+      }
+    ],
+    "purchase": {
+      "original_offer_price": {
+        "currency_value": "BRL",
+        "value": 997
+      },
+      "recurrence_number": 4,
+      "subscription_anticipation_purchase": "192.168.97.20",
+      "checkout_country": {
+        "iso": "BR",
+        "name": "Ana Oliveira"
+      },
+      "order_bump": {
+        "is_order_bump": false
+      },
+      "approved_date": 1744892889000,
+      "offer": {
+        "code": "kdm48q1t"
+      },
+      "is_funnel": false,
+      "order_date": 1744892886000,
+      "date_next_charge": 1776427200000,
+      "price": {
+        "currency_value": "BRL",
+        "value": 997
+      },
+      "payment": {
+        "installments_number": 12,
+        "type": "CREDIT_CARD"
+      },
+      "full_price": {
+        "currency_value": "BRL",
+        "value": 1194
+      },
+      "business_model": "I",
+      "invoice_by": "HOTMART",
+      "transaction": "HP1212266242",
+      "status": "DISPUTE"
+    },
+    "affiliates": [
+      {
+        "affiliate_code": "",
+        "name": "Pedro Rodrigues"
+      }
+    ],
+    "producer": {
+      "legal_nature": "Pessoa Jurídica",
+      "document": "73c.0c2.875-9c",
+      "name": "João Lima"
+    },
+    "subscription": "192.168.4.57",
+    "buyer": {
+      "checkout_phone_code": "+55 11 9bf0a-9de5",
+      "address": "192.168.4.57",
+      "document": "36f.76c.d6a-55",
+      "name": "Pedro Santos",
+      "last_name": "Carlos Rodrigues",
+      "checkout_phone": "+55 11 914f8-f27d",
+      "first_name": "Ana Souza",
+      "email": "user_4cca18ca@example.com",
+      "document_type": "1e6.d33.a10-0d"
+    }
+  },
+  "id": "c0073e5e-3016-46e4-b18d-3bc9e43726fe",
+  "creation_date": 1746191686305,
+  "event": "PURCHASE_PROTEST",
+  "version": "2.0.0"
+}

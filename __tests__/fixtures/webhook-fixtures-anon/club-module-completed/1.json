@@ -1,0 +1,20 @@
+{
+  "data": {
+    "product": {
+      "name": "Maria Souza",
+      "id": "4062912"
+    },
+    "module": {
+      "name": "Maria Souza",
+      "id": "gOpgkaor7J"
+    },
+    "user": {
+      "name": "Pedro Rodrigues",
+      "email": "user_7771f57c@example.com"
+    }
+  },
+  "id": "c8401b26-7f51-4a97-9cda-423727663409",
+  "creation_date": 1746286277515,
+  "event": "CLUB_MODULE_COMPLETED",
+  "version": "2.0.0"
+}

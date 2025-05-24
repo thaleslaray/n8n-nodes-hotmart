@@ -1,0 +1,93 @@
+{
+  "data": {
+    "product": {
+      "support_email": "user_d9ed2356@example.br",
+      "has_co_production": false,
+      "name": "Julia Santos",
+      "warranty_date": "2025-05-09T00:00:00Z",
+      "is_physical_product": false,
+      "id": 1355458,
+      "ucode": "ucode_4038161c"
+    },
+    "commissions": [
+      {
+        "currency_value": "BRL",
+        "source": "MARKETPLACE",
+        "value": 0.2
+      },
+      {
+        "currency_value": "BRL",
+        "source": "PRODUCER",
+        "value": 0.8
+      }
+    ],
+    "purchase": {
+      "original_offer_price": {
+        "currency_value": "BRL",
+        "value": 1
+      },
+      "recurrence_number": 2,
+      "subscription_anticipation_purchase": "192.168.97.20",
+      "checkout_country": {
+        "iso": "BR",
+        "name": "Ana Oliveira"
+      },
+      "order_bump": {
+        "is_order_bump": false
+      },
+      "approved_date": 1746190985000,
+      "offer": {
+        "code": "mp694ztq"
+      },
+      "is_funnel": false,
+      "order_date": 1746190671000,
+      "date_next_charge": 1777723200000,
+      "price": {
+        "currency_value": "BRL",
+        "value": 1
+      },
+      "payment": {
+        "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=6814c14fba47a0945bc798744acf5b716f7810ec0be2251a",
+        "pix_expiration_date": 1746363472000,
+        "installments_number": 1,
+        "type": "PIX",
+        "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/B361608F53868AE8D7CCF7A74098AD905204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***6304B3EA"
+      },
+      "full_price": {
+        "currency_value": "BRL",
+        "value": 1
+      },
+      "business_model": "I",
+      "invoice_by": "HOTMART",
+      "transaction": "HP4228138773",
+      "status": "COMPLETED"
+    },
+    "affiliates": [
+      {
+        "affiliate_code": "",
+        "name": "Pedro Rodrigues"
+      }
+    ],
+    "producer": {
+      "legal_nature": "Pessoa Jurídica",
+      "document": "73c.0c2.875-9c",
+      "name": "João Lima"
+    },
+    "subscription": "192.168.4.57",
+    "buyer": {
+      "checkout_phone_code": "+55 11 95a31-91de",
+      "address": "192.168.4.57",
+      "document": "70d.83d.d58-b8",
+      "name": "João Santos",
+      "last_name": "Julia Lima",
+      "checkout_phone": "+55 11 98bcc-f03c",
+      "first_name": "Carlos Santos",
+      "email": "user_b2bd2c04@example.com",
+      "document_type": "1e6.d33.a10-0d"
+    }
+  },
+  "id": "3df2df0f-27b9-4fbc-a279-eb5aecf38207",
+  "creation_date": 1746859857669,
+  "event": "PURCHASE_COMPLETE",
+  "version": "2.0.0"
+}

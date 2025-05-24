@@ -1,0 +1,20 @@
+{
+  "data": {
+    "product": {
+      "name": "Maria Silva",
+      "id": "5036092"
+    },
+    "module": {
+      "name": "João Oliveira",
+      "id": "64lyDRGQej"
+    },
+    "user": {
+      "name": "Julia Santos",
+      "email": "user_77c6676c@example.com"
+    }
+  },
+  "id": "0d5d3467-9c16-4639-a738-5223494c6b3c",
+  "creation_date": 1747609083177,
+  "event": "CLUB_MODULE_COMPLETED",
+  "version": "2.0.0"
+}

@@ -1,0 +1,89 @@
+{
+  "data": {
+    "product": {
+      "support_email": "user_d9ed2356@example.br",
+      "has_co_production": false,
+      "name": "Julia Santos",
+      "is_physical_product": false,
+      "id": 1355458,
+      "ucode": "ucode_4038161c"
+    },
+    "commissions": [
+      {
+        "currency_value": "BRL",
+        "source": "MARKETPLACE",
+        "value": 10.23
+      },
+      {
+        "currency_value": "BRL",
+        "source": "PRODUCER",
+        "value": 114.52
+      }
+    ],
+    "purchase": {
+      "original_offer_price": {
+        "currency_value": "BRL",
+        "value": 124.75
+      },
+      "recurrence_number": 12,
+      "subscription_anticipation_purchase": "192.168.97.20",
+      "checkout_country": {
+        "iso": "BR",
+        "name": "Ana Oliveira"
+      },
+      "order_bump": {
+        "is_order_bump": false
+      },
+      "offer": {
+        "code": "v3gy3sekDRP"
+      },
+      "is_funnel": false,
+      "order_date": 1746733695000,
+      "date_next_charge": 1747915200000,
+      "price": {
+        "currency_value": "BRL",
+        "value": 124.75
+      },
+      "payment": {
+        "refusal_reason": "Existe algum tipo de restrição no cartão. Tente realizar a compra novamente com outro cartão ou meio de pagamento.",
+        "installments_number": 1,
+        "type": "CREDIT_CARD"
+      },
+      "full_price": {
+        "currency_value": "BRL",
+        "value": 124.75
+      },
+      "business_model": "I",
+      "invoice_by": "HOTMART",
+      "transaction": "HP1288107674",
+      "status": "DELAYED"
+    },
+    "affiliates": [
+      {
+        "affiliate_code": "",
+        "name": "Pedro Rodrigues"
+      }
+    ],
+    "producer": {
+      "legal_nature": "Pessoa Jurídica",
+      "document": "73c.0c2.875-9c",
+      "name": "João Lima"
+    },
+    "subscription": "192.168.4.57",
+    "buyer": {
+      "checkout_phone_code": "+55 11 9f387-4eac",
+      "address": "192.168.4.57",
+      "document": "881.563.f19-cc",
+      "name": "Carlos Oliveira",
+      "last_name": "Pedro Souza",
+      "checkout_phone": "+55 11 94912-2b3a",
+      "first_name": "João Souza",
+      "email": "user_a5829e6c@example.com",
+      "document_type": "1e6.d33.a10-0d"
+    }
+  },
+  "id": "331f02eb-8583-44d2-ac42-e083365dd893",
+  "creation_date": 1746733796407,
+  "event": "PURCHASE_DELAYED",
+  "version": "2.0.0"
+}

@@ -1,0 +1,21 @@
+{
+  "data": {
+    "date_next_charge": 1748174400000,
+    "product": {
+      "name": "Julia Santos",
+      "id": 1355458
+    },
+    "actual_recurrence_value": 1497,
+    "subscriber": {
+      "code": "SINIQOQ4",
+      "name": "Pedro Lima",
+      "email": "user_a19ddf5e@example.COM"
+    },
+    "subscription": "192.168.4.57",
+    "cancellation_date": 1747581834391
+  },
+  "id": "c1ab56f4-d4a8-4073-aaa9-3967ff7b06af",
+  "creation_date": 1747581834474,
+  "event": "SUBSCRIPTION_CANCELLATION",
+  "version": "2.0.0"
+}

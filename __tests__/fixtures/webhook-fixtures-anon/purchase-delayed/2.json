@@ -1,0 +1,92 @@
+{
+  "data": {
+    "product": {
+      "support_email": "user_d9ed2356@example.br",
+      "has_co_production": false,
+      "name": "Julia Santos",
+      "is_physical_product": false,
+      "id": 1355458,
+      "ucode": "ucode_4038161c"
+    },
+    "commissions": [
+      {
+        "currency_value": "BRL",
+        "source": "MARKETPLACE",
+        "value": 74.78
+      },
+      {
+        "currency_value": "BRL",
+        "source": "PRODUCER",
+        "value": 922.22
+      }
+    ],
+    "purchase": {
+      "original_offer_price": {
+        "currency_value": "BRL",
+        "value": 997
+      },
+      "recurrence_number": 4,
+      "subscription_anticipation_purchase": "192.168.97.20",
+      "checkout_country": {
+        "iso": "BR",
+        "name": "Ana Oliveira"
+      },
+      "origin": {
+        "sck": "pag-vendas-fluxo-perpetuo"
+      },
+      "order_bump": {
+        "is_order_bump": false
+      },
+      "offer": {
+        "code": "kdm48q1t"
+      },
+      "is_funnel": false,
+      "order_date": 1747829701000,
+      "date_next_charge": 1779364800000,
+      "price": {
+        "currency_value": "BRL",
+        "value": 997
+      },
+      "payment": {
+        "refusal_reason": "Saldo insuficiente.",
+        "installments_number": 1,
+        "type": "WALLET"
+      },
+      "full_price": {
+        "currency_value": "BRL",
+        "value": 997
+      },
+      "business_model": "I",
+      "invoice_by": "HOTMART",
+      "transaction": "HP0533914986",
+      "status": "DELAYED"
+    },
+    "affiliates": [
+      {
+        "affiliate_code": "",
+        "name": "Pedro Rodrigues"
+      }
+    ],
+    "producer": {
+      "legal_nature": "Pessoa Jurídica",
+      "document": "73c.0c2.875-9c",
+      "name": "João Lima"
+    },
+    "subscription": "192.168.4.57",
+    "buyer": {
+      "checkout_phone_code": "+55 11 9fa11-b22d",
+      "address": "192.168.4.57",
+      "document": "87e.c29.7f6-78",
+      "name": "Julia Santos",
+      "last_name": "Carlos Silva",
+      "checkout_phone": "+55 11 9fc22-6e34",
+      "first_name": "João Rodrigues",
+      "email": "user_988b758f@example.br",
+      "document_type": "1e6.d33.a10-0d"
+    }
+  },
+  "id": "46dd5e1e-7622-4643-a1bf-b3976a050402",
+  "creation_date": 1747829796777,
+  "event": "PURCHASE_DELAYED",
+  "version": "2.0.0"
+}

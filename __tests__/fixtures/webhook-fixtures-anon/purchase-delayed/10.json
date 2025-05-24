@@ -1,0 +1,92 @@
+{
+  "data": {
+    "product": {
+      "support_email": "user_d9ed2356@example.br",
+      "has_co_production": false,
+      "name": "Carlos Lima",
+      "is_physical_product": false,
+      "id": 4713431,
+      "ucode": "ucode_7a3ae22f"
+    },
+    "commissions": [
+      {
+        "currency_value": "BRL",
+        "source": "MARKETPLACE",
+        "value": 12.73
+      },
+      {
+        "currency_value": "BRL",
+        "source": "PRODUCER",
+        "value": 145.76
+      }
+    ],
+    "purchase": {
+      "original_offer_price": {
+        "currency_value": "BRL",
+        "value": 158.49
+      },
+      "recurrence_number": 7,
+      "subscription_anticipation_purchase": "192.168.97.20",
+      "checkout_country": {
+        "iso": "BR",
+        "name": "Ana Oliveira"
+      },
+      "origin": {
+        "sck": "email-dia-4-ea-vitalicio"
+      },
+      "order_bump": {
+        "is_order_bump": false
+      },
+      "offer": {
+        "code": "37g9evfj"
+      },
+      "is_funnel": false,
+      "order_date": 1746752097000,
+      "date_next_charge": 1749384000000,
+      "price": {
+        "currency_value": "BRL",
+        "value": 158.49
+      },
+      "payment": {
+        "refusal_reason": "UNKNOWN",
+        "installments_number": 12,
+        "type": "CREDIT_CARD"
+      },
+      "full_price": {
+        "currency_value": "BRL",
+        "value": 158.49
+      },
+      "business_model": "I",
+      "invoice_by": "HOTMART",
+      "transaction": "HP0834073324",
+      "status": "DELAYED"
+    },
+    "affiliates": [
+      {
+        "affiliate_code": "",
+        "name": "Pedro Rodrigues"
+      }
+    ],
+    "producer": {
+      "legal_nature": "Pessoa Jurídica",
+      "document": "73c.0c2.875-9c",
+      "name": "João Lima"
+    },
+    "subscription": "192.168.4.57",
+    "buyer": {
+      "checkout_phone_code": "+55 11 92c2a-e88c",
+      "address": "192.168.4.57",
+      "document": "f3d.e8d.be1-7f",
+      "name": "Pedro Rodrigues",
+      "last_name": "Julia Lima",
+      "checkout_phone": "+55 11 9314e-5d24",
+      "first_name": "João Lima",
+      "email": "user_33d85925@example.com",
+      "document_type": "1e6.d33.a10-0d"
+    }
+  },
+  "id": "55c1340b-3665-4805-8da7-1002f82c87e6",
+  "creation_date": 1746753094315,
+  "event": "PURCHASE_DELAYED",
+  "version": "2.0.0"
+}

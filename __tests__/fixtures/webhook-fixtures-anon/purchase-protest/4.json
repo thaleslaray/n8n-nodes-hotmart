@@ -1,0 +1,90 @@
+{
+  "data": {
+    "product": {
+      "support_email": "user_d9ed2356@example.br",
+      "has_co_production": false,
+      "name": "Julia Santos",
+      "warranty_date": "2025-05-02T00:00:00Z",
+      "is_physical_product": false,
+      "id": 1355458,
+      "ucode": "ucode_4038161c"
+    },
+    "commissions": [
+      {
+        "currency_value": "BRL",
+        "source": "MARKETPLACE",
+        "value": 74.78
+      },
+      {
+        "currency_value": "BRL",
+        "source": "PRODUCER",
+        "value": 922.22
+      }
+    ],
+    "purchase": {
+      "original_offer_price": {
+        "currency_value": "BRL",
+        "value": 997
+      },
+      "recurrence_number": 3,
+      "subscription_anticipation_purchase": "192.168.97.20",
+      "checkout_country": {
+        "iso": "BR",
+        "name": "Ana Oliveira"
+      },
+      "order_bump": {
+        "is_order_bump": false
+      },
+      "approved_date": 1745584259000,
+      "offer": {
+        "code": "h5hog8ss"
+      },
+      "is_funnel": false,
+      "order_date": 1745584258000,
+      "date_next_charge": 1777118400000,
+      "price": {
+        "currency_value": "BRL",
+        "value": 997
+      },
+      "payment": {
+        "installments_number": 1,
+        "type": "CREDIT_CARD"
+      },
+      "full_price": {
+        "currency_value": "BRL",
+        "value": 997
+      },
+      "business_model": "I",
+      "invoice_by": "HOTMART",
+      "transaction": "HP3668665732",
+      "status": "DISPUTE"
+    },
+    "affiliates": [
+      {
+        "affiliate_code": "N82086728N",
+        "name": "Maria Lima"
+      }
+    ],
+    "producer": {
+      "legal_nature": "Pessoa Jurídica",
+      "document": "73c.0c2.875-9c",
+      "name": "João Lima"
+    },
+    "subscription": "192.168.4.57",
+    "buyer": {
+      "checkout_phone_code": "+55 11 9db13-793d",
+      "address": "192.168.4.57",
+      "document": "c51.efb.a0b-1a",
+      "name": "João Souza",
+      "last_name": "Ana Santos",
+      "checkout_phone": "+55 11 9ecf5-7fc5",
+      "first_name": "Julia Rodrigues",
+      "email": "user_6b05935a@example.com",
+      "document_type": "e81.58a.87f-64"
+    }
+  },
+  "id": "e348dd39-5b19-4c90-a84b-dd24ac47414c",
+  "creation_date": 1746450345615,
+  "event": "PURCHASE_PROTEST",
+  "version": "2.0.0"
+}

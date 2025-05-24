@@ -1,0 +1,1619 @@
+[
+  {
+    "data": {
+      "date_next_charge": 1746532800000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1,
+      "subscriber": {
+        "code": "KOBB7XB2",
+        "name": "Julia Oliveira",
+        "email": "user_440e059d@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1745948018688
+    },
+    "id": "c530d9dd-ab3f-4f60-bece-cb1e9fb4b23c",
+    "creation_date": 1745948018771,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1777377600000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1997,
+      "subscriber": {
+        "code": "VP30GLNZ",
+        "name": "Julia Lima",
+        "email": "user_c7744f04@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1745966387963
+    },
+    "id": "25f3b235-9872-4ac5-b6c2-f1693063c176",
+    "creation_date": 1745966388041,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1776427200000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 997,
+      "subscriber": {
+        "code": "HY6O5IPK",
+        "name": "Maria Souza",
+        "email": "user_4cca18ca@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1746191693072
+    },
+    "id": "667fdc93-4431-47f3-b067-cf8a908656b6",
+    "creation_date": 1746191693175,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1746792000000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1,
+      "subscriber": {
+        "code": "S9I4NK6P",
+        "name": "João Silva",
+        "email": "user_8407514a@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1746198970916
+    },
+    "id": "732578f0-24ef-4154-83d4-c56550ade076",
+    "creation_date": 1746198971204,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1746792000000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 34,
+      "subscriber": {
+        "code": "JHO3TLK6",
+        "name": "João Rodrigues",
+        "email": "user_e28268d2@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1746232229053
+    },
+    "id": "15ec6a25-5340-4f37-945a-09ee1a22836b",
+    "creation_date": 1746232229144,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1777550400000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "W4E3AEKU",
+        "name": "Julia Santos",
+        "email": "user_d2a89c0a@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1746284862114
+    },
+    "id": "6ee663ef-2b73-4542-9cf3-8de02e6bf30d",
+    "creation_date": 1746284862185,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1746878400000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 997,
+      "subscriber": {
+        "code": "S9I5Q54D",
+        "name": "Pedro Lima",
+        "email": "user_a2e49b72@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1746302573827
+    },
+    "id": "ac806918-94b7-4e15-85ba-375837ffb263",
+    "creation_date": 1746302573950,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1746964800000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "XR4XDY6M",
+        "name": "Carlos Lima",
+        "email": "user_1a8a278d@example.br"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1746379520777
+    },
+    "id": "ff2c861b-c503-4e63-a20d-46d06eaebf48",
+    "creation_date": 1746379520858,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1751112000000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "49U6S25R",
+        "name": "Maria Souza",
+        "email": "user_1cedf316@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1746414130223
+    },
+    "id": "b4a291a9-cadc-4fc6-9143-cd696ab3ae93",
+    "creation_date": 1746414130297,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1746792000000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "TXZ9FGLR",
+        "name": "Pedro Santos",
+        "email": "user_823f946f@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1746441789449
+    },
+    "id": "33342225-4100-4e4d-9131-3ea6c7b458c6",
+    "creation_date": 1746441789656,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1777118400000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 997,
+      "subscriber": {
+        "code": "SSKBLSMF",
+        "name": "Julia Lima",
+        "email": "user_6b05935a@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1746450350628
+    },
+    "id": "19db8acf-b217-4b87-99a3-6fb88df79dfc",
+    "creation_date": 1746450350701,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1767441600000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1,
+      "subscriber": {
+        "code": "4O38VW3S",
+        "name": "Maria Rodrigues",
+        "email": "user_280a5dec@example.br"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1746465330027
+    },
+    "id": "42df26eb-f263-4c6d-935c-ab497da5958c",
+    "creation_date": 1746465330123,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1757160000000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "L2KH7SLW",
+        "name": "Pedro Silva",
+        "email": "user_9005b2b9@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1746475719459
+    },
+    "id": "d96474e0-3562-4581-b962-006bd6087d33",
+    "creation_date": 1746475719549,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1751112000000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "6TNPRY0N",
+        "name": "Ana Lima",
+        "email": "user_27c2d1e0@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1746529120348
+    },
+    "id": "f15db3bc-3cec-4a79-879a-d12a03f57862",
+    "creation_date": 1746529120424,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1747137600000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1,
+      "subscriber": {
+        "code": "JQDZ9FGP",
+        "name": "Carlos Santos",
+        "email": "user_1756eda9@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1746543792376
+    },
+    "id": "af3d3226-1357-46d3-b3c9-5d74d0cd7ae2",
+    "creation_date": 1746543792461,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1776513600000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1,
+      "subscriber": {
+        "code": "35DLWK4X",
+        "name": "João Santos",
+        "email": "user_e39f0e80@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1746552247385
+    },
+    "id": "ace6a8f6-c0e0-47a2-aa7c-d69e51b4b807",
+    "creation_date": 1746552247453,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1776513600000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1,
+      "subscriber": {
+        "code": "GJRGYDTK",
+        "name": "Carlos Oliveira",
+        "email": "user_d5fcbcf3@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1746552437259
+    },
+    "id": "8437c55d-8775-473a-bf7c-cf551d56edfd",
+    "creation_date": 1746552491408,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1778155200000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1,
+      "subscriber": {
+        "code": "ZSN9FGO4",
+        "name": "João Silva",
+        "email": "user_f0273d14@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1746624426480
+    },
+    "id": "739be9e6-7816-4458-acdd-1bad2ecf190d",
+    "creation_date": 1746624426633,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1765454400000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1,
+      "subscriber": {
+        "code": "KGB81NYZ",
+        "name": "Carlos Silva",
+        "email": "user_832cb1e7@example.br"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1746657727991
+    },
+    "id": "f3e4558a-45ca-4ce8-8559-826d2ff5580f",
+    "creation_date": 1746657728110,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1765454400000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1,
+      "subscriber": {
+        "code": "KGB81NYZ",
+        "name": "Carlos Silva",
+        "email": "user_832cb1e7@example.br"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1746657913893
+    },
+    "id": "a65350df-65c3-4119-b9f9-4478eacf9361",
+    "creation_date": 1746657913949,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1765454400000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1,
+      "subscriber": {
+        "code": "KGB81NYZ",
+        "name": "Carlos Silva",
+        "email": "user_832cb1e7@example.br"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1746657980596
+    },
+    "id": "93e7cfc0-6012-4f3b-80a9-e0373fbceb0b",
+    "creation_date": 1746657980675,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748088000000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "ZK7KJ9ZX",
+        "name": "Ana Souza",
+        "email": "user_0a42ba31@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1746715975694
+    },
+    "id": "8ede5f9a-93a9-4e86-84ef-6fce8f6f52bf",
+    "creation_date": 1746715975804,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1778155200000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1997,
+      "subscriber": {
+        "code": "41YOPLR7",
+        "name": "João Lima",
+        "email": "user_82e7a60c@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1746816953369
+    },
+    "id": "07f468bc-7b20-4cc2-a15d-c196fdc4374b",
+    "creation_date": 1746816953594,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748260800000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "U91PQW6F",
+        "name": "Ana Silva",
+        "email": "user_66b83c98@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1746822886865
+    },
+    "id": "aba04515-8af4-4662-a63c-418a1786b8bd",
+    "creation_date": 1746822886969,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1774180800000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 997,
+      "subscriber": {
+        "code": "ILNSCB5E",
+        "name": "Maria Lima",
+        "email": "user_bfe65039@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1746830235768
+    },
+    "id": "9aab7e9c-9636-4c29-a7c3-0d4f72da5ba7",
+    "creation_date": 1746830235848,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1747742400000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "OO5KMOSJ",
+        "name": "Pedro Silva",
+        "email": "user_95cd3ead@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747148041681
+    },
+    "id": "27c645f2-6ce4-424f-a979-881174d08baf",
+    "creation_date": 1747148041785,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1778587200000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1997,
+      "subscriber": {
+        "code": "K0E7C1DH",
+        "name": "Pedro Silva",
+        "email": "user_c9487d87@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747228497070
+    },
+    "id": "a8584649-4948-47f8-b54f-1a2dd2f26eb2",
+    "creation_date": 1747228497144,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748001600000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "ZXI9POS9",
+        "name": "Ana Oliveira",
+        "email": "user_6e399d6d@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747228820758
+    },
+    "id": "8e02c810-1d93-415c-abd2-735b9a70ecdc",
+    "creation_date": 1747228820824,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1770465600000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 997,
+      "subscriber": {
+        "code": "2Q5Q08C6",
+        "name": "Ana Lima",
+        "email": "user_f58aaf4c@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747262950162
+    },
+    "id": "a453d635-313b-4eb2-b9c3-30270c83cac9",
+    "creation_date": 1747262950254,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1749384000000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 124.75,
+      "subscriber": {
+        "code": "GCO46US4",
+        "name": "Julia Oliveira",
+        "email": "user_bc070329@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747273566889
+    },
+    "id": "db784cc5-fa70-498b-ae05-c4d9896e25bb",
+    "creation_date": 1747273566989,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1774612800000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 997,
+      "subscriber": {
+        "code": "75ZLGCC5",
+        "name": "João Oliveira",
+        "email": "user_f7854b35@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747310301233
+    },
+    "id": "4ab8fa9e-2fa7-4e14-a8a0-0b3363eb22e5",
+    "creation_date": 1747310301346,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1749988800000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 99.5,
+      "subscriber": {
+        "code": "BRRARZQ5",
+        "name": "Maria Lima",
+        "email": "user_7b3e9b59@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747311970066
+    },
+    "id": "589b6476-722e-4b87-9850-f5d3ebf063e3",
+    "creation_date": 1747311970184,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748001600000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "6PSOA895",
+        "name": "Julia Oliveira",
+        "email": "user_e3b59db0@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747406294110
+    },
+    "id": "33d15e41-5658-435e-b9d2-5c282cd7c9c7",
+    "creation_date": 1747406294327,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748001600000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "Y6QXCFLP",
+        "name": "Pedro Oliveira",
+        "email": "user_5c052173@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747406695224
+    },
+    "id": "3da3f0ed-e54f-4e0f-92b0-431453b933be",
+    "creation_date": 1747406695320,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748001600000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "4R915PE4",
+        "name": "Julia Lima",
+        "email": "user_86e4c27a@example.br"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747406696161
+    },
+    "id": "af678118-4851-4e2d-94e4-c4c58ec09ffa",
+    "creation_date": 1747406696244,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748001600000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "U974AJ32",
+        "name": "João Santos",
+        "email": "user_3b279a0e@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747406711371
+    },
+    "id": "a5b3dc59-f481-4f96-9e5a-4e5ff0aff764",
+    "creation_date": 1747406711463,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748001600000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "4EV6R1RX",
+        "name": "Ana Oliveira",
+        "email": "user_57fa7bf3@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747413795769
+    },
+    "id": "3a9479d2-f88b-456c-9698-2ef8c4d40288",
+    "creation_date": 1747413795874,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748001600000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "V90LT8V8",
+        "name": "Pedro Souza",
+        "email": "user_498ea35e@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747415176526
+    },
+    "id": "b1ae5e7d-e379-4672-a3e8-9d6a9e5fea92",
+    "creation_date": 1747415176594,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748001600000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "0V0F9N1V",
+        "name": "Ana Oliveira",
+        "email": "user_162b11d0@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747433132164
+    },
+    "id": "a9276d3a-1fe3-428a-aca8-9d80c1fb5646",
+    "creation_date": 1747433132297,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1749643200000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "6PG9A62B",
+        "name": "Pedro Oliveira",
+        "email": "user_2b3035c2@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747441144895
+    },
+    "id": "b92b8e8d-a87c-45ef-9864-ef2bd8a80e87",
+    "creation_date": 1747441144968,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748001600000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "84HR5JK8",
+        "name": "Carlos Oliveira",
+        "email": "user_01fdd489@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747445953469
+    },
+    "id": "c2e16a5c-485e-42f8-b3d9-b64c6fcb5f2f",
+    "creation_date": 1747445953552,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748001600000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "KRUV872D",
+        "name": "Pedro Oliveira",
+        "email": "user_f81d76ba@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747485924419
+    },
+    "id": "f9788ee1-7d82-4a8d-99ab-545e9442e946",
+    "creation_date": 1747485924510,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748088000000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 997,
+      "subscriber": {
+        "code": "WTDUNG7B",
+        "name": "Carlos Rodrigues",
+        "email": "user_b519a38c@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747492805479
+    },
+    "id": "82b4f1ab-93a7-4e94-8cc5-9a3149770db3",
+    "creation_date": 1747492805559,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748088000000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "8562LHI5",
+        "name": "Carlos Silva",
+        "email": "user_e34f821e@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747493040009
+    },
+    "id": "1d55aa85-859f-4f73-8f00-791244225843",
+    "creation_date": 1747493040090,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748088000000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "2AOZGDR9",
+        "name": "Carlos Oliveira",
+        "email": "user_05108542@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747493435360
+    },
+    "id": "3c2221aa-037d-4da2-bbcc-87d22211c97b",
+    "creation_date": 1747493435470,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748088000000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "FK7OPKPT",
+        "name": "João Oliveira",
+        "email": "user_de9d6dee@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747493637969
+    },
+    "id": "f8be9c9d-95cf-49a0-bf14-c1670418bf8c",
+    "creation_date": 1747493638038,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748088000000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "Q89RHQBT",
+        "name": "Pedro Lima",
+        "email": "user_0c9549c8@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747494957800
+    },
+    "id": "f2be222c-fd83-406c-b8c9-18041efea428",
+    "creation_date": 1747494957954,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748001600000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "X3GF4M1Z",
+        "name": "Ana Rodrigues",
+        "email": "user_2473752a@example.br"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747524744213
+    },
+    "id": "bce5ca86-9ebd-44ee-88e5-3a36af39dc68",
+    "creation_date": 1747524744321,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1778673600000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1,
+      "subscriber": {
+        "code": "TY0LSL59",
+        "name": "Pedro Rodrigues",
+        "email": "user_51774d57@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747530612966
+    },
+    "id": "f09cc946-fe61-4afd-ad6f-1e986800e91f",
+    "creation_date": 1747530613072,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748088000000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "R5IMPEP2",
+        "name": "Maria Santos",
+        "email": "user_8d5f50e6@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747535927782
+    },
+    "id": "44f15eb3-ca6d-4f3f-831e-12df70f140cf",
+    "creation_date": 1747535927859,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1778241600000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "WV95MCD0",
+        "name": "Julia Souza",
+        "email": "user_93b079db@example.br"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747576775720
+    },
+    "id": "98b4c650-4821-454a-b853-bac683e2f438",
+    "creation_date": 1747576775804,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748174400000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "SINIQOQ4",
+        "name": "Pedro Lima",
+        "email": "user_a19ddf5e@example.COM"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747581834391
+    },
+    "id": "c1ab56f4-d4a8-4073-aaa9-3967ff7b06af",
+    "creation_date": 1747581834474,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748174400000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "C17VCNDJ",
+        "name": "Ana Santos",
+        "email": "user_354e870a@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747586085320
+    },
+    "id": "c41f07e5-708f-4237-b5b1-d9f237aa6e72",
+    "creation_date": 1747586085417,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748088000000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "1W1HHUP4",
+        "name": "Maria Santos",
+        "email": "user_ae2189fd@example.br"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747597298869
+    },
+    "id": "b7379b08-94ea-4201-a4bf-73cfd32e1ce8",
+    "creation_date": 1747597298960,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748001600000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "GX45ZQBY",
+        "name": "João Silva",
+        "email": "user_4748cd21@example.br"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747614428833
+    },
+    "id": "e89c5ab1-1f3a-4fe3-8d33-add37559d827",
+    "creation_date": 1747614428922,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748174400000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "86T4GJGN",
+        "name": "Maria Oliveira",
+        "email": "user_f8fbc49b@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747621550730
+    },
+    "id": "9ecd1d31-2b16-4c48-bc0a-e1f9dfb9a9d2",
+    "creation_date": 1747621550810,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748174400000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 124.75,
+      "subscriber": {
+        "code": "X7TJJSCB",
+        "name": "Carlos Souza",
+        "email": "user_377eb85e@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747662396062
+    },
+    "id": "e7cf0e46-262d-4855-b4b3-ab3c228c7e4f",
+    "creation_date": 1747662396408,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748174400000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "A3JLAJTH",
+        "name": "Carlos Lima",
+        "email": "user_034b1ab5@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747666157357
+    },
+    "id": "fd033bb6-5fe1-4a6d-9caa-69083e07f9bd",
+    "creation_date": 1747666157450,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748088000000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "0NQFRX59",
+        "name": "Ana Silva",
+        "email": "user_dc19c89b@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747675938440
+    },
+    "id": "cbeebd3b-5077-4d4f-8d3b-2f2130bc4f4e",
+    "creation_date": 1747675938517,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748260800000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "QHO1TEBN",
+        "name": "Carlos Rodrigues",
+        "email": "user_9743d856@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747687437907
+    },
+    "id": "65849dd0-dc28-4e3e-930c-de5e36065487",
+    "creation_date": 1747687437974,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1778932800000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1997,
+      "subscriber": {
+        "code": "OHSHGNYH",
+        "name": "Pedro Rodrigues",
+        "email": "user_ddedd1e0@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747690547416
+    },
+    "id": "4fc2c6af-f47e-4f0f-8f5b-3ea543c56814",
+    "creation_date": 1747690547504,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748088000000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "GJMNE0G1",
+        "name": "Ana Souza",
+        "email": "user_53f7afdc@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747696628882
+    },
+    "id": "772f468a-9daa-4a9a-9a21-c597085b50df",
+    "creation_date": 1747696628996,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748001600000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "J53IBLXW",
+        "name": "Julia Santos",
+        "email": "user_bb69561f@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747697131508
+    },
+    "id": "92ab8f39-f39f-45f5-869b-8a44f6d33119",
+    "creation_date": 1747697131592,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748088000000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "KTSCUB94",
+        "name": "Carlos Oliveira",
+        "email": "user_67963a91@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747700668678
+    },
+    "id": "e74c0616-c13a-4de4-88d2-bc95856e4506",
+    "creation_date": 1747700668763,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1761307200000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "2G5JV8VP",
+        "name": "Carlos Lima",
+        "email": "user_9f2a9b62@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747748645679
+    },
+    "id": "f287874d-c194-4de1-933f-01cf533d5701",
+    "creation_date": 1747748645770,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748174400000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "3NOKBT67",
+        "name": "Maria Silva",
+        "email": "user_2f9848a8@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747750494427
+    },
+    "id": "f2ab9ef5-cdbe-429c-b3b2-587aa2ea9b4c",
+    "creation_date": 1747750494520,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748001600000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "CN6HHR5Y",
+        "name": "Maria Rodrigues",
+        "email": "user_9df0c880@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747753323501
+    },
+    "id": "4362e4e2-3368-46b2-9230-cc2a2c2af6be",
+    "creation_date": 1747753323767,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748347200000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1249.96,
+      "subscriber": {
+        "code": "F0E0LAMV",
+        "name": "Pedro Rodrigues",
+        "email": "user_a0b81d23@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747753721252
+    },
+    "id": "3f12c5e2-6e41-49b4-86b6-309f11b27638",
+    "creation_date": 1747753721321,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748347200000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 124.75,
+      "subscriber": {
+        "code": "NBDPXXQE",
+        "name": "Ana Rodrigues",
+        "email": "user_e9f6f994@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747755169231
+    },
+    "id": "e5d2a630-6f28-4b35-b0b9-65f97271ed97",
+    "creation_date": 1747755169303,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1776600000000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1997,
+      "subscriber": {
+        "code": "N9QTHSW0",
+        "name": "Ana Souza",
+        "email": "user_050b5655@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747773614691
+    },
+    "id": "abfb1481-c7be-4261-82f9-23da08e430c5",
+    "creation_date": 1747773614786,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1778673600000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1997,
+      "subscriber": {
+        "code": "TYY6V8JO",
+        "name": "Carlos Lima",
+        "email": "user_361ef644@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747792501846
+    },
+    "id": "fd904d00-50c8-4c0d-b4e9-3b53c192b75f",
+    "creation_date": 1747792501917,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748433600000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 2,
+      "subscriber": {
+        "code": "1M7VPNLH",
+        "name": "Carlos Rodrigues",
+        "email": "user_ec48356d@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747838250498
+    },
+    "id": "57810121-18b6-4ccf-b6dc-6e1cd562645c",
+    "creation_date": 1747838250696,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748433600000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 294,
+      "subscriber": {
+        "code": "Q8G8PL5F",
+        "name": "Julia Oliveira",
+        "email": "user_60b6ec7a@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747841201615
+    },
+    "id": "635583bd-9f0b-492b-ab4c-3da85bf72de6",
+    "creation_date": 1747841201784,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748001600000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "9KF2PET9",
+        "name": "João Lima",
+        "email": "user_c235d6b8@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747844495844
+    },
+    "id": "b9b57ae7-75ad-4d70-9ea3-17567312d794",
+    "creation_date": 1747844496039,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748088000000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "KFDQH5XF",
+        "name": "Ana Souza",
+        "email": "user_f6a6453e@example.com"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747854219059
+    },
+    "id": "5fc656eb-cf46-4e6a-9b1b-a732199313c2",
+    "creation_date": 1747854219194,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748347200000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "Y43SWD3V",
+        "name": "Carlos Santos",
+        "email": "user_6c6d65e5@example.br"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747858113539
+    },
+    "id": "ccd8ce81-3f06-4ad2-8412-9bcbd813f0d5",
+    "creation_date": 1747858113635,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "date_next_charge": 1748001600000,
+      "product": {
+        "name": "Julia Santos",
+        "id": 1355458
+      },
+      "actual_recurrence_value": 1497,
+      "subscriber": {
+        "code": "426UDRTF",
+        "name": "Julia Souza",
+        "email": "user_5e82d790@example.br"
+      },
+      "subscription": "192.168.4.57",
+      "cancellation_date": 1747873071569
+    },
+    "id": "e39effd9-9ca4-4d6f-96db-466364be4cd4",
+    "creation_date": 1747873072274,
+    "event": "SUBSCRIPTION_CANCELLATION",
+    "version": "2.0.0"
+  }
+]
