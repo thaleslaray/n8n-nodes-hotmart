@@ -1,0 +1,373 @@
+{
+  "metadata": {
+    "recorded_at": "2024-10-23T10:00:00Z",
+    "endpoint": "sales/history",
+    "api_path": "/payments/api/v1/sales/history",
+    "description": "Histórico de vendas com informações detalhadas de transações",
+    "anonymized": {
+      "fields": ["buyer_name", "buyer_email", "phone", "address", "transaction"],
+      "preserved": ["commission", "price", "payment_type", "status", "purchase_date", "approved_date", "confirmation_purchase_date", "cms_marketplace", "cms_vendor", "cms_aff", "product_name", "product_id", "offer_code"]
+    }
+  },
+  "response": {
+    "items": [
+      {
+        "purchase": {
+          "approved_date": 1730055600000,
+          "buyer_email": "maria.silva@example.com",
+          "buyer_name": "Maria Silva",
+          "cms_aff": 25.00,
+          "cms_marketplace": 5.00,
+          "cms_vendor": 0.00,
+          "commission": {
+            "affiliate": {
+              "commission_value": 125.50,
+              "ucode": "AFF123456"
+            }
+          },
+          "confirmation_purchase_date": 1730055900000,
+          "offer": {
+            "code": "OFFER-2024-001"
+          },
+          "order_date": 1730055300000,
+          "original_transaction_value": 500.00,
+          "payment": {
+            "approved_date_iso": "2024-10-28T14:20:00.000Z",
+            "boleto_banking_number": null,
+            "boleto_number": null,
+            "boleto_url": null,
+            "confirmation_purchase_date_iso": "2024-10-28T14:25:00.000Z",
+            "installments_number": 1,
+            "original_transaction_value": 500.00,
+            "pix_code": null,
+            "pix_url": null,
+            "refusal_reason": null,
+            "reversed_exchange_rate_value": null,
+            "total_value": 500.00,
+            "type": "CREDIT_CARD"
+          },
+          "phone": "(11) 98765-4321",
+          "price": 500.00,
+          "producer_name": "Produtor Digital Ltda",
+          "product": {
+            "bundle": false,
+            "has_co_production": false,
+            "id": 123456,
+            "name": "Curso Completo de Marketing Digital",
+            "support_email": "suporte@produtordigital.com"
+          },
+          "purchase_date": 1730055300000,
+          "recurrency_number": null,
+          "source": "ORGANIC",
+          "src": null,
+          "sck": null,
+          "status": "APPROVED",
+          "subscriber_code": "SUB789012",
+          "subscription": null,
+          "total_value": 500.00,
+          "tracking": {
+            "external_code": null,
+            "service_code": null,
+            "service_name": null,
+            "status": null,
+            "updated_date": null
+          },
+          "transaction": "HP12345678901234567890",
+          "utm_campaign": null,
+          "utm_content": null,
+          "utm_medium": null,
+          "utm_source": null,
+          "warranty_expire_date": 1732647600000,
+          "is_order_bump": false,
+          "order_bump": null
+        }
+      },
+      {
+        "purchase": {
+          "approved_date": 1730142000000,
+          "buyer_email": "joao.santos@example.com",
+          "buyer_name": "João Santos",
+          "cms_aff": 0.00,
+          "cms_marketplace": 5.00,
+          "cms_vendor": 0.00,
+          "commission": null,
+          "confirmation_purchase_date": 1730142300000,
+          "offer": {
+            "code": "OFFER-2024-002"
+          },
+          "order_date": 1730141700000,
+          "original_transaction_value": 297.00,
+          "payment": {
+            "approved_date_iso": "2024-10-29T14:20:00.000Z",
+            "boleto_banking_number": null,
+            "boleto_number": null,
+            "boleto_url": null,
+            "confirmation_purchase_date_iso": "2024-10-29T14:25:00.000Z",
+            "installments_number": 3,
+            "original_transaction_value": 297.00,
+            "pix_code": null,
+            "pix_url": null,
+            "refusal_reason": null,
+            "reversed_exchange_rate_value": null,
+            "total_value": 297.00,
+            "type": "CREDIT_CARD"
+          },
+          "phone": "(21) 99876-5432",
+          "price": 297.00,
+          "producer_name": "Produtor Digital Ltda",
+          "product": {
+            "bundle": false,
+            "has_co_production": false,
+            "id": 123457,
+            "name": "E-book Estratégias de Vendas",
+            "support_email": "suporte@produtordigital.com"
+          },
+          "purchase_date": 1730141700000,
+          "recurrency_number": null,
+          "source": "PAID_TRAFFIC",
+          "src": "facebook",
+          "sck": "fb_campaign_123",
+          "status": "APPROVED",
+          "subscriber_code": "SUB789013",
+          "subscription": null,
+          "total_value": 297.00,
+          "tracking": {
+            "external_code": null,
+            "service_code": null,
+            "service_name": null,
+            "status": null,
+            "updated_date": null
+          },
+          "transaction": "HP12345678901234567891",
+          "utm_campaign": "black_friday_2024",
+          "utm_content": "banner_topo",
+          "utm_medium": "cpc",
+          "utm_source": "facebook",
+          "warranty_expire_date": 1730746800000,
+          "is_order_bump": false,
+          "order_bump": null
+        }
+      },
+      {
+        "purchase": {
+          "approved_date": 1730228400000,
+          "buyer_email": "ana.costa@example.com",
+          "buyer_name": "Ana Costa",
+          "cms_aff": 30.00,
+          "cms_marketplace": 5.00,
+          "cms_vendor": 0.00,
+          "commission": {
+            "affiliate": {
+              "commission_value": 297.00,
+              "ucode": "AFF123457"
+            }
+          },
+          "confirmation_purchase_date": 1730228700000,
+          "offer": {
+            "code": "OFFER-2024-003"
+          },
+          "order_date": 1730228100000,
+          "original_transaction_value": 990.00,
+          "payment": {
+            "approved_date_iso": "2024-10-30T14:20:00.000Z",
+            "boleto_banking_number": "001",
+            "boleto_number": "00190000090283713800956804174975987650000099000",
+            "boleto_url": "https://api.hotmart.com/payments/api/v1/sales/billet/HP12345678901234567892",
+            "confirmation_purchase_date_iso": "2024-10-30T14:25:00.000Z",
+            "installments_number": 1,
+            "original_transaction_value": 990.00,
+            "pix_code": "00020126580014BR.GOV.BCB.PIX013650c3ba7a-e4f4-4c7a-9f99-8f8cd65204004",
+            "pix_url": "https://api.hotmart.com/payments/api/v1/sales/pix/HP12345678901234567892",
+            "refusal_reason": null,
+            "reversed_exchange_rate_value": null,
+            "total_value": 990.00,
+            "type": "BILLET"
+          },
+          "phone": "(31) 98765-1234",
+          "price": 990.00,
+          "producer_name": "Academia Online Pro",
+          "product": {
+            "bundle": true,
+            "has_co_production": true,
+            "id": 123458,
+            "name": "Pacote Completo - Cursos Premium",
+            "support_email": "ajuda@academiaonline.com"
+          },
+          "purchase_date": 1730228100000,
+          "recurrency_number": null,
+          "source": "AFFILIATE",
+          "src": "hotmart",
+          "sck": "aff_link_premium",
+          "status": "WAITING_PAYMENT",
+          "subscriber_code": "SUB789014",
+          "subscription": null,
+          "total_value": 990.00,
+          "tracking": {
+            "external_code": "BR123456789BR",
+            "service_code": "SEDEX",
+            "service_name": "Correios",
+            "status": "POSTADO",
+            "updated_date": 1730314800000
+          },
+          "transaction": "HP12345678901234567892",
+          "utm_campaign": null,
+          "utm_content": null,
+          "utm_medium": null,
+          "utm_source": null,
+          "warranty_expire_date": 1738004400000,
+          "is_order_bump": false,
+          "order_bump": null
+        }
+      },
+      {
+        "purchase": {
+          "approved_date": null,
+          "buyer_email": "carlos.oliveira@example.com",
+          "buyer_name": "Carlos Oliveira",
+          "cms_aff": 0.00,
+          "cms_marketplace": 5.00,
+          "cms_vendor": 0.00,
+          "commission": null,
+          "confirmation_purchase_date": null,
+          "offer": {
+            "code": "OFFER-2024-004"
+          },
+          "order_date": 1730314800000,
+          "original_transaction_value": 197.00,
+          "payment": {
+            "approved_date_iso": null,
+            "boleto_banking_number": null,
+            "boleto_number": null,
+            "boleto_url": null,
+            "confirmation_purchase_date_iso": null,
+            "installments_number": 2,
+            "original_transaction_value": 197.00,
+            "pix_code": null,
+            "pix_url": null,
+            "refusal_reason": "CARD_DECLINED",
+            "reversed_exchange_rate_value": null,
+            "total_value": 197.00,
+            "type": "CREDIT_CARD"
+          },
+          "phone": "(48) 99999-8888",
+          "price": 197.00,
+          "producer_name": "Produtor Digital Ltda",
+          "product": {
+            "bundle": false,
+            "has_co_production": false,
+            "id": 123459,
+            "name": "Minicurso de Copywriting",
+            "support_email": "suporte@produtordigital.com"
+          },
+          "purchase_date": 1730314800000,
+          "recurrency_number": null,
+          "source": "ORGANIC",
+          "src": null,
+          "sck": null,
+          "status": "REFUNDED",
+          "subscriber_code": "SUB789015",
+          "subscription": null,
+          "total_value": 197.00,
+          "tracking": {
+            "external_code": null,
+            "service_code": null,
+            "service_name": null,
+            "status": null,
+            "updated_date": null
+          },
+          "transaction": "HP12345678901234567893",
+          "utm_campaign": null,
+          "utm_content": null,
+          "utm_medium": null,
+          "utm_source": null,
+          "warranty_expire_date": null,
+          "is_order_bump": false,
+          "order_bump": null
+        }
+      },
+      {
+        "purchase": {
+          "approved_date": 1730401200000,
+          "buyer_email": "fernanda.lima@example.com",
+          "buyer_name": "Fernanda Lima",
+          "cms_aff": 0.00,
+          "cms_marketplace": 5.00,
+          "cms_vendor": 10.00,
+          "commission": null,
+          "confirmation_purchase_date": 1730401500000,
+          "offer": {
+            "code": "OFFER-2024-005"
+          },
+          "order_date": 1730400900000,
+          "original_transaction_value": 1497.00,
+          "payment": {
+            "approved_date_iso": "2024-10-31T14:20:00.000Z",
+            "boleto_banking_number": null,
+            "boleto_number": null,
+            "boleto_url": null,
+            "confirmation_purchase_date_iso": "2024-10-31T14:25:00.000Z",
+            "installments_number": 12,
+            "original_transaction_value": 1497.00,
+            "pix_code": null,
+            "pix_url": null,
+            "refusal_reason": null,
+            "reversed_exchange_rate_value": null,
+            "total_value": 1497.00,
+            "type": "CREDIT_CARD"
+          },
+          "phone": "(85) 98888-7777",
+          "price": 1497.00,
+          "producer_name": "Escola Digital Premium",
+          "product": {
+            "bundle": false,
+            "has_co_production": true,
+            "id": 123460,
+            "name": "Formação Completa em Design Digital",
+            "support_email": "contato@escoladigital.com"
+          },
+          "purchase_date": 1730400900000,
+          "recurrency_number": null,
+          "source": "ORGANIC",
+          "src": null,
+          "sck": null,
+          "status": "APPROVED",
+          "subscriber_code": "SUB789016",
+          "subscription": {
+            "plan": {
+              "id": 456789,
+              "name": "Plano Anual Premium"
+            },
+            "subscriber_code": "SUB789016",
+            "status": "ACTIVE"
+          },
+          "total_value": 1497.00,
+          "tracking": {
+            "external_code": null,
+            "service_code": null,
+            "service_name": null,
+            "status": null,
+            "updated_date": null
+          },
+          "transaction": "HP12345678901234567894",
+          "utm_campaign": null,
+          "utm_content": null,
+          "utm_medium": null,
+          "utm_source": null,
+          "warranty_expire_date": 1761937200000,
+          "is_order_bump": true,
+          "order_bump": {
+            "id": 98765,
+            "name": "Kit de Templates Exclusivos",
+            "value": 97.00
+          }
+        }
+      }
+    ],
+    "page_info": {
+      "total_results": 5,
+      "next_page_token": null,
+      "prev_page_token": null,
+      "results_per_page": 50
+    }
+  }
+}

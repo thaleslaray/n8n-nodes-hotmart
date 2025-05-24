@@ -1,0 +1,92 @@
+{
+  "data": {
+    "product": {
+      "support_email": "user_d9ed2356@example.br",
+      "has_co_production": false,
+      "name": "Julia Santos",
+      "warranty_date": "2025-05-01T00:00:00Z",
+      "id": 1355458,
+      "ucode": "ucode_4038161c"
+    },
+    "commissions": [
+      {
+        "currency_value": "BRL",
+        "source": "MARKETPLACE",
+        "value": 74.78
+      },
+      {
+        "currency_value": "BRL",
+        "source": "PRODUCER",
+        "value": 922.22
+      }
+    ],
+    "purchase": {
+      "original_offer_price": {
+        "currency_value": "BRL",
+        "value": 997
+      },
+      "recurrence_number": 1,
+      "subscription_anticipation_purchase": "192.168.97.20",
+      "checkout_country": {
+        "iso": "BR",
+        "name": "Ana Oliveira"
+      },
+      "origin": {
+        "sck": "renovacao-aluno-ea-comercial"
+      },
+      "order_bump": {
+        "is_order_bump": false
+      },
+      "approved_date": 1745541919000,
+      "offer": {
+        "code": "ffwqvtyv"
+      },
+      "is_funnel": false,
+      "order_date": 1745541915000,
+      "date_next_charge": 1777118400000,
+      "price": {
+        "currency_value": "BRL",
+        "value": 997
+      },
+      "payment": {
+        "installments_number": 10,
+        "type": "CREDIT_CARD"
+      },
+      "full_price": {
+        "currency_value": "BRL",
+        "value": 1259.4
+      },
+      "business_model": "I",
+      "invoice_by": "HOTMART",
+      "transaction": "HP0283321456",
+      "status": "COMPLETED"
+    },
+    "affiliates": [
+      {
+        "affiliate_code": "",
+        "name": "Pedro Rodrigues"
+      }
+    ],
+    "producer": {
+      "legal_nature": "Pessoa Jurídica",
+      "document": "73c.0c2.875-9c",
+      "name": "João Lima"
+    },
+    "subscription": "192.168.4.57",
+    "buyer": {
+      "checkout_phone_code": "+55 11 96e8a-ae9b",
+      "address": "192.168.4.57",
+      "document": "d87.ca0.88e-c7",
+      "name": "Julia Souza",
+      "last_name": "Julia Oliveira",
+      "checkout_phone": "+55 11 98e71-ffc0",
+      "first_name": "Julia Lima",
+      "email": "user_3f743477@example.br",
+      "document_type": "1e6.d33.a10-0d"
+    }
+  },
+  "id": "bcccded9-97f9-469e-ba59-6dad221fed01",
+  "creation_date": 1746187071673,
+  "event": "PURCHASE_COMPLETE",
+  "version": "2.0.0"
+}

@@ -9,7 +9,9 @@ export function createMockExecuteFunctions(overrides?: Partial<IExecuteFunctions
       requestOAuth2: jest.fn(),
       returnJsonArray: jest.fn().mockImplementation((items: any[]) => items),
       constructExecutionMetaData: jest.fn().mockImplementation((items: any[], metaData: any) => {
-        return items.map((item, index) => ({
+        // Garantir que items seja um array
+        const itemsArray = Array.isArray(items) ? items : [items];
+        return itemsArray.map((item, index) => ({
           json: item,
           pairedItem: metaData?.itemData || { item: index }
         }));
@@ -34,5 +36,21 @@ export function createMockNode(): INode {
     typeVersion: 1,
     position: [0, 0],
     parameters: {},
+  };
+}
+
+export function createMockTriggerFunctions(overrides?: any): any {
+  return {
+    getNodeParameter: jest.fn(),
+    getCredentials: jest.fn(),
+    getNode: jest.fn().mockReturnValue({ name: 'HotmartTrigger' }),
+    helpers: {
+      returnJsonArray: jest.fn().mockImplementation((items) => items),
+      httpRequest: jest.fn(),
+      httpRequestWithAuthentication: jest.fn(),
+    },
+    getNodeWebhookUrl: jest.fn().mockReturnValue('http://localhost:5678/webhook/test'),
+    getTimezone: jest.fn().mockReturnValue('America/Sao_Paulo'),
+    ...overrides,
   };
 }

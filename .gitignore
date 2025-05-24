@@ -59,3 +59,11 @@ debug-n8n
 dev-install
 start-n8n
 EOF < /dev/nullinstall
+
+# IMPORTANTE: Dados sensíveis de webhook
+# Estes diretórios contêm dados reais de usuários
+__tests__/fixtures/webhook-events/
+__tests__/fixtures/webhook-fixtures/
+# Apenas os diretórios anonimizados são seguros para commit
+# __tests__/fixtures/webhook-events-anon/ ✅ SEGURO
+# __tests__/fixtures/webhook-fixtures-anon/ ✅ SEGURO

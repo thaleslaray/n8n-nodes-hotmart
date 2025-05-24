@@ -1,0 +1,16 @@
+{
+  "data": {
+    "product": {
+      "name": "Maria Souza",
+      "id": 4062912
+    },
+    "user": {
+      "name": "Pedro Silva",
+      "email": "user_d50d9d1c@example.com"
+    }
+  },
+  "id": "3ed49b9b-b90b-4c6c-b208-56b741543532",
+  "creationDate": 1746961240995,
+  "event": "CLUB_FIRST_ACCESS",
+  "version": "2.0.0"
+}

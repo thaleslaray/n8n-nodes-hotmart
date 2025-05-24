@@ -1,0 +1,91 @@
+{
+  "data": {
+    "product": {
+      "support_email": "user_d9ed2356@example.br",
+      "has_co_production": false,
+      "name": "Julia Santos",
+      "is_physical_product": false,
+      "id": 1355458,
+      "ucode": "ucode_4038161c"
+    },
+    "commissions": [
+      {
+        "currency_value": "BRL",
+        "source": "MARKETPLACE",
+        "value": 134
+      },
+      {
+        "currency_value": "BRL",
+        "source": "PRODUCER",
+        "value": 1663.3
+      }
+    ],
+    "purchase": {
+      "original_offer_price": {
+        "currency_value": "BRL",
+        "value": 1797.3
+      },
+      "recurrence_number": 1,
+      "subscription_anticipation_purchase": "192.168.97.20",
+      "checkout_country": {
+        "iso": "BR",
+        "name": "Ana Oliveira"
+      },
+      "order_bump": {
+        "is_order_bump": false
+      },
+      "offer": {
+        "code": "yyvhuues",
+        "coupon_code": "CUPOM ESPECIAL - 1997 COMERCIAL"
+      },
+      "is_funnel": false,
+      "order_date": 1747250505000,
+      "price": {
+        "currency_value": "BRL",
+        "value": 1797.3
+      },
+      "payment": {
+        "pix_qrcode": "https://live-us.adyen.com/hpp/generateQRCodeImage.shtml?url=00020101021226900014br.gov.bcb.pix2568pix.adyen.com%2Fpixqrcodelocation%2Fpixloc%2Fv1%2Floc%2FsUleAwe_R0GZp4GEnUzBpw5204000053039865802BR5902HT6009SAO+PAULO62070503***6304198E",
+        "pix_expiration_date": 1747423305000,
+        "installments_number": 1,
+        "type": "PIX",
+        "pix_code": "00020101021226900014br.gov.bcb.pix2568pix.adyen.com/pixqrcodelocation/pixloc/v1/loc/sUleAwe_R0GZp4GEnUzBpw5204000053039865802BR5902HT6009SAO PAULO62070503***6304198E"
+      },
+      "full_price": {
+        "currency_value": "BRL",
+        "value": 1797.3
+      },
+      "business_model": "I",
+      "invoice_by": "HOTMART",
+      "transaction": "HP4227764938",
+      "status": "BILLET_PRINTED"
+    },
+    "affiliates": [
+      {
+        "affiliate_code": "",
+        "name": "Pedro Rodrigues"
+      }
+    ],
+    "producer": {
+      "legal_nature": "Pessoa Jurídica",
+      "document": "73c.0c2.875-9c",
+      "name": "João Lima"
+    },
+    "subscription": "192.168.4.57",
+    "buyer": {
+      "checkout_phone_code": "+55 11 92482-3d25",
+      "address": "192.168.4.57",
+      "document": "bb6.a74.9de-0e",
+      "name": "Pedro Souza",
+      "last_name": "João Silva",
+      "checkout_phone": "+55 11 98340-a487",
+      "first_name": "João Santos",
+      "email": "user_4a366d35@example.com",
+      "document_type": "1e6.d33.a10-0d"
+    }
+  },
+  "id": "181bf0f7-60b4-4d21-ba3a-5a4e0861c1b2",
+  "creation_date": 1747250510201,
+  "event": "PURCHASE_BILLET_PRINTED",
+  "version": "2.0.0"
+}

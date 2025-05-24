@@ -1,0 +1,16 @@
+{
+  "metadata": {
+    "recorded_at": "2025-05-24T03:38:00.000Z",
+    "endpoint": "subscription-changeBillingDate",
+    "api_path": "/payments/api/v1/subscriptions/{subscriber_code}/change_due_day",
+    "description": "Resposta real da API Hotmart para alterar dia de cobrança (dados anonimizados)",
+    "anonymized": true,
+    "anonymized_at": "2025-05-24T03:38:00.000Z"
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      {}
+    ]
+  }
+}

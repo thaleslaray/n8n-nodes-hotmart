@@ -1,0 +1,385 @@
+{
+  "active_members": {
+    "items": [
+      {
+        "member_id": "MBR001234567890",
+        "user": {
+          "name": "João Silva",
+          "email": "joao.silva@example.com",
+          "ucode": "USR123456789"
+        },
+        "product": {
+          "id": 2371789,
+          "name": "Curso Completo de Marketing Digital",
+          "ucode": "b0a29c3f-8e45-4b8a-bb84-d8c9b37e1234"
+        },
+        "status": "ACTIVE",
+        "enrollment_date": 1734984193000,
+        "last_access": 1735656993000,
+        "progress": {
+          "completed_modules": 5,
+          "total_modules": 12,
+          "percentage": 41.67,
+          "completed_lessons": 25,
+          "total_lessons": 60
+        },
+        "access": {
+          "first_access": 1734986400000,
+          "total_accesses": 47,
+          "average_session_duration": 2340
+        }
+      },
+      {
+        "member_id": "MBR002345678901",
+        "user": {
+          "name": "Maria Oliveira",
+          "email": "maria.oliveira@example.com",
+          "ucode": "USR234567890"
+        },
+        "product": {
+          "id": 2371790,
+          "name": "Mentoria Avançada de Vendas",
+          "ucode": "c1b3ad4g-9f56-5c9b-cc95-e9dac48f2345"
+        },
+        "status": "ACTIVE",
+        "enrollment_date": 1735070593000,
+        "last_access": 1735743393000,
+        "progress": {
+          "completed_modules": 8,
+          "total_modules": 8,
+          "percentage": 100,
+          "completed_lessons": 32,
+          "total_lessons": 32
+        },
+        "access": {
+          "first_access": 1735072800000,
+          "total_accesses": 89,
+          "average_session_duration": 3600
+        },
+        "certificates": [
+          {
+            "certificate_id": "CERT001",
+            "issued_date": 1735743393000,
+            "certificate_url": "https://hotmart.com/certificates/CERT001"
+          }
+        ]
+      }
+    ],
+    "page_info": {
+      "total_results": 2
+    }
+  },
+  "inactive_members": {
+    "items": [
+      {
+        "member_id": "MBR003456789012",
+        "user": {
+          "name": "Carlos Santos",
+          "email": "carlos.santos@example.com",
+          "ucode": "USR345678901"
+        },
+        "product": {
+          "id": 2371791,
+          "name": "Curso de Copywriting",
+          "ucode": "d2c4be5h-a067-6dac-dd06-faebd59g3456"
+        },
+        "status": "INACTIVE",
+        "enrollment_date": 1733000000000,
+        "last_access": 1734209600000,
+        "deactivation_date": 1735678800000,
+        "deactivation_reason": "Subscription canceled",
+        "progress": {
+          "completed_modules": 3,
+          "total_modules": 10,
+          "percentage": 30,
+          "completed_lessons": 12,
+          "total_lessons": 40
+        },
+        "access": {
+          "first_access": 1733002200000,
+          "total_accesses": 23,
+          "average_session_duration": 1200
+        }
+      }
+    ],
+    "page_info": {
+      "total_results": 1
+    }
+  },
+  "suspended_members": {
+    "items": [
+      {
+        "member_id": "MBR004567890123",
+        "user": {
+          "name": "Ana Paula Ribeiro",
+          "email": "ana.ribeiro@example.com",
+          "ucode": "USR456789012"
+        },
+        "product": {
+          "id": 2371792,
+          "name": "Academia de Finanças",
+          "ucode": "e3d5cf6i-b178-7ebd-ee17-gbfce6ah4567"
+        },
+        "status": "SUSPENDED",
+        "enrollment_date": 1730408400000,
+        "last_access": 1733000000000,
+        "suspension_date": 1733086800000,
+        "suspension_reason": "Payment pending",
+        "progress": {
+          "completed_modules": 2,
+          "total_modules": 15,
+          "percentage": 13.33,
+          "completed_lessons": 8,
+          "total_lessons": 75
+        },
+        "access": {
+          "first_access": 1730410600000,
+          "total_accesses": 15,
+          "average_session_duration": 900
+        }
+      }
+    ],
+    "page_info": {
+      "total_results": 1
+    }
+  },
+  "blocked_members": {
+    "items": [
+      {
+        "member_id": "MBR005678901234",
+        "user": {
+          "name": "Roberto Lima",
+          "email": "roberto.lima@example.com",
+          "ucode": "USR567890123"
+        },
+        "product": {
+          "id": 2371793,
+          "name": "Mastermind de Negócios",
+          "ucode": "f4e6dg7j-c289-8fce-ff28-hcgdf7bi5678"
+        },
+        "status": "BLOCKED",
+        "enrollment_date": 1733500000000,
+        "last_access": 1735000000000,
+        "block_date": 1735086800000,
+        "block_reason": "Terms of service violation",
+        "progress": {
+          "completed_modules": 1,
+          "total_modules": 20,
+          "percentage": 5,
+          "completed_lessons": 3,
+          "total_lessons": 100
+        },
+        "access": {
+          "first_access": 1733502200000,
+          "total_accesses": 8,
+          "average_session_duration": 600
+        }
+      }
+    ],
+    "page_info": {
+      "total_results": 1
+    }
+  },
+  "trial_members": {
+    "items": [
+      {
+        "member_id": "MBR006789012345",
+        "user": {
+          "name": "Fernando Costa",
+          "email": "fernando.costa@example.com",
+          "ucode": "USR789012345"
+        },
+        "product": {
+          "id": 2371795,
+          "name": "Software de Automação",
+          "ucode": "h6g8fi9l-e4ab-aheg-hh4a-jeif9dl7890"
+        },
+        "status": "TRIAL",
+        "enrollment_date": 1735656993000,
+        "trial_end_date": 1736261793000,
+        "last_access": 1735743393000,
+        "progress": {
+          "completed_modules": 1,
+          "total_modules": 6,
+          "percentage": 16.67,
+          "completed_lessons": 4,
+          "total_lessons": 24
+        },
+        "access": {
+          "first_access": 1735659193000,
+          "total_accesses": 5,
+          "average_session_duration": 1800
+        }
+      }
+    ],
+    "page_info": {
+      "total_results": 1
+    }
+  },
+  "graduated_members": {
+    "items": [
+      {
+        "member_id": "MBR007890123456",
+        "user": {
+          "name": "Patricia Mendes",
+          "email": "patricia.mendes@example.com",
+          "ucode": "USR678901234"
+        },
+        "product": {
+          "id": 2371794,
+          "name": "Intensivo de Vendas Online",
+          "ucode": "g5f7eh8k-d39a-9gdf-gg39-idhe8ck6789"
+        },
+        "status": "GRADUATED",
+        "enrollment_date": 1725223200000,
+        "graduation_date": 1727901600000,
+        "last_access": 1727815200000,
+        "progress": {
+          "completed_modules": 10,
+          "total_modules": 10,
+          "percentage": 100,
+          "completed_lessons": 50,
+          "total_lessons": 50
+        },
+        "access": {
+          "first_access": 1725225400000,
+          "total_accesses": 127,
+          "average_session_duration": 2700
+        },
+        "certificates": [
+          {
+            "certificate_id": "CERT002",
+            "issued_date": 1727901600000,
+            "certificate_url": "https://hotmart.com/certificates/CERT002"
+          }
+        ]
+      }
+    ],
+    "page_info": {
+      "total_results": 1
+    }
+  },
+  "mixed_status_members": {
+    "items": [
+      {
+        "member_id": "MBR001234567890",
+        "user": {
+          "name": "João Silva",
+          "email": "joao.silva@example.com",
+          "ucode": "USR123456789"
+        },
+        "product": {
+          "id": 2371789,
+          "name": "Curso Completo de Marketing Digital",
+          "ucode": "b0a29c3f-8e45-4b8a-bb84-d8c9b37e1234"
+        },
+        "status": "ACTIVE",
+        "enrollment_date": 1734984193000,
+        "last_access": 1735656993000,
+        "progress": {
+          "completed_modules": 5,
+          "total_modules": 12,
+          "percentage": 41.67,
+          "completed_lessons": 25,
+          "total_lessons": 60
+        }
+      },
+      {
+        "member_id": "MBR003456789012",
+        "user": {
+          "name": "Carlos Santos",
+          "email": "carlos.santos@example.com",
+          "ucode": "USR345678901"
+        },
+        "product": {
+          "id": 2371791,
+          "name": "Curso de Copywriting",
+          "ucode": "d2c4be5h-a067-6dac-dd06-faebd59g3456"
+        },
+        "status": "INACTIVE",
+        "enrollment_date": 1733000000000,
+        "last_access": 1734209600000,
+        "deactivation_date": 1735678800000,
+        "progress": {
+          "completed_modules": 3,
+          "total_modules": 10,
+          "percentage": 30
+        }
+      },
+      {
+        "member_id": "MBR004567890123",
+        "user": {
+          "name": "Ana Paula Ribeiro",
+          "email": "ana.ribeiro@example.com",
+          "ucode": "USR456789012"
+        },
+        "product": {
+          "id": 2371792,
+          "name": "Academia de Finanças",
+          "ucode": "e3d5cf6i-b178-7ebd-ee17-gbfce6ah4567"
+        },
+        "status": "SUSPENDED",
+        "enrollment_date": 1730408400000,
+        "suspension_date": 1733086800000,
+        "suspension_reason": "Payment pending",
+        "progress": {
+          "completed_modules": 2,
+          "total_modules": 15,
+          "percentage": 13.33
+        }
+      },
+      {
+        "member_id": "MBR006789012345",
+        "user": {
+          "name": "Fernando Costa",
+          "email": "fernando.costa@example.com",
+          "ucode": "USR789012345"
+        },
+        "product": {
+          "id": 2371795,
+          "name": "Software de Automação",
+          "ucode": "h6g8fi9l-e4ab-aheg-hh4a-jeif9dl7890"
+        },
+        "status": "TRIAL",
+        "enrollment_date": 1735656993000,
+        "trial_end_date": 1736261793000,
+        "progress": {
+          "completed_modules": 1,
+          "total_modules": 6,
+          "percentage": 16.67
+        }
+      },
+      {
+        "member_id": "MBR007890123456",
+        "user": {
+          "name": "Patricia Mendes",
+          "email": "patricia.mendes@example.com",
+          "ucode": "USR678901234"
+        },
+        "product": {
+          "id": 2371794,
+          "name": "Intensivo de Vendas Online",
+          "ucode": "g5f7eh8k-d39a-9gdf-gg39-idhe8ck6789"
+        },
+        "status": "GRADUATED",
+        "enrollment_date": 1725223200000,
+        "graduation_date": 1727901600000,
+        "progress": {
+          "completed_modules": 10,
+          "total_modules": 10,
+          "percentage": 100
+        },
+        "certificates": [
+          {
+            "certificate_id": "CERT002",
+            "issued_date": 1727901600000
+          }
+        ]
+      }
+    ],
+    "page_info": {
+      "total_results": 5,
+      "next_page_token": "eyJuZXh0IjoxNzM1NjU2OTkzMDAwfQ=="
+    }
+  }
+}

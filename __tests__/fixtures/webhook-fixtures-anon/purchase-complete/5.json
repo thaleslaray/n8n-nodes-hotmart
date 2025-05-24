@@ -1,0 +1,92 @@
+{
+  "data": {
+    "product": {
+      "support_email": "user_d9ed2356@example.br",
+      "has_co_production": false,
+      "name": "Julia Santos",
+      "warranty_date": "2025-05-04T00:00:00Z",
+      "id": 1355458,
+      "ucode": "ucode_4038161c"
+    },
+    "commissions": [
+      {
+        "currency_value": "BRL",
+        "source": "MARKETPLACE",
+        "value": 74.78
+      },
+      {
+        "currency_value": "BRL",
+        "source": "PRODUCER",
+        "value": 922.22
+      }
+    ],
+    "purchase": {
+      "original_offer_price": {
+        "currency_value": "BRL",
+        "value": 997
+      },
+      "recurrence_number": 4,
+      "subscription_anticipation_purchase": "192.168.97.20",
+      "checkout_country": {
+        "iso": "BR",
+        "name": "Ana Oliveira"
+      },
+      "origin": {
+        "sck": "pag-vendas-fluxo-perpetuo"
+      },
+      "order_bump": {
+        "is_order_bump": false
+      },
+      "approved_date": 1745755889000,
+      "offer": {
+        "code": "kdm48q1t"
+      },
+      "is_funnel": false,
+      "order_date": 1745755887000,
+      "date_next_charge": 1777291200000,
+      "price": {
+        "currency_value": "BRL",
+        "value": 997
+      },
+      "payment": {
+        "installments_number": 1,
+        "type": "WALLET"
+      },
+      "full_price": {
+        "currency_value": "BRL",
+        "value": 997
+      },
+      "business_model": "I",
+      "invoice_by": "HOTMART",
+      "transaction": "HP0151946414",
+      "status": "COMPLETED"
+    },
+    "affiliates": [
+      {
+        "affiliate_code": "",
+        "name": "Pedro Rodrigues"
+      }
+    ],
+    "producer": {
+      "legal_nature": "Pessoa Jurídica",
+      "document": "73c.0c2.875-9c",
+      "name": "João Lima"
+    },
+    "subscription": "192.168.4.57",
+    "buyer": {
+      "checkout_phone_code": "+55 11 971c4-e63c",
+      "address": "192.168.4.57",
+      "document": "53f.044.4ba-54",
+      "name": "Julia Lima",
+      "last_name": "Maria Lima",
+      "checkout_phone": "+55 11 91202-80cd",
+      "first_name": "Ana Oliveira",
+      "email": "user_2c9b44b1@example.com",
+      "document_type": "1e6.d33.a10-0d"
+    }
+  },
+  "id": "83f27aee-67b5-4507-b3da-3c144aa9bb3e",
+  "creation_date": 1746423551451,
+  "event": "PURCHASE_COMPLETE",
+  "version": "2.0.0"
+}

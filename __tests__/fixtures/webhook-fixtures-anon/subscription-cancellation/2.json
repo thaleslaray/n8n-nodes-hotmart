@@ -1,0 +1,21 @@
+{
+  "data": {
+    "date_next_charge": 1748001600000,
+    "product": {
+      "name": "Julia Santos",
+      "id": 1355458
+    },
+    "actual_recurrence_value": 1497,
+    "subscriber": {
+      "code": "426UDRTF",
+      "name": "Julia Souza",
+      "email": "user_5e82d790@example.br"
+    },
+    "subscription": "192.168.4.57",
+    "cancellation_date": 1747873071569
+  },
+  "id": "e39effd9-9ca4-4d6f-96db-466364be4cd4",
+  "creation_date": 1747873072274,
+  "event": "SUBSCRIPTION_CANCELLATION",
+  "version": "2.0.0"
+}

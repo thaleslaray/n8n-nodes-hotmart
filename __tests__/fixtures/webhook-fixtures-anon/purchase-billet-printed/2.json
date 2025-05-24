@@ -1,0 +1,94 @@
+{
+  "data": {
+    "product": {
+      "support_email": "user_d9ed2356@example.br",
+      "has_co_production": false,
+      "name": "Julia Santos",
+      "is_physical_product": false,
+      "id": 1355458,
+      "ucode": "ucode_4038161c"
+    },
+    "commissions": [
+      {
+        "currency_value": "BRL",
+        "source": "MARKETPLACE",
+        "value": 10.23
+      },
+      {
+        "currency_value": "BRL",
+        "source": "PRODUCER",
+        "value": 114.52
+      }
+    ],
+    "purchase": {
+      "original_offer_price": {
+        "currency_value": "BRL",
+        "value": 124.75
+      },
+      "recurrence_number": 12,
+      "subscription_anticipation_purchase": "192.168.97.20",
+      "checkout_country": {
+        "iso": "BR",
+        "name": "Ana Oliveira"
+      },
+      "origin": {
+        "sck": "Desafio5DAutoIA_0524|whatsapp|recuperacao_whatsapp|Recuperacao_Desafio_Vendas_CA|recuperacao_desafio_dia_4_vendas_ca"
+      },
+      "order_bump": {
+        "is_order_bump": false
+      },
+      "offer": {
+        "code": "v3gy3sekDRP"
+      },
+      "is_funnel": false,
+      "order_date": 1747774005000,
+      "date_next_charge": 1748779200000,
+      "price": {
+        "currency_value": "BRL",
+        "value": 124.75
+      },
+      "payment": {
+        "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=682cea359d62bd2d731e6cea6a44172b78bdd408173efba1",
+        "pix_expiration_date": 1747946806000,
+        "installments_number": 1,
+        "type": "PIX",
+        "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/D073A3E23069D06970071F81B49702415204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***6304C828"
+      },
+      "full_price": {
+        "currency_value": "BRL",
+        "value": 124.75
+      },
+      "business_model": "I",
+      "invoice_by": "HOTMART",
+      "transaction": "HP1319790068",
+      "status": "BILLET_PRINTED"
+    },
+    "affiliates": [
+      {
+        "affiliate_code": "",
+        "name": "Pedro Rodrigues"
+      }
+    ],
+    "producer": {
+      "legal_nature": "Pessoa Jurídica",
+      "document": "73c.0c2.875-9c",
+      "name": "João Lima"
+    },
+    "subscription": "192.168.4.57",
+    "buyer": {
+      "checkout_phone_code": "+55 11 906b9-24cb",
+      "address": "192.168.4.57",
+      "document": "5ae.87c.e95-55",
+      "name": "Maria Souza",
+      "last_name": "Pedro Oliveira",
+      "checkout_phone": "+55 11 90804-d965",
+      "first_name": "Julia Rodrigues",
+      "email": "user_ce4e053d@example.com",
+      "document_type": "1e6.d33.a10-0d"
+    }
+  },
+  "id": "cac52680-dc5b-4af6-8226-89a38b180c8e",
+  "creation_date": 1747774010535,
+  "event": "PURCHASE_BILLET_PRINTED",
+  "version": "2.0.0"
+}

@@ -1,0 +1,122 @@
+[
+  {
+    "data": {
+      "product": {
+        "name": "Maria Souza",
+        "id": "4062912"
+      },
+      "module": {
+        "name": "Maria Souza",
+        "id": "gOpgkaor7J"
+      },
+      "user": {
+        "name": "Pedro Rodrigues",
+        "email": "user_7771f57c@example.com"
+      }
+    },
+    "id": "c8401b26-7f51-4a97-9cda-423727663409",
+    "creation_date": 1746286277515,
+    "event": "CLUB_MODULE_COMPLETED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "name": "Maria Silva",
+        "id": "5036092"
+      },
+      "module": {
+        "name": "João Oliveira",
+        "id": "64lyDRGQej"
+      },
+      "user": {
+        "name": "Carlos Souza",
+        "email": "user_7823b34a@example.com"
+      }
+    },
+    "id": "95e11f9a-b0af-415b-978d-28d223470214",
+    "creation_date": 1746725391448,
+    "event": "CLUB_MODULE_COMPLETED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "name": "Maria Souza",
+        "id": "4062912"
+      },
+      "module": {
+        "name": "Maria Souza",
+        "id": "gOpgkaor7J"
+      },
+      "user": {
+        "name": "Ana Santos",
+        "email": "user_02c5244e@example.com"
+      }
+    },
+    "id": "2af047c2-8574-4b12-883b-ed9c92f06369",
+    "creation_date": 1746984505989,
+    "event": "CLUB_MODULE_COMPLETED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "name": "Maria Souza",
+        "id": "4062912"
+      },
+      "module": {
+        "name": "Maria Souza",
+        "id": "gOpgkaor7J"
+      },
+      "user": {
+        "name": "Julia Rodrigues",
+        "email": "user_3ffec2be@example.com"
+      }
+    },
+    "id": "e4833b9a-790a-4fb0-ae9d-7df43b5a72dd",
+    "creation_date": 1747164294945,
+    "event": "CLUB_MODULE_COMPLETED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "name": "Maria Silva",
+        "id": "5036092"
+      },
+      "module": {
+        "name": "João Oliveira",
+        "id": "64lyDRGQej"
+      },
+      "user": {
+        "name": "Julia Santos",
+        "email": "user_77c6676c@example.com"
+      }
+    },
+    "id": "0d5d3467-9c16-4639-a738-5223494c6b3c",
+    "creation_date": 1747609083177,
+    "event": "CLUB_MODULE_COMPLETED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "name": "Ana Oliveira",
+        "id": "4063004"
+      },
+      "module": {
+        "name": "Julia Rodrigues",
+        "id": "gOpgnlqb7J"
+      },
+      "user": {
+        "name": "Julia Silva",
+        "email": "user_d40778ac@example.br"
+      }
+    },
+    "id": "9af29a27-2f05-4c3e-b54a-ac3bff173ed8",
+    "creation_date": 1747665976987,
+    "event": "CLUB_MODULE_COMPLETED",
+    "version": "2.0.0"
+  }
+]

@@ -1,0 +1,96 @@
+{
+  "data": {
+    "product": {
+      "support_email": "user_d9ed2356@example.br",
+      "has_co_production": false,
+      "name": "Julia Santos",
+      "warranty_date": "2025-05-18T00:00:00Z",
+      "is_physical_product": false,
+      "id": 1355458,
+      "ucode": "ucode_4038161c"
+    },
+    "commissions": [
+      {
+        "currency_value": "BRL",
+        "source": "MARKETPLACE",
+        "value": 74.78
+      },
+      {
+        "currency_value": "BRL",
+        "source": "PRODUCER",
+        "value": 922.22
+      }
+    ],
+    "purchase": {
+      "original_offer_price": {
+        "currency_value": "BRL",
+        "value": 997
+      },
+      "recurrence_number": 1,
+      "subscription_anticipation_purchase": "192.168.97.20",
+      "checkout_country": {
+        "iso": "BR",
+        "name": "Ana Oliveira"
+      },
+      "origin": {
+        "sck": "renovacao-aluno-ea-comercial"
+      },
+      "order_bump": {
+        "is_order_bump": false
+      },
+      "approved_date": 1746974353000,
+      "offer": {
+        "code": "ffwqvtyv"
+      },
+      "is_funnel": false,
+      "order_date": 1746974319000,
+      "date_next_charge": 1778500800000,
+      "price": {
+        "currency_value": "BRL",
+        "value": 997
+      },
+      "payment": {
+        "pix_qrcode": "https://live-us.adyen.com/hpp/generateQRCodeImage.shtml?url=00020101021226900014br.gov.bcb.pix2568pix.adyen.com%2Fpixqrcodelocation%2Fpixloc%2Fv1%2Floc%2Fbl1uEujpSUCYRkHTE4bGGw5204000053039865802BR5902HT6009SAO+PAULO62070503***630450DB",
+        "pix_expiration_date": 1747147119000,
+        "installments_number": 1,
+        "type": "PIX",
+        "pix_code": "00020101021226900014br.gov.bcb.pix2568pix.adyen.com/pixqrcodelocation/pixloc/v1/loc/bl1uEujpSUCYRkHTE4bGGw5204000053039865802BR5902HT6009SAO PAULO62070503***630450DB"
+      },
+      "full_price": {
+        "currency_value": "BRL",
+        "value": 997
+      },
+      "business_model": "I",
+      "invoice_by": "HOTMART",
+      "transaction": "HP1132324885",
+      "status": "APPROVED"
+    },
+    "affiliates": [
+      {
+        "affiliate_code": "",
+        "name": "Pedro Rodrigues"
+      }
+    ],
+    "producer": {
+      "legal_nature": "Pessoa Jurídica",
+      "document": "73c.0c2.875-9c",
+      "name": "João Lima"
+    },
+    "subscription": "192.168.4.57",
+    "buyer": {
+      "checkout_phone_code": "+55 11 971c4-e63c",
+      "address": "192.168.4.57",
+      "document": "a8c.d2f.b34-b4",
+      "name": "Ana Oliveira",
+      "last_name": "Maria Lima",
+      "checkout_phone": "+55 11 9dfd5-c2db",
+      "first_name": "Maria Souza",
+      "email": "user_d0d3d00b@example.com",
+      "document_type": "1e6.d33.a10-0d"
+    }
+  },
+  "id": "948a8113-3e3d-417a-a457-397fced04ddb",
+  "creation_date": 1746974356960,
+  "event": "PURCHASE_APPROVED",
+  "version": "2.0.0"
+}

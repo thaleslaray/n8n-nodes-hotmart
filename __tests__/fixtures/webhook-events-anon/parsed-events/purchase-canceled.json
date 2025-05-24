@@ -1,0 +1,2492 @@
+[
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 111.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 1385.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 1497
+        },
+        "recurrence_number": 1,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "tdl7nakn",
+          "coupon_code": "Escola de Automação - Comercial Treinamento"
+        },
+        "is_funnel": false,
+        "order_date": 1746043606000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 1497
+        },
+        "payment": {
+          "refusal_reason": "Saldo insuficiente para o cartão informado. Entre em contato com a operadora.",
+          "installments_number": 4,
+          "type": "CREDIT_CARD"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 1668.72
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP3313410036",
+        "status": "CANCELED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 9f387-4eac",
+        "address": "192.168.4.57",
+        "document": "9e1.1c7.782-86",
+        "name": "Ana Souza",
+        "last_name": "Julia Lima",
+        "checkout_phone": "+55 11 961fc-ea62",
+        "first_name": "Maria Oliveira",
+        "email": "user_0d277c4e@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "6583a52a-d82d-422a-b48a-f5812d830980",
+    "creation_date": 1746043614048,
+    "event": "PURCHASE_CANCELED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 111.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 1385.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 1497
+        },
+        "recurrence_number": 1,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "tdl7nakn",
+          "coupon_code": "Escola de Automação - Comercial Treinamento"
+        },
+        "is_funnel": false,
+        "order_date": 1746043807000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 1497
+        },
+        "payment": {
+          "refusal_reason": "Saldo insuficiente para o cartão informado. Entre em contato com a operadora.",
+          "installments_number": 3,
+          "type": "CREDIT_CARD"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 1633.41
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP2337702150",
+        "status": "CANCELED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 9f387-4eac",
+        "address": "192.168.4.57",
+        "document": "9e1.1c7.782-86",
+        "name": "Ana Souza",
+        "last_name": "Julia Lima",
+        "checkout_phone": "+55 11 961fc-ea62",
+        "first_name": "Maria Oliveira",
+        "email": "user_0d277c4e@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "9960db10-58bc-4d08-9eb6-3969eb99c376",
+    "creation_date": 1746043814759,
+    "event": "PURCHASE_CANCELED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "has_co_production": false,
+        "name": "João Lima",
+        "is_physical_product": false,
+        "id": 5485679,
+        "ucode": "ucode_a07f8f8a"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 2
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 8
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 10
+        },
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "ei60jobh"
+        },
+        "is_funnel": false,
+        "event_tickets": {
+          "amount": 1
+        },
+        "order_date": 1746709826000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 10
+        },
+        "payment": {
+          "refusal_reason": "Transaction refused",
+          "installments_number": 1,
+          "type": "PIX"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 10
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP0954131949",
+        "status": "CANCELED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "buyer": {
+        "address": "192.168.4.57",
+        "document": "17e.c05.fc5-55",
+        "name": "João Souza",
+        "last_name": "João Rodrigues",
+        "first_name": "Julia Rodrigues",
+        "email": "user_cfd646a8@example.br",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "640b8077-bee5-4b8b-b82e-8f9a141509be",
+    "creation_date": 1746709835958,
+    "event": "PURCHASE_CANCELED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "has_co_production": false,
+        "name": "João Lima",
+        "is_physical_product": false,
+        "id": 5485679,
+        "ucode": "ucode_a07f8f8a"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 2
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 8
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 10
+        },
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "ei60jobh"
+        },
+        "is_funnel": false,
+        "event_tickets": {
+          "amount": 1
+        },
+        "order_date": 1746709847000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 10
+        },
+        "payment": {
+          "refusal_reason": "Transaction refused",
+          "installments_number": 1,
+          "type": "PIX"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 10
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP0611705428",
+        "status": "CANCELED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "buyer": {
+        "address": "192.168.4.57",
+        "document": "17e.c05.fc5-55",
+        "name": "João Souza",
+        "last_name": "João Rodrigues",
+        "first_name": "Julia Rodrigues",
+        "email": "user_cfd646a8@example.br",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "753ff1ab-789e-47ae-863a-61159b16bfc5",
+    "creation_date": 1746709855760,
+    "event": "PURCHASE_CANCELED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "has_co_production": false,
+        "name": "João Lima",
+        "is_physical_product": false,
+        "id": 5485679,
+        "ucode": "ucode_a07f8f8a"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 2
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 8
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 10
+        },
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "ei60jobh"
+        },
+        "is_funnel": false,
+        "event_tickets": {
+          "amount": 1
+        },
+        "order_date": 1746709885000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 10
+        },
+        "payment": {
+          "refusal_reason": "Transaction refused",
+          "installments_number": 1,
+          "type": "WALLET"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 10
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP0701736671",
+        "status": "CANCELED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "buyer": {
+        "address": "192.168.4.57",
+        "document": "17e.c05.fc5-55",
+        "name": "João Souza",
+        "last_name": "João Rodrigues",
+        "first_name": "Julia Rodrigues",
+        "email": "user_cfd646a8@example.br",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "78f7a856-c4af-4d5f-a491-164c067b531b",
+    "creation_date": 1746709893667,
+    "event": "PURCHASE_CANCELED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "has_co_production": false,
+        "name": "João Lima",
+        "is_physical_product": false,
+        "id": 5485679,
+        "ucode": "ucode_a07f8f8a"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 2
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 8
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 10
+        },
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "ei60jobh"
+        },
+        "is_funnel": false,
+        "event_tickets": {
+          "amount": 1
+        },
+        "order_date": 1746709907000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 10
+        },
+        "payment": {
+          "refusal_reason": "Transaction refused",
+          "installments_number": 1,
+          "type": "PIX"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 10
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP0734055578",
+        "status": "CANCELED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "buyer": {
+        "address": "192.168.4.57",
+        "document": "17e.c05.fc5-55",
+        "name": "Carlos Silva",
+        "last_name": "Maria Souza",
+        "first_name": "Ana Santos",
+        "email": "user_cfd646a8@example.br",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "9bf1b99d-a583-4765-b1e7-c91a5ceefbec",
+    "creation_date": 1746709917211,
+    "event": "PURCHASE_CANCELED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "has_co_production": false,
+        "name": "João Lima",
+        "is_physical_product": false,
+        "id": 5485679,
+        "ucode": "ucode_a07f8f8a"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 1
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 4
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 5
+        },
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "zxed13xo"
+        },
+        "is_funnel": false,
+        "event_tickets": {
+          "amount": 1
+        },
+        "order_date": 1746710196000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 5
+        },
+        "payment": {
+          "refusal_reason": "Transaction refused",
+          "installments_number": 1,
+          "type": "WALLET"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 5
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP1210759465",
+        "status": "CANCELED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "buyer": {
+        "address": "192.168.4.57",
+        "document": "17e.c05.fc5-55",
+        "name": "Carlos Silva",
+        "last_name": "Maria Souza",
+        "first_name": "Ana Santos",
+        "email": "user_cfd646a8@example.br",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "e203baf7-ccd3-44bc-9a5a-223e2fea134a",
+    "creation_date": 1746710205670,
+    "event": "PURCHASE_CANCELED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 74.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 922.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "recurrence_number": 1,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "ffwqvtyv"
+        },
+        "is_funnel": false,
+        "order_date": 1747056134000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "payment": {
+          "refusal_reason": "UNKNOWN",
+          "installments_number": 1,
+          "type": "CREDIT_CARD"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP0582825190",
+        "status": "CANCELED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 971c4-e63c",
+        "address": "192.168.4.57",
+        "document": "95e.60d.fdc-f2",
+        "name": "Pedro Souza",
+        "last_name": "Carlos Souza",
+        "checkout_phone": "+55 11 95864-9ccc",
+        "first_name": "Pedro Rodrigues",
+        "email": "user_c19b9372@example.br",
+        "document_type": "e81.58a.87f-64"
+      }
+    },
+    "id": "31bab3b5-20eb-4c6f-9622-5d3aa02258e3",
+    "creation_date": 1747056146426,
+    "event": "PURCHASE_CANCELED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 74.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 922.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "recurrence_number": 1,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "ffwqvtyv"
+        },
+        "is_funnel": false,
+        "order_date": 1747056850000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "payment": {
+          "refusal_reason": "UNKNOWN",
+          "installments_number": 1,
+          "type": "CREDIT_CARD"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP2765505700",
+        "status": "CANCELED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 971c4-e63c",
+        "address": "192.168.4.57",
+        "document": "95e.60d.fdc-f2",
+        "name": "Pedro Souza",
+        "last_name": "Carlos Souza",
+        "checkout_phone": "+55 11 95864-9ccc",
+        "first_name": "Pedro Rodrigues",
+        "email": "user_c19b9372@example.br",
+        "document_type": "e81.58a.87f-64"
+      }
+    },
+    "id": "504fffb0-588c-48b4-8e15-c0c549b7ef33",
+    "creation_date": 1747056862655,
+    "event": "PURCHASE_CANCELED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 148.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 1848.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "recurrence_number": 1,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "0rgmjkb1",
+          "coupon_code": "Preço Padrão - Escola de Automação e I.A."
+        },
+        "is_funnel": false,
+        "order_date": 1747178581000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "payment": {
+          "refusal_reason": "Transaction refused",
+          "installments_number": 1,
+          "type": "CREDIT_CARD"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP0744431763",
+        "status": "CANCELED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 9cc88-4a26",
+        "address": "192.168.4.57",
+        "document": "a36.62c.eb9-a2",
+        "name": "Carlos Santos",
+        "last_name": "João Santos",
+        "checkout_phone": "+55 11 9382c-6557",
+        "first_name": "Pedro Rodrigues",
+        "email": "user_3501d05c@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "d3523cca-6c7e-459a-b8ee-678e440a6e26",
+    "creation_date": 1747178586230,
+    "event": "PURCHASE_CANCELED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 148.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 1848.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "recurrence_number": 1,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "0rgmjkb1",
+          "coupon_code": "Preço Padrão - Escola de Automação e I.A."
+        },
+        "is_funnel": false,
+        "order_date": 1747178793000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "payment": {
+          "refusal_reason": "Transaction refused",
+          "installments_number": 1,
+          "type": "CREDIT_CARD"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP0232330977",
+        "status": "CANCELED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 9cc88-4a26",
+        "address": "192.168.4.57",
+        "document": "a36.62c.eb9-a2",
+        "name": "Carlos Santos",
+        "last_name": "João Santos",
+        "checkout_phone": "+55 11 9382c-6557",
+        "first_name": "Pedro Rodrigues",
+        "email": "user_60d373d5@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "f7ab53cc-5476-41ea-a241-365558bf1bb2",
+    "creation_date": 1747178797648,
+    "event": "PURCHASE_CANCELED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 148.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 1848.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "recurrence_number": 1,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "0rgmjkb1",
+          "coupon_code": "Preço Padrão - Escola de Automação e I.A."
+        },
+        "is_funnel": false,
+        "order_date": 1747178959000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "payment": {
+          "refusal_reason": "Transaction refused",
+          "installments_number": 1,
+          "type": "CREDIT_CARD"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP0367377841",
+        "status": "CANCELED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 9cc88-4a26",
+        "address": "192.168.4.57",
+        "document": "a36.62c.eb9-a2",
+        "name": "Carlos Santos",
+        "last_name": "João Santos",
+        "checkout_phone": "+55 11 9382c-6557",
+        "first_name": "Pedro Rodrigues",
+        "email": "user_60d373d5@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "10cbe368-79b2-4027-bd29-04b8431b85fb",
+    "creation_date": 1747178963542,
+    "event": "PURCHASE_CANCELED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 59.98
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 737.02
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 797
+        },
+        "recurrence_number": 1,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "h8obhmu1",
+          "coupon_code": "Escola de Automação - Condição Especial"
+        },
+        "is_funnel": false,
+        "order_date": 1747504624000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 797
+        },
+        "payment": {
+          "refusal_reason": "Saldo insuficiente para o cartão informado. Entre em contato com a operadora.",
+          "installments_number": 3,
+          "type": "CREDIT_CARD"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 869.61
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP0241300030",
+        "status": "CANCELED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 971c4-e63c",
+        "address": "192.168.4.57",
+        "document": "991.856.dfb-7f",
+        "name": "Pedro Santos",
+        "last_name": "Maria Santos",
+        "checkout_phone": "+55 11 97e7e-2834",
+        "first_name": "Julia Santos",
+        "email": "user_77c6676c@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "bfc7addd-15fd-4372-8aba-96554d0071cf",
+    "creation_date": 1747504630579,
+    "event": "PURCHASE_CANCELED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 59.98
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 737.02
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 797
+        },
+        "recurrence_number": 1,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "h8obhmu1",
+          "coupon_code": "Escola de Automação - Condição Especial"
+        },
+        "is_funnel": false,
+        "order_date": 1747504672000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 797
+        },
+        "payment": {
+          "refusal_reason": "Existe algum tipo de restrição no cartão. Tente realizar a compra novamente com outro cartão ou meio de pagamento.",
+          "installments_number": 3,
+          "type": "CREDIT_CARD"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 869.61
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP0371729907",
+        "status": "CANCELED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 971c4-e63c",
+        "address": "192.168.4.57",
+        "document": "991.856.dfb-7f",
+        "name": "Pedro Santos",
+        "last_name": "Maria Santos",
+        "checkout_phone": "+55 11 97e7e-2834",
+        "first_name": "Julia Santos",
+        "email": "user_77c6676c@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "70c6b9e0-7b0c-4c9f-84e5-3edd3e23edc6",
+    "creation_date": 1747504680512,
+    "event": "PURCHASE_CANCELED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 59.98
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 737.02
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 797
+        },
+        "recurrence_number": 1,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "h8obhmu1",
+          "coupon_code": "Escola de Automação - Condição Especial"
+        },
+        "is_funnel": false,
+        "order_date": 1747504794000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 797
+        },
+        "payment": {
+          "refusal_reason": "Existe algum tipo de restrição no cartão. Tente realizar a compra novamente com outro cartão ou meio de pagamento.",
+          "installments_number": 3,
+          "type": "CREDIT_CARD"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 869.61
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP1630628308",
+        "status": "CANCELED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 971c4-e63c",
+        "address": "192.168.4.57",
+        "document": "991.856.dfb-7f",
+        "name": "Pedro Santos",
+        "last_name": "Maria Santos",
+        "checkout_phone": "+55 11 97e7e-2834",
+        "first_name": "Julia Santos",
+        "email": "user_77c6676c@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "88ecfd34-7a54-479c-82ce-c8c5712ad312",
+    "creation_date": 1747504803470,
+    "event": "PURCHASE_CANCELED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 148.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 1848.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "recurrence_number": 1,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "0rgmjkb1",
+          "coupon_code": "Preço Padrão - Escola de Automação e I.A."
+        },
+        "is_funnel": false,
+        "order_date": 1747511952000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "payment": {
+          "refusal_reason": "Transaction refused",
+          "installments_number": 1,
+          "type": "CREDIT_CARD"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP4029568349",
+        "status": "CANCELED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 94ab8-4ed8",
+        "address": "192.168.4.57",
+        "document": "da5.f0a.be1-0c",
+        "name": "João Silva",
+        "last_name": "João Silva",
+        "checkout_phone": "+55 11 9e528-515a",
+        "first_name": "João Rodrigues",
+        "email": "user_43995096@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "ddd18a9f-91b2-4f3b-aa6a-44ee5694c311",
+    "creation_date": 1747511956394,
+    "event": "PURCHASE_CANCELED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 148.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 1848.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "recurrence_number": 1,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "0rgmjkb1",
+          "coupon_code": "Preço Padrão - Escola de Automação e I.A."
+        },
+        "is_funnel": false,
+        "order_date": 1747511973000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "payment": {
+          "refusal_reason": "Transaction refused",
+          "installments_number": 1,
+          "type": "CREDIT_CARD"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP4003405424",
+        "status": "CANCELED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 94ab8-4ed8",
+        "address": "192.168.4.57",
+        "document": "da5.f0a.be1-0c",
+        "name": "João Silva",
+        "last_name": "João Silva",
+        "checkout_phone": "+55 11 9e528-515a",
+        "first_name": "João Rodrigues",
+        "email": "user_43995096@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "bf6aaf25-acf1-4a2f-87e7-ad2d7fdd96b6",
+    "creation_date": 1747511978075,
+    "event": "PURCHASE_CANCELED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 148.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 1848.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "recurrence_number": 1,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "0rgmjkb1",
+          "coupon_code": "Preço Padrão - Escola de Automação e I.A."
+        },
+        "is_funnel": false,
+        "order_date": 1747512023000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "payment": {
+          "refusal_reason": "Transaction refused",
+          "installments_number": 1,
+          "type": "CREDIT_CARD"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP3664056894",
+        "status": "CANCELED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 94ab8-4ed8",
+        "address": "192.168.4.57",
+        "document": "da5.f0a.be1-0c",
+        "name": "João Silva",
+        "last_name": "João Silva",
+        "checkout_phone": "+55 11 9e528-515a",
+        "first_name": "João Rodrigues",
+        "email": "user_43995096@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "62804cbd-6c2d-4940-a305-354349aa6d45",
+    "creation_date": 1747512027247,
+    "event": "PURCHASE_CANCELED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 148.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 1848.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "recurrence_number": 1,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "origin": {
+          "sck": "HOTMART_PRODUCT_PAGE"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "31lzvjkn"
+        },
+        "is_funnel": false,
+        "order_date": 1747512105000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "payment": {
+          "refusal_reason": "Transaction refused",
+          "installments_number": 1,
+          "type": "CREDIT_CARD"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP3765245854",
+        "status": "CANCELED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 94ab8-4ed8",
+        "address": "192.168.4.57",
+        "document": "da5.f0a.be1-0c",
+        "name": "João Rodrigues",
+        "last_name": "João Silva",
+        "checkout_phone": "+55 11 9e528-515a",
+        "first_name": "João Rodrigues",
+        "email": "user_f2f0d4a8@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "98baf43b-4c7a-4e34-8e1c-0a0009d7e59d",
+    "creation_date": 1747512110330,
+    "event": "PURCHASE_CANCELED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 148.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 1848.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "recurrence_number": 1,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "0rgmjkb1",
+          "coupon_code": "Preço Padrão - Escola de Automação e I.A."
+        },
+        "is_funnel": false,
+        "order_date": 1747512290000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "payment": {
+          "refusal_reason": "Transaction refused",
+          "installments_number": 1,
+          "type": "CREDIT_CARD"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP3510926831",
+        "status": "CANCELED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 94ab8-4ed8",
+        "address": "192.168.4.57",
+        "document": "da5.f0a.be1-0c",
+        "name": "João Silva",
+        "last_name": "João Silva",
+        "checkout_phone": "+55 11 9e528-515a",
+        "first_name": "João Rodrigues",
+        "email": "user_43995096@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "287c0728-9ebc-4ffa-88d3-eb2002d0cf2f",
+    "creation_date": 1747512295112,
+    "event": "PURCHASE_CANCELED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 148.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 1848.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "recurrence_number": 1,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "0rgmjkb1",
+          "coupon_code": "Preço Padrão - Escola de Automação e I.A."
+        },
+        "is_funnel": false,
+        "order_date": 1747512986000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "payment": {
+          "refusal_reason": "Transaction refused",
+          "installments_number": 1,
+          "type": "CREDIT_CARD"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP2498283051",
+        "status": "CANCELED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 94ab8-4ed8",
+        "address": "192.168.4.57",
+        "document": "da5.f0a.be1-0c",
+        "name": "Ana Lima",
+        "last_name": "Maria Santos",
+        "checkout_phone": "+55 11 9e528-515a",
+        "first_name": "Maria Silva",
+        "email": "user_f2f0d4a8@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "84452336-6fee-4f81-bfd0-6ba4222c1a78",
+    "creation_date": 1747512990232,
+    "event": "PURCHASE_CANCELED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 148.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 1848.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "recurrence_number": 1,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "origin": {
+          "sck": "comercial-EA-whatsapp-0425"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "ljw69kyn",
+          "coupon_code": "ESCOLA DE AUTOMACAO - Regular - OFICIAL"
+        },
+        "is_funnel": false,
+        "order_date": 1747513147000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "payment": {
+          "refusal_reason": "Transaction refused",
+          "installments_number": 1,
+          "type": "CREDIT_CARD"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP2261662477",
+        "status": "CANCELED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 94ab8-4ed8",
+        "address": "192.168.4.57",
+        "document": "da5.f0a.be1-0c",
+        "name": "Maria Silva",
+        "last_name": "Maria Santos",
+        "checkout_phone": "+55 11 9e528-515a",
+        "first_name": "Maria Silva",
+        "email": "user_43995096@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "062d8614-9f9a-4bb0-aa17-63c331bcaba7",
+    "creation_date": 1747513151161,
+    "event": "PURCHASE_CANCELED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 148.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 1848.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "recurrence_number": 1,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "origin": {
+          "sck": "comercial-EA-whatsapp-0425"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "ljw69kyn",
+          "coupon_code": "ESCOLA DE AUTOMACAO - Regular - OFICIAL"
+        },
+        "is_funnel": false,
+        "order_date": 1747513188000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "payment": {
+          "refusal_reason": "Transaction refused",
+          "installments_number": 1,
+          "type": "CREDIT_CARD"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP2322068054",
+        "status": "CANCELED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 94ab8-4ed8",
+        "address": "192.168.4.57",
+        "document": "da5.f0a.be1-0c",
+        "name": "Maria Silva",
+        "last_name": "Maria Santos",
+        "checkout_phone": "+55 11 9e528-515a",
+        "first_name": "Maria Silva",
+        "email": "user_f2f0d4a8@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "471218fb-73df-43d4-a291-c0257ff29fe0",
+    "creation_date": 1747513192566,
+    "event": "PURCHASE_CANCELED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 148.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 1848.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "recurrence_number": 1,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "origin": {
+          "sck": "comercial-EA-whatsapp-0425"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "ljw69kyn",
+          "coupon_code": "ESCOLA DE AUTOMACAO - Regular - OFICIAL"
+        },
+        "is_funnel": false,
+        "order_date": 1747513248000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "payment": {
+          "refusal_reason": "Transaction refused",
+          "installments_number": 1,
+          "type": "CREDIT_CARD"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP2379010892",
+        "status": "CANCELED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 94ab8-4ed8",
+        "address": "192.168.4.57",
+        "document": "da5.f0a.be1-0c",
+        "name": "Maria Silva",
+        "last_name": "Maria Santos",
+        "checkout_phone": "+55 11 9e528-515a",
+        "first_name": "Maria Silva",
+        "email": "user_77f04f13@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "58abef9d-b722-4abe-8d80-040f21201ff5",
+    "creation_date": 1747513252577,
+    "event": "PURCHASE_CANCELED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 148.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 1848.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "recurrence_number": 1,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "0rgmjkb1",
+          "coupon_code": "Preço Padrão - Escola de Automação e I.A."
+        },
+        "is_funnel": false,
+        "order_date": 1747513446000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "payment": {
+          "refusal_reason": "Transaction refused",
+          "installments_number": 12,
+          "type": "CREDIT_CARD"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 2626.56
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP2121229128",
+        "status": "CANCELED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 94ab8-4ed8",
+        "address": "192.168.4.57",
+        "document": "38a.565.a94-53",
+        "name": "João Silva",
+        "last_name": "João Silva",
+        "checkout_phone": "+55 11 9e528-515a",
+        "first_name": "João Rodrigues",
+        "email": "user_43995096@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "2c7be490-de2c-44d6-a4a5-590ba45b7462",
+    "creation_date": 1747513451108,
+    "event": "PURCHASE_CANCELED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 148.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 1848.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "recurrence_number": 1,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "0rgmjkb1",
+          "coupon_code": "Preço Padrão - Escola de Automação e I.A."
+        },
+        "is_funnel": false,
+        "order_date": 1747513480000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "payment": {
+          "refusal_reason": "Transaction refused",
+          "installments_number": 12,
+          "type": "CREDIT_CARD"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 2626.56
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP2173554979",
+        "status": "CANCELED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 94ab8-4ed8",
+        "address": "192.168.4.57",
+        "document": "38a.565.a94-53",
+        "name": "Julia Lima",
+        "last_name": "João Lima",
+        "checkout_phone": "+55 11 9e528-515a",
+        "first_name": "Julia Rodrigues",
+        "email": "user_43995096@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "1ed87c1b-4149-47fe-a3c2-e0aec568a418",
+    "creation_date": 1747513484783,
+    "event": "PURCHASE_CANCELED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 148.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 1848.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "recurrence_number": 1,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "origin": {
+          "sck": "comercial-EA-whatsapp-0425"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "ljw69kyn",
+          "coupon_code": "ESCOLA DE AUTOMACAO - Regular - OFICIAL"
+        },
+        "is_funnel": false,
+        "order_date": 1747513612000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "payment": {
+          "refusal_reason": "Transaction refused",
+          "installments_number": 1,
+          "type": "CREDIT_CARD"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP3431299133",
+        "status": "CANCELED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 94ab8-4ed8",
+        "address": "192.168.4.57",
+        "document": "38a.565.a94-53",
+        "name": "Ana Souza",
+        "last_name": "João Santos",
+        "checkout_phone": "+55 11 9e528-515a",
+        "first_name": "Julia Rodrigues",
+        "email": "user_43995096@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "ae1901b9-17fb-42b7-8893-9440de42e1d2",
+    "creation_date": 1747513617026,
+    "event": "PURCHASE_CANCELED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 148.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 1848.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "recurrence_number": 1,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "origin": {
+          "sck": "comercial-EA-whatsapp-0425"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "ljw69kyn",
+          "coupon_code": "ESCOLA DE AUTOMACAO - Regular - OFICIAL"
+        },
+        "is_funnel": false,
+        "order_date": 1747513640000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "payment": {
+          "refusal_reason": "Transaction refused",
+          "installments_number": 1,
+          "type": "CREDIT_CARD"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP3508633662",
+        "status": "CANCELED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 94ab8-4ed8",
+        "address": "192.168.4.57",
+        "document": "38a.565.a94-53",
+        "name": "Ana Souza",
+        "last_name": "João Santos",
+        "checkout_phone": "+55 11 9e528-515a",
+        "first_name": "Julia Rodrigues",
+        "email": "user_77f04f13@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "7a07e07f-b988-4c44-864a-5eb39c1c3b31",
+    "creation_date": 1747513644870,
+    "event": "PURCHASE_CANCELED",
+    "version": "2.0.0"
+  }
+]

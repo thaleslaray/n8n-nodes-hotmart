@@ -1,0 +1,21 @@
+{
+  "data": {
+    "date_next_charge": 1748088000000,
+    "product": {
+      "name": "Julia Santos",
+      "id": 1355458
+    },
+    "actual_recurrence_value": 1497,
+    "subscriber": {
+      "code": "KFDQH5XF",
+      "name": "Ana Souza",
+      "email": "user_f6a6453e@example.com"
+    },
+    "subscription": "192.168.4.57",
+    "cancellation_date": 1747854219059
+  },
+  "id": "5fc656eb-cf46-4e6a-9b1b-a732199313c2",
+  "creation_date": 1747854219194,
+  "event": "SUBSCRIPTION_CANCELLATION",
+  "version": "2.0.0"
+}

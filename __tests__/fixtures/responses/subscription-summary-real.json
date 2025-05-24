@@ -1,0 +1,335 @@
+{
+  "metadata": {
+    "recorded_at": "2025-05-24T03:15:00.000Z",
+    "endpoint": "subscription-getSummary",
+    "api_path": "/payments/api/v1/subscriptions/summary",
+    "description": "Resposta real da API Hotmart para obter sumário de assinaturas (dados anonimizados)",
+    "anonymized": true,
+    "anonymized_at": "2025-05-24T03:15:00.000Z"
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      {
+        "subscriber_code": "SUB85KYO1",
+        "subscription_id": 10000000,
+        "status": "ACTIVE",
+        "lifetime": 50,
+        "accession_date": 1743705636000,
+        "trial": false,
+        "plan": {
+          "name": "Plano Anual Teste",
+          "recurrency_period": 360
+        },
+        "product": {
+          "name": "Produto de Automação",
+          "id": 1355458
+        },
+        "offer": {
+          "code": "oferta123"
+        },
+        "last_recurrency": {
+          "number": 1,
+          "request_date": 1743705631000,
+          "status": "PAID",
+          "transaction_number": 1,
+          "billing_type": "SUBSCRIPTION"
+        },
+        "subscriber": {
+          "name": "João Silva",
+          "id": 3740431,
+          "email": "joao.silva@example.com"
+        },
+        "date_next_charge": 1775260799000
+      },
+      {
+        "subscriber_code": "SUB6YLQW2",
+        "subscription_id": 10000001,
+        "status": "ACTIVE",
+        "lifetime": 50,
+        "accession_date": 1743724511000,
+        "trial": false,
+        "plan": {
+          "name": "Plano Anual Teste",
+          "recurrency_period": 360
+        },
+        "product": {
+          "name": "Produto de Automação",
+          "id": 1355458
+        },
+        "offer": {
+          "code": "oferta123"
+        },
+        "last_recurrency": {
+          "number": 1,
+          "request_date": 1743724510000,
+          "status": "PAID",
+          "transaction_number": 1,
+          "billing_type": "SUBSCRIPTION"
+        },
+        "subscriber": {
+          "name": "Maria Santos",
+          "id": 23210334,
+          "email": "maria.santos@example.com"
+        },
+        "date_next_charge": 1775260799000
+      },
+      {
+        "subscriber_code": "SUBOK44N3",
+        "subscription_id": 10000002,
+        "status": "ACTIVE",
+        "lifetime": 50,
+        "accession_date": 1743724528000,
+        "trial": false,
+        "plan": {
+          "name": "Plano Anual Teste",
+          "recurrency_period": 360
+        },
+        "product": {
+          "name": "Produto de Automação",
+          "id": 1355458
+        },
+        "offer": {
+          "code": "oferta123"
+        },
+        "last_recurrency": {
+          "number": 1,
+          "request_date": 1743724527000,
+          "status": "PAID",
+          "transaction_number": 1,
+          "billing_type": "SUBSCRIPTION"
+        },
+        "subscriber": {
+          "name": "Pedro Oliveira",
+          "id": 14259858,
+          "email": "pedro.oliveira@example.com"
+        },
+        "date_next_charge": 1775260799000
+      },
+      {
+        "subscriber_code": "SUBSDOES4",
+        "subscription_id": 10000003,
+        "status": "ACTIVE",
+        "lifetime": 50,
+        "accession_date": 1743724529000,
+        "trial": false,
+        "plan": {
+          "name": "Plano Anual Teste",
+          "recurrency_period": 360
+        },
+        "product": {
+          "name": "Produto de Automação",
+          "id": 1355458
+        },
+        "offer": {
+          "code": "oferta123"
+        },
+        "last_recurrency": {
+          "number": 1,
+          "request_date": 1743724528000,
+          "status": "PAID",
+          "transaction_number": 1,
+          "billing_type": "SUBSCRIPTION"
+        },
+        "subscriber": {
+          "name": "Ana Costa",
+          "id": 900195,
+          "email": "ana.costa@example.com"
+        },
+        "date_next_charge": 1775260799000
+      },
+      {
+        "subscriber_code": "SUBXWRJ75",
+        "subscription_id": 10000004,
+        "status": "ACTIVE",
+        "lifetime": 50,
+        "accession_date": 1743724535000,
+        "trial": false,
+        "plan": {
+          "name": "Plano Anual Teste",
+          "recurrency_period": 360
+        },
+        "product": {
+          "name": "Produto de Automação",
+          "id": 1355458
+        },
+        "offer": {
+          "code": "oferta123"
+        },
+        "last_recurrency": {
+          "number": 1,
+          "request_date": 1743724534000,
+          "status": "PAID",
+          "transaction_number": 1,
+          "billing_type": "SUBSCRIPTION"
+        },
+        "subscriber": {
+          "name": "Carlos Ferreira",
+          "id": 18162386,
+          "email": "carlos.ferreira@example.com"
+        },
+        "date_next_charge": 1775260799000
+      },
+      {
+        "subscriber_code": "SUBPF13H6",
+        "subscription_id": 10000005,
+        "status": "ACTIVE",
+        "lifetime": 50,
+        "accession_date": 1743724535000,
+        "trial": false,
+        "plan": {
+          "name": "Plano Anual Teste",
+          "recurrency_period": 360
+        },
+        "product": {
+          "name": "Produto de Automação",
+          "id": 1355458
+        },
+        "offer": {
+          "code": "oferta123"
+        },
+        "last_recurrency": {
+          "number": 1,
+          "request_date": 1743724534000,
+          "status": "PAID",
+          "transaction_number": 1,
+          "billing_type": "SUBSCRIPTION"
+        },
+        "subscriber": {
+          "name": "Juliana Lima",
+          "id": 95494776,
+          "email": "juliana.lima@example.com"
+        },
+        "date_next_charge": 1775260799000
+      },
+      {
+        "subscriber_code": "SUB5A8ND7",
+        "subscription_id": 10000006,
+        "status": "ACTIVE",
+        "lifetime": 50,
+        "accession_date": 1743724535000,
+        "trial": false,
+        "plan": {
+          "name": "Plano Anual Teste",
+          "recurrency_period": 360
+        },
+        "product": {
+          "name": "Produto de Automação",
+          "id": 1355458
+        },
+        "offer": {
+          "code": "oferta123"
+        },
+        "last_recurrency": {
+          "number": 1,
+          "request_date": 1743724528000,
+          "status": "PAID",
+          "transaction_number": 1,
+          "billing_type": "SUBSCRIPTION"
+        },
+        "subscriber": {
+          "name": "Roberto Almeida",
+          "id": 37344381,
+          "email": "roberto.almeida@example.com"
+        },
+        "date_next_charge": 1775260799000
+      },
+      {
+        "subscriber_code": "SUBYW08O8",
+        "subscription_id": 10000007,
+        "status": "ACTIVE",
+        "lifetime": 50,
+        "accession_date": 1743724536000,
+        "trial": false,
+        "plan": {
+          "name": "Plano Anual Teste",
+          "recurrency_period": 360
+        },
+        "product": {
+          "name": "Produto de Automação",
+          "id": 1355458
+        },
+        "offer": {
+          "code": "oferta123"
+        },
+        "last_recurrency": {
+          "number": 1,
+          "request_date": 1743724532000,
+          "status": "PAID",
+          "transaction_number": 1,
+          "billing_type": "SUBSCRIPTION"
+        },
+        "subscriber": {
+          "name": "Fernanda Souza",
+          "id": 1850087,
+          "email": "fernanda.souza@example.com"
+        },
+        "date_next_charge": 1775260799000
+      },
+      {
+        "subscriber_code": "SUB0YUVD9",
+        "subscription_id": 10000008,
+        "status": "ACTIVE",
+        "lifetime": 50,
+        "accession_date": 1743724537000,
+        "trial": false,
+        "plan": {
+          "name": "Plano Anual Teste",
+          "recurrency_period": 360
+        },
+        "product": {
+          "name": "Produto de Automação",
+          "id": 1355458
+        },
+        "offer": {
+          "code": "oferta123"
+        },
+        "last_recurrency": {
+          "number": 1,
+          "request_date": 1743724532000,
+          "status": "PAID",
+          "transaction_number": 1,
+          "billing_type": "SUBSCRIPTION"
+        },
+        "subscriber": {
+          "name": "Lucas Pereira",
+          "id": 32345258,
+          "email": "lucas.pereira@example.com"
+        },
+        "date_next_charge": 1775260799000
+      },
+      {
+        "subscriber_code": "SUBE5J070",
+        "subscription_id": 10000009,
+        "status": "ACTIVE",
+        "lifetime": 50,
+        "accession_date": 1743724538000,
+        "trial": false,
+        "plan": {
+          "name": "Plano Anual Teste",
+          "recurrency_period": 360
+        },
+        "product": {
+          "name": "Produto de Automação",
+          "id": 1355458
+        },
+        "offer": {
+          "code": "oferta123"
+        },
+        "last_recurrency": {
+          "number": 1,
+          "request_date": 1743724536000,
+          "status": "PAID",
+          "transaction_number": 1,
+          "billing_type": "SUBSCRIPTION"
+        },
+        "subscriber": {
+          "name": "Beatriz Rodrigues",
+          "id": 383211,
+          "email": "beatriz.rodrigues@example.com"
+        },
+        "date_next_charge": 1775260799000
+      }
+    ]
+  }
+}

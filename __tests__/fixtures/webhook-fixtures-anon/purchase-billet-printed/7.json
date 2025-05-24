@@ -1,0 +1,90 @@
+{
+  "data": {
+    "product": {
+      "support_email": "user_d9ed2356@example.br",
+      "has_co_production": false,
+      "name": "Julia Santos",
+      "id": 1355458,
+      "ucode": "ucode_4038161c"
+    },
+    "commissions": [
+      {
+        "currency_value": "BRL",
+        "source": "MARKETPLACE",
+        "value": 74.78
+      },
+      {
+        "currency_value": "BRL",
+        "source": "PRODUCER",
+        "value": 922.22
+      }
+    ],
+    "purchase": {
+      "original_offer_price": {
+        "currency_value": "BRL",
+        "value": 997
+      },
+      "recurrence_number": 2,
+      "subscription_anticipation_purchase": "192.168.97.20",
+      "checkout_country": {
+        "iso": "BR",
+        "name": "Ana Oliveira"
+      },
+      "order_bump": {
+        "is_order_bump": false
+      },
+      "offer": {
+        "code": "ffwqvtyv"
+      },
+      "is_funnel": false,
+      "order_date": 1746018736000,
+      "date_next_charge": 1777550400000,
+      "price": {
+        "currency_value": "BRL",
+        "value": 997
+      },
+      "payment": {
+        "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=681221b082c209cb54a45004efd4c67cd362cbdecd7162f3",
+        "pix_expiration_date": 1746191537000,
+        "installments_number": 1,
+        "type": "PIX",
+        "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/137BAAB88E49589CE136B885B9294FC85204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***63045BAE"
+      },
+      "full_price": {
+        "currency_value": "BRL",
+        "value": 997
+      },
+      "business_model": "I",
+      "invoice_by": "HOTMART",
+      "transaction": "HP1914262177",
+      "status": "BILLET_PRINTED"
+    },
+    "affiliates": [
+      {
+        "affiliate_code": "",
+        "name": "Pedro Rodrigues"
+      }
+    ],
+    "producer": {
+      "legal_nature": "Pessoa Jurídica",
+      "document": "73c.0c2.875-9c",
+      "name": "João Lima"
+    },
+    "subscription": "192.168.4.57",
+    "buyer": {
+      "checkout_phone_code": "+55 11 94ab8-4ed8",
+      "address": "192.168.4.57",
+      "document": "232.0fd.cf5-11",
+      "name": "Ana Santos",
+      "last_name": "Maria Silva",
+      "checkout_phone": "+55 11 9762f-d253",
+      "first_name": "Maria Souza",
+      "email": "user_349332bd@example.com",
+      "document_type": "1e6.d33.a10-0d"
+    }
+  },
+  "id": "5ea7d4a9-ffef-472f-90cf-340d302be82a",
+  "creation_date": 1746018832538,
+  "event": "PURCHASE_BILLET_PRINTED",
+  "version": "2.0.0"
+}

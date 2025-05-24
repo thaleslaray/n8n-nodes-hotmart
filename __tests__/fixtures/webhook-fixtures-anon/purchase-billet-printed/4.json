@@ -1,0 +1,91 @@
+{
+  "data": {
+    "product": {
+      "support_email": "user_e15e369d@example.br",
+      "has_co_production": false,
+      "name": "Carlos Santos",
+      "is_physical_product": false,
+      "id": 1458881,
+      "ucode": "ucode_867f23aa"
+    },
+    "commissions": [
+      {
+        "currency_value": "BRL",
+        "source": "MARKETPLACE",
+        "value": 74.78
+      },
+      {
+        "currency_value": "BRL",
+        "source": "PRODUCER",
+        "value": 922.22
+      }
+    ],
+    "purchase": {
+      "original_offer_price": {
+        "currency_value": "BRL",
+        "value": 997
+      },
+      "recurrence_number": 4,
+      "subscription_anticipation_purchase": "192.168.97.20",
+      "checkout_country": {
+        "iso": "BR",
+        "name": "Ana Oliveira"
+      },
+      "order_bump": {
+        "is_order_bump": false
+      },
+      "offer": {
+        "code": "zyqtleow"
+      },
+      "is_funnel": false,
+      "order_date": 1746965890000,
+      "date_next_charge": 1778500800000,
+      "price": {
+        "currency_value": "BRL",
+        "value": 997
+      },
+      "payment": {
+        "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=68209581e80ab181589641f634ffb56454d180d3b61db043",
+        "pix_expiration_date": 1747138691000,
+        "installments_number": 1,
+        "type": "PIX",
+        "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/BE8A108C874F9FD9847E9F094508A8E75204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***6304CBFA"
+      },
+      "full_price": {
+        "currency_value": "BRL",
+        "value": 997
+      },
+      "business_model": "I",
+      "invoice_by": "HOTMART",
+      "transaction": "HP1919059765",
+      "status": "BILLET_PRINTED"
+    },
+    "affiliates": [
+      {
+        "affiliate_code": "",
+        "name": "Pedro Rodrigues"
+      }
+    ],
+    "producer": {
+      "legal_nature": "Pessoa Jurídica",
+      "document": "73c.0c2.875-9c",
+      "name": "João Lima"
+    },
+    "subscription": "192.168.4.57",
+    "buyer": {
+      "checkout_phone_code": "+55 11 971c4-e63c",
+      "address": "192.168.4.57",
+      "document": "345.1e6.bbc-63",
+      "name": "João Rodrigues",
+      "last_name": "Carlos Lima",
+      "checkout_phone": "+55 11 931c8-9990",
+      "first_name": "Julia Santos",
+      "email": "user_d65927cb@example.com",
+      "document_type": "e81.58a.87f-64"
+    }
+  },
+  "id": "d748fc0e-33a5-4255-8bf0-e9cb0365f15a",
+  "creation_date": 1746965986308,
+  "event": "PURCHASE_BILLET_PRINTED",
+  "version": "2.0.0"
+}

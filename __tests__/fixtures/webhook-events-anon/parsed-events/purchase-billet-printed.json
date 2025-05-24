@@ -1,0 +1,5146 @@
+[
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 111.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 1385.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 1497
+        },
+        "recurrence_number": 1,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "tdl7nakn",
+          "coupon_code": "Escola de Automação - Comercial Treinamento"
+        },
+        "is_funnel": false,
+        "order_date": 1745952557000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 1497
+        },
+        "payment": {
+          "pix_qrcode": "https://live-us.adyen.com/hpp/generateQRCodeImage.shtml?url=00020101021226900014br.gov.bcb.pix2568pix.adyen.com%2Fpixqrcodelocation%2Fpixloc%2Fv1%2Floc%2FdX4PUvzmQyiFyB1vGFKEPg5204000053039865802BR5902HT6009SAO+PAULO62070503***6304C56F",
+          "pix_expiration_date": 1746125358000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226900014br.gov.bcb.pix2568pix.adyen.com/pixqrcodelocation/pixloc/v1/loc/dX4PUvzmQyiFyB1vGFKEPg5204000053039865802BR5902HT6009SAO PAULO62070503***6304C56F"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 1497
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP0967750879",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 94ab8-4ed8",
+        "address": "192.168.4.57",
+        "document": "e31.719.e7a-8f",
+        "name": "Maria Rodrigues",
+        "last_name": "Julia Rodrigues",
+        "checkout_phone": "+55 11 99344-078a",
+        "first_name": "Julia Oliveira",
+        "email": "user_78903a16@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "7a71f514-c020-4e92-928d-8fabef70b0b9",
+    "creation_date": 1745952563393,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Carlos Lima",
+        "id": 4713431,
+        "ucode": "ucode_7a3ae22f"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 11.91
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 135.5
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 147.41
+        },
+        "recurrence_number": 6,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "e3mkyv25"
+        },
+        "is_funnel": false,
+        "order_date": 1745968241000,
+        "date_next_charge": 1748433600000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 147.41
+        },
+        "payment": {
+          "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=68115c71350a0e9704cc86f4edbfc05b504ac0037326aa37",
+          "pix_expiration_date": 1746141042000,
+          "installments_number": 8,
+          "type": "PIX",
+          "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/6440440EACD87075911CA9DBE150B1285204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***63040A3F"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 147.41
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP1273518985",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 9ce4f-cb2e",
+        "address": "192.168.4.57",
+        "document": "5c6.0a4.7f0-25",
+        "name": "Carlos Rodrigues",
+        "last_name": "João Oliveira",
+        "checkout_phone": "+55 11 95697-8cb3",
+        "first_name": "Ana Oliveira",
+        "email": "user_e9672ca1@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "821aa224-c09c-4f92-a534-d68220142948",
+    "creation_date": 1745968246818,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 74.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 922.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "recurrence_number": 2,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "ffwqvtyv"
+        },
+        "is_funnel": false,
+        "order_date": 1746018736000,
+        "date_next_charge": 1777550400000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "payment": {
+          "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=681221b082c209cb54a45004efd4c67cd362cbdecd7162f3",
+          "pix_expiration_date": 1746191537000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/137BAAB88E49589CE136B885B9294FC85204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***63045BAE"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP1914262177",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 94ab8-4ed8",
+        "address": "192.168.4.57",
+        "document": "232.0fd.cf5-11",
+        "name": "Ana Santos",
+        "last_name": "Maria Silva",
+        "checkout_phone": "+55 11 9762f-d253",
+        "first_name": "Maria Souza",
+        "email": "user_349332bd@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "5ea7d4a9-ffef-472f-90cf-340d302be82a",
+    "creation_date": 1746018832538,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 10.23
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 114.52
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "recurrence_number": 12,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "origin": {
+          "sck": "Desafio5DAutoIA_0524|whatsapp|recuperacao_whatsapp|Recuperacao_Desafio_Vendas_CA|recuperacao_desafio_dia_4_vendas_ca"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "v3gy3sekDRP"
+        },
+        "is_funnel": false,
+        "order_date": 1746019558000,
+        "date_next_charge": 1748692800000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "payment": {
+          "pix_qrcode": "https://live-us.adyen.com/hpp/generateQRCodeImage.shtml?url=00020101021226900014br.gov.bcb.pix2568pix.adyen.com%2Fpixqrcodelocation%2Fpixloc%2Fv1%2Floc%2FaCxNyFksRzySYou-JLZV-Q5204000053039865802BR5902HT6009SAO+PAULO62070503***6304FF14",
+          "pix_expiration_date": 1746192359000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226900014br.gov.bcb.pix2568pix.adyen.com/pixqrcodelocation/pixloc/v1/loc/aCxNyFksRzySYou-JLZV-Q5204000053039865802BR5902HT6009SAO PAULO62070503***6304FF14"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP0007046555",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 93370-0783",
+        "address": "192.168.4.57",
+        "document": "0b6.313.5d1-f0",
+        "name": "Julia Lima",
+        "last_name": "Maria Lima",
+        "checkout_phone": "+55 11 98cf6-1e98",
+        "first_name": "Pedro Silva",
+        "email": "user_c2174f6b@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "de56c809-21fc-4ccd-ae96-fa829f223349",
+    "creation_date": 1746019654038,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Carlos Lima",
+        "id": 4713431,
+        "ucode": "ucode_7a3ae22f"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 17.38
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 203.96
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 221.34
+        },
+        "recurrence_number": 6,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "origin": {
+          "sck": "Instagram_Stories|[BF2024] [VENDAS] [Q] [ENVOLVIMENTO   SEGUIDORES] [C2]|00 - [20-55] [AUTO] [Q] Envolvimento   Seguidores Thales|Paid_MetaAds|THALES_NOV24_RMKTBLACKFRIDAY_05"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "jui0v4dx"
+        },
+        "is_funnel": false,
+        "order_date": 1746048277000,
+        "date_next_charge": 1748347200000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 221.34
+        },
+        "payment": {
+          "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=68129514727fd6ec9e31df03ce40270788d7122172a2de2f",
+          "pix_expiration_date": 1746221077000,
+          "installments_number": 8,
+          "type": "PIX",
+          "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/F20D2155BFDD1431518B0F4368AB28215204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***63046087"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 221.34
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP1363148510",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 94ab8-4ed8",
+        "address": "192.168.4.57",
+        "document": "b51.056.b2c-1a",
+        "name": "Julia Souza",
+        "last_name": "Ana Rodrigues",
+        "checkout_phone": "+55 11 9025b-5995",
+        "first_name": "Maria Silva",
+        "email": "user_fe55a06d@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "7e9b36ca-e501-4c4d-a626-bfda9daea452",
+    "creation_date": 1746048282215,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 0.2
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 0.8
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 1
+        },
+        "recurrence_number": 1,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "origin": {
+          "sck": "renovacao-aluno-ea-tmb-comercial"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "z5jx2334",
+          "coupon_code": "TMB"
+        },
+        "is_funnel": false,
+        "order_date": 1746058557000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 1
+        },
+        "payment": {
+          "pix_qrcode": "https://live-us.adyen.com/hpp/generateQRCodeImage.shtml?url=00020101021226900014br.gov.bcb.pix2568pix.adyen.com%2Fpixqrcodelocation%2Fpixloc%2Fv1%2Floc%2FnU7c5Mc8S4iBm2RpKi_oDA5204000053039865802BR5902HT6009SAO+PAULO62070503***6304F414",
+          "pix_expiration_date": 1746231358000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226900014br.gov.bcb.pix2568pix.adyen.com/pixqrcodelocation/pixloc/v1/loc/nU7c5Mc8S4iBm2RpKi_oDA5204000053039865802BR5902HT6009SAO PAULO62070503***6304F414"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 1
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP0496522132",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 92c2a-e88c",
+        "address": "192.168.4.57",
+        "document": "d60.2cc.ccd-e9",
+        "name": "Maria Souza",
+        "last_name": "Julia Souza",
+        "checkout_phone": "+55 11 99ab0-8e2b",
+        "first_name": "Maria Oliveira",
+        "email": "user_64998dee@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "6d21a310-2fa2-490e-8147-7fb53994e0ac",
+    "creation_date": 1746058562477,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 74.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 922.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "recurrence_number": 2,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "ffwqvtyv"
+        },
+        "is_funnel": false,
+        "order_date": 1746104769000,
+        "date_next_charge": 1777636800000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "payment": {
+          "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=681371c09fb084102587a703c60bdd1cd48cfb747ec2f2e7",
+          "pix_expiration_date": 1746277570000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/C109E6CD0041EFD2CB6BDBC53C2730915204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***6304ED66"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP1312528577",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 9d2ad-16f7",
+        "address": "192.168.4.57",
+        "document": "e45.0ff.f61-fb",
+        "name": "Carlos Santos",
+        "last_name": "João Souza",
+        "checkout_phone": "+55 11 9fc28-8ccc",
+        "first_name": "João Rodrigues",
+        "email": "user_3da427d3@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "0fb9eaa7-777d-4828-84a5-3abc8247b730",
+    "creation_date": 1746104866159,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 74.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 922.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "recurrence_number": 3,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "origin": {
+          "sck": "rec-v"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "vlk6o3mj"
+        },
+        "is_funnel": false,
+        "order_date": 1746112731000,
+        "date_next_charge": 1777377600000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "payment": {
+          "billet_url": "https://hotm.art/bHP0970394859",
+          "billet_barcode": "34191096693696710054089356830003510720000099700",
+          "installments_number": 1,
+          "type": "BILLET"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP0970394859",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 9c150-eeca",
+        "address": "192.168.4.57",
+        "document": "e97.ca3.d38-b9",
+        "name": "Ana Souza",
+        "last_name": "Ana Souza",
+        "checkout_phone": "+55 11 97529-1fd3",
+        "first_name": "João Oliveira",
+        "email": "user_fa639fd4@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "3ca6a5d1-e7ad-41fd-ad49-3910cef2dae2",
+    "creation_date": 1746112738300,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 0.2
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 0.8
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 1
+        },
+        "recurrence_number": 2,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "mp694ztq"
+        },
+        "is_funnel": false,
+        "order_date": 1746190671000,
+        "date_next_charge": 1777723200000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 1
+        },
+        "payment": {
+          "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=6814c14fba47a0945bc798744acf5b716f7810ec0be2251a",
+          "pix_expiration_date": 1746363472000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/B361608F53868AE8D7CCF7A74098AD905204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***6304B3EA"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 1
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP4228138773",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 95a31-91de",
+        "address": "192.168.4.57",
+        "document": "70d.83d.d58-b8",
+        "name": "João Santos",
+        "last_name": "Julia Lima",
+        "checkout_phone": "+55 11 98bcc-f03c",
+        "first_name": "Carlos Santos",
+        "email": "user_b2bd2c04@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "cd411dbe-250c-4555-82d9-d6a7b624dc45",
+    "creation_date": 1746190767783,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 0.2
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 0.8
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 1
+        },
+        "recurrence_number": 2,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "mp694ztq"
+        },
+        "is_funnel": false,
+        "order_date": 1746277208000,
+        "date_next_charge": 1777809600000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 1
+        },
+        "payment": {
+          "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=681613589411271e866ed212c4637eed2225eadf132b208b",
+          "pix_expiration_date": 1746450009000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/F6D636E93CDDCB7E2122B0267241B4EA5204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***63046876"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 1
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP1491153878",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 91591-6076",
+        "address": "192.168.4.57",
+        "document": "8c8.841.db7-f1",
+        "name": "João Santos",
+        "last_name": "Carlos Oliveira",
+        "checkout_phone": "+55 11 9b111-aaf0",
+        "first_name": "João Souza",
+        "email": "user_d236d67d@example.br",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "58117626-f713-47ee-9b49-09da14f1105a",
+    "creation_date": 1746277306175,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 89.36
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 1104.64
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 1194
+        },
+        "recurrence_number": 4,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "origin": {
+          "sck": "bio_ig"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "kdm48q1t"
+        },
+        "is_funnel": false,
+        "order_date": 1746533442000,
+        "date_next_charge": 1778068800000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 1194
+        },
+        "payment": {
+          "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=6819fc427984ad2cc7e182e5682aa96cf9a21d675dd0eebc",
+          "pix_expiration_date": 1746706243000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/710BC9DBA9602B37261C8F8C730752975204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***63048FDE"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 1194
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP0009126830",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 92c2a-e88c",
+        "address": "192.168.4.57",
+        "document": "9e0.f96.d56-f4",
+        "name": "Maria Rodrigues",
+        "last_name": "Carlos Santos",
+        "checkout_phone": "+55 11 97f97-dca3",
+        "first_name": "Carlos Santos",
+        "email": "user_e856a8c8@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "2a5f3fc8-adf4-4ed8-bd0b-1557a88e835f",
+    "creation_date": 1746533448532,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 12.03
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 136.97
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 149
+        },
+        "recurrence_number": 24,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "origin": {
+          "sck": "rec_mes-v"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "u3jyeeqg"
+        },
+        "is_funnel": false,
+        "order_date": 1746564542000,
+        "date_next_charge": 1747310400000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 149
+        },
+        "payment": {
+          "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=681a75be183b9a7d478426504ac8ca6691f5b8491e17b80e",
+          "pix_expiration_date": 1746737343000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/103C142584CBCC9F70292FAC1E67A8A45204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***63043D40"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 149
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP3279185997",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 971c4-e63c",
+        "address": "192.168.4.57",
+        "document": "627.83c.3ac-47",
+        "name": "João Rodrigues",
+        "last_name": "Ana Rodrigues",
+        "checkout_phone": "+55 11 9b1cd-13d6",
+        "first_name": "João Silva",
+        "email": "user_e4b6629d@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "358eca5e-e0a7-4048-b527-3467c82f17b2",
+    "creation_date": 1746564547858,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 74.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 922.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "recurrence_number": 2,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "ffwqvtyv"
+        },
+        "is_funnel": false,
+        "order_date": 1746623227000,
+        "date_next_charge": 1778155200000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "payment": {
+          "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=681b5afb8ecb0c024c822b717fc00b6a5246addff476cd5b",
+          "pix_expiration_date": 1746796028000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/E91D401BAB754862DCD39F31F7C0DA1C5204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***63044843"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP4090206554",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 971c4-e63c",
+        "address": "192.168.4.57",
+        "document": "053.5ce.2e6-56",
+        "name": "Julia Silva",
+        "last_name": "Carlos Silva",
+        "checkout_phone": "+55 11 9a7e8-2aa3",
+        "first_name": "Julia Rodrigues",
+        "email": "user_f0273d14@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "06183b55-5aec-4165-aa9c-c6d0ca3374c0",
+    "creation_date": 1746623323520,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 10.23
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 114.52
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "recurrence_number": 11,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "origin": {
+          "src": "thalita",
+          "sck": "thalita"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "v3gy3sekDRP"
+        },
+        "is_funnel": false,
+        "order_date": 1746708976000,
+        "date_next_charge": 1747224000000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "payment": {
+          "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=681ca9f0b7fdab9733dd1e65afc7e811eefc1531a7d3d079",
+          "pix_expiration_date": 1746881777000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/1FCBBEF529789AA7FD3FF2172023C7C35204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***63047A7D"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP0437783601",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 94ab8-4ed8",
+        "address": "192.168.4.57",
+        "document": "aee.e84.c93-99",
+        "name": "Ana Rodrigues",
+        "last_name": "João Santos",
+        "checkout_phone": "+55 11 90f9c-226d",
+        "first_name": "Carlos Lima",
+        "email": "user_7f63e725@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "f0127b88-ddbd-4ee7-922c-040713aa1c2f",
+    "creation_date": 1746708983794,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "has_co_production": false,
+        "name": "João Lima",
+        "is_physical_product": false,
+        "id": 5485679,
+        "ucode": "ucode_a07f8f8a"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 1
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 4
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 5
+        },
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "zxed13xo"
+        },
+        "is_funnel": false,
+        "event_tickets": {
+          "amount": 1
+        },
+        "order_date": 1746710297000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 5
+        },
+        "payment": {
+          "pix_qrcode": "https://live-us.adyen.com/hpp/generateQRCodeImage.shtml?url=00020101021226900014br.gov.bcb.pix2568pix.adyen.com%2Fpixqrcodelocation%2Fpixloc%2Fv1%2Floc%2FAKHof5TsRRiQOxDoeusGVQ5204000053039865802BR5902HT6009SAO+PAULO62070503***6304D18D",
+          "pix_expiration_date": 1746883097000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226900014br.gov.bcb.pix2568pix.adyen.com/pixqrcodelocation/pixloc/v1/loc/AKHof5TsRRiQOxDoeusGVQ5204000053039865802BR5902HT6009SAO PAULO62070503***6304D18D"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 5
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP1110724751",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "buyer": {
+        "address": "192.168.4.57",
+        "document": "Pedro Rodrigues",
+        "name": "Carlos Silva",
+        "last_name": "Maria Souza",
+        "first_name": "Ana Santos",
+        "email": "user_38204322@example.br",
+        "document_type": "Pedro Rodrigues"
+      }
+    },
+    "id": "ee81a2e6-6d82-44f7-a7b9-d1715b13016f",
+    "creation_date": 1746710306413,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 10.23
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 114.52
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "recurrence_number": 14,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "origin": {
+          "src": "morramulo",
+          "sck": "morramulo"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "v3gy3sekDRP"
+        },
+        "is_funnel": false,
+        "order_date": 1746714055000,
+        "date_next_charge": 1747396800000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "payment": {
+          "billet_url": "https://hotm.art/bHP4142808240",
+          "billet_barcode": "34191096694240187054089356830003510790000012475",
+          "installments_number": 1,
+          "type": "BILLET"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP4142808240",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 971c4-e63c",
+        "address": "192.168.4.57",
+        "document": "15f.dee.8fc-32",
+        "name": "Julia Oliveira",
+        "last_name": "Pedro Souza",
+        "checkout_phone": "+55 11 98f4b-892d",
+        "first_name": "Ana Souza",
+        "email": "user_7e7436af@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "0a5870c2-5a31-4eef-8212-3094ac54e08f",
+    "creation_date": 1746714062410,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 10.23
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 114.52
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "recurrence_number": 14,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "origin": {
+          "src": "thalita",
+          "sck": "thalita"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "v3gy3sekDRP"
+        },
+        "is_funnel": false,
+        "order_date": 1746736993000,
+        "date_next_charge": 1747656000000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "payment": {
+          "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=681d1761a870bd5d671b3422a124ffd95629e37bb08ee204",
+          "pix_expiration_date": 1746909793000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/B9C7F99C4586E7164F1AAB4AA44FF3E65204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***630402A9"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP3406196342",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 92c2a-e88c",
+        "address": "192.168.4.57",
+        "document": "e65.df1.ff4-e3",
+        "name": "Ana Lima",
+        "last_name": "Maria Oliveira",
+        "checkout_phone": "+55 11 97361-2f9b",
+        "first_name": "João Silva",
+        "email": "user_f8884adc@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "c5343b8c-c2e8-41d9-9018-c904c39f2824",
+    "creation_date": 1746736999357,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_88515ff5@example.br",
+        "has_co_production": false,
+        "name": "Maria Silva",
+        "is_physical_product": false,
+        "id": 5036092,
+        "ucode": "ucode_fe5a6cdf"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 75
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 925
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 1000
+        },
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "1hqvzauq"
+        },
+        "is_funnel": false,
+        "order_date": 1746829197000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 1000
+        },
+        "payment": {
+          "pix_qrcode": "https://live-us.adyen.com/hpp/generateQRCodeImage.shtml?url=00020101021226900014br.gov.bcb.pix2568pix.adyen.com%2Fpixqrcodelocation%2Fpixloc%2Fv1%2Floc%2F7gVt5i92S26Ehc0wwjOzZw5204000053039865802BR5902HT6009SAO+PAULO62070503***6304541E",
+          "pix_expiration_date": 1747001998000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226900014br.gov.bcb.pix2568pix.adyen.com/pixqrcodelocation/pixloc/v1/loc/7gVt5i92S26Ehc0wwjOzZw5204000053039865802BR5902HT6009SAO PAULO62070503***6304541E"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 1000
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP2978616076",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "buyer": {
+        "checkout_phone_code": "+55 11 910c4-8364",
+        "address": "192.168.4.57",
+        "document": "2cb.7bf.de2-24",
+        "name": "Ana Lima",
+        "last_name": "Maria Souza",
+        "checkout_phone": "+55 11 958b4-d402",
+        "first_name": "Julia Souza",
+        "email": "user_4c3a9dad@example.br",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "69088b22-8658-445f-918b-8db1a4df25f8",
+    "creation_date": 1746829202737,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 74.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 922.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "recurrence_number": 2,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "ffwqvtyv"
+        },
+        "is_funnel": false,
+        "order_date": 1746883359000,
+        "date_next_charge": 1778414400000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "payment": {
+          "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=681f531fc6254dd4bf3d3f85565162683dc477963c8fa81c",
+          "pix_expiration_date": 1747056160000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/2CBE10AC639F9A0253FA1005190BFE965204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***63047473"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP3251588580",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 9dba1-817f",
+        "address": "192.168.4.57",
+        "document": "a9b.0da.57e-9a",
+        "name": "Maria Souza",
+        "last_name": "João Rodrigues",
+        "checkout_phone": "+55 11 954c5-5d6a",
+        "first_name": "Ana Souza",
+        "email": "user_3f1dfd6c@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "f1c8051a-7434-4a53-b578-7ed6e2254222",
+    "creation_date": 1746883365320,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 79.11
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 976.43
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 1055.54
+        },
+        "recurrence_number": 2,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "ffwqvtyv"
+        },
+        "is_funnel": false,
+        "order_date": 1746917552000,
+        "date_next_charge": 1778155200000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 1055.54
+        },
+        "payment": {
+          "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=681fd8b07c6ef256631983aa8ffd0c2b06f9ba8e78db8f1e",
+          "pix_expiration_date": 1747090352000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/9D6D8B264416FAA8B2227D9656DF92A35204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***630469A0"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 1055.54
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP2368538425",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 906b9-24cb",
+        "address": "192.168.4.57",
+        "document": "0c8.e16.0f3-93",
+        "name": "Pedro Rodrigues",
+        "last_name": "Pedro Souza",
+        "checkout_phone": "+55 11 9f9cd-b96b",
+        "first_name": "Pedro Silva",
+        "email": "user_4a51254d@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "2a417b29-fb72-4d52-bbb1-a8915b6975f6",
+    "creation_date": 1746917557314,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_e15e369d@example.br",
+        "has_co_production": false,
+        "name": "Carlos Santos",
+        "is_physical_product": false,
+        "id": 1458881,
+        "ucode": "ucode_867f23aa"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 74.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 922.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "recurrence_number": 4,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "zyqtleow"
+        },
+        "is_funnel": false,
+        "order_date": 1746965890000,
+        "date_next_charge": 1778500800000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "payment": {
+          "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=68209581e80ab181589641f634ffb56454d180d3b61db043",
+          "pix_expiration_date": 1747138691000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/BE8A108C874F9FD9847E9F094508A8E75204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***6304CBFA"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP1919059765",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 971c4-e63c",
+        "address": "192.168.4.57",
+        "document": "345.1e6.bbc-63",
+        "name": "João Rodrigues",
+        "last_name": "Carlos Lima",
+        "checkout_phone": "+55 11 931c8-9990",
+        "first_name": "Julia Santos",
+        "email": "user_d65927cb@example.com",
+        "document_type": "e81.58a.87f-64"
+      }
+    },
+    "id": "d748fc0e-33a5-4255-8bf0-e9cb0365f15a",
+    "creation_date": 1746965986308,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 74.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 922.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "recurrence_number": 2,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "ffwqvtyv"
+        },
+        "is_funnel": false,
+        "order_date": 1746971111000,
+        "date_next_charge": 1778241600000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "payment": {
+          "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=6820a9e72d8c919be790565712349a7a89c65435075c6320",
+          "pix_expiration_date": 1747143912000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/0ADA968236D8C5258BC6F96798500DE75204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***630493DC"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP1679807246",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 97289-625e",
+        "address": "192.168.4.57",
+        "document": "42e.29f.d5f-39",
+        "name": "Julia Oliveira",
+        "last_name": "Pedro Rodrigues",
+        "checkout_phone": "+55 11 9a4f5-d5c1",
+        "first_name": "Maria Lima",
+        "email": "user_93b079db@example.br",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "0db3aea6-5763-4fa6-b819-453c15848ea8",
+    "creation_date": 1746971117286,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 111.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 1385.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 1497
+        },
+        "recurrence_number": 8,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "origin": {
+          "sck": "HOTMART_PRODUCT_PAGE"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "u3jyeeqg"
+        },
+        "is_funnel": false,
+        "order_date": 1746971638000,
+        "date_next_charge": 1749643200000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 1497
+        },
+        "payment": {
+          "billet_url": "https://hotm.art/bHP3413870538",
+          "billet_barcode": "34191096694475858054089356830003510800000149700",
+          "installments_number": 1,
+          "type": "BILLET"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 1497
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP3413870538",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 98714-b362",
+        "address": "192.168.4.57",
+        "document": "251.d3c.c9b-f7",
+        "name": "Carlos Santos",
+        "last_name": "Julia Santos",
+        "checkout_phone": "+55 11 954d4-e12e",
+        "first_name": "Pedro Souza",
+        "email": "user_2b3035c2@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "7f311d88-4c92-41f5-b088-b0ec30569e1a",
+    "creation_date": 1746971645173,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 74.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 922.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "recurrence_number": 1,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "origin": {
+          "sck": "renovacao-aluno-ea-comercial"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "ffwqvtyv"
+        },
+        "is_funnel": false,
+        "order_date": 1746974319000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "payment": {
+          "pix_qrcode": "https://live-us.adyen.com/hpp/generateQRCodeImage.shtml?url=00020101021226900014br.gov.bcb.pix2568pix.adyen.com%2Fpixqrcodelocation%2Fpixloc%2Fv1%2Floc%2Fbl1uEujpSUCYRkHTE4bGGw5204000053039865802BR5902HT6009SAO+PAULO62070503***630450DB",
+          "pix_expiration_date": 1747147119000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226900014br.gov.bcb.pix2568pix.adyen.com/pixqrcodelocation/pixloc/v1/loc/bl1uEujpSUCYRkHTE4bGGw5204000053039865802BR5902HT6009SAO PAULO62070503***630450DB"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP1132324885",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 971c4-e63c",
+        "address": "192.168.4.57",
+        "document": "a8c.d2f.b34-b4",
+        "name": "Ana Oliveira",
+        "last_name": "Maria Lima",
+        "checkout_phone": "+55 11 9dfd5-c2db",
+        "first_name": "Maria Souza",
+        "email": "user_d0d3d00b@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "2d61f89c-f4eb-4edc-816a-bb18094f2ba1",
+    "creation_date": 1746974324748,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 74.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 922.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "recurrence_number": 4,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "origin": {
+          "sck": "pag-vendas-fluxo-perpetuo"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "kdm48q1t"
+        },
+        "is_funnel": false,
+        "order_date": 1747138704000,
+        "date_next_charge": 1778673600000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "payment": {
+          "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=68233890ab2266a0587417a3552c12b833862e67182c9bf2",
+          "pix_expiration_date": 1747311505000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/C342168324417B6BB73274422B1957D55204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***6304E45C"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP0326550130",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 98714-b362",
+        "address": "192.168.4.57",
+        "document": "a8f.5c3.c74-1c",
+        "name": "Maria Santos",
+        "last_name": "João Rodrigues",
+        "checkout_phone": "+55 11 93454-7c6c",
+        "first_name": "Maria Oliveira",
+        "email": "user_5c0966fb@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "d0f1a2ae-b876-467f-9177-327869a3dbfa",
+    "creation_date": 1747138800991,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 74.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 922.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "recurrence_number": 2,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "ffwqvtyv"
+        },
+        "is_funnel": false,
+        "order_date": 1747141517000,
+        "date_next_charge": 1778673600000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "payment": {
+          "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=6823438ca37f97d5c6c5c725c2359b5bd8244b9f9ca62dbb",
+          "pix_expiration_date": 1747314318000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/0E30EFF786A7B9B76B5B10D776B18FAB5204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***63049CA1"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP2753976913",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 94057-dd0c",
+        "address": "192.168.4.57",
+        "document": "6aa.7c0.3de-24",
+        "name": "Julia Oliveira",
+        "last_name": "Maria Rodrigues",
+        "checkout_phone": "+55 11 90860-be02",
+        "first_name": "João Silva",
+        "email": "user_51774d57@example.com",
+        "document_type": "e81.58a.87f-64"
+      }
+    },
+    "id": "5513c308-c18c-461a-9265-8b801a318356",
+    "creation_date": 1747141613283,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 74.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 922.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "recurrence_number": 2,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "ffwqvtyv"
+        },
+        "is_funnel": false,
+        "order_date": 1747141829000,
+        "date_next_charge": 1778673600000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "payment": {
+          "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=682344c5b2d4512587d89082f4f361550d06d44fb4b70c76",
+          "pix_expiration_date": 1747314630000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/8B7A9B28349DB31152488929CA0DC1F75204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***63045D0B"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP3654674088",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 9db13-793d",
+        "address": "192.168.4.57",
+        "document": "c58.ef5.aad-80",
+        "name": "Maria Rodrigues",
+        "last_name": "Julia Silva",
+        "checkout_phone": "+55 11 97748-a14b",
+        "first_name": "Pedro Lima",
+        "email": "user_5a45fb19@example.br",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "d957cca6-c5c0-4f98-a78c-135cbfbb6fa1",
+    "creation_date": 1747141926955,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 0.2
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 0.8
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 1
+        },
+        "recurrence_number": 5,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "acfcdqzo"
+        },
+        "is_funnel": false,
+        "order_date": 1747146870000,
+        "date_next_charge": 1749816000000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 1
+        },
+        "payment": {
+          "pix_qrcode": "https://live-us.adyen.com/hpp/generateQRCodeImage.shtml?url=00020101021226900014br.gov.bcb.pix2568pix.adyen.com%2Fpixqrcodelocation%2Fpixloc%2Fv1%2Floc%2FaN8lzzmeSDiMdPUHErGhrQ5204000053039865802BR5902HT6009SAO+PAULO62070503***63045A03",
+          "pix_expiration_date": 1747319670000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226900014br.gov.bcb.pix2568pix.adyen.com/pixqrcodelocation/pixloc/v1/loc/aN8lzzmeSDiMdPUHErGhrQ5204000053039865802BR5902HT6009SAO PAULO62070503***63045A03"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 1
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP3859992083",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 9fa11-b22d",
+        "address": "192.168.4.57",
+        "document": "a19.e7a.3e5-78",
+        "name": "Ana Rodrigues",
+        "last_name": "Maria Silva",
+        "checkout_phone": "+55 11 95179-6558",
+        "first_name": "Julia Souza",
+        "email": "user_64c769fb@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "f648e9c5-5a20-47c4-b4f7-d1a896603c55",
+    "creation_date": 1747146965778,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 80.59
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 994.97
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 1075.56
+        },
+        "recurrence_number": 2,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "ffwqvtyv"
+        },
+        "is_funnel": false,
+        "order_date": 1747153256000,
+        "date_next_charge": 1778414400000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 1075.56
+        },
+        "payment": {
+          "billet_url": "https://hotm.art/bHP0782816353",
+          "billet_barcode": "34191096694671738054089356830003110820000107556",
+          "installments_number": 1,
+          "type": "BILLET"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 1075.56
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP0782816353",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 94ab8-4ed8",
+        "address": "192.168.4.57",
+        "document": "eeb.66f.eb2-d7",
+        "name": "Pedro Oliveira",
+        "last_name": "Carlos Silva",
+        "checkout_phone": "+55 11 914a8-c648",
+        "first_name": "Carlos Santos",
+        "email": "user_9f692083@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "8ea459b0-b6bf-4a70-b313-87d0d06238b3",
+    "creation_date": 1747153264763,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 74.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 922.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "recurrence_number": 2,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "ffwqvtyv"
+        },
+        "is_funnel": false,
+        "order_date": 1747228795000,
+        "date_next_charge": 1778760000000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "payment": {
+          "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=6824987b13cd3547d8d3d6ac140f0ca4744236447a280cf7",
+          "pix_expiration_date": 1747401596000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/B6B09469CB388EE21DB125D46EB2D3B35204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***6304AA33"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP1490444556",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 92c2a-e88c",
+        "address": "192.168.4.57",
+        "document": "83f.0c8.1e1-0a",
+        "name": "Carlos Oliveira",
+        "last_name": "Julia Lima",
+        "checkout_phone": "+55 11 9f33e-f467",
+        "first_name": "Carlos Lima",
+        "email": "user_74dedac7@example.br",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "84f0860e-4ed8-4165-9cb2-8a6c08d07611",
+    "creation_date": 1747228893358,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 7.24
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 77.14
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 84.38
+        },
+        "recurrence_number": 18,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "origin": {
+          "sck": "rec-v"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "grdnyfeh"
+        },
+        "is_funnel": false,
+        "order_date": 1747231242000,
+        "date_next_charge": 1748174400000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 84.38
+        },
+        "payment": {
+          "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=6824a20a5b8f66182c6f19df73f5ac830ca245f3940667d7",
+          "pix_expiration_date": 1747404043000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/16E42D5C8F4E3F6B787FECBCEBE8CAA55204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***6304E6E3"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 84.38
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP0386046647",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 9db13-793d",
+        "address": "192.168.4.57",
+        "document": "55c.163.517-9a",
+        "name": "João Lima",
+        "last_name": "Ana Souza",
+        "checkout_phone": "+55 11 9d783-c19b",
+        "first_name": "Ana Oliveira",
+        "email": "user_262e40ae@example.br",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "f059e2ac-4381-4349-b005-426ac35c0230",
+    "creation_date": 1747231248652,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 10.23
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 114.52
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "recurrence_number": 12,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "origin": {
+          "src": "thalita",
+          "sck": "thalita"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "v3gy3sekDRP"
+        },
+        "is_funnel": false,
+        "order_date": 1747235717000,
+        "date_next_charge": 1748174400000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "payment": {
+          "billet_url": "https://hotm.art/bHP3500665614",
+          "billet_barcode": "34191096694746027054089356830003110830000012475",
+          "installments_number": 1,
+          "type": "BILLET"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP3500665614",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 9c150-eeca",
+        "address": "192.168.4.57",
+        "document": "0b4.e3d.f34-88",
+        "name": "Ana Silva",
+        "last_name": "Julia Rodrigues",
+        "checkout_phone": "+55 11 9841c-4589",
+        "first_name": "Ana Santos",
+        "email": "user_1700a2fa@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "90ea9e72-f880-4947-b0ee-e42ffe72cc9d",
+    "creation_date": 1747235723557,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 10.23
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 114.52
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "recurrence_number": 12,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "v3gy3sekDRP"
+        },
+        "is_funnel": false,
+        "order_date": 1747237685000,
+        "date_next_charge": 1747915200000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "payment": {
+          "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=6824bb355d38a1cc26f2a4a31e7f763661aa6f9b9a273bda",
+          "pix_expiration_date": 1747410486000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/36E6654025AD3DD66683E0D27F624EA75204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***6304561A"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP1962070087",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 9f387-4eac",
+        "address": "192.168.4.57",
+        "document": "881.563.f19-cc",
+        "name": "Carlos Oliveira",
+        "last_name": "Pedro Souza",
+        "checkout_phone": "+55 11 94912-2b3a",
+        "first_name": "João Souza",
+        "email": "user_a5829e6c@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "bd9a1bdf-e9de-4ddd-a2f7-036cc967b9aa",
+    "creation_date": 1747237693452,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 10.23
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 114.52
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "recurrence_number": 12,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "origin": {
+          "src": "thalita",
+          "sck": "thalita"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "v3gy3sekDRP"
+        },
+        "is_funnel": false,
+        "order_date": 1747247246000,
+        "date_next_charge": 1748088000000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "payment": {
+          "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=6824e08e148463e746f745c20f085f97ccba660fc4a5ccb6",
+          "pix_expiration_date": 1747420047000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/D62C93190D9EE121BDE08A557DED2C535204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***6304CCFE"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP3213704755",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 971c4-e63c",
+        "address": "192.168.4.57",
+        "document": "3ab.8dc.e07-e6",
+        "name": "Pedro Rodrigues",
+        "last_name": "Maria Silva",
+        "checkout_phone": "+55 11 91bc9-be32",
+        "first_name": "Maria Santos",
+        "email": "user_343888cc@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "8138f5b8-8a7e-4c72-b12e-141e4c134a90",
+    "creation_date": 1747247251707,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 10.23
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 114.52
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "recurrence_number": 12,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "v3gy3sekDRP"
+        },
+        "is_funnel": false,
+        "order_date": 1747247597000,
+        "date_next_charge": 1748088000000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "payment": {
+          "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=6824e1ed0bf63784c3af188274034ebb22b40dce25613fed",
+          "pix_expiration_date": 1747420397000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/1021C0E9FE1484E29046FC766AB53B215204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***6304C73E"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP4047840371",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 94ab8-4ed8",
+        "address": "192.168.4.57",
+        "document": "f41.6fd.08e-7c",
+        "name": "Ana Rodrigues",
+        "last_name": "Carlos Souza",
+        "checkout_phone": "+55 11 99a4a-849b",
+        "first_name": "Carlos Lima",
+        "email": "user_9b93da51@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "05566cda-8b31-4e01-ad87-46565f17c25d",
+    "creation_date": 1747247603173,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 10.23
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 114.52
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "recurrence_number": 14,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "v3gy3sekDRP"
+        },
+        "is_funnel": false,
+        "order_date": 1747249109000,
+        "date_next_charge": 1747915200000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "payment": {
+          "billet_url": "https://hotm.art/bHP3282036818",
+          "billet_barcode": "34191096694769326054089356830003110830000012475",
+          "installments_number": 1,
+          "type": "BILLET"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP3282036818",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 9f7c1-e1ad",
+        "address": "192.168.4.57",
+        "document": "30e.8fd.4c6-30",
+        "name": "Ana Santos",
+        "last_name": "Maria Lima",
+        "checkout_phone": "+55 11 9ad88-08d5",
+        "first_name": "Pedro Souza",
+        "email": "user_c8840c4a@example.br",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "2ec2f01a-86c5-4057-acf2-c14d239063ab",
+    "creation_date": 1747249115930,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 13.32
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 153.1
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 166.42
+        },
+        "recurrence_number": 9,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "v3gy3sekDRP"
+        },
+        "is_funnel": false,
+        "order_date": 1747249580000,
+        "date_next_charge": 1748260800000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 166.42
+        },
+        "payment": {
+          "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=6824e9ab4e3abf4aadf118f4e2e3fdaf75c0e17e571c6d23",
+          "pix_expiration_date": 1747422380000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/31626771869D2DBB7D5390EEC0A52AE65204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***6304F6B1"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 166.42
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP3603686898",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 96e8a-ae9b",
+        "address": "192.168.4.57",
+        "document": "adc.0c5.84b-77",
+        "name": "João Souza",
+        "last_name": "Pedro Oliveira",
+        "checkout_phone": "+55 11 98147-10d7",
+        "first_name": "Julia Rodrigues",
+        "email": "user_33ea7957@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "a23388ff-c42f-42e8-b353-dc313ec42796",
+    "creation_date": 1747249585609,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 134
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 1663.3
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 1797.3
+        },
+        "recurrence_number": 1,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "yyvhuues",
+          "coupon_code": "CUPOM ESPECIAL - 1997 COMERCIAL"
+        },
+        "is_funnel": false,
+        "order_date": 1747250505000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 1797.3
+        },
+        "payment": {
+          "pix_qrcode": "https://live-us.adyen.com/hpp/generateQRCodeImage.shtml?url=00020101021226900014br.gov.bcb.pix2568pix.adyen.com%2Fpixqrcodelocation%2Fpixloc%2Fv1%2Floc%2FsUleAwe_R0GZp4GEnUzBpw5204000053039865802BR5902HT6009SAO+PAULO62070503***6304198E",
+          "pix_expiration_date": 1747423305000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226900014br.gov.bcb.pix2568pix.adyen.com/pixqrcodelocation/pixloc/v1/loc/sUleAwe_R0GZp4GEnUzBpw5204000053039865802BR5902HT6009SAO PAULO62070503***6304198E"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 1797.3
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP4227764938",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 92482-3d25",
+        "address": "192.168.4.57",
+        "document": "bb6.a74.9de-0e",
+        "name": "Pedro Souza",
+        "last_name": "João Silva",
+        "checkout_phone": "+55 11 98340-a487",
+        "first_name": "João Santos",
+        "email": "user_4a366d35@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "181bf0f7-60b4-4d21-ba3a-5a4e0861c1b2",
+    "creation_date": 1747250510201,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 111.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 1385.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 1497
+        },
+        "recurrence_number": 6,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "u3jyeeqg"
+        },
+        "is_funnel": false,
+        "order_date": 1747252380000,
+        "date_next_charge": 1748174400000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 1497
+        },
+        "payment": {
+          "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=6824f49c984ae4878ae221f7597692b2838f4c6bb7ae7705",
+          "pix_expiration_date": 1747425181000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/B5D5F3166B904FBD15942B81124C94835204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***63043B70"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 1497
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP2723011990",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "address": "192.168.4.57",
+        "document": "f0c.6e4.903-78",
+        "name": "Julia Lima",
+        "last_name": "Carlos Souza",
+        "checkout_phone": "+55 11 92e2d-1470",
+        "first_name": "Ana Souza",
+        "email": "user_2da3b61f@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "8d396d5c-4b3a-48e4-b33f-c8e5e218562a",
+    "creation_date": 1747252387075,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 10.23
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 114.52
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "recurrence_number": 12,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "origin": {
+          "sck": "Desafio5DAutoIA_0524|whatsapp|recuperacao_whatsapp|Recuperacao_Desafio_Vendas_CA|recuperacao_desafio_dia_4_vendas_ca"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "v3gy3sekDRP"
+        },
+        "is_funnel": false,
+        "order_date": 1747252642000,
+        "date_next_charge": 1748347200000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "payment": {
+          "billet_url": "https://hotm.art/bHP2141656402",
+          "billet_barcode": "34191096694766983054089356830003210830000012475",
+          "installments_number": 1,
+          "type": "BILLET"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP2141656402",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 9db13-793d",
+        "address": "192.168.4.57",
+        "document": "fb2.878.84f-7e",
+        "name": "João Rodrigues",
+        "last_name": "Carlos Souza",
+        "checkout_phone": "+55 11 9cf88-e4f6",
+        "first_name": "Maria Silva",
+        "email": "user_7100f84b@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "98313754-63bc-4aa9-897f-1be3ecda372b",
+    "creation_date": 1747252648223,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 10.23
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 114.52
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "recurrence_number": 12,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "origin": {
+          "sck": "Desafio5DAutoIA_0524|whatsapp|recuperacao_whatsapp|Recuperacao_Desafio_Vendas_CA|recuperacao_desafio_dia_4_vendas_ca"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "v3gy3sekDRP"
+        },
+        "is_funnel": false,
+        "order_date": 1747253940000,
+        "date_next_charge": 1748347200000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "payment": {
+          "billet_url": "https://hotm.art/bHP3544850965",
+          "billet_barcode": "34191096694770423054089356830003510830000012475",
+          "installments_number": 1,
+          "type": "BILLET"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP3544850965",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 94aae-0bd7",
+        "address": "192.168.4.57",
+        "document": "048.f5f.c61-d0",
+        "name": "Carlos Santos",
+        "last_name": "Julia Rodrigues",
+        "checkout_phone": "+55 11 9fc80-915a",
+        "first_name": "Carlos Rodrigues",
+        "email": "user_3a347196@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "9ce1ff00-4312-40cc-bec2-182b9586094d",
+    "creation_date": 1747253946510,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 12.03
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 136.97
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 149
+        },
+        "recurrence_number": 25,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "origin": {
+          "sck": "rec_mes-v"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "u3jyeeqg"
+        },
+        "is_funnel": false,
+        "order_date": 1747312502000,
+        "date_next_charge": 1749988800000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 149
+        },
+        "payment": {
+          "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=6825df7618d9520689a1c31634a856b1d759758bde01c29a",
+          "pix_expiration_date": 1747485303000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/49461A2C8BDD364EFA691F08F766FCE05204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***630462F8"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 149
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP0119445187",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 971c4-e63c",
+        "address": "192.168.4.57",
+        "document": "627.83c.3ac-47",
+        "name": "João Rodrigues",
+        "last_name": "Ana Rodrigues",
+        "checkout_phone": "+55 11 9b1cd-13d6",
+        "first_name": "João Silva",
+        "email": "user_e4b6629d@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "703f794f-8cf8-48a9-9e2f-43330a9ae51f",
+    "creation_date": 1747312599449,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 74.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 922.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "recurrence_number": 2,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "ffwqvtyv"
+        },
+        "is_funnel": false,
+        "order_date": 1747314645000,
+        "date_next_charge": 1778846400000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "payment": {
+          "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=6825e7d5696be257a0c68eb92eca0d79cf606b6e2247078d",
+          "pix_expiration_date": 1747487446000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/E6AAA338DF71C7C4D8EE32C9A756DEE35204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***63046518"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP2590333272",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 971c4-e63c",
+        "address": "192.168.4.57",
+        "document": "f98.da2.5ec-24",
+        "name": "Pedro Silva",
+        "last_name": "Ana Lima",
+        "checkout_phone": "+55 11 9ad90-d85b",
+        "first_name": "Pedro Rodrigues",
+        "email": "user_1699258d@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "e8379131-e11e-40fd-8a9d-f702c7238653",
+    "creation_date": 1747314742831,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Carlos Lima",
+        "is_physical_product": false,
+        "id": 4713431,
+        "ucode": "ucode_7a3ae22f"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 8.81
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 96.75
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 105.56
+        },
+        "recurrence_number": 7,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "e3mkyv25"
+        },
+        "is_funnel": false,
+        "order_date": 1747336729000,
+        "date_next_charge": 1749988800000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 105.56
+        },
+        "payment": {
+          "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=68263e18a1d7774abb7c02862200033d01f5bf43273fc9a4",
+          "pix_expiration_date": 1747509529000,
+          "installments_number": 12,
+          "type": "PIX",
+          "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/98A914F8EDA4529DF3AE344ADD2FFA265204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***630468A5"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 105.56
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP0253322480",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 971c4-e63c",
+        "address": "192.168.4.57",
+        "document": "a09.005.fc2-6e",
+        "name": "Maria Souza",
+        "last_name": "João Rodrigues",
+        "checkout_phone": "+55 11 943e5-80d9",
+        "first_name": "Maria Souza",
+        "email": "user_4d90ec7e@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "5d67e879-5d5a-42c4-9650-2fb00fd16aad",
+    "creation_date": 1747336734420,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 0.2
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 0.8
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 1
+        },
+        "recurrence_number": 5,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "acfcdqzo"
+        },
+        "is_funnel": false,
+        "order_date": 1747405515000,
+        "date_next_charge": 1750075200000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 1
+        },
+        "payment": {
+          "pix_qrcode": "https://live-us.adyen.com/hpp/generateQRCodeImage.shtml?url=00020101021226900014br.gov.bcb.pix2568pix.adyen.com%2Fpixqrcodelocation%2Fpixloc%2Fv1%2Floc%2F0fOR9uNdQaeTcQGS6bUxEA5204000053039865802BR5902HT6009SAO+PAULO62070503***6304A2F6",
+          "pix_expiration_date": 1747578316000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226900014br.gov.bcb.pix2568pix.adyen.com/pixqrcodelocation/pixloc/v1/loc/0fOR9uNdQaeTcQGS6bUxEA5204000053039865802BR5902HT6009SAO PAULO62070503***6304A2F6"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 1
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP2646920364",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 9fa11-b22d",
+        "address": "192.168.4.57",
+        "document": "a19.e7a.3e5-78",
+        "name": "Maria Oliveira",
+        "last_name": "Julia Silva",
+        "checkout_phone": "+55 11 90830-eda7",
+        "first_name": "Julia Souza",
+        "email": "user_35ac733a@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "a31aa9bd-7f98-44f5-b633-344261b90ab7",
+    "creation_date": 1747405612360,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_88515ff5@example.br",
+        "has_co_production": false,
+        "name": "Maria Silva",
+        "is_physical_product": false,
+        "id": 5036092,
+        "ucode": "ucode_fe5a6cdf"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 75
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 925
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 1000
+        },
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "1hqvzauq"
+        },
+        "is_funnel": false,
+        "order_date": 1747504321000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 1000
+        },
+        "payment": {
+          "pix_qrcode": "https://live-us.adyen.com/hpp/generateQRCodeImage.shtml?url=00020101021226900014br.gov.bcb.pix2568pix.adyen.com%2Fpixqrcodelocation%2Fpixloc%2Fv1%2Floc%2Fssth7WLlQp6kfj-pt3PgLA5204000053039865802BR5902HT6009SAO+PAULO62070503***6304017E",
+          "pix_expiration_date": 1747677121000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226900014br.gov.bcb.pix2568pix.adyen.com/pixqrcodelocation/pixloc/v1/loc/ssth7WLlQp6kfj-pt3PgLA5204000053039865802BR5902HT6009SAO PAULO62070503***6304017E"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 1000
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP0738010860",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "buyer": {
+        "checkout_phone_code": "+55 11 971c4-e63c",
+        "address": "192.168.4.57",
+        "document": "991.856.dfb-7f",
+        "name": "Pedro Santos",
+        "last_name": "Maria Santos",
+        "checkout_phone": "+55 11 97e7e-2834",
+        "first_name": "Julia Santos",
+        "email": "user_77c6676c@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "01b3a3cd-9c43-4cc1-a4a4-2f9efeffbb16",
+    "creation_date": 1747504325471,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 74.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 922.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "recurrence_number": 3,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "origin": {
+          "sck": "traf-sales-page-vd"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "n2xt6hg3"
+        },
+        "is_funnel": false,
+        "order_date": 1747571022000,
+        "date_next_charge": 1779105600000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "payment": {
+          "billet_url": "https://customer-local-latam.ebanx.com/print/?hash=6829d14d5f98eaaebcad5fdce6e33b5bad91fcff1c4a6ea4",
+          "billet_barcode": "34191096695038374054089356830003610870000099700",
+          "installments_number": 1,
+          "type": "BILLET"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP2082139627",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 9921d-16ea",
+        "address": "192.168.4.57",
+        "document": "5e2.57f.144-c6",
+        "name": "Julia Oliveira",
+        "last_name": "João Rodrigues",
+        "checkout_phone": "+55 11 946c1-127a",
+        "first_name": "Maria Souza",
+        "email": "user_9bf4c212@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "d6633a41-b1ec-4e3c-b852-3e6e2cf72458",
+    "creation_date": 1747571119698,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 74.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 922.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "recurrence_number": 2,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "origin": {
+          "src": "aovivo-280224",
+          "sck": "zoom"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "ffwqvtyv"
+        },
+        "is_funnel": false,
+        "order_date": 1747654401000,
+        "date_next_charge": 1772280000000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "payment": {
+          "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=682b17003d49dabd0ff1d4ca772f0ae91cd6010bf5b67e20",
+          "pix_expiration_date": 1747827201000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/1DBB843CCF2907002165A48DEA8AC6295204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***63045274"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP0843566164",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 90dcf-0766",
+        "address": "192.168.4.57",
+        "document": "cd8.8e2.23e-6e",
+        "name": "Pedro Oliveira",
+        "last_name": "Carlos Lima",
+        "checkout_phone": "+55 11 91d35-9411",
+        "first_name": "Pedro Lima",
+        "email": "user_78d9b7b3@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "26158750-c0d4-4656-bc5e-99e19515f552",
+    "creation_date": 1747654406001,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 111.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 1385.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 1497
+        },
+        "recurrence_number": 1,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "tdl7nakn",
+          "coupon_code": "Escola de Automação - Comercial Treinamento"
+        },
+        "is_funnel": false,
+        "order_date": 1747679220000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 1497
+        },
+        "payment": {
+          "pix_qrcode": "https://live-us.adyen.com/hpp/generateQRCodeImage.shtml?url=00020101021226900014br.gov.bcb.pix2568pix.adyen.com%2Fpixqrcodelocation%2Fpixloc%2Fv1%2Floc%2FB63AX0tMQ6K2rsTEl7JgIg5204000053039865802BR5902HT6009SAO+PAULO62070503***6304FF2E",
+          "pix_expiration_date": 1747852020000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226900014br.gov.bcb.pix2568pix.adyen.com/pixqrcodelocation/pixloc/v1/loc/B63AX0tMQ6K2rsTEl7JgIg5204000053039865802BR5902HT6009SAO PAULO62070503***6304FF2E"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 1497
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP0700422604",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 971c4-e63c",
+        "address": "192.168.4.57",
+        "document": "b1d.5c0.f44-d5",
+        "name": "Carlos Lima",
+        "last_name": "João Santos",
+        "checkout_phone": "+55 11 9ce7a-47ee",
+        "first_name": "Julia Rodrigues",
+        "email": "user_3196b0b1@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "64375374-45b7-4b3b-90a7-b0db5b59c102",
+    "creation_date": 1747679225626,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 148.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 1848.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "recurrence_number": 1,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "origin": {
+          "sck": "HOTMART_SITE"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "31lzvjkn"
+        },
+        "is_funnel": false,
+        "order_date": 1747691200000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "payment": {
+          "pix_qrcode": "https://live-us.adyen.com/hpp/generateQRCodeImage.shtml?url=00020101021226900014br.gov.bcb.pix2568pix.adyen.com%2Fpixqrcodelocation%2Fpixloc%2Fv1%2Floc%2FeeJN3vwnT1y1Ru7-u7u2YQ5204000053039865802BR5902HT6009SAO+PAULO62070503***6304F283",
+          "pix_expiration_date": 1747864000000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226900014br.gov.bcb.pix2568pix.adyen.com/pixqrcodelocation/pixloc/v1/loc/eeJN3vwnT1y1Ru7-u7u2YQ5204000053039865802BR5902HT6009SAO PAULO62070503***6304F283"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 1997
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP1924354828",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 92482-3d25",
+        "address": "192.168.4.57",
+        "document": "00b.9ff.127-a1",
+        "name": "João Rodrigues",
+        "last_name": "Carlos Oliveira",
+        "checkout_phone": "+55 11 9891f-3c92",
+        "first_name": "Pedro Oliveira",
+        "email": "user_46188182@example.br",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "cc783826-9b7a-4826-83cb-9ff52aed46dd",
+    "creation_date": 1747691205440,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_e15e369d@example.br",
+        "has_co_production": false,
+        "name": "Carlos Santos",
+        "is_physical_product": false,
+        "id": 1458881,
+        "ucode": "ucode_867f23aa"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 74.78
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 922.22
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "recurrence_number": 4,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "origin": {
+          "sck": "HOTMART_SITE"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "zyqtleow"
+        },
+        "is_funnel": false,
+        "order_date": 1747743658000,
+        "date_next_charge": 1779278400000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "payment": {
+          "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=682c73aaeadb409b67775e3f28e7583e6f455e0c169cb956",
+          "pix_expiration_date": 1747916459000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/C1DBE99B8ED3F2B3BE412DD5C2AC86655204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***6304D3E6"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 997
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP0712566003",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 971c4-e63c",
+        "address": "192.168.4.57",
+        "document": "373.056.58e-32",
+        "name": "Julia Souza",
+        "last_name": "Maria Santos",
+        "checkout_phone": "+55 11 9a1af-4b13",
+        "first_name": "Pedro Rodrigues",
+        "email": "user_07a4e5f0@example.br",
+        "document_type": "e81.58a.87f-64"
+      }
+    },
+    "id": "5a687ce0-e79b-44a1-bf3e-3b75a80bd52f",
+    "creation_date": 1747743755957,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 10.23
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 114.52
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "recurrence_number": 12,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "origin": {
+          "sck": "Desafio5DAutoIA_0524|whatsapp|recuperacao_whatsapp|Recuperacao_Desafio_Vendas_CA|recuperacao_desafio_dia_4_vendas_ca"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "v3gy3sekDRP"
+        },
+        "is_funnel": false,
+        "order_date": 1747747808000,
+        "date_next_charge": 1750420800000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "payment": {
+          "pix_qrcode": "https://live-us.adyen.com/hpp/generateQRCodeImage.shtml?url=00020101021226900014br.gov.bcb.pix2568pix.adyen.com%2Fpixqrcodelocation%2Fpixloc%2Fv1%2Floc%2F_pBKpmdpRU2jsvnftXEMhg5204000053039865802BR5902HT6009SAO+PAULO62070503***6304393B",
+          "pix_expiration_date": 1747920608000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226900014br.gov.bcb.pix2568pix.adyen.com/pixqrcodelocation/pixloc/v1/loc/_pBKpmdpRU2jsvnftXEMhg5204000053039865802BR5902HT6009SAO PAULO62070503***6304393B"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP1449406119",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 9f7c1-e1ad",
+        "address": "192.168.4.57",
+        "document": "908.914.e1e-ea",
+        "name": "Maria Souza",
+        "last_name": "Julia Oliveira",
+        "checkout_phone": "+55 11 972d5-bd93",
+        "first_name": "Maria Lima",
+        "email": "user_c42cad7f@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "72451db1-0539-4f3c-9643-f64b1a412905",
+    "creation_date": 1747747905260,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 10.23
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 114.52
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "recurrence_number": 13,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "origin": {
+          "src": "closer_igor",
+          "sck": "vendamensal_closer_igor"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "v3gy3sekDRP"
+        },
+        "is_funnel": false,
+        "order_date": 1747750363000,
+        "date_next_charge": 1748433600000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "payment": {
+          "billet_url": "https://hotm.art/bHP2315288714",
+          "billet_barcode": "34191096695219321054089356830003210890000012475",
+          "installments_number": 1,
+          "type": "BILLET"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP2315288714",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 9f7c1-e1ad",
+        "address": "192.168.4.57",
+        "document": "3e8.a6e.bf2-c2",
+        "name": "Pedro Santos",
+        "last_name": "Ana Oliveira",
+        "checkout_phone": "+55 11 9189e-dec7",
+        "first_name": "Ana Rodrigues",
+        "email": "user_9570e64a@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "9adddc97-9a51-47fc-a283-0bebac2c8801",
+    "creation_date": 1747750369936,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 10.23
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 114.52
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "recurrence_number": 15,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "v3gy3sekDRP"
+        },
+        "is_funnel": false,
+        "order_date": 1747759110000,
+        "date_next_charge": 1748779200000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "payment": {
+          "billet_url": "https://hotm.art/bHP3601196159",
+          "billet_barcode": "34191096695245532054089356830003110890000012475",
+          "installments_number": 1,
+          "type": "BILLET"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP3601196159",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 971c4-e63c",
+        "address": "192.168.4.57",
+        "document": "4f9.8e6.5ec-c5",
+        "name": "Maria Lima",
+        "last_name": "Julia Lima",
+        "checkout_phone": "+55 11 943e5-80d9",
+        "first_name": "Carlos Souza",
+        "email": "user_eb2cb70d@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "8bc08426-f6a6-4bc2-93c3-70dc2061b54f",
+    "creation_date": 1747759116990,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 10.23
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 114.52
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "recurrence_number": 15,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "v3gy3sekDRP"
+        },
+        "is_funnel": false,
+        "order_date": 1747770721000,
+        "date_next_charge": 1748865600000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "payment": {
+          "billet_url": "https://hotm.art/bHP2568284925",
+          "billet_barcode": "34191096695255101054089356830003110890000012475",
+          "installments_number": 1,
+          "type": "BILLET"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP2568284925",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "G77432779B",
+          "name": "Maria Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 9c150-eeca",
+        "address": "192.168.4.57",
+        "document": "c62.076.b72-5c",
+        "name": "João Santos",
+        "last_name": "Maria Lima",
+        "checkout_phone": "+55 11 97ed5-50b4",
+        "first_name": "Pedro Rodrigues",
+        "email": "user_b9d97777@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "7cb885b9-f70d-4142-85e9-855bb47adf60",
+    "creation_date": 1747770728883,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  },
+  {
+    "data": {
+      "product": {
+        "support_email": "user_d9ed2356@example.br",
+        "has_co_production": false,
+        "name": "Julia Santos",
+        "is_physical_product": false,
+        "id": 1355458,
+        "ucode": "ucode_4038161c"
+      },
+      "commissions": [
+        {
+          "currency_value": "BRL",
+          "source": "MARKETPLACE",
+          "value": 10.23
+        },
+        {
+          "currency_value": "BRL",
+          "source": "PRODUCER",
+          "value": 114.52
+        }
+      ],
+      "purchase": {
+        "original_offer_price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "recurrence_number": 12,
+        "subscription_anticipation_purchase": "192.168.97.20",
+        "checkout_country": {
+          "iso": "BR",
+          "name": "Ana Oliveira"
+        },
+        "origin": {
+          "sck": "Desafio5DAutoIA_0524|whatsapp|recuperacao_whatsapp|Recuperacao_Desafio_Vendas_CA|recuperacao_desafio_dia_4_vendas_ca"
+        },
+        "order_bump": {
+          "is_order_bump": false
+        },
+        "offer": {
+          "code": "v3gy3sekDRP"
+        },
+        "is_funnel": false,
+        "order_date": 1747774005000,
+        "date_next_charge": 1748779200000,
+        "price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "payment": {
+          "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=682cea359d62bd2d731e6cea6a44172b78bdd408173efba1",
+          "pix_expiration_date": 1747946806000,
+          "installments_number": 1,
+          "type": "PIX",
+          "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/D073A3E23069D06970071F81B49702415204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***6304C828"
+        },
+        "full_price": {
+          "currency_value": "BRL",
+          "value": 124.75
+        },
+        "business_model": "I",
+        "invoice_by": "HOTMART",
+        "transaction": "HP1319790068",
+        "status": "BILLET_PRINTED"
+      },
+      "affiliates": [
+        {
+          "affiliate_code": "",
+          "name": "Pedro Rodrigues"
+        }
+      ],
+      "producer": {
+        "legal_nature": "Pessoa Jurídica",
+        "document": "73c.0c2.875-9c",
+        "name": "João Lima"
+      },
+      "subscription": "192.168.4.57",
+      "buyer": {
+        "checkout_phone_code": "+55 11 906b9-24cb",
+        "address": "192.168.4.57",
+        "document": "5ae.87c.e95-55",
+        "name": "Maria Souza",
+        "last_name": "Pedro Oliveira",
+        "checkout_phone": "+55 11 90804-d965",
+        "first_name": "Julia Rodrigues",
+        "email": "user_ce4e053d@example.com",
+        "document_type": "1e6.d33.a10-0d"
+      }
+    },
+    "id": "cac52680-dc5b-4af6-8226-89a38b180c8e",
+    "creation_date": 1747774010535,
+    "event": "PURCHASE_BILLET_PRINTED",
+    "version": "2.0.0"
+  }
+]

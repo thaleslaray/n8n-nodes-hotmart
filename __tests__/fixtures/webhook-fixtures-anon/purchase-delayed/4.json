@@ -1,0 +1,92 @@
+{
+  "data": {
+    "product": {
+      "support_email": "user_d9ed2356@example.br",
+      "has_co_production": false,
+      "name": "Maria Souza",
+      "is_physical_product": false,
+      "id": 4062912,
+      "ucode": "ucode_5e959306"
+    },
+    "commissions": [
+      {
+        "currency_value": "BRL",
+        "source": "MARKETPLACE",
+        "value": 1.63
+      },
+      {
+        "currency_value": "BRL",
+        "source": "PRODUCER",
+        "value": 6.5
+      }
+    ],
+    "purchase": {
+      "original_offer_price": {
+        "currency_value": "BRL",
+        "value": 8.13
+      },
+      "recurrence_number": 7,
+      "subscription_anticipation_purchase": "192.168.97.20",
+      "checkout_country": {
+        "iso": "BR",
+        "name": "Ana Oliveira"
+      },
+      "origin": {
+        "sck": "Instagram_Feed|DesafioProfissaoAutoIA_Nov2024_Captacao_Pagina_Ingresso_PublicoFrio_Lookalike_Advantage_Lote07|00_PublicoFrio_20-55anos_LAL1%AlunosComunidade|Paid_MetaAds|THALES_GESTORAUTOMACAOEIA_VIDEO_03"
+      },
+      "order_bump": {
+        "is_order_bump": false
+      },
+      "offer": {
+        "code": "dr8tteuo"
+      },
+      "is_funnel": false,
+      "order_date": 1747227775000,
+      "date_next_charge": 1748088000000,
+      "price": {
+        "currency_value": "BRL",
+        "value": 8.13
+      },
+      "payment": {
+        "refusal_reason": "Existe algum tipo de restrição no cartão. Tente realizar a compra novamente com outro cartão ou meio de pagamento.",
+        "installments_number": 7,
+        "type": "CREDIT_CARD"
+      },
+      "full_price": {
+        "currency_value": "BRL",
+        "value": 8.13
+      },
+      "business_model": "I",
+      "invoice_by": "HOTMART",
+      "transaction": "HP1687420669",
+      "status": "DELAYED"
+    },
+    "affiliates": [
+      {
+        "affiliate_code": "",
+        "name": "Pedro Rodrigues"
+      }
+    ],
+    "producer": {
+      "legal_nature": "Pessoa Jurídica",
+      "document": "73c.0c2.875-9c",
+      "name": "João Lima"
+    },
+    "subscription": "192.168.4.57",
+    "buyer": {
+      "checkout_phone_code": "+55 11 94045-cc77",
+      "address": "192.168.4.57",
+      "document": "274.56f.2ea-61",
+      "name": "Maria Lima",
+      "last_name": "Pedro Souza",
+      "checkout_phone": "+55 11 94557-0c14",
+      "first_name": "Maria Lima",
+      "email": "user_966b5c45@example.com",
+      "document_type": "1e6.d33.a10-0d"
+    }
+  },
+  "id": "b8607100-b7a6-44d6-b7cc-add9a2d94c17",
+  "creation_date": 1747227874462,
+  "event": "PURCHASE_DELAYED",
+  "version": "2.0.0"
+}

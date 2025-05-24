@@ -1,0 +1,72 @@
+{
+  "metadata": {
+    "recorded_at": "2025-05-24T02:40:00.000Z",
+    "endpoint": "subscription-getAll",
+    "api_path": "/payments/api/v1/subscriptions",
+    "description": "Resposta real da API Hotmart para listar assinaturas"
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      {
+        "subscriber_code": "QWE7WWK5",
+        "subscription_id": 34944592,
+        "status": "CANCELLED_BY_SELLER",
+        "accession_date": 1745527299000,
+        "request_date": 1745527298000,
+        "trial": false,
+        "plan": {
+          "name": "Renovação - EA - 997",
+          "id": 558689,
+          "recurrency_period": 360
+        },
+        "product": {
+          "name": "Escola de Automação",
+          "id": 1355458,
+          "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+        },
+        "price": {
+          "currency_code": "BRL",
+          "value": 1
+        },
+        "subscriber": {
+          "name": "RODRIGO AGOSTINHO",
+          "ucode": "d494d06e-0e67-44c9-a3b0-7d571cbed1f7",
+          "email": "rodrigoagostinhoimoveis@gmail.com"
+        },
+        "end_accession_date": 1745848600000,
+        "date_next_charge": 1777032000000,
+        "transaction": "HP4130948375"
+      },
+      {
+        "subscriber_code": "D6WD2XYW",
+        "subscription_id": 34949485,
+        "status": "ACTIVE",
+        "accession_date": 1745541919000,
+        "request_date": 1745541915000,
+        "trial": false,
+        "plan": {
+          "name": "Renovação - EA - 997",
+          "id": 558689,
+          "recurrency_period": 360
+        },
+        "product": {
+          "name": "Escola de Automação",
+          "id": 1355458,
+          "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+        },
+        "price": {
+          "currency_code": "BRL",
+          "value": 997
+        },
+        "subscriber": {
+          "name": "Alfero Mendes Neto",
+          "ucode": "492c9c31-f6c1-4b19-93c9-5d53687be86f",
+          "email": "alfero@uol.com.br"
+        },
+        "date_next_charge": 1777118400000,
+        "transaction": "HP0283321456"
+      }
+    ]
+  }
+}

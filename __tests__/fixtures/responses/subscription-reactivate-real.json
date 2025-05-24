@@ -1,0 +1,25 @@
+{
+  "metadata": {
+    "recorded_at": "2025-05-24T03:34:00.000Z",
+    "endpoint": "subscription-reactivate",
+    "api_path": "/payments/api/v1/subscriptions/{subscriber_code}/reactivate",
+    "description": "Resposta real da API Hotmart para reativar assinatura (dados anonimizados)",
+    "anonymized": true,
+    "anonymized_at": "2025-05-24T03:34:00.000Z"
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      {
+        "subscriber_code": "SUBKGB81N",
+        "shopper": {
+          "email": "teste.usuario@example.com",
+          "phone": "(11) 999999999"
+        },
+        "creation_date": "2024-12-11 15:35:03",
+        "interval_between_charges": 360,
+        "status": "INACTIVE"
+      }
+    ]
+  }
+}

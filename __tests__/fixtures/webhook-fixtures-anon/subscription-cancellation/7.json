@@ -1,0 +1,21 @@
+{
+  "data": {
+    "date_next_charge": 1748260800000,
+    "product": {
+      "name": "Julia Santos",
+      "id": 1355458
+    },
+    "actual_recurrence_value": 1497,
+    "subscriber": {
+      "code": "QHO1TEBN",
+      "name": "Carlos Rodrigues",
+      "email": "user_9743d856@example.com"
+    },
+    "subscription": "192.168.4.57",
+    "cancellation_date": 1747687437907
+  },
+  "id": "65849dd0-dc28-4e3e-930c-de5e36065487",
+  "creation_date": 1747687437974,
+  "event": "SUBSCRIPTION_CANCELLATION",
+  "version": "2.0.0"
+}

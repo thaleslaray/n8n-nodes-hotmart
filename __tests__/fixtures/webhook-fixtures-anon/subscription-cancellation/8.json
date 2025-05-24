@@ -1,0 +1,21 @@
+{
+  "data": {
+    "date_next_charge": 1748174400000,
+    "product": {
+      "name": "Julia Santos",
+      "id": 1355458
+    },
+    "actual_recurrence_value": 1497,
+    "subscriber": {
+      "code": "C17VCNDJ",
+      "name": "Ana Santos",
+      "email": "user_354e870a@example.com"
+    },
+    "subscription": "192.168.4.57",
+    "cancellation_date": 1747586085320
+  },
+  "id": "c41f07e5-708f-4237-b5b1-d9f237aa6e72",
+  "creation_date": 1747586085417,
+  "event": "SUBSCRIPTION_CANCELLATION",
+  "version": "2.0.0"
+}

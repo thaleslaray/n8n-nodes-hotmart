@@ -1,17 +1,17 @@
 import { execute } from '../../../../nodes/Hotmart/v1/actions/product/getAll.operation';
 import { createMockExecuteFunctions } from '../../../helpers/testHelpers';
-import * as request from '../../../../nodes/Hotmart/v1/transport/request';
+import * as requestTyped from '../../../../nodes/Hotmart/v1/transport/requestTyped';
 import { IExecuteFunctions, INodeExecutionData } from 'n8n-workflow';
 
 // Mock dos módulos
-jest.mock('../../../../nodes/Hotmart/v1/transport/request');
+jest.mock('../../../../nodes/Hotmart/v1/transport/requestTyped');
 
 // Mock do console.log
 global.console.log = jest.fn();
 
 describe('Product - Get All Operation', () => {
   let mockThis: IExecuteFunctions;
-  let mockHotmartApiRequest: jest.Mock;
+  let mockHotmartApiRequestTyped: jest.Mock;
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -19,8 +19,16 @@ describe('Product - Get All Operation', () => {
     mockThis.getNode = jest.fn().mockReturnValue({ name: 'Hotmart' });
     mockThis.continueOnFail = jest.fn().mockReturnValue(false);
     
-    // Mock hotmartApiRequest
-    mockHotmartApiRequest = request.hotmartApiRequest as jest.Mock;
+    // Mock logger
+    mockThis.logger = {
+      debug: jest.fn(),
+      error: jest.fn(),
+      info: jest.fn(),
+      warn: jest.fn(),
+    };
+    
+    // Mock hotmartApiRequestTyped
+    mockHotmartApiRequestTyped = requestTyped.hotmartApiRequestTyped as jest.Mock;
   });
 
   describe('execute', () => {
@@ -39,12 +47,13 @@ describe('Product - Get All Operation', () => {
         ]
       };
 
-      mockHotmartApiRequest.mockResolvedValueOnce(mockResponse);
+      mockHotmartApiRequestTyped.mockResolvedValueOnce(mockResponse);
 
       const result = await execute.call(mockThis, testItems);
 
-      expect(mockHotmartApiRequest).toHaveBeenCalledTimes(1);
-      expect(mockHotmartApiRequest).toHaveBeenCalledWith(
+      expect(mockHotmartApiRequestTyped).toHaveBeenCalledTimes(1);
+      expect(mockHotmartApiRequestTyped).toHaveBeenCalledWith(
+        mockThis,
         'GET',
         '/products/api/v1/products',
         {},
@@ -65,11 +74,12 @@ describe('Product - Get All Operation', () => {
         }) // filters
         .mockReturnValueOnce(50); // limit
 
-      mockHotmartApiRequest.mockResolvedValueOnce({ items: [] });
+      mockHotmartApiRequestTyped.mockResolvedValueOnce({ items: [] });
 
       await execute.call(mockThis, testItems);
 
-      expect(mockHotmartApiRequest).toHaveBeenCalledWith(
+      expect(mockHotmartApiRequestTyped).toHaveBeenCalledWith(
+        mockThis,
         'GET',
         '/products/api/v1/products',
         {},
@@ -79,12 +89,12 @@ describe('Product - Get All Operation', () => {
       );
     });
 
-    it('should handle returnAll=true with pagination', async () => {
+    it('should handle returnAll=true with manual pagination', async () => {
       mockThis.getNodeParameter = jest.fn()
         .mockReturnValueOnce(true) // returnAll
         .mockReturnValueOnce({}); // filters
 
-      // Simular duas páginas
+      // Simular duas páginas com paginação manual
       const page1 = {
         items: [{ id: 'prod_1' }, { id: 'prod_2' }],
         page_info: { next_page_token: 'token123' }
@@ -94,14 +104,20 @@ describe('Product - Get All Operation', () => {
         page_info: { next_page_token: null }
       };
 
-      mockHotmartApiRequest
+      mockHotmartApiRequestTyped
         .mockResolvedValueOnce(page1)
         .mockResolvedValueOnce(page2);
 
       const result = await execute.call(mockThis, testItems);
 
-      expect(mockHotmartApiRequest).toHaveBeenCalledTimes(2);
+      // Verificar chamadas para hotmartApiRequestTyped
+      expect(mockHotmartApiRequestTyped).toHaveBeenCalledTimes(2);
+
+      // Verificar resultado
       expect(result[0]).toHaveLength(3);
+      expect(mockThis.logger.debug).toHaveBeenCalledWith(
+        '\n[Paginação manual] Total de itens: 3'
+      );
     });
 
     it('should handle errors with continueOnFail=true', async () => {
@@ -112,7 +128,7 @@ describe('Product - Get All Operation', () => {
       mockThis.continueOnFail = jest.fn().mockReturnValue(true);
 
       const error = new Error('API Error');
-      mockHotmartApiRequest.mockRejectedValueOnce(error);
+      mockHotmartApiRequestTyped.mockRejectedValueOnce(error);
 
       const result = await execute.call(mockThis, testItems);
 
@@ -130,11 +146,52 @@ describe('Product - Get All Operation', () => {
         .mockReturnValueOnce({}) // filters
         .mockReturnValueOnce(50); // limit
 
-      mockHotmartApiRequest.mockResolvedValueOnce({ items: [] });
+      mockHotmartApiRequestTyped.mockResolvedValueOnce({ items: [] });
 
       const result = await execute.call(mockThis, testItems);
 
       expect(result).toEqual([[]]);
+    });
+
+    it('should handle manual pagination with single page', async () => {
+      mockThis.getNodeParameter = jest.fn()
+        .mockReturnValueOnce(true) // returnAll
+        .mockReturnValueOnce({}); // filters
+
+      // Simular página única sem next_page_token
+      const singlePage = {
+        items: [{ id: 'prod_1' }, { id: 'prod_2' }],
+        page_info: { next_page_token: null }
+      };
+
+      mockHotmartApiRequestTyped.mockResolvedValueOnce(singlePage);
+
+      const result = await execute.call(mockThis, testItems);
+
+      expect(mockHotmartApiRequestTyped).toHaveBeenCalledTimes(1);
+      expect(result[0]).toHaveLength(2);
+      expect(mockThis.logger.debug).toHaveBeenCalledWith(
+        '\n[Paginação manual] Fim da paginação'
+      );
+    });
+
+    it('should handle manual pagination with response without page_info', async () => {
+      mockThis.getNodeParameter = jest.fn()
+        .mockReturnValueOnce(true) // returnAll
+        .mockReturnValueOnce({}); // filters
+
+      // Simular resposta sem page_info
+      const responseWithoutPageInfo = {
+        items: [{ id: 'prod_1' }, { id: 'prod_2' }]
+        // sem page_info
+      };
+
+      mockHotmartApiRequestTyped.mockResolvedValueOnce(responseWithoutPageInfo);
+
+      const result = await execute.call(mockThis, testItems);
+
+      expect(mockHotmartApiRequestTyped).toHaveBeenCalledTimes(1);
+      expect(result[0]).toHaveLength(2);
     });
   });
 });

@@ -1,0 +1,88 @@
+{
+  "data": {
+    "product": {
+      "support_email": "user_d9ed2356@example.br",
+      "has_co_production": false,
+      "name": "Julia Santos",
+      "id": 1355458,
+      "ucode": "ucode_4038161c"
+    },
+    "commissions": [
+      {
+        "currency_value": "BRL",
+        "source": "MARKETPLACE",
+        "value": 74.78
+      },
+      {
+        "currency_value": "BRL",
+        "source": "PRODUCER",
+        "value": 922.22
+      }
+    ],
+    "purchase": {
+      "original_offer_price": {
+        "currency_value": "BRL",
+        "value": 997
+      },
+      "recurrence_number": 5,
+      "subscription_anticipation_purchase": "192.168.97.20",
+      "checkout_country": {
+        "iso": "BR",
+        "name": "Ana Oliveira"
+      },
+      "order_bump": {
+        "is_order_bump": false
+      },
+      "offer": {
+        "code": "kdm48q1t"
+      },
+      "is_funnel": false,
+      "order_date": 1746100873000,
+      "date_next_charge": 1777636800000,
+      "price": {
+        "currency_value": "BRL",
+        "value": 997
+      },
+      "payment": {
+        "refusal_reason": "Existe algum tipo de restrição no cartão. Tente realizar a compra novamente com outro cartão ou meio de pagamento.",
+        "installments_number": 1,
+        "type": "WALLET"
+      },
+      "full_price": {
+        "currency_value": "BRL",
+        "value": 997
+      },
+      "business_model": "I",
+      "invoice_by": "HOTMART",
+      "transaction": "HP0439487350",
+      "status": "DELAYED"
+    },
+    "affiliates": [
+      {
+        "affiliate_code": "",
+        "name": "Pedro Rodrigues"
+      }
+    ],
+    "producer": {
+      "legal_nature": "Pessoa Jurídica",
+      "document": "73c.0c2.875-9c",
+      "name": "João Lima"
+    },
+    "subscription": "192.168.4.57",
+    "buyer": {
+      "checkout_phone_code": "+55 11 9ed3c-a9b4",
+      "address": "192.168.4.57",
+      "document": "74f.3b6.832-28",
+      "name": "Carlos Souza",
+      "last_name": "Maria Lima",
+      "checkout_phone": "+55 11 971ce-68ab",
+      "first_name": "Maria Santos",
+      "email": "user_f1a21b03@example.com",
+      "document_type": "1e6.d33.a10-0d"
+    }
+  },
+  "id": "a9df4cee-1a0d-4e04-a421-18fc34107d8d",
+  "creation_date": 1746100973942,
+  "event": "PURCHASE_DELAYED",
+  "version": "2.0.0"
+}

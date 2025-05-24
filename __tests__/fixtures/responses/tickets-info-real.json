@@ -1,0 +1,33 @@
+{
+  "metadata": {
+    "recorded_at": "2025-05-24T04:46:00.000Z",
+    "endpoint": "tickets-getInfo",
+    "api_path": "/payments/api/v1/etickets/info",
+    "description": "Resposta real da API Hotmart para obter informações do evento (dados anonimizados)",
+    "anonymized": true,
+    "anonymized_at": "2025-05-24T04:46:00.000Z"
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      {
+        "product": {
+          "name": "Evento Digital de Tecnologia",
+          "id": 5485679
+        },
+        "lots": [
+          {
+            "id": 355264,
+            "name": "Lote Básico"
+          },
+          {
+            "id": 355310,
+            "name": "Lote Premium"
+          }
+        ],
+        "start_event_date": 1746929940000,
+        "end_event_date": 1747534800000
+      }
+    ]
+  }
+}

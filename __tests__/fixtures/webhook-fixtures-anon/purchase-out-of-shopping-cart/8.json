@@ -1,0 +1,24 @@
+{
+  "data": {
+    "offer": {
+      "code": "0rgmjkb1"
+    },
+    "product": {
+      "name": "Julia Santos",
+      "id": 1355458
+    },
+    "checkout_country": {
+      "iso": "BR",
+      "name": "Ana Oliveira"
+    },
+    "affiliate": true,
+    "buyer": {
+      "name": "João Souza",
+      "email": "user_38b99630@example.br"
+    }
+  },
+  "id": "10e8a71a-00bd-4d74-ab5a-3790dfc70ffa",
+  "creation_date": 1747175449117,
+  "event": "PURCHASE_OUT_OF_SHOPPING_CART",
+  "version": "2.0.0"
+}

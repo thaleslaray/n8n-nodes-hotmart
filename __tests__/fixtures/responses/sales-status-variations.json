@@ -1,0 +1,596 @@
+{
+  "approved_sales": {
+    "items": [
+      {
+        "product": {
+          "id": 2371789,
+          "name": "Curso Completo de Marketing Digital",
+          "ucode": "b0a29c3f-8e45-4b8a-bb84-d8c9b37e1234"
+        },
+        "buyer": {
+          "name": "João Silva",
+          "email": "joao.silva@example.com",
+          "ucode": "BUY123456789",
+          "phone": "+5511999888777",
+          "document": "123.456.789-00",
+          "address": {
+            "street": "Rua das Flores",
+            "number": "123",
+            "neighborhood": "Jardim Primavera",
+            "city": "São Paulo",
+            "state": "SP",
+            "zipcode": "01234-567",
+            "country": "Brasil"
+          }
+        },
+        "producer": {
+          "name": "Academia Digital Pro",
+          "ucode": "PRD987654321"
+        },
+        "purchase": {
+          "transaction": "HP53176668642345",
+          "order_date": 1734983932000,
+          "approved_date": 1734984193000,
+          "status": "APPROVED",
+          "recurrency_number": 1,
+          "is_subscription": true,
+          "commission_as": "PRODUCER",
+          "price": {
+            "value": 97.0,
+            "currency_value": "BRL"
+          },
+          "payment": {
+            "type": "CREDIT_CARD",
+            "method": "VISA",
+            "installments": 1
+          },
+          "tracking": {
+            "source": "facebook_ads_janeiro",
+            "sck": "sck_fb_2024_01"
+          },
+          "warranty_expire_date": 1737661393000,
+          "offer": {
+            "code": "offer_marketing_mensal_2024"
+          },
+          "hotmart_fee": {
+            "value": 9.7,
+            "currency_value": "BRL"
+          }
+        }
+      },
+      {
+        "product": {
+          "id": 2371790,
+          "name": "Mentoria Avançada de Vendas",
+          "ucode": "c1b3ad4g-9f56-5c9b-cc95-e9dac48f2345"
+        },
+        "buyer": {
+          "name": "Maria Oliveira",
+          "email": "maria.oliveira@example.com",
+          "ucode": "BUY234567890",
+          "phone": "+5521988877666",
+          "document": "234.567.890-11"
+        },
+        "producer": {
+          "name": "Instituto de Vendas Premium",
+          "ucode": "PRD876543210"
+        },
+        "purchase": {
+          "transaction": "HP53176668642346",
+          "order_date": 1735070332000,
+          "approved_date": 1735070593000,
+          "status": "APPROVED",
+          "is_subscription": false,
+          "commission_as": "PRODUCER",
+          "price": {
+            "value": 1997.0,
+            "currency_value": "BRL"
+          },
+          "payment": {
+            "type": "PIX",
+            "method": "PIX"
+          },
+          "tracking": {
+            "source": "google_ads_vendas",
+            "sck": "sck_google_2024"
+          },
+          "warranty_expire_date": 1742846593000,
+          "offer": {
+            "code": "offer_mentoria_premium"
+          },
+          "hotmart_fee": {
+            "value": 199.7,
+            "currency_value": "BRL"
+          }
+        }
+      }
+    ],
+    "page_info": {
+      "total_results": 2
+    }
+  },
+  "complete_sales": {
+    "items": [
+      {
+        "product": {
+          "id": 2371791,
+          "name": "Curso de Copywriting",
+          "ucode": "d2c4be5h-a067-6dac-dd06-faebd59g3456"
+        },
+        "buyer": {
+          "name": "Carlos Santos",
+          "email": "carlos.santos@example.com",
+          "ucode": "BUY345678901"
+        },
+        "producer": {
+          "name": "Escola de Copy Pro",
+          "ucode": "PRD765432109"
+        },
+        "purchase": {
+          "transaction": "HP53176668642347",
+          "order_date": 1732999740000,
+          "approved_date": 1733000000000,
+          "status": "COMPLETE",
+          "is_subscription": false,
+          "commission_as": "AFFILIATE",
+          "price": {
+            "value": 297.0,
+            "currency_value": "BRL"
+          },
+          "payment": {
+            "type": "CREDIT_CARD",
+            "method": "MASTERCARD",
+            "installments": 3
+          },
+          "tracking": {
+            "source": "instagram_stories",
+            "sck": "sck_ig_copy_2024"
+          },
+          "offer": {
+            "code": "offer_copy_trimestral"
+          },
+          "hotmart_fee": {
+            "value": 29.7,
+            "currency_value": "BRL"
+          }
+        }
+      }
+    ],
+    "page_info": {
+      "total_results": 1
+    }
+  },
+  "canceled_sales": {
+    "items": [
+      {
+        "product": {
+          "id": 2371792,
+          "name": "Academia de Finanças",
+          "ucode": "e3d5cf6i-b178-7ebd-ee17-gbfce6ah4567"
+        },
+        "buyer": {
+          "name": "Ana Paula Ribeiro",
+          "email": "ana.ribeiro@example.com",
+          "ucode": "BUY456789012"
+        },
+        "producer": {
+          "name": "Finanças Inteligentes Ltda",
+          "ucode": "PRD654321098"
+        },
+        "purchase": {
+          "transaction": "HP53176668642348",
+          "order_date": 1730408140000,
+          "approved_date": 1730408400000,
+          "status": "CANCELED",
+          "is_subscription": true,
+          "commission_as": "PRODUCER",
+          "price": {
+            "value": 47.0,
+            "currency_value": "BRL"
+          },
+          "payment": {
+            "type": "BILLET",
+            "method": "BILLET"
+          },
+          "tracking": {
+            "source": "email_marketing",
+            "sck": "sck_email_fin_2024"
+          },
+          "offer": {
+            "code": "offer_financas_basico"
+          },
+          "hotmart_fee": {
+            "value": 4.7,
+            "currency_value": "BRL"
+          }
+        }
+      }
+    ],
+    "page_info": {
+      "total_results": 1
+    }
+  },
+  "refunded_sales": {
+    "items": [
+      {
+        "product": {
+          "id": 2371793,
+          "name": "Mastermind de Negócios",
+          "ucode": "f4e6dg7j-c289-8fce-ff28-hcgdf7bi5678"
+        },
+        "buyer": {
+          "name": "Roberto Lima",
+          "email": "roberto.lima@example.com",
+          "ucode": "BUY567890123"
+        },
+        "producer": {
+          "name": "Business Masters Academy",
+          "ucode": "PRD543210987"
+        },
+        "purchase": {
+          "transaction": "HP53176668642349",
+          "order_date": 1733499740000,
+          "approved_date": 1733500000000,
+          "status": "REFUNDED",
+          "is_subscription": true,
+          "commission_as": "PRODUCER",
+          "price": {
+            "value": 497.0,
+            "currency_value": "BRL"
+          },
+          "payment": {
+            "type": "CREDIT_CARD",
+            "method": "ELO",
+            "installments": 6
+          },
+          "tracking": {
+            "source": "webinar_negocios",
+            "sck": "sck_webinar_2024"
+          },
+          "offer": {
+            "code": "offer_mastermind_vip"
+          },
+          "hotmart_fee": {
+            "value": 49.7,
+            "currency_value": "BRL"
+          }
+        }
+      }
+    ],
+    "page_info": {
+      "total_results": 1
+    }
+  },
+  "chargeback_sales": {
+    "items": [
+      {
+        "product": {
+          "id": 2371794,
+          "name": "Intensivo de Vendas Online",
+          "ucode": "g5f7eh8k-d39a-9gdf-gg39-idhe8ck6789"
+        },
+        "buyer": {
+          "name": "Patricia Mendes",
+          "email": "patricia.mendes@example.com",
+          "ucode": "BUY678901234"
+        },
+        "producer": {
+          "name": "Vendas Digitais Pro",
+          "ucode": "PRD432109876"
+        },
+        "purchase": {
+          "transaction": "HP53176668642350",
+          "order_date": 1725222940000,
+          "approved_date": 1725223200000,
+          "status": "CHARGEBACK",
+          "is_subscription": false,
+          "commission_as": "PRODUCER",
+          "price": {
+            "value": 597.0,
+            "currency_value": "BRL"
+          },
+          "payment": {
+            "type": "CREDIT_CARD",
+            "method": "AMEX",
+            "installments": 4
+          },
+          "tracking": {
+            "source": "youtube_ads",
+            "sck": "sck_yt_vendas_2024"
+          },
+          "offer": {
+            "code": "offer_intensivo_3meses"
+          },
+          "hotmart_fee": {
+            "value": 59.7,
+            "currency_value": "BRL"
+          }
+        }
+      }
+    ],
+    "page_info": {
+      "total_results": 1
+    }
+  },
+  "pending_sales": {
+    "items": [
+      {
+        "product": {
+          "id": 2371795,
+          "name": "Software de Automação",
+          "ucode": "h6g8fi9l-e4ab-aheg-hh4a-jeif9dl7890"
+        },
+        "buyer": {
+          "name": "Fernando Costa",
+          "email": "fernando.costa@example.com",
+          "ucode": "BUY789012345"
+        },
+        "producer": {
+          "name": "Tech Solutions Brasil",
+          "ucode": "PRD321098765"
+        },
+        "purchase": {
+          "transaction": "HP53176668642351",
+          "order_date": 1735656732000,
+          "status": "PENDING",
+          "is_subscription": true,
+          "commission_as": "PRODUCER",
+          "price": {
+            "value": 197.0,
+            "currency_value": "BRL"
+          },
+          "payment": {
+            "type": "BILLET",
+            "method": "BILLET"
+          },
+          "tracking": {
+            "source": "linkedin_ads",
+            "sck": "sck_linkedin_tech"
+          },
+          "offer": {
+            "code": "offer_software_trial"
+          },
+          "hotmart_fee": {
+            "value": 19.7,
+            "currency_value": "BRL"
+          }
+        }
+      }
+    ],
+    "page_info": {
+      "total_results": 1
+    }
+  },
+  "blocked_sales": {
+    "items": [
+      {
+        "product": {
+          "id": 2371796,
+          "name": "Consultoria Empresarial",
+          "ucode": "i7h9gj0m-f5bc-bigh-ii5b-kfjg0em8901"
+        },
+        "buyer": {
+          "name": "Empresa XYZ Ltda",
+          "email": "compras@empresaxyz.com",
+          "ucode": "BUY890123456"
+        },
+        "producer": {
+          "name": "Consultores Associados",
+          "ucode": "PRD210987654"
+        },
+        "purchase": {
+          "transaction": "HP53176668642352",
+          "order_date": 1735742132000,
+          "status": "BLOCKED",
+          "is_subscription": false,
+          "commission_as": "PRODUCER",
+          "price": {
+            "value": 4997.0,
+            "currency_value": "BRL"
+          },
+          "payment": {
+            "type": "DIRECT_BANK_TRANSFER",
+            "method": "DIRECT_BANK_TRANSFER"
+          },
+          "tracking": {
+            "source": "direct_sales",
+            "sck": "sck_direct_b2b"
+          },
+          "offer": {
+            "code": "offer_consultoria_premium"
+          },
+          "hotmart_fee": {
+            "value": 499.7,
+            "currency_value": "BRL"
+          }
+        }
+      }
+    ],
+    "page_info": {
+      "total_results": 1
+    }
+  },
+  "mixed_status_sales": {
+    "items": [
+      {
+        "product": {
+          "id": 2371789,
+          "name": "Curso Completo de Marketing Digital",
+          "ucode": "b0a29c3f-8e45-4b8a-bb84-d8c9b37e1234"
+        },
+        "buyer": {
+          "name": "João Silva",
+          "email": "joao.silva@example.com",
+          "ucode": "BUY123456789"
+        },
+        "producer": {
+          "name": "Academia Digital Pro",
+          "ucode": "PRD987654321"
+        },
+        "purchase": {
+          "transaction": "HP53176668642345",
+          "order_date": 1734983932000,
+          "approved_date": 1734984193000,
+          "status": "APPROVED",
+          "recurrency_number": 1,
+          "is_subscription": true,
+          "commission_as": "PRODUCER",
+          "price": {
+            "value": 97.0,
+            "currency_value": "BRL"
+          },
+          "payment": {
+            "type": "CREDIT_CARD",
+            "method": "VISA",
+            "installments": 1
+          },
+          "tracking": {
+            "source": "facebook_ads_janeiro",
+            "sck": "sck_fb_2024_01"
+          },
+          "warranty_expire_date": 1737661393000,
+          "offer": {
+            "code": "offer_marketing_mensal_2024"
+          },
+          "hotmart_fee": {
+            "value": 9.7,
+            "currency_value": "BRL"
+          }
+        }
+      },
+      {
+        "product": {
+          "id": 2371791,
+          "name": "Curso de Copywriting",
+          "ucode": "d2c4be5h-a067-6dac-dd06-faebd59g3456"
+        },
+        "buyer": {
+          "name": "Carlos Santos",
+          "email": "carlos.santos@example.com",
+          "ucode": "BUY345678901"
+        },
+        "producer": {
+          "name": "Escola de Copy Pro",
+          "ucode": "PRD765432109"
+        },
+        "purchase": {
+          "transaction": "HP53176668642347",
+          "order_date": 1732999740000,
+          "approved_date": 1733000000000,
+          "status": "COMPLETE",
+          "is_subscription": false,
+          "commission_as": "AFFILIATE",
+          "price": {
+            "value": 297.0,
+            "currency_value": "BRL"
+          },
+          "payment": {
+            "type": "CREDIT_CARD",
+            "method": "MASTERCARD",
+            "installments": 3
+          },
+          "tracking": {
+            "source": "instagram_stories",
+            "sck": "sck_ig_copy_2024"
+          },
+          "offer": {
+            "code": "offer_copy_trimestral"
+          },
+          "hotmart_fee": {
+            "value": 29.7,
+            "currency_value": "BRL"
+          }
+        }
+      },
+      {
+        "product": {
+          "id": 2371792,
+          "name": "Academia de Finanças",
+          "ucode": "e3d5cf6i-b178-7ebd-ee17-gbfce6ah4567"
+        },
+        "buyer": {
+          "name": "Ana Paula Ribeiro",
+          "email": "ana.ribeiro@example.com",
+          "ucode": "BUY456789012"
+        },
+        "producer": {
+          "name": "Finanças Inteligentes Ltda",
+          "ucode": "PRD654321098"
+        },
+        "purchase": {
+          "transaction": "HP53176668642348",
+          "order_date": 1730408140000,
+          "approved_date": 1730408400000,
+          "status": "CANCELED",
+          "is_subscription": true,
+          "commission_as": "PRODUCER",
+          "price": {
+            "value": 47.0,
+            "currency_value": "BRL"
+          },
+          "payment": {
+            "type": "BILLET",
+            "method": "BILLET"
+          },
+          "tracking": {
+            "source": "email_marketing",
+            "sck": "sck_email_fin_2024"
+          },
+          "offer": {
+            "code": "offer_financas_basico"
+          },
+          "hotmart_fee": {
+            "value": 4.7,
+            "currency_value": "BRL"
+          }
+        }
+      },
+      {
+        "product": {
+          "id": 2371795,
+          "name": "Software de Automação",
+          "ucode": "h6g8fi9l-e4ab-aheg-hh4a-jeif9dl7890"
+        },
+        "buyer": {
+          "name": "Fernando Costa",
+          "email": "fernando.costa@example.com",
+          "ucode": "BUY789012345"
+        },
+        "producer": {
+          "name": "Tech Solutions Brasil",
+          "ucode": "PRD321098765"
+        },
+        "purchase": {
+          "transaction": "HP53176668642351",
+          "order_date": 1735656732000,
+          "status": "PENDING",
+          "is_subscription": true,
+          "commission_as": "PRODUCER",
+          "price": {
+            "value": 197.0,
+            "currency_value": "BRL"
+          },
+          "payment": {
+            "type": "BILLET",
+            "method": "BILLET"
+          },
+          "tracking": {
+            "source": "linkedin_ads",
+            "sck": "sck_linkedin_tech"
+          },
+          "offer": {
+            "code": "offer_software_trial"
+          },
+          "hotmart_fee": {
+            "value": 19.7,
+            "currency_value": "BRL"
+          }
+        }
+      }
+    ],
+    "page_info": {
+      "total_results": 4,
+      "next_page_token": "eyJuZXh0IjoxNzM1NjU2NzMyMDAwfQ=="
+    }
+  }
+}

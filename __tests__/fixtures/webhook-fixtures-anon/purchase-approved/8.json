@@ -1,0 +1,90 @@
+{
+  "data": {
+    "product": {
+      "support_email": "user_d9ed2356@example.br",
+      "has_co_production": false,
+      "name": "Carlos Lima",
+      "warranty_date": "2025-06-04T00:00:00Z",
+      "is_physical_product": false,
+      "id": 4713431,
+      "ucode": "ucode_7a3ae22f"
+    },
+    "commissions": [
+      {
+        "currency_value": "BRL",
+        "source": "MARKETPLACE",
+        "value": 8.81
+      },
+      {
+        "currency_value": "BRL",
+        "source": "PRODUCER",
+        "value": 96.75
+      }
+    ],
+    "purchase": {
+      "original_offer_price": {
+        "currency_value": "BRL",
+        "value": 105.56
+      },
+      "recurrence_number": 7,
+      "subscription_anticipation_purchase": "192.168.97.20",
+      "checkout_country": {
+        "iso": "BR",
+        "name": "Ana Oliveira"
+      },
+      "order_bump": {
+        "is_order_bump": false
+      },
+      "approved_date": 1747752653000,
+      "offer": {
+        "code": "e3mkyv25"
+      },
+      "is_funnel": false,
+      "order_date": 1747752650000,
+      "date_next_charge": 1750420800000,
+      "price": {
+        "currency_value": "BRL",
+        "value": 105.56
+      },
+      "payment": {
+        "installments_number": 12,
+        "type": "CREDIT_CARD"
+      },
+      "full_price": {
+        "currency_value": "BRL",
+        "value": 105.56
+      },
+      "business_model": "I",
+      "invoice_by": "HOTMART",
+      "transaction": "HP0025663334",
+      "status": "APPROVED"
+    },
+    "affiliates": [
+      {
+        "affiliate_code": "",
+        "name": "Pedro Rodrigues"
+      }
+    ],
+    "producer": {
+      "legal_nature": "Pessoa Jurídica",
+      "document": "73c.0c2.875-9c",
+      "name": "João Lima"
+    },
+    "subscription": "192.168.4.57",
+    "buyer": {
+      "checkout_phone_code": "+55 11 9cc88-4a26",
+      "address": "192.168.4.57",
+      "document": "e44.ad7.869-59",
+      "name": "Ana Souza",
+      "last_name": "Maria Silva",
+      "checkout_phone": "+55 11 92191-99df",
+      "first_name": "Maria Lima",
+      "email": "user_bc57fb52@example.com",
+      "document_type": "e81.58a.87f-64"
+    }
+  },
+  "id": "7daf83a6-8947-4dc9-82e9-504a5fb57a77",
+  "creation_date": 1747752747816,
+  "event": "PURCHASE_APPROVED",
+  "version": "2.0.0"
+}

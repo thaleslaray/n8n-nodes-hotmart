@@ -1,0 +1,213 @@
+{
+  "metadata": {
+    "recorded_at": "2025-05-24T03:25:00.000Z",
+    "endpoint": "subscription-getPurchases",
+    "api_path": "/payments/api/v1/subscriptions/{subscriber_code}/purchases",
+    "description": "Resposta real da API Hotmart para obter compras de assinantes (dados anonimizados)",
+    "anonymized": true,
+    "anonymized_at": "2025-05-24T03:25:00.000Z"
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      {
+        "payment_type": "HOTMART_BALANCE",
+        "recurrency_number": 1,
+        "transaction": "TX103816199060427",
+        "price": {
+          "value": 997,
+          "currency_code": "BRL"
+        },
+        "status": "COMPLETE",
+        "approved_date": 1619906042000,
+        "payment_engine": "HotPay",
+        "under_warranty": false,
+        "payment_method": "HOTMART"
+      },
+      {
+        "payment_type": "HOTMART_BALANCE",
+        "recurrency_number": 2,
+        "transaction": "TX100816514163233",
+        "price": {
+          "value": 997,
+          "currency_code": "BRL"
+        },
+        "status": "COMPLETE",
+        "approved_date": 1651416324000,
+        "payment_engine": "HotPay",
+        "under_warranty": false,
+        "payment_method": "HOTMART"
+      },
+      {
+        "under_warranty": false,
+        "payment_method": "HOTMART",
+        "status": "OVERDUE",
+        "recurrency_number": 3,
+        "payment_type": "HOTMART_BALANCE",
+        "payment_engine": "HotPay",
+        "transaction": "TX109816829453736",
+        "price": {
+          "value": 997,
+          "currency_code": "BRL"
+        }
+      },
+      {
+        "under_warranty": false,
+        "payment_method": "HOTMART",
+        "status": "OVERDUE",
+        "recurrency_number": 3,
+        "payment_type": "HOTMART_BALANCE",
+        "payment_engine": "HotPay",
+        "transaction": "TX107816830320918",
+        "price": {
+          "value": 997,
+          "currency_code": "BRL"
+        }
+      },
+      {
+        "under_warranty": false,
+        "payment_method": "HOTMART",
+        "status": "OVERDUE",
+        "recurrency_number": 3,
+        "payment_type": "HOTMART_BALANCE",
+        "payment_engine": "HotPay",
+        "transaction": "TX106816831435507",
+        "price": {
+          "value": 997,
+          "currency_code": "BRL"
+        }
+      },
+      {
+        "under_warranty": false,
+        "payment_method": "HOTMART",
+        "status": "OVERDUE",
+        "recurrency_number": 3,
+        "payment_type": "HOTMART_BALANCE",
+        "payment_engine": "HotPay",
+        "transaction": "TX106816832301321",
+        "price": {
+          "value": 997,
+          "currency_code": "BRL"
+        }
+      },
+      {
+        "under_warranty": false,
+        "payment_method": "BILLET",
+        "status": "OVERDUE",
+        "recurrency_number": 3,
+        "payment_type": "BILLET",
+        "payment_engine": "HotPay",
+        "transaction": "TX09816848495966",
+        "price": {
+          "value": 997,
+          "currency_code": "BRL"
+        }
+      },
+      {
+        "under_warranty": false,
+        "payment_method": "HOTMART",
+        "status": "OVERDUE",
+        "recurrency_number": 3,
+        "payment_type": "HOTMART_BALANCE",
+        "payment_engine": "HotPay",
+        "transaction": "TX107816878848767",
+        "price": {
+          "value": 997,
+          "currency_code": "BRL"
+        }
+      },
+      {
+        "payment_type": "HOTMART_BALANCE",
+        "recurrency_number": 3,
+        "transaction": "TX109816878852377",
+        "price": {
+          "value": 997,
+          "currency_code": "BRL"
+        },
+        "status": "COMPLETE",
+        "approved_date": 1687885239000,
+        "payment_engine": "HotPay",
+        "under_warranty": false,
+        "payment_method": "HOTMART"
+      },
+      {
+        "under_warranty": false,
+        "payment_method": "HOTMART",
+        "status": "OVERDUE",
+        "recurrency_number": 4,
+        "payment_type": "HOTMART_BALANCE",
+        "payment_engine": "HotPay",
+        "transaction": "TX2435252097",
+        "price": {
+          "value": 997,
+          "currency_code": "BRL"
+        }
+      },
+      {
+        "under_warranty": false,
+        "payment_method": "PIX",
+        "status": "OVERDUE",
+        "recurrency_number": 4,
+        "payment_type": "PIX",
+        "payment_engine": "HotPay",
+        "transaction": "TX3216232573",
+        "price": {
+          "value": 997,
+          "currency_code": "BRL"
+        }
+      },
+      {
+        "under_warranty": false,
+        "payment_method": "HOTMART",
+        "status": "OVERDUE",
+        "recurrency_number": 5,
+        "payment_type": "HOTMART_BALANCE",
+        "payment_engine": "HotPay",
+        "transaction": "TX0439487350",
+        "price": {
+          "value": 997,
+          "currency_code": "BRL"
+        }
+      },
+      {
+        "under_warranty": false,
+        "payment_method": "HOTMART",
+        "status": "OVERDUE",
+        "recurrency_number": 5,
+        "payment_type": "HOTMART_BALANCE",
+        "payment_engine": "HotPay",
+        "transaction": "TX1430583548",
+        "price": {
+          "value": 997,
+          "currency_code": "BRL"
+        }
+      },
+      {
+        "under_warranty": false,
+        "payment_method": "HOTMART",
+        "status": "OVERDUE",
+        "recurrency_number": 5,
+        "payment_type": "HOTMART_BALANCE",
+        "payment_engine": "HotPay",
+        "transaction": "TX0949796852",
+        "price": {
+          "value": 997,
+          "currency_code": "BRL"
+        }
+      },
+      {
+        "under_warranty": false,
+        "payment_method": "HOTMART",
+        "status": "OVERDUE",
+        "recurrency_number": 5,
+        "payment_type": "HOTMART_BALANCE",
+        "payment_engine": "HotPay",
+        "transaction": "TX0326978683",
+        "price": {
+          "value": 997,
+          "currency_code": "BRL"
+        }
+      }
+    ]
+  }
+}

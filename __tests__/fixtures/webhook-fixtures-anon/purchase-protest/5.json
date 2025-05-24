@@ -1,0 +1,91 @@
+{
+  "data": {
+    "product": {
+      "support_email": "user_d9ed2356@example.br",
+      "has_co_production": false,
+      "name": "Julia Santos",
+      "warranty_date": "2025-05-13T00:00:00Z",
+      "is_physical_product": false,
+      "id": 1355458,
+      "ucode": "ucode_4038161c"
+    },
+    "commissions": [
+      {
+        "currency_value": "BRL",
+        "source": "MARKETPLACE",
+        "value": 148.78
+      },
+      {
+        "currency_value": "BRL",
+        "source": "PRODUCER",
+        "value": 1848.22
+      }
+    ],
+    "purchase": {
+      "original_offer_price": {
+        "currency_value": "BRL",
+        "value": 1997
+      },
+      "recurrence_number": 1,
+      "subscription_anticipation_purchase": "192.168.97.20",
+      "checkout_country": {
+        "iso": "BR",
+        "name": "Ana Oliveira"
+      },
+      "order_bump": {
+        "is_order_bump": false
+      },
+      "approved_date": 1746584367000,
+      "offer": {
+        "code": "0rgmjkb1",
+        "coupon_code": "Preço Padrão - Escola de Automação e I.A."
+      },
+      "is_funnel": false,
+      "order_date": 1746584365000,
+      "date_next_charge": 1778155200000,
+      "price": {
+        "currency_value": "BRL",
+        "value": 1997
+      },
+      "payment": {
+        "installments_number": 1,
+        "type": "CREDIT_CARD"
+      },
+      "full_price": {
+        "currency_value": "BRL",
+        "value": 1997
+      },
+      "business_model": "I",
+      "invoice_by": "HOTMART",
+      "transaction": "HP1769862558",
+      "status": "DISPUTE"
+    },
+    "affiliates": [
+      {
+        "affiliate_code": "",
+        "name": "Pedro Rodrigues"
+      }
+    ],
+    "producer": {
+      "legal_nature": "Pessoa Jurídica",
+      "document": "73c.0c2.875-9c",
+      "name": "João Lima"
+    },
+    "subscription": "192.168.4.57",
+    "buyer": {
+      "checkout_phone_code": "+55 11 92c2a-e88c",
+      "address": "192.168.4.57",
+      "document": "335.6f1.1c3-79",
+      "name": "Maria Oliveira",
+      "last_name": "Julia Rodrigues",
+      "checkout_phone": "+55 11 9d060-c59f",
+      "first_name": "Maria Lima",
+      "email": "user_82e7a60c@example.com",
+      "document_type": "1e6.d33.a10-0d"
+    }
+  },
+  "id": "63aa7d64-6b0a-4360-8b0f-fc5df2c169f8",
+  "creation_date": 1746616228734,
+  "event": "PURCHASE_PROTEST",
+  "version": "2.0.0"
+}

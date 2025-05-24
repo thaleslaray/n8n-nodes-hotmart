@@ -1,0 +1,85 @@
+{
+  "metadata": {
+    "recorded_at": "2025-05-24T04:36:00.000Z",
+    "endpoint": "coupon-get",
+    "api_path": "/payments/api/v1/coupons",
+    "description": "Resposta real da API Hotmart para obter cupons (dados anonimizados)",
+    "anonymized": true,
+    "anonymized_at": "2025-05-24T04:36:00.000Z"
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      {
+        "coupon_code": "DESCONTO50",
+        "discount": 0.5,
+        "time_zone": {
+          "offset": "-03:00",
+          "id": "America/Sao_Paulo",
+          "name": "AMERICA_SAO_PAULO",
+          "description": "Fuso horário de Brasília"
+        },
+        "id": 3036913,
+        "status": "valid",
+        "discount_percentage": "50%",
+        "coupon_info": "DESCONTO50 - 50% (valid)"
+      },
+      {
+        "coupon_code": "BLACKFRIDAY20",
+        "discount": 0.2,
+        "time_zone": {
+          "offset": "-03:00",
+          "id": "America/Sao_Paulo",
+          "name": "AMERICA_SAO_PAULO",
+          "description": "Fuso horário de Brasília"
+        },
+        "id": 3036912,
+        "status": "valid",
+        "discount_percentage": "20%",
+        "coupon_info": "BLACKFRIDAY20 - 20% (valid)"
+      },
+      {
+        "coupon_code": "BEMVINDO10",
+        "discount": 0.1,
+        "time_zone": {
+          "offset": "-03:00",
+          "id": "America/Sao_Paulo",
+          "name": "AMERICA_SAO_PAULO",
+          "description": "Fuso horário de Brasília"
+        },
+        "id": 3036911,
+        "status": "valid",
+        "discount_percentage": "10%",
+        "coupon_info": "BEMVINDO10 - 10% (valid)"
+      },
+      {
+        "coupon_code": "ESPECIAL99",
+        "discount": 0.99,
+        "time_zone": {
+          "offset": "-03:00",
+          "id": "America/Sao_Paulo",
+          "name": "AMERICA_SAO_PAULO",
+          "description": "Fuso horário de Brasília"
+        },
+        "id": 3036910,
+        "status": "valid",
+        "discount_percentage": "99%",
+        "coupon_info": "ESPECIAL99 - 99% (valid)"
+      },
+      {
+        "coupon_code": "PRIMEIRACOMPRA",
+        "discount": 0.15,
+        "time_zone": {
+          "offset": "-03:00",
+          "id": "America/Sao_Paulo",
+          "name": "AMERICA_SAO_PAULO",
+          "description": "Fuso horário de Brasília"
+        },
+        "id": 3035272,
+        "status": "valid",
+        "discount_percentage": "15%",
+        "coupon_info": "PRIMEIRACOMPRA - 15% (valid)"
+      }
+    ]
+  }
+}

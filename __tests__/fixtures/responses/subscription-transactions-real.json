@@ -1,0 +1,403 @@
+{
+  "metadata": {
+    "recorded_at": "2025-05-24T03:20:00.000Z",
+    "endpoint": "subscription-getTransactions",
+    "api_path": "/payments/api/v1/subscriptions/transactions",
+    "description": "Resposta real da API Hotmart para obter transações de assinaturas (dados anonimizados)",
+    "anonymized": true,
+    "anonymized_at": "2025-05-24T03:20:00.000Z"
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      {
+        "subscriber_code": "SUBXLRP1D",
+        "status": "DELAYED",
+        "adoption_date": 1619906043000,
+        "product": {
+          "id": 1355458,
+          "name": "Produto de Automação"
+        },
+        "plan": {
+          "name": "Assinatura Anual Teste",
+          "recurrency_period": 360,
+          "recurrency_type": "ANNUAL",
+          "offer": {
+            "key": "oferta001"
+          }
+        },
+        "subscriber": {
+          "id": 5840757,
+          "name": "João Silva",
+          "email": "joao.silva@example.com",
+          "phone": "999999999",
+          "phone_ddd": "11"
+        },
+        "subscription_id": 7152002,
+        "last_update": 1746362680000,
+        "billing_type": "SUBSCRIPTION",
+        "date_next_charge": 1777593600000,
+        "last_recurrency_start_date": 1746100873000,
+        "last_recurrency_number": 5,
+        "has_unpaid_recurrency": true,
+        "has_credit_card_change": false,
+        "is_paid_anticipation": false,
+        "is_paid_negotiation": false,
+        "producer": {
+          "name": "Produtor de Teste"
+        },
+        "trial_info": {
+          "trial": false
+        },
+        "recurrency": {
+          "status": "NOT_PAID",
+          "number": 5,
+          "start_datetime": 1746100873000,
+          "payment_delays_days": 22,
+          "transaction_type": "AUTOMATIC",
+          "transaction_sequence": 1,
+          "is_current_purchase": false,
+          "has_retry": true
+        },
+        "purchase": {
+          "transaction": "TX0439487350",
+          "order_date": 1746100873000,
+          "status": "DELAYED",
+          "payment": {
+            "payment_type": "BALANCE_HOTMART",
+            "credit_card_flag": "MC",
+            "refusal_message": "RESTRICTED CARD"
+          },
+          "installment": {
+            "installment_type": "ONE_TIME_PAYMENT",
+            "installment_number": 1
+          },
+          "price": {
+            "currency": "BRL",
+            "value": 997,
+            "total_value": 997
+          },
+          "commission": {
+            "conversion_rate": 1,
+            "currency": "BRL",
+            "original_value": 997,
+            "original_paid_value": 0,
+            "producer_value": 922.22,
+            "producer_paid_value": 0
+          }
+        }
+      },
+      {
+        "subscriber_code": "SUBQT9Q71",
+        "status": "CANCELLED_BY_SELLER",
+        "adoption_date": 1638632620000,
+        "product": {
+          "id": 1355458,
+          "name": "Produto de Automação"
+        },
+        "plan": {
+          "name": "Assinatura Anual Teste",
+          "recurrency_period": 360,
+          "recurrency_type": "ANNUAL",
+          "offer": {
+            "key": "oferta002",
+            "description": "OFERTA ESPECIAL",
+            "code": "ESPECIAL"
+          }
+        },
+        "subscriber": {
+          "id": 47042950,
+          "name": "Maria Santos",
+          "email": "maria.santos@example.com",
+          "phone": "988888888",
+          "phone_ddd": "21"
+        },
+        "subscription_id": 9794503,
+        "last_update": 1746656543000,
+        "billing_type": "SUBSCRIPTION",
+        "last_recurrency_start_date": 1638632618000,
+        "cancellation_date": 1746656542000,
+        "last_recurrency_number": 1,
+        "has_unpaid_recurrency": true,
+        "has_credit_card_change": false,
+        "is_paid_anticipation": false,
+        "is_paid_negotiation": false,
+        "producer": {
+          "name": "Produtor de Teste"
+        },
+        "trial_info": {
+          "trial": false
+        },
+        "recurrency": {
+          "status": "NOT_PAID",
+          "number": 1,
+          "start_datetime": 1638632618000,
+          "payment_delays_days": 1266,
+          "transaction_type": "AUTOMATIC",
+          "transaction_sequence": 1,
+          "is_current_purchase": true,
+          "has_retry": false
+        },
+        "purchase": {
+          "transaction": "TX19816386326175",
+          "order_date": 1638632618000,
+          "status": "CANCELLED",
+          "payment": {
+            "payment_type": "CREDIT_CARD",
+            "credit_card_flag": "MC",
+            "refusal_message": "RESTRICTED CARD"
+          },
+          "installment": {
+            "installment_type": "ONE_TIME_PAYMENT",
+            "installment_number": 1
+          },
+          "price": {
+            "currency": "BRL",
+            "value": 1,
+            "total_value": 1
+          },
+          "commission": {
+            "conversion_rate": 1,
+            "currency": "BRL",
+            "original_value": 1,
+            "original_paid_value": 0,
+            "producer_value": 0.8,
+            "producer_paid_value": 0
+          }
+        }
+      },
+      {
+        "subscriber_code": "SUB81RLT2",
+        "status": "ACTIVE",
+        "adoption_date": 1649386974000,
+        "product": {
+          "id": 1355458,
+          "name": "Produto de Automação"
+        },
+        "plan": {
+          "name": "Assinatura Anual Teste",
+          "recurrency_period": 360,
+          "recurrency_type": "ANNUAL",
+          "offer": {
+            "key": "oferta001"
+          }
+        },
+        "subscriber": {
+          "id": 2342454,
+          "name": "Pedro Oliveira",
+          "email": "pedro.oliveira@example.com",
+          "phone": "977777777",
+          "phone_ddd": "11"
+        },
+        "subscription_id": 11681830,
+        "last_update": 1745572784000,
+        "billing_type": "SUBSCRIPTION",
+        "date_next_charge": 1775606400000,
+        "last_recurrency_start_date": 1744114267000,
+        "last_recurrency_number": 4,
+        "has_unpaid_recurrency": true,
+        "has_credit_card_change": false,
+        "is_paid_anticipation": false,
+        "is_paid_negotiation": true,
+        "producer": {
+          "name": "Produtor de Teste"
+        },
+        "trial_info": {
+          "trial": false
+        },
+        "recurrency": {
+          "status": "PAID",
+          "number": 4,
+          "start_datetime": 1744114267000,
+          "payment_delays_days": 0,
+          "transaction_type": "NEGOTIATION",
+          "number_list": "4",
+          "transaction_sequence": 6,
+          "is_current_purchase": true,
+          "has_retry": true
+        },
+        "purchase": {
+          "transaction": "TX3677938052",
+          "order_date": 1744911154000,
+          "status": "COMPLETE",
+          "approved_date": 1744911298000,
+          "payment": {
+            "payment_type": "PIX",
+            "pix_expiration_date": 1745020800000
+          },
+          "installment": {
+            "installment_type": "ONE_TIME_PAYMENT",
+            "installment_number": 1
+          },
+          "price": {
+            "currency": "BRL",
+            "value": 997,
+            "total_value": 997
+          },
+          "commission": {
+            "conversion_rate": 1,
+            "currency": "BRL",
+            "original_value": 997,
+            "original_paid_value": 997,
+            "producer_value": 922.22,
+            "producer_paid_value": 922.22
+          }
+        }
+      },
+      {
+        "subscriber_code": "SUBHY6O5I",
+        "status": "CANCELLED_BY_SELLER",
+        "adoption_date": 1650230561000,
+        "product": {
+          "id": 1355458,
+          "name": "Produto de Automação"
+        },
+        "plan": {
+          "name": "Assinatura Anual Teste",
+          "recurrency_period": 360,
+          "recurrency_type": "ANNUAL",
+          "offer": {
+            "key": "oferta001"
+          }
+        },
+        "subscriber": {
+          "id": 757567,
+          "name": "Ana Costa",
+          "email": "ana.costa@example.com",
+          "phone": "966666666",
+          "phone_ddd": "47"
+        },
+        "subscription_id": 11829573,
+        "last_update": 1746242329000,
+        "billing_type": "SUBSCRIPTION",
+        "last_recurrency_start_date": 1744892886000,
+        "cancellation_date": 1746191693000,
+        "last_recurrency_number": 4,
+        "has_unpaid_recurrency": false,
+        "has_credit_card_change": false,
+        "is_paid_anticipation": false,
+        "is_paid_negotiation": false,
+        "producer": {
+          "name": "Produtor de Teste"
+        },
+        "trial_info": {
+          "trial": false
+        },
+        "recurrency": {
+          "status": "REFUNDED",
+          "number": 4,
+          "start_datetime": 1744892886000,
+          "payment_delays_days": 0,
+          "transaction_type": "AUTOMATIC",
+          "transaction_sequence": 1,
+          "is_current_purchase": true,
+          "has_retry": false
+        },
+        "purchase": {
+          "transaction": "TX1212266242",
+          "order_date": 1744892886000,
+          "status": "REFUNDED",
+          "approved_date": 1744892889000,
+          "payment": {
+            "payment_type": "CREDIT_CARD",
+            "credit_card_flag": "VISA",
+            "refund_chargeback_date": 1746242329000
+          },
+          "installment": {
+            "installment_type": "CONVENTIONAL_INSTALLMENT",
+            "installment_number": 12
+          },
+          "price": {
+            "currency": "BRL",
+            "value": 997,
+            "total_value": 1194
+          },
+          "commission": {
+            "conversion_rate": 1,
+            "currency": "BRL",
+            "original_value": 997,
+            "original_paid_value": 0,
+            "producer_value": 922.22,
+            "producer_paid_value": 0
+          }
+        }
+      },
+      {
+        "subscriber_code": "SUBHHV3TA",
+        "status": "ACTIVE",
+        "adoption_date": 1650249759000,
+        "product": {
+          "id": 1355458,
+          "name": "Produto de Automação"
+        },
+        "plan": {
+          "name": "Assinatura Anual Teste",
+          "recurrency_period": 360,
+          "recurrency_type": "ANNUAL",
+          "offer": {
+            "key": "oferta001"
+          }
+        },
+        "subscriber": {
+          "id": 7623479,
+          "name": "Carlos Ferreira",
+          "email": "carlos.ferreira@example.com",
+          "phone": "955555555",
+          "phone_ddd": "32"
+        },
+        "subscription_id": 11833092,
+        "last_update": 1745648186000,
+        "billing_type": "SUBSCRIPTION",
+        "date_next_charge": 1776470400000,
+        "last_recurrency_start_date": 1744978454000,
+        "last_recurrency_number": 4,
+        "has_unpaid_recurrency": false,
+        "has_credit_card_change": false,
+        "is_paid_anticipation": false,
+        "is_paid_negotiation": false,
+        "producer": {
+          "name": "Produtor de Teste"
+        },
+        "trial_info": {
+          "trial": false
+        },
+        "recurrency": {
+          "status": "PAID",
+          "number": 4,
+          "start_datetime": 1744978454000,
+          "payment_delays_days": 0,
+          "transaction_type": "AUTOMATIC",
+          "transaction_sequence": 1,
+          "is_current_purchase": true,
+          "has_retry": false
+        },
+        "purchase": {
+          "transaction": "TX4122074556",
+          "order_date": 1744978454000,
+          "status": "COMPLETE",
+          "approved_date": 1744978456000,
+          "payment": {
+            "payment_type": "BALANCE_HOTMART"
+          },
+          "installment": {
+            "installment_type": "ONE_TIME_PAYMENT",
+            "installment_number": 1
+          },
+          "price": {
+            "currency": "BRL",
+            "value": 997,
+            "total_value": 997
+          },
+          "commission": {
+            "conversion_rate": 1,
+            "currency": "BRL",
+            "original_value": 997,
+            "original_paid_value": 997,
+            "producer_value": 922.22,
+            "producer_paid_value": 922.22
+          }
+        }
+      }
+    ]
+  }
+}

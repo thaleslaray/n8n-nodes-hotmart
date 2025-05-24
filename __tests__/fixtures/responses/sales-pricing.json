@@ -1,0 +1,326 @@
+{
+  "metadata": {
+    "recorded_at": "2024-10-23T12:00:00Z",
+    "endpoint": "sales/price/details",
+    "api_path": "/payments/api/v1/sales/price/details",
+    "description": "Detalhamento de preços de vendas com breakdown de valores, taxas e comissões",
+    "anonymized": {
+      "fields": ["buyer_name", "buyer_email", "transaction"],
+      "preserved": ["all_monetary_values", "percentages", "dates", "product_info", "calculations"]
+    }
+  },
+  "response": {
+    "items": [
+      {
+        "transaction": "HP12345678901234567890",
+        "buyer": {
+          "name": "Maria Silva",
+          "email": "maria.silva@example.com"
+        },
+        "product": {
+          "id": 123456,
+          "name": "Curso Completo de Marketing Digital",
+          "base_price": 500.00
+        },
+        "pricing_details": {
+          "original_price": 500.00,
+          "discount": {
+            "amount": 0.00,
+            "percentage": 0.00,
+            "coupon_code": null
+          },
+          "final_price": 500.00,
+          "currency": "BRL",
+          "exchange_rate": 1.00
+        },
+        "payment": {
+          "method": "CREDIT_CARD",
+          "installments": 1,
+          "installment_value": 500.00,
+          "total_payment": 500.00,
+          "payment_fee": {
+            "percentage": 4.49,
+            "fixed_fee": 0.39,
+            "total_fee": 22.84
+          }
+        },
+        "commissions": {
+          "marketplace": {
+            "percentage": 5.00,
+            "value": 25.00
+          },
+          "affiliate": {
+            "percentage": 25.00,
+            "value": 125.00,
+            "ucode": "AFF123456"
+          },
+          "vendor": {
+            "percentage": 0.00,
+            "value": 0.00
+          },
+          "coproducer": {
+            "percentage": 0.00,
+            "value": 0.00
+          },
+          "total_commissions": 150.00
+        },
+        "fees": {
+          "payment_processing": 22.84,
+          "antifraud": 0.00,
+          "chargeback_protection": 0.00,
+          "total_fees": 22.84
+        },
+        "net_revenue": {
+          "gross_revenue": 500.00,
+          "total_deductions": 172.84,
+          "net_amount": 327.16,
+          "net_percentage": 65.43
+        },
+        "taxes": {
+          "estimated_taxes": 0.00,
+          "tax_type": "SIMPLES_NACIONAL"
+        },
+        "purchase_date": 1730055300000,
+        "approved_date": 1730055600000,
+        "status": "APPROVED"
+      },
+      {
+        "transaction": "HP12345678901234567891",
+        "buyer": {
+          "name": "João Santos",
+          "email": "joao.santos@example.com"
+        },
+        "product": {
+          "id": 123457,
+          "name": "E-book Estratégias de Vendas",
+          "base_price": 297.00
+        },
+        "pricing_details": {
+          "original_price": 297.00,
+          "discount": {
+            "amount": 0.00,
+            "percentage": 0.00,
+            "coupon_code": null
+          },
+          "final_price": 297.00,
+          "currency": "BRL",
+          "exchange_rate": 1.00
+        },
+        "payment": {
+          "method": "CREDIT_CARD",
+          "installments": 3,
+          "installment_value": 99.00,
+          "total_payment": 297.00,
+          "payment_fee": {
+            "percentage": 5.49,
+            "fixed_fee": 0.39,
+            "total_fee": 16.70
+          }
+        },
+        "commissions": {
+          "marketplace": {
+            "percentage": 5.00,
+            "value": 14.85
+          },
+          "affiliate": {
+            "percentage": 0.00,
+            "value": 0.00,
+            "ucode": null
+          },
+          "vendor": {
+            "percentage": 0.00,
+            "value": 0.00
+          },
+          "coproducer": {
+            "percentage": 0.00,
+            "value": 0.00
+          },
+          "total_commissions": 14.85
+        },
+        "fees": {
+          "payment_processing": 16.70,
+          "antifraud": 0.00,
+          "chargeback_protection": 0.00,
+          "total_fees": 16.70
+        },
+        "net_revenue": {
+          "gross_revenue": 297.00,
+          "total_deductions": 31.55,
+          "net_amount": 265.45,
+          "net_percentage": 89.38
+        },
+        "taxes": {
+          "estimated_taxes": 0.00,
+          "tax_type": "SIMPLES_NACIONAL"
+        },
+        "purchase_date": 1730141700000,
+        "approved_date": 1730142000000,
+        "status": "APPROVED"
+      },
+      {
+        "transaction": "HP12345678901234567892",
+        "buyer": {
+          "name": "Ana Costa",
+          "email": "ana.costa@example.com"
+        },
+        "product": {
+          "id": 123458,
+          "name": "Pacote Completo - Cursos Premium",
+          "base_price": 990.00
+        },
+        "pricing_details": {
+          "original_price": 990.00,
+          "discount": {
+            "amount": 0.00,
+            "percentage": 0.00,
+            "coupon_code": null
+          },
+          "final_price": 990.00,
+          "currency": "BRL",
+          "exchange_rate": 1.00
+        },
+        "payment": {
+          "method": "BILLET",
+          "installments": 1,
+          "installment_value": 990.00,
+          "total_payment": 990.00,
+          "payment_fee": {
+            "percentage": 0.00,
+            "fixed_fee": 3.49,
+            "total_fee": 3.49
+          }
+        },
+        "commissions": {
+          "marketplace": {
+            "percentage": 5.00,
+            "value": 49.50
+          },
+          "affiliate": {
+            "percentage": 30.00,
+            "value": 297.00,
+            "ucode": "AFF123457"
+          },
+          "vendor": {
+            "percentage": 0.00,
+            "value": 0.00
+          },
+          "coproducer": {
+            "percentage": 0.00,
+            "value": 0.00
+          },
+          "total_commissions": 346.50
+        },
+        "fees": {
+          "payment_processing": 3.49,
+          "antifraud": 0.00,
+          "chargeback_protection": 0.00,
+          "total_fees": 3.49
+        },
+        "net_revenue": {
+          "gross_revenue": 990.00,
+          "total_deductions": 349.99,
+          "net_amount": 640.01,
+          "net_percentage": 64.65
+        },
+        "taxes": {
+          "estimated_taxes": 0.00,
+          "tax_type": "SIMPLES_NACIONAL"
+        },
+        "purchase_date": 1730228100000,
+        "approved_date": null,
+        "status": "WAITING_PAYMENT"
+      },
+      {
+        "transaction": "HP12345678901234567894",
+        "buyer": {
+          "name": "Fernanda Lima",
+          "email": "fernanda.lima@example.com"
+        },
+        "product": {
+          "id": 123460,
+          "name": "Formação Completa em Design Digital",
+          "base_price": 1400.00
+        },
+        "pricing_details": {
+          "original_price": 1400.00,
+          "discount": {
+            "amount": 0.00,
+            "percentage": 0.00,
+            "coupon_code": null
+          },
+          "final_price": 1400.00,
+          "currency": "BRL",
+          "exchange_rate": 1.00
+        },
+        "payment": {
+          "method": "CREDIT_CARD",
+          "installments": 12,
+          "installment_value": 124.75,
+          "total_payment": 1497.00,
+          "payment_fee": {
+            "percentage": 7.99,
+            "fixed_fee": 0.39,
+            "total_fee": 119.90
+          }
+        },
+        "commissions": {
+          "marketplace": {
+            "percentage": 5.00,
+            "value": 74.85
+          },
+          "affiliate": {
+            "percentage": 0.00,
+            "value": 0.00,
+            "ucode": null
+          },
+          "vendor": {
+            "percentage": 10.00,
+            "value": 149.70
+          },
+          "coproducer": {
+            "percentage": 10.00,
+            "value": 149.70,
+            "ucode": "COP123456"
+          },
+          "total_commissions": 374.25
+        },
+        "fees": {
+          "payment_processing": 119.90,
+          "antifraud": 0.00,
+          "chargeback_protection": 0.00,
+          "total_fees": 119.90
+        },
+        "net_revenue": {
+          "gross_revenue": 1497.00,
+          "total_deductions": 494.15,
+          "net_amount": 1002.85,
+          "net_percentage": 67.00
+        },
+        "taxes": {
+          "estimated_taxes": 0.00,
+          "tax_type": "SIMPLES_NACIONAL"
+        },
+        "order_bump": {
+          "id": 98765,
+          "name": "Kit de Templates Exclusivos",
+          "price": 97.00,
+          "commission": {
+            "marketplace": 4.85,
+            "vendor": 9.70,
+            "total": 14.55
+          },
+          "net_amount": 82.45
+        },
+        "purchase_date": 1730400900000,
+        "approved_date": 1730401200000,
+        "status": "APPROVED"
+      }
+    ],
+    "page_info": {
+      "total_results": 4,
+      "next_page_token": null,
+      "prev_page_token": null,
+      "results_per_page": 50
+    }
+  }
+}

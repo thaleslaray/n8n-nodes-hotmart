@@ -1,0 +1,89 @@
+{
+  "id": "mock-purchase-expired-001",
+  "creation_date": 1745948018771,
+  "event": "PURCHASE_EXPIRED",
+  "version": "2.0.0",
+  "hottok": "hottok_51aa161f",
+  "data": {
+    "product": {
+      "id": 1355458,
+      "name": "Julia Santos",
+      "ucode": "ucode_4038161c",
+      "has_co_production": false,
+      "support_email": "user_d9ed2356@example.br"
+    },
+    "affiliates": [],
+    "buyer": {
+      "email": "user_2548815b@example.com",
+      "name": "Pedro Santos",
+      "first_name": "Pedro Lima",
+      "last_name": "Carlos Rodrigues",
+      "checkout_phone": "+55 11 9dac7-4751",
+      "checkout_phone_code": "+55 11 971c4-e63c",
+      "document": "ccf.384.673-c2",
+      "document_type": "1e6.d33.a10-0d",
+      "address": "192.168.4.57"
+    },
+    "producer": {
+      "name": "João Lima",
+      "document": "45e.3cf.2c9-9d",
+      "legal_nature": "Pessoa Jurídica"
+    },
+    "commissions": [
+      {
+        "value": 74.78,
+        "currency_value": "BRL",
+        "source": "MARKETPLACE"
+      },
+      {
+        "value": 922.22,
+        "currency_value": "BRL",
+        "source": "PRODUCER"
+      }
+    ],
+    "purchase": {
+      "transaction": "HP9876543210",
+      "status": "EXPIRED",
+      "order_date": 1745343218000,
+      "approved_date": null,
+      "full_price": {
+        "value": 997,
+        "currency_value": "BRL"
+      },
+      "original_offer_price": {
+        "value": 997,
+        "currency_value": "BRL"
+      },
+      "price": {
+        "value": 997,
+        "currency_value": "BRL"
+      },
+      "offer": {
+        "code": "expired-test",
+        "coupon_code": null
+      },
+      "origin": {
+        "src": "organic",
+        "sck": "teste-expired"
+      },
+      "checkout_country": {
+        "name": "Ana Oliveira",
+        "iso": "BR"
+      },
+      "order_bump": {
+        "is_order_bump": false
+      },
+      "payment": {
+        "type": "BILLET",
+        "billet_url": "https://billet.hotmart.com/expired-test",
+        "billet_barcode": "12345678901234567890123456789012345678901234567890",
+        "installments_number": 1,
+        "refusal_reason": "Boleto expirado sem pagamento"
+      },
+      "invoice_by": "HOTMART",
+      "is_funnel": false,
+      "business_model": "R"
+    },
+    "subscription": null
+  }
+}

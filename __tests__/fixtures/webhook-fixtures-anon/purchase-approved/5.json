@@ -1,0 +1,90 @@
+{
+  "data": {
+    "product": {
+      "support_email": "user_88515ff5@example.br",
+      "has_co_production": false,
+      "name": "Maria Silva",
+      "warranty_date": "2025-05-24T00:00:00Z",
+      "is_physical_product": false,
+      "id": 5036092,
+      "ucode": "ucode_fe5a6cdf"
+    },
+    "commissions": [
+      {
+        "currency_value": "BRL",
+        "source": "MARKETPLACE",
+        "value": 75
+      },
+      {
+        "currency_value": "BRL",
+        "source": "PRODUCER",
+        "value": 925
+      }
+    ],
+    "purchase": {
+      "original_offer_price": {
+        "currency_value": "BRL",
+        "value": 1000
+      },
+      "subscription_anticipation_purchase": "192.168.97.20",
+      "checkout_country": {
+        "iso": "BR",
+        "name": "Ana Oliveira"
+      },
+      "order_bump": {
+        "is_order_bump": false
+      },
+      "approved_date": 1747504356000,
+      "offer": {
+        "code": "1hqvzauq"
+      },
+      "is_funnel": false,
+      "order_date": 1747504321000,
+      "price": {
+        "currency_value": "BRL",
+        "value": 1000
+      },
+      "payment": {
+        "pix_qrcode": "https://live-us.adyen.com/hpp/generateQRCodeImage.shtml?url=00020101021226900014br.gov.bcb.pix2568pix.adyen.com%2Fpixqrcodelocation%2Fpixloc%2Fv1%2Floc%2Fssth7WLlQp6kfj-pt3PgLA5204000053039865802BR5902HT6009SAO+PAULO62070503***6304017E",
+        "pix_expiration_date": 1747677121000,
+        "installments_number": 1,
+        "type": "PIX",
+        "pix_code": "00020101021226900014br.gov.bcb.pix2568pix.adyen.com/pixqrcodelocation/pixloc/v1/loc/ssth7WLlQp6kfj-pt3PgLA5204000053039865802BR5902HT6009SAO PAULO62070503***6304017E"
+      },
+      "full_price": {
+        "currency_value": "BRL",
+        "value": 1000
+      },
+      "business_model": "I",
+      "invoice_by": "HOTMART",
+      "transaction": "HP0738010860",
+      "status": "APPROVED"
+    },
+    "affiliates": [
+      {
+        "affiliate_code": "",
+        "name": "Pedro Rodrigues"
+      }
+    ],
+    "producer": {
+      "legal_nature": "Pessoa Jurídica",
+      "document": "73c.0c2.875-9c",
+      "name": "João Lima"
+    },
+    "buyer": {
+      "checkout_phone_code": "+55 11 971c4-e63c",
+      "address": "192.168.4.57",
+      "document": "991.856.dfb-7f",
+      "name": "Pedro Santos",
+      "last_name": "Maria Santos",
+      "checkout_phone": "+55 11 97e7e-2834",
+      "first_name": "Julia Santos",
+      "email": "user_77c6676c@example.com",
+      "document_type": "1e6.d33.a10-0d"
+    }
+  },
+  "id": "81c30ef6-58de-4aad-a358-4d2f00b397ea",
+  "creation_date": 1747504359500,
+  "event": "PURCHASE_APPROVED",
+  "version": "2.0.0"
+}
