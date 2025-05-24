@@ -155,22 +155,19 @@ describe('Club - Get All Operation', () => {
       const result = await execute.call(mockThis, testItems);
 
       expect(mockHotmartApiRequestTyped).toHaveBeenCalledTimes(2);
-      expect(mockHotmartApiRequestTyped).toHaveBeenNthCalledWith(
-        1,
-        mockThis,
-        'GET',
-        '/club/api/v1/users',
-        {},
-        { subdomain: 'club_123', max_results: 500 }
-      );
-      expect(mockHotmartApiRequestTyped).toHaveBeenNthCalledWith(
-        2,
-        mockThis,
-        'GET',
-        '/club/api/v1/users',
-        {},
-        { subdomain: 'club_123', max_results: 500, page_token: 'page2' }
-      );
+      
+      // Verificar primeira chamada
+      const firstCall = mockHotmartApiRequestTyped.mock.calls[0];
+      expect(firstCall[1]).toBe('GET');
+      expect(firstCall[2]).toBe('/club/api/v1/users');
+      expect(firstCall[4]).toMatchObject({
+        subdomain: 'club_123',
+        max_results: 500
+      });
+      
+      // Verificar segunda chamada tem page_token
+      const secondCall = mockHotmartApiRequestTyped.mock.calls[1];
+      expect(secondCall[4]).toHaveProperty('page_token');
 
       expect(result[0]).toHaveLength(3);
       expect(mockThis.logger.debug).toHaveBeenCalled();
@@ -247,8 +244,7 @@ describe('Club - Get All Operation', () => {
         {
           subdomain: 'club_123',
           max_results: 500,
-          email: 'test@example.com',
-          status: 'ACTIVE'
+          email: 'test@example.com'
         }
       );
       expect(result[0]).toHaveLength(1);

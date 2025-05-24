@@ -60,10 +60,10 @@ describe('Sales - getComissoesVendas', () => {
 
   it('deve aplicar filtros de data e afiliado', async () => {
     (mockThis.getNodeParameter as jest.Mock).mockImplementation((param: string, index: number, defaultValue?: any) => {
-      if (param === 'options') return {
+      if (param === 'filters') return {
         startDate: '2024-01-01',
         endDate: '2024-01-31',
-        affiliateCode: 'AFF001'
+        transaction: 'HP123456789'
       };
       return defaultValue;
     });
@@ -77,16 +77,17 @@ describe('Sales - getComissoesVendas', () => {
       '/payments/api/v1/sales/commissions',
       {},
       expect.objectContaining({
-        start_date: '2024-01-01',
-        end_date: '2024-01-31',
-        affiliate_code: 'AFF001'
+        max_results: 50,
+        start_date: 1704067200000,
+        end_date: 1706659200000,
+        transaction: 'HP123456789'
       })
     );
   });
 
   it('deve aplicar filtro de status', async () => {
     (mockThis.getNodeParameter as jest.Mock).mockImplementation((param: string, index: number, defaultValue?: any) => {
-      if (param === 'options') return { status: 'APPROVED' };
+      if (param === 'filters') return { transactionStatus: 'APPROVED' };
       return defaultValue;
     });
 
@@ -99,14 +100,15 @@ describe('Sales - getComissoesVendas', () => {
       '/payments/api/v1/sales/commissions',
       {},
       expect.objectContaining({
-        status: 'APPROVED'
+        max_results: 50,
+        transaction_status: 'APPROVED'
       })
     );
   });
 
   it('deve aplicar filtro de produto', async () => {
     (mockThis.getNodeParameter as jest.Mock).mockImplementation((param: string, index: number, defaultValue?: any) => {
-      if (param === 'options') return { productId: 'prod_123' };
+      if (param === 'filters') return { productId: 'prod_123' };
       return defaultValue;
     });
 
@@ -119,6 +121,7 @@ describe('Sales - getComissoesVendas', () => {
       '/payments/api/v1/sales/commissions',
       {},
       expect.objectContaining({
+        max_results: 50,
         product_id: 'prod_123'
       })
     );

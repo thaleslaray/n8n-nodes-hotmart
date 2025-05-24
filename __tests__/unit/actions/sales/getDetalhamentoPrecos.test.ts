@@ -20,7 +20,7 @@ describe('Sales - getDetalhamentoPrecos', () => {
 
   it('deve buscar detalhamento de preços com sucesso', async () => {
     (mockThis.getNodeParameter as jest.Mock).mockImplementation((param: string, index: number, defaultValue?: any) => {
-      if (param === 'options') return {};
+      if (param === 'filters') return {};
       return defaultValue;
     });
 
@@ -52,7 +52,7 @@ describe('Sales - getDetalhamentoPrecos', () => {
 
   it('deve aplicar filtros de produto', async () => {
     (mockThis.getNodeParameter as jest.Mock).mockImplementation((param: string, index: number, defaultValue?: any) => {
-      if (param === 'options') return { productId: 'prod_123' };
+      if (param === 'filters') return { productId: 'prod_123' };
       return defaultValue;
     });
 
@@ -62,17 +62,18 @@ describe('Sales - getDetalhamentoPrecos', () => {
 
     expect(mockHotmartApiRequest).toHaveBeenCalledWith(
       'GET',
-      '/payments/api/v1/sales/price-details',
+      '/payments/api/v1/sales/price/details',
       {},
       expect.objectContaining({
-        product_id: 'prod_123'
+        product_id: 'prod_123',
+        max_results: 50
       })
     );
   });
 
   it('deve tratar erro de API', async () => {
     (mockThis.getNodeParameter as jest.Mock).mockImplementation((param: string, index: number, defaultValue?: any) => {
-      if (param === 'options') return {};
+      if (param === 'filters') return {};
       return defaultValue;
     });
 

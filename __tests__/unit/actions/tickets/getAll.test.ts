@@ -305,7 +305,9 @@ describe('Tickets - getAll', () => {
 
 			const result = await execute.call(mockThis, [{ json: {} }]);
 
-			expect(result).toEqual([mockResponse.items]);
+			expect(result[0]).toHaveLength(2);
+			expect(result[0][0].json).toEqual(mockResponse.items[0]);
+			expect(result[0][1].json).toEqual(mockResponse.items[1]);
 		});
 
 		it('should handle response without items', async () => {
@@ -481,7 +483,8 @@ describe('Tickets - getAll', () => {
 			const result = await execute.call(mockThis, []);
 
 			expect(mockHotmartApiRequestTyped).toHaveBeenCalled();
-			expect(result).toEqual([mockResponse.items]);
+			expect(result[0]).toHaveLength(1);
+			expect(result[0][0].json).toEqual(mockResponse.items[0]);
 		});
 	});
 });

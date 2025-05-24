@@ -20,7 +20,7 @@ describe('Sales - getParticipantesVendas', () => {
 
   it('deve buscar participantes de vendas com sucesso', async () => {
     (mockThis.getNodeParameter as jest.Mock).mockImplementation((param: string, index: number, defaultValue?: any) => {
-      if (param === 'options') return {};
+      if (param === 'filters') return {};
       return defaultValue;
     });
 
@@ -52,7 +52,7 @@ describe('Sales - getParticipantesVendas', () => {
 
   it('deve aplicar filtros de transação', async () => {
     (mockThis.getNodeParameter as jest.Mock).mockImplementation((param: string, index: number, defaultValue?: any) => {
-      if (param === 'options') return { transactionId: 'HP123456789' };
+      if (param === 'filters') return { transaction: 'HP123456789' };
       return defaultValue;
     });
 
@@ -65,14 +65,15 @@ describe('Sales - getParticipantesVendas', () => {
       '/payments/api/v1/sales/users',
       {},
       expect.objectContaining({
-        transaction_id: 'HP123456789'
+        transaction: 'HP123456789',
+        max_results: 50
       })
     );
   });
 
   it('deve aplicar filtros de data', async () => {
     (mockThis.getNodeParameter as jest.Mock).mockImplementation((param: string, index: number, defaultValue?: any) => {
-      if (param === 'options') return {
+      if (param === 'filters') return {
         startDate: '2024-01-01',
         endDate: '2024-01-31'
       };
@@ -85,18 +86,19 @@ describe('Sales - getParticipantesVendas', () => {
 
     expect(mockHotmartApiRequest).toHaveBeenCalledWith(
       'GET',
-      '/payments/api/v1/sales/participants',
+      '/payments/api/v1/sales/users',
       {},
       expect.objectContaining({
-        start_date: '2024-01-01',
-        end_date: '2024-01-31'
+        start_date: 1704067200000,
+        end_date: 1706659200000,
+        max_results: 50
       })
     );
   });
 
   it('deve filtrar por role', async () => {
     (mockThis.getNodeParameter as jest.Mock).mockImplementation((param: string, index: number, defaultValue?: any) => {
-      if (param === 'options') return { role: 'AFFILIATE' };
+      if (param === 'filters') return { commissionAs: 'AFFILIATE' };
       return defaultValue;
     });
 
@@ -106,17 +108,18 @@ describe('Sales - getParticipantesVendas', () => {
 
     expect(mockHotmartApiRequest).toHaveBeenCalledWith(
       'GET',
-      '/payments/api/v1/sales/participants',
+      '/payments/api/v1/sales/users',
       {},
       expect.objectContaining({
-        role: 'AFFILIATE'
+        commission_as: 'AFFILIATE',
+        max_results: 50
       })
     );
   });
 
   it('deve tratar erro de API', async () => {
     (mockThis.getNodeParameter as jest.Mock).mockImplementation((param: string, index: number, defaultValue?: any) => {
-      if (param === 'options') return {};
+      if (param === 'filters') return {};
       return defaultValue;
     });
 

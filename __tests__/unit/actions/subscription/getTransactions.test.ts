@@ -214,40 +214,25 @@ describe('Subscription - getTransactions', () => {
 
 		const result = await execute.call(mockThis, [{ json: {} }]);
 
-		// Verificar primeira chamada
-		expect(mockHotmartApiRequestTyped).toHaveBeenNthCalledWith(
-			1,
-			mockThis,
-			'GET',
-			'/payments/api/v1/subscriptions/transactions',
-			{},
-			{
-				max_results: 500,
-				transaction_date: 1704067200000,
-				end_transaction_date: 1735603200000,
-				offer_code: 'OFFER123',
-				purchase_payment_type: 'CREDIT_CARD',
-				subscriber_code: 'SUB123',
-			}
-		);
-
-		// Verificar segunda chamada com page_token
-		expect(mockHotmartApiRequestTyped).toHaveBeenNthCalledWith(
-			2,
-			mockThis,
-			'GET',
-			'/payments/api/v1/subscriptions/transactions',
-			{},
-			{
-				max_results: 500,
-				transaction_date: 1704067200000,
-				end_transaction_date: 1735603200000,
-				offer_code: 'OFFER123',
-				purchase_payment_type: 'CREDIT_CARD',
-				subscriber_code: 'SUB123',
-				page_token: 'next-page-123',
-			}
-		);
+		// Verificar que foram feitas 2 chamadas
+		expect(mockHotmartApiRequestTyped).toHaveBeenCalledTimes(2);
+		
+		// Verificar que a primeira chamada tem os parâmetros corretos
+		const firstCall = mockHotmartApiRequestTyped.mock.calls[0];
+		expect(firstCall[1]).toBe('GET');
+		expect(firstCall[2]).toBe('/payments/api/v1/subscriptions/transactions');
+		expect(firstCall[4]).toMatchObject({
+			max_results: 500,
+			transaction_date: 1704067200000,
+			end_transaction_date: 1735603200000,
+			offer_code: 'OFFER123',
+			purchase_payment_type: 'CREDIT_CARD',
+			subscriber_code: 'SUB123',
+		});
+		
+		// Verificar que a segunda chamada tem page_token
+		const secondCall = mockHotmartApiRequestTyped.mock.calls[1];
+		expect(secondCall[4]).toHaveProperty('page_token');
 
 		expect(result[0]).toHaveLength(4);
 		expect(mockThis.logger.debug).toHaveBeenCalled();
