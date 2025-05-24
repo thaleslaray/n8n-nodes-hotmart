@@ -221,8 +221,7 @@ describe('Club - Get All Operation', () => {
         if (param === 'returnAll') return true;
         if (param === 'subdomain') return 'club_123';
         if (param === 'filters') return {
-          email: 'test@example.com',
-          status: 'ACTIVE'
+          email: 'test@example.com'
         };
         return undefined;
       });
