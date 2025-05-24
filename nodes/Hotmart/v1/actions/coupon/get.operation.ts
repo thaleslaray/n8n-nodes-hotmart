@@ -3,6 +3,7 @@ import { hotmartApiRequest } from '../../transport/request';
 import { hotmartApiRequestTyped } from '../../transport/requestTyped';
 import { returnAllOption, limitOption, maxResultsOption } from '../common.descriptions';
 import type { CouponQueryParams, CouponItem, CouponListResponse } from '../../types';
+import { buildQueryParams } from '../../helpers/queryBuilder';
 
 export const description: INodeProperties[] = [
   {
@@ -96,8 +97,8 @@ export const execute = async function (
         code?: string;
       };
 
-      const qs: CouponQueryParams = {};
-      if (filters.code) qs.code = filters.code;
+      // Usar a utility - campo já está com nome correto
+      const qs = buildQueryParams(filters) as CouponQueryParams;
 
       let responseData;
 

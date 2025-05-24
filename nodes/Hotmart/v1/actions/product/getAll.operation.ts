@@ -8,6 +8,7 @@ import {
   productStatusOptions,
   productFormatOptions,
 } from '../common.descriptions';
+import { buildQueryParams } from '../../helpers/queryBuilder';
 
 type ProductListResponse = { items: ProductItem[]; page_info?: { next_page_token?: string } };
 
@@ -174,17 +175,22 @@ export const execute = async function (
         format?: string;
       };
 
-      const qs: ProductQueryParams = {};
+      // Preparar filtros para a utility
+      const processedFilters = { ...filters };
       
       // Determinar qual ID usar baseado no modo de seleção
       if (productSelectionMode === 'manual' && filters.idManual) {
-        qs.id = filters.idManual;
+        processedFilters.id = filters.idManual;
+        delete processedFilters.idManual;
       } else if (productSelectionMode === 'dropdown' && filters.id) {
-        qs.id = filters.id;
+        // Já tem o id correto
+      } else {
+        delete processedFilters.id;
+        delete processedFilters.idManual;
       }
       
-      if (filters?.status) qs.status = filters.status;
-      if (filters?.format) qs.format = filters.format;
+      // Usar a utility - campos já estão com os nomes corretos (id, status, format)
+      const qs = buildQueryParams(processedFilters) as ProductQueryParams;
 
       if (returnAll) {
         // SOLUÇÃO DIRETA: Implementação manual de paginação
