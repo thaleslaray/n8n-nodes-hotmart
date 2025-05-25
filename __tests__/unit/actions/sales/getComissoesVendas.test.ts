@@ -169,4 +169,56 @@ describe('Sales - getComissoesVendas', () => {
     expect(mockHotmartApiRequest).toHaveBeenCalled();
     expect(result[0]).toHaveLength(0);
   });
+
+  it('deve aplicar filtro commissionAs', async () => {
+    (mockThis.getNodeParameter as jest.Mock).mockImplementation((param: string, index: number, defaultValue?: any) => {
+      if (param === 'filters') return {
+        transaction: 'HP123456789',
+        commissionAs: 'AFFILIATE'
+      };
+      return defaultValue;
+    });
+
+    mockHotmartApiRequest.mockResolvedValue({ items: [] });
+
+    await execute.call(mockThis, [{ json: {} }]);
+
+    expect(mockHotmartApiRequest).toHaveBeenCalledWith(
+      'GET',
+      '/payments/api/v1/sales/commissions',
+      {},
+      expect.objectContaining({
+        transaction: 'HP123456789',
+        commission_as: 'AFFILIATE'
+      })
+    );
+  });
+
+  it('deve buscar todos os resultados quando returnAll é true', async () => {
+    const mockGetAllItems = jest.fn().mockResolvedValue([
+      { commission_value: 10 },
+      { commission_value: 20 },
+      { commission_value: 30 }
+    ]);
+    
+    (mockThis.getNodeParameter as jest.Mock).mockImplementation((param: string, index: number, defaultValue?: any) => {
+      if (param === 'returnAll') return true;
+      if (param === 'maxResults') return 100;
+      if (param === 'options') return {};
+      return defaultValue;
+    });
+
+    jest.spyOn(require('../../../../nodes/Hotmart/v1/helpers/pagination'), 'getAllItems').mockImplementation(mockGetAllItems);
+
+    const result = await execute.call(mockThis, [{ json: {} }]);
+
+    expect(mockGetAllItems).toHaveBeenCalledWith({
+      maxResults: 100,
+      resource: 'sales',
+      operation: 'getComissoesVendas',
+      query: expect.any(Object)
+    });
+    
+    expect(result[0]).toHaveLength(3);
+  });
 });

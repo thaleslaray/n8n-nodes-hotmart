@@ -247,4 +247,20 @@ describe('StandardModeHandler', () => {
       expect(duration).toBeLessThan(100);
     });
   });
+
+  describe('getDescription', () => {
+    it('should return handler description', () => {
+      // Create a test class that exposes the protected method
+      class TestableStandardModeHandler extends StandardModeHandler {
+        public testGetDescription() {
+          return this.getDescription();
+        }
+      }
+      
+      const testHandler = new TestableStandardModeHandler(mockContext);
+      const description = testHandler.testGetDescription();
+      
+      expect(description).toBe('Standard mode - single output');
+    });
+  });
 });

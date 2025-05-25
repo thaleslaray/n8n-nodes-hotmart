@@ -193,5 +193,133 @@ describe('Product - Get All Operation', () => {
       expect(mockHotmartApiRequestTyped).toHaveBeenCalledTimes(1);
       expect(result[0]).toHaveLength(2);
     });
+
+    it('should handle manual product selection mode', async () => {
+      mockThis.getNodeParameter = jest.fn()
+        .mockImplementation((param: string, index: number, defaultValue?: any) => {
+          if (param === 'returnAll') return false;
+          if (param === 'filters') return {
+            productSelectionMode: 'manual',
+            idManual: 'prod_manual_123'
+          };
+          if (param === 'limit') return 10;
+          if (param === 'productSelectionMode') return 'manual';
+          return defaultValue;
+        });
+
+      mockHotmartApiRequestTyped.mockResolvedValueOnce({ items: [] });
+
+      await execute.call(mockThis, testItems);
+
+      expect(mockHotmartApiRequestTyped).toHaveBeenCalledWith(
+        mockThis,
+        'GET',
+        '/products/api/v1/products',
+        {},
+        expect.objectContaining({
+          id: 'prod_manual_123',
+          max_results: 10
+        })
+      );
+    });
+
+    it('should handle dropdown product selection mode', async () => {
+      mockThis.getNodeParameter = jest.fn()
+        .mockImplementation((param: string, index: number, defaultValue?: any) => {
+          if (param === 'returnAll') return false;
+          if (param === 'filters') return {
+            productSelectionMode: 'dropdown',
+            id: 'prod_dropdown_456'
+          };
+          if (param === 'limit') return 10;
+          if (param === 'productSelectionMode') return 'dropdown';
+          return defaultValue;
+        });
+
+      mockHotmartApiRequestTyped.mockResolvedValueOnce({ items: [] });
+
+      await execute.call(mockThis, testItems);
+
+      expect(mockHotmartApiRequestTyped).toHaveBeenCalledWith(
+        mockThis,
+        'GET',
+        '/products/api/v1/products',
+        {},
+        expect.objectContaining({
+          id: 'prod_dropdown_456',
+          max_results: 10
+        })
+      );
+    });
+
+    it('should delete id when neither manual nor dropdown mode has id', async () => {
+      mockThis.getNodeParameter = jest.fn()
+        .mockImplementation((param: string, index: number, defaultValue?: any) => {
+          if (param === 'returnAll') return false;
+          if (param === 'productSelectionMode') return 'all';
+          if (param === 'filters') return {
+            id: 'should_be_deleted',
+            idManual: 'should_also_be_deleted'
+          };
+          if (param === 'limit') return 10;
+          return defaultValue;
+        });
+
+      mockHotmartApiRequestTyped.mockResolvedValueOnce({ items: [] });
+
+      await execute.call(mockThis, testItems);
+
+      expect(mockHotmartApiRequestTyped).toHaveBeenCalledWith(
+        mockThis,
+        'GET',
+        '/products/api/v1/products',
+        {},
+        expect.objectContaining({
+          max_results: 10
+        })
+      );
+      
+      // Verificar que id e idManual foram removidos
+      const callArgs = mockHotmartApiRequestTyped.mock.calls[0][4];
+      expect(callArgs).not.toHaveProperty('id');
+      expect(callArgs).not.toHaveProperty('idManual');
+    });
+
+    it('should throw error when continueOnFail is false', async () => {
+      mockThis.continueOnFail = jest.fn().mockReturnValue(false);
+      mockThis.getNodeParameter = jest.fn()
+        .mockImplementation((param: string, index: number, defaultValue?: any) => {
+          if (param === 'returnAll') return false;
+          if (param === 'productSelectionMode') return 'all';
+          if (param === 'filters') return {};
+          if (param === 'limit') return 10;
+          return defaultValue;
+        });
+
+      const error = new Error('API Error');
+      mockHotmartApiRequestTyped.mockRejectedValueOnce(error);
+
+      await expect(execute.call(mockThis, testItems)).rejects.toThrow('API Error');
+    });
+
+    it('should handle continueOnFail', async () => {
+      mockThis.continueOnFail = jest.fn().mockReturnValue(true);
+      mockThis.getNodeParameter = jest.fn()
+        .mockImplementation((param: string, index: number, defaultValue?: any) => {
+          if (param === 'returnAll') return false;
+          if (param === 'filters') return {};
+          if (param === 'limit') return 10;
+          return defaultValue;
+        });
+
+      const error = new Error('API Error');
+      mockHotmartApiRequestTyped.mockRejectedValueOnce(error);
+
+      const result = await execute.call(mockThis, testItems);
+
+      expect(result[0]).toHaveLength(1);
+      expect(result[0][0].json).toEqual({ error: 'API Error' });
+      expect(result[0][0].pairedItem).toEqual({ item: 0 });
+    });
   });
 });

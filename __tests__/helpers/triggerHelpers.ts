@@ -79,3 +79,38 @@ export function createMockWebhookFunctions(overrides?: Partial<IWebhookFunctions
     ...overrides,
   } as unknown as IWebhookFunctions;
 }
+
+export function createMockWebhookContext(overrides: any = {}) {
+  return {
+    request: {
+      body: overrides.body || {},
+      headers: overrides.headers || {},
+      ...overrides.request,
+    },
+    parameters: overrides.parameters || {},
+    cache: {
+      get: jest.fn(),
+      set: jest.fn(),
+      has: jest.fn(),
+      ...overrides.cache,
+    },
+    helpers: {
+      returnJsonArray: jest.fn().mockImplementation((items: any[]) => items),
+      constructExecutionMetaData: jest.fn().mockImplementation((items: any[], metaData: any) => {
+        return items.map((item, index) => ({
+          json: item,
+          pairedItem: metaData?.itemData || { item: index }
+        }));
+      }),
+      ...overrides.helpers,
+    },
+    logger: {
+      debug: jest.fn(),
+      info: jest.fn(),
+      error: jest.fn(),
+      warn: jest.fn(),
+      ...overrides.logger,
+    },
+    ...overrides,
+  };
+}

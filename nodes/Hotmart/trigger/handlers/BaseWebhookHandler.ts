@@ -53,4 +53,21 @@ export abstract class BaseWebhookHandler {
       console.log(`[HotmartTrigger] ${message}`, data || '');
     }
   }
+
+  handleError(error: Error): IWebhookResponseData {
+    const errorMessage = error.message || 'Unknown error occurred';
+    return {
+      webhookResponse: JSON.stringify({ error: errorMessage }),
+      workflowData: [
+        [
+          {
+            json: {
+              error: errorMessage,
+              timestamp: new Date().toISOString(),
+            },
+          },
+        ],
+      ],
+    };
+  }
 }

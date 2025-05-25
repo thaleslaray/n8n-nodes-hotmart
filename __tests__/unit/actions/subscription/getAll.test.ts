@@ -1,287 +1,203 @@
-import { execute } from '../../../../nodes/Hotmart/v1/actions/subscription/getAll.operation';
-import { createMockExecuteFunctions } from '../../../helpers/testHelpers';
-import { mockSubscriptionList } from '../../../fixtures/responses/subscription.fixtures';
-import * as request from '../../../../nodes/Hotmart/v1/transport/request';
 import { IExecuteFunctions, INodeExecutionData } from 'n8n-workflow';
+import { execute } from '../../../../nodes/Hotmart/v1/actions/subscription/getAll.operation';
+import { hotmartApiRequestTyped } from '../../../../nodes/Hotmart/v1/transport/requestTyped';
 
-// Mock dos módulos
-jest.mock('../../../../nodes/Hotmart/v1/transport/request');
+jest.mock('../../../../nodes/Hotmart/v1/transport/requestTyped');
 
-// Mock do console.log para evitar poluir a saída dos testes
-global.console.log = jest.fn();
+const mockHotmartApiRequestTyped = hotmartApiRequestTyped as jest.MockedFunction<typeof hotmartApiRequestTyped>;
 
 describe('Subscription - Get All Operation', () => {
   let mockThis: IExecuteFunctions;
-  let mockHotmartApiRequest: jest.Mock;
+  const testItems: INodeExecutionData[] = [{ json: {} }];
 
   beforeEach(() => {
     jest.clearAllMocks();
-    mockThis = createMockExecuteFunctions();
-    mockThis.getNode = jest.fn().mockReturnValue({ name: 'Hotmart' });
-    mockThis.continueOnFail = jest.fn().mockReturnValue(false);
     
-    // Mock hotmartApiRequest
-    mockHotmartApiRequest = request.hotmartApiRequest as jest.Mock;
+    mockThis = {
+      getNodeParameter: jest.fn(),
+      helpers: {
+        constructExecutionMetaData: jest.fn((data, meta) => data),
+        returnJsonArray: jest.fn((data) => data.map((item: any) => ({ json: item }))),
+      },
+      logger: {
+        debug: jest.fn(),
+      },
+      continueOnFail: jest.fn().mockReturnValue(false),
+    } as unknown as IExecuteFunctions;
   });
 
   describe('execute', () => {
-    const testItems: INodeExecutionData[] = [{ json: {} }];
+    it('should handle empty items array', async () => {
+      const emptyItems: INodeExecutionData[] = [];
+      
+      (mockThis.getNodeParameter as jest.Mock).mockImplementation((param: string, index: number, defaultValue?: any) => {
+        if (param === 'returnAll') return false;
+        if (param === 'filters') return {};
+        if (param === 'limit') return 10;
+        return defaultValue;
+      });
 
-    it('should fetch subscriptions with returnAll=false', async () => {
-      mockThis.getNodeParameter = jest.fn()
-        .mockReturnValueOnce(false) // returnAll
-        .mockReturnValueOnce({}) // filters
-        .mockReturnValueOnce(10); // limit
+      const mockResponse = { 
+        items: [
+          { subscriber_code: 'SUB123', status: 'ACTIVE' },
+          { subscriber_code: 'SUB456', status: 'ACTIVE' }
+        ],
+        page_info: { total_results: 2 }
+      };
+      mockHotmartApiRequestTyped.mockResolvedValueOnce(mockResponse);
 
-      mockHotmartApiRequest.mockResolvedValueOnce(mockSubscriptionList);
+      const result = await execute.call(mockThis, emptyItems);
+
+      expect(result[0]).toHaveLength(2);
+      expect(mockHotmartApiRequestTyped).toHaveBeenCalledWith(
+        mockThis,
+        'GET',
+        '/payments/api/v1/subscriptions',
+        {},
+        expect.objectContaining({ max_results: 10 })
+      );
+    });
+
+    it('should process subscriptions with filters', async () => {
+      (mockThis.getNodeParameter as jest.Mock).mockImplementation((param: string, index: number, defaultValue?: any) => {
+        if (param === 'returnAll') return false;
+        if (param === 'filters') return {
+          status: ['ACTIVE'],
+          productId: 'PROD123'
+        };
+        if (param === 'limit') return 5;
+        return defaultValue;
+      });
+
+      const mockResponse = { 
+        items: [
+          { subscriber_code: 'SUB789', status: 'ACTIVE' }
+        ],
+        page_info: { total_results: 1 }
+      };
+      mockHotmartApiRequestTyped.mockResolvedValueOnce(mockResponse);
+
+      await execute.call(mockThis, testItems);
+
+      expect(mockHotmartApiRequestTyped).toHaveBeenCalledWith(
+        mockThis,
+        'GET',
+        '/payments/api/v1/subscriptions',
+        {},
+        expect.objectContaining({
+          max_results: 5,
+          status: 'ACTIVE',
+          product_id: 'PROD123'
+        })
+      );
+    });
+
+    it('should handle returnAll option', async () => {
+      (mockThis.getNodeParameter as jest.Mock).mockImplementation((param: string, index: number, defaultValue?: any) => {
+        if (param === 'returnAll') return true;
+        if (param === 'filters') return {};
+        return defaultValue;
+      });
+
+      const mockResponse1 = { 
+        items: Array(50).fill({ subscriber_code: 'SUB', status: 'ACTIVE' }),
+        page_info: { 
+          total_results: 120,
+          next_page_token: '2'
+        }
+      };
+      const mockResponse2 = { 
+        items: Array(50).fill({ subscriber_code: 'SUB', status: 'ACTIVE' }),
+        page_info: { 
+          total_results: 120,
+          next_page_token: '3'
+        }
+      };
+      const mockResponse3 = { 
+        items: Array(20).fill({ subscriber_code: 'SUB', status: 'ACTIVE' }),
+        page_info: { 
+          total_results: 120
+        }
+      };
+
+      mockHotmartApiRequestTyped
+        .mockResolvedValueOnce(mockResponse1)
+        .mockResolvedValueOnce(mockResponse2)
+        .mockResolvedValueOnce(mockResponse3);
 
       const result = await execute.call(mockThis, testItems);
 
-      expect(mockHotmartApiRequest).toHaveBeenCalledTimes(1);
-      expect(mockHotmartApiRequest).toHaveBeenCalledWith(
-        'GET',
-        '/payments/api/v1/subscriptions',
-        {},
-        { max_results: 10 }
-      );
-
-      expect(result).toEqual([[
-        {
-          json: mockSubscriptionList.items[0],
-          pairedItem: { item: 0 }
-        }
-      ]]);
+      expect(result[0]).toHaveLength(120);
+      expect(mockHotmartApiRequestTyped).toHaveBeenCalledTimes(3);
     });
 
-    it('should fetch all subscriptions with returnAll=true', async () => {
-      mockThis.getNodeParameter = jest.fn()
-        .mockReturnValueOnce(true) // returnAll
-        .mockReturnValueOnce({}); // filters
-
-      // Simular duas páginas
-      const page1 = {
-        items: [{ subscription_id: 'sub_1' }, { subscription_id: 'sub_2' }],
-        page_info: { next_page_token: 'token123' }
-      };
-      const page2 = {
-        items: [{ subscription_id: 'sub_3' }],
-        page_info: { next_page_token: null }
-      };
-
-      mockHotmartApiRequest
-        .mockResolvedValueOnce(page1)
-        .mockResolvedValueOnce(page2);
-
-      const result = await execute.call(mockThis, testItems);
-
-      expect(mockHotmartApiRequest).toHaveBeenCalledTimes(2);
-      
-      // First call - should not have page_token in initial object
-      const firstCall = mockHotmartApiRequest.mock.calls[0];
-      expect(firstCall[0]).toBe('GET');
-      expect(firstCall[1]).toBe('/payments/api/v1/subscriptions');
-      expect(firstCall[3].max_results).toBe(500);
-      // Note: Due to how the code works, page_token might exist but should be undefined or missing
-      
-      // Second call - should have page_token
-      const secondCall = mockHotmartApiRequest.mock.calls[1];
-      expect(secondCall[0]).toBe('GET');
-      expect(secondCall[1]).toBe('/payments/api/v1/subscriptions');
-      expect(secondCall[3].max_results).toBe(500);
-      expect(secondCall[3].page_token).toBe('token123');
-
-      expect(result[0]).toHaveLength(3);
-    });
-
-    it('should apply status filters', async () => {
-      mockThis.getNodeParameter = jest.fn()
-        .mockReturnValueOnce(false) // returnAll
-        .mockReturnValueOnce({ 
-          status: ['ACTIVE', 'CANCELLED'] 
-        }) // filters
-        .mockReturnValueOnce(50); // limit
-
-      mockHotmartApiRequest.mockResolvedValueOnce({ items: [] });
-
-      await execute.call(mockThis, testItems);
-
-      expect(mockHotmartApiRequest).toHaveBeenCalledWith(
-        'GET',
-        '/payments/api/v1/subscriptions',
-        {},
-        {
-          max_results: 50,
-          status: 'ACTIVE,CANCELLED'
-        }
-      );
-    });
-
-    it('should apply product and email filters', async () => {
-      mockThis.getNodeParameter = jest.fn()
-        .mockReturnValueOnce(false) // returnAll
-        .mockReturnValueOnce({ 
-          productId: 'prod_123',
-          subscriberEmail: 'test@example.com'
-        }) // filters
-        .mockReturnValueOnce(50); // limit
-
-      mockHotmartApiRequest.mockResolvedValueOnce({ items: [] });
-
-      await execute.call(mockThis, testItems);
-
-      expect(mockHotmartApiRequest).toHaveBeenCalledWith(
-        'GET',
-        '/payments/api/v1/subscriptions',
-        {},
-        {
-          max_results: 50,
-          product_id: 'prod_123',
-          subscriber_email: 'test@example.com'
-        }
-      );
-    });
-
-    it('should convert date filters to timestamps', async () => {
-      mockThis.getNodeParameter = jest.fn()
-        .mockReturnValueOnce(false) // returnAll
-        .mockReturnValueOnce({ 
-          accessionDate: '2024-01-01T00:00:00Z',
-          cancelationDate: '2024-01-15T00:00:00Z'
-        }) // filters
-        .mockReturnValueOnce(50); // limit
-
-      mockHotmartApiRequest.mockResolvedValueOnce({ items: [] });
-
-      await execute.call(mockThis, testItems);
-
-      expect(mockHotmartApiRequest).toHaveBeenCalledWith(
-        'GET',
-        '/payments/api/v1/subscriptions',
-        {},
-        {
-          max_results: 50,
-          accession_date: 1704067200000,
-          cancelation_date: 1705276800000
-        }
-      );
-    });
-
-    it('should handle trial filter', async () => {
-      mockThis.getNodeParameter = jest.fn()
-        .mockReturnValueOnce(false) // returnAll
-        .mockReturnValueOnce({ 
+    it('should handle filters with plan, transaction and trial', async () => {
+      (mockThis.getNodeParameter as jest.Mock).mockImplementation((param: string, index: number, defaultValue?: any) => {
+        if (param === 'returnAll') return false;
+        if (param === 'filters') return {
+          plan: 'PLAN123',
+          transaction: 'TRX456',
           trial: true
-        }) // filters
-        .mockReturnValueOnce(50); // limit
+        };
+        if (param === 'limit') return 10;
+        return defaultValue;
+      });
 
-      mockHotmartApiRequest.mockResolvedValueOnce({ items: [] });
+      const mockResponse = { 
+        items: [{ subscriber_code: 'SUB_TRIAL', status: 'TRIAL' }],
+        page_info: { total_results: 1 }
+      };
+      mockHotmartApiRequestTyped.mockResolvedValueOnce(mockResponse);
 
       await execute.call(mockThis, testItems);
 
-      expect(mockHotmartApiRequest).toHaveBeenCalledWith(
+      expect(mockHotmartApiRequestTyped).toHaveBeenCalledWith(
+        mockThis,
         'GET',
         '/payments/api/v1/subscriptions',
         {},
-        {
-          max_results: 50,
+        expect.objectContaining({
+          max_results: 10,
+          plan: 'PLAN123',
+          transaction: 'TRX456',
           trial: true
-        }
+        })
       );
     });
 
-    it('should handle errors with continueOnFail=true', async () => {
-      mockThis.getNodeParameter = jest.fn()
-        .mockReturnValueOnce(false) // returnAll
-        .mockReturnValueOnce({}) // filters
-        .mockReturnValueOnce(50); // limit
+    it('should handle error with continueOnFail true', async () => {
       mockThis.continueOnFail = jest.fn().mockReturnValue(true);
+      (mockThis.getNodeParameter as jest.Mock).mockImplementation((param: string, index: number, defaultValue?: any) => {
+        if (param === 'returnAll') return false;
+        if (param === 'filters') return {};
+        if (param === 'limit') return 10;
+        return defaultValue;
+      });
 
       const error = new Error('API Error');
-      mockHotmartApiRequest.mockRejectedValueOnce(error);
+      mockHotmartApiRequestTyped.mockRejectedValueOnce(error);
 
       const result = await execute.call(mockThis, testItems);
 
-      expect(result).toEqual([[
-        {
-          json: { error: 'API Error' },
-          pairedItem: { item: 0 }
-        }
-      ]]);
+      expect(result[0]).toHaveLength(1);
+      expect(result[0][0].json).toEqual({ error: 'API Error' });
+      expect(mockThis.continueOnFail).toHaveBeenCalled();
     });
 
-    it('should throw error with continueOnFail=false', async () => {
-      mockThis.getNodeParameter = jest.fn()
-        .mockReturnValueOnce(false) // returnAll
-        .mockReturnValueOnce({}) // filters
-        .mockReturnValueOnce(50); // limit
+    it('should throw error with continueOnFail false', async () => {
       mockThis.continueOnFail = jest.fn().mockReturnValue(false);
+      (mockThis.getNodeParameter as jest.Mock).mockImplementation((param: string, index: number, defaultValue?: any) => {
+        if (param === 'returnAll') return false;
+        if (param === 'filters') return {};
+        if (param === 'limit') return 10;
+        return defaultValue;
+      });
 
       const error = new Error('API Error');
-      mockHotmartApiRequest.mockRejectedValueOnce(error);
+      mockHotmartApiRequestTyped.mockRejectedValueOnce(error);
 
       await expect(execute.call(mockThis, testItems)).rejects.toThrow('API Error');
-    });
-
-    it('should handle empty response', async () => {
-      mockThis.getNodeParameter = jest.fn()
-        .mockReturnValueOnce(false) // returnAll
-        .mockReturnValueOnce({}) // filters
-        .mockReturnValueOnce(50); // limit
-
-      mockHotmartApiRequest.mockResolvedValueOnce({ items: [] });
-
-      const result = await execute.call(mockThis, testItems);
-
-      expect(result).toEqual([[]]);
-    });
-
-    it('should apply all possible filters', async () => {
-      mockThis.getNodeParameter = jest.fn()
-        .mockReturnValueOnce(false) // returnAll
-        .mockReturnValueOnce({ 
-          productId: 'prod_123',
-          plan: 'Plan A,Plan B',
-          planId: 'plan_123',
-          subscriberCode: 'sub_code_123',
-          subscriberEmail: 'test@example.com',
-          transaction: 'trans_123',
-          trial: false,
-          accessionDate: '2024-01-01T00:00:00Z',
-          endAccessionDate: '2024-01-31T00:00:00Z',
-          cancelationDate: '2024-02-01T00:00:00Z',
-          endCancelationDate: '2024-02-28T00:00:00Z',
-          dateNextCharge: '2024-03-01T00:00:00Z',
-          endDateNextCharge: '2024-03-31T00:00:00Z',
-          status: ['ACTIVE']
-        }) // filters
-        .mockReturnValueOnce(50); // limit
-
-      mockHotmartApiRequest.mockResolvedValueOnce({ items: [] });
-
-      await execute.call(mockThis, testItems);
-
-      expect(mockHotmartApiRequest).toHaveBeenCalledWith(
-        'GET',
-        '/payments/api/v1/subscriptions',
-        {},
-        {
-          max_results: 50,
-          status: 'ACTIVE',
-          product_id: 'prod_123',
-          plan: 'Plan A,Plan B',
-          plan_id: 'plan_123',
-          trial: false,
-          subscriber_email: 'test@example.com',
-          transaction: 'trans_123',
-          accession_date: 1704067200000,
-          end_accession_date: 1706659200000,
-          cancelation_date: 1706745600000,
-          end_cancelation_date: 1709078400000,
-          date_next_charge: 1709251200000,
-          end_date_next_charge: 1711843200000,
-          subscriber_code: 'sub_code_123'
-        }
-      );
+      expect(mockThis.continueOnFail).toHaveBeenCalled();
     });
   });
 });

@@ -210,5 +210,66 @@ describe('Sales - Get Historico Vendas Operation', () => {
 
       expect(result).toEqual([[]]);
     });
+
+    it('should handle empty items array', async () => {
+      const emptyItems: INodeExecutionData[] = [];
+      
+      mockThis.getNodeParameter = jest.fn()
+        .mockReturnValueOnce(false) // returnAll
+        .mockReturnValueOnce({}) // filters
+        .mockReturnValueOnce(10); // limit
+
+      mockHotmartApiRequest.mockResolvedValueOnce({ 
+        items: [{ transaction: 'HP123', status: 'approved' }] 
+      });
+
+      const result = await execute.call(mockThis, emptyItems);
+
+      expect(result[0]).toHaveLength(1);
+      expect(mockHotmartApiRequest).toHaveBeenCalledWith(
+        'GET',
+        '/payments/api/v1/sales/history',
+        {},
+        expect.objectContaining({ max_results: 10 })
+      );
+    });
+
+    it('should handle filter with transaction field', async () => {
+      mockThis.getNodeParameter = jest.fn()
+        .mockReturnValueOnce(false) // returnAll
+        .mockReturnValueOnce({ 
+          transaction: 'HP999888777'
+        }) // filters
+        .mockReturnValueOnce(10); // limit
+
+      mockHotmartApiRequest.mockResolvedValueOnce({ 
+        items: [{ transaction: 'HP999888777', status: 'approved' }] 
+      });
+
+      await execute.call(mockThis, testItems);
+
+      expect(mockHotmartApiRequest).toHaveBeenCalledWith(
+        'GET',
+        '/payments/api/v1/sales/history',
+        {},
+        expect.objectContaining({ 
+          max_results: 10,
+          transaction: 'HP999888777'
+        })
+      );
+    });
+
+    it('should handle response without items array', async () => {
+      mockThis.getNodeParameter = jest.fn()
+        .mockReturnValueOnce(false) // returnAll
+        .mockReturnValueOnce({}) // filters
+        .mockReturnValueOnce(10); // limit
+
+      mockHotmartApiRequest.mockResolvedValueOnce({}); // Response without items
+
+      const result = await execute.call(mockThis, testItems);
+
+      expect(result).toEqual([[]]);
+    });
   });
 });

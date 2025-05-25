@@ -63,6 +63,38 @@ describe('Performance Optimizations', () => {
       }, 50);
     });
 
+    it('should log in development mode', () => {
+      const originalEnv = process.env.NODE_ENV;
+      const originalLog = console.log;
+      console.log = jest.fn();
+      
+      process.env.NODE_ENV = 'development';
+      
+      PerformanceMonitor.start('dev-test');
+      PerformanceMonitor.end('dev-test');
+      
+      expect(console.log).toHaveBeenCalledWith('[Performance] dev-test: 0ms');
+      
+      process.env.NODE_ENV = originalEnv;
+      console.log = originalLog;
+    });
+
+    it('should not log in production mode', () => {
+      const originalEnv = process.env.NODE_ENV;
+      const originalLog = console.log;
+      console.log = jest.fn();
+      
+      process.env.NODE_ENV = 'production';
+      
+      PerformanceMonitor.start('prod-test');
+      PerformanceMonitor.end('prod-test');
+      
+      expect(console.log).not.toHaveBeenCalled();
+      
+      process.env.NODE_ENV = originalEnv;
+      console.log = originalLog;
+    });
+
     it('should handle non-existent operations', () => {
       const metrics = PerformanceMonitor.end('non-existent');
       expect(metrics).toBeUndefined();

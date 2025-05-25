@@ -248,5 +248,39 @@ describe('Club - Get All Operation', () => {
       );
       expect(result[0]).toHaveLength(1);
     });
+
+    it('should handle empty items array', async () => {
+      const emptyItems: INodeExecutionData[] = [];
+      
+      mockThis.getNodeParameter = jest.fn((param: string, index: number, defaultValue?: any) => {
+        if (param === 'returnAll') return false;
+        if (param === 'subdomain') return 'test-subdomain';
+        if (param === 'filters') return {};
+        if (param === 'limit') return 10;
+        return defaultValue;
+      });
+
+      const mockResponse = { 
+        items: [
+          { id: 'student_1', name: 'Student 1', email: 'student1@example.com' },
+          { id: 'student_2', name: 'Student 2', email: 'student2@example.com' }
+        ]
+      };
+      mockHotmartApiRequestTyped.mockResolvedValueOnce(mockResponse);
+
+      const result = await execute.call(mockThis, emptyItems);
+
+      expect(result[0]).toHaveLength(2);
+      expect(mockHotmartApiRequestTyped).toHaveBeenCalledWith(
+        mockThis,
+        'GET',
+        '/club/api/v1/users',
+        {},
+        expect.objectContaining({ 
+          subdomain: 'test-subdomain',
+          max_results: 10
+        })
+      );
+    });
   });
 });

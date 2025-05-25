@@ -22,14 +22,14 @@ export const DEFAULT_OUTPUT_NAMES = {
     'Carrinho Abandonado',
     'Assinatura Cancelada',
     'Plano Trocado',
-    'Data de Cobrança Alterada',
-    'Área de Membros - Primeiro Acesso',
-    'Área de Membros - Módulo Completado',
+    'Data de Cobranï¿½a Alterada',
+    'ï¿½rea de Membros - Primeiro Acesso',
+    'ï¿½rea de Membros - Mï¿½dulo Completado',
   ],
   'super-smart': [
-    'Compra Única',
+    'Compra ï¿½nica',
     'Assinatura',
-    'Renovação',
+    'Renovaï¿½ï¿½o',
     'Completa',
     'Cancelada',
     'Reembolso',
@@ -44,7 +44,7 @@ export const DEFAULT_OUTPUT_NAMES = {
     'Troca de Plano',
     'Troca de Data',
     'Primeiro Acesso',
-    'Módulo Completo',
+    'Mï¿½dulo Completo',
   ],
 } as const;
 
@@ -56,7 +56,10 @@ export function buildOutputConfiguration(parameters: any): INodeOutputConfigurat
   const customizeOutputs = parameters.customizeOutputs as boolean;
 
   if (triggerMode === 'standard') {
-    return ['main'];
+    return [{
+      type: 'main' as const,
+      displayName: 'main',
+    }];
   }
 
   const names = triggerMode === 'super-smart'
@@ -74,7 +77,7 @@ export function buildOutputConfiguration(parameters: any): INodeOutputConfigurat
  */
 function buildSmartOutputs(parameters: any, customize: boolean): string[] {
   if (!customize) {
-    return DEFAULT_OUTPUT_NAMES.smart;
+    return [...DEFAULT_OUTPUT_NAMES.smart];
   }
 
   const events = (parameters.events || []) as string[];
@@ -88,7 +91,7 @@ function buildSmartOutputs(parameters: any, customize: boolean): string[] {
  */
 function buildSuperSmartOutputs(parameters: any, customize: boolean): string[] {
   if (!customize) {
-    return DEFAULT_OUTPUT_NAMES['super-smart'];
+    return [...DEFAULT_OUTPUT_NAMES['super-smart']];
   }
 
   return DEFAULT_OUTPUT_NAMES['super-smart'].map((defaultName, index) => 

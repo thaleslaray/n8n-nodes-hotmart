@@ -163,6 +163,42 @@ describe('Coupon - Create Operation', () => {
       ]]);
     });
 
+    it('should handle empty items array', async () => {
+      const emptyItems: INodeExecutionData[] = [];
+      
+      (mockThis.getNodeParameter as jest.Mock).mockImplementation((param: string, index: number) => {
+        if (param === 'product_id') return 'prod_empty';
+        if (param === 'code') return 'EMPTY_TEST';
+        if (param === 'discount') return 10;
+        if (param === 'options') return {};
+        return undefined;
+      });
+
+      const mockResponse = {
+        code: 'EMPTY_TEST',
+        discount_type: 'PERCENTAGE',
+        discount_value: 10
+      };
+
+      mockHotmartApiRequest.mockResolvedValueOnce(mockResponse);
+
+      const result = await execute.call(mockThis, emptyItems);
+
+      expect(mockHotmartApiRequest).toHaveBeenCalledWith(
+        'POST',
+        '/products/api/v1/product/prod_empty/coupon',
+        {
+          code: 'EMPTY_TEST',
+          discount: 0.1,
+          offer_ids: []
+        }
+      );
+
+      expect(result).toEqual([[
+        { json: mockResponse, pairedItem: { item: 0 } }
+      ]]);
+    });
+
     it('should handle empty offer_ids string', async () => {
       mockThis.getNodeParameter = jest.fn()
         .mockReturnValueOnce('prod_999') // product_id
