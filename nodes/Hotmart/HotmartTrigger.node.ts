@@ -464,9 +464,9 @@ export class HotmartTrigger implements INodeType {
       {
         name: 'default',
         httpMethod: 'POST',
-        responseMode: `={{$parameter["respond"] === "immediately" ? "onReceived" : ($parameter["respond"] === "lastNode" ? "lastNode" : "responseNode")}}`,
-        responseData: `={{$parameter["respond"] === "immediately" ? "OK" : undefined}}`,
-        path: `={{$parameter["triggerMode"] === "standard" ? "hotmart" : ($parameter["triggerMode"] === "smart" ? "hotmart-smart" : "hotmart-super-smart")}}`,
+        responseMode: `={{$parameter["options"]?.responseMode === "immediately" ? "onReceived" : ($parameter["options"]?.responseMode === "lastNode" ? "lastNode" : ($parameter["options"]?.responseMode === "responseNode" ? "responseNode" : "onReceived"))}}`,
+        responseData: `={{$parameter["options"]?.responseMode === "immediately" ? ($parameter["options"]?.responseData || "OK") : undefined}}`,
+        path: `={{$parameter["options"]?.path || "hotmart"}}`,
         // Removido isFullPath para usar o padrão do n8n com identificadores únicos
         eventTriggerDescription: 'Aguardando chamada para a URL do webhook',
         activationMessage:
@@ -481,75 +481,6 @@ export class HotmartTrigger implements INodeType {
         name: 'webhookNotice',
         type: 'notice',
         default: '',
-      },
-      {
-        displayName: 'Respond',
-        name: 'respond',
-        type: 'options',
-        options: [
-          {
-            name: 'Immediately',
-            value: 'immediately',
-            description: 'Responde "OK" imediatamente (recomendado para produção)',
-          },
-          {
-            name: 'When Last Node Finishes',
-            value: 'lastNode', 
-            description: 'Aguarda o workflow terminar para responder (útil para debug)',
-          },
-          {
-            name: 'Using Respond to Webhook Node',
-            value: 'responseNode',
-            description: 'Usa nó "Respond to Webhook" para controle total da resposta',
-          },
-        ],
-        default: 'immediately',
-        description: 'Define quando e como o webhook deve responder à Hotmart',
-      },
-      {
-        displayName: '',
-        name: 'respondNotice',
-        type: 'notice',
-        default: '',
-        displayOptions: {
-          show: {
-            respond: ['immediately'],
-          },
-        },
-        typeOptions: {
-          theme: 'info',
-        },
-        description: '✅ <strong>Immediately</strong>: Resposta rápida "OK" (~50ms). Recomendado para produção pois evita timeouts da Hotmart. Os dados processados ficam disponíveis nas execuções do n8n.',
-      },
-      {
-        displayName: '',
-        name: 'respondNotice2',
-        type: 'notice',
-        default: '',
-        displayOptions: {
-          show: {
-            respond: ['lastNode'],
-          },
-        },
-        typeOptions: {
-          theme: 'warning',
-        },
-        description: '⚠️ <strong>When Last Node Finishes</strong>: Aguarda o workflow terminar (~500-2000ms). Útil para debug mas pode causar timeout na Hotmart em workflows lentos.',
-      },
-      {
-        displayName: '',
-        name: 'respondNotice3',
-        type: 'notice',
-        default: '',
-        displayOptions: {
-          show: {
-            respond: ['responseNode'],
-          },
-        },
-        typeOptions: {
-          theme: 'info',
-        },
-        description: '🎛️ <strong>Using Respond to Webhook Node</strong>: Use o nó "Respond to Webhook" para controle total da resposta. Combine com outros nós para lógica complexa.',
       },
       {
         displayName: 'Modo de Trigger',
@@ -627,25 +558,80 @@ export class HotmartTrigger implements INodeType {
         },
       },
       {
-        displayName: 'Usar Token de Verificação',
-        name: 'useHotTokToken',
-        type: 'boolean',
-        default: false,
-        description:
-          'Se deve validar o token enviado no cabeçalho X-HOTMART-HOTTOK. Aumenta a segurança validando que o webhook veio da Hotmart.',
-      },
-      {
-        displayName: 'Token de Verificação',
-        name: 'hotTokToken',
-        type: 'string',
-        default: '',
-        required: true,
-        displayOptions: {
-          show: {
-            useHotTokToken: [true],
+        displayName: 'Opções',
+        name: 'options',
+        type: 'collection',
+        placeholder: 'Adicionar Opção',
+        default: {},
+        options: [
+          {
+            displayName: 'Path Customizado',
+            name: 'path',
+            type: 'string',
+            default: '',
+            placeholder: 'ex: meu-webhook-hotmart',
+            description: 'Path personalizado para o webhook (deixe vazio para usar "hotmart")',
           },
-        },
-        description: 'Token de verificação enviado pela Hotmart no cabeçalho X-HOTMART-HOTTOK',
+          {
+            displayName: 'Modo de Resposta',
+            name: 'responseMode',
+            type: 'options',
+            options: [
+              {
+                name: 'Imediatamente',
+                value: 'immediately',
+                description: 'Responde "OK" imediatamente (recomendado)',
+              },
+              {
+                name: 'Quando Último Nó Terminar',
+                value: 'lastNode', 
+                description: 'Aguarda workflow terminar (útil para debug)',
+              },
+              {
+                name: 'Usando Nó de Resposta',
+                value: 'responseNode',
+                description: 'Controle total via nó "Responder ao Webhook"',
+              },
+            ],
+            default: 'immediately',
+            description: 'Como o webhook deve responder à Hotmart',
+          },
+          {
+            displayName: 'Código de Status da Resposta',
+            name: 'responseStatusCode',
+            type: 'number',
+            default: 200,
+            description: 'Código de status HTTP da resposta (apenas para modo "Imediatamente")',
+          },
+          {
+            displayName: 'Dados da Resposta',
+            name: 'responseData',
+            type: 'string',
+            default: 'OK',
+            description: 'Dados da resposta (apenas para modo "Imediatamente")',
+          },
+          {
+            displayName: 'Usar Token de Verificação',
+            name: 'useHotTokToken',
+            type: 'boolean',
+            default: false,
+            description:
+              'Se deve validar o token enviado no cabeçalho X-HOTMART-HOTTOK. Aumenta a segurança validando que o webhook veio da Hotmart.',
+          },
+          {
+            displayName: 'Token de Verificação',
+            name: 'hotTokToken',
+            type: 'string',
+            default: '',
+            required: true,
+            displayOptions: {
+              show: {
+                useHotTokToken: [true],
+              },
+            },
+            description: 'Token de verificação enviado pela Hotmart no cabeçalho X-HOTMART-HOTTOK',
+          },
+        ],
       },
       // Propriedades para personalização de saídas
       {
@@ -1135,9 +1121,10 @@ export class HotmartTrigger implements INodeType {
         this.logger.debug(`[${nodeName}] ==============================\n`);
 
         // Salvar o token de verificação se a verificação estiver ativada
-        const useHotTokToken = this.getNodeParameter('useHotTokToken', false) as boolean;
+        const options = this.getNodeParameter('options', {}) as IDataObject;
+        const useHotTokToken = options.useHotTokToken as boolean || false;
         if (useHotTokToken) {
-          const hotTokToken = this.getNodeParameter('hotTokToken', '') as string;
+          const hotTokToken = options.hotTokToken as string || '';
           if (hotTokToken) {
             webhookData.hotTokToken = hotTokToken;
           }

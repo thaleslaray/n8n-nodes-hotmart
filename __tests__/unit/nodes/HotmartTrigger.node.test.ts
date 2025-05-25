@@ -21,10 +21,11 @@ describe('HotmartTrigger Node', () => {
       expect(hotmartTrigger.description.webhooks?.[0]).toMatchObject({
         name: 'default',
         httpMethod: 'POST',
-        responseMode: 'onReceived',
       });
-      // Path is dynamic based on triggerMode
-      expect(hotmartTrigger.description.webhooks?.[0].path).toContain('triggerMode');
+      // responseMode is now a dynamic expression based on options.responseMode
+      expect(hotmartTrigger.description.webhooks?.[0].responseMode).toContain('options');
+      // Path is now dynamic based on options.path
+      expect(hotmartTrigger.description.webhooks?.[0].path).toContain('options');
     });
 
     it('should have correct inputs and dynamic outputs', () => {
