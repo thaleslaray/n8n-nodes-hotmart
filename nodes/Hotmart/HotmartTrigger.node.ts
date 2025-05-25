@@ -464,8 +464,8 @@ export class HotmartTrigger implements INodeType {
       {
         name: 'default',
         httpMethod: 'POST',
-        responseMode: 'onReceived',
-        responseData: 'OK',
+        responseMode: `={{$parameter["respond"] === "immediately" ? "onReceived" : ($parameter["respond"] === "lastNode" ? "lastNode" : "responseNode")}}`,
+        responseData: `={{$parameter["respond"] === "immediately" ? "OK" : undefined}}`,
         path: `={{$parameter["triggerMode"] === "standard" ? "hotmart" : ($parameter["triggerMode"] === "smart" ? "hotmart-smart" : "hotmart-super-smart")}}`,
         // Removido isFullPath para usar o padrão do n8n com identificadores únicos
         eventTriggerDescription: 'Aguardando chamada para a URL do webhook',
@@ -481,6 +481,75 @@ export class HotmartTrigger implements INodeType {
         name: 'webhookNotice',
         type: 'notice',
         default: '',
+      },
+      {
+        displayName: 'Respond',
+        name: 'respond',
+        type: 'options',
+        options: [
+          {
+            name: 'Immediately',
+            value: 'immediately',
+            description: 'Responde "OK" imediatamente (recomendado para produção)',
+          },
+          {
+            name: 'When Last Node Finishes',
+            value: 'lastNode', 
+            description: 'Aguarda o workflow terminar para responder (útil para debug)',
+          },
+          {
+            name: 'Using Respond to Webhook Node',
+            value: 'responseNode',
+            description: 'Usa nó "Respond to Webhook" para controle total da resposta',
+          },
+        ],
+        default: 'immediately',
+        description: 'Define quando e como o webhook deve responder à Hotmart',
+      },
+      {
+        displayName: '',
+        name: 'respondNotice',
+        type: 'notice',
+        default: '',
+        displayOptions: {
+          show: {
+            respond: ['immediately'],
+          },
+        },
+        typeOptions: {
+          theme: 'info',
+        },
+        description: '✅ <strong>Immediately</strong>: Resposta rápida "OK" (~50ms). Recomendado para produção pois evita timeouts da Hotmart. Os dados processados ficam disponíveis nas execuções do n8n.',
+      },
+      {
+        displayName: '',
+        name: 'respondNotice2',
+        type: 'notice',
+        default: '',
+        displayOptions: {
+          show: {
+            respond: ['lastNode'],
+          },
+        },
+        typeOptions: {
+          theme: 'warning',
+        },
+        description: '⚠️ <strong>When Last Node Finishes</strong>: Aguarda o workflow terminar (~500-2000ms). Útil para debug mas pode causar timeout na Hotmart em workflows lentos.',
+      },
+      {
+        displayName: '',
+        name: 'respondNotice3',
+        type: 'notice',
+        default: '',
+        displayOptions: {
+          show: {
+            respond: ['responseNode'],
+          },
+        },
+        typeOptions: {
+          theme: 'info',
+        },
+        description: '🎛️ <strong>Using Respond to Webhook Node</strong>: Use o nó "Respond to Webhook" para controle total da resposta. Combine com outros nós para lógica complexa.',
       },
       {
         displayName: 'Modo de Trigger',
