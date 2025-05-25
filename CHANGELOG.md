@@ -7,6 +7,20 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ## [Unreleased]
 
+### Adicionado
+
+- **Cobertura de Testes Massiva** 🧪
+  - Cobertura de testes aumentada para 96.81% (de ~80%)
+  - 100% de cobertura em Statements, Functions e Lines
+  - 96.81% de cobertura em Branches (517/534)
+  - 510 testes totais (aumentado de ~450)
+  - Novos testes para:
+    - Arrays vazios em operações getAll
+    - Tratamento de erros com continueOnFail
+    - Branches não cobertos em handlers
+    - Filtros específicos (plan, transaction, trial)
+    - SuperSmartModeHandler edge cases
+
 ## [0.6.1] - 2025-05-24
 
 ### Adicionado

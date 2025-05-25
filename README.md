@@ -1025,6 +1025,41 @@ Os workflows existentes continuam funcionando, mas para aproveitar as novas capa
 - Paginação automática para retornar todos os resultados
 - Integração com Sandbox e ambiente de produção
 
+## Testes e Qualidade
+
+Este projeto mantém altos padrões de qualidade de código:
+
+### Cobertura de Testes 🧪
+- **Statements**: 100% ✅
+- **Functions**: 100% ✅
+- **Lines**: 100% ✅
+- **Branches**: 96.81% (517/534)
+- **Total de testes**: 510
+
+### Executar Testes
+```bash
+# Rodar todos os testes
+pnpm test
+
+# Rodar com cobertura
+pnpm test:coverage
+
+# Rodar em modo watch
+pnpm test:watch
+```
+
+### Qualidade de Código
+```bash
+# Verificar lint
+pnpm lint
+
+# Verificar tipos TypeScript
+pnpm typecheck
+
+# Build do projeto
+pnpm build
+```
+
 ## Licença
 
 Este projeto está licenciado sob a Licença MIT.
