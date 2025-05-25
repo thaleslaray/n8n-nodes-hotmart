@@ -23,8 +23,12 @@ Before creating bug reports, please check existing issues. When creating a bug r
 
 ### Suggesting Enhancements
 
-Enhancement suggestions are tracked as GitHub issues. Include:
+Enhancement suggestions are tracked as GitHub issues. Before suggesting:
 
+1. Check the [ROADMAP.md](./ROADMAP.md) to see if it's already planned
+2. Search existing issues for similar suggestions
+
+Include in your suggestion:
 1. **Use case**: Why is this needed?
 2. **Current workaround** (if any)
 3. **Proposed solution**
