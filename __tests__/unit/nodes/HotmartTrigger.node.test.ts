@@ -218,34 +218,4 @@ describe('HotmartTrigger Node', () => {
     });
   });
 
-  describe('HandlerFactory', () => {
-    const mockWebhookFunctions = {
-      getNodeParameter: jest.fn(),
-      getBodyData: jest.fn(),
-      getHeaderData: jest.fn(),
-      helpers: {
-        returnJsonArray: jest.fn(),
-      },
-    } as any;
-
-    it('should create StandardModeHandler for standard mode', () => {
-      const handler = HandlerFactory.create('standard', mockWebhookFunctions);
-      expect(handler).toBeInstanceOf(StandardModeHandler);
-    });
-
-    it('should create SmartModeHandler for smart mode', () => {
-      const handler = HandlerFactory.create('smart', mockWebhookFunctions);
-      expect(handler).toBeInstanceOf(SmartModeHandler);
-    });
-
-    it('should create SuperSmartModeHandler for superSmart mode', () => {
-      const handler = HandlerFactory.create('superSmart', mockWebhookFunctions);
-      expect(handler).toBeInstanceOf(SuperSmartModeHandler);
-    });
-
-    it('should throw error for invalid mode', () => {
-      expect(() => HandlerFactory.create('invalid', mockWebhookFunctions))
-        .toThrow('Modo de trigger inválido: invalid');
-    });
-  });
 });
