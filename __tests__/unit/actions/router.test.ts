@@ -7,7 +7,7 @@ jest.mock('../../../nodes/Hotmart/v1/actions/subscription/Subscription.resource'
   operations: {
     getAll: {
       description: [],
-      execute: jest.fn().mockResolvedValue([[{ json: { subscription: 'test' } }]])
+      execute: jest.fn()
     },
     getSummary: {
       description: [],
@@ -48,7 +48,7 @@ jest.mock('../../../nodes/Hotmart/v1/actions/sales/Sales.resource', () => ({
   operations: {
     getHistoricoVendas: {
       description: [],
-      execute: jest.fn().mockResolvedValue([[{ json: { sale: 'test' } }]])
+      execute: jest.fn()
     },
     getResumoVendas: {
       description: [],
@@ -77,7 +77,7 @@ jest.mock('../../../nodes/Hotmart/v1/actions/product/Product.resource', () => ({
   operations: {
     getAll: {
       description: [],
-      execute: jest.fn().mockResolvedValue([[{ json: { product: 'test' } }]])
+      execute: jest.fn()
     }
   }
 }));
@@ -86,7 +86,7 @@ jest.mock('../../../nodes/Hotmart/v1/actions/coupon/Coupon.resource', () => ({
   operations: {
     get: {
       description: [],
-      execute: jest.fn().mockResolvedValue([[{ json: { coupon: 'test' } }]])
+      execute: jest.fn()
     },
     create: {
       description: [],
@@ -154,10 +154,20 @@ describe('Router', () => {
     mockThis.getNode = jest.fn().mockReturnValue({ name: 'Hotmart' });
     mockThis.getInputData = jest.fn().mockReturnValue([{ json: {} }]);
     mockThis.continueOnFail = jest.fn().mockReturnValue(false);
+    mockThis.logger = {
+      debug: jest.fn(),
+      error: jest.fn(),
+      info: jest.fn(),
+      warn: jest.fn(),
+    } as any;
   });
 
   describe('router', () => {
-    it.skip('should route to subscription operations', async () => {
+    it('should route to subscription operations', async () => {
+      // Setup mock
+      const subscriptionResource = require('../../../nodes/Hotmart/v1/actions/subscription/Subscription.resource');
+      subscriptionResource.operations.getAll.execute.mockResolvedValue([[{ json: { subscription: 'test' } }]]);
+
       mockThis.getNodeParameter = jest.fn()
         .mockReturnValueOnce('subscription') // resource
         .mockReturnValueOnce('getAll'); // operation
@@ -165,10 +175,15 @@ describe('Router', () => {
       const result = await router.call(mockThis);
 
       expect(result).toBeDefined();
-      expect(result).toHaveLength(1);
+      expect(result).toEqual([[{ json: { subscription: 'test' } }]]);
+      expect(subscriptionResource.operations.getAll.execute).toHaveBeenCalledWith([{ json: {} }]);
     });
 
-    it.skip('should route to sales operations', async () => {
+    it('should route to sales operations', async () => {
+      // Setup mock
+      const salesResource = require('../../../nodes/Hotmart/v1/actions/sales/Sales.resource');
+      salesResource.operations.getHistoricoVendas.execute.mockResolvedValue([[{ json: { sale: 'test' } }]]);
+
       mockThis.getNodeParameter = jest.fn()
         .mockReturnValueOnce('sales') // resource
         .mockReturnValueOnce('getHistoricoVendas'); // operation
@@ -176,10 +191,15 @@ describe('Router', () => {
       const result = await router.call(mockThis);
 
       expect(result).toBeDefined();
-      expect(result).toHaveLength(1);
+      expect(result).toEqual([[{ json: { sale: 'test' } }]]);
+      expect(salesResource.operations.getHistoricoVendas.execute).toHaveBeenCalledWith([{ json: {} }]);
     });
 
-    it.skip('should route to product operations', async () => {
+    it('should route to product operations', async () => {
+      // Setup mock
+      const productResource = require('../../../nodes/Hotmart/v1/actions/product/Product.resource');
+      productResource.operations.getAll.execute.mockResolvedValue([[{ json: { product: 'test' } }]]);
+
       mockThis.getNodeParameter = jest.fn()
         .mockReturnValueOnce('product') // resource
         .mockReturnValueOnce('getAll'); // operation
@@ -187,7 +207,8 @@ describe('Router', () => {
       const result = await router.call(mockThis);
 
       expect(result).toBeDefined();
-      expect(result).toHaveLength(1);
+      expect(result).toEqual([[{ json: { product: 'test' } }]]);
+      expect(productResource.operations.getAll.execute).toHaveBeenCalledWith([{ json: {} }]);
     });
 
     it('should route to coupon operations', async () => {
@@ -195,10 +216,14 @@ describe('Router', () => {
         .mockReturnValueOnce('coupon') // resource
         .mockReturnValueOnce('get'); // operation
 
-      await router.call(mockThis);
-
-      // Verificar se a operação correta foi chamada
+      // Add mock return value for coupon get operation
       const couponResource = require('../../../nodes/Hotmart/v1/actions/coupon/Coupon.resource');
+      couponResource.operations.get.execute.mockResolvedValue([[{ json: { coupon: 'test' } }]]);
+
+      const result = await router.call(mockThis);
+
+      expect(result).toBeDefined();
+      expect(result).toEqual([[{ json: { coupon: 'test' } }]]);
       expect(couponResource.operations.get.execute).toHaveBeenCalled();
     });
 
@@ -214,16 +239,19 @@ describe('Router', () => {
       );
     });
 
-    it('should handle resource containing "custom api call" text', async () => {
+    it('should handle custom api call in resource name', async () => {
       mockThis.getNodeParameter = jest.fn()
-        .mockReturnValueOnce('some Custom API Call text'); // resource
+        .mockReturnValueOnce('Custom API Call'); // resource with different case
 
       const result = await router.call(mockThis);
 
       expect(result).toEqual([[]]);
+      expect(mockThis.logger.debug).toHaveBeenCalledWith(
+        'Tentativa de usar Custom API Call detectada no recurso. Esta operação não é suportada.'
+      );
     });
 
-    it('should handle __CUSTOM_API_CALL__ operation by returning empty array', async () => {
+    it('should handle __CUSTOM_API_CALL__ as operation', async () => {
       mockThis.getNodeParameter = jest.fn()
         .mockReturnValueOnce('subscription') // resource
         .mockReturnValueOnce('__CUSTOM_API_CALL__'); // operation
@@ -236,10 +264,10 @@ describe('Router', () => {
       );
     });
 
-    it('should handle operation containing "custom api call" text', async () => {
+    it('should handle custom api call in operation name', async () => {
       mockThis.getNodeParameter = jest.fn()
         .mockReturnValueOnce('subscription') // resource
-        .mockReturnValueOnce('some Custom API Call operation'); // operation
+        .mockReturnValueOnce('Custom API Call'); // operation with different case
 
       const result = await router.call(mockThis);
 
@@ -249,49 +277,46 @@ describe('Router', () => {
       );
     });
 
-    it('should return error for unknown resource', async () => {
-      mockThis.continueOnFail = jest.fn().mockReturnValue(true);
+    it('should throw error for unsupported resource', async () => {
       mockThis.getNodeParameter = jest.fn()
-        .mockReturnValueOnce('unknownResource') // resource
+        .mockReturnValueOnce('unsupported') // resource
+        .mockReturnValueOnce('someOperation'); // operation
+
+      await expect(router.call(mockThis)).rejects.toThrow('O recurso "unsupported" não é suportado!');
+    });
+
+    it('should throw error for unsupported operation', async () => {
+      mockThis.getNodeParameter = jest.fn()
+        .mockReturnValueOnce('subscription') // valid resource
+        .mockReturnValueOnce('unsupportedOperation'); // invalid operation
+
+      await expect(router.call(mockThis)).rejects.toThrow(
+        'A operação "unsupportedOperation" não é suportada para o recurso "subscription"!'
+      );
+    });
+
+    it('should handle errors when continueOnFail is true', async () => {
+      mockThis.continueOnFail = jest.fn().mockReturnValue(true);
+      mockThis.helpers.constructExecutionMetaData = jest.fn().mockReturnValue([{ error: 'test error' }]);
+      mockThis.helpers.returnJsonArray = jest.fn((data) => [{ json: data }]) as any;
+      
+      mockThis.getNodeParameter = jest.fn()
+        .mockReturnValueOnce('unsupported') // resource
         .mockReturnValueOnce('someOperation'); // operation
 
       const result = await router.call(mockThis);
-      expect(result).toBeDefined();
-      expect(result[0][0].json.error).toBeDefined();
-      expect(result[0][0].json.error).toContain('O recurso "unknownResource" não é suportado!');
+
+      expect(result).toEqual([[{ error: 'test error' }]]);
+      expect(mockThis.helpers.constructExecutionMetaData).toHaveBeenCalled();
     });
 
-    it('should return error for unknown operation', async () => {
-      mockThis.continueOnFail = jest.fn().mockReturnValue(true);
-      mockThis.getNodeParameter = jest.fn()
-        .mockReturnValueOnce('subscription') // resource
-        .mockReturnValueOnce('unknownOperation'); // operation
-
-      const result = await router.call(mockThis);
-      expect(result).toBeDefined();
-      expect(result[0][0].json.error).toBeDefined();
-      expect(result[0][0].json.error).toContain('A operação "unknownOperation" não é suportada para o recurso "subscription"!');
-    });
-
-    it('should return error for missing operation on resource', async () => {
-      mockThis.continueOnFail = jest.fn().mockReturnValue(true);
-      mockThis.getNodeParameter = jest.fn()
-        .mockReturnValueOnce('subscription') // resource
-        .mockReturnValueOnce('nonExistentOperation'); // operation
-
-      const result = await router.call(mockThis);
-      expect(result).toBeDefined();
-      expect(result[0][0].json.error).toBeDefined();
-      expect(result[0][0].json.error).toContain('A operação "nonExistentOperation" não é suportada para o recurso "subscription"!');
-    });
-
-    it('should handle getNodeParameter errors by returning empty array', async () => {
+    it('should handle error when getting parameters fails', async () => {
       mockThis.getNodeParameter = jest.fn().mockImplementation(() => {
         throw new Error('Parameter error');
       });
 
       const result = await router.call(mockThis);
-      
+
       expect(result).toEqual([[]]);
       expect(mockThis.logger.debug).toHaveBeenCalledWith(
         'Erro ao obter parâmetros no nó Hotmart:',
