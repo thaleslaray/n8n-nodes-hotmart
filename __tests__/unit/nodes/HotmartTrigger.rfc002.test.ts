@@ -1,4 +1,5 @@
 import { HotmartTrigger } from '../../../nodes/Hotmart/HotmartTrigger.node';
+import type { MockNodeParameters } from '../../helpers/types';
 import { IWebhookFunctions } from 'n8n-workflow';
 
 describe('HotmartTrigger - RFC-002 New Event System', () => {
@@ -34,7 +35,7 @@ describe('HotmartTrigger - RFC-002 New Event System', () => {
         data: { purchase: { transaction: 'TEST123' } }
       });
       (mockWebhookFunctions.getNodeParameter as jest.Mock).mockImplementation((name) => {
-        const params: any = {
+        const params: MockNodeParameters = {
           triggerMode: 'standard',
           event: '*',
           useHotTokToken: false
@@ -96,7 +97,7 @@ describe('HotmartTrigger - RFC-002 New Event System', () => {
   describe('Standard Mode - New System', () => {
     beforeEach(() => {
       (mockWebhookFunctions.getNodeParameter as jest.Mock).mockImplementation((name) => {
-        const params: any = {
+        const params: MockNodeParameters = {
           triggerMode: 'standard',
           useHotTokToken: false
         };
@@ -111,7 +112,7 @@ describe('HotmartTrigger - RFC-002 New Event System', () => {
         data: { purchase: { transaction: 'TEST456' } }
       });
       (mockWebhookFunctions.getNodeParameter as jest.Mock).mockImplementation((name) => {
-        const params: any = {
+        const params: MockNodeParameters = {
           triggerMode: 'standard',
           event: 'PURCHASE_APPROVED',
           useHotTokToken: false
@@ -141,7 +142,7 @@ describe('HotmartTrigger - RFC-002 New Event System', () => {
         event: 'PURCHASE_CANCELED'
       });
       (mockWebhookFunctions.getNodeParameter as jest.Mock).mockImplementation((name) => {
-        const params: any = {
+        const params: MockNodeParameters = {
           triggerMode: 'standard',
           event: 'PURCHASE_APPROVED', // Different event selected
           useHotTokToken: false
@@ -171,7 +172,7 @@ describe('HotmartTrigger - RFC-002 New Event System', () => {
         }
       });
       (mockWebhookFunctions.getNodeParameter as jest.Mock).mockImplementation((name) => {
-        const params: any = {
+        const params: MockNodeParameters = {
           triggerMode: 'standard',
           event: '*',
           useHotTokToken: false
@@ -215,7 +216,7 @@ describe('HotmartTrigger - RFC-002 New Event System', () => {
           data: {}
         });
         (mockWebhookFunctions.getNodeParameter as jest.Mock).mockImplementation((name) => {
-          const params: any = {
+          const params: MockNodeParameters = {
             triggerMode: 'standard',
             event: '*',
             useHotTokToken: false
@@ -241,7 +242,7 @@ describe('HotmartTrigger - RFC-002 New Event System', () => {
           data: {}
         });
         (mockWebhookFunctions.getNodeParameter as jest.Mock).mockImplementation((name) => {
-          const params: any = {
+          const params: MockNodeParameters = {
             triggerMode: 'standard',
             event: '*',
             useHotTokToken: false
@@ -266,7 +267,7 @@ describe('HotmartTrigger - RFC-002 New Event System', () => {
           data: {}
         });
         (mockWebhookFunctions.getNodeParameter as jest.Mock).mockImplementation((name) => {
-          const params: any = {
+          const params: MockNodeParameters = {
             triggerMode: 'standard',
             event: '*',
             useHotTokToken: false
