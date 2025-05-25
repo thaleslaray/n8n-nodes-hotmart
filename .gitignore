@@ -55,6 +55,13 @@ archive/
 
 # Exceções para scripts essenciais
 !scripts/verify-build.js
+!scripts/install.sh
+!scripts/start-n8n.sh
+!scripts/backup.sh
+!scripts/restore.sh
+!scripts/clear.sh
+!scripts/auto-backup.sh
+!scripts/quick-backup.sh
 install
 clear
 publish
