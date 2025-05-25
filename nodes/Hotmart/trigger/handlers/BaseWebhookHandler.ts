@@ -11,7 +11,7 @@ export abstract class BaseWebhookHandler {
   
   protected abstract getDescription(): string;
 
-  protected async validate(): Promise<{ success: boolean; error?: IWebhookResponseData }> {
+  async validate(): Promise<{ success: boolean; error?: IWebhookResponseData }> {
     const body = this.webhookFunctions.getBodyData();
     
     if (!body || typeof body !== 'object') {
