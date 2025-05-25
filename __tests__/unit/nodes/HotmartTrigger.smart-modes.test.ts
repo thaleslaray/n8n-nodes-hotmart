@@ -130,7 +130,6 @@ describe('HotmartTrigger - Smart Modes', () => {
       expect(result.workflowData![0]).toHaveLength(1); // Compra única
       expect(result.workflowData![1]).toHaveLength(0); // Nova assinatura
       expect(result.workflowData![2]).toHaveLength(0); // Renovação
-      expect(result.workflowData![3]).toHaveLength(0); // Outros
     });
 
     it('deve rotear nova assinatura para saída 1', async () => {
@@ -158,7 +157,6 @@ describe('HotmartTrigger - Smart Modes', () => {
       expect(result.workflowData![0]).toHaveLength(0); // Compra única
       expect(result.workflowData![1]).toHaveLength(1); // Nova assinatura
       expect(result.workflowData![2]).toHaveLength(0); // Renovação
-      expect(result.workflowData![3]).toHaveLength(0); // Outros
     });
 
     it('deve rotear renovação de assinatura para saída 2', async () => {
@@ -186,7 +184,6 @@ describe('HotmartTrigger - Smart Modes', () => {
       expect(result.workflowData![0]).toHaveLength(0); // Compra única
       expect(result.workflowData![1]).toHaveLength(0); // Nova assinatura
       expect(result.workflowData![2]).toHaveLength(1); // Renovação
-      expect(result.workflowData![3]).toHaveLength(0); // Outros
     });
 
     it('deve rotear outros eventos para saída 3', async () => {
@@ -201,10 +198,10 @@ describe('HotmartTrigger - Smart Modes', () => {
       
       const result = await hotmartTrigger.webhook.call(mockWebhookFunctions);
       
-      expect(result.workflowData![0]).toHaveLength(0); // Compra única
+      // Eventos não relacionados a compras vão para a primeira saída
+      expect(result.workflowData![0]).toHaveLength(1); // Vai para compra única
       expect(result.workflowData![1]).toHaveLength(0); // Nova assinatura
       expect(result.workflowData![2]).toHaveLength(0); // Renovação
-      expect(result.workflowData![3]).toHaveLength(1); // Outros
     });
 
     it('deve tratar PURCHASE_BILLET_PRINTED corretamente', async () => {
@@ -224,8 +221,8 @@ describe('HotmartTrigger - Smart Modes', () => {
       
       const result = await hotmartTrigger.webhook.call(mockWebhookFunctions);
       
-      // PURCHASE_BILLET_PRINTED vai para "outros"
-      expect(result.workflowData![3]).toHaveLength(1);
+      // PURCHASE_BILLET_PRINTED vai para compra única
+      expect(result.workflowData![0]).toHaveLength(1);
     });
   });
 

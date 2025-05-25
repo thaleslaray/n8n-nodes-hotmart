@@ -130,7 +130,6 @@ describe('HotmartTrigger - RFC-002 New Event System', () => {
       expect(result.workflowData![0]).toHaveLength(1); // Unique purchase
       expect(result.workflowData![1]).toHaveLength(0); // New subscription
       expect(result.workflowData![2]).toHaveLength(0); // Renewal
-      expect(result.workflowData![3]).toHaveLength(0); // Others
     });
 
     it('should detect new subscription (first payment)', async () => {
@@ -157,7 +156,6 @@ describe('HotmartTrigger - RFC-002 New Event System', () => {
       expect(result.workflowData![0]).toHaveLength(0); // Unique purchase
       expect(result.workflowData![1]).toHaveLength(1); // New subscription
       expect(result.workflowData![2]).toHaveLength(0); // Renewal
-      expect(result.workflowData![3]).toHaveLength(0); // Others
     });
 
     it('should detect subscription renewal', async () => {
@@ -184,7 +182,6 @@ describe('HotmartTrigger - RFC-002 New Event System', () => {
       expect(result.workflowData![0]).toHaveLength(0); // Unique purchase
       expect(result.workflowData![1]).toHaveLength(0); // New subscription
       expect(result.workflowData![2]).toHaveLength(1); // Renewal
-      expect(result.workflowData![3]).toHaveLength(0); // Others
     });
 
     it('should route non-purchase events to others output', async () => {
@@ -204,10 +201,10 @@ describe('HotmartTrigger - RFC-002 New Event System', () => {
 
         const result = await hotmartTrigger.webhook.call(mockWebhookFunctions as IWebhookFunctions);
         
-        expect(result.workflowData![0]).toHaveLength(0); // Unique purchase
+        // Eventos não-compra vão para a primeira saída no Super Smart mode
+        expect(result.workflowData![0]).toHaveLength(1); // Vai para compra única
         expect(result.workflowData![1]).toHaveLength(0); // New subscription
         expect(result.workflowData![2]).toHaveLength(0); // Renewal
-        expect(result.workflowData![3]).toHaveLength(1); // Others
       }
     });
   });

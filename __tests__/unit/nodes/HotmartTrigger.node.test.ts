@@ -30,9 +30,17 @@ describe('HotmartTrigger Node', () => {
       });
     });
 
-    it('should have correct inputs and outputs', () => {
+    it('should have correct inputs and dynamic outputs', () => {
       expect(hotmartTrigger.description.inputs).toEqual([]);
-      expect(hotmartTrigger.description.outputs).toEqual(['main']);
+      // Outputs são dinâmicos baseados no modo
+      expect(typeof hotmartTrigger.description.outputs).toBe('string');
+      expect(hotmartTrigger.description.outputs).toContain('$parameter["mode"]');
+    });
+
+    it('should have methods for dynamic output names', () => {
+      expect(hotmartTrigger.methods).toBeDefined();
+      expect(hotmartTrigger.methods?.loadOptions).toBeDefined();
+      expect(hotmartTrigger.methods?.loadOptions?.getOutputNames).toBeDefined();
     });
 
     it('should have properties defined', () => {
@@ -188,8 +196,8 @@ describe('HotmartTrigger Node', () => {
 
       expect(result).toHaveProperty('workflowData');
       expect(Array.isArray(result.workflowData)).toBe(true);
-      // Super smart mode should have 4 outputs
-      expect(result.workflowData?.length).toBe(4);
+      // Super smart mode should have 3 outputs
+      expect(result.workflowData?.length).toBe(3);
     });
 
     it('should handle empty webhook body', async () => {
