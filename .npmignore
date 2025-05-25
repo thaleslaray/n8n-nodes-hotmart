@@ -1,2 +1,46 @@
+# Development files
+__tests__/
+coverage/
+.github/
+scripts/
+docs/
+documentation/
+*.test.ts
+*.spec.ts
+jest.config.js
+jest.setup.js
+tsconfig.json
+eslint.config.js
+gulpfile.js
+typedoc.json
+codecov.yml
+ROADMAP.md
+
+# Source files (only distribute compiled)
+nodes/
+credentials/
+!dist/
+
+# Misc
 .DS_Store
+*.log
+.env
+.vscode/
+.idea/
+*.tgz
 *.tsbuildinfo
+backups/
+logs/
+archive/
+
+# Config files
+.prettierrc
+.gitignore
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
+SECURITY.md
+.husky/
+
+# Git
+.git/
+.gitattributes

@@ -1,9 +1,5 @@
 import { HotmartTrigger } from '../../../nodes/Hotmart/HotmartTrigger.node';
 import { IWebhookFunctions, IHookFunctions } from 'n8n-workflow';
-import { HandlerFactory } from '../../../nodes/Hotmart/trigger/handlers/HandlerFactory';
-import { StandardModeHandler } from '../../../nodes/Hotmart/trigger/handlers/StandardModeHandler';
-import { SmartModeHandler } from '../../../nodes/Hotmart/trigger/handlers/SmartModeHandler';
-import { SuperSmartModeHandler } from '../../../nodes/Hotmart/trigger/handlers/SuperSmartModeHandler';
 
 describe('HotmartTrigger Node', () => {
   let hotmartTrigger: HotmartTrigger;
@@ -37,10 +33,9 @@ describe('HotmartTrigger Node', () => {
       expect(hotmartTrigger.description.outputs).toContain('$parameter["mode"]');
     });
 
-    it('should have methods for dynamic output names', () => {
-      expect(hotmartTrigger.methods).toBeDefined();
-      expect(hotmartTrigger.methods?.loadOptions).toBeDefined();
-      expect(hotmartTrigger.methods?.loadOptions?.getOutputNames).toBeDefined();
+    it('should have webhook methods defined', () => {
+      expect(hotmartTrigger.webhookMethods).toBeDefined();
+      expect(hotmartTrigger.webhookMethods.default).toBeDefined();
     });
 
     it('should have properties defined', () => {
