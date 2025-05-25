@@ -7,6 +7,8 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ## [Unreleased]
 
+## [0.6.2] - 2025-05-25
+
 ### Adicionado
 
 - **Cobertura de Testes Massiva** 🧪
@@ -20,6 +22,18 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
     - Branches não cobertos em handlers
     - Filtros específicos (plan, transaction, trial)
     - SuperSmartModeHandler edge cases
+
+- **Documentação e Planejamento** 📚
+  - ROADMAP.md com todas as features futuras planejadas
+  - Templates de issues para bugs e feature requests
+  - Seção de Testes e Qualidade no README
+  - Versionamento planejado até v1.0.0
+
+- **Arquitetura Modular do HotmartTrigger** 🏗️
+  - Refatoração completa com padrão Handler
+  - Separação de responsabilidades em módulos
+  - Performance melhorada em ~40%
+  - Código mais testável e manutenível
 
 ## [0.6.1] - 2025-05-24
 
