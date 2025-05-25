@@ -1,63 +1,70 @@
 import type { IWebhookResponseData, IDataObject } from 'n8n-workflow';
-import { BaseWebhookHandler } from './BaseHandler';
+import { BaseWebhookHandler } from './BaseWebhookHandler';
+import { EVENT_CONFIG } from '../constants/events';
 
-/**
- * Handler for standard mode (single output)
- */
 export class StandardModeHandler extends BaseWebhookHandler {
   async process(): Promise<IWebhookResponseData> {
-    // Validate request
     const validation = await this.validate();
     if (!validation.success) {
       return validation.error!;
     }
 
-    // Check if event matches selection
-    const selectedEvent = this.context.getNodeParameter('event') as string;
-    const currentEvent = this.bodyData.event as string;
+    const body = this.webhookFunctions.getBodyData() as any;
+    const selectedEvent = this.webhookFunctions.getNodeParameter('event', 0) as string;
+    const currentEvent = body.event as string;
 
-    if (selectedEvent !== '*' && selectedEvent !== currentEvent) {
-      this.logDebug('Event does not match subscription', { 
+    // Verifica se o evento corresponde ao selecionado
+    if (selectedEvent !== 'all' && selectedEvent !== currentEvent) {
+      this.logDebug('Event does not match selection', { 
         selected: selectedEvent, 
         received: currentEvent 
       });
-      return this.badRequest('Evento não corresponde à inscrição');
+      
+      return {
+        webhookResponse: {
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ message: 'Event ignored' }),
+          statusCode: 200,
+        },
+      };
     }
 
-    // Process the event
-    const enrichedData = this.enrichEventData();
+    // Enriquece os dados do evento
+    const enrichedData = this.enrichEventData(body);
     
-    // Log event info
-    this.logDebug('Event processed', {
-      event: enrichedData.eventName,
-      type: enrichedData.eventType,
-      isSubscription: enrichedData.isSubscription,
-    });
-
     return {
-      workflowData: [this.context.helpers.returnJsonArray(enrichedData)],
+      workflowData: [this.webhookFunctions.helpers.returnJsonArray(enrichedData)],
     };
   }
 
-  /**
-   * Enrich event data with additional metadata
-   */
-  private enrichEventData(): IDataObject {
-    const eventInfo = this.getEventInfo();
-    const isSubscription = this.isSubscriptionEvent();
-    const hottok = this.headerData['x-hotmart-hottok'] as string;
+  protected getDescription(): string {
+    return 'Standard mode - single output';
+  }
 
+  private enrichEventData(body: IDataObject): IDataObject {
+    const event = body.event as string;
+    const eventConfig = EVENT_CONFIG[event as keyof typeof EVENT_CONFIG];
+    const headers = this.webhookFunctions.getHeaderData();
+    
     return {
-      ...this.bodyData,
-      eventName: eventInfo?.displayName || this.bodyData.event,
-      eventType: this.bodyData.event,
-      eventCategory: eventInfo?.category,
+      ...body,
+      eventName: eventConfig?.displayName || event,
+      eventType: event,
+      eventCategory: eventConfig?.category,
       receivedAt: new Date().toISOString(),
-      isSubscription,
+      isSubscription: this.isSubscriptionEvent(body),
       metadata: {
-        hottok,
-        headers: this.headerData,
+        hottok: headers['x-hotmart-hottok'],
+        headers,
       },
     };
+  }
+
+  private isSubscriptionEvent(body: IDataObject): boolean {
+    const data = body.data as IDataObject;
+    if (!data) return false;
+    
+    const subscription = data.subscription as IDataObject;
+    return Boolean(subscription && subscription.status);
   }
 }
