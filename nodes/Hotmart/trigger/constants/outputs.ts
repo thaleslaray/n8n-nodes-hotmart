@@ -22,14 +22,14 @@ export const DEFAULT_OUTPUT_NAMES = {
     'Carrinho Abandonado',
     'Assinatura Cancelada',
     'Plano Trocado',
-    'Data de Cobran�a Alterada',
-    '�rea de Membros - Primeiro Acesso',
-    '�rea de Membros - M�dulo Completado',
+    'Data de Cobrança Alterada',
+    'Área de Membros - Primeiro Acesso',
+    'Área de Membros - Módulo Completado',
   ],
   'super-smart': [
-    'Compra �nica',
+    'Compra Única',
     'Assinatura',
-    'Renova��o',
+    'Renovação',
     'Completa',
     'Cancelada',
     'Reembolso',
@@ -44,7 +44,7 @@ export const DEFAULT_OUTPUT_NAMES = {
     'Troca de Plano',
     'Troca de Data',
     'Primeiro Acesso',
-    'M�dulo Completo',
+    'Módulo Completo',
   ],
 } as const;
 
