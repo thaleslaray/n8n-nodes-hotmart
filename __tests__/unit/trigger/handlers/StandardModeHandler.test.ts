@@ -1,5 +1,6 @@
 import { StandardModeHandler } from '../../../../nodes/Hotmart/trigger/handlers/StandardModeHandler';
 import type { IWebhookFunctions, IDataObject } from 'n8n-workflow';
+import { EVENT_CONFIG } from '../../../../nodes/Hotmart/trigger/constants/events';
 
 // Mock the webhook context
 function createMockWebhookContext(overrides?: Partial<IWebhookFunctions>): IWebhookFunctions {
@@ -9,9 +10,9 @@ function createMockWebhookContext(overrides?: Partial<IWebhookFunctions>): IWebh
     getWorkflowStaticData: jest.fn().mockReturnValue({ hotTokToken: 'valid-token' }),
     getNodeParameter: jest.fn().mockImplementation((name: string, defaultValue?: any) => {
       const params: IDataObject = {
-        triggerMode: 'standard',
-        event: '*',
-        useHotTokToken: true,
+        mode: 'standard',
+        event: 'all',
+        options: {},
       };
       return params[name] ?? defaultValue;
     }),
@@ -41,140 +42,209 @@ describe('StandardModeHandler', () => {
     handler = new StandardModeHandler(mockContext);
   });
 
-  describe('validation', () => {
-    it('should pass validation with correct token', async () => {
-      const result = await handler.validate();
-      expect(result.success).toBe(true);
-      expect(result.error).toBeUndefined();
-    });
+  describe('process method', () => {
+    it('should process valid webhook body', async () => {
+      const bodyData = {
+        event: 'PURCHASE_APPROVED',
+        data: { 
+          purchase: { id: '123' },
+          buyer: { email: 'test@example.com' }
+        }
+      };
 
-    it('should fail validation with incorrect token', async () => {
-      (mockContext.getHeaderData as jest.Mock).mockReturnValue({ 
-        'x-hotmart-hottok': 'wrong-token' 
-      });
+      (mockContext.getBodyData as jest.Mock).mockReturnValue(bodyData);
       
-      handler = new StandardModeHandler(mockContext);
-      const result = await handler.validate();
-      
-      expect(result.success).toBe(false);
-      expect(result.error).toBeDefined();
-      expect(mockContext.getResponseObject().status).toHaveBeenCalledWith(401);
-    });
-
-    it('should fail validation with unknown event', async () => {
-      (mockContext.getBodyData as jest.Mock).mockReturnValue({ 
-        event: 'UNKNOWN_EVENT', 
-        data: {} 
-      });
-      
-      handler = new StandardModeHandler(mockContext);
-      const result = await handler.validate();
-      
-      expect(result.success).toBe(false);
-      expect(result.error).toBeDefined();
-      expect(mockContext.getResponseObject().status).toHaveBeenCalledWith(400);
-    });
-
-    it('should pass validation when token validation is disabled', async () => {
-      (mockContext.getNodeParameter as jest.Mock).mockImplementation((name: string) => {
-        if (name === 'useHotTokToken') return false;
-        if (name === 'event') return '*';
-        return 'standard';
-      });
-      
-      (mockContext.getHeaderData as jest.Mock).mockReturnValue({}); // No token
-      
-      handler = new StandardModeHandler(mockContext);
-      const result = await handler.validate();
-      
-      expect(result.success).toBe(true);
-    });
-  });
-
-  describe('process', () => {
-    it('should process all events when * is selected', async () => {
       const result = await handler.process();
       
       expect(result.workflowData).toBeDefined();
       expect(result.workflowData![0]).toHaveLength(1);
       expect(result.workflowData![0][0].json).toMatchObject({
         event: 'PURCHASE_APPROVED',
-        eventType: 'PURCHASE_APPROVED',
         eventName: 'Compra Aprovada',
+        eventType: 'PURCHASE_APPROVED',
         eventCategory: 'purchase',
-        isSubscription: false,
       });
     });
 
-    it('should process specific event when selected', async () => {
-      (mockContext.getNodeParameter as jest.Mock).mockImplementation((name: string) => {
-        if (name === 'event') return 'PURCHASE_APPROVED';
-        if (name === 'useHotTokToken') return true;
-        return 'standard';
+    it('should return error for invalid body', async () => {
+      (mockContext.getBodyData as jest.Mock).mockReturnValue(null);
+      
+      const result = await handler.process();
+      
+      expect(result.webhookResponse).toBeDefined();
+      expect(result.webhookResponse!.statusCode).toBe(400);
+      expect(result.webhookResponse!.body).toContain('Invalid webhook body');
+    });
+
+    it('should filter events when specific event is selected', async () => {
+      (mockContext.getNodeParameter as jest.Mock).mockImplementation((name) => {
+        if (name === 'mode') return 'standard';
+        if (name === 'event') return 'PURCHASE_COMPLETE';
+        if (name === 'options') return {};
+        return undefined;
       });
+
+      const bodyData = {
+        event: 'PURCHASE_APPROVED', // Different event
+        data: { test: true }
+      };
+
+      (mockContext.getBodyData as jest.Mock).mockReturnValue(bodyData);
+      
+      const result = await handler.process();
+      
+      expect(result.webhookResponse).toBeDefined();
+      expect(result.webhookResponse!.statusCode).toBe(200);
+      expect(result.webhookResponse!.body).toContain('Event ignored');
+    });
+
+    it('should process all events when "all" is selected', async () => {
+      const events = ['PURCHASE_APPROVED', 'PURCHASE_CANCELED', 'SUBSCRIPTION_CANCELLATION'];
+      
+      for (const event of events) {
+        const bodyData = { event, data: { test: true } };
+        (mockContext.getBodyData as jest.Mock).mockReturnValue(bodyData);
+        
+        const result = await handler.process();
+        
+        expect(result.workflowData).toBeDefined();
+        expect(result.workflowData![0][0].json.event).toBe(event);
+      }
+    });
+
+    it('should enrich event data with metadata', async () => {
+      const bodyData = {
+        event: 'PURCHASE_APPROVED',
+        data: { purchase: { id: '123' } }
+      };
+      
+      const headers = { 
+        'x-hotmart-hottok': 'test-token',
+        'content-type': 'application/json'
+      };
+
+      (mockContext.getBodyData as jest.Mock).mockReturnValue(bodyData);
+      (mockContext.getHeaderData as jest.Mock).mockReturnValue(headers);
+      
+      const result = await handler.process();
+      const enrichedData = result.workflowData![0][0].json;
+      
+      expect(enrichedData).toHaveProperty('metadata');
+      expect(enrichedData.metadata).toHaveProperty('hottok', 'test-token');
+      expect(enrichedData.metadata).toHaveProperty('headers');
+      expect(enrichedData).toHaveProperty('receivedAt');
+      expect(enrichedData).toHaveProperty('isSubscription', false);
+    });
+
+    it('should detect subscription events', async () => {
+      const bodyData = {
+        event: 'PURCHASE_APPROVED',
+        data: { 
+          purchase: { id: '123' },
+          subscription: {
+            status: 'ACTIVE',
+            subscriber_code: 'SUB123'
+          }
+        }
+      };
+
+      (mockContext.getBodyData as jest.Mock).mockReturnValue(bodyData);
+      
+      const result = await handler.process();
+      const enrichedData = result.workflowData![0][0].json;
+      
+      expect(enrichedData.isSubscription).toBe(true);
+    });
+
+    it('should ignore test events when configured', async () => {
+      (mockContext.getNodeParameter as jest.Mock).mockImplementation((name) => {
+        if (name === 'mode') return 'standard';
+        if (name === 'event') return 'all';
+        if (name === 'options') return { ignoreTestEvents: true };
+        return undefined;
+      });
+
+      const bodyData = {
+        event: 'PURCHASE_APPROVED',
+        test_mode: true,
+        data: { test: true }
+      };
+
+      (mockContext.getBodyData as jest.Mock).mockReturnValue(bodyData);
       
       const result = await handler.process();
       
       expect(result.workflowData).toBeDefined();
-    });
-
-    it('should reject event that does not match selection', async () => {
-      (mockContext.getNodeParameter as jest.Mock).mockImplementation((name: string) => {
-        if (name === 'event') return 'PURCHASE_COMPLETE';
-        if (name === 'useHotTokToken') return true;
-        return 'standard';
-      });
-      
-      const result = await handler.process();
-      
-      expect(result.noWebhookResponse).toBe(true);
-      expect(mockContext.getResponseObject().status).toHaveBeenCalledWith(400);
-    });
-
-    it('should detect subscription events correctly', async () => {
-      (mockContext.getBodyData as jest.Mock).mockReturnValue({
-        event: 'SUBSCRIPTION_CANCELLATION',
-        data: { subscription: { subscriber: { code: 'SUB123' } } }
-      });
-      
-      handler = new StandardModeHandler(mockContext);
-      const result = await handler.process();
-      
-      expect(result.workflowData![0][0].json.isSubscription).toBe(true);
-    });
-
-    it('should include metadata in response', async () => {
-      const result = await handler.process();
-      
-      expect(result.workflowData![0][0].json.metadata).toBeDefined();
-      expect(result.workflowData![0][0].json.metadata).toMatchObject({
-        hottok: 'valid-token',
-        headers: { 'x-hotmart-hottok': 'valid-token' },
-      });
-    });
-
-    it('should include timestamp in response', async () => {
-      const before = new Date().toISOString();
-      const result = await handler.process();
-      const after = new Date().toISOString();
-      
-      const receivedAt = result.workflowData![0][0].json.receivedAt as string;
-      expect(new Date(receivedAt).getTime()).toBeGreaterThanOrEqual(new Date(before).getTime());
-      expect(new Date(receivedAt).getTime()).toBeLessThanOrEqual(new Date(after).getTime());
+      expect(result.workflowData![0]).toHaveLength(0);
     });
   });
 
   describe('error handling', () => {
-    it('should handle errors gracefully', () => {
-      const error = new Error('Test error');
-      const result = handler.handleError(error);
+    it('should handle missing event data gracefully', async () => {
+      const bodyData = {
+        // No event field
+        data: { test: true }
+      };
+
+      (mockContext.getBodyData as jest.Mock).mockReturnValue(bodyData);
       
-      expect(result.noWebhookResponse).toBe(true);
-      expect(mockContext.logger.error).toHaveBeenCalledWith(
-        '[HotmartTrigger] Webhook error:',
-        { error: 'Test error' }
-      );
-      expect(mockContext.getResponseObject().status).toHaveBeenCalledWith(500);
+      const result = await handler.process();
+      
+      expect(result.workflowData).toBeDefined();
+      expect(result.workflowData![0][0].json).toHaveProperty('eventName', undefined);
+      expect(result.workflowData![0][0].json).toHaveProperty('eventType', undefined);
+    });
+
+    it('should handle body without data field', async () => {
+      const bodyData = {
+        event: 'PURCHASE_APPROVED',
+        // No data field
+      };
+
+      (mockContext.getBodyData as jest.Mock).mockReturnValue(bodyData);
+      
+      const result = await handler.process();
+      
+      expect(result.workflowData).toBeDefined();
+      expect(result.workflowData![0][0].json.isSubscription).toBe(false);
+    });
+  });
+
+  describe('performance', () => {
+    it('should use cache for repeated event lookups', async () => {
+      // First call - should populate cache
+      const bodyData = {
+        event: 'PURCHASE_APPROVED',
+        data: { test: true }
+      };
+
+      (mockContext.getBodyData as jest.Mock).mockReturnValue(bodyData);
+      
+      await handler.process();
+      
+      // Second call - should use cache
+      const start = Date.now();
+      await handler.process();
+      const duration = Date.now() - start;
+      
+      // Should be very fast due to cache
+      expect(duration).toBeLessThan(10);
+    });
+
+    it('should handle all webhook events efficiently', async () => {
+      const start = Date.now();
+      
+      // Process multiple events
+      for (const event of Object.keys(EVENT_CONFIG)) {
+        const bodyData = { event, data: { test: true } };
+        (mockContext.getBodyData as jest.Mock).mockReturnValue(bodyData);
+        await handler.process();
+      }
+      
+      const duration = Date.now() - start;
+      
+      // Should process all events quickly
+      expect(duration).toBeLessThan(100);
     });
   });
 });

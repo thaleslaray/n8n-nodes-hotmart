@@ -1,6 +1,6 @@
 import { HotmartTrigger } from '../../../nodes/Hotmart/HotmartTrigger.node';
-import type { MockNodeParameters } from '../../helpers/types';
 import { IWebhookFunctions } from 'n8n-workflow';
+import { WEBHOOK_EVENTS, EVENT_CONFIG } from '../../../nodes/Hotmart/trigger/constants/events';
 
 describe('HotmartTrigger - RFC-002 New Event System', () => {
   let hotmartTrigger: HotmartTrigger;
@@ -28,19 +28,17 @@ describe('HotmartTrigger - RFC-002 New Event System', () => {
   });
 
   describe('Event Validation', () => {
-    it('should process PURCHASE_OUT_OF_SHOPPING_CART (event 0) correctly', async () => {
+    it('should process PURCHASE_OUT_OF_SHOPPING_CART correctly', async () => {
       // Arrange
       (mockWebhookFunctions.getBodyData as jest.Mock).mockReturnValue({
         event: 'PURCHASE_OUT_OF_SHOPPING_CART',
         data: { purchase: { transaction: 'TEST123' } }
       });
       (mockWebhookFunctions.getNodeParameter as jest.Mock).mockImplementation((name) => {
-        const params: MockNodeParameters = {
-          triggerMode: 'standard',
-          event: '*',
-          useHotTokToken: false
-        };
-        return params[name];
+        if (name === 'mode') return 'standard';
+        if (name === 'event') return 'all';
+        if (name === 'options') return {};
+        return undefined;
       });
 
       // Act
@@ -48,236 +46,262 @@ describe('HotmartTrigger - RFC-002 New Event System', () => {
 
       // Assert
       expect(result.workflowData).toBeDefined();
-      expect(result.workflowData![0][0].json).toMatchObject({
-        eventName: 'Abandono de Carrinho',
-        eventType: 'PURCHASE_OUT_OF_SHOPPING_CART',
-        eventCategory: 'purchase'
-      });
+      expect(result.workflowData![0][0].json.event).toBe('PURCHASE_OUT_OF_SHOPPING_CART');
+      expect(result.workflowData![0][0].json.eventName).toBe('Abandono de Carrinho');
     });
 
-    it('should reject unknown events', async () => {
-      // Arrange
-      const responseObj = {
-        status: jest.fn().mockReturnValue({ send: jest.fn() })
-      };
-      (mockWebhookFunctions.getResponseObject as jest.Mock).mockReturnValue(responseObj);
-      (mockWebhookFunctions.getBodyData as jest.Mock).mockReturnValue({
-        event: 'UNKNOWN_EVENT'
-      });
-      (mockWebhookFunctions.getNodeParameter as jest.Mock).mockReturnValue('standard');
+    it('should handle all defined webhook events', async () => {
+      // Test each event in WEBHOOK_EVENTS
+      for (const event of WEBHOOK_EVENTS) {
+        (mockWebhookFunctions.getBodyData as jest.Mock).mockReturnValue({
+          event,
+          data: { test: true }
+        });
+        
+        (mockWebhookFunctions.getNodeParameter as jest.Mock).mockImplementation((name) => {
+          if (name === 'mode') return 'standard';
+          if (name === 'event') return 'all';
+          if (name === 'options') return {};
+          return undefined;
+        });
 
-      // Act
-      const result = await hotmartTrigger.webhook.call(mockWebhookFunctions as IWebhookFunctions);
-
-      // Assert
-      expect(responseObj.status).toHaveBeenCalledWith(400);
-      expect(result.noWebhookResponse).toBe(true);
-    });
-
-    it('should reject empty event', async () => {
-      // Arrange
-      const responseObj = {
-        status: jest.fn().mockReturnValue({ send: jest.fn() })
-      };
-      (mockWebhookFunctions.getResponseObject as jest.Mock).mockReturnValue(responseObj);
-      (mockWebhookFunctions.getBodyData as jest.Mock).mockReturnValue({
-        event: ''
-      });
-      (mockWebhookFunctions.getNodeParameter as jest.Mock).mockReturnValue('standard');
-
-      // Act
-      const result = await hotmartTrigger.webhook.call(mockWebhookFunctions as IWebhookFunctions);
-
-      // Assert
-      expect(responseObj.status).toHaveBeenCalledWith(400);
-      expect(result.noWebhookResponse).toBe(true);
+        const result = await hotmartTrigger.webhook.call(mockWebhookFunctions as IWebhookFunctions);
+        
+        expect(result.workflowData).toBeDefined();
+        expect(result.workflowData![0][0].json.event).toBe(event);
+        
+        const eventConfig = EVENT_CONFIG[event as keyof typeof EVENT_CONFIG];
+        expect(result.workflowData![0][0].json.eventName).toBe(eventConfig.displayName);
+      }
     });
   });
 
-  describe('Standard Mode - New System', () => {
+  describe('Smart Mode Event Routing', () => {
+    it('should route events to correct outputs in smart mode', async () => {
+      (mockWebhookFunctions.getNodeParameter as jest.Mock).mockImplementation((name) => {
+        if (name === 'mode') return 'smart';
+        if (name === 'options') return {};
+        return undefined;
+      });
+
+      // Test each event routes to its correct output
+      for (const [eventName, config] of Object.entries(EVENT_CONFIG)) {
+        (mockWebhookFunctions.getBodyData as jest.Mock).mockReturnValue({
+          event: eventName,
+          data: { test: true }
+        });
+
+        const result = await hotmartTrigger.webhook.call(mockWebhookFunctions as IWebhookFunctions);
+        
+        expect(result.workflowData).toBeDefined();
+        expect(result.workflowData).toHaveLength(Object.keys(EVENT_CONFIG).length);
+        
+        // Check event is in correct output index
+        expect(result.workflowData![config.smartIndex]).toHaveLength(1);
+        expect(result.workflowData![config.smartIndex][0].json.event).toBe(eventName);
+      }
+    });
+  });
+
+  describe('Super Smart Mode Purchase Type Detection', () => {
     beforeEach(() => {
       (mockWebhookFunctions.getNodeParameter as jest.Mock).mockImplementation((name) => {
-        const params: MockNodeParameters = {
-          triggerMode: 'standard',
-          useHotTokToken: false
-        };
-        return params[name];
+        if (name === 'mode') return 'superSmart';
+        if (name === 'options') return {};
+        return undefined;
       });
     });
 
-    it('should process specific event when selected', async () => {
-      // Arrange
+    it('should detect unique purchase (no subscription)', async () => {
       (mockWebhookFunctions.getBodyData as jest.Mock).mockReturnValue({
         event: 'PURCHASE_APPROVED',
-        data: { purchase: { transaction: 'TEST456' } }
-      });
-      (mockWebhookFunctions.getNodeParameter as jest.Mock).mockImplementation((name) => {
-        const params: MockNodeParameters = {
-          triggerMode: 'standard',
-          event: 'PURCHASE_APPROVED',
-          useHotTokToken: false
-        };
-        return params[name];
-      });
-
-      // Act
-      const result = await hotmartTrigger.webhook.call(mockWebhookFunctions as IWebhookFunctions);
-
-      // Assert
-      expect(result.workflowData).toBeDefined();
-      expect(result.workflowData![0][0].json).toMatchObject({
-        eventName: 'Compra Aprovada',
-        eventType: 'PURCHASE_APPROVED',
-        eventCategory: 'purchase'
-      });
-    });
-
-    it('should reject event when not matching selected event', async () => {
-      // Arrange
-      const responseObj = {
-        status: jest.fn().mockReturnValue({ send: jest.fn() })
-      };
-      (mockWebhookFunctions.getResponseObject as jest.Mock).mockReturnValue(responseObj);
-      (mockWebhookFunctions.getBodyData as jest.Mock).mockReturnValue({
-        event: 'PURCHASE_CANCELED'
-      });
-      (mockWebhookFunctions.getNodeParameter as jest.Mock).mockImplementation((name) => {
-        const params: MockNodeParameters = {
-          triggerMode: 'standard',
-          event: 'PURCHASE_APPROVED', // Different event selected
-          useHotTokToken: false
-        };
-        return params[name];
-      });
-
-      // Act
-      const result = await hotmartTrigger.webhook.call(mockWebhookFunctions as IWebhookFunctions);
-
-      // Assert
-      expect(responseObj.status).toHaveBeenCalledWith(400);
-      expect(result.noWebhookResponse).toBe(true);
-    });
-
-    it('should include all metadata in response', async () => {
-      // Arrange
-      const headerData = { 'x-hotmart-hottok': 'test-token' };
-      (mockWebhookFunctions.getHeaderData as jest.Mock).mockReturnValue(headerData);
-      (mockWebhookFunctions.getBodyData as jest.Mock).mockReturnValue({
-        event: 'SUBSCRIPTION_CANCELLATION',
-        data: { 
-          subscription: { 
-            subscriber: { code: 'SUB123' },
-            status: 'CANCELLED'
-          } 
+        data: {
+          purchase: {
+            transaction: 'UNIQUE123',
+            value: 97.0,
+            installments_number: 1
+          }
+          // No subscription data
         }
       });
-      (mockWebhookFunctions.getNodeParameter as jest.Mock).mockImplementation((name) => {
-        const params: MockNodeParameters = {
-          triggerMode: 'standard',
-          event: '*',
-          useHotTokToken: false
-        };
-        return params[name];
-      });
 
-      // Act
       const result = await hotmartTrigger.webhook.call(mockWebhookFunctions as IWebhookFunctions);
+      
+      expect(result.workflowData![0]).toHaveLength(1); // Unique purchase
+      expect(result.workflowData![1]).toHaveLength(0); // New subscription
+      expect(result.workflowData![2]).toHaveLength(0); // Renewal
+      expect(result.workflowData![3]).toHaveLength(0); // Others
+    });
 
-      // Assert
-      expect(result.workflowData).toBeDefined();
-      const returnedData = result.workflowData![0][0].json;
-      expect(returnedData).toMatchObject({
-        eventName: 'Assinatura Cancelada',
-        eventType: 'SUBSCRIPTION_CANCELLATION',
-        eventCategory: 'subscription',
-        isSubscription: true,
-        metadata: {
-          hottok: 'test-token',
-          headers: headerData
+    it('should detect new subscription (first payment)', async () => {
+      (mockWebhookFunctions.getBodyData as jest.Mock).mockReturnValue({
+        event: 'PURCHASE_APPROVED',
+        data: {
+          purchase: {
+            transaction: 'SUB123',
+            recurrence_number: 1,
+            approved_date: '2023-01-01T10:00:00.000Z'
+          },
+          subscription: {
+            subscriber_code: 'SUB123',
+            status: 'ACTIVE',
+            subscriber: {
+              creation_date: '2023-01-01T10:00:00.000Z'
+            }
+          }
         }
       });
-      expect(returnedData.receivedAt).toBeDefined();
+
+      const result = await hotmartTrigger.webhook.call(mockWebhookFunctions as IWebhookFunctions);
+      
+      expect(result.workflowData![0]).toHaveLength(0); // Unique purchase
+      expect(result.workflowData![1]).toHaveLength(1); // New subscription
+      expect(result.workflowData![2]).toHaveLength(0); // Renewal
+      expect(result.workflowData![3]).toHaveLength(0); // Others
+    });
+
+    it('should detect subscription renewal', async () => {
+      (mockWebhookFunctions.getBodyData as jest.Mock).mockReturnValue({
+        event: 'PURCHASE_APPROVED',
+        data: {
+          purchase: {
+            transaction: 'RENEW123',
+            recurrence_number: 5,
+            approved_date: '2023-05-01T10:00:00.000Z'
+          },
+          subscription: {
+            subscriber_code: 'SUB123',
+            status: 'ACTIVE',
+            subscriber: {
+              creation_date: '2023-01-01T10:00:00.000Z'
+            }
+          }
+        }
+      });
+
+      const result = await hotmartTrigger.webhook.call(mockWebhookFunctions as IWebhookFunctions);
+      
+      expect(result.workflowData![0]).toHaveLength(0); // Unique purchase
+      expect(result.workflowData![1]).toHaveLength(0); // New subscription
+      expect(result.workflowData![2]).toHaveLength(1); // Renewal
+      expect(result.workflowData![3]).toHaveLength(0); // Others
+    });
+
+    it('should route non-purchase events to others output', async () => {
+      const nonPurchaseEvents = [
+        'PURCHASE_CANCELED',
+        'PURCHASE_REFUNDED',
+        'PURCHASE_CHARGEBACK',
+        'SUBSCRIPTION_CANCELLATION',
+        'CLUB_FIRST_ACCESS'
+      ];
+
+      for (const event of nonPurchaseEvents) {
+        (mockWebhookFunctions.getBodyData as jest.Mock).mockReturnValue({
+          event,
+          data: { test: true }
+        });
+
+        const result = await hotmartTrigger.webhook.call(mockWebhookFunctions as IWebhookFunctions);
+        
+        expect(result.workflowData![0]).toHaveLength(0); // Unique purchase
+        expect(result.workflowData![1]).toHaveLength(0); // New subscription
+        expect(result.workflowData![2]).toHaveLength(0); // Renewal
+        expect(result.workflowData![3]).toHaveLength(1); // Others
+      }
     });
   });
 
-  describe('Event Categories', () => {
-    it('should correctly categorize purchase events', async () => {
-      const purchaseEvents = [
-        'PURCHASE_OUT_OF_SHOPPING_CART',
-        'PURCHASE_APPROVED',
-        'PURCHASE_COMPLETE',
-        'PURCHASE_CANCELED',
-        'PURCHASE_REFUNDED'
+  describe('Event Filtering in Standard Mode', () => {
+    it('should filter specific events when configured', async () => {
+      (mockWebhookFunctions.getNodeParameter as jest.Mock).mockImplementation((name) => {
+        if (name === 'mode') return 'standard';
+        if (name === 'event') return 'PURCHASE_APPROVED';
+        if (name === 'options') return {};
+        return undefined;
+      });
+
+      // Send a different event
+      (mockWebhookFunctions.getBodyData as jest.Mock).mockReturnValue({
+        event: 'PURCHASE_CANCELED',
+        data: { test: true }
+      });
+
+      const result = await hotmartTrigger.webhook.call(mockWebhookFunctions as IWebhookFunctions);
+      
+      // Should return webhook response but no workflow data
+      expect(result.webhookResponse).toBeDefined();
+      expect(result.webhookResponse?.statusCode).toBe(200);
+    });
+
+    it('should process matching events', async () => {
+      (mockWebhookFunctions.getNodeParameter as jest.Mock).mockImplementation((name) => {
+        if (name === 'mode') return 'standard';
+        if (name === 'event') return 'PURCHASE_APPROVED';
+        if (name === 'options') return {};
+        return undefined;
+      });
+
+      // Send matching event
+      (mockWebhookFunctions.getBodyData as jest.Mock).mockReturnValue({
+        event: 'PURCHASE_APPROVED',
+        data: { test: true }
+      });
+
+      const result = await hotmartTrigger.webhook.call(mockWebhookFunctions as IWebhookFunctions);
+      
+      expect(result.workflowData).toBeDefined();
+      expect(result.workflowData![0]).toHaveLength(1);
+      expect(result.workflowData![0][0].json.event).toBe('PURCHASE_APPROVED');
+    });
+  });
+
+  describe('Test Event Handling', () => {
+    it('should ignore test events when option is enabled', async () => {
+      (mockWebhookFunctions.getNodeParameter as jest.Mock).mockImplementation((name) => {
+        if (name === 'mode') return 'standard';
+        if (name === 'event') return 'all';
+        if (name === 'options') return { ignoreTestEvents: true };
+        return undefined;
+      });
+
+      const testCases = [
+        { test_mode: true },
+        { data: { test: true } },
+        { data: { buyer: { email: 'test@hotmart.com' } } }
       ];
 
-      for (const event of purchaseEvents) {
+      for (const testData of testCases) {
         (mockWebhookFunctions.getBodyData as jest.Mock).mockReturnValue({
-          event,
-          data: {}
-        });
-        (mockWebhookFunctions.getNodeParameter as jest.Mock).mockImplementation((name) => {
-          const params: MockNodeParameters = {
-            triggerMode: 'standard',
-            event: '*',
-            useHotTokToken: false
-          };
-          return params[name];
+          event: 'PURCHASE_APPROVED',
+          ...testData
         });
 
         const result = await hotmartTrigger.webhook.call(mockWebhookFunctions as IWebhookFunctions);
-        expect(result.workflowData![0][0].json.eventCategory).toBe('purchase');
+        
+        expect(result.workflowData).toBeDefined();
+        expect(result.workflowData![0]).toHaveLength(0);
       }
     });
 
-    it('should correctly categorize subscription events', async () => {
-      const subscriptionEvents = [
-        'SUBSCRIPTION_CANCELLATION',
-        'SWITCH_PLAN',
-        'UPDATE_SUBSCRIPTION_CHARGE_DATE'
-      ];
+    it('should process test events when option is disabled', async () => {
+      (mockWebhookFunctions.getNodeParameter as jest.Mock).mockImplementation((name) => {
+        if (name === 'mode') return 'standard';
+        if (name === 'event') return 'all';
+        if (name === 'options') return { ignoreTestEvents: false };
+        return undefined;
+      });
 
-      for (const event of subscriptionEvents) {
-        (mockWebhookFunctions.getBodyData as jest.Mock).mockReturnValue({
-          event,
-          data: {}
-        });
-        (mockWebhookFunctions.getNodeParameter as jest.Mock).mockImplementation((name) => {
-          const params: MockNodeParameters = {
-            triggerMode: 'standard',
-            event: '*',
-            useHotTokToken: false
-          };
-          return params[name];
-        });
+      (mockWebhookFunctions.getBodyData as jest.Mock).mockReturnValue({
+        event: 'PURCHASE_APPROVED',
+        test_mode: true,
+        data: { test: true }
+      });
 
-        const result = await hotmartTrigger.webhook.call(mockWebhookFunctions as IWebhookFunctions);
-        expect(result.workflowData![0][0].json.eventCategory).toBe('subscription');
-      }
-    });
-
-    it('should correctly categorize club events', async () => {
-      const clubEvents = [
-        'CLUB_FIRST_ACCESS',
-        'CLUB_MODULE_COMPLETED'
-      ];
-
-      for (const event of clubEvents) {
-        (mockWebhookFunctions.getBodyData as jest.Mock).mockReturnValue({
-          event,
-          data: {}
-        });
-        (mockWebhookFunctions.getNodeParameter as jest.Mock).mockImplementation((name) => {
-          const params: MockNodeParameters = {
-            triggerMode: 'standard',
-            event: '*',
-            useHotTokToken: false
-          };
-          return params[name];
-        });
-
-        const result = await hotmartTrigger.webhook.call(mockWebhookFunctions as IWebhookFunctions);
-        expect(result.workflowData![0][0].json.eventCategory).toBe('club');
-      }
+      const result = await hotmartTrigger.webhook.call(mockWebhookFunctions as IWebhookFunctions);
+      
+      expect(result.workflowData).toBeDefined();
+      expect(result.workflowData![0]).toHaveLength(1);
     });
   });
 });

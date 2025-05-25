@@ -1,5 +1,9 @@
 import { HotmartTrigger } from '../../../nodes/Hotmart/HotmartTrigger.node';
-import { IWebhookFunctions } from 'n8n-workflow';
+import { IWebhookFunctions, IHookFunctions } from 'n8n-workflow';
+import { HandlerFactory } from '../../../nodes/Hotmart/trigger/handlers/HandlerFactory';
+import { StandardModeHandler } from '../../../nodes/Hotmart/trigger/handlers/StandardModeHandler';
+import { SmartModeHandler } from '../../../nodes/Hotmart/trigger/handlers/SmartModeHandler';
+import { SuperSmartModeHandler } from '../../../nodes/Hotmart/trigger/handlers/SuperSmartModeHandler';
 
 describe('HotmartTrigger Node', () => {
   let hotmartTrigger: HotmartTrigger;
@@ -22,14 +26,13 @@ describe('HotmartTrigger Node', () => {
         name: 'default',
         httpMethod: 'POST',
         responseMode: 'onReceived',
+        path: 'webhook',
       });
-      // Path is dynamic based on triggerMode parameter
-      expect(hotmartTrigger.description.webhooks?.[0].path).toContain('triggerMode');
     });
 
     it('should have correct inputs and outputs', () => {
       expect(hotmartTrigger.description.inputs).toEqual([]);
-      expect(hotmartTrigger.description.outputs).toBeDefined();
+      expect(hotmartTrigger.description.outputs).toEqual(['main']);
     });
 
     it('should have properties defined', () => {
@@ -37,10 +40,14 @@ describe('HotmartTrigger Node', () => {
       expect(properties).toBeDefined();
       expect(Array.isArray(properties)).toBe(true);
       
-      // Check for triggerMode property
-      const triggerModeProperty = properties.find(p => p.name === 'triggerMode');
-      expect(triggerModeProperty).toBeDefined();
-      expect(triggerModeProperty?.type).toBe('options');
+      // Check for mode property (not triggerMode anymore)
+      const modeProperty = properties.find(p => p.name === 'mode');
+      expect(modeProperty).toBeDefined();
+      expect(modeProperty?.type).toBe('options');
+      
+      // Check for event property
+      const eventProperty = properties.find(p => p.name === 'event');
+      expect(eventProperty).toBeDefined();
       
       // Check that we have multiple properties
       expect(properties.length).toBeGreaterThan(0);
@@ -48,119 +55,194 @@ describe('HotmartTrigger Node', () => {
   });
 
   describe('webhookMethods', () => {
-    it('should have checkExists method', () => {
-      expect(hotmartTrigger.webhookMethods?.default?.checkExists).toBeDefined();
+    let mockHookFunctions: Partial<IHookFunctions>;
+
+    beforeEach(() => {
+      mockHookFunctions = {
+        getWorkflowStaticData: jest.fn(),
+        getNodeWebhookUrl: jest.fn(),
+      };
     });
 
-    it('should have create method', () => {
-      expect(hotmartTrigger.webhookMethods?.default?.create).toBeDefined();
+    it('should check if webhook exists', async () => {
+      const webhookData = { webhookId: 'test-webhook-id' };
+      (mockHookFunctions.getWorkflowStaticData as jest.Mock).mockReturnValue(webhookData);
+
+      const result = await hotmartTrigger.webhookMethods.default.checkExists.call(
+        mockHookFunctions as IHookFunctions
+      );
+
+      expect(result).toBe(true);
     });
 
-    it('should have delete method', () => {
-      expect(hotmartTrigger.webhookMethods?.default?.delete).toBeDefined();
+    it('should return false when webhook does not exist', async () => {
+      const webhookData = {};
+      (mockHookFunctions.getWorkflowStaticData as jest.Mock).mockReturnValue(webhookData);
+
+      const result = await hotmartTrigger.webhookMethods.default.checkExists.call(
+        mockHookFunctions as IHookFunctions
+      );
+
+      expect(result).toBe(false);
+    });
+
+    it('should create webhook', async () => {
+      const webhookData = {};
+      const webhookUrl = 'https://example.com/webhook';
+      
+      (mockHookFunctions.getWorkflowStaticData as jest.Mock).mockReturnValue(webhookData);
+      (mockHookFunctions.getNodeWebhookUrl as jest.Mock).mockReturnValue(webhookUrl);
+
+      const result = await hotmartTrigger.webhookMethods.default.create.call(
+        mockHookFunctions as IHookFunctions
+      );
+
+      expect(result).toBe(true);
+      expect(webhookData).toHaveProperty('webhookId', webhookUrl);
+    });
+
+    it('should delete webhook', async () => {
+      const webhookData = { webhookId: 'test-webhook-id' };
+      (mockHookFunctions.getWorkflowStaticData as jest.Mock).mockReturnValue(webhookData);
+
+      const result = await hotmartTrigger.webhookMethods.default.delete.call(
+        mockHookFunctions as IHookFunctions
+      );
+
+      expect(result).toBe(true);
+      expect(webhookData).not.toHaveProperty('webhookId');
     });
   });
 
   describe('webhook method', () => {
-    let mockThis: IWebhookFunctions;
+    let mockWebhookFunctions: Partial<IWebhookFunctions>;
 
     beforeEach(() => {
-      mockThis = {
+      mockWebhookFunctions = {
         getNodeParameter: jest.fn(),
-        getRequestObject: jest.fn(),
         getBodyData: jest.fn(),
         getHeaderData: jest.fn(),
-        getWorkflowStaticData: jest.fn().mockReturnValue({}),
-        getResponseObject: jest.fn().mockReturnValue({
-          status: jest.fn().mockReturnValue({
-            send: jest.fn(),
-            json: jest.fn()
-          }),
-          send: jest.fn(),
-          json: jest.fn()
-        }),
         helpers: {
-          returnJsonArray: jest.fn(),
-        } as any,
-        logger: {
-          debug: jest.fn(),
-          info: jest.fn(),
-          warn: jest.fn(),
-          error: jest.fn(),
+          returnJsonArray: jest.fn((data) => [{ json: data }]),
         },
-        getNode: jest.fn().mockReturnValue({ name: 'HotmartTrigger' }),
       } as any;
     });
 
-    it('should return noWebhookResponse when event is not recognized', async () => {
-      const mockBody = {
+    it('should process webhook in standard mode', async () => {
+      const mockBodyData = {
         event: 'PURCHASE_APPROVED',
-        data: { id: '123', amount: 100 }
+        data: { purchase: { id: '123' } },
       };
 
-      (mockThis.getNodeParameter as jest.Mock)
-        .mockReturnValueOnce('standard'); // triggerMode
-      (mockThis.getBodyData as jest.Mock).mockReturnValue(mockBody);
-
-      const result = await hotmartTrigger.webhook.call(mockThis);
-
-      // Como o mock não implementa getEvent corretamente, retorna noWebhookResponse
-      expect(result).toEqual({
-        noWebhookResponse: true
+      (mockWebhookFunctions.getNodeParameter as jest.Mock).mockImplementation((name) => {
+        if (name === 'mode') return 'standard';
+        if (name === 'event') return 'all';
+        if (name === 'options') return {};
+        return undefined;
       });
-    });
+      (mockWebhookFunctions.getBodyData as jest.Mock).mockReturnValue(mockBodyData);
+      (mockWebhookFunctions.getHeaderData as jest.Mock).mockReturnValue({ 'x-hotmart-hottok': 'test-token' });
 
-    it('should handle empty webhook body', async () => {
-      (mockThis.getNodeParameter as jest.Mock)
-        .mockReturnValueOnce('standard'); // triggerMode
-      (mockThis.getBodyData as jest.Mock).mockReturnValue({});
+      const result = await hotmartTrigger.webhook.call(mockWebhookFunctions as IWebhookFunctions);
 
-      const result = await hotmartTrigger.webhook.call(mockThis);
-
-      // Quando o body está vazio, retorna noWebhookResponse
-      expect(result).toEqual({
-        noWebhookResponse: true
-      });
+      expect(result).toHaveProperty('workflowData');
+      expect(Array.isArray(result.workflowData)).toBe(true);
     });
 
     it('should process webhook in smart mode', async () => {
-      const mockBody = {
+      const mockBodyData = {
         event: 'PURCHASE_APPROVED',
-        data: { id: '123', amount: 100 }
+        data: { purchase: { id: '123' } },
       };
 
-      (mockThis.getNodeParameter as jest.Mock).mockReturnValueOnce('smart'); // triggerMode
-      (mockThis.getBodyData as jest.Mock).mockReturnValue(mockBody);
-      (mockThis.getHeaderData as jest.Mock).mockReturnValue({});
+      (mockWebhookFunctions.getNodeParameter as jest.Mock).mockImplementation((name) => {
+        if (name === 'mode') return 'smart';
+        if (name === 'options') return {};
+        return undefined;
+      });
+      (mockWebhookFunctions.getBodyData as jest.Mock).mockReturnValue(mockBodyData);
+      (mockWebhookFunctions.getHeaderData as jest.Mock).mockReturnValue({});
 
-      const result = await hotmartTrigger.webhook.call(mockThis);
+      const result = await hotmartTrigger.webhook.call(mockWebhookFunctions as IWebhookFunctions);
 
-      expect(result).toBeDefined();
-      expect(result?.workflowData).toBeDefined();
-      // Smart mode should have multiple outputs based on event types
-      expect(Array.isArray(result?.workflowData)).toBe(true);
+      expect(result).toHaveProperty('workflowData');
+      expect(Array.isArray(result.workflowData)).toBe(true);
+      // Smart mode should have multiple outputs
+      expect(result.workflowData?.length).toBeGreaterThan(1);
     });
 
     it('should process webhook in superSmart mode', async () => {
-      const mockBody = {
+      const mockBodyData = {
         event: 'PURCHASE_APPROVED',
-        data: { 
-          purchase: {
-            original_transaction_id: null
-          }
-        }
+        data: { purchase: { id: '123' } },
       };
 
-      (mockThis.getNodeParameter as jest.Mock).mockReturnValueOnce('super-smart'); // triggerMode
-      (mockThis.getBodyData as jest.Mock).mockReturnValue(mockBody);
-      (mockThis.getHeaderData as jest.Mock).mockReturnValue({});
+      (mockWebhookFunctions.getNodeParameter as jest.Mock).mockImplementation((name) => {
+        if (name === 'mode') return 'superSmart';
+        if (name === 'options') return {};
+        return undefined;
+      });
+      (mockWebhookFunctions.getBodyData as jest.Mock).mockReturnValue(mockBodyData);
 
-      const result = await hotmartTrigger.webhook.call(mockThis);
+      const result = await hotmartTrigger.webhook.call(mockWebhookFunctions as IWebhookFunctions);
 
-      expect(result).toBeDefined();
-      expect(result?.workflowData).toBeDefined();
-      // SuperSmart mode tem 18 saídas (uma para cada tipo de evento)
-      expect(result?.workflowData?.length).toBe(18);
+      expect(result).toHaveProperty('workflowData');
+      expect(Array.isArray(result.workflowData)).toBe(true);
+      // Super smart mode should have 4 outputs
+      expect(result.workflowData?.length).toBe(4);
+    });
+
+    it('should handle empty webhook body', async () => {
+      (mockWebhookFunctions.getNodeParameter as jest.Mock).mockImplementation((name) => {
+        if (name === 'mode') return 'standard';
+        if (name === 'options') return {};
+        return undefined;
+      });
+      (mockWebhookFunctions.getBodyData as jest.Mock).mockReturnValue(null);
+
+      const result = await hotmartTrigger.webhook.call(mockWebhookFunctions as IWebhookFunctions);
+
+      expect(result).toHaveProperty('webhookResponse');
+      expect(result.webhookResponse?.statusCode).toBe(400);
+    });
+
+    it('should handle invalid mode', async () => {
+      (mockWebhookFunctions.getNodeParameter as jest.Mock).mockReturnValue('invalid-mode');
+
+      await expect(
+        hotmartTrigger.webhook.call(mockWebhookFunctions as IWebhookFunctions)
+      ).rejects.toThrow('Modo de trigger inválido: invalid-mode');
+    });
+  });
+
+  describe('HandlerFactory', () => {
+    const mockWebhookFunctions = {
+      getNodeParameter: jest.fn(),
+      getBodyData: jest.fn(),
+      getHeaderData: jest.fn(),
+      helpers: {
+        returnJsonArray: jest.fn(),
+      },
+    } as any;
+
+    it('should create StandardModeHandler for standard mode', () => {
+      const handler = HandlerFactory.create('standard', mockWebhookFunctions);
+      expect(handler).toBeInstanceOf(StandardModeHandler);
+    });
+
+    it('should create SmartModeHandler for smart mode', () => {
+      const handler = HandlerFactory.create('smart', mockWebhookFunctions);
+      expect(handler).toBeInstanceOf(SmartModeHandler);
+    });
+
+    it('should create SuperSmartModeHandler for superSmart mode', () => {
+      const handler = HandlerFactory.create('superSmart', mockWebhookFunctions);
+      expect(handler).toBeInstanceOf(SuperSmartModeHandler);
+    });
+
+    it('should throw error for invalid mode', () => {
+      expect(() => HandlerFactory.create('invalid', mockWebhookFunctions))
+        .toThrow('Modo de trigger inválido: invalid');
     });
   });
 });

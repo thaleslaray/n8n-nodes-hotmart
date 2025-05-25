@@ -27,7 +27,7 @@ export abstract class BaseWebhookHandler {
       };
     }
 
-    const options = this.webhookFunctions.getNodeParameter('options', 0, {}) as IDataObject;
+    const options = (this.webhookFunctions.getNodeParameter('options', 0, {}) || {}) as IDataObject;
     
     if (options.ignoreTestEvents && this.isTestEvent(body)) {
       return {

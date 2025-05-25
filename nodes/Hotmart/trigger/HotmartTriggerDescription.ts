@@ -10,7 +10,7 @@ export const HotmartTriggerDescription: INodeTypeDescription = {
     dark: 'file:hotmart.svg',
   },
   group: ['trigger'],
-  version: [1, 1.1, 1.2],
+  version: 1,
   subtitle: generateSubtitle(),
   description: 'Inicia o fluxo quando eventos específicos ocorrem na Hotmart',
   eventTriggerDescription: 'Aguardando eventos do webhook Hotmart',

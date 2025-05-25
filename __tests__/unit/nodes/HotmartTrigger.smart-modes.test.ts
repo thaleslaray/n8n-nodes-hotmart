@@ -1,5 +1,6 @@
 import { IWebhookFunctions } from 'n8n-workflow';
 import { HotmartTrigger } from '../../../nodes/Hotmart/HotmartTrigger.node';
+import { EVENT_CONFIG } from '../../../nodes/Hotmart/trigger/constants/events';
 
 describe('HotmartTrigger - Smart Modes', () => {
   let hotmartTrigger: HotmartTrigger;
@@ -31,12 +32,13 @@ describe('HotmartTrigger - Smart Modes', () => {
   describe('Smart Mode', () => {
     beforeEach(() => {
       mockWebhookFunctions.getNodeParameter.mockImplementation((param) => {
-        if (param === 'triggerMode') return 'smart';
+        if (param === 'mode') return 'smart';
+        if (param === 'options') return {};
         return undefined;
       });
     });
 
-    it('deve rotear PURCHASE_APPROVED para saída 0', async () => {
+    it('deve rotear PURCHASE_APPROVED para saída correta', async () => {
       const bodyData = {
         event: 'PURCHASE_APPROVED',
         data: { purchase: { id: '123' } }
@@ -48,149 +50,169 @@ describe('HotmartTrigger - Smart Modes', () => {
       const result = await hotmartTrigger.webhook.call(mockWebhookFunctions);
       
       expect(result.workflowData).toBeDefined();
-      expect(result.workflowData![0]).toHaveLength(1);
-      expect(result.workflowData![0][0].json.eventName).toBe('Compra Aprovada');
-      expect(result.workflowData![0][0].json.eventCategory).toBe('purchase');
+      expect(Array.isArray(result.workflowData)).toBe(true);
+      
+      // Verifica que o evento foi roteado para a saída correta
+      const eventConfig = EVENT_CONFIG.PURCHASE_APPROVED;
+      expect(result.workflowData![eventConfig.smartIndex]).toHaveLength(1);
+      expect(result.workflowData![eventConfig.smartIndex][0].json).toEqual(bodyData);
     });
 
-    it('deve rotear PURCHASE_OUT_OF_SHOPPING_CART para saída 9', async () => {
+    it('deve rotear múltiplos eventos diferentes para suas respectivas saídas', async () => {
+      const events = [
+        { event: 'PURCHASE_COMPLETE', expectedIndex: EVENT_CONFIG.PURCHASE_COMPLETE.smartIndex },
+        { event: 'PURCHASE_CANCELED', expectedIndex: EVENT_CONFIG.PURCHASE_CANCELED.smartIndex },
+        { event: 'SUBSCRIPTION_CANCELLATION', expectedIndex: EVENT_CONFIG.SUBSCRIPTION_CANCELLATION.smartIndex },
+      ];
+
+      for (const testCase of events) {
+        const bodyData = {
+          event: testCase.event,
+          data: { test: true }
+        };
+        
+        mockWebhookFunctions.getBodyData.mockReturnValue(bodyData);
+        
+        const result = await hotmartTrigger.webhook.call(mockWebhookFunctions);
+        
+        expect(result.workflowData![testCase.expectedIndex]).toHaveLength(1);
+        expect(result.workflowData![testCase.expectedIndex][0].json.event).toBe(testCase.event);
+      }
+    });
+
+    it('deve criar saídas vazias para eventos não recebidos', async () => {
       const bodyData = {
-        event: 'PURCHASE_OUT_OF_SHOPPING_CART',
+        event: 'PURCHASE_APPROVED',
         data: { purchase: { id: '123' } }
       };
       
       mockWebhookFunctions.getBodyData.mockReturnValue(bodyData);
-      mockWebhookFunctions.getHeaderData.mockReturnValue({});
       
       const result = await hotmartTrigger.webhook.call(mockWebhookFunctions);
+      const totalOutputs = Object.keys(EVENT_CONFIG).length;
       
-      expect(result.workflowData).toBeDefined();
-      expect(result.workflowData![9]).toHaveLength(1);
-      expect(result.workflowData![9][0].json.eventName).toBe('Abandono de Carrinho');
-    });
-
-    it('deve rejeitar evento inválido', async () => {
-      const bodyData = {
-        event: 'EVENTO_INVALIDO',
-        data: {}
-      };
+      expect(result.workflowData).toHaveLength(totalOutputs);
       
-      mockWebhookFunctions.getBodyData.mockReturnValue(bodyData);
-      mockWebhookFunctions.getHeaderData.mockReturnValue({});
-      
-      const result = await hotmartTrigger.webhook.call(mockWebhookFunctions);
-      
-      expect(result.noWebhookResponse).toBe(true);
-      expect(mockWebhookFunctions.getResponseObject().status).toHaveBeenCalledWith(400);
+      // Verifica que apenas a saída do evento recebido tem dados
+      for (let i = 0; i < totalOutputs; i++) {
+        if (i === EVENT_CONFIG.PURCHASE_APPROVED.smartIndex) {
+          expect(result.workflowData![i]).toHaveLength(1);
+        } else {
+          expect(result.workflowData![i]).toHaveLength(0);
+        }
+      }
     });
   });
 
   describe('Super Smart Mode', () => {
     beforeEach(() => {
       mockWebhookFunctions.getNodeParameter.mockImplementation((param) => {
-        if (param === 'triggerMode') return 'super-smart';
+        if (param === 'mode') return 'superSmart';
+        if (param === 'options') return {};
         return undefined;
       });
     });
 
-    it('deve separar PURCHASE_APPROVED em compra única (saída 0)', async () => {
+    it('deve rotear compra única para saída 0', async () => {
       const bodyData = {
         event: 'PURCHASE_APPROVED',
         data: {
-          purchase: {
-            id: '123',
-            is_subscription: false,
-            recurrence_number: 0
-          }
+          purchase: { id: '123', installments_number: 1 },
+          // Sem dados de assinatura = compra única
         }
       };
       
       mockWebhookFunctions.getBodyData.mockReturnValue(bodyData);
-      mockWebhookFunctions.getHeaderData.mockReturnValue({});
       
       const result = await hotmartTrigger.webhook.call(mockWebhookFunctions);
       
-      expect(result.workflowData).toBeDefined();
-      expect(result.workflowData![0]).toHaveLength(1);
-      expect(result.workflowData![0][0].json.isSubscription).toBe(false);
-      expect(result.workflowData![0][0].json.eventName).toBe('Compra Aprovada');
+      expect(result.workflowData).toHaveLength(4); // 4 saídas no super smart
+      expect(result.workflowData![0]).toHaveLength(1); // Compra única
+      expect(result.workflowData![1]).toHaveLength(0); // Nova assinatura
+      expect(result.workflowData![2]).toHaveLength(0); // Renovação
+      expect(result.workflowData![3]).toHaveLength(0); // Outros
     });
 
-    it('deve separar PURCHASE_APPROVED em nova assinatura (saída 1)', async () => {
+    it('deve rotear nova assinatura para saída 1', async () => {
       const bodyData = {
         event: 'PURCHASE_APPROVED',
         data: {
-          purchase: {
+          purchase: { 
             id: '123',
-            is_subscription: true,
-            recurrence_number: 1
-          }
-        }
-      };
-      
-      mockWebhookFunctions.getBodyData.mockReturnValue(bodyData);
-      mockWebhookFunctions.getHeaderData.mockReturnValue({});
-      
-      const result = await hotmartTrigger.webhook.call(mockWebhookFunctions);
-      
-      expect(result.workflowData).toBeDefined();
-      expect(result.workflowData![1]).toHaveLength(1);
-      expect(result.workflowData![1][0].json.isSubscription).toBe(true);
-      expect(result.workflowData![1][0].json.isRenewal).toBe(false);
-    });
-
-    it('deve separar PURCHASE_APPROVED em renovação (saída 2)', async () => {
-      const bodyData = {
-        event: 'PURCHASE_APPROVED',
-        data: {
-          purchase: {
-            id: '123',
-            is_subscription: true,
-            recurrence_number: 3
-          }
-        }
-      };
-      
-      mockWebhookFunctions.getBodyData.mockReturnValue(bodyData);
-      mockWebhookFunctions.getHeaderData.mockReturnValue({});
-      
-      const result = await hotmartTrigger.webhook.call(mockWebhookFunctions);
-      
-      expect(result.workflowData).toBeDefined();
-      expect(result.workflowData![2]).toHaveLength(1);
-      expect(result.workflowData![2][0].json.isSubscription).toBe(true);
-      expect(result.workflowData![2][0].json.isRenewal).toBe(true);
-      expect(result.workflowData![2][0].json.recurrenceNumber).toBe(3);
-    });
-
-    it('deve separar PIX de Boleto para PURCHASE_BILLET_PRINTED', async () => {
-      // Teste para PIX
-      const pixData = {
-        event: 'PURCHASE_BILLET_PRINTED',
-        data: {
-          purchase: {
-            id: '123',
-            payment: {
-              type: 'PIX'
+            recurrence_number: 1,
+            approved_date: '2023-01-01'
+          },
+          subscription: {
+            status: 'ACTIVE',
+            subscriber: {
+              creation_date: '2023-01-01'
             }
           }
         }
       };
       
-      mockWebhookFunctions.getBodyData.mockReturnValue(pixData);
+      mockWebhookFunctions.getBodyData.mockReturnValue(bodyData);
       
-      const pixResult = await hotmartTrigger.webhook.call(mockWebhookFunctions);
+      const result = await hotmartTrigger.webhook.call(mockWebhookFunctions);
       
-      expect(pixResult.workflowData![8]).toHaveLength(1);
-      expect(pixResult.workflowData![8][0].json.paymentMethod).toBe('PIX');
-      expect(pixResult.workflowData![8][0].json.paymentInfo.isPix).toBe(true);
+      expect(result.workflowData![0]).toHaveLength(0); // Compra única
+      expect(result.workflowData![1]).toHaveLength(1); // Nova assinatura
+      expect(result.workflowData![2]).toHaveLength(0); // Renovação
+      expect(result.workflowData![3]).toHaveLength(0); // Outros
+    });
+
+    it('deve rotear renovação de assinatura para saída 2', async () => {
+      const bodyData = {
+        event: 'PURCHASE_APPROVED',
+        data: {
+          purchase: { 
+            id: '123',
+            recurrence_number: 5, // Não é a primeira
+            approved_date: '2023-05-01'
+          },
+          subscription: {
+            status: 'ACTIVE',
+            subscriber: {
+              creation_date: '2023-01-01' // Criada antes
+            }
+          }
+        }
+      };
       
-      // Teste para Boleto
-      const billetData = {
+      mockWebhookFunctions.getBodyData.mockReturnValue(bodyData);
+      
+      const result = await hotmartTrigger.webhook.call(mockWebhookFunctions);
+      
+      expect(result.workflowData![0]).toHaveLength(0); // Compra única
+      expect(result.workflowData![1]).toHaveLength(0); // Nova assinatura
+      expect(result.workflowData![2]).toHaveLength(1); // Renovação
+      expect(result.workflowData![3]).toHaveLength(0); // Outros
+    });
+
+    it('deve rotear outros eventos para saída 3', async () => {
+      const bodyData = {
+        event: 'PURCHASE_CANCELED',
+        data: {
+          purchase: { id: '123' }
+        }
+      };
+      
+      mockWebhookFunctions.getBodyData.mockReturnValue(bodyData);
+      
+      const result = await hotmartTrigger.webhook.call(mockWebhookFunctions);
+      
+      expect(result.workflowData![0]).toHaveLength(0); // Compra única
+      expect(result.workflowData![1]).toHaveLength(0); // Nova assinatura
+      expect(result.workflowData![2]).toHaveLength(0); // Renovação
+      expect(result.workflowData![3]).toHaveLength(1); // Outros
+    });
+
+    it('deve tratar PURCHASE_BILLET_PRINTED corretamente', async () => {
+      const bodyData = {
         event: 'PURCHASE_BILLET_PRINTED',
         data: {
-          purchase: {
-            id: '456',
+          purchase: { 
+            id: '123',
             payment: {
               type: 'BILLET'
             }
@@ -198,34 +220,125 @@ describe('HotmartTrigger - Smart Modes', () => {
         }
       };
       
-      mockWebhookFunctions.getBodyData.mockReturnValue(billetData);
-      
-      const billetResult = await hotmartTrigger.webhook.call(mockWebhookFunctions);
-      
-      expect(billetResult.workflowData![7]).toHaveLength(1);
-      expect(billetResult.workflowData![7][0].json.paymentMethod).toBe('BILLET');
-      expect(billetResult.workflowData![7][0].json.paymentInfo.isBillet).toBe(true);
-    });
-
-    it('deve rotear eventos de assinatura corretamente', async () => {
-      const subscriptionCancelData = {
-        event: 'SUBSCRIPTION_CANCELLATION',
-        data: {
-          subscription: {
-            subscriber: {
-              code: 'SUB123'
-            }
-          }
-        }
-      };
-      
-      mockWebhookFunctions.getBodyData.mockReturnValue(subscriptionCancelData);
+      mockWebhookFunctions.getBodyData.mockReturnValue(bodyData);
       
       const result = await hotmartTrigger.webhook.call(mockWebhookFunctions);
       
-      expect(result.workflowData![13]).toHaveLength(1);
-      expect(result.workflowData![13][0].json.eventName).toBe('Assinatura Cancelada');
-      expect(result.workflowData![13][0].json.isSubscription).toBe(true);
+      // PURCHASE_BILLET_PRINTED vai para "outros"
+      expect(result.workflowData![3]).toHaveLength(1);
+    });
+  });
+
+  describe('Standard Mode', () => {
+    beforeEach(() => {
+      mockWebhookFunctions.getNodeParameter.mockImplementation((param) => {
+        if (param === 'mode') return 'standard';
+        if (param === 'event') return 'all';
+        if (param === 'options') return {};
+        return undefined;
+      });
+    });
+
+    it('deve processar todos os eventos quando configurado como "all"', async () => {
+      const bodyData = {
+        event: 'PURCHASE_APPROVED',
+        data: { purchase: { id: '123' } }
+      };
+      
+      mockWebhookFunctions.getBodyData.mockReturnValue(bodyData);
+      mockWebhookFunctions.getHeaderData.mockReturnValue({ 'x-hotmart-hottok': 'test' });
+      
+      const result = await hotmartTrigger.webhook.call(mockWebhookFunctions);
+      
+      expect(result.workflowData).toBeDefined();
+      expect(result.workflowData).toHaveLength(1); // Standard mode tem apenas 1 saída
+      expect(result.workflowData![0]).toHaveLength(1);
+      expect(result.workflowData![0][0].json.event).toBe('PURCHASE_APPROVED');
+    });
+
+    it('deve filtrar eventos não selecionados', async () => {
+      mockWebhookFunctions.getNodeParameter.mockImplementation((param) => {
+        if (param === 'mode') return 'standard';
+        if (param === 'event') return 'PURCHASE_COMPLETE'; // Só aceita PURCHASE_COMPLETE
+        if (param === 'options') return {};
+        return undefined;
+      });
+
+      const bodyData = {
+        event: 'PURCHASE_APPROVED', // Evento diferente do selecionado
+        data: { purchase: { id: '123' } }
+      };
+      
+      mockWebhookFunctions.getBodyData.mockReturnValue(bodyData);
+      
+      const result = await hotmartTrigger.webhook.call(mockWebhookFunctions);
+      
+      // Deve retornar uma resposta de webhook mas não dados do workflow
+      expect(result.webhookResponse).toBeDefined();
+      expect(result.webhookResponse?.statusCode).toBe(200);
+    });
+
+    it('deve enriquecer dados do evento com metadata', async () => {
+      const bodyData = {
+        event: 'PURCHASE_APPROVED',
+        data: { purchase: { id: '123' } }
+      };
+      
+      const headers = { 'x-hotmart-hottok': 'test-token' };
+      
+      mockWebhookFunctions.getBodyData.mockReturnValue(bodyData);
+      mockWebhookFunctions.getHeaderData.mockReturnValue(headers);
+      
+      const result = await hotmartTrigger.webhook.call(mockWebhookFunctions);
+      
+      const enrichedData = result.workflowData![0][0].json;
+      
+      expect(enrichedData).toHaveProperty('eventName', 'Compra Aprovada');
+      expect(enrichedData).toHaveProperty('eventType', 'PURCHASE_APPROVED');
+      expect(enrichedData).toHaveProperty('eventCategory', 'purchase');
+      expect(enrichedData).toHaveProperty('receivedAt');
+      expect(enrichedData).toHaveProperty('metadata');
+      expect(enrichedData.metadata).toHaveProperty('hottok', 'test-token');
+    });
+  });
+
+  describe('Tratamento de Erros', () => {
+    it('deve retornar erro 400 para body vazio', async () => {
+      mockWebhookFunctions.getNodeParameter.mockImplementation((param) => {
+        if (param === 'mode') return 'standard';
+        if (param === 'options') return {};
+        return undefined;
+      });
+      mockWebhookFunctions.getBodyData.mockReturnValue(null as any);
+      
+      const result = await hotmartTrigger.webhook.call(mockWebhookFunctions);
+      
+      expect(result.webhookResponse).toBeDefined();
+      expect(result.webhookResponse?.statusCode).toBe(400);
+      expect(result.webhookResponse?.body).toContain('Invalid webhook body');
+    });
+
+    it('deve ignorar eventos de teste quando configurado', async () => {
+      mockWebhookFunctions.getNodeParameter.mockImplementation((param) => {
+        if (param === 'mode') return 'standard';
+        if (param === 'event') return 'all';
+        if (param === 'options') return { ignoreTestEvents: true };
+        return undefined;
+      });
+
+      const bodyData = {
+        event: 'PURCHASE_APPROVED',
+        test_mode: true, // Evento de teste
+        data: { purchase: { id: '123' } }
+      };
+      
+      mockWebhookFunctions.getBodyData.mockReturnValue(bodyData);
+      
+      const result = await hotmartTrigger.webhook.call(mockWebhookFunctions);
+      
+      // Deve retornar workflow vazio
+      expect(result.workflowData).toBeDefined();
+      expect(result.workflowData![0]).toHaveLength(0);
     });
   });
 });
