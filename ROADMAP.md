@@ -2,6 +2,14 @@
 
 Este documento lista as próximas features e melhorias planejadas para o projeto.
 
+## 📌 Versão Atual: 0.6.4 (STABLE)
+
+### ✅ Conquistas da v0.6.4
+- Outputs dinâmicos 100% funcionais
+- Smart mode: 15 outputs
+- Super Smart mode: 18 outputs
+- Scripts sem avisos de deprecação
+
 ## 🎯 Próximas Prioridades
 
 ### 1. **Cobertura de Testes - Os 3.19% Finais** 🧪

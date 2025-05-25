@@ -7,6 +7,32 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ## [Unreleased]
 
+## [0.6.4] - 2025-05-25
+
+### 🔧 Corrigido
+
+- **Outputs Dinâmicos Restaurados** 🎯
+  - Smart mode: 15 outputs funcionando corretamente
+  - Super Smart mode: 18 outputs funcionando (incluindo separação PIX/Boleto)
+  - Revertido para implementação estável (commit d952932)
+  - Removida estrutura modularizada que quebrava compatibilidade com n8n
+
+- **Scripts Atualizados** 📜
+  - Adicionado `N8N_RUNNERS_ENABLED=true` ao script install.sh
+  - Elimina aviso de deprecação sobre task runners
+  - Scripts essenciais adicionados ao repositório
+
+### 📝 Alterado
+
+- Versão marcada como **STABLE** no GitHub
+- .gitignore atualizado para incluir scripts essenciais
+- Removidos testes da estrutura modularizada não funcional
+
+### ⚠️ Removido
+
+- Estrutura modularizada temporariamente removida
+- Tag v0.6.3 deletada (versão com problemas)
+
 ## [0.6.2] - 2025-05-25
 
 ### Adicionado

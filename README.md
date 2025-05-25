@@ -1,5 +1,7 @@
 # n8n-nodes-hotmart 🤖
 
+![Version](https://img.shields.io/badge/version-0.6.4-blue)
+![Stable](https://img.shields.io/badge/stable-✅-green)
 ![Tests](https://github.com/thaleslaray/n8n-nodes-hotmart/actions/workflows/tests.yml/badge.svg)
 ![Build](https://github.com/thaleslaray/n8n-nodes-hotmart/actions/workflows/build.yml/badge.svg)
 [![codecov](https://codecov.io/gh/thaleslaray/n8n-nodes-hotmart/graph/badge.svg?token=GTWV5GE10X)](https://codecov.io/gh/thaleslaray/n8n-nodes-hotmart)
@@ -7,7 +9,7 @@
 ![License](https://img.shields.io/npm/l/n8n-nodes-hotmart)
 ![Downloads](https://img.shields.io/npm/dm/n8n-nodes-hotmart)
 ![n8n Node](https://img.shields.io/badge/n8n-community%20node-blue)
-![Compatibility](https://img.shields.io/badge/n8n%20compatibility-0.214.0%20to%201.3.0-blue)
+![Compatibility](https://img.shields.io/badge/n8n%20compatibility-0.214.0%20to%201.94.0+-blue)
 ![AI Powered](https://img.shields.io/badge/AI%20Powered-🤖-purple)
 ![MCP Compatible](https://img.shields.io/badge/MCP-Compatible-orange)
 ![AI Ready](https://img.shields.io/badge/AI%20Ready-✅-green)
@@ -136,6 +138,31 @@ O node Hotmart é totalmente compatível com **AI Agents** do n8n, permitindo qu
 - 📊 **Insights**: AI pode analisar dados e sugerir ações
 
 ## Instalação
+
+### 🏷️ Versão Estável: 0.6.4
+
+### Instalação via NPM (Recomendado)
+
+```bash
+# Instalar versão estável
+npm install n8n-nodes-hotmart@stable
+
+# Ou especificar a versão
+npm install n8n-nodes-hotmart@0.6.4
+```
+
+### Instalação via arquivo .tgz
+
+```bash
+# Download do arquivo da release v0.6.4
+wget https://github.com/thaleslaray/n8n-nodes-hotmart/releases/download/v0.6.4/n8n-nodes-hotmart-0.6.4.tgz
+
+# Instalar no n8n
+npm install --prefix ~/.n8n/nodes n8n-nodes-hotmart-0.6.4.tgz
+
+# Reiniciar n8n
+pkill -f n8n && n8n start
+```
 
 ### Instalação via n8n
 
@@ -648,6 +675,27 @@ Se encontrar algum problema, abra uma issue no GitHub com:
 - Passos para reproduzir o problema
 
 ## Histórico de Versões
+
+## 0.6.4 (25/05/2025) - Versão Estável 🏷️ STABLE
+
+### 🔧 Corrigido
+- **Outputs Dinâmicos Restaurados**
+  - Smart mode: 15 outputs funcionando corretamente
+  - Super Smart mode: 18 outputs funcionando (incluindo separação PIX/Boleto)
+  - Revertido para implementação estável que funciona 100%
+
+### 📝 Alterado
+- Scripts atualizados com `N8N_RUNNERS_ENABLED=true`
+- Versão marcada como STABLE no GitHub e NPM
+- Removida estrutura modularizada temporariamente
+
+## 0.6.2 (25/05/2025) - Cobertura de Testes 96.81% 🧪
+
+### Adicionado
+- Cobertura de testes aumentada para 96.81%
+- 510 testes totais (aumentado de ~450)
+- Arquitetura modular do HotmartTrigger
+- ROADMAP.md com planejamento até v1.0.0
 
 ## 0.6.0 (24/05/2025) - Qualidade e Performance 🚀
 
