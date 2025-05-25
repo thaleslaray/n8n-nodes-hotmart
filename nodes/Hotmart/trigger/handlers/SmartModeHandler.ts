@@ -12,11 +12,11 @@ export class SmartModeHandler extends BaseWebhookHandler {
     const body = this.webhookFunctions.getBodyData() as any;
     const event = body.event;
 
-    // Prepara m�ltiplas sa�das baseadas no evento
+    // Prepara múltiplas saídas baseadas no evento
     const outputs: INodeExecutionData[][] = [];
     const totalOutputs = Object.keys(EVENT_CONFIG).length;
 
-    // Inicializa todas as sa�das como vazias
+    // Inicializa todas as saídas como vazias
     for (let i = 0; i < totalOutputs; i++) {
       outputs.push([]);
     }
@@ -33,6 +33,6 @@ export class SmartModeHandler extends BaseWebhookHandler {
   }
 
   protected getDescription(): string {
-    return 'Modo Smart - separando eventos em sa�das diferentes';
+    return 'Modo Smart - separando eventos em saídas diferentes';
   }
 }

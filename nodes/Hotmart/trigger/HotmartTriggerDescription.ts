@@ -19,7 +19,7 @@ export const HotmartTriggerDescription: INodeTypeDescription = {
     name: 'Hotmart Trigger',
   },
   inputs: [],
-  outputs: `={{$parameter["mode"] === "standard" ? ["main"] : $parameter["mode"] === "smart" ? ["Compra Aprovada", "Compra Completa", "Compra Cancelada", "Compra Devolvida", "Chargeback", "Boleto/PIX", "Protesto", "Compra Expirada", "Compra Atrasada", "Carrinho Abandonado", "Assinatura Cancelada", "Plano Trocado", "Data de Cobrança Alterada", "Área de Membros - Primeiro Acesso", "Área de Membros - Módulo Completado"] : ["Compra Única", "Nova Assinatura", "Renovação de Assinatura"]}}`,
+  outputs: ['main'],
   webhooks: [
     {
       name: 'default',

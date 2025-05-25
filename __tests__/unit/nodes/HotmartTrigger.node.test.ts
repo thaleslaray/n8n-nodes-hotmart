@@ -30,11 +30,9 @@ describe('HotmartTrigger Node', () => {
       });
     });
 
-    it('should have correct inputs and dynamic outputs', () => {
+    it('should have correct inputs and outputs', () => {
       expect(hotmartTrigger.description.inputs).toEqual([]);
-      // Outputs são dinâmicos baseados no modo, então verificamos se é uma string de expressão
-      expect(typeof hotmartTrigger.description.outputs).toBe('string');
-      expect(hotmartTrigger.description.outputs).toContain('$parameter["mode"]');
+      expect(hotmartTrigger.description.outputs).toEqual(['main']);
     });
 
     it('should have properties defined', () => {

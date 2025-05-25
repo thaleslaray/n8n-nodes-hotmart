@@ -18,7 +18,7 @@ export class SuperSmartModeHandler extends BaseWebhookHandler {
     const body = this.webhookFunctions.getBodyData() as any;
     const outputIndex = this.determineOutputIndex(body);
 
-    // Prepara as 4 sa�das
+    // Prepara as 4 saídas
     const outputs: INodeExecutionData[][] = [[], [], [], []];
     outputs[outputIndex] = [{ json: body }];
 
