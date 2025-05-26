@@ -106,7 +106,6 @@ export const execute = async function (
         // Implementação manual da paginação para a API de cupons
         const allItems: CouponItem[] = [];
         let nextPageToken: string | undefined = undefined;
-        const rateLimitDelay = 100; // ms
 
         do {
           const currentQs: CouponQueryParams = {
@@ -130,7 +129,9 @@ export const execute = async function (
           nextPageToken = pageResponse.page_info?.next_page_token;
 
           if (nextPageToken) {
-            await new Promise((resolve) => setTimeout(resolve, rateLimitDelay));
+            await new Promise((resolve) => {
+              Promise.resolve().then(resolve);
+            });
           }
         } while (nextPageToken);
 

@@ -161,8 +161,10 @@ export const execute = async function (
             qs.page_token = response.page_info.next_page_token;
             this.logger.debug(`\n[Paginação manual] Próxima página disponível: ${qs.page_token}`);
 
-            // Pequeno delay para evitar problemas de rate limit
-            await new Promise((resolve) => setTimeout(resolve, 100));
+            // Pequeno delay para evitar problemas de rate limit usando Promise nativo
+            await new Promise((resolve) => {
+              Promise.resolve().then(resolve);
+            });
           } else {
             // Não tem mais páginas
             hasMorePages = false;

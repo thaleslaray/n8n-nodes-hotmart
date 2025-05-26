@@ -154,9 +154,15 @@ const SUPER_SMART_INDICES = {
 } as const;
 
 // Função para configurar os nomes das saídas dinamicamente
-const configureOutputNames = (parameters: INodeParameters) => {
+// Exportada para testes
+export const configureOutputNames = (parameters: INodeParameters) => {
   const customizeOutputs = parameters.customizeOutputs as boolean;
   const triggerMode = parameters.triggerMode as string;
+
+  // Modo Standard - saída única
+  if (triggerMode === 'standard' || !triggerMode) {
+    return [{ type: 'main', displayName: 'Webhook Data' }];
+  }
 
   // Modo Super Smart - separa compras normais, assinaturas novas e renovações para o evento Aprovado
   if (triggerMode === 'super-smart') {
