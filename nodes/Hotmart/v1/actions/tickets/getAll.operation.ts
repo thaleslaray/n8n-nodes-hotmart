@@ -213,7 +213,6 @@ export const execute = async function (
         const allItems: TicketParticipant[] = [];
         let nextPageToken: string | undefined;
         const maxResults = 50; // Número padrão por página
-        const rateLimitDelay = 100; // ms entre requisições
 
         do {
           const queryParams = {
@@ -238,7 +237,9 @@ export const execute = async function (
 
           // Para evitar atingir rate limits, adicionar um pequeno atraso
           if (nextPageToken) {
-            await new Promise((resolve) => setTimeout(resolve, rateLimitDelay));
+            await new Promise((resolve) => {
+              Promise.resolve().then(resolve);
+            });
           }
         } while (nextPageToken);
 

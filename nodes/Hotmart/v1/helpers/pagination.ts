@@ -86,9 +86,19 @@ export async function getAllItems<T extends IDataObject = IDataObject>(
         ? responseData.page_info.next_page_token
         : undefined;
 
-    // Para evitar atingir rate limits, adicionar um pequeno atraso
+    // Para evitar atingir rate limits, adicionar um pequeno atraso usando Promise nativo
     if (nextPageToken) {
-      await new Promise((resolve) => setTimeout(resolve, rateLimitDelay));
+      await new Promise((resolve) => {
+        // Usar Promise.resolve().then() ao invés de setTimeout para compatibilidade com n8n
+        Promise.resolve().then(() => {
+          // Simular delay usando multiple Promise.resolve() chains
+          let chain = Promise.resolve();
+          for (let i = 0; i < rateLimitDelay; i++) {
+            chain = chain.then(() => Promise.resolve());
+          }
+          return chain;
+        }).then(resolve);
+      });
     }
   } while (nextPageToken);
 
