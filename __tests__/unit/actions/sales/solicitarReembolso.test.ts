@@ -101,4 +101,19 @@ describe('Sales - solicitarReembolso', () => {
 		expect(mockHotmartApiRequest).toHaveBeenCalled();
 		expect(result[0]).toHaveLength(1);
 	});
+
+	it('should handle undefined response', async () => {
+		(mockThis.getNodeParameter as jest.Mock).mockImplementation((param: string, index: number, defaultValue?: any) => {
+			if (param === 'transaction') return 'TRX123';
+			if (param === 'confirmRefund') return true; // Adicionar confirmação
+			return defaultValue;
+		});
+
+		// Mock retorna undefined
+		mockHotmartApiRequest.mockResolvedValueOnce(undefined);
+
+		const result = await execute.call(mockThis, [{ json: {} }]);
+
+		expect(result[0][0].json).toEqual({});
+	});
 });

@@ -344,5 +344,20 @@ describe('Negotiate - generateNegotiation', () => {
         },
       ]]);
     });
+
+    it('should handle undefined response', async () => {
+      mockThis.getNodeParameter
+        .mockReturnValueOnce('sub_123')
+        .mockReturnValueOnce('1')
+        .mockReturnValueOnce('CREDIT_CARD')
+        .mockReturnValueOnce({});
+
+      // Mock retorna undefined
+      mockHotmartApiRequest.mockResolvedValueOnce(undefined);
+
+      const result = await execute.call(mockThis, [{ json: {} }]);
+
+      expect(result[0][0].json).toEqual({});
+    });
   });
 });

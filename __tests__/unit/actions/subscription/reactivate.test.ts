@@ -127,4 +127,18 @@ describe('Subscription - reactivate', () => {
 		expect(mockHotmartApiRequest).toHaveBeenCalled();
 		expect(result[0]).toHaveLength(1);
 	});
+
+	it('should handle undefined response', async () => {
+		(mockThis.getNodeParameter as jest.Mock).mockImplementation((param: string, index: number, defaultValue?: any) => {
+			if (param === 'subscriberCode') return 'sub_123';
+			return defaultValue;
+		});
+
+		// Mock retorna undefined
+		mockHotmartApiRequest.mockResolvedValueOnce(undefined);
+
+		const result = await execute.call(mockThis, [{ json: {} }]);
+
+		expect(result[0][0].json).toEqual({});
+	});
 });

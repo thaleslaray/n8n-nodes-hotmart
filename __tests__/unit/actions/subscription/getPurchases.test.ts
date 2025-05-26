@@ -96,4 +96,26 @@ describe('Subscription getPurchases operation', () => {
     expect(result).toHaveLength(1);
     expect(result[0]).toHaveLength(0);
   });
+
+  it('should handle empty items array input', async () => {
+    const mockPurchases = [
+      {
+        transaction_id: 'TRX-EMPTY-001',
+        product_name: 'Test Product',
+        value: 50.00
+      }
+    ];
+
+    (mockThis.getNodeParameter as jest.Mock)
+      .mockReturnValueOnce('SUB-EMPTY-ITEMS'); // subscriberCode
+
+    (hotmartApiRequest as jest.Mock).mockResolvedValueOnce(mockPurchases);
+
+    // Passar array vazio de items
+    const result = await execute.call(mockThis, []);
+
+    expect(result).toHaveLength(1);
+    expect(result[0]).toHaveLength(1);
+    expect(result[0][0].json.transaction_id).toBe('TRX-EMPTY-001');
+  });
 });

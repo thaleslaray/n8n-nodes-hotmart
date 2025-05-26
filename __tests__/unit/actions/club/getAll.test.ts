@@ -282,5 +282,27 @@ describe('Club - Get All Operation', () => {
         })
       );
     });
+
+    it('should handle response without items field', async () => {
+      mockThis.getNodeParameter = jest.fn((param: string, index: number, defaultValue?: any) => {
+        if (param === 'returnAll') return false;
+        if (param === 'subdomain') return 'test-subdomain';
+        if (param === 'filters') return {};
+        if (param === 'limit') return 10;
+        return defaultValue;
+      });
+
+      const mockResponse = { 
+        // sem campo items
+        page_info: {
+          total_results: 0
+        }
+      };
+      mockHotmartApiRequestTyped.mockResolvedValueOnce(mockResponse);
+
+      const result = await execute.call(mockThis, [{ json: {} }]);
+
+      expect(result[0]).toHaveLength(0); // Deve retornar array vazio
+    });
   });
 });
