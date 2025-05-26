@@ -263,5 +263,26 @@ describe('Coupon - Create Operation', () => {
         }
       );
     });
+
+    it('should handle undefined response', async () => {
+      const items: INodeExecutionData[] = [{ json: {} }];
+      
+      (mockThis.getNodeParameter as jest.Mock).mockImplementation((param: string, index: number) => {
+        if (param === 'product_id') return 'prod_undefined';
+        if (param === 'code') return 'UNDEFINED_TEST';
+        if (param === 'discount') return 15;
+        if (param === 'options') return {};
+        return undefined;
+      });
+
+      // Mock retorna undefined
+      mockHotmartApiRequest.mockResolvedValueOnce(undefined);
+
+      const result = await execute.call(mockThis, items);
+
+      expect(result).toEqual([[
+        { json: {}, pairedItem: { item: 0 } }
+      ]]);
+    });
   });
 });

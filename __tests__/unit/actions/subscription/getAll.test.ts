@@ -199,5 +199,25 @@ describe('Subscription - Get All Operation', () => {
       await expect(execute.call(mockThis, testItems)).rejects.toThrow('API Error');
       expect(mockThis.continueOnFail).toHaveBeenCalled();
     });
+
+    it('should handle response without items field when returnAll=false', async () => {
+      (mockThis.getNodeParameter as jest.Mock).mockImplementation((param: string, index: number, defaultValue?: any) => {
+        if (param === 'returnAll') return false;
+        if (param === 'filters') return {};
+        if (param === 'limit') return 50;
+        return defaultValue;
+      });
+
+      const mockResponse = {
+        // sem campo items
+        page_info: { total_results: 0 }
+      };
+
+      mockHotmartApiRequestTyped.mockResolvedValueOnce(mockResponse);
+
+      const result = await execute.call(mockThis, testItems);
+
+      expect(result[0]).toHaveLength(0); // Deve retornar array vazio
+    });
   });
 });

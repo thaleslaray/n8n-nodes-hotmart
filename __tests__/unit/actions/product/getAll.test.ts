@@ -321,5 +321,26 @@ describe('Product - Get All Operation', () => {
       expect(result[0][0].json).toEqual({ error: 'API Error' });
       expect(result[0][0].pairedItem).toEqual({ item: 0 });
     });
+
+    it('should handle response without items field when returnAll=false', async () => {
+      mockThis.getNodeParameter = jest.fn()
+        .mockImplementation((param: string, index: number, defaultValue?: any) => {
+          if (param === 'returnAll') return false;
+          if (param === 'productSelectionMode') return 'all';
+          if (param === 'filters') return {};
+          if (param === 'limit') return 10;
+          return defaultValue;
+        });
+
+      const mockResponse = {
+        // sem campo items
+        page_info: { total_results: 0 }
+      };
+      mockHotmartApiRequestTyped.mockResolvedValueOnce(mockResponse);
+
+      const result = await execute.call(mockThis, testItems);
+
+      expect(result[0]).toHaveLength(0); // Deve retornar array vazio
+    });
   });
 });

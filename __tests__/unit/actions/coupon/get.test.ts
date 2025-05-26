@@ -247,4 +247,27 @@ describe('Coupon get operation', () => {
     expect(result[0]).toHaveLength(1);
     expect(hotmartApiRequestTyped).toHaveBeenCalledTimes(1);
   });
+
+  it('should handle response without items field', async () => {
+    const mockResponse = {
+      // sem campo items
+      page_info: {
+        total_results: 0
+      }
+    };
+
+    (mockThis.getNodeParameter as jest.Mock)
+      .mockReturnValueOnce(false) // returnAll
+      .mockReturnValueOnce(50) // maxResults
+      .mockReturnValueOnce('PROD-123') // product_id
+      .mockReturnValueOnce({}) // filters
+      .mockReturnValueOnce(50); // limit
+
+    (hotmartApiRequest as jest.Mock).mockResolvedValueOnce(mockResponse);
+
+    const result = await execute.call(mockThis, [{ json: {} }]);
+
+    expect(result).toHaveLength(1);
+    expect(result[0]).toHaveLength(0); // Deve retornar array vazio
+  });
 });

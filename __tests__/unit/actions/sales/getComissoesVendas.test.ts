@@ -221,4 +221,24 @@ describe('Sales - getComissoesVendas', () => {
     
     expect(result[0]).toHaveLength(3);
   });
+
+  it('should handle response without items field', async () => {
+    (mockThis.getNodeParameter as jest.Mock).mockImplementation((param: string, index: number, defaultValue?: any) => {
+      if (param === 'returnAll') return false;
+      if (param === 'filters') return {};
+      if (param === 'limit') return 50;
+      return defaultValue;
+    });
+
+    const mockResponse = {
+      // sem campo items
+      page_info: { total_results: 0 }
+    };
+
+    mockHotmartApiRequest.mockResolvedValueOnce(mockResponse);
+
+    const result = await execute.call(mockThis, [{ json: {} }]);
+
+    expect(result[0]).toHaveLength(0); // Deve retornar array vazio
+  });
 });

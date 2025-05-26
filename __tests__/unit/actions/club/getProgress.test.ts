@@ -112,6 +112,24 @@ describe('Club - getProgress', () => {
     expect(result[0]).toHaveLength(0);
   });
 
+  it('deve processar resposta sem campo lessons (undefined)', async () => {
+    (mockThis.getNodeParameter as jest.Mock).mockImplementation((param: string, index: number, defaultValue?: any) => {
+      if (param === 'subdomain') return 'teste';
+      if (param === 'user_id') return 'usr_test';
+      return defaultValue;
+    });
+
+    // Resposta sem o campo lessons
+    const mockResponse = {};
+
+    mockHotmartApiRequest.mockResolvedValue(mockResponse);
+
+    const result = await execute.call(mockThis, [{ json: {} }]);
+
+    expect(result).toHaveLength(1);
+    expect(result[0]).toHaveLength(0); // Deve retornar array vazio
+  });
+
   it('deve retornar progresso detalhado', async () => {
     (mockThis.getNodeParameter as jest.Mock).mockImplementation((param: string, index: number, defaultValue?: any) => {
       if (param === 'subdomain') return 'escola';
