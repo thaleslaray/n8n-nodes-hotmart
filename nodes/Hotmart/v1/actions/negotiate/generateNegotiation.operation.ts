@@ -1,5 +1,7 @@
 import type { IExecuteFunctions, INodeExecutionData, INodeProperties, IDataObject } from 'n8n-workflow';
+import { NodeOperationError } from 'n8n-workflow';
 import { hotmartApiRequest } from '../../transport/request';
+import { ERROR_MESSAGES } from '../../constants/errors';
 
 export const description: INodeProperties[] = [
   {
@@ -141,17 +143,35 @@ export const execute = async function (
         .filter((n) => !isNaN(n));
 
       if (recurrencesArray.length === 0) {
-        throw new Error('Pelo menos uma parcela válida deve ser fornecida');
+        throw new NodeOperationError(
+          this.getNode(),
+          'Pelo menos uma parcela válida deve ser fornecida',
+          {
+            description: 'Informe os números das parcelas separados por vírgula. Exemplo: 1,2,3',
+          }
+        );
       }
 
       if (recurrencesArray.length > 5) {
-        throw new Error('No máximo 5 parcelas podem ser negociadas por vez');
+        throw new NodeOperationError(
+          this.getNode(),
+          ERROR_MESSAGES.BUSINESS.NEGOTIATION_TOO_MANY_INSTALLMENTS,
+          {
+            description: `Você informou ${recurrencesArray.length} parcelas. Divida em múltiplas negociações se necessário.`,
+          }
+        );
       }
 
       // Validar que as parcelas são números positivos
       for (const parcela of recurrencesArray) {
         if (parcela < 1) {
-          throw new Error('Os números das parcelas devem ser positivos (1, 2, 3...)');
+          throw new NodeOperationError(
+            this.getNode(),
+            'Os números das parcelas devem ser positivos',
+            {
+              description: 'Use números inteiros positivos (1, 2, 3...) para identificar as parcelas',
+            }
+          );
         }
       }
 

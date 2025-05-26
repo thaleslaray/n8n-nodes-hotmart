@@ -6,7 +6,9 @@ import {
   IDataObject,
   IHttpRequestMethods,
   ILoadOptionsFunctions,
+  NodeApiError,
 } from 'n8n-workflow';
+import { ERROR_HINTS, getErrorMessageByStatus, createErrorMessage } from '../constants/errors';
 
 /**
  * Makes an authenticated HTTP request to the Hotmart API
@@ -81,10 +83,36 @@ export async function hotmartApiRequest<T>(
     });
 
     return fullResponse && fullResponse.body ? fullResponse.body : {} as T;
-  } catch (error) {
-    this.logger.debug('\n[Hotmart API Error]');
-    this.logger.debug('Error:', error);
-    throw error;
+  } catch (error: any) {
+    this.logger.debug('\n[Hotmart API Error]', {
+      message: error.message,
+      statusCode: error.statusCode,
+      response: error.response?.body || error.response,
+    });
+
+    // Extract error details
+    const statusCode = error.statusCode || error.response?.statusCode;
+    const errorMessage = error.response?.body?.message || error.message;
+    // const errorCode = error.response?.body?.code; // Reserved for future use
+
+    // Create user-friendly error message
+    let userMessage = '';
+    if (statusCode) {
+      userMessage = getErrorMessageByStatus(statusCode);
+      const hint = ERROR_HINTS[statusCode as keyof typeof ERROR_HINTS];
+      if (hint) {
+        userMessage = createErrorMessage(userMessage, { statusCode, hint });
+      }
+    } else {
+      userMessage = errorMessage || 'Erro desconhecido ao comunicar com a API Hotmart';
+    }
+
+    // Create NodeApiError with detailed information
+    throw new NodeApiError(this.getNode(), error, {
+      message: userMessage,
+      description: errorMessage,
+      httpCode: statusCode ? statusCode.toString() : undefined,
+    });
   }
 }
 
