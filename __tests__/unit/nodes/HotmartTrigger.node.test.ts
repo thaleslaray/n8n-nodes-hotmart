@@ -216,6 +216,7 @@ describe('HotmartTrigger Node - Complete Coverage', () => {
         getHeaderData: jest.fn(),
         getWorkflowStaticData: jest.fn().mockReturnValue({}),
         getResponseObject: jest.fn().mockReturnValue(mockResponse),
+        getNode: jest.fn().mockReturnValue({ name: 'TestNode', type: 'n8n-nodes-hotmart.hotmartTrigger' }),
         logger: {
           debug: jest.fn(),
           info: jest.fn(),
@@ -314,6 +315,7 @@ describe('HotmartTrigger Node - Complete Coverage', () => {
         getHeaderData: jest.fn(),
         getWorkflowStaticData: jest.fn().mockReturnValue({}),
         getResponseObject: jest.fn().mockReturnValue(mockResponse),
+        getNode: jest.fn().mockReturnValue({ name: 'TestNode', type: 'n8n-nodes-hotmart.hotmartTrigger' }),
         logger: {
           debug: jest.fn(),
           info: jest.fn(),
@@ -412,6 +414,7 @@ describe('HotmartTrigger Node - Complete Coverage', () => {
         getHeaderData: jest.fn(),
         getWorkflowStaticData: jest.fn().mockReturnValue({}),
         getResponseObject: jest.fn().mockReturnValue(mockResponse),
+        getNode: jest.fn().mockReturnValue({ name: 'TestNode', type: 'n8n-nodes-hotmart.hotmartTrigger' }),
         logger: {
           debug: jest.fn(),
           info: jest.fn(),
@@ -485,6 +488,7 @@ describe('HotmartTrigger Node - Complete Coverage', () => {
         getHeaderData: jest.fn(),
         getWorkflowStaticData: jest.fn().mockReturnValue({}),
         getResponseObject: jest.fn().mockReturnValue(mockResponse),
+        getNode: jest.fn().mockReturnValue({ name: 'TestNode', type: 'n8n-nodes-hotmart.hotmartTrigger' }),
         logger: {
           debug: jest.fn(),
           info: jest.fn(),
@@ -962,6 +966,7 @@ describe('HotmartTrigger Node - Complete Coverage', () => {
         getHeaderData: jest.fn(),
         getWorkflowStaticData: jest.fn().mockReturnValue({}),
         getResponseObject: jest.fn().mockReturnValue(mockResponse),
+        getNode: jest.fn().mockReturnValue({ name: 'TestNode', type: 'n8n-nodes-hotmart.hotmartTrigger' }),
         logger: {
           debug: jest.fn(),
           info: jest.fn(),
@@ -1075,6 +1080,7 @@ describe('HotmartTrigger Node - Complete Coverage', () => {
         getHeaderData: jest.fn(),
         getWorkflowStaticData: jest.fn().mockReturnValue({}),
         getResponseObject: jest.fn().mockReturnValue(mockResponse),
+        getNode: jest.fn().mockReturnValue({ name: 'TestNode', type: 'n8n-nodes-hotmart.hotmartTrigger' }),
         logger: {
           debug: jest.fn(),
           info: jest.fn(),
@@ -1140,16 +1146,18 @@ describe('HotmartTrigger Node - Complete Coverage', () => {
     it('should handle unknown event in smart mode', async () => {
       const mockRes = {
         status: jest.fn().mockReturnThis(),
-        send: jest.fn(),
+        send: jest.fn().mockReturnThis(),
+        json: jest.fn().mockReturnThis(),
       };
       (mockWebhookFunctions.getResponseObject as jest.Mock).mockReturnValue(mockRes);
       (mockWebhookFunctions.getNodeParameter as jest.Mock).mockImplementation((name) => {
         if (name === 'triggerMode') return 'smart';
         if (name === 'options') return {};
+        if (name === 'responseMode') return 'onReceived';
         return undefined;
       });
       (mockWebhookFunctions.getBodyData as jest.Mock).mockReturnValue({
-        event: 'UNKNOWN_EVENT',
+        event: 'TOTALLY_UNKNOWN_EVENT_THAT_DOES_NOT_EXIST',
         data: {},
       });
       (mockWebhookFunctions.getHeaderData as jest.Mock).mockReturnValue({});
@@ -1164,16 +1172,18 @@ describe('HotmartTrigger Node - Complete Coverage', () => {
     it('should handle unknown event in super-smart mode', async () => {
       const mockRes = {
         status: jest.fn().mockReturnThis(),
-        send: jest.fn(),
+        send: jest.fn().mockReturnThis(),
+        json: jest.fn().mockReturnThis(),
       };
       (mockWebhookFunctions.getResponseObject as jest.Mock).mockReturnValue(mockRes);
       (mockWebhookFunctions.getNodeParameter as jest.Mock).mockImplementation((name) => {
         if (name === 'triggerMode') return 'super-smart';
         if (name === 'options') return {};
+        if (name === 'responseMode') return 'onReceived';
         return undefined;
       });
       (mockWebhookFunctions.getBodyData as jest.Mock).mockReturnValue({
-        event: 'UNKNOWN_EVENT',
+        event: 'TOTALLY_UNKNOWN_EVENT_THAT_DOES_NOT_EXIST',
         data: {},
       });
       (mockWebhookFunctions.getHeaderData as jest.Mock).mockReturnValue({});
