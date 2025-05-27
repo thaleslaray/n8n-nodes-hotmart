@@ -1,5 +1,6 @@
 import type { IExecuteFunctions, INodeExecutionData, INodeProperties } from 'n8n-workflow';
 import { NodeOperationError } from 'n8n-workflow';
+import { ERROR_MESSAGES } from '../constants/errors';
 
 import * as subscriptionResource from './subscription/Subscription.resource';
 import * as salesResource from './sales/Sales.resource';
@@ -95,7 +96,13 @@ export async function router(this: IExecuteFunctions): Promise<INodeExecutionDat
     const resourceHandlers = RESOURCE_HANDLERS[resource as keyof typeof RESOURCE_HANDLERS];
     
     if (!resourceHandlers) {
-      throw new NodeOperationError(this.getNode(), `O recurso "${resource}" não é suportado!`);
+      throw new NodeOperationError(
+        this.getNode(),
+        ERROR_MESSAGES.RESOURCE.NOT_SUPPORTED,
+        {
+          description: `Recurso "${resource}" não encontrado. Recursos disponíveis: subscription, sales, product, coupon, club, tickets, negotiate`,
+        }
+      );
     }
 
     // Buscar operação específica
@@ -104,7 +111,10 @@ export async function router(this: IExecuteFunctions): Promise<INodeExecutionDat
     if (!operationHandler || typeof operationHandler.execute !== 'function') {
       throw new NodeOperationError(
         this.getNode(),
-        `A operação "${operation}" não é suportada para o recurso "${resource}"!`
+        ERROR_MESSAGES.RESOURCE.OPERATION_NOT_SUPPORTED,
+        {
+          description: `Operação "${operation}" não disponível para o recurso "${resource}". Verifique as operações disponíveis no menu dropdown.`,
+        }
       );
     }
 

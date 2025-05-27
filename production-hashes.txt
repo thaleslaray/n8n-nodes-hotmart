@@ -1,0 +1,10 @@
+# Hashes do código de produção - Ter 27 Mai 2025 15:06:54 -03
+HotmartTrigger.node.ts: 81c2129f0edace94e4bd0fe8c383889af7c41eb1a7c5936d14eda84a8146889b
+HotmartV1.node.ts: ebb7ca623cb9bafac5fcc643ff303c492b0240371f8f78205642e8e8b07150ba
+
+# Código compilado
+dist/HotmartTrigger.node.js: c5e6f8fc55f224203ab703236a87debfe608b410408d865e73077631f8a16663
+dist/HotmartV1.node.js: f352562a10197cb0a34c35d5f7663855c2cf036e15ff36987c0e559a964355c3
+
+# Pacote final
+n8n-nodes-hotmart-0.6.4.tgz: 78fbe98dcd9e578db91c89044bee56772987bdffe38d7a005c3ff394b91a7814

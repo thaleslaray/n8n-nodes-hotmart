@@ -1,5 +1,7 @@
 import type { IExecuteFunctions, INodeExecutionData, INodeProperties, IDataObject } from 'n8n-workflow';
+import { NodeOperationError } from 'n8n-workflow';
 import { hotmartApiRequest } from '../../transport/request';
+import { ERROR_MESSAGES } from '../../constants/errors';
 
 export const description: INodeProperties[] = [
   {
@@ -67,7 +69,13 @@ export const execute = async function (
 
       // Verificar confirmação antes de processar o reembolso
       if (!confirmRefund) {
-        throw new Error('Por segurança, você deve marcar a confirmação antes de processar o reembolso. Esta operação é irreversível.');
+        throw new NodeOperationError(
+          this.getNode(),
+          ERROR_MESSAGES.BUSINESS.REFUND_REQUIRES_CONFIRMATION,
+          {
+            description: ERROR_MESSAGES.BUSINESS.REFUND_IRREVERSIBLE,
+          }
+        );
       }
 
       const responseData = await hotmartApiRequest.call(

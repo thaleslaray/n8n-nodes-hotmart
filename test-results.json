@@ -1,0 +1,13 @@
+{
+  "tested": "2025-05-27T10:11:17.588Z",
+  "summary": {
+    "total": 0,
+    "success": 0,
+    "failed": 0,
+    "successRate": "NaN",
+    "avgResponseTime": null
+  },
+  "workflows": 0,
+  "events": 4,
+  "results": []
+}

@@ -52,7 +52,7 @@ describe('Sales - solicitarReembolso', () => {
 		});
 
 		await expect(execute.call(mockThis, [{ json: {} }])).rejects.toThrow(
-			'Por segurança, você deve marcar a confirmação antes de processar o reembolso'
+			'Reembolso não confirmado. Defina "Confirmar Reembolso" como true para prosseguir.'
 		);
 	});
 

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Script de limpeza após testes
+if [ "$1" = "--all" ]; then
+  echo "🚨 Deletando TODOS os workflows do n8n..."
+  node scripts/test-automation/delete-all-workflows.js
+elif [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+  echo "🧹 Script de limpeza de workflows"
+  echo ""
+  echo "Uso:"
+  echo "  ./clean          # Deleta apenas workflows de teste [AUTO-TEST]"
+  echo "  ./clean --all    # Deleta TODOS os workflows (use com cuidado!)"
+  echo "  ./clean --help   # Mostra esta ajuda"
+else
+  echo "🧹 Limpando workflows de teste..."
+  node scripts/test-automation/cleanup-all.js
+fi

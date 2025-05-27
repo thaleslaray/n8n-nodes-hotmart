@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Script de atalho para executar teste combinado
+./scripts/test-combined.sh
