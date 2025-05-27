@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Executa apenas testes unitários (dados simulados)
+echo "🧪 Executando testes unitários..."
+pnpm test

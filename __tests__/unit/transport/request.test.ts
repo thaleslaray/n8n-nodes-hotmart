@@ -23,6 +23,9 @@ describe('Transport - Request', () => {
       environment: 'production'
     });
 
+    // Mock getNode
+    mockThis.getNode = jest.fn().mockReturnValue({ name: 'Hotmart' });
+
     // Mock httpRequestWithAuthentication
     mockHttpRequestWithAuthentication = jest.fn();
     mockThis.helpers.httpRequestWithAuthentication = mockHttpRequestWithAuthentication;
@@ -140,8 +143,11 @@ describe('Transport - Request', () => {
         hotmartApiRequest.call(mockThis, 'GET', '/api/v1/test')
       ).rejects.toThrow('API Error');
 
-      expect(mockThis.logger.debug).toHaveBeenCalledWith('\n[Hotmart API Error]');
-      expect(mockThis.logger.debug).toHaveBeenCalledWith('Error:', mockError);
+      expect(mockThis.logger.debug).toHaveBeenCalledWith('\n[Hotmart API Error]', expect.objectContaining({
+        message: 'API Error',
+        statusCode: undefined,
+        response: undefined
+      }));
     });
 
     it('deve retornar objeto vazio quando resposta não tem body', async () => {

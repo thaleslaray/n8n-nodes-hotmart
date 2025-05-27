@@ -20,6 +20,7 @@ describe('Negotiate - generateNegotiation', () => {
     mockThis.helpers.returnJsonArray = jest.fn((data: any[]) => data.map((item: any) => ({ json: item })));
     mockThis.getNodeParameter = jest.fn();
     mockThis.continueOnFail = jest.fn().mockReturnValue(false);
+    mockThis.getNode = jest.fn().mockReturnValue({ name: 'Hotmart' });
   });
 
   describe('Basic functionality', () => {
@@ -114,7 +115,7 @@ describe('Negotiate - generateNegotiation', () => {
 
       await expect(
         execute.call(mockThis, [{ json: {} }])
-      ).rejects.toThrow('No máximo 5 parcelas podem ser negociadas por vez');
+      ).rejects.toThrow('Máximo de 5 parcelas por negociação.');
     });
 
     it('should throw error if recurrence number is not positive', async () => {

@@ -282,7 +282,7 @@ describe('Router', () => {
         .mockReturnValueOnce('unsupported') // resource
         .mockReturnValueOnce('someOperation'); // operation
 
-      await expect(router.call(mockThis)).rejects.toThrow('O recurso "unsupported" não é suportado!');
+      await expect(router.call(mockThis)).rejects.toThrow('Recurso não suportado');
     });
 
     it('should throw error for unsupported operation', async () => {
@@ -291,7 +291,7 @@ describe('Router', () => {
         .mockReturnValueOnce('unsupportedOperation'); // invalid operation
 
       await expect(router.call(mockThis)).rejects.toThrow(
-        'A operação "unsupportedOperation" não é suportada para o recurso "subscription"!'
+        'Operação não suportada para este recurso'
       );
     });
 

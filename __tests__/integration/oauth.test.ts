@@ -13,6 +13,9 @@ describe('OAuth Integration', () => {
     jest.clearAllMocks();
     mockThis = createMockExecuteFunctions();
     
+    // Mock getNode
+    mockThis.getNode = jest.fn().mockReturnValue({ name: 'Hotmart' });
+    
     // Mock getCredentials
     mockThis.getCredentials = jest.fn().mockResolvedValue({
       clientId: 'test-client-id',
@@ -155,7 +158,7 @@ describe('OAuth Integration', () => {
 
       await expect(
         hotmartApiRequest.call(mockThis, 'GET', '/products/api/v1/products')
-      ).rejects.toThrow('Authentication failed');
+      ).rejects.toThrow('Falha na autenticação');
     });
 
     it('should handle rate limit errors', async () => {
@@ -169,7 +172,7 @@ describe('OAuth Integration', () => {
 
       await expect(
         hotmartApiRequest.call(mockThis, 'GET', '/products/api/v1/products')
-      ).rejects.toThrow('Rate limit exceeded');
+      ).rejects.toThrow('Limite de requisições excedido');
     });
 
     it('should handle empty response body', async () => {
@@ -284,7 +287,7 @@ describe('OAuth Integration', () => {
 
       await expect(
         hotmartApiRequest.call(mockThis, 'GET', '/products/api/v1/products')
-      ).rejects.toThrow('Network error');
+      ).rejects.toThrow('The service refused the connection');
     });
 
     it('should handle timeout errors', async () => {
@@ -295,7 +298,7 @@ describe('OAuth Integration', () => {
 
       await expect(
         hotmartApiRequest.call(mockThis, 'GET', '/products/api/v1/products')
-      ).rejects.toThrow('Request timeout');
+      ).rejects.toThrow('The connection timed out');
     });
   });
 });
