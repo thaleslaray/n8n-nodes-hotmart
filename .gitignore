@@ -62,6 +62,7 @@ archive/
 !scripts/clear.sh
 !scripts/auto-backup.sh
 !scripts/quick-backup.sh
+!scripts/pre-push-check.sh
 install
 clear
 publish
