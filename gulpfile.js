@@ -24,10 +24,10 @@ task('clean', clean);
 
 function clean(done) {
     try {
-        // Remove arquivos .js, .js.map e .d.ts (exceto node_modules e dist)
-        execSync(`find . -type f -name '*.js' -not -path './node_modules/*' -not -path './dist/*' -not -name 'gulpfile.js' -not -name 'eslint.config.js' -not -name 'jest.config.js' -not -name 'jest.setup.js' -not -path './scripts/verify-build.js' -delete`, { stdio: 'inherit' });
-        execSync(`find . -type f -name '*.js.map' -not -path './node_modules/*' -not -path './dist/*' -delete`, { stdio: 'inherit' });
-        execSync(`find . -type f -name '*.d.ts' -not -path './node_modules/*' -not -path './dist/*' -delete`, { stdio: 'inherit' });
+        // Remove apenas arquivos .js, .js.map e .d.ts compilados do TypeScript (nas pastas nodes/ e credentials/)
+        execSync(`find ./nodes ./credentials -type f -name '*.js' -delete 2>/dev/null || true`, { stdio: 'inherit' });
+        execSync(`find ./nodes ./credentials -type f -name '*.js.map' -delete 2>/dev/null || true`, { stdio: 'inherit' });
+        execSync(`find ./nodes ./credentials -type f -name '*.d.ts' -delete 2>/dev/null || true`, { stdio: 'inherit' });
     } catch (error) {
         // Ignora erros - arquivos podem não existir
     }
