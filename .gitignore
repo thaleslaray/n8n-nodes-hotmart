@@ -77,3 +77,33 @@ __tests__/fixtures/webhook-fixtures/
 # Apenas os diretórios anonimizados são seguros para commit
 # __tests__/fixtures/webhook-events-anon/ ✅ SEGURO
 # __tests__/fixtures/webhook-fixtures-anon/ ✅ SEGURO
+
+# Arquivos temporários de teste e relatórios
+test-report*.md
+test-results.json
+test-report.log
+created-workflows*.json
+production-hashes.txt
+
+# Scripts de atalho no diretório raiz
+/clean
+/test
+/test-unit
+/test-full
+/test-validate
+/test-webhooks
+
+# Arquivos de contexto e estratégia temporários
+CONTEXTO-*.md
+BRANCH-STRATEGY.md
+SECURITY-EXECUTIVE-SUMMARY.html
+CODELOOP-*.md
+REFACTORING-*.md
+*.html
+
+# Diretório de sessões do CodeLoops
+.codeloops/
+
+# Guardião
+.guardiao-snapshot.json
+.guardiao-snapshot-backup-*.json
