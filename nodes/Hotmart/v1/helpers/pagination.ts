@@ -12,6 +12,17 @@ interface PaginationOptions {
 // Valor máximo permitido pela API Hotmart para max_results
 const MAX_API_RESULTS = 500;
 
+/**
+ * Retrieves all items from a paginated Hotmart API endpoint, automatically handling pagination and rate limiting.
+ *
+ * Fetches all available results for the specified resource and operation, using the maximum allowed page size for efficiency. Continues requesting subsequent pages until all items are retrieved.
+ *
+ * @param options - Pagination options specifying the resource, operation, and optional query or body parameters.
+ * @returns An array containing all items retrieved from the API.
+ *
+ * @throws {NodeOperationError} If no valid endpoint can be resolved for the given resource and operation.
+ * @remark Uses a Promise-based delay mechanism for rate limiting to ensure compatibility with the n8n environment.
+ */
 export async function getAllItems<T extends IDataObject = IDataObject>(
   this: IExecuteFunctions,
   options: PaginationOptions
