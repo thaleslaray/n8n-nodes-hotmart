@@ -7,6 +7,36 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ## [Unreleased]
 
+### 🚀 Adicionado
+
+- **Sistema Guardião** 🛡️
+  - Monitor inteligente de arquivos para desenvolvimento
+  - Detecção de mudanças em tempo real
+  - Snapshots automáticos durante desenvolvimento
+  - Integrado com `npm run dev`
+  - Scripts: `guardiao:watch`, `dev:original`
+
+- **Scripts de Teste Otimizados** 🧪
+  - `test:combined`, `test:all`, `test:complete`
+  - Execução unificada de toda suite de testes
+  
+- **Melhorias de Testes** 📈
+  - Cobertura aumentada para 99.47% (de 96.81%)
+  - 100% de cobertura de funções mantida
+  - Novos testes de roteamento para HotmartTrigger
+  - Validação completa dos modos Smart e Super-Smart
+
+### 🔧 Alterado
+
+- **Otimização do Gulpfile** 
+  - Task `clean` agora limpa apenas `nodes/` e `credentials/`
+  - Evita remover arquivos de configuração importantes
+
+### 📦 Dependências
+
+- Adicionado `chokidar` para monitoramento de arquivos
+- Adicionado `axios` e `chalk` para funcionalidades auxiliares
+
 ## [0.6.4] - 2025-05-25
 
 ### 🔧 Corrigido

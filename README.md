@@ -1078,11 +1078,11 @@ Os workflows existentes continuam funcionando, mas para aproveitar as novas capa
 Este projeto mantém altos padrões de qualidade de código:
 
 ### Cobertura de Testes 🧪
-- **Statements**: 100% ✅
+- **Statements**: 99.47% ✅
 - **Functions**: 100% ✅
-- **Lines**: 100% ✅
-- **Branches**: 96.81% (517/534)
-- **Total de testes**: 510
+- **Lines**: 99.47% ✅
+- **Branches**: 96.03% ✅
+- **Total de testes**: 476+
 
 ### Executar Testes
 ```bash
@@ -1106,6 +1106,42 @@ pnpm typecheck
 
 # Build do projeto
 pnpm build
+```
+
+## 🛡️ Sistema Guardião - Desenvolvimento Inteligente
+
+O projeto agora inclui o **Sistema Guardião**, um monitor inteligente de arquivos que detecta e previne problemas durante o desenvolvimento.
+
+### Como Usar
+
+```bash
+# Desenvolvimento com Guardião ativo (RECOMENDADO)
+npm run dev
+
+# Ou usar diretamente
+npm run guardiao:watch
+
+# Build tradicional (sem Guardião)
+npm run dev:original
+```
+
+### Funcionalidades do Guardião
+
+- 🔍 **Monitoramento em Tempo Real**: Detecta mudanças nos arquivos instantaneamente
+- 🚨 **Alertas Inteligentes**: Avisa sobre problemas potenciais antes de acontecerem
+- 💾 **Snapshots Automáticos**: Cria backups incrementais durante o desenvolvimento
+- 📊 **Análise de Impacto**: Identifica quais mudanças podem afetar outros arquivos
+- ⚡ **Performance**: Monitora sem impactar a velocidade de desenvolvimento
+
+### Scripts de Teste Combinados
+
+```bash
+# Executar suite completa de testes
+npm run test:combined
+npm run test:all
+npm run test:complete
+
+# Todos executam o mesmo script otimizado
 ```
 
 ## Licença
