@@ -1,0 +1,2091 @@
+{
+  "tested": "2025-05-27T18:54:05.003Z",
+  "summary": {
+    "total": 48,
+    "success": 48,
+    "failed": 0,
+    "successRate": "100.00"
+  },
+  "workflows": 3,
+  "eventsStandard": 15,
+  "eventsSuperSmart": 18,
+  "results": [
+    {
+      "success": true,
+      "workflow": "standard",
+      "event": "PURCHASE_APPROVED",
+      "status": 200,
+      "responseTime": 23,
+      "data": [
+        {
+          "data": {
+            "product": {
+              "support_email": "user_d9ed2356@example.br",
+              "has_co_production": false,
+              "name": "Julia Santos",
+              "warranty_date": "2025-05-06T00:00:00Z",
+              "id": 1355458,
+              "ucode": "ucode_4038161c"
+            },
+            "commissions": [
+              {
+                "currency_value": "BRL",
+                "source": "MARKETPLACE",
+                "value": 111.78
+              },
+              {
+                "currency_value": "BRL",
+                "source": "PRODUCER",
+                "value": 1385.22
+              }
+            ],
+            "purchase": {
+              "original_offer_price": {
+                "currency_value": "BRL",
+                "value": 1497
+              },
+              "recurrence_number": 1,
+              "subscription_anticipation_purchase": "192.168.97.20",
+              "checkout_country": {
+                "iso": "BR",
+                "name": "Ana Oliveira"
+              },
+              "order_bump": {
+                "is_order_bump": false
+              },
+              "approved_date": 1745952627000,
+              "offer": {
+                "code": "tdl7nakn",
+                "coupon_code": "Escola de Automação - Comercial Treinamento"
+              },
+              "is_funnel": false,
+              "order_date": 1745952557000,
+              "date_next_charge": 1777464000000,
+              "price": {
+                "currency_value": "BRL",
+                "value": 1497
+              },
+              "payment": {
+                "pix_qrcode": "https://live-us.adyen.com/hpp/generateQRCodeImage.shtml?url=00020101021226900014br.gov.bcb.pix2568pix.adyen.com%2Fpixqrcodelocation%2Fpixloc%2Fv1%2Floc%2FdX4PUvzmQyiFyB1vGFKEPg5204000053039865802BR5902HT6009SAO+PAULO62070503***6304C56F",
+                "pix_expiration_date": 1746125358000,
+                "installments_number": 1,
+                "type": "PIX",
+                "pix_code": "00020101021226900014br.gov.bcb.pix2568pix.adyen.com/pixqrcodelocation/pixloc/v1/loc/dX4PUvzmQyiFyB1vGFKEPg5204000053039865802BR5902HT6009SAO PAULO62070503***6304C56F"
+              },
+              "full_price": {
+                "currency_value": "BRL",
+                "value": 1497
+              },
+              "business_model": "I",
+              "invoice_by": "HOTMART",
+              "transaction": "HP0967750879",
+              "status": "APPROVED"
+            },
+            "affiliates": [
+              {
+                "affiliate_code": "",
+                "name": "Pedro Rodrigues"
+              }
+            ],
+            "producer": {
+              "legal_nature": "Pessoa Jurídica",
+              "document": "73c.0c2.875-9c",
+              "name": "João Lima"
+            },
+            "subscription": "192.168.4.57",
+            "buyer": {
+              "checkout_phone_code": "+55 11 94ab8-4ed8",
+              "address": "192.168.4.57",
+              "document": "e31.719.e7a-8f",
+              "name": "Maria Rodrigues",
+              "last_name": "Julia Rodrigues",
+              "checkout_phone": "+55 11 99344-078a",
+              "first_name": "Julia Oliveira",
+              "email": "user_78903a16@example.com",
+              "document_type": "1e6.d33.a10-0d"
+            }
+          },
+          "id": "a51689a6-8e24-4b9a-b8b6-9214cb0ec15e",
+          "creation_date": 1745952631331,
+          "event": "PURCHASE_APPROVED",
+          "version": "2.0.0",
+          "eventName": "Compra Aprovada",
+          "eventType": "PURCHASE_APPROVED",
+          "eventCategory": "purchase",
+          "receivedAt": "2025-05-27T18:53:59.003Z",
+          "isSubscription": false,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "2076",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "standard",
+      "event": "PURCHASE_COMPLETE",
+      "status": 200,
+      "responseTime": 8,
+      "data": [
+        {
+          "data": {
+            "product": {
+              "support_email": "user_d9ed2356@example.br",
+              "has_co_production": false,
+              "name": "Carlos Lima",
+              "warranty_date": "2025-04-29T00:00:00Z",
+              "id": 4713431,
+              "ucode": "ucode_7a3ae22f"
+            },
+            "commissions": [
+              {
+                "currency_value": "BRL",
+                "source": "MARKETPLACE",
+                "value": 12.73
+              },
+              {
+                "currency_value": "BRL",
+                "source": "PRODUCER",
+                "value": 145.76
+              }
+            ],
+            "purchase": {
+              "original_offer_price": {
+                "currency_value": "BRL",
+                "value": 158.49
+              },
+              "recurrence_number": 6,
+              "subscription_anticipation_purchase": "192.168.97.20",
+              "checkout_country": {
+                "iso": "BR",
+                "name": "Ana Oliveira"
+              },
+              "origin": {
+                "sck": "grupo-dia-5-ea-vitalicio"
+              },
+              "order_bump": {
+                "is_order_bump": false
+              },
+              "approved_date": 1744634364000,
+              "offer": {
+                "code": "37g9evfj"
+              },
+              "is_funnel": false,
+              "order_date": 1744634361000,
+              "date_next_charge": 1746705600000,
+              "price": {
+                "currency_value": "BRL",
+                "value": 158.49
+              },
+              "payment": {
+                "installments_number": 12,
+                "type": "CREDIT_CARD"
+              },
+              "full_price": {
+                "currency_value": "BRL",
+                "value": 158.49
+              },
+              "business_model": "I",
+              "invoice_by": "HOTMART",
+              "transaction": "HP0111784220",
+              "status": "COMPLETED"
+            },
+            "affiliates": [
+              {
+                "affiliate_code": "",
+                "name": "Pedro Rodrigues"
+              }
+            ],
+            "producer": {
+              "legal_nature": "Pessoa Jurídica",
+              "document": "73c.0c2.875-9c",
+              "name": "João Lima"
+            },
+            "subscription": "192.168.4.57",
+            "buyer": {
+              "checkout_phone_code": "+55 11 96e8a-ae9b",
+              "address": "192.168.4.57",
+              "document": "524.6ab.5e9-19",
+              "name": "Julia Santos",
+              "last_name": "Pedro Lima",
+              "checkout_phone": "+55 11 93783-afb4",
+              "first_name": "Maria Oliveira",
+              "email": "user_e9a636df@example.com",
+              "document_type": "1e6.d33.a10-0d"
+            }
+          },
+          "id": "e5315b29-b88f-4531-9046-49279c4fd9e4",
+          "creation_date": 1745986812612,
+          "event": "PURCHASE_COMPLETE",
+          "version": "2.0.0",
+          "eventName": "Compra Completa",
+          "eventType": "PURCHASE_COMPLETE",
+          "eventCategory": "purchase",
+          "receivedAt": "2025-05-27T18:53:59.117Z",
+          "isSubscription": false,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "1597",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "standard",
+      "event": "PURCHASE_CANCELED",
+      "status": 200,
+      "responseTime": 28,
+      "data": [
+        {
+          "data": {
+            "product": {
+              "support_email": "user_d9ed2356@example.br",
+              "has_co_production": false,
+              "name": "Julia Santos",
+              "id": 1355458,
+              "ucode": "ucode_4038161c"
+            },
+            "commissions": [
+              {
+                "currency_value": "BRL",
+                "source": "MARKETPLACE",
+                "value": 111.78
+              },
+              {
+                "currency_value": "BRL",
+                "source": "PRODUCER",
+                "value": 1385.22
+              }
+            ],
+            "purchase": {
+              "original_offer_price": {
+                "currency_value": "BRL",
+                "value": 1497
+              },
+              "recurrence_number": 1,
+              "subscription_anticipation_purchase": "192.168.97.20",
+              "checkout_country": {
+                "iso": "BR",
+                "name": "Ana Oliveira"
+              },
+              "order_bump": {
+                "is_order_bump": false
+              },
+              "offer": {
+                "code": "tdl7nakn",
+                "coupon_code": "Escola de Automação - Comercial Treinamento"
+              },
+              "is_funnel": false,
+              "order_date": 1746043606000,
+              "price": {
+                "currency_value": "BRL",
+                "value": 1497
+              },
+              "payment": {
+                "refusal_reason": "Saldo insuficiente para o cartão informado. Entre em contato com a operadora.",
+                "installments_number": 4,
+                "type": "CREDIT_CARD"
+              },
+              "full_price": {
+                "currency_value": "BRL",
+                "value": 1668.72
+              },
+              "business_model": "I",
+              "invoice_by": "HOTMART",
+              "transaction": "HP3313410036",
+              "status": "CANCELED"
+            },
+            "affiliates": [
+              {
+                "affiliate_code": "",
+                "name": "Pedro Rodrigues"
+              }
+            ],
+            "producer": {
+              "legal_nature": "Pessoa Jurídica",
+              "document": "73c.0c2.875-9c",
+              "name": "João Lima"
+            },
+            "subscription": "192.168.4.57",
+            "buyer": {
+              "checkout_phone_code": "+55 11 9f387-4eac",
+              "address": "192.168.4.57",
+              "document": "9e1.1c7.782-86",
+              "name": "Ana Souza",
+              "last_name": "Julia Lima",
+              "checkout_phone": "+55 11 961fc-ea62",
+              "first_name": "Maria Oliveira",
+              "email": "user_0d277c4e@example.com",
+              "document_type": "1e6.d33.a10-0d"
+            }
+          },
+          "id": "6583a52a-d82d-422a-b48a-f5812d830980",
+          "creation_date": 1746043614048,
+          "event": "PURCHASE_CANCELED",
+          "version": "2.0.0",
+          "eventName": "Compra Cancelada",
+          "eventType": "PURCHASE_CANCELED",
+          "eventCategory": "purchase",
+          "receivedAt": "2025-05-27T18:53:59.237Z",
+          "isSubscription": false,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "1606",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "standard",
+      "event": "PURCHASE_REFUNDED",
+      "status": 200,
+      "responseTime": 23,
+      "data": [
+        {
+          "data": {
+            "product": {
+              "support_email": "user_d9ed2356@example.br",
+              "has_co_production": false,
+              "name": "Julia Santos",
+              "warranty_date": "2025-04-24T00:00:00Z",
+              "id": 1355458,
+              "ucode": "ucode_4038161c"
+            },
+            "commissions": [
+              {
+                "currency_value": "BRL",
+                "source": "MARKETPLACE",
+                "value": 74.78
+              },
+              {
+                "currency_value": "BRL",
+                "source": "PRODUCER",
+                "value": 922.22
+              }
+            ],
+            "purchase": {
+              "original_offer_price": {
+                "currency_value": "BRL",
+                "value": 997
+              },
+              "recurrence_number": 4,
+              "subscription_anticipation_purchase": "192.168.97.20",
+              "checkout_country": {
+                "iso": "BR",
+                "name": "Ana Oliveira"
+              },
+              "order_bump": {
+                "is_order_bump": false
+              },
+              "approved_date": 1744892889000,
+              "offer": {
+                "code": "kdm48q1t"
+              },
+              "is_funnel": false,
+              "order_date": 1744892886000,
+              "date_next_charge": 1776427200000,
+              "price": {
+                "currency_value": "BRL",
+                "value": 997
+              },
+              "payment": {
+                "installments_number": 12,
+                "type": "CREDIT_CARD"
+              },
+              "full_price": {
+                "currency_value": "BRL",
+                "value": 1194
+              },
+              "business_model": "I",
+              "invoice_by": "HOTMART",
+              "transaction": "HP1212266242",
+              "status": "REFUNDED"
+            },
+            "affiliates": [
+              {
+                "affiliate_code": "",
+                "name": "Pedro Rodrigues"
+              }
+            ],
+            "producer": {
+              "legal_nature": "Pessoa Jurídica",
+              "document": "73c.0c2.875-9c",
+              "name": "João Lima"
+            },
+            "subscription": "192.168.4.57",
+            "buyer": {
+              "checkout_phone_code": "+55 11 9bf0a-9de5",
+              "address": "192.168.4.57",
+              "document": "36f.76c.d6a-55",
+              "name": "Pedro Santos",
+              "last_name": "Carlos Rodrigues",
+              "checkout_phone": "+55 11 914f8-f27d",
+              "first_name": "Ana Souza",
+              "email": "user_4cca18ca@example.com",
+              "document_type": "1e6.d33.a10-0d"
+            }
+          },
+          "id": "7073a316-5973-4646-a124-82e64f2ba423",
+          "creation_date": 1746242499525,
+          "event": "PURCHASE_REFUNDED",
+          "version": "2.0.0",
+          "eventName": "Compra Reembolsada",
+          "eventType": "PURCHASE_REFUNDED",
+          "eventCategory": "purchase",
+          "receivedAt": "2025-05-27T18:53:59.362Z",
+          "isSubscription": false,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "1546",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "standard",
+      "event": "PURCHASE_CHARGEBACK",
+      "status": 200,
+      "responseTime": 27,
+      "data": [
+        {
+          "data": {
+            "product": {
+              "support_email": "user_d9ed2356@example.br",
+              "has_co_production": false,
+              "name": "Julia Santos",
+              "warranty_date": "2025-04-25T00:00:00Z",
+              "is_physical_product": false,
+              "id": 1355458,
+              "ucode": "ucode_4038161c"
+            },
+            "commissions": [
+              {
+                "currency_value": "BRL",
+                "source": "MARKETPLACE",
+                "value": 148.78
+              },
+              {
+                "currency_value": "BRL",
+                "source": "PRODUCER",
+                "value": 1848.22
+              }
+            ],
+            "purchase": {
+              "original_offer_price": {
+                "currency_value": "BRL",
+                "value": 1997
+              },
+              "recurrence_number": 1,
+              "subscription_anticipation_purchase": "192.168.97.20",
+              "checkout_country": {
+                "iso": "BR",
+                "name": "Ana Oliveira"
+              },
+              "order_bump": {
+                "is_order_bump": false
+              },
+              "approved_date": 1745026818000,
+              "offer": {
+                "code": "0rgmjkb1",
+                "coupon_code": "Preço Padrão - Escola de Automação e I.A."
+              },
+              "is_funnel": false,
+              "order_date": 1745026815000,
+              "date_next_charge": 1776600000000,
+              "price": {
+                "currency_value": "BRL",
+                "value": 1997
+              },
+              "payment": {
+                "installments_number": 12,
+                "type": "CREDIT_CARD"
+              },
+              "full_price": {
+                "currency_value": "BRL",
+                "value": 2626.56
+              },
+              "business_model": "I",
+              "invoice_by": "HOTMART",
+              "transaction": "HP3654648971",
+              "status": "CHARGEBACK"
+            },
+            "affiliates": [
+              {
+                "affiliate_code": "",
+                "name": "Pedro Rodrigues"
+              }
+            ],
+            "producer": {
+              "legal_nature": "Pessoa Jurídica",
+              "document": "73c.0c2.875-9c",
+              "name": "João Lima"
+            },
+            "subscription": "192.168.4.57",
+            "buyer": {
+              "checkout_phone_code": "+55 11 96e8a-ae9b",
+              "address": "192.168.4.57",
+              "document": "886.4c2.a69-fb",
+              "name": "Ana Souza",
+              "last_name": "Ana Silva",
+              "checkout_phone": "+55 11 91a80-19e4",
+              "first_name": "João Santos",
+              "email": "user_050b5655@example.com",
+              "document_type": "1e6.d33.a10-0d"
+            }
+          },
+          "id": "483d5fd0-b0c1-4f96-ad66-6ffb65d3ca9c",
+          "creation_date": 1747773619843,
+          "event": "PURCHASE_CHARGEBACK",
+          "version": "2.0.0",
+          "eventName": "Compra Chargeback",
+          "eventType": "PURCHASE_CHARGEBACK",
+          "eventCategory": "purchase",
+          "receivedAt": "2025-05-27T18:53:59.491Z",
+          "isSubscription": false,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "1640",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "standard",
+      "event": "PURCHASE_DELAYED",
+      "status": 200,
+      "responseTime": 33,
+      "data": [
+        {
+          "data": {
+            "product": {
+              "support_email": "user_d9ed2356@example.br",
+              "has_co_production": false,
+              "name": "Julia Santos",
+              "id": 1355458,
+              "ucode": "ucode_4038161c"
+            },
+            "commissions": [
+              {
+                "currency_value": "BRL",
+                "source": "MARKETPLACE",
+                "value": 74.78
+              },
+              {
+                "currency_value": "BRL",
+                "source": "PRODUCER",
+                "value": 922.22
+              }
+            ],
+            "purchase": {
+              "original_offer_price": {
+                "currency_value": "BRL",
+                "value": 997
+              },
+              "recurrence_number": 3,
+              "subscription_anticipation_purchase": "192.168.97.20",
+              "checkout_country": {
+                "iso": "BR",
+                "name": "Ana Oliveira"
+              },
+              "origin": {
+                "sck": "org-sales-page-vd"
+              },
+              "order_bump": {
+                "is_order_bump": false
+              },
+              "offer": {
+                "code": "bm2k4zqm"
+              },
+              "is_funnel": false,
+              "order_date": 1745844632000,
+              "date_next_charge": 1777377600000,
+              "price": {
+                "currency_value": "BRL",
+                "value": 997
+              },
+              "payment": {
+                "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=680f7998848f113e29b106e22a713d81f523cdb90951f0ba",
+                "pix_expiration_date": 1746017433000,
+                "installments_number": 1,
+                "type": "PIX",
+                "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/A68F035BED5B98ACC96169BB18456B305204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***63048410"
+              },
+              "full_price": {
+                "currency_value": "BRL",
+                "value": 997
+              },
+              "business_model": "I",
+              "invoice_by": "HOTMART",
+              "transaction": "HP3412012500",
+              "status": "DELAYED"
+            },
+            "affiliates": [
+              {
+                "affiliate_code": "",
+                "name": "Pedro Rodrigues"
+              }
+            ],
+            "producer": {
+              "legal_nature": "Pessoa Jurídica",
+              "document": "73c.0c2.875-9c",
+              "name": "João Lima"
+            },
+            "subscription": "192.168.4.57",
+            "buyer": {
+              "checkout_phone_code": "+55 11 94ab8-4ed8",
+              "address": "192.168.4.57",
+              "document": "0fc.71b.fda-84",
+              "name": "Maria Santos",
+              "last_name": "Pedro Rodrigues",
+              "checkout_phone": "+55 11 9d4bd-3162",
+              "first_name": "Maria Santos",
+              "email": "user_a44ee988@example.com",
+              "document_type": "1e6.d33.a10-0d"
+            }
+          },
+          "id": "5f481359-5778-440e-908a-089aaf663d49",
+          "creation_date": 1746017775016,
+          "event": "PURCHASE_DELAYED",
+          "version": "2.0.0",
+          "eventName": "Compra Atrasada",
+          "eventType": "PURCHASE_DELAYED",
+          "eventCategory": "purchase",
+          "receivedAt": "2025-05-27T18:53:59.619Z",
+          "isSubscription": false,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "1851",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "standard",
+      "event": "PURCHASE_PROTEST",
+      "status": 200,
+      "responseTime": 24,
+      "data": [
+        {
+          "data": {
+            "product": {
+              "support_email": "user_d9ed2356@example.br",
+              "has_co_production": false,
+              "name": "Julia Santos",
+              "warranty_date": "2025-05-04T00:00:00Z",
+              "id": 1355458,
+              "ucode": "ucode_4038161c"
+            },
+            "commissions": [
+              {
+                "currency_value": "BRL",
+                "source": "MARKETPLACE",
+                "value": 148.78
+              },
+              {
+                "currency_value": "BRL",
+                "source": "PRODUCER",
+                "value": 1848.22
+              }
+            ],
+            "purchase": {
+              "original_offer_price": {
+                "currency_value": "BRL",
+                "value": 1997
+              },
+              "recurrence_number": 1,
+              "subscription_anticipation_purchase": "192.168.97.20",
+              "checkout_country": {
+                "iso": "BR",
+                "name": "Ana Oliveira"
+              },
+              "order_bump": {
+                "is_order_bump": false
+              },
+              "approved_date": 1745799381000,
+              "offer": {
+                "code": "0rgmjkb1",
+                "coupon_code": "Preço Padrão - Escola de Automação e I.A."
+              },
+              "is_funnel": false,
+              "order_date": 1745799376000,
+              "date_next_charge": 1777377600000,
+              "price": {
+                "currency_value": "BRL",
+                "value": 1997
+              },
+              "payment": {
+                "installments_number": 1,
+                "type": "CREDIT_CARD"
+              },
+              "full_price": {
+                "currency_value": "BRL",
+                "value": 1997
+              },
+              "business_model": "I",
+              "invoice_by": "HOTMART",
+              "transaction": "HP3104492504",
+              "status": "DISPUTE"
+            },
+            "affiliates": [
+              {
+                "affiliate_code": "",
+                "name": "Pedro Rodrigues"
+              }
+            ],
+            "producer": {
+              "legal_nature": "Pessoa Jurídica",
+              "document": "73c.0c2.875-9c",
+              "name": "João Lima"
+            },
+            "subscription": "192.168.4.57",
+            "buyer": {
+              "checkout_phone_code": "+55 11 9f7c1-e1ad",
+              "address": "192.168.4.57",
+              "document": "7c7.050.b47-9e",
+              "name": "Julia Lima",
+              "last_name": "Pedro Souza",
+              "checkout_phone": "+55 11 9fdf2-f022",
+              "first_name": "Pedro Souza",
+              "email": "user_c7744f04@example.com",
+              "document_type": "1e6.d33.a10-0d"
+            }
+          },
+          "id": "84b9f4cb-9e81-4a93-82a5-4a12096ef1fd",
+          "creation_date": 1745966619057,
+          "event": "PURCHASE_PROTEST",
+          "version": "2.0.0",
+          "eventName": "Compra em Disputa",
+          "eventType": "PURCHASE_PROTEST",
+          "eventCategory": "purchase",
+          "receivedAt": "2025-05-27T18:53:59.752Z",
+          "isSubscription": false,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "1604",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "standard",
+      "event": "PURCHASE_BILLET_PRINTED",
+      "status": 200,
+      "responseTime": 23,
+      "data": [
+        {
+          "data": {
+            "product": {
+              "support_email": "user_d9ed2356@example.br",
+              "has_co_production": false,
+              "name": "Julia Santos",
+              "id": 1355458,
+              "ucode": "ucode_4038161c"
+            },
+            "commissions": [
+              {
+                "currency_value": "BRL",
+                "source": "MARKETPLACE",
+                "value": 111.78
+              },
+              {
+                "currency_value": "BRL",
+                "source": "PRODUCER",
+                "value": 1385.22
+              }
+            ],
+            "purchase": {
+              "original_offer_price": {
+                "currency_value": "BRL",
+                "value": 1497
+              },
+              "recurrence_number": 1,
+              "subscription_anticipation_purchase": "192.168.97.20",
+              "checkout_country": {
+                "iso": "BR",
+                "name": "Ana Oliveira"
+              },
+              "order_bump": {
+                "is_order_bump": false
+              },
+              "offer": {
+                "code": "tdl7nakn",
+                "coupon_code": "Escola de Automação - Comercial Treinamento"
+              },
+              "is_funnel": false,
+              "order_date": 1745952557000,
+              "price": {
+                "currency_value": "BRL",
+                "value": 1497
+              },
+              "payment": {
+                "pix_qrcode": "https://live-us.adyen.com/hpp/generateQRCodeImage.shtml?url=00020101021226900014br.gov.bcb.pix2568pix.adyen.com%2Fpixqrcodelocation%2Fpixloc%2Fv1%2Floc%2FdX4PUvzmQyiFyB1vGFKEPg5204000053039865802BR5902HT6009SAO+PAULO62070503***6304C56F",
+                "pix_expiration_date": 1746125358000,
+                "installments_number": 1,
+                "type": "PIX",
+                "pix_code": "00020101021226900014br.gov.bcb.pix2568pix.adyen.com/pixqrcodelocation/pixloc/v1/loc/dX4PUvzmQyiFyB1vGFKEPg5204000053039865802BR5902HT6009SAO PAULO62070503***6304C56F"
+              },
+              "full_price": {
+                "currency_value": "BRL",
+                "value": 1497
+              },
+              "business_model": "I",
+              "invoice_by": "HOTMART",
+              "transaction": "HP0967750879",
+              "status": "BILLET_PRINTED"
+            },
+            "affiliates": [
+              {
+                "affiliate_code": "",
+                "name": "Pedro Rodrigues"
+              }
+            ],
+            "producer": {
+              "legal_nature": "Pessoa Jurídica",
+              "document": "73c.0c2.875-9c",
+              "name": "João Lima"
+            },
+            "subscription": "192.168.4.57",
+            "buyer": {
+              "checkout_phone_code": "+55 11 94ab8-4ed8",
+              "address": "192.168.4.57",
+              "document": "e31.719.e7a-8f",
+              "name": "Maria Rodrigues",
+              "last_name": "Julia Rodrigues",
+              "checkout_phone": "+55 11 99344-078a",
+              "first_name": "Julia Oliveira",
+              "email": "user_78903a16@example.com",
+              "document_type": "1e6.d33.a10-0d"
+            }
+          },
+          "id": "7a71f514-c020-4e92-928d-8fabef70b0b9",
+          "creation_date": 1745952563393,
+          "event": "PURCHASE_BILLET_PRINTED",
+          "version": "2.0.0",
+          "eventName": "Boleto Impresso",
+          "eventType": "PURCHASE_BILLET_PRINTED",
+          "eventCategory": "purchase",
+          "receivedAt": "2025-05-27T18:53:59.879Z",
+          "isSubscription": false,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "1986",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "standard",
+      "event": "PURCHASE_EXPIRED",
+      "status": 200,
+      "responseTime": 32,
+      "data": [
+        {
+          "id": "mock-purchase-expired-001",
+          "creation_date": 1745948018771,
+          "event": "PURCHASE_EXPIRED",
+          "version": "2.0.0",
+          "hottok": "hottok_51aa161f",
+          "data": {
+            "product": {
+              "id": 1355458,
+              "name": "Julia Santos",
+              "ucode": "ucode_4038161c",
+              "has_co_production": false,
+              "support_email": "user_d9ed2356@example.br"
+            },
+            "affiliates": [],
+            "buyer": {
+              "email": "user_2548815b@example.com",
+              "name": "Pedro Santos",
+              "first_name": "Pedro Lima",
+              "last_name": "Carlos Rodrigues",
+              "checkout_phone": "+55 11 9dac7-4751",
+              "checkout_phone_code": "+55 11 971c4-e63c",
+              "document": "ccf.384.673-c2",
+              "document_type": "1e6.d33.a10-0d",
+              "address": "192.168.4.57"
+            },
+            "producer": {
+              "name": "João Lima",
+              "document": "45e.3cf.2c9-9d",
+              "legal_nature": "Pessoa Jurídica"
+            },
+            "commissions": [
+              {
+                "value": 74.78,
+                "currency_value": "BRL",
+                "source": "MARKETPLACE"
+              },
+              {
+                "value": 922.22,
+                "currency_value": "BRL",
+                "source": "PRODUCER"
+              }
+            ],
+            "purchase": {
+              "transaction": "HP9876543210",
+              "status": "EXPIRED",
+              "order_date": 1745343218000,
+              "approved_date": null,
+              "full_price": {
+                "value": 997,
+                "currency_value": "BRL"
+              },
+              "original_offer_price": {
+                "value": 997,
+                "currency_value": "BRL"
+              },
+              "price": {
+                "value": 997,
+                "currency_value": "BRL"
+              },
+              "offer": {
+                "code": "expired-test",
+                "coupon_code": null
+              },
+              "origin": {
+                "src": "organic",
+                "sck": "teste-expired"
+              },
+              "checkout_country": {
+                "name": "Ana Oliveira",
+                "iso": "BR"
+              },
+              "order_bump": {
+                "is_order_bump": false
+              },
+              "payment": {
+                "type": "BILLET",
+                "billet_url": "https://billet.hotmart.com/expired-test",
+                "billet_barcode": "12345678901234567890123456789012345678901234567890",
+                "installments_number": 1,
+                "refusal_reason": "Boleto expirado sem pagamento"
+              },
+              "invoice_by": "HOTMART",
+              "is_funnel": false,
+              "business_model": "R"
+            },
+            "subscription": null
+          },
+          "eventName": "Compra Expirada",
+          "eventType": "PURCHASE_EXPIRED",
+          "eventCategory": "purchase",
+          "receivedAt": "2025-05-27T18:54:00.008Z",
+          "isSubscription": false,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "1588",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "standard",
+      "event": "PURCHASE_OUT_OF_SHOPPING_CART",
+      "status": 200,
+      "responseTime": 23,
+      "data": [
+        {
+          "data": {
+            "offer": {
+              "code": "0rgmjkb1"
+            },
+            "product": {
+              "name": "Julia Santos",
+              "id": 1355458
+            },
+            "checkout_country": {
+              "iso": "BR",
+              "name": "Ana Oliveira"
+            },
+            "affiliate": true,
+            "buyer": {
+              "phone": "+55 11 94008-e980",
+              "name": "Julia Santos",
+              "email": "user_d2a89c0a@example.com"
+            }
+          },
+          "id": "97e982a0-544b-49de-82c3-5524806a17f0",
+          "creation_date": 1745969757734,
+          "event": "PURCHASE_OUT_OF_SHOPPING_CART",
+          "version": "2.0.0",
+          "eventName": "Abandono de Carrinho",
+          "eventType": "PURCHASE_OUT_OF_SHOPPING_CART",
+          "eventCategory": "purchase",
+          "receivedAt": "2025-05-27T18:54:00.137Z",
+          "isSubscription": false,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "384",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "standard",
+      "event": "SUBSCRIPTION_CANCELLATION",
+      "status": 200,
+      "responseTime": 21,
+      "data": [
+        {
+          "data": {
+            "date_next_charge": 1746532800000,
+            "product": {
+              "name": "Julia Santos",
+              "id": 1355458
+            },
+            "actual_recurrence_value": 1,
+            "subscriber": {
+              "code": "KOBB7XB2",
+              "name": "Julia Oliveira",
+              "email": "user_440e059d@example.com"
+            },
+            "subscription": "192.168.4.57",
+            "cancellation_date": 1745948018688
+          },
+          "id": "c530d9dd-ab3f-4f60-bece-cb1e9fb4b23c",
+          "creation_date": 1745948018771,
+          "event": "SUBSCRIPTION_CANCELLATION",
+          "version": "2.0.0",
+          "eventName": "Assinatura Cancelada",
+          "eventType": "SUBSCRIPTION_CANCELLATION",
+          "eventCategory": "subscription",
+          "receivedAt": "2025-05-27T18:54:00.262Z",
+          "isSubscription": true,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "403",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "standard",
+      "event": "SWITCH_PLAN",
+      "status": 200,
+      "responseTime": 24,
+      "data": [
+        {
+          "id": "mock-switch-plan-001",
+          "creation_date": 1745948018771,
+          "event": "SWITCH_PLAN",
+          "version": "2.0.0",
+          "hottok": "hottok_7e7750b9",
+          "data": {
+            "switch_plan_date": 1745948018000,
+            "subscription": "192.168.4.57",
+            "plans": [
+              {
+                "id": 558690,
+                "name": "Ana Souza",
+                "offer": {
+                  "key": "newplan123"
+                },
+                "current": true
+              },
+              {
+                "id": 558689,
+                "name": "Ana Silva",
+                "offer": {
+                  "key": "oldplan456"
+                },
+                "current": false
+              }
+            ]
+          },
+          "eventName": "Troca de Plano de Assinatura",
+          "eventType": "SWITCH_PLAN",
+          "eventCategory": "subscription",
+          "receivedAt": "2025-05-27T18:54:00.385Z",
+          "isSubscription": true,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "363",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "standard",
+      "event": "UPDATE_SUBSCRIPTION_CHARGE_DATE",
+      "status": 200,
+      "responseTime": 18,
+      "data": [
+        {
+          "data": {
+            "subscriber": {
+              "code": "KGB81NYZ",
+              "name": "Carlos Silva",
+              "email": "user_832cb1e7@example.br"
+            },
+            "subscription": "192.168.4.57",
+            "plan": {
+              "offer": {
+                "code": "kb7r7c54"
+              },
+              "name": "Ana Silva",
+              "id": 558689
+            }
+          },
+          "hottok": "hottok_cf86ff90",
+          "id": "8cec3227-23df-4b40-914e-a4438cbb04ce",
+          "creation_date": 1746658094666,
+          "event": "UPDATE_SUBSCRIPTION_CHARGE_DATE",
+          "version": "2.0.0",
+          "eventName": "Troca de dia de Cobrança",
+          "eventType": "UPDATE_SUBSCRIPTION_CHARGE_DATE",
+          "eventCategory": "subscription",
+          "receivedAt": "2025-05-27T18:54:00.508Z",
+          "isSubscription": true,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "359",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "standard",
+      "event": "CLUB_FIRST_ACCESS",
+      "status": 200,
+      "responseTime": 19,
+      "data": [
+        {
+          "data": {
+            "product": {
+              "name": "Maria Souza",
+              "id": 4062912
+            },
+            "user": {
+              "name": "Ana Oliveira",
+              "email": "user_60aa8592@example.com"
+            }
+          },
+          "id": "c8965222-c4c7-437f-85d4-86897eb9c5a5",
+          "creationDate": 1746033394872,
+          "event": "CLUB_FIRST_ACCESS",
+          "version": "2.0.0",
+          "eventName": "Primeiro Acesso",
+          "eventType": "CLUB_FIRST_ACCESS",
+          "eventCategory": "club",
+          "receivedAt": "2025-05-27T18:54:00.628Z",
+          "isSubscription": false,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "242",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "standard",
+      "event": "CLUB_MODULE_COMPLETED",
+      "status": 200,
+      "responseTime": 21,
+      "data": [
+        {
+          "data": {
+            "product": {
+              "name": "Maria Souza",
+              "id": "4062912"
+            },
+            "module": {
+              "name": "Maria Souza",
+              "id": "gOpgkaor7J"
+            },
+            "user": {
+              "name": "Pedro Rodrigues",
+              "email": "user_7771f57c@example.com"
+            }
+          },
+          "id": "c8401b26-7f51-4a97-9cda-423727663409",
+          "creation_date": 1746286277515,
+          "event": "CLUB_MODULE_COMPLETED",
+          "version": "2.0.0",
+          "eventName": "Módulo Completo",
+          "eventType": "CLUB_MODULE_COMPLETED",
+          "eventCategory": "club",
+          "receivedAt": "2025-05-27T18:54:00.752Z",
+          "isSubscription": false,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "302",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "smart",
+      "event": "PURCHASE_APPROVED",
+      "status": 200,
+      "responseTime": 24,
+      "data": [
+        {
+          "data": {
+            "product": {
+              "support_email": "user_d9ed2356@example.br",
+              "has_co_production": false,
+              "name": "Julia Santos",
+              "warranty_date": "2025-05-06T00:00:00Z",
+              "id": 1355458,
+              "ucode": "ucode_4038161c"
+            },
+            "commissions": [
+              {
+                "currency_value": "BRL",
+                "source": "MARKETPLACE",
+                "value": 111.78
+              },
+              {
+                "currency_value": "BRL",
+                "source": "PRODUCER",
+                "value": 1385.22
+              }
+            ],
+            "purchase": {
+              "original_offer_price": {
+                "currency_value": "BRL",
+                "value": 1497
+              },
+              "recurrence_number": 1,
+              "subscription_anticipation_purchase": "192.168.97.20",
+              "checkout_country": {
+                "iso": "BR",
+                "name": "Ana Oliveira"
+              },
+              "order_bump": {
+                "is_order_bump": false
+              },
+              "approved_date": 1745952627000,
+              "offer": {
+                "code": "tdl7nakn",
+                "coupon_code": "Escola de Automação - Comercial Treinamento"
+              },
+              "is_funnel": false,
+              "order_date": 1745952557000,
+              "date_next_charge": 1777464000000,
+              "price": {
+                "currency_value": "BRL",
+                "value": 1497
+              },
+              "payment": {
+                "pix_qrcode": "https://live-us.adyen.com/hpp/generateQRCodeImage.shtml?url=00020101021226900014br.gov.bcb.pix2568pix.adyen.com%2Fpixqrcodelocation%2Fpixloc%2Fv1%2Floc%2FdX4PUvzmQyiFyB1vGFKEPg5204000053039865802BR5902HT6009SAO+PAULO62070503***6304C56F",
+                "pix_expiration_date": 1746125358000,
+                "installments_number": 1,
+                "type": "PIX",
+                "pix_code": "00020101021226900014br.gov.bcb.pix2568pix.adyen.com/pixqrcodelocation/pixloc/v1/loc/dX4PUvzmQyiFyB1vGFKEPg5204000053039865802BR5902HT6009SAO PAULO62070503***6304C56F"
+              },
+              "full_price": {
+                "currency_value": "BRL",
+                "value": 1497
+              },
+              "business_model": "I",
+              "invoice_by": "HOTMART",
+              "transaction": "HP0967750879",
+              "status": "APPROVED"
+            },
+            "affiliates": [
+              {
+                "affiliate_code": "",
+                "name": "Pedro Rodrigues"
+              }
+            ],
+            "producer": {
+              "legal_nature": "Pessoa Jurídica",
+              "document": "73c.0c2.875-9c",
+              "name": "João Lima"
+            },
+            "subscription": "192.168.4.57",
+            "buyer": {
+              "checkout_phone_code": "+55 11 94ab8-4ed8",
+              "address": "192.168.4.57",
+              "document": "e31.719.e7a-8f",
+              "name": "Maria Rodrigues",
+              "last_name": "Julia Rodrigues",
+              "checkout_phone": "+55 11 99344-078a",
+              "first_name": "Julia Oliveira",
+              "email": "user_78903a16@example.com",
+              "document_type": "1e6.d33.a10-0d"
+            }
+          },
+          "id": "a51689a6-8e24-4b9a-b8b6-9214cb0ec15e",
+          "creation_date": 1745952631331,
+          "event": "PURCHASE_APPROVED",
+          "version": "2.0.0",
+          "eventName": "Compra Aprovada",
+          "eventType": "PURCHASE_APPROVED",
+          "eventCategory": "purchase",
+          "receivedAt": "2025-05-27T18:54:00.873Z",
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "2076",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "smart",
+      "event": "PURCHASE_COMPLETE",
+      "status": 200,
+      "responseTime": 18,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "smart",
+      "event": "PURCHASE_CANCELED",
+      "status": 200,
+      "responseTime": 29,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "smart",
+      "event": "PURCHASE_REFUNDED",
+      "status": 200,
+      "responseTime": 18,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "smart",
+      "event": "PURCHASE_CHARGEBACK",
+      "status": 200,
+      "responseTime": 18,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "smart",
+      "event": "PURCHASE_DELAYED",
+      "status": 200,
+      "responseTime": 29,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "smart",
+      "event": "PURCHASE_PROTEST",
+      "status": 200,
+      "responseTime": 19,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "smart",
+      "event": "PURCHASE_BILLET_PRINTED",
+      "status": 200,
+      "responseTime": 20,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "smart",
+      "event": "PURCHASE_EXPIRED",
+      "status": 200,
+      "responseTime": 28,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "smart",
+      "event": "PURCHASE_OUT_OF_SHOPPING_CART",
+      "status": 200,
+      "responseTime": 24,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "smart",
+      "event": "SUBSCRIPTION_CANCELLATION",
+      "status": 200,
+      "responseTime": 23,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "smart",
+      "event": "SWITCH_PLAN",
+      "status": 200,
+      "responseTime": 20,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "smart",
+      "event": "UPDATE_SUBSCRIPTION_CHARGE_DATE",
+      "status": 200,
+      "responseTime": 20,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "smart",
+      "event": "CLUB_FIRST_ACCESS",
+      "status": 200,
+      "responseTime": 18,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "smart",
+      "event": "CLUB_MODULE_COMPLETED",
+      "status": 200,
+      "responseTime": 21,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "PURCHASE_APPROVED",
+      "status": 200,
+      "responseTime": 28,
+      "data": [
+        {
+          "data": {
+            "product": {
+              "support_email": "user_d9ed2356@example.br",
+              "has_co_production": false,
+              "name": "Julia Santos",
+              "warranty_date": "2025-05-06T00:00:00Z",
+              "id": 1355458,
+              "ucode": "ucode_4038161c"
+            },
+            "commissions": [
+              {
+                "currency_value": "BRL",
+                "source": "MARKETPLACE",
+                "value": 111.78
+              },
+              {
+                "currency_value": "BRL",
+                "source": "PRODUCER",
+                "value": 1385.22
+              }
+            ],
+            "purchase": {
+              "original_offer_price": {
+                "currency_value": "BRL",
+                "value": 1497
+              },
+              "recurrence_number": 1,
+              "subscription_anticipation_purchase": "192.168.97.20",
+              "checkout_country": {
+                "iso": "BR",
+                "name": "Ana Oliveira"
+              },
+              "order_bump": {
+                "is_order_bump": false
+              },
+              "approved_date": 1745952627000,
+              "offer": {
+                "code": "tdl7nakn",
+                "coupon_code": "Escola de Automação - Comercial Treinamento"
+              },
+              "is_funnel": false,
+              "order_date": 1745952557000,
+              "date_next_charge": 1777464000000,
+              "price": {
+                "currency_value": "BRL",
+                "value": 1497
+              },
+              "payment": {
+                "pix_qrcode": "https://live-us.adyen.com/hpp/generateQRCodeImage.shtml?url=00020101021226900014br.gov.bcb.pix2568pix.adyen.com%2Fpixqrcodelocation%2Fpixloc%2Fv1%2Floc%2FdX4PUvzmQyiFyB1vGFKEPg5204000053039865802BR5902HT6009SAO+PAULO62070503***6304C56F",
+                "pix_expiration_date": 1746125358000,
+                "installments_number": 1,
+                "type": "PIX",
+                "pix_code": "00020101021226900014br.gov.bcb.pix2568pix.adyen.com/pixqrcodelocation/pixloc/v1/loc/dX4PUvzmQyiFyB1vGFKEPg5204000053039865802BR5902HT6009SAO PAULO62070503***6304C56F"
+              },
+              "full_price": {
+                "currency_value": "BRL",
+                "value": 1497
+              },
+              "business_model": "I",
+              "invoice_by": "HOTMART",
+              "transaction": "HP0967750879",
+              "status": "APPROVED"
+            },
+            "affiliates": [
+              {
+                "affiliate_code": "",
+                "name": "Pedro Rodrigues"
+              }
+            ],
+            "producer": {
+              "legal_nature": "Pessoa Jurídica",
+              "document": "73c.0c2.875-9c",
+              "name": "João Lima"
+            },
+            "subscription": "192.168.4.57",
+            "buyer": {
+              "checkout_phone_code": "+55 11 94ab8-4ed8",
+              "address": "192.168.4.57",
+              "document": "e31.719.e7a-8f",
+              "name": "Maria Rodrigues",
+              "last_name": "Julia Rodrigues",
+              "checkout_phone": "+55 11 99344-078a",
+              "first_name": "Julia Oliveira",
+              "email": "user_78903a16@example.com",
+              "document_type": "1e6.d33.a10-0d"
+            }
+          },
+          "id": "a51689a6-8e24-4b9a-b8b6-9214cb0ec15e",
+          "creation_date": 1745952631331,
+          "event": "PURCHASE_APPROVED",
+          "version": "2.0.0",
+          "eventName": "Compra Aprovada",
+          "eventType": "PURCHASE_APPROVED",
+          "eventCategory": "purchase",
+          "receivedAt": "2025-05-27T18:54:02.721Z",
+          "isSubscription": false,
+          "isRenewal": false,
+          "recurrenceNumber": 1,
+          "isPrimarySubscription": false,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "2076",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "PURCHASE_APPROVED",
+      "status": 200,
+      "responseTime": 26,
+      "data": [
+        {
+          "data": {
+            "product": {
+              "support_email": "user_d9ed2356@example.br",
+              "has_co_production": false,
+              "name": "Julia Santos",
+              "warranty_date": "2025-05-06T00:00:00Z",
+              "id": 1355458,
+              "ucode": "ucode_4038161c"
+            },
+            "commissions": [
+              {
+                "currency_value": "BRL",
+                "source": "MARKETPLACE",
+                "value": 111.78
+              },
+              {
+                "currency_value": "BRL",
+                "source": "PRODUCER",
+                "value": 1385.22
+              }
+            ],
+            "purchase": {
+              "original_offer_price": {
+                "currency_value": "BRL",
+                "value": 1497
+              },
+              "recurrence_number": 1,
+              "subscription_anticipation_purchase": "192.168.97.20",
+              "checkout_country": {
+                "iso": "BR",
+                "name": "Ana Oliveira"
+              },
+              "order_bump": {
+                "is_order_bump": false
+              },
+              "approved_date": 1745952627000,
+              "offer": {
+                "code": "tdl7nakn",
+                "coupon_code": "Escola de Automação - Comercial Treinamento"
+              },
+              "is_funnel": false,
+              "order_date": 1745952557000,
+              "date_next_charge": 1777464000000,
+              "price": {
+                "currency_value": "BRL",
+                "value": 1497
+              },
+              "payment": {
+                "pix_qrcode": "https://live-us.adyen.com/hpp/generateQRCodeImage.shtml?url=00020101021226900014br.gov.bcb.pix2568pix.adyen.com%2Fpixqrcodelocation%2Fpixloc%2Fv1%2Floc%2FdX4PUvzmQyiFyB1vGFKEPg5204000053039865802BR5902HT6009SAO+PAULO62070503***6304C56F",
+                "pix_expiration_date": 1746125358000,
+                "installments_number": 1,
+                "type": "PIX",
+                "pix_code": "00020101021226900014br.gov.bcb.pix2568pix.adyen.com/pixqrcodelocation/pixloc/v1/loc/dX4PUvzmQyiFyB1vGFKEPg5204000053039865802BR5902HT6009SAO PAULO62070503***6304C56F"
+              },
+              "full_price": {
+                "currency_value": "BRL",
+                "value": 1497
+              },
+              "business_model": "I",
+              "invoice_by": "HOTMART",
+              "transaction": "HP0967750879",
+              "status": "APPROVED"
+            },
+            "affiliates": [
+              {
+                "affiliate_code": "",
+                "name": "Pedro Rodrigues"
+              }
+            ],
+            "producer": {
+              "legal_nature": "Pessoa Jurídica",
+              "document": "73c.0c2.875-9c",
+              "name": "João Lima"
+            },
+            "subscription": {
+              "id": 12345
+            },
+            "buyer": {
+              "checkout_phone_code": "+55 11 94ab8-4ed8",
+              "address": "192.168.4.57",
+              "document": "e31.719.e7a-8f",
+              "name": "Maria Rodrigues",
+              "last_name": "Julia Rodrigues",
+              "checkout_phone": "+55 11 99344-078a",
+              "first_name": "Julia Oliveira",
+              "email": "user_78903a16@example.com",
+              "document_type": "1e6.d33.a10-0d"
+            }
+          },
+          "id": "a51689a6-8e24-4b9a-b8b6-9214cb0ec15e",
+          "creation_date": 1745952631331,
+          "event": "PURCHASE_APPROVED",
+          "version": "2.0.0",
+          "eventName": "Compra Aprovada",
+          "eventType": "PURCHASE_APPROVED",
+          "eventCategory": "purchase",
+          "receivedAt": "2025-05-27T18:54:02.849Z",
+          "isSubscription": false,
+          "isRenewal": false,
+          "recurrenceNumber": 1,
+          "isPrimarySubscription": false,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "2074",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "PURCHASE_APPROVED",
+      "status": 200,
+      "responseTime": 20,
+      "data": [
+        {
+          "data": {
+            "product": {
+              "support_email": "user_d9ed2356@example.br",
+              "has_co_production": false,
+              "name": "Julia Santos",
+              "warranty_date": "2025-05-06T00:00:00Z",
+              "id": 1355458,
+              "ucode": "ucode_4038161c"
+            },
+            "commissions": [
+              {
+                "currency_value": "BRL",
+                "source": "MARKETPLACE",
+                "value": 111.78
+              },
+              {
+                "currency_value": "BRL",
+                "source": "PRODUCER",
+                "value": 1385.22
+              }
+            ],
+            "purchase": {
+              "original_offer_price": {
+                "currency_value": "BRL",
+                "value": 1497
+              },
+              "recurrence_number": 2,
+              "subscription_anticipation_purchase": "192.168.97.20",
+              "checkout_country": {
+                "iso": "BR",
+                "name": "Ana Oliveira"
+              },
+              "order_bump": {
+                "is_order_bump": false
+              },
+              "approved_date": 1745952627000,
+              "offer": {
+                "code": "tdl7nakn",
+                "coupon_code": "Escola de Automação - Comercial Treinamento"
+              },
+              "is_funnel": false,
+              "order_date": 1745952557000,
+              "date_next_charge": 1777464000000,
+              "price": {
+                "currency_value": "BRL",
+                "value": 1497
+              },
+              "payment": {
+                "pix_qrcode": "https://live-us.adyen.com/hpp/generateQRCodeImage.shtml?url=00020101021226900014br.gov.bcb.pix2568pix.adyen.com%2Fpixqrcodelocation%2Fpixloc%2Fv1%2Floc%2FdX4PUvzmQyiFyB1vGFKEPg5204000053039865802BR5902HT6009SAO+PAULO62070503***6304C56F",
+                "pix_expiration_date": 1746125358000,
+                "installments_number": 1,
+                "type": "PIX",
+                "pix_code": "00020101021226900014br.gov.bcb.pix2568pix.adyen.com/pixqrcodelocation/pixloc/v1/loc/dX4PUvzmQyiFyB1vGFKEPg5204000053039865802BR5902HT6009SAO PAULO62070503***6304C56F"
+              },
+              "full_price": {
+                "currency_value": "BRL",
+                "value": 1497
+              },
+              "business_model": "I",
+              "invoice_by": "HOTMART",
+              "transaction": "HP0967750879",
+              "status": "APPROVED"
+            },
+            "affiliates": [
+              {
+                "affiliate_code": "",
+                "name": "Pedro Rodrigues"
+              }
+            ],
+            "producer": {
+              "legal_nature": "Pessoa Jurídica",
+              "document": "73c.0c2.875-9c",
+              "name": "João Lima"
+            },
+            "subscription": {
+              "id": 12345
+            },
+            "buyer": {
+              "checkout_phone_code": "+55 11 94ab8-4ed8",
+              "address": "192.168.4.57",
+              "document": "e31.719.e7a-8f",
+              "name": "Maria Rodrigues",
+              "last_name": "Julia Rodrigues",
+              "checkout_phone": "+55 11 99344-078a",
+              "first_name": "Julia Oliveira",
+              "email": "user_78903a16@example.com",
+              "document_type": "1e6.d33.a10-0d"
+            }
+          },
+          "id": "a51689a6-8e24-4b9a-b8b6-9214cb0ec15e",
+          "creation_date": 1745952631331,
+          "event": "PURCHASE_APPROVED",
+          "version": "2.0.0",
+          "eventName": "Compra Aprovada",
+          "eventType": "PURCHASE_APPROVED",
+          "eventCategory": "purchase",
+          "receivedAt": "2025-05-27T18:54:02.975Z",
+          "isSubscription": false,
+          "isRenewal": false,
+          "recurrenceNumber": 2,
+          "isPrimarySubscription": false,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "2074",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "PURCHASE_COMPLETE",
+      "status": 200,
+      "responseTime": 32,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "PURCHASE_CANCELED",
+      "status": 200,
+      "responseTime": 19,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "PURCHASE_REFUNDED",
+      "status": 200,
+      "responseTime": 30,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "PURCHASE_CHARGEBACK",
+      "status": 200,
+      "responseTime": 27,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "PURCHASE_BILLET_PRINTED",
+      "status": 200,
+      "responseTime": 50,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "PURCHASE_BILLET_PRINTED",
+      "status": 200,
+      "responseTime": 10,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "PURCHASE_PROTEST",
+      "status": 200,
+      "responseTime": 26,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "PURCHASE_EXPIRED",
+      "status": 200,
+      "responseTime": 24,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "PURCHASE_DELAYED",
+      "status": 200,
+      "responseTime": 31,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "PURCHASE_OUT_OF_SHOPPING_CART",
+      "status": 200,
+      "responseTime": 21,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "SUBSCRIPTION_CANCELLATION",
+      "status": 200,
+      "responseTime": 31,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "SWITCH_PLAN",
+      "status": 200,
+      "responseTime": 23,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "UPDATE_SUBSCRIPTION_CHARGE_DATE",
+      "status": 200,
+      "responseTime": 26,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "CLUB_FIRST_ACCESS",
+      "status": 200,
+      "responseTime": 17,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "CLUB_MODULE_COMPLETED",
+      "status": 200,
+      "responseTime": 11,
+      "data": []
+    }
+  ]
+}
