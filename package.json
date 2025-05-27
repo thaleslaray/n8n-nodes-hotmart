@@ -62,6 +62,9 @@
     "test:coverage:report": "jest --coverage && open coverage/index.html",
     "test:coverage:check": "jest --coverage --coverageThreshold='{\"global\":{\"branches\":80,\"functions\":80,\"lines\":80,\"statements\":80}}'",
     "test:coverage:detailed": "jest --coverage --verbose --coverageReporters=text",
+    "test:combined": "./test-complete",
+    "test:all": "./test-complete",
+    "test:complete": "./test-complete",
     "test:webhook": "jest __tests__/unit/webhook",
     "test:webhook:watch": "jest --watch __tests__/unit/webhook",
     "webhook:parse": "ts-node scripts/webhook-test-system/csv-parser.ts",
@@ -75,7 +78,10 @@
     "release:minor": "standard-version --release-as minor",
     "release:patch": "standard-version --release-as patch",
     "release:major": "standard-version --release-as major",
-    "prepare": "husky"
+    "prepare": "husky",
+    "dev": "npm run guardiao:watch & npm run build:watch",
+    "guardiao:watch": "node scripts/guardiao-watch.js",
+    "dev:original": "npm run build:watch"
   },
   "dependencies": {
     "n8n-core": "^1.92.0",
@@ -91,6 +97,9 @@
     "@types/request-promise-native": "1.0.21",
     "@typescript-eslint/eslint-plugin": "^8.32.1",
     "@typescript-eslint/parser": "^8.32.1",
+    "axios": "^1.9.0",
+    "chalk": "^4.1.2",
+    "chokidar": "^4.0.3",
     "csv-parse": "^5.6.0",
     "eslint": "^9.27.0",
     "eslint-config-prettier": "^10.1.5",
