@@ -921,3 +921,68 @@ docs/
 ---
 
 **Última atualização**: Maio 2025
+
+## 📦 Comando /compact - Como Usar
+
+### Sintaxe Básica
+```bash
+/compact [resumo] [--opções]
+```
+
+### Opções Disponíveis
+
+1. **Sem argumentos** (compactação padrão):
+   ```bash
+   /compact
+   ```
+
+2. **Com resumo customizado**:
+   ```bash
+   /compact "Implementamos feature X e corrigimos bug Y"
+   ```
+
+3. **Manter arquivos específicos**:
+   ```bash
+   /compact --keep-files README.md,package.json
+   ```
+
+4. **Definir prioridade de contexto**:
+   ```bash
+   /compact --priority high  # high/medium/low
+   ```
+
+5. **Comando completo**:
+   ```bash
+   /compact "Resumo do trabalho" --keep-files arquivo1.ts,arquivo2.md --priority high
+   ```
+
+### 🎯 Estratégia Recomendada: Arquivo de Sessão
+
+**MELHOR PRÁTICA**: Criar um arquivo de resumo da sessão antes de compactar:
+
+1. **Criar arquivo de sessão em `docs/contexto/`** (ex: `SESSAO-DD-MM-AAAA.md`):
+   - **IMPORTANTE**: Sempre salvar em `docs/contexto/` (não na raiz!)
+   - Estado atual do projeto
+   - O que foi feito na sessão
+   - Próximos passos
+   - Arquivos modificados
+   - Comandos importantes
+
+2. **Usar comando compact referenciando o arquivo**:
+   ```bash
+   /compact "Ver docs/contexto/SESSAO-27-05-2025.md para contexto completo" --keep-files docs/contexto/SESSAO-27-05-2025.md,CLAUDE.md --priority high
+   ```
+
+3. **Na próxima sessão, começar com**:
+   ```
+   Continue o trabalho anterior. Ver docs/contexto/SESSAO-DD-MM-AAAA.md para contexto completo.
+   ```
+
+**⚠️ NUNCA salve arquivos .md na raiz do projeto - use sempre `docs/` ou `docs/contexto/`**
+
+### 💡 Dicas
+- Use `/compact` quando contexto estiver em ~10%
+- Sempre inclua um resumo descritivo
+- Mantenha arquivos que ainda vai modificar
+- Use `--priority high` para trabalhos complexos
+- Crie arquivo de sessão para histórico completo

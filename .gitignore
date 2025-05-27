@@ -108,3 +108,6 @@ REFACTORING-*.md
 # Guardião
 .guardiao-snapshot.json
 .guardiao-snapshot-backup-*.json
+
+# Contextos e resumos de sessão (não devem ir pro git)
+docs/contexto/
