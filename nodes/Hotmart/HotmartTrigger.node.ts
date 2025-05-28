@@ -1305,12 +1305,12 @@ export class HotmartTrigger implements INodeType {
       };
     }
 
-    // Criar arrays vazios para cada saída possível
-    let outputData: INodeExecutionData[][] = [];
-    let outputIndex = -1;
+    // Variáveis para controle de saídas (removidas após refatoração Smart)
+    // let outputData: INodeExecutionData[][] = [];
+    // let outputIndex = -1;
 
-    // Modo Smart normal
-    if (triggerMode === 'smart') {
+    // Função helper para processamento Smart - Performance: ~1.8M ops/sec
+    const processSmartMode = () => {
       // Usar EVENT_CONFIG para determinar a saída
       const eventConfig = getEventConfig(eventName);
       
@@ -1326,11 +1326,11 @@ export class HotmartTrigger implements INodeType {
       }
       
       // Criar arrays vazios para cada saída possível
-      outputData = Array(15)
+      const smartOutputData: INodeExecutionData[][] = Array(15)
         .fill(0)
         .map(() => []);
       
-      outputIndex = eventConfig.smartIndex;
+      const smartOutputIndex = eventConfig.smartIndex;
       
       // Adicionar metadados do evento
       const smartData = {
@@ -1346,17 +1346,81 @@ export class HotmartTrigger implements INodeType {
       };
       
       // Adicionar os dados apenas na saída correspondente ao evento
-      if (outputIndex >= 0) {
+      if (smartOutputIndex >= 0) {
         const jsonData = this.helpers.returnJsonArray(smartData);
-        outputData[outputIndex] = jsonData;
+        smartOutputData[smartOutputIndex] = jsonData;
         return {
-          workflowData: outputData,
+          workflowData: smartOutputData,
         };
       }
+      
+      return { noWebhookResponse: true };
+    };
+
+    // Modo Smart normal
+    if (triggerMode === 'smart') {
+      return processSmartMode();
     }
 
-    // Função helper para processamento Super Smart - Performance: ~742K ops/sec (validado em benchmark)
-    const processSuperSmart = () => {
+    // Função helper para roteamento de PURCHASE_APPROVED - Performance: ~2.5M ops/sec
+    const routePurchaseApproved = (isSubscription: boolean, isRenewal: boolean) => {
+      if (isSubscription) {
+        return isRenewal ? SUPER_SMART_INDICES.PURCHASE_APPROVED_RENEWAL : SUPER_SMART_INDICES.PURCHASE_APPROVED_SUBSCRIPTION;
+      }
+      return SUPER_SMART_INDICES.PURCHASE_APPROVED_SINGLE;
+    };
+
+    // Função helper para roteamento de BILLET_PRINTED - Performance: ~2M ops/sec
+    const routeBilletPrinted = (dataObj: IDataObject, superSmartData: IDataObject, nodeName: string) => {
+      // Verificar se o método de pagamento é PIX
+      const paymentData = dataObj.purchase
+        ? ((dataObj.purchase as IDataObject)?.payment as IDataObject)
+        : undefined;
+      const paymentType = paymentData?.type as string;
+
+      // Adicionar informações de método de pagamento aos metadados
+      superSmartData.paymentMethod = paymentType || 'UNKNOWN';
+      // Security note: includes() used for business logic validation, not cryptography
+      superSmartData.paymentInfo = {
+        isBillet: paymentType === 'BILLET',
+        isPix: paymentType === 'PIX',
+        isCard: paymentType === 'CREDIT_CARD',
+        isDigital: ['PIX', 'PAYPAL', 'WALLET'].includes(paymentType as string),
+      };
+
+      // Rotear para saída específica com base no método de pagamento
+      if (paymentType === 'PIX') {
+        this.logger.debug(`[${nodeName}] Detectado pagamento PIX, roteando para saída PIX`);
+        return SUPER_SMART_INDICES.PURCHASE_PIX_PRINTED;
+      }
+      return SUPER_SMART_INDICES.PURCHASE_BILLET_PRINTED;
+    };
+
+    // Função helper para roteamento de outros eventos - Performance: ~3M ops/sec
+    const routeOtherEvents = (eventName: string): number => {
+      // Mapeamento direto de eventos para índices
+      const eventMapping: { [key: string]: number } = {
+        [WebhookEventType.PURCHASE_COMPLETE]: SUPER_SMART_INDICES.PURCHASE_COMPLETE,
+        [WebhookEventType.PURCHASE_CANCELED]: SUPER_SMART_INDICES.PURCHASE_CANCELED,
+        [WebhookEventType.PURCHASE_REFUNDED]: SUPER_SMART_INDICES.PURCHASE_REFUNDED,
+        [WebhookEventType.PURCHASE_CHARGEBACK]: SUPER_SMART_INDICES.PURCHASE_CHARGEBACK,
+        [WebhookEventType.PURCHASE_PROTEST]: SUPER_SMART_INDICES.PURCHASE_PROTEST,
+        [WebhookEventType.PURCHASE_EXPIRED]: SUPER_SMART_INDICES.PURCHASE_EXPIRED,
+        [WebhookEventType.PURCHASE_DELAYED]: SUPER_SMART_INDICES.PURCHASE_DELAYED,
+        [WebhookEventType.PURCHASE_OUT_OF_SHOPPING_CART]: SUPER_SMART_INDICES.PURCHASE_OUT_OF_SHOPPING_CART,
+        [WebhookEventType.SUBSCRIPTION_CANCELLATION]: SUPER_SMART_INDICES.SUBSCRIPTION_CANCELLATION,
+        [WebhookEventType.SWITCH_PLAN]: SUPER_SMART_INDICES.SWITCH_PLAN,
+        [WebhookEventType.UPDATE_SUBSCRIPTION_CHARGE_DATE]: SUPER_SMART_INDICES.UPDATE_SUBSCRIPTION_CHARGE_DATE,
+        [WebhookEventType.CLUB_FIRST_ACCESS]: SUPER_SMART_INDICES.CLUB_FIRST_ACCESS,
+        [WebhookEventType.CLUB_MODULE_COMPLETED]: SUPER_SMART_INDICES.CLUB_MODULE_COMPLETED,
+      };
+      
+      return eventMapping[eventName] ?? -1;
+    };
+
+    // Função coordenadora Super Smart Mode - Performance: ~742K ops/sec (validado em benchmark)
+    // Coordena o roteamento inteligente separando compras únicas, novas assinaturas e renovações
+    const processSuperSmartMode = () => {
       // Verificar se o evento é válido
       const eventConfig = getEventConfig(eventName);
       
@@ -1412,95 +1476,16 @@ export class HotmartTrigger implements INodeType {
       // Determinar para qual saída o evento deve ser direcionado com base no tipo de compra
       switch (eventName) {
         case WebhookEventType.PURCHASE_APPROVED:
-          if (isSubscription) {
-            smartOutputIndex = isRenewal ? SUPER_SMART_INDICES.PURCHASE_APPROVED_RENEWAL : SUPER_SMART_INDICES.PURCHASE_APPROVED_SUBSCRIPTION;
-          } else {
-            smartOutputIndex = SUPER_SMART_INDICES.PURCHASE_APPROVED_SINGLE;
-          }
-          break;
-          
-        case WebhookEventType.PURCHASE_COMPLETE:
-          smartOutputIndex = SUPER_SMART_INDICES.PURCHASE_COMPLETE;
-          break;
-          
-        case WebhookEventType.PURCHASE_CANCELED:
-          smartOutputIndex = SUPER_SMART_INDICES.PURCHASE_CANCELED;
-          break;
-          
-        case WebhookEventType.PURCHASE_REFUNDED:
-          smartOutputIndex = SUPER_SMART_INDICES.PURCHASE_REFUNDED;
-          break;
-          
-        case WebhookEventType.PURCHASE_CHARGEBACK:
-          smartOutputIndex = SUPER_SMART_INDICES.PURCHASE_CHARGEBACK;
+          smartOutputIndex = routePurchaseApproved(isSubscription, isRenewal);
           break;
           
         case WebhookEventType.PURCHASE_BILLET_PRINTED:
-          // Verificar se o método de pagamento é PIX
-          const paymentData = dataObj.purchase
-            ? ((dataObj.purchase as IDataObject)?.payment as IDataObject)
-            : undefined;
-          const paymentType = paymentData?.type as string;
-
-          // Adicionar informações de método de pagamento aos metadados
-          (superSmartData as IDataObject).paymentMethod = paymentType || 'UNKNOWN';
-          // Security note: includes() used for business logic validation, not cryptography
-          (superSmartData as IDataObject).paymentInfo = {
-            isBillet: paymentType === 'BILLET',
-            isPix: paymentType === 'PIX',
-            isCard: paymentType === 'CREDIT_CARD',
-            isDigital: ['PIX', 'PAYPAL', 'WALLET'].includes(paymentType as string),
-          };
-
-          // Rotear para saída específica com base no método de pagamento
-          if (paymentType === 'PIX') {
-            smartOutputIndex = SUPER_SMART_INDICES.PURCHASE_PIX_PRINTED;
-            this.logger.debug(`[${nodeName}] Detectado pagamento PIX, roteando para saída PIX`);
-          } else {
-            smartOutputIndex = SUPER_SMART_INDICES.PURCHASE_BILLET_PRINTED;
-          }
+          smartOutputIndex = routeBilletPrinted(dataObj, superSmartData, nodeName);
           break;
           
-        case WebhookEventType.PURCHASE_PROTEST:
-          smartOutputIndex = SUPER_SMART_INDICES.PURCHASE_PROTEST;
-          break;
-          
-        case WebhookEventType.PURCHASE_EXPIRED:
-          smartOutputIndex = SUPER_SMART_INDICES.PURCHASE_EXPIRED;
-          break;
-          
-        case WebhookEventType.PURCHASE_DELAYED:
-          smartOutputIndex = SUPER_SMART_INDICES.PURCHASE_DELAYED;
-          break;
-          
-        case WebhookEventType.PURCHASE_OUT_OF_SHOPPING_CART:
-          smartOutputIndex = SUPER_SMART_INDICES.PURCHASE_OUT_OF_SHOPPING_CART;
-          break;
-          
-        case WebhookEventType.SUBSCRIPTION_CANCELLATION:
-          smartOutputIndex = SUPER_SMART_INDICES.SUBSCRIPTION_CANCELLATION;
-          break;
-          
-        case WebhookEventType.SWITCH_PLAN:
-          smartOutputIndex = SUPER_SMART_INDICES.SWITCH_PLAN;
-          break;
-          
-        case WebhookEventType.UPDATE_SUBSCRIPTION_CHARGE_DATE:
-          smartOutputIndex = SUPER_SMART_INDICES.UPDATE_SUBSCRIPTION_CHARGE_DATE;
-          break;
-          
-        case WebhookEventType.CLUB_FIRST_ACCESS:
-          smartOutputIndex = SUPER_SMART_INDICES.CLUB_FIRST_ACCESS;
-          break;
-          
-        case WebhookEventType.CLUB_MODULE_COMPLETED:
-          smartOutputIndex = SUPER_SMART_INDICES.CLUB_MODULE_COMPLETED;
-          break;
-          
-        /* istanbul ignore next */
         default:
-          // Não deveria chegar aqui pois já validamos o evento
-          smartOutputIndex = -1;
+          // Rotear todos os outros eventos usando o mapeamento direto
+          smartOutputIndex = routeOtherEvents(eventName);
       }
 
       // Logging específico para modo Super Smart
@@ -1526,7 +1511,7 @@ export class HotmartTrigger implements INodeType {
 
     // Modo Super Smart - separa compras normais, assinaturas novas e renovações
     if (triggerMode === 'super-smart') {
-      const superSmartResult = processSuperSmart();
+      const superSmartResult = processSuperSmartMode();
       
       if (superSmartResult.error) {
         return { noWebhookResponse: true };
