@@ -2,6 +2,45 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## 🚨 REGRA ABSOLUTA DE GIT - NUNCA QUEBRAR!!!
+
+**⚠️ NUNCA FAÇA MERGE DIRETO - SEMPRE PULL REQUEST!**
+
+### 🔥 REGRAS OBRIGATÓRIAS:
+
+1. **NUNCA usar `git merge` direto no main**
+2. **SEMPRE criar Pull Request para QUALQUER mudança**
+3. **SEMPRE aguardar revisão de pares antes do merge**
+4. **NUNCA fazer push direto no main sem PR**
+
+### ✅ Workflow CORRETO:
+
+```bash
+# ✅ CORRETO
+git checkout -b feat/minha-feature
+# ... fazer mudanças ...
+git commit -m "feat: implementar X"
+git push -u origin feat/minha-feature
+# → Criar PR no GitHub
+# → Aguardar revisão
+# → Merge via GitHub após aprovação
+
+# ❌ NUNCA FAZER
+git checkout main
+git merge feat/minha-feature  # ← PROIBIDO!
+git push  # ← PROIBIDO!
+```
+
+### 🎯 Por que PR é OBRIGATÓRIO:
+
+- **Revisão de pares** - Garantia de qualidade
+- **Histórico** - Rastreabilidade completa
+- **CI/CD** - Validação automática
+- **Discussão** - Espaço para feedback
+- **Profissionalismo** - Padrão da indústria
+
+### ⚡ JAMAIS sugerir merge direto!
+
 ## 🤖 Sistema 404 MCP - Instruções OBRIGATÓRIAS
 
 **⚠️ REGRA #1: SEMPRE USE actor_think COMO PRIMEIRO COMANDO!**
