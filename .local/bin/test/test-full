@@ -84,13 +84,11 @@ else
     BUILD_SUCCESS=false
 fi
 
-# 6. Limpar workflows de teste
+# 6. Preparar para limpeza (será feita interativamente no final)
 echo ""
 echo -e "${BLUE}🧹 PARTE 4: Limpeza${NC}"
 echo "--------------------------------------------"
-echo -e "${BLUE}→ Removendo workflows de teste...${NC}"
-node "$(dirname "$0")/../../scripts/test-automation/cleanup-all.js" > /dev/null 2>&1
-echo -e "${GREEN}✅ Workflows de teste removidos${NC}"
+echo -e "${BLUE}→ Limpeza será feita interativamente ao final...${NC}"
 
 # 7. Gerar relatório final
 echo ""
@@ -409,7 +407,7 @@ else
     echo -e "${RED}❌ Relatório não encontrado!${NC}"
 fi
 
-# Limpeza
+# Limpeza temporária
 rm -f webhook-results.tmp
 
 echo ""
@@ -418,5 +416,39 @@ echo "  ./test-full      - Este script (tudo com relatório 100%)"
 echo "  ./test-unit      - Apenas unitários"
 echo "  ./test-webhooks  - Apenas webhooks"
 echo "  ./clean          - Limpar workflows"
+
+# Perguntar sobre limpeza de workflows
+echo ""
+echo -e "${YELLOW}🗑️  Teste finalizado. Você gostaria de deletar os workflows criados? (S/N)${NC}"
+read -n 1 -r DELETE_WORKFLOWS
+echo ""
+
+if [[ $DELETE_WORKFLOWS =~ ^[Ss]$ ]]; then
+    echo -e "${BLUE}→ Removendo workflows de teste...${NC}"
+    node "$(dirname "$0")/../../scripts/test-automation/cleanup-all.js" > /dev/null 2>&1
+    echo -e "${GREEN}✅ Workflows de teste removidos${NC}"
+else
+    echo -e "${BLUE}ℹ️  Workflows mantidos. Use ./clean para remover depois${NC}"
+fi
+
+# Perguntar sobre abrir relatório
+echo ""
+echo -e "${YELLOW}📊 RELATÓRIO CRIADO. Você gostaria de abrir no VSCode? (S/N)${NC}"
+read -n 1 -r OPEN_REPORT
+echo ""
+
+if [[ $OPEN_REPORT =~ ^[Ss]$ ]]; then
+    if command -v code &> /dev/null; then
+        echo -e "${BLUE}→ Abrindo relatório no VSCode...${NC}"
+        code test-report-full.md
+        echo -e "${GREEN}✅ Relatório aberto no VSCode${NC}"
+    else
+        echo -e "${YELLOW}⚠️  VSCode não encontrado. Abra manualmente:${NC}"
+        echo -e "${BLUE}   cat test-report-full.md${NC}"
+    fi
+else
+    echo -e "${BLUE}ℹ️  Para ver o relatório use:${NC}"
+    echo -e "${BLUE}   cat test-report-full.md${NC}"
+fi
 
 exit $EXIT_CODE

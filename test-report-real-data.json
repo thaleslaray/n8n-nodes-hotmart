@@ -1,0 +1,1377 @@
+{
+  "tested": "2025-05-28T13:53:11.114Z",
+  "summary": {
+    "total": 48,
+    "success": 48,
+    "failed": 0,
+    "successRate": "100.00"
+  },
+  "workflows": 3,
+  "eventsStandard": 15,
+  "eventsSuperSmart": 18,
+  "results": [
+    {
+      "success": true,
+      "workflow": "standard",
+      "event": "PURCHASE_APPROVED",
+      "status": 200,
+      "responseTime": 19,
+      "data": [
+        {
+          "data": {
+            "product": {
+              "name": "Escola de Automação",
+              "id": 1355458,
+              "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+            },
+            "purchase": {
+              "transaction": "HP2079155710",
+              "status": "APPROVED",
+              "price": {
+                "currency_value": "BRL",
+                "value": 997
+              },
+              "payment": {
+                "type": "CREDIT_CARD",
+                "installments_number": 1
+              },
+              "order_date": 1748440385217,
+              "approved_date": 1748440385217
+            },
+            "buyer": {
+              "name": "Teste Automático",
+              "email": "teste@automacao.com",
+              "document": "123.456.789-00"
+            }
+          },
+          "id": "1748440385217-o9hufnuwq",
+          "creation_date": 1748440385217,
+          "event": "PURCHASE_APPROVED",
+          "version": "2.0.0",
+          "eventName": "Compra Aprovada",
+          "eventType": "PURCHASE_APPROVED",
+          "eventCategory": "purchase",
+          "receivedAt": "2025-05-28T13:53:05.228Z",
+          "isSubscription": false,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "536",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "standard",
+      "event": "PURCHASE_COMPLETE",
+      "status": 200,
+      "responseTime": 9,
+      "data": [
+        {
+          "data": {
+            "product": {
+              "name": "Escola de Automação",
+              "id": 1355458,
+              "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+            },
+            "purchase": {
+              "transaction": "HP0135741954",
+              "status": "APPROVED",
+              "price": {
+                "currency_value": "BRL",
+                "value": 997
+              },
+              "payment": {
+                "type": "CREDIT_CARD",
+                "installments_number": 1
+              },
+              "order_date": 1748440385338,
+              "approved_date": 1748440385338
+            },
+            "buyer": {
+              "name": "Teste Automático",
+              "email": "teste@automacao.com",
+              "document": "123.456.789-00"
+            }
+          },
+          "id": "1748440385338-l0j8w6gt3",
+          "creation_date": 1748440385338,
+          "event": "PURCHASE_COMPLETE",
+          "version": "2.0.0",
+          "eventName": "Compra Completa",
+          "eventType": "PURCHASE_COMPLETE",
+          "eventCategory": "purchase",
+          "receivedAt": "2025-05-28T13:53:05.341Z",
+          "isSubscription": false,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "536",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "standard",
+      "event": "PURCHASE_CANCELED",
+      "status": 200,
+      "responseTime": 22,
+      "data": [
+        {
+          "data": {
+            "product": {
+              "name": "Escola de Automação",
+              "id": 1355458,
+              "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+            },
+            "purchase": {
+              "transaction": "HP9038342765",
+              "status": "APPROVED",
+              "price": {
+                "currency_value": "BRL",
+                "value": 997
+              },
+              "payment": {
+                "type": "CREDIT_CARD",
+                "installments_number": 1
+              },
+              "order_date": 1748440385449,
+              "approved_date": 1748440385449
+            },
+            "buyer": {
+              "name": "Teste Automático",
+              "email": "teste@automacao.com",
+              "document": "123.456.789-00"
+            }
+          },
+          "id": "1748440385449-kwp882t6k",
+          "creation_date": 1748440385449,
+          "event": "PURCHASE_CANCELED",
+          "version": "2.0.0",
+          "eventName": "Compra Cancelada",
+          "eventType": "PURCHASE_CANCELED",
+          "eventCategory": "purchase",
+          "receivedAt": "2025-05-28T13:53:05.456Z",
+          "isSubscription": false,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "536",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "standard",
+      "event": "PURCHASE_REFUNDED",
+      "status": 200,
+      "responseTime": 27,
+      "data": [
+        {
+          "data": {
+            "product": {
+              "name": "Escola de Automação",
+              "id": 1355458,
+              "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+            },
+            "purchase": {
+              "transaction": "HP1391339676",
+              "status": "APPROVED",
+              "price": {
+                "currency_value": "BRL",
+                "value": 997
+              },
+              "payment": {
+                "type": "CREDIT_CARD",
+                "installments_number": 1
+              },
+              "order_date": 1748440385572,
+              "approved_date": 1748440385572
+            },
+            "buyer": {
+              "name": "Teste Automático",
+              "email": "teste@automacao.com",
+              "document": "123.456.789-00"
+            }
+          },
+          "id": "1748440385572-xwul06qlr",
+          "creation_date": 1748440385572,
+          "event": "PURCHASE_REFUNDED",
+          "version": "2.0.0",
+          "eventName": "Compra Reembolsada",
+          "eventType": "PURCHASE_REFUNDED",
+          "eventCategory": "purchase",
+          "receivedAt": "2025-05-28T13:53:05.581Z",
+          "isSubscription": false,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "536",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "standard",
+      "event": "PURCHASE_CHARGEBACK",
+      "status": 200,
+      "responseTime": 27,
+      "data": [
+        {
+          "data": {
+            "product": {
+              "name": "Escola de Automação",
+              "id": 1355458,
+              "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+            },
+            "purchase": {
+              "transaction": "HP1423420863",
+              "status": "APPROVED",
+              "price": {
+                "currency_value": "BRL",
+                "value": 997
+              },
+              "payment": {
+                "type": "CREDIT_CARD",
+                "installments_number": 1
+              },
+              "order_date": 1748440385701,
+              "approved_date": 1748440385701
+            },
+            "buyer": {
+              "name": "Teste Automático",
+              "email": "teste@automacao.com",
+              "document": "123.456.789-00"
+            }
+          },
+          "id": "1748440385701-9mqdjiyct",
+          "creation_date": 1748440385701,
+          "event": "PURCHASE_CHARGEBACK",
+          "version": "2.0.0",
+          "eventName": "Compra Chargeback",
+          "eventType": "PURCHASE_CHARGEBACK",
+          "eventCategory": "purchase",
+          "receivedAt": "2025-05-28T13:53:05.709Z",
+          "isSubscription": false,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "538",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "standard",
+      "event": "PURCHASE_DELAYED",
+      "status": 200,
+      "responseTime": 25,
+      "data": [
+        {
+          "data": {
+            "product": {
+              "name": "Escola de Automação",
+              "id": 1355458,
+              "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+            },
+            "purchase": {
+              "transaction": "HP5887486891",
+              "status": "APPROVED",
+              "price": {
+                "currency_value": "BRL",
+                "value": 997
+              },
+              "payment": {
+                "type": "CREDIT_CARD",
+                "installments_number": 1
+              },
+              "order_date": 1748440385830,
+              "approved_date": 1748440385830
+            },
+            "buyer": {
+              "name": "Teste Automático",
+              "email": "teste@automacao.com",
+              "document": "123.456.789-00"
+            }
+          },
+          "id": "1748440385830-axiyjxldy",
+          "creation_date": 1748440385830,
+          "event": "PURCHASE_DELAYED",
+          "version": "2.0.0",
+          "eventName": "Compra Atrasada",
+          "eventType": "PURCHASE_DELAYED",
+          "eventCategory": "purchase",
+          "receivedAt": "2025-05-28T13:53:05.838Z",
+          "isSubscription": false,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "535",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "standard",
+      "event": "PURCHASE_PROTEST",
+      "status": 200,
+      "responseTime": 27,
+      "data": [
+        {
+          "data": {
+            "product": {
+              "name": "Escola de Automação",
+              "id": 1355458,
+              "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+            },
+            "purchase": {
+              "transaction": "HP5578328770",
+              "status": "APPROVED",
+              "price": {
+                "currency_value": "BRL",
+                "value": 997
+              },
+              "payment": {
+                "type": "CREDIT_CARD",
+                "installments_number": 1
+              },
+              "order_date": 1748440385956,
+              "approved_date": 1748440385956
+            },
+            "buyer": {
+              "name": "Teste Automático",
+              "email": "teste@automacao.com",
+              "document": "123.456.789-00"
+            }
+          },
+          "id": "1748440385956-rc71tsye2",
+          "creation_date": 1748440385956,
+          "event": "PURCHASE_PROTEST",
+          "version": "2.0.0",
+          "eventName": "Compra em Disputa",
+          "eventType": "PURCHASE_PROTEST",
+          "eventCategory": "purchase",
+          "receivedAt": "2025-05-28T13:53:05.964Z",
+          "isSubscription": false,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "535",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "standard",
+      "event": "PURCHASE_BILLET_PRINTED",
+      "status": 200,
+      "responseTime": 26,
+      "data": [
+        {
+          "data": {
+            "product": {
+              "name": "Escola de Automação",
+              "id": 1355458,
+              "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+            },
+            "purchase": {
+              "transaction": "HP0912908743",
+              "status": "APPROVED",
+              "price": {
+                "currency_value": "BRL",
+                "value": 997
+              },
+              "payment": {
+                "type": "CREDIT_CARD",
+                "installments_number": 1
+              },
+              "order_date": 1748440386085,
+              "approved_date": 1748440386085
+            },
+            "buyer": {
+              "name": "Teste Automático",
+              "email": "teste@automacao.com",
+              "document": "123.456.789-00"
+            }
+          },
+          "id": "1748440386085-y11cp8g7z",
+          "creation_date": 1748440386085,
+          "event": "PURCHASE_BILLET_PRINTED",
+          "version": "2.0.0",
+          "eventName": "Boleto Impresso",
+          "eventType": "PURCHASE_BILLET_PRINTED",
+          "eventCategory": "purchase",
+          "receivedAt": "2025-05-28T13:53:06.092Z",
+          "isSubscription": false,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "542",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "standard",
+      "event": "PURCHASE_EXPIRED",
+      "status": 200,
+      "responseTime": 26,
+      "data": [
+        {
+          "data": {
+            "product": {
+              "name": "Escola de Automação",
+              "id": 1355458,
+              "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+            },
+            "purchase": {
+              "transaction": "HP4542482583",
+              "status": "APPROVED",
+              "price": {
+                "currency_value": "BRL",
+                "value": 997
+              },
+              "payment": {
+                "type": "CREDIT_CARD",
+                "installments_number": 1
+              },
+              "order_date": 1748440386213,
+              "approved_date": 1748440386213
+            },
+            "buyer": {
+              "name": "Teste Automático",
+              "email": "teste@automacao.com",
+              "document": "123.456.789-00"
+            }
+          },
+          "id": "1748440386213-wezlp55ba",
+          "creation_date": 1748440386213,
+          "event": "PURCHASE_EXPIRED",
+          "version": "2.0.0",
+          "eventName": "Compra Expirada",
+          "eventType": "PURCHASE_EXPIRED",
+          "eventCategory": "purchase",
+          "receivedAt": "2025-05-28T13:53:06.223Z",
+          "isSubscription": false,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "535",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "standard",
+      "event": "PURCHASE_OUT_OF_SHOPPING_CART",
+      "status": 200,
+      "responseTime": 28,
+      "data": [
+        {
+          "data": {
+            "product": {
+              "name": "Escola de Automação",
+              "id": 1355458,
+              "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+            },
+            "purchase": {
+              "transaction": "HP3135047864",
+              "status": "APPROVED",
+              "price": {
+                "currency_value": "BRL",
+                "value": 997
+              },
+              "payment": {
+                "type": "CREDIT_CARD",
+                "installments_number": 1
+              },
+              "order_date": 1748440386340,
+              "approved_date": 1748440386340
+            },
+            "buyer": {
+              "name": "Teste Automático",
+              "email": "teste@automacao.com",
+              "document": "123.456.789-00"
+            }
+          },
+          "id": "1748440386340-nw3cuhrfz",
+          "creation_date": 1748440386340,
+          "event": "PURCHASE_OUT_OF_SHOPPING_CART",
+          "version": "2.0.0",
+          "eventName": "Abandono de Carrinho",
+          "eventType": "PURCHASE_OUT_OF_SHOPPING_CART",
+          "eventCategory": "purchase",
+          "receivedAt": "2025-05-28T13:53:06.347Z",
+          "isSubscription": false,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "548",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "standard",
+      "event": "SUBSCRIPTION_CANCELLATION",
+      "status": 200,
+      "responseTime": 21,
+      "data": [
+        {
+          "data": {
+            "product": {
+              "name": "Escola de Automação",
+              "id": 1355458,
+              "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+            },
+            "subscription": {
+              "id": 27007231,
+              "plan": {
+                "name": "Renovação - EA - 997",
+                "id": 558689
+              }
+            },
+            "subscriber": {
+              "name": "Teste Automático",
+              "email": "teste@automacao.com",
+              "document": "123.456.789-00"
+            },
+            "cancellation_date": 1748440386470
+          },
+          "id": "1748440386469-h4htw9wtk",
+          "creation_date": 1748440386469,
+          "event": "SUBSCRIPTION_CANCELLATION",
+          "version": "2.0.0",
+          "eventName": "Assinatura Cancelada",
+          "eventType": "SUBSCRIPTION_CANCELLATION",
+          "eventCategory": "subscription",
+          "receivedAt": "2025-05-28T13:53:06.476Z",
+          "isSubscription": true,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "446",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "standard",
+      "event": "SWITCH_PLAN",
+      "status": 200,
+      "responseTime": 25,
+      "data": [
+        {
+          "data": {
+            "product": {
+              "name": "Escola de Automação",
+              "id": 1355458,
+              "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+            },
+            "purchase": {
+              "transaction": "HP4847989570",
+              "status": "APPROVED",
+              "price": {
+                "currency_value": "BRL",
+                "value": 997
+              },
+              "payment": {
+                "type": "CREDIT_CARD",
+                "installments_number": 1
+              },
+              "order_date": 1748440386592,
+              "approved_date": 1748440386592
+            },
+            "buyer": {
+              "name": "Teste Automático",
+              "email": "teste@automacao.com",
+              "document": "123.456.789-00"
+            }
+          },
+          "id": "1748440386592-34dgvjcbd",
+          "creation_date": 1748440386592,
+          "event": "SWITCH_PLAN",
+          "version": "2.0.0",
+          "eventName": "Troca de Plano de Assinatura",
+          "eventType": "SWITCH_PLAN",
+          "eventCategory": "subscription",
+          "receivedAt": "2025-05-28T13:53:06.601Z",
+          "isSubscription": true,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "530",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "standard",
+      "event": "UPDATE_SUBSCRIPTION_CHARGE_DATE",
+      "status": 200,
+      "responseTime": 21,
+      "data": [
+        {
+          "data": {
+            "product": {
+              "name": "Escola de Automação",
+              "id": 1355458,
+              "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+            },
+            "purchase": {
+              "transaction": "HP8143275651",
+              "status": "APPROVED",
+              "price": {
+                "currency_value": "BRL",
+                "value": 997
+              },
+              "payment": {
+                "type": "CREDIT_CARD",
+                "installments_number": 1
+              },
+              "order_date": 1748440386719,
+              "approved_date": 1748440386719
+            },
+            "buyer": {
+              "name": "Teste Automático",
+              "email": "teste@automacao.com",
+              "document": "123.456.789-00"
+            }
+          },
+          "id": "1748440386719-z22muva2v",
+          "creation_date": 1748440386719,
+          "event": "UPDATE_SUBSCRIPTION_CHARGE_DATE",
+          "version": "2.0.0",
+          "eventName": "Troca de dia de Cobrança",
+          "eventType": "UPDATE_SUBSCRIPTION_CHARGE_DATE",
+          "eventCategory": "subscription",
+          "receivedAt": "2025-05-28T13:53:06.725Z",
+          "isSubscription": true,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "550",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "standard",
+      "event": "CLUB_FIRST_ACCESS",
+      "status": 200,
+      "responseTime": 23,
+      "data": [
+        {
+          "data": {
+            "product": {
+              "name": "Escola de Automação",
+              "id": 1355458,
+              "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+            },
+            "purchase": {
+              "transaction": "HP7925325500",
+              "status": "APPROVED",
+              "price": {
+                "currency_value": "BRL",
+                "value": 997
+              },
+              "payment": {
+                "type": "CREDIT_CARD",
+                "installments_number": 1
+              },
+              "order_date": 1748440386841,
+              "approved_date": 1748440386841
+            },
+            "buyer": {
+              "name": "Teste Automático",
+              "email": "teste@automacao.com",
+              "document": "123.456.789-00"
+            }
+          },
+          "id": "1748440386841-80wi3t957",
+          "creation_date": 1748440386841,
+          "event": "CLUB_FIRST_ACCESS",
+          "version": "2.0.0",
+          "eventName": "Primeiro Acesso",
+          "eventType": "CLUB_FIRST_ACCESS",
+          "eventCategory": "club",
+          "receivedAt": "2025-05-28T13:53:06.848Z",
+          "isSubscription": false,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "536",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "standard",
+      "event": "CLUB_MODULE_COMPLETED",
+      "status": 200,
+      "responseTime": 22,
+      "data": [
+        {
+          "data": {
+            "product": {
+              "name": "Escola de Automação",
+              "id": 1355458,
+              "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+            },
+            "purchase": {
+              "transaction": "HP1269831449",
+              "status": "APPROVED",
+              "price": {
+                "currency_value": "BRL",
+                "value": 997
+              },
+              "payment": {
+                "type": "CREDIT_CARD",
+                "installments_number": 1
+              },
+              "order_date": 1748440386966,
+              "approved_date": 1748440386966
+            },
+            "buyer": {
+              "name": "Teste Automático",
+              "email": "teste@automacao.com",
+              "document": "123.456.789-00"
+            }
+          },
+          "id": "1748440386966-9p8hczchx",
+          "creation_date": 1748440386966,
+          "event": "CLUB_MODULE_COMPLETED",
+          "version": "2.0.0",
+          "eventName": "Módulo Completo",
+          "eventType": "CLUB_MODULE_COMPLETED",
+          "eventCategory": "club",
+          "receivedAt": "2025-05-28T13:53:06.973Z",
+          "isSubscription": false,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "540",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "smart",
+      "event": "PURCHASE_APPROVED",
+      "status": 200,
+      "responseTime": 21,
+      "data": [
+        {
+          "data": {
+            "product": {
+              "name": "Escola de Automação",
+              "id": 1355458,
+              "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+            },
+            "purchase": {
+              "transaction": "HP4322751810",
+              "status": "APPROVED",
+              "price": {
+                "currency_value": "BRL",
+                "value": 997
+              },
+              "payment": {
+                "type": "CREDIT_CARD",
+                "installments_number": 1
+              },
+              "order_date": 1748440387089,
+              "approved_date": 1748440387089
+            },
+            "buyer": {
+              "name": "Teste Automático",
+              "email": "teste@automacao.com",
+              "document": "123.456.789-00"
+            }
+          },
+          "id": "1748440387089-6x5n0qw0p",
+          "creation_date": 1748440387089,
+          "event": "PURCHASE_APPROVED",
+          "version": "2.0.0",
+          "eventName": "Compra Aprovada",
+          "eventType": "PURCHASE_APPROVED",
+          "eventCategory": "purchase",
+          "receivedAt": "2025-05-28T13:53:07.097Z",
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "536",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "smart",
+      "event": "PURCHASE_COMPLETE",
+      "status": 200,
+      "responseTime": 20,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "smart",
+      "event": "PURCHASE_CANCELED",
+      "status": 200,
+      "responseTime": 18,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "smart",
+      "event": "PURCHASE_REFUNDED",
+      "status": 200,
+      "responseTime": 12,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "smart",
+      "event": "PURCHASE_CHARGEBACK",
+      "status": 200,
+      "responseTime": 19,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "smart",
+      "event": "PURCHASE_DELAYED",
+      "status": 200,
+      "responseTime": 23,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "smart",
+      "event": "PURCHASE_PROTEST",
+      "status": 200,
+      "responseTime": 22,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "smart",
+      "event": "PURCHASE_BILLET_PRINTED",
+      "status": 200,
+      "responseTime": 21,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "smart",
+      "event": "PURCHASE_EXPIRED",
+      "status": 200,
+      "responseTime": 21,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "smart",
+      "event": "PURCHASE_OUT_OF_SHOPPING_CART",
+      "status": 200,
+      "responseTime": 21,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "smart",
+      "event": "SUBSCRIPTION_CANCELLATION",
+      "status": 200,
+      "responseTime": 22,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "smart",
+      "event": "SWITCH_PLAN",
+      "status": 200,
+      "responseTime": 10,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "smart",
+      "event": "UPDATE_SUBSCRIPTION_CHARGE_DATE",
+      "status": 200,
+      "responseTime": 9,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "smart",
+      "event": "CLUB_FIRST_ACCESS",
+      "status": 200,
+      "responseTime": 18,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "smart",
+      "event": "CLUB_MODULE_COMPLETED",
+      "status": 200,
+      "responseTime": 24,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "PURCHASE_APPROVED",
+      "status": 200,
+      "responseTime": 29,
+      "data": [
+        {
+          "data": {
+            "product": {
+              "name": "Escola de Automação",
+              "id": 1355458,
+              "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+            },
+            "purchase": {
+              "transaction": "HP0095623169",
+              "status": "APPROVED",
+              "price": {
+                "currency_value": "BRL",
+                "value": 997
+              },
+              "payment": {
+                "type": "CREDIT_CARD",
+                "installments_number": 1
+              },
+              "order_date": 1748440388889,
+              "approved_date": 1748440388889
+            },
+            "buyer": {
+              "name": "Teste Automático",
+              "email": "teste@automacao.com",
+              "document": "123.456.789-00"
+            }
+          },
+          "id": "1748440388889-8f9w05aru",
+          "creation_date": 1748440388889,
+          "event": "PURCHASE_APPROVED",
+          "version": "2.0.0",
+          "eventName": "Compra Aprovada",
+          "eventType": "PURCHASE_APPROVED",
+          "eventCategory": "purchase",
+          "receivedAt": "2025-05-28T13:53:08.897Z",
+          "isSubscription": false,
+          "isRenewal": false,
+          "recurrenceNumber": 0,
+          "isPrimarySubscription": false,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "536",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "PURCHASE_APPROVED",
+      "status": 200,
+      "responseTime": 28,
+      "data": [
+        {
+          "data": {
+            "product": {
+              "name": "Escola de Automação",
+              "id": 1355458,
+              "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+            },
+            "purchase": {
+              "transaction": "HP7563234530",
+              "status": "APPROVED",
+              "price": {
+                "currency_value": "BRL",
+                "value": 997
+              },
+              "payment": {
+                "type": "CREDIT_CARD",
+                "installments_number": 1
+              },
+              "order_date": 1748440389019,
+              "approved_date": 1748440389019,
+              "recurrence_number": 1
+            },
+            "buyer": {
+              "name": "Teste Automático",
+              "email": "teste@automacao.com",
+              "document": "123.456.789-00"
+            },
+            "subscription": {
+              "id": 12345
+            }
+          },
+          "id": "1748440389019-tx4k3plly",
+          "creation_date": 1748440389019,
+          "event": "PURCHASE_APPROVED",
+          "version": "2.0.0",
+          "eventName": "Compra Aprovada",
+          "eventType": "PURCHASE_APPROVED",
+          "eventCategory": "purchase",
+          "receivedAt": "2025-05-28T13:53:09.026Z",
+          "isSubscription": false,
+          "isRenewal": false,
+          "recurrenceNumber": 1,
+          "isPrimarySubscription": false,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "586",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "PURCHASE_APPROVED",
+      "status": 200,
+      "responseTime": 27,
+      "data": [
+        {
+          "data": {
+            "product": {
+              "name": "Escola de Automação",
+              "id": 1355458,
+              "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
+            },
+            "purchase": {
+              "transaction": "HP3059209323",
+              "status": "APPROVED",
+              "price": {
+                "currency_value": "BRL",
+                "value": 997
+              },
+              "payment": {
+                "type": "CREDIT_CARD",
+                "installments_number": 1
+              },
+              "order_date": 1748440389149,
+              "approved_date": 1748440389149,
+              "recurrence_number": 2
+            },
+            "buyer": {
+              "name": "Teste Automático",
+              "email": "teste@automacao.com",
+              "document": "123.456.789-00"
+            },
+            "subscription": {
+              "id": 12345
+            }
+          },
+          "id": "1748440389149-era2r35ks",
+          "creation_date": 1748440389149,
+          "event": "PURCHASE_APPROVED",
+          "version": "2.0.0",
+          "eventName": "Compra Aprovada",
+          "eventType": "PURCHASE_APPROVED",
+          "eventCategory": "purchase",
+          "receivedAt": "2025-05-28T13:53:09.155Z",
+          "isSubscription": false,
+          "isRenewal": false,
+          "recurrenceNumber": 2,
+          "isPrimarySubscription": false,
+          "metadata": {
+            "hottok": "test-token-hotmart-2025",
+            "headers": {
+              "accept": "application/json, text/plain, */*",
+              "content-type": "application/json",
+              "x-hotmart-hottok": "test-token-hotmart-2025",
+              "user-agent": "axios/1.9.0",
+              "content-length": "586",
+              "accept-encoding": "gzip, compress, deflate, br",
+              "host": "localhost:5678",
+              "connection": "keep-alive"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "PURCHASE_COMPLETE",
+      "status": 200,
+      "responseTime": 24,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "PURCHASE_CANCELED",
+      "status": 200,
+      "responseTime": 19,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "PURCHASE_REFUNDED",
+      "status": 200,
+      "responseTime": 20,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "PURCHASE_CHARGEBACK",
+      "status": 200,
+      "responseTime": 20,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "PURCHASE_BILLET_PRINTED",
+      "status": 200,
+      "responseTime": 22,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "PURCHASE_BILLET_PRINTED",
+      "status": 200,
+      "responseTime": 21,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "PURCHASE_PROTEST",
+      "status": 200,
+      "responseTime": 20,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "PURCHASE_EXPIRED",
+      "status": 200,
+      "responseTime": 21,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "PURCHASE_DELAYED",
+      "status": 200,
+      "responseTime": 26,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "PURCHASE_OUT_OF_SHOPPING_CART",
+      "status": 200,
+      "responseTime": 19,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "SUBSCRIPTION_CANCELLATION",
+      "status": 200,
+      "responseTime": 22,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "SWITCH_PLAN",
+      "status": 200,
+      "responseTime": 19,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "UPDATE_SUBSCRIPTION_CHARGE_DATE",
+      "status": 200,
+      "responseTime": 21,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "CLUB_FIRST_ACCESS",
+      "status": 200,
+      "responseTime": 20,
+      "data": []
+    },
+    {
+      "success": true,
+      "workflow": "super-smart",
+      "event": "CLUB_MODULE_COMPLETED",
+      "status": 200,
+      "responseTime": 24,
+      "data": []
+    }
+  ]
+}

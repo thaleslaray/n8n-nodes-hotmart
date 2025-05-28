@@ -1,0 +1,129 @@
+name: 🐛 Reportar Bug
+description: Reporte um problema encontrado no n8n-nodes-hotmart
+title: "[Bug]: "
+labels: ["bug", "triage"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado por dedicar seu tempo para reportar um bug! 
+        Por favor, preencha as informações abaixo para nos ajudar a resolver o problema mais rapidamente.
+        
+  - type: textarea
+    id: description
+    attributes:
+      label: Descrição do Bug
+      description: Descreva claramente qual é o problema
+      placeholder: |
+        Ao tentar listar produtos usando o nó Hotmart, recebo o erro "401 Unauthorized" mesmo com credenciais válidas.
+        O erro ocorre apenas quando uso o filtro por status.
+    validations:
+      required: true
+      
+  - type: textarea
+    id: steps
+    attributes:
+      label: Passos para Reproduzir
+      description: Como podemos reproduzir este bug?
+      value: |
+        1. Configure o nó Hotmart com credenciais OAuth2 válidas
+        2. Selecione Resource: Product, Operation: Get All
+        3. Adicione filtro Status = "ACTIVE"
+        4. Execute o workflow
+        5. Observe o erro
+    validations:
+      required: true
+      
+  - type: textarea
+    id: expected
+    attributes:
+      label: Comportamento Esperado
+      description: O que deveria acontecer?
+      placeholder: A lista de produtos ativos deveria ser retornada sem erros
+    validations:
+      required: true
+      
+  - type: textarea
+    id: actual
+    attributes:
+      label: Comportamento Atual
+      description: O que está acontecendo atualmente?
+      placeholder: Retorna erro 401 Unauthorized
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: version-n8n
+    attributes:
+      label: Versão do n8n
+      description: Qual versão do n8n você está usando?
+      options:
+        - 1.94.0 ou superior
+        - 1.93.x
+        - 1.92.x
+        - 1.91.x ou anterior
+        - Não tenho certeza
+    validations:
+      required: true
+      
+  - type: input
+    id: version-node
+    attributes:
+      label: Versão do n8n-nodes-hotmart
+      description: Qual versão do pacote você está usando?
+      placeholder: "0.6.4"
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Ambiente
+      description: Onde você está executando o n8n?
+      options:
+        - n8n.cloud
+        - Auto-hospedado (Docker)
+        - Auto-hospedado (npm)
+        - Auto-hospedado (Desktop App)
+        - Outro
+    validations:
+      required: true
+      
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs Relevantes
+      description: |
+        Cole aqui logs de erro se disponíveis.
+        Para obter logs detalhados, execute: `LOG_LEVEL=debug n8n start`
+      render: shell
+      placeholder: |
+        [Hotmart API Error] {
+          message: "Unauthorized",
+          statusCode: 401,
+          response: {...}
+        }
+        
+  - type: textarea
+    id: additional
+    attributes:
+      label: Informações Adicionais
+      description: |
+        Qualquer outra informação que possa ajudar.
+        Screenshots, configurações específicas, etc.
+      
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Checklist
+      description: Por favor, confirme os itens abaixo
+      options:
+        - label: Procurei por issues similares antes de criar esta
+          required: true
+        - label: Este é um bug reproduzível, não uma pergunta de uso
+          required: true
+        - label: Estou usando a versão mais recente do pacote
+          required: false
+        - label: Posso fornecer credenciais de teste se necessário (via privado)
+          required: false

@@ -287,7 +287,7 @@ describe('OAuth Integration', () => {
 
       await expect(
         hotmartApiRequest.call(mockThis, 'GET', '/products/api/v1/products')
-      ).rejects.toThrow('The service refused the connection');
+      ).rejects.toThrow('Network error');
     });
 
     it('should handle timeout errors', async () => {
@@ -298,7 +298,7 @@ describe('OAuth Integration', () => {
 
       await expect(
         hotmartApiRequest.call(mockThis, 'GET', '/products/api/v1/products')
-      ).rejects.toThrow('The connection timed out');
+      ).rejects.toThrow('Request timeout');
     });
   });
 });

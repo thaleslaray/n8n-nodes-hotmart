@@ -1,18 +1,48 @@
-// Types for subscription
+/**
+ * @fileoverview Tipos TypeScript para operações de assinaturas da API Hotmart
+ * 
+ * @description Este arquivo contém todas as definições de tipos para assinaturas,
+ * incluindo planos, assinantes, status e estruturas de dados relacionadas.
+ * Garante type safety completo para todas as operações de subscription.
+ * 
+ * @since v0.1.0 - Tipos básicos
+ * @since v0.5.0 - Tipos AI Ready expandidos
+ * @since v0.6.0 - Tipos otimizados para performance
+ */
 
 import { IDataObject } from 'n8n-workflow';
 import { Product, Price } from './common.types';
 
+/**
+ * Plano de assinatura da Hotmart
+ * 
+ * @interface SubscriptionPlan
+ * @description Define a estrutura de um plano de assinatura com configurações
+ * de recorrência e ciclos de cobrança.
+ */
 export interface SubscriptionPlan {
+  /** Nome do plano de assinatura */
   name: string;
+  /** ID único do plano */
   id: number;
+  /** Período de recorrência em dias */
   recurrency_period: number;
+  /** Máximo de ciclos de cobrança (0 = ilimitado) */
   max_charge_cycles: number;
 }
 
+/**
+ * Dados do assinante
+ * 
+ * @interface Subscriber
+ * @description Informações básicas do assinante de um produto
+ */
 export interface Subscriber {
+  /** Nome completo do assinante */
   name: string;
+  /** Email do assinante */
   email: string;
+  /** Código único do usuário na Hotmart */
   ucode: string;
 }
 

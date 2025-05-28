@@ -79,9 +79,17 @@
     "release:patch": "standard-version --release-as patch",
     "release:major": "standard-version --release-as major",
     "prepare": "husky",
-    "dev": "npm run guardiao:watch & npm run build:watch",
-    "guardiao:watch": "node .local/scripts/guardiao/guardiao-watch.js",
-    "dev:original": "npm run build:watch"
+    "dev": "bash scripts/dev-with-guardiao.sh",
+    "dev:simple": "npm run guardiao:watch & npm run build:watch",
+    "guardiao:watch": "node scripts/guardiao-watch.js",
+    "dev:original": "npm run build:watch",
+    "guardiao:start": "node scripts/guardiao-watch.js",
+    "guardiao:stop": "pkill -f guardiao-watch || true",
+    "guardiao:restart": "npm run guardiao:stop && sleep 2 && npm run guardiao:start",
+    "guardiao:status": "bash scripts/guardiao-status.sh",
+    "coderabbit": "bash scripts/coderabbit",
+    "coderabbit:pr": "bash scripts/coderabbit-final.sh",
+    "coderabbit:list": "bash scripts/list-prs.sh"
   },
   "dependencies": {
     "n8n-core": "^1.92.0",

@@ -1,0 +1,287 @@
+{
+  "name": "Hotmart - Gerenciamento de Assinaturas",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyDay",
+              "hour": 9
+            }
+          ]
+        }
+      },
+      "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "name": "Executar Diariamente às 9h",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [240, 300],
+      "notes": "Executa automaticamente todos os dias às 9h.\n\nVocê pode mudar para:\n- everyHour: a cada hora\n- everyWeek: semanalmente\n- cron: expressão cron customizada"
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "subscription",
+        "operation": "getAll",
+        "returnAll": false,
+        "limit": 100,
+        "filters": {
+          "status": "ACTIVE",
+          "createdAfter": "={{ $now.minus(30, 'days').toISO() }}"
+        }
+      },
+      "id": "b2c3d4e5-f6a7-8901-bcde-f23456789012",
+      "name": "Buscar Assinaturas Ativas",
+      "type": "@thaleslaray/n8n-nodes-hotmart.hotmart",
+      "typeVersion": 1,
+      "position": [460, 200],
+      "credentials": {
+        "hotmartOAuth2Api": {
+          "id": "1",
+          "name": "Hotmart OAuth2"
+        }
+      },
+      "notes": "Busca assinaturas ATIVAS dos últimos 30 dias.\n\nFiltros aplicados:\n- status: ACTIVE\n- createdAfter: últimos 30 dias\n- limit: 100 assinaturas\n\nOutros status disponíveis:\n- CANCELLED\n- EXPIRED\n- SUSPENDED"
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "subscription",
+        "operation": "getAll",
+        "returnAll": false,
+        "limit": 50,
+        "filters": {
+          "status": "CANCELLED",
+          "createdAfter": "={{ $now.minus(7, 'days').toISO() }}"
+        }
+      },
+      "id": "c3d4e5f6-a7b8-9012-cdef-345678901234",
+      "name": "Buscar Cancelamentos Recentes",
+      "type": "@thaleslaray/n8n-nodes-hotmart.hotmart",
+      "typeVersion": 1,
+      "position": [460, 400],
+      "credentials": {
+        "hotmartOAuth2Api": {
+          "id": "1",
+          "name": "Hotmart OAuth2"
+        }
+      },
+      "notes": "Busca assinaturas CANCELADAS nos últimos 7 dias.\n\nÚtil para:\n- Campanhas de retenção\n- Análise de churn\n- Contato de win-back"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Processar assinaturas ativas\nconst activeSubscriptions = $node[\"Buscar Assinaturas Ativas\"].all();\nconst cancelledSubscriptions = $node[\"Buscar Cancelamentos Recentes\"].all();\n\n// Análise de assinaturas ativas\nconst activeAnalysis = activeSubscriptions.map(item => {\n  const sub = item.json;\n  const createdDate = new Date(sub.creation_date);\n  const now = new Date();\n  const daysActive = Math.floor((now - createdDate) / (1000 * 60 * 60 * 24));\n  \n  return {\n    json: {\n      // Informações básicas\n      subscriptionId: sub.subscription_id,\n      status: sub.status,\n      productName: sub.product?.name || 'N/A',\n      \n      // Cliente\n      customerEmail: sub.buyer?.email || '',\n      customerName: sub.buyer?.name || '',\n      \n      // Financeiro\n      price: sub.price?.value || 0,\n      formattedPrice: `R$ ${(sub.price?.value || 0).toFixed(2).replace('.', ',')}`,\n      nextPaymentDate: sub.next_payment_date ? new Date(sub.next_payment_date).toLocaleDateString('pt-BR') : 'N/A',\n      \n      // Métricas\n      daysActive,\n      isNewCustomer: daysActive <= 30,\n      isAtRisk: daysActive > 180, // Cliente há mais de 6 meses pode estar em risco\n      \n      // Dados originais\n      original: sub\n    }\n  };\n});\n\n// Análise de cancelamentos\nconst cancelAnalysis = cancelledSubscriptions.map(item => {\n  const sub = item.json;\n  const cancelDate = new Date(sub.cancellation_date || sub.last_status_change);\n  const daysSinceCancellation = Math.floor((new Date() - cancelDate) / (1000 * 60 * 60 * 24));\n  \n  return {\n    json: {\n      subscriptionId: sub.subscription_id,\n      productName: sub.product?.name || 'N/A',\n      customerEmail: sub.buyer?.email || '',\n      customerName: sub.buyer?.name || '',\n      cancelledAt: cancelDate.toLocaleDateString('pt-BR'),\n      daysSinceCancellation,\n      lastPrice: sub.price?.value || 0,\n      cancellationReason: sub.cancellation_reason || 'Não especificado',\n      original: sub\n    }\n  };\n});\n\n// Criar resumo geral\nconst summary = {\n  json: {\n    overview: {\n      totalActive: activeSubscriptions.length,\n      totalCancelled: cancelledSubscriptions.length,\n      newCustomers: activeAnalysis.filter(a => a.json.isNewCustomer).length,\n      atRiskCustomers: activeAnalysis.filter(a => a.json.isAtRisk).length,\n      \n      // Receita mensal recorrente (MRR)\n      mrr: activeAnalysis.reduce((sum, a) => sum + a.json.price, 0),\n      mrrFormatted: `R$ ${activeAnalysis.reduce((sum, a) => sum + a.json.price, 0).toFixed(2).replace('.', ',')}`,\n      \n      // Churn dos últimos 7 dias\n      churnRate: (activeSubscriptions.length + cancelledSubscriptions.length) > 0 ? ((cancelledSubscriptions.length / (activeSubscriptions.length + cancelledSubscriptions.length)) * 100).toFixed(2) + '%' : '0%',\n      \n      generatedAt: new Date().toLocaleString('pt-BR')\n    },\n    activeSubscriptions: activeAnalysis.map(a => a.json),\n    recentCancellations: cancelAnalysis.map(c => c.json)\n  }\n};\n\nreturn [summary];"
+      },
+      "id": "d4e5f6a7-b8c9-0123-defa-456789012345",
+      "name": "Analisar e Consolidar Dados",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [680, 300],
+      "notes": "Consolida e analisa os dados de assinaturas:\n\n1. Assinaturas Ativas:\n   - Dias desde a criação\n   - Identifica novos clientes (< 30 dias)\n   - Identifica clientes em risco (> 180 dias)\n   - Próxima data de pagamento\n\n2. Cancelamentos:\n   - Dias desde o cancelamento\n   - Motivo do cancelamento\n   - Valor perdido\n\n3. Métricas Gerais:\n   - MRR (Receita Recorrente Mensal)\n   - Taxa de Churn\n   - Totais por categoria"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "f5e6a7b8-c9d0-1234-efab-567890123456",
+              "leftValue": "={{ $json.overview.atRiskCustomers }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "e5f6a7b8-c9d0-1234-efab-678901234567",
+      "name": "Tem Clientes em Risco?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [900, 300],
+      "notes": "Verifica se existem clientes em risco\n(ativos há mais de 180 dias).\n\nSe sim: Prepara ações de retenção\nSe não: Apenas gera relatório"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a6f7b8c9-d0e1-2345-fabc-789012345678",
+              "name": "alertType",
+              "value": "CLIENTES_EM_RISCO",
+              "type": "string"
+            },
+            {
+              "id": "b7a8c9d0-e1f2-3456-abcd-890123456789",
+              "name": "message",
+              "value": "=Atenção! Existem {{ $json.overview.atRiskCustomers }} clientes em risco de cancelamento.",
+              "type": "string"
+            },
+            {
+              "id": "c8b9d0e1-f2a3-4567-bcde-901234567890",
+              "name": "atRiskList",
+              "value": "={{ $json.activeSubscriptions.filter(s => s.isAtRisk).map(s => ({ email: s.customerEmail, name: s.customerName, daysActive: s.daysActive, product: s.productName })) }}",
+              "type": "array"
+            },
+            {
+              "id": "d9c0e1f2-a3b4-5678-cdef-012345678901",
+              "name": "recommendedActions",
+              "value": "={{ ['Enviar email de reengajamento', 'Oferecer desconto especial', 'Agendar ligação de relacionamento', 'Criar campanha de conteúdo exclusivo'] }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f6a7b8c9-d0e1-2345-fabc-789012345678",
+      "name": "Preparar Alerta de Retenção",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3,
+      "position": [1120, 200],
+      "notes": "Prepara dados para ações de retenção:\n- Lista de clientes em risco\n- Ações recomendadas\n- Mensagem de alerta\n\nPróximos passos sugeridos:\n- Enviar para Slack/Discord\n- Criar tarefas no CRM\n- Disparar emails automatizados"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e7b8c9d0-e1f2-3456-abcd-890123456789",
+              "name": "reportType",
+              "value": "RELATORIO_DIARIO",
+              "type": "string"
+            },
+            {
+              "id": "f8c9d0e1-f2a3-4567-bcde-901234567890",
+              "name": "status",
+              "value": "Tudo sob controle! Nenhum cliente em risco identificado.",
+              "type": "string"
+            },
+            {
+              "id": "a9d0e1f2-a3b4-5678-cdef-012345678901",
+              "name": "metrics",
+              "value": "={{ $json.overview }}",
+              "type": "object"
+            },
+            {
+              "id": "b0e1f2a3-b4c5-6789-defa-123456789012",
+              "name": "highlights",
+              "value": "={{ { novosClientes: $json.overview.newCustomers, mrrAtual: $json.overview.mrrFormatted, taxaChurn: $json.overview.churnRate } }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a7b8c9d0-e1f2-3456-abcd-890123456789",
+      "name": "Preparar Relatório Normal",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3,
+      "position": [1120, 400],
+      "notes": "Prepara relatório padrão quando\nnão há clientes em risco.\n\nInclui:\n- Métricas gerais\n- Destaques do período\n- Status OK"
+    }
+  ],
+  "connections": {
+    "Executar Diariamente às 9h": {
+      "main": [
+        [
+          {
+            "node": "Buscar Assinaturas Ativas",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Buscar Cancelamentos Recentes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Buscar Assinaturas Ativas": {
+      "main": [
+        [
+          {
+            "node": "Analisar e Consolidar Dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Buscar Cancelamentos Recentes": {
+      "main": [
+        [
+          {
+            "node": "Analisar e Consolidar Dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analisar e Consolidar Dados": {
+      "main": [
+        [
+          {
+            "node": "Tem Clientes em Risco?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tem Clientes em Risco?": {
+      "main": [
+        [
+          {
+            "node": "Preparar Alerta de Retenção",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Preparar Relatório Normal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "description": "Monitora assinaturas ativas e cancelamentos para identificar oportunidades de retenção.\n\nO que este workflow faz:\n1. Executa diariamente às 9h\n2. Busca assinaturas ativas e cancelamentos recentes\n3. Analisa métricas como MRR e taxa de churn\n4. Identifica clientes em risco (> 180 dias)\n5. Prepara alertas ou relatórios conforme necessário\n\nÚtil para:\n- Monitoramento de saúde do negócio\n- Campanhas de retenção proativas\n- Análise de churn\n- Relatórios executivos\n\nPróximos passos:\n- Conectar com Slack/Email para notificações\n- Integrar com CRM para ações automatizadas\n- Adicionar mais critérios de risco"
+  },
+  "tags": [
+    {
+      "name": "Hotmart",
+      "createdAt": "2025-05-28T10:00:00.000Z"
+    },
+    {
+      "name": "Exemplo",
+      "createdAt": "2025-05-28T10:00:00.000Z"
+    },
+    {
+      "name": "Básico",
+      "createdAt": "2025-05-28T10:00:00.000Z"
+    },
+    {
+      "name": "Assinaturas",
+      "createdAt": "2025-05-28T10:00:00.000Z"
+    }
+  ]
+}

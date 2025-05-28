@@ -1,0 +1,303 @@
+{
+  "name": "Template - Tratamento de Erros Hotmart",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "start-node",
+      "name": "Início",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "product",
+        "operation": "getAll",
+        "returnAll": false,
+        "limit": 10
+      },
+      "id": "hotmart-operation",
+      "name": "Operação Hotmart (Exemplo)",
+      "type": "@thaleslaray/n8n-nodes-hotmart.hotmart",
+      "typeVersion": 1,
+      "position": [460, 300],
+      "credentials": {
+        "hotmartOAuth2Api": {
+          "id": "1",
+          "name": "Hotmart OAuth2"
+        }
+      },
+      "continueOnFail": true,
+      "notes": "continueOnFail: true\n\nPermite que o workflow continue\nmesmo se esta operação falhar.\n\nO erro será capturado no próximo nó."
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "check-error",
+              "leftValue": "={{ $json.error }}",
+              "rightValue": "",
+              "operator": {
+                "type": "object",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "check-error-node",
+      "name": "Verificar se Houve Erro",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [680, 300],
+      "notes": "Verifica se o nó anterior\nretornou um erro.\n\nSe sim: Trata o erro\nSe não: Continua normalmente"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Analisar o erro\nconst error = $json.error;\nconst errorDetails = {\n  // Timestamp\n  occurredAt: new Date().toISOString(),\n  \n  // Informações do erro\n  errorMessage: error.message || 'Erro desconhecido',\n  errorCode: error.code || 'UNKNOWN',\n  httpStatus: error.httpCode || null,\n  \n  // Contexto\n  nodeName: error.node?.name || 'Hotmart Operation',\n  nodeType: error.node?.type || 'hotmart',\n  \n  // Classificação do erro\n  errorType: classifyError(error),\n  severity: getSeverity(error),\n  \n  // Ações recomendadas\n  recommendedActions: getRecommendedActions(error),\n  \n  // Deve tentar novamente?\n  shouldRetry: shouldRetryError(error),\n  \n  // Dados originais\n  originalError: error\n};\n\n// Funções auxiliares\nfunction classifyError(error) {\n  const httpCode = parseInt(error.httpCode) || 0;\n  \n  if (httpCode === 401) return 'AUTHENTICATION_ERROR';\n  if (httpCode === 403) return 'AUTHORIZATION_ERROR';\n  if (httpCode === 404) return 'NOT_FOUND';\n  if (httpCode === 429) return 'RATE_LIMIT';\n  if (httpCode >= 500) return 'SERVER_ERROR';\n  if (httpCode >= 400) return 'CLIENT_ERROR';\n  \n  if (error.message?.includes('ECONNREFUSED')) return 'CONNECTION_ERROR';\n  if (error.message?.includes('ETIMEDOUT')) return 'TIMEOUT_ERROR';\n  \n  return 'UNKNOWN_ERROR';\n}\n\nfunction getSeverity(error) {\n  const type = classifyError(error);\n  \n  if (['SERVER_ERROR', 'CONNECTION_ERROR'].includes(type)) return 'HIGH';\n  if (['AUTHENTICATION_ERROR', 'RATE_LIMIT'].includes(type)) return 'MEDIUM';\n  if (['NOT_FOUND', 'CLIENT_ERROR'].includes(type)) return 'LOW';\n  \n  return 'MEDIUM';\n}\n\nfunction getRecommendedActions(error) {\n  const type = classifyError(error);\n  const actions = [];\n  \n  switch(type) {\n    case 'AUTHENTICATION_ERROR':\n      actions.push('Verificar credenciais OAuth2');\n      actions.push('Renovar token de acesso');\n      actions.push('Verificar se a aplicação está ativa na Hotmart');\n      break;\n      \n    case 'RATE_LIMIT':\n      actions.push('Aguardar antes de tentar novamente');\n      actions.push('Implementar backoff exponencial');\n      actions.push('Verificar limites da API');\n      break;\n      \n    case 'SERVER_ERROR':\n      actions.push('Aguardar alguns minutos');\n      actions.push('Verificar status da API Hotmart');\n      actions.push('Tentar novamente com backoff');\n      break;\n      \n    case 'NOT_FOUND':\n      actions.push('Verificar se o recurso existe');\n      actions.push('Validar IDs e parâmetros');\n      break;\n      \n    default:\n      actions.push('Verificar logs detalhados');\n      actions.push('Contatar suporte se persistir');\n  }\n  \n  return actions;\n}\n\nfunction shouldRetryError(error) {\n  const type = classifyError(error);\n  const retryableTypes = ['SERVER_ERROR', 'CONNECTION_ERROR', 'TIMEOUT_ERROR', 'RATE_LIMIT'];\n  \n  return retryableTypes.includes(type);\n}\n\nreturn {\n  json: errorDetails\n};"
+      },
+      "id": "analyze-error",
+      "name": "Analisar e Classificar Erro",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [900, 200],
+      "notes": "Análise inteligente do erro:\n\n1. Classificação:\n   - Tipo de erro\n   - Severidade\n   - Se deve tentar novamente\n\n2. Contexto:\n   - Quando ocorreu\n   - Em qual operação\n   - Código HTTP\n\n3. Recomendações:\n   - Ações sugeridas\n   - Baseadas no tipo de erro"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "should-retry",
+              "leftValue": "={{ $json.shouldRetry }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "should-retry-check",
+      "name": "Deve Tentar Novamente?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [1120, 200]
+    },
+    {
+      "parameters": {
+        "duration": 5,
+        "unit": "seconds"
+      },
+      "id": "wait-before-retry",
+      "name": "Aguardar 5 Segundos",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [1340, 100],
+      "notes": "Aguarda antes de tentar novamente.\n\nPara rate limit, considere\naumentar o tempo de espera."
+    },
+    {
+      "parameters": {
+        "content": "## 🚨 Erro na Operação Hotmart\n\n**Tipo**: {{ $json.errorType }}  \n**Severidade**: {{ $json.severity }}  \n**Mensagem**: {{ $json.errorMessage }}  \n**Código HTTP**: {{ $json.httpStatus || 'N/A' }}  \n\n### 📍 Contexto\n- **Horário**: {{ $json.occurredAt }}  \n- **Operação**: {{ $json.nodeName }}  \n\n### 💡 Ações Recomendadas\n{{#each recommendedActions}}\n- {{ this }}\n{{/each}}\n\n### 🔄 Retry\n**Tentar novamente**: {{ $json.shouldRetry ? 'Sim' : 'Não' }}",
+        "convertMarkdown": true
+      },
+      "id": "format-error-message",
+      "name": "Formatar Mensagem de Erro",
+      "type": "n8n-nodes-base.markdown",
+      "typeVersion": 1,
+      "position": [1340, 300],
+      "notes": "Formata erro de forma legível\npara notificações.\n\nPode ser usado para:\n- Email\n- Slack\n- Discord\n- Logs estruturados"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Processar dados com sucesso\nconst items = $input.all();\n\n// Seu processamento aqui\nconst processed = items.map(item => {\n  return {\n    json: {\n      ...item.json,\n      processedAt: new Date().toISOString(),\n      status: 'SUCCESS'\n    }\n  };\n});\n\nreturn processed;"
+      },
+      "id": "process-success",
+      "name": "Processar com Sucesso",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [900, 400],
+      "notes": "Processamento normal\nquando não há erros."
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "final-status",
+              "name": "finalStatus",
+              "value": "={{ $node["Verificar se Houve Erro"].item.json.error ? 'FAILED' : 'SUCCESS' }}",
+              "type": "string"
+            },
+            {
+              "id": "execution-time",
+              "name": "executionTime",
+              "value": "={{ new Date().toISOString() }}",
+              "type": "string"
+            },
+            {
+              "id": "has-errors",
+              "name": "hasErrors",
+              "value": "={{ $node["Verificar se Houve Erro"].item.json.error ? true : false }}",
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "finalize-execution",
+      "name": "Finalizar Execução",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [1560, 300],
+      "notes": "Ponto final do workflow.\n\nConsolida status final\ne prepara para logging."
+    }
+  ],
+  "connections": {
+    "Início": {
+      "main": [
+        [
+          {
+            "node": "Operação Hotmart (Exemplo)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Operação Hotmart (Exemplo)": {
+      "main": [
+        [
+          {
+            "node": "Verificar se Houve Erro",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verificar se Houve Erro": {
+      "main": [
+        [
+          {
+            "node": "Analisar e Classificar Erro",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Processar com Sucesso",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analisar e Classificar Erro": {
+      "main": [
+        [
+          {
+            "node": "Deve Tentar Novamente?",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Formatar Mensagem de Erro",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Deve Tentar Novamente?": {
+      "main": [
+        [
+          {
+            "node": "Aguardar 5 Segundos",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Aguardar 5 Segundos": {
+      "main": [
+        [
+          {
+            "node": "Operação Hotmart (Exemplo)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formatar Mensagem de Erro": {
+      "main": [
+        [
+          {
+            "node": "Finalizar Execução",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Processar com Sucesso": {
+      "main": [
+        [
+          {
+            "node": "Finalizar Execução",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "description": "Template robusto para tratamento de erros em operações Hotmart.\n\nCaracterísticas:\n1. **Classificação Inteligente de Erros**\n   - Identifica tipo de erro (Auth, Rate Limit, Server, etc.)\n   - Define severidade (Alta, Média, Baixa)\n   - Determina se deve tentar novamente\n\n2. **Análise de Contexto**\n   - Quando ocorreu\n   - Em qual operação\n   - Detalhes técnicos\n\n3. **Ações Recomendadas**\n   - Sugestões específicas por tipo de erro\n   - Passos para resolução\n\n4. **Retry Automático**\n   - Para erros temporários\n   - Com delay configurável\n   - Evita loops infinitos\n\n5. **Notificações Formatadas**\n   - Mensagens claras\n   - Prontas para Slack/Email\n   - Incluem todas as informações relevantes\n\nComo usar:\n1. Copie este template\n2. Substitua a operação de exemplo\n3. Configure notificações (email, Slack, etc.)\n4. Ajuste tempos de retry conforme necessário\n\nBoas práticas:\n- Sempre use continueOnFail: true\n- Implemente circuit breaker para falhas repetidas\n- Monitore padrões de erro\n- Documente resoluções comuns"
+  },
+  "tags": [
+    {
+      "name": "Hotmart",
+      "createdAt": "2025-05-28T10:00:00.000Z"
+    },
+    {
+      "name": "Template",
+      "createdAt": "2025-05-28T10:00:00.000Z"
+    },
+    {
+      "name": "Error Handling",
+      "createdAt": "2025-05-28T10:00:00.000Z"
+    },
+    {
+      "name": "Reutilizável",
+      "createdAt": "2025-05-28T10:00:00.000Z"
+    }
+  ]
+}

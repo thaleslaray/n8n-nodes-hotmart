@@ -1,0 +1,66 @@
+version: 2
+updates:
+  # Dependências npm
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/Sao_Paulo"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "automated"
+    assignees:
+      - "thaleslaray"
+    reviewers:
+      - "thaleslaray"
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+    pull-request-branch-name:
+      separator: "-"
+    ignore:
+      # Ignorar atualizações major de dependências críticas
+      - dependency-name: "n8n-workflow"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "n8n-core"
+        update-types: ["version-update:semver-major"]
+    groups:
+      # Agrupar dependências de desenvolvimento
+      dev-dependencies:
+        patterns:
+          - "@types/*"
+          - "eslint*"
+          - "jest*"
+          - "typescript*"
+        update-types:
+          - "minor"
+          - "patch"
+      # Agrupar dependências de teste
+      test-dependencies:
+        patterns:
+          - "@jest/*"
+          - "nock"
+          - "supertest"
+        update-types:
+          - "minor"
+          - "patch"
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/Sao_Paulo"
+    labels:
+      - "dependencies"
+      - "github-actions"
+      - "automated"
+    assignees:
+      - "thaleslaray"
+    commit-message:
+      prefix: "ci"

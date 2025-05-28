@@ -1,0 +1,262 @@
+{
+  "name": "Hotmart - Processador de Webhooks",
+  "nodes": [
+    {
+      "parameters": {
+        "events": [
+          "PURCHASE_APPROVED",
+          "PURCHASE_COMPLETE",
+          "PURCHASE_CANCELED",
+          "PURCHASE_REFUNDED"
+        ],
+        "mode": "smart",
+        "options": {
+          "validateHottok": true,
+          "includeMetadata": true
+        }
+      },
+      "id": "webhook-trigger-node",
+      "name": "Webhook Hotmart",
+      "type": "@thaleslaray/n8n-nodes-hotmart.hotmartTrigger",
+      "typeVersion": 1,
+      "position": [240, 300],
+      "webhookId": "hotmart-webhook-handler",
+      "notes": "Recebe webhooks da Hotmart em modo SMART.\n\nModo Smart:\n- Separa automaticamente cada tipo de evento\n- Cria múltiplas saídas (uma por evento)\n- Facilita o processamento específico\n\nEventos monitorados:\n- PURCHASE_APPROVED: Compra aprovada\n- PURCHASE_COMPLETE: Compra finalizada\n- PURCHASE_CANCELED: Compra cancelada\n- PURCHASE_REFUNDED: Reembolso solicitado\n\nOpções:\n- validateHottok: Valida autenticidade\n- includeMetadata: Inclui dados extras"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Processar compra aprovada\nconst event = $json;\n\n// Extrair informações principais\nconst processedData = {\n  // Informações do evento\n  eventType: event.eventType,\n  eventName: event.eventName,\n  receivedAt: event.receivedAt,\n  \n  // Dados da transação\n  transactionId: event.data?.purchase?.transaction || 'N/A',\n  orderId: event.data?.purchase?.order_id || 'N/A',\n  \n  // Produto\n  productId: event.data?.product?.id,\n  productName: event.data?.product?.name || 'Produto não identificado',\n  productPrice: event.data?.purchase?.price?.value || 0,\n  \n  // Comprador\n  buyerId: event.data?.buyer?.id,\n  buyerName: event.data?.buyer?.name || 'N/A',\n  buyerEmail: event.data?.buyer?.email || 'N/A',\n  buyerPhone: event.data?.buyer?.phone || 'N/A',\n  buyerDocument: event.data?.buyer?.document || 'N/A',\n  \n  // Afiliado (se houver)\n  hasAffiliate: !!event.data?.affiliate,\n  affiliateName: event.data?.affiliate?.name || null,\n  \n  // Pagamento\n  paymentMethod: event.data?.purchase?.payment?.method || 'N/A',\n  paymentType: event.data?.purchase?.payment?.type || 'N/A',\n  installments: event.data?.purchase?.payment?.installments || 1,\n  \n  // Flags úteis\n  isSubscription: event.data?.subscription?.id ? true : false,\n  isFirstPurchase: event.data?.buyer?.first_purchase || false,\n  \n  // Metadados\n  metadata: event.metadata || {},\n  \n  // Dados originais completos\n  originalData: event\n};\n\nreturn {\n  json: processedData\n};"
+      },
+      "id": "process-approved-node",
+      "name": "Processar Compra Aprovada",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 100],
+      "notes": "Processa dados de COMPRA APROVADA.\n\nExtrai:\n- Informações da transação\n- Dados do comprador\n- Detalhes do produto\n- Informações de pagamento\n- Dados do afiliado (se houver)\n- Flags úteis (assinatura, primeira compra)\n\nTodos os dados originais são preservados."
+    },
+    {
+      "parameters": {
+        "jsCode": "// Processar compra completa\nconst event = $json;\n\n// Calcular comissões\nconst price = event.data?.purchase?.price?.value || 0;\nconst commissionRate = event.data?.purchase?.commission?.value || 0;\nconst commissionAmount = (price * commissionRate / 100).toFixed(2);\n\nconst processedData = {\n  // Informações básicas\n  eventType: event.eventType,\n  transactionId: event.data?.purchase?.transaction,\n  \n  // Financeiro\n  totalValue: price,\n  commissionRate: commissionRate + '%',\n  commissionAmount: parseFloat(commissionAmount),\n  netValue: (price - parseFloat(commissionAmount)).toFixed(2),\n  \n  // Cliente\n  customerEmail: event.data?.buyer?.email,\n  customerName: event.data?.buyer?.name,\n  \n  // Produto\n  productName: event.data?.product?.name,\n  \n  // Entrega\n  deliveryStatus: 'PENDING_DELIVERY',\n  \n  // Ações necessárias\n  nextSteps: [\n    'Enviar email de confirmação',\n    'Liberar acesso ao produto',\n    'Adicionar ao sistema de membros',\n    'Registrar no CRM'\n  ],\n  \n  // Timestamp\n  completedAt: new Date().toISOString(),\n  \n  originalData: event\n};\n\nreturn {\n  json: processedData\n};"
+      },
+      "id": "process-complete-node",
+      "name": "Processar Compra Completa",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 250],
+      "notes": "Processa COMPRA COMPLETA.\n\nCalcula:\n- Comissões\n- Valor líquido\n- Próximos passos\n\nPrepara dados para:\n- Liberação de acesso\n- Envio de emails\n- Registro em sistemas"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Processar cancelamento\nconst event = $json;\n\nconst processedData = {\n  // Identificação\n  eventType: event.eventType,\n  transactionId: event.data?.purchase?.transaction,\n  \n  // Motivo do cancelamento\n  cancellationReason: event.data?.purchase?.cancellation_reason || 'Não especificado',\n  cancelledAt: new Date().toISOString(),\n  \n  // Cliente\n  customerEmail: event.data?.buyer?.email,\n  customerName: event.data?.buyer?.name,\n  \n  // Produto\n  productName: event.data?.product?.name,\n  lostRevenue: event.data?.purchase?.price?.value || 0,\n  \n  // Ações de retenção\n  retentionActions: [\n    'Enviar email de retenção',\n    'Oferecer desconto especial',\n    'Pesquisa de satisfação',\n    'Contato telefônico (se high-ticket)'\n  ],\n  \n  // Prioridade\n  priority: event.data?.purchase?.price?.value > 100 ? 'HIGH' : 'NORMAL',\n  \n  originalData: event\n};\n\nreturn {\n  json: processedData\n};"
+      },
+      "id": "process-canceled-node",
+      "name": "Processar Cancelamento",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 400],
+      "notes": "Processa CANCELAMENTOS.\n\nIdentifica:\n- Motivo do cancelamento\n- Valor perdido\n- Prioridade (baseada no valor)\n\nSugere ações de retenção."
+    },
+    {
+      "parameters": {
+        "jsCode": "// Processar reembolso\nconst event = $json;\n\nconst processedData = {\n  // Identificação\n  eventType: event.eventType,\n  transactionId: event.data?.purchase?.transaction,\n  \n  // Detalhes do reembolso\n  refundReason: event.data?.purchase?.refund_reason || 'Não especificado',\n  refundValue: event.data?.purchase?.price?.value || 0,\n  refundRequestedAt: new Date().toISOString(),\n  \n  // Cliente\n  customerEmail: event.data?.buyer?.email,\n  customerName: event.data?.buyer?.name,\n  \n  // Produto\n  productName: event.data?.product?.name,\n  \n  // Status e ações\n  refundStatus: 'PENDING_APPROVAL',\n  requiredActions: [\n    'Revisar solicitação',\n    'Verificar política de reembolso',\n    'Aprovar/Rejeitar reembolso',\n    'Processar devolução financeira',\n    'Revogar acesso ao produto'\n  ],\n  \n  // Análise\n  daysSincePurchase: calculateDaysSincePurchase(event.data?.purchase?.date),\n  eligibleForRefund: true, // Implementar lógica de política\n  \n  originalData: event\n};\n\n// Função auxiliar\nfunction calculateDaysSincePurchase(purchaseDate) {\n  if (!purchaseDate) return 0;\n  const purchase = new Date(purchaseDate);\n  const now = new Date();\n  return Math.floor((now - purchase) / (1000 * 60 * 60 * 24));\n}\n\nreturn {\n  json: processedData\n};"
+      },
+      "id": "process-refund-node",
+      "name": "Processar Reembolso",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 550],
+      "notes": "Processa REEMBOLSOS.\n\nAnalisa:\n- Motivo do reembolso\n- Dias desde a compra\n- Elegibilidade\n\nPrepara ações:\n- Aprovação/Rejeição\n- Processamento financeiro\n- Revogação de acesso"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "merge-all-events",
+      "name": "Consolidar Todos os Eventos",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [680, 325],
+      "notes": "Consolida todos os eventos processados\nem um único fluxo.\n\nÚtil para:\n- Logging centralizado\n- Salvar em banco de dados\n- Enviar notificações\n- Análises gerais"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "log-entry-1",
+              "name": "logEntry.timestamp",
+              "value": "={{ new Date().toISOString() }}",
+              "type": "string"
+            },
+            {
+              "id": "log-entry-2",
+              "name": "logEntry.eventType",
+              "value": "={{ $json.eventType }}",
+              "type": "string"
+            },
+            {
+              "id": "log-entry-3",
+              "name": "logEntry.transactionId",
+              "value": "={{ $json.transactionId }}",
+              "type": "string"
+            },
+            {
+              "id": "log-entry-4",
+              "name": "logEntry.customerEmail",
+              "value": "={{ $json.customerEmail || $json.buyerEmail }}",
+              "type": "string"
+            },
+            {
+              "id": "log-entry-5",
+              "name": "logEntry.productName",
+              "value": "={{ $json.productName }}",
+              "type": "string"
+            },
+            {
+              "id": "log-entry-6",
+              "name": "logEntry.value",
+              "value": "={{ $json.totalValue || $json.productPrice || $json.lostRevenue || $json.refundValue || 0 }}",
+              "type": "number"
+            },
+            {
+              "id": "log-entry-7",
+              "name": "logEntry.status",
+              "value": "PROCESSED",
+              "type": "string"
+            },
+            {
+              "id": "log-entry-8",
+              "name": "nextActions",
+              "value": "={{ $json.nextSteps || $json.retentionActions || $json.requiredActions || [] }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "prepare-log-entry",
+      "name": "Preparar para Logging",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [900, 325],
+      "notes": "Prepara dados padronizados para logging.\n\nCria estrutura consistente com:\n- Timestamp\n- Tipo de evento\n- ID da transação\n- Email do cliente\n- Nome do produto\n- Valor envolvido\n- Próximas ações\n\nPróximos passos:\n- Salvar em banco de dados\n- Enviar para sistema de logs\n- Criar dashboard de monitoramento"
+    }
+  ],
+  "connections": {
+    "Webhook Hotmart": {
+      "main": [
+        [
+          {
+            "node": "Processar Compra Aprovada",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Processar Compra Completa",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Processar Cancelamento",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Processar Reembolso",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Processar Compra Aprovada": {
+      "main": [
+        [
+          {
+            "node": "Consolidar Todos os Eventos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Processar Compra Completa": {
+      "main": [
+        [
+          {
+            "node": "Consolidar Todos os Eventos",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Processar Cancelamento": {
+      "main": [
+        [
+          {
+            "node": "Consolidar Todos os Eventos",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Processar Reembolso": {
+      "main": [
+        [
+          {
+            "node": "Consolidar Todos os Eventos",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "Consolidar Todos os Eventos": {
+      "main": [
+        [
+          {
+            "node": "Preparar para Logging",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "description": "Recebe e processa webhooks da Hotmart usando o modo SMART.\n\nO que este workflow faz:\n1. Recebe webhooks de compras (aprovadas, completas, canceladas, reembolsos)\n2. Usa modo SMART para separar automaticamente cada tipo de evento\n3. Processa cada evento com lógica específica\n4. Consolida todos os eventos para logging centralizado\n\nVantagens do modo SMART:\n- Separação automática por tipo de evento\n- Processamento específico para cada situação\n- Facilita adição de novos tipos de eventos\n- Código mais limpo e organizado\n\nCaso de uso:\n- Automação de pós-venda\n- Sistema de notificações\n- Integração com CRM\n- Análise de eventos em tempo real\n- Ações de retenção automáticas\n\nPara configurar:\n1. Copie a URL do webhook do n8n\n2. Configure na Hotmart (Configurações > Webhooks)\n3. Selecione os eventos desejados\n4. Adicione a URL e o token de segurança"
+  },
+  "tags": [
+    {
+      "name": "Hotmart",
+      "createdAt": "2025-05-28T10:00:00.000Z"
+    },
+    {
+      "name": "Exemplo",
+      "createdAt": "2025-05-28T10:00:00.000Z"
+    },
+    {
+      "name": "Básico",
+      "createdAt": "2025-05-28T10:00:00.000Z"
+    },
+    {
+      "name": "Webhook",
+      "createdAt": "2025-05-28T10:00:00.000Z"
+    }
+  ]
+}

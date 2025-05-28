@@ -2,126 +2,154 @@
 
 Este documento lista as próximas features e melhorias planejadas para o projeto.
 
-## 📌 Versão Atual: 0.6.4 (STABLE)
+## 📌 Versão Atual: 0.6.6 (STABLE)
 
-### ✅ Conquistas da v0.6.4
+### ✅ Conquistas Recentes
 - Outputs dinâmicos 100% funcionais
-- Smart mode: 15 outputs
-- Super Smart mode: 18 outputs
+- Smart mode: 15 outputs separados por tipo de evento
+- Super Smart mode: 18 outputs com separação granular
 - Scripts sem avisos de deprecação
+- Lint 100% limpo (zero warnings)
+- RFC-007 completa (workflows exemplo, templates GitHub, CI/CD)
+- Cobertura de testes: 93.24%
 
 ## 🎯 Próximas Prioridades
 
-### 1. **Cobertura de Testes - Os 3.19% Finais** 🧪
+### 1. **Cobertura de Testes - Os Últimos 6.76%** 🧪
 - **Status**: Planejado
 - **Esforço**: 3-4 horas
-- **Descrição**: Implementar testes para os 17 branches restantes
+- **Meta**: Alcançar 100% de cobertura
 - **Detalhes**:
-  - Branches de validação null/undefined (~5 branches)
-  - Condições de arrays vazios (~4 branches)
-  - Combinações de filtros específicos (~6 branches)
-  - Casos de erro específicos (~2 branches)
+  - Branches de validação null/undefined
+  - Condições de arrays vazios
+  - Combinações de filtros específicos
+  - Casos de erro específicos
 
-### 2. **Novos Eventos de Webhook** 📡
-- **Status**: Planejado
-- **Esforço**: 1-2 dias por evento
-- **Eventos planejados**:
-  - [ ] CART_ABANDONED - Carrinho abandonado
-  - [ ] CERTIFICATE_ISSUED - Certificado emitido
-  - [ ] CERTIFICATE_REQUESTED - Certificado solicitado
-  - [ ] PRODUCT_REVIEW - Avaliação de produto
-  - [ ] LESSON_COMPLETED - Aula concluída
-  - [ ] QUIZ_COMPLETED - Quiz concluído
-  - [ ] SUPPORT_TICKET_CREATED - Ticket de suporte criado
-  - [ ] SUPPORT_TICKET_CLOSED - Ticket de suporte fechado
-
-### 3. **Documentação Aprimorada** 📚
+### 2. **Melhorias na Documentação** 📚
 - **Status**: Em andamento
 - **Esforço**: Contínuo
 - **Tarefas**:
-  - [ ] Criar guia de troubleshooting detalhado
-  - [ ] Adicionar exemplos de código para cada operação
-  - [ ] Gravar vídeos tutoriais
-  - [ ] Documentar casos de uso comuns
-  - [ ] Criar FAQ com problemas frequentes
-  - [ ] Traduzir documentação para inglês
+  - [ ] Criar guia completo de troubleshooting
+  - [ ] Documentar cada operação com exemplos reais
+  - [ ] Criar vídeos tutoriais em português
+  - [ ] FAQ com problemas e soluções comuns
+  - [ ] Guia de migração de versões antigas
 
-### 4. **Templates de Workflows** 🔧
-- **Status**: Planejado
+### 3. **Templates de Workflows Avançados** 🔧
+- **Status**: Parcialmente completo (6 templates básicos já criados)
 - **Esforço**: 1 semana
 - **Templates planejados**:
-  - [ ] Onboarding automatizado de novos clientes
-  - [ ] Sistema de notificações de vendas
-  - [ ] Gestão de assinaturas vencidas
-  - [ ] Relatórios automatizados de vendas
-  - [ ] Integração com CRM (HubSpot, Pipedrive)
-  - [ ] Integração com plataformas de email
-  - [ ] Dashboard de métricas em tempo real
+  - [ ] Sistema completo de onboarding de clientes
+  - [ ] Automação de cobranças e inadimplência
+  - [ ] Gestão avançada de assinaturas
+  - [ ] Relatórios automatizados com gráficos
+  - [ ] Integração com CRMs populares (HubSpot, RD Station)
+  - [ ] Integração com plataformas de email marketing
+  - [ ] Sistema de notificações multi-canal
 
-### 5. **Otimizações de Performance** ⚡
-- **Status**: Pesquisa
-- **Esforço**: 2-3 semanas
-- **Melhorias**:
-  - [ ] Implementar cache Redis para requisições frequentes
-  - [ ] Batch processing para operações em massa
-  - [ ] Pool de conexões HTTP persistentes
-  - [ ] Compressão de payloads grandes
-  - [ ] Rate limiting inteligente
-  - [ ] Processamento assíncrono de webhooks
+### 4. **Completar Cobertura de Operações da API** 🔌
+- **Status**: Análise
+- **Esforço**: 1-2 dias por operação
+- **Operações já implementadas**:
+  - ✅ Club - getAll, getModules, getPages, getProgress
+  - ✅ Coupon - create, delete, get
+  - ✅ Product - getAll
+  - ✅ Sales - 6 operações completas
+  - ✅ Subscription - 10 operações completas
+  - ✅ Tickets - getAll, getInfo
+  - ✅ Negotiate - generateNegotiation
+- **Possíveis adições** (verificar disponibilidade na API):
+  - [ ] Operações batch para cupons
+  - [ ] Mais filtros em consultas existentes
+  - [ ] Endpoints novos que a Hotmart liberar
 
-### 6. **CI/CD Completo** 🔄
+### 5. **Melhorias de Performance** ⚡
 - **Status**: Planejado
-- **Esforço**: 1 semana
-- **Componentes**:
-  - [ ] GitHub Actions para testes automáticos
-  - [ ] Verificação de cobertura em PRs
-  - [ ] Build e release automático
-  - [ ] Deploy automático para NPM
-  - [ ] Testes de integração automatizados
-  - [ ] Verificação de segurança (Snyk/Dependabot)
-  - [ ] Changelog automático
+- **Esforço**: 1-2 semanas
+- **Otimizações**:
+  - [ ] Cache inteligente para operações GET
+  - [ ] Processamento em lote (batch)
+  - [ ] Retry automático com backoff exponencial
+  - [ ] Conexões HTTP persistentes
+  - [ ] Compressão de requests/responses
+
+### 6. **Melhorias no HotmartTrigger** 🎯
+- **Status**: Planejado
+- **Esforço**: 3-5 dias
+- **Features**:
+  - [ ] Filtros avançados por produto/oferta
+  - [ ] Validação de assinatura do webhook (HMAC)
+  - [ ] Modo de debug com logs detalhados
+  - [ ] Suporte a múltiplos webhooks simultâneos
+  - [ ] Fila de processamento para alta carga
 
 ## 🚀 Features Futuras (Backlog)
 
-### Integrações Avançadas
-- [ ] Suporte para Hotmart Connect
-- [ ] Integração com Hotmart Sparkle
-- [ ] API de Analytics avançada
-- [ ] Webhooks bidirecionais
+### Integrações com Ecossistema Hotmart
+- [ ] Novas APIs que a Hotmart disponibilizar
+- [ ] Endpoints adicionais conforme documentação oficial
 
-### Melhorias de UX
-- [ ] Interface customizada para configuração
-- [ ] Validação em tempo real de credenciais
-- [ ] Preview de dados antes de executar
-- [ ] Modo debug aprimorado
+### Melhorias de Developer Experience
+- [ ] CLI para gerar boilerplate de operações
+- [ ] Testes automatizados contra sandbox Hotmart
+- [ ] Mock server para desenvolvimento local
+- [ ] Gerador de tipos TypeScript da API
 
-### Funcionalidades Enterprise
-- [ ] Multi-tenant support
-- [ ] Audit logs detalhados
-- [ ] Métricas de uso por operação
-- [ ] Rate limiting por cliente
+### Features Enterprise
+- [ ] Rate limiting inteligente por conta
+- [ ] Logs estruturados para observability
+- [ ] Métricas Prometheus/Grafana
+- [ ] Suporte a proxy corporativo
 
-## 📊 Métricas de Sucesso
+## 📊 Métricas de Qualidade
 
-- Manter cobertura de testes > 95%
-- Tempo de resposta < 500ms para 95% das requisições
-- Zero breaking changes em minor releases
-- Documentação atualizada para 100% das features
+### Metas Atuais
+- ✅ Cobertura de testes > 90% (atual: 93.24%)
+- ✅ Zero warnings de lint
+- ✅ Build sem erros de TypeScript
+- ✅ Todos os eventos webhook suportados
+- 🎯 Documentação 100% completa
+- 🎯 Tempo de resposta < 1s para 95% das operações
 
 ## 🤝 Como Contribuir
 
-1. Escolha um item do roadmap
+1. Verifique se a feature existe na API Hotmart
 2. Abra uma issue para discussão
-3. Implemente seguindo os padrões do projeto
-4. Abra um PR com testes completos
+3. Siga o padrão de código existente
+4. Implemente com testes (mínimo 80% cobertura)
+5. Atualize documentação
+6. Abra PR com descrição detalhada
 
-## 📅 Versionamento Planejado
+## 📅 Histórico de Versões
 
-- **v0.7.0**: Novos eventos de webhook (Q1 2025)
-- **v0.8.0**: Templates de workflows (Q2 2025)
-- **v0.9.0**: Otimizações de performance (Q2 2025)
-- **v1.0.0**: Release estável com CI/CD completo (Q3 2025)
+- **v0.6.6**: Lint 100% limpo, RFC-007 completa
+- **v0.6.4**: Outputs dinâmicos, modo Super Smart
+- **v0.6.0**: Webhook trigger completo
+- **v0.5.x**: Operações básicas da API
+
+## ⚠️ Notas Importantes
+
+1. **Sempre verifique a documentação oficial da Hotmart** antes de adicionar features
+2. **Não invente eventos ou operações** - use apenas o que a API suporta
+3. **Mantenha retrocompatibilidade** - nunca quebre fluxos existentes
+4. **Teste em produção** antes de marcar como estável
+
+## 📌 Operações e Eventos Confirmados da API
+
+### Operações Implementadas ✅
+- **Club**: getAll, getModules, getPages, getProgress
+- **Coupon**: create, delete, get
+- **Product**: getAll
+- **Sales**: getComissoesVendas, getDetalhamentoPrecos, getHistoricoVendas, getParticipantesVendas, getResumoVendas, solicitarReembolso
+- **Subscription**: getAll, cancel, cancelList, changeBillingDate, getPurchases, getSummary, getTransactions, reactivate, reactivateList
+- **Tickets**: getAll, getInfo
+- **Negotiate**: generateNegotiation
+
+### Eventos de Webhook Suportados ✅
+- **Eventos de Compra**: PURCHASE_APPROVED, PURCHASE_COMPLETE, PURCHASE_CANCELED, PURCHASE_REFUNDED, PURCHASE_CHARGEBACK, PURCHASE_BILLET_PRINTED, PURCHASE_DELAYED, PURCHASE_PROTEST, PURCHASE_OUT_OF_SHOPPING_CART, PURCHASE_EXPIRED
+- **Eventos de Assinatura**: SUBSCRIPTION_CANCELLATION, SWITCH_PLAN, UPDATE_SUBSCRIPTION_CHARGE_DATE
+- **Eventos de Área de Membros**: CLUB_FIRST_ACCESS, CLUB_MODULE_COMPLETED
 
 ---
 
-💡 **Sugestões?** Abra uma issue com a tag `enhancement`!
+💡 **Sugestões?** Abra uma issue com link para documentação oficial da API Hotmart!

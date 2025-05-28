@@ -20,7 +20,7 @@ reviews:
 chat:
   auto_reply: true
   
-language: portuguese
+language: pt-BR
 
 tone: helpful
 

@@ -2,6 +2,45 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## 🚨 REGRA ABSOLUTA DE GIT - NUNCA QUEBRAR!!!
+
+**⚠️ NUNCA FAÇA MERGE DIRETO - SEMPRE PULL REQUEST!**
+
+### 🔥 REGRAS OBRIGATÓRIAS:
+
+1. **NUNCA usar `git merge` direto no main**
+2. **SEMPRE criar Pull Request para QUALQUER mudança**
+3. **SEMPRE aguardar revisão de pares antes do merge**
+4. **NUNCA fazer push direto no main sem PR**
+
+### ✅ Workflow CORRETO:
+
+```bash
+# ✅ CORRETO
+git checkout -b feat/minha-feature
+# ... fazer mudanças ...
+git commit -m "feat: implementar X"
+git push -u origin feat/minha-feature
+# → Criar PR no GitHub
+# → Aguardar revisão
+# → Merge via GitHub após aprovação
+
+# ❌ NUNCA FAZER
+git checkout main
+git merge feat/minha-feature  # ← PROIBIDO!
+git push  # ← PROIBIDO!
+```
+
+### 🎯 Por que PR é OBRIGATÓRIO:
+
+- **Revisão de pares** - Garantia de qualidade
+- **Histórico** - Rastreabilidade completa
+- **CI/CD** - Validação automática
+- **Discussão** - Espaço para feedback
+- **Profissionalismo** - Padrão da indústria
+
+### ⚡ JAMAIS sugerir merge direto!
+
 ## 🤖 Sistema 404 MCP - Instruções OBRIGATÓRIAS
 
 **⚠️ REGRA #1: SEMPRE USE actor_think COMO PRIMEIRO COMANDO!**
@@ -468,6 +507,58 @@ Você já tem estas proteções ativas:
 - ✅ **Hooks de commit** (husky + commitlint)
 - ✅ **476+ testes** executados automaticamente
 - ✅ **Scripts de backup** automáticos
+
+## 🛡️ Guardião Automático
+
+O projeto inclui um sistema de proteção automática de UI que detecta mudanças em tempo real.
+
+### Inicialização Automática
+
+```bash
+# Ambiente completo (Guardião + TypeScript Watch)
+./start-dev
+# ou
+npm run dev
+
+# Apenas Guardião
+npm run guardiao:start
+
+# Ver status
+npm run guardiao:status
+
+# Parar
+npm run guardiao:stop
+
+# CodeRabbit (análise de PRs)
+npm run coderabbit          # Interface interativa
+npm run coderabbit:pr 14    # Analisar PR específico  
+npm run coderabbit:list     # Listar PRs disponíveis
+```
+
+### Como Funciona
+
+O Guardião monitora automaticamente:
+- `displayName` - Nomes exibidos
+- `description` - Descrições  
+- `placeholder` - Placeholders
+- `hint` - Dicas de ajuda
+- `label` - Labels
+- `default` - Valores padrão
+- `type` - Tipos de campo
+
+**Detecção em tempo real:**
+```
+📝 MUDANÇA DETECTADA: nodes/Hotmart/v1/actions/product/getAll.operation.ts
+  🆕 NOVO: displayName = "Novo Nome" (linha 42)
+  💾 Snapshot atualizado: +1 novos, -0 removidos
+  ⏰ 10:47:23
+```
+
+### Setup Inicial (Apenas na Primeira Vez)
+
+```bash
+./setup-guardiao
+```
 
 ## 🧪 Testes
 
@@ -986,3 +1077,80 @@ docs/
 - Mantenha arquivos que ainda vai modificar
 - Use `--priority high` para trabalhos complexos
 - Crie arquivo de sessão para histórico completo
+
+## 📋 Sistema de Rastreamento de Tarefas - CRÍTICO
+
+### ⚠️ PROBLEMA QUE RESOLVE
+Evita confusão sobre "qual o próximo passo" quando o contexto é perdido ou em novas sessões.
+
+### 🎯 REGRA DE OURO: SEMPRE consulte TASKS.md
+
+**ANTES de sugerir qualquer próximo passo:**
+1. **SEMPRE leia o arquivo `TASKS.md` na raiz**
+2. **NUNCA sugira tarefas genéricas do ROADMAP.md**
+3. **VERIFIQUE o status real das RFCs e tarefas em andamento**
+
+### 📄 Arquivo TASKS.md - Single Source of Truth
+
+Localização: `/Users/thaleslaray/code/projetos/n8n-hotmart/TASKS.md`
+
+Este arquivo contém:
+- **Em Progresso**: O que está sendo feito agora
+- **Próximas Tarefas**: Ordenadas por prioridade (ALTA/MÉDIA/BAIXA)
+- **Concluído Recentemente**: Histórico do que foi feito
+- **Links para documentação**: RFCs, análises, etc.
+
+### 🔄 Workflow Obrigatório
+
+1. **Ao iniciar sessão**: 
+   ```
+   1. Ler TASKS.md
+   2. Identificar próxima tarefa prioritária
+   3. Verificar se há work-in-progress
+   ```
+
+2. **Antes de sugerir próximos passos**:
+   ```
+   1. Consultar TASKS.md
+   2. Verificar RFCs relacionadas
+   3. Confirmar o que já foi implementado
+   ```
+
+3. **Ao concluir trabalho**:
+   ```
+   1. Atualizar TASKS.md
+   2. Mover tarefas para "Concluído"
+   3. Ajustar prioridades se necessário
+   ```
+
+### ❌ NUNCA faça isso:
+- Sugerir implementar algo que já foi feito
+- Propor tarefas genéricas sem verificar TASKS.md
+- Ignorar RFCs documentadas e seu status
+- Criar novas tarefas sem contexto das existentes
+
+### ✅ SEMPRE faça isso:
+- Leia TASKS.md antes de qualquer sugestão
+- Verifique o status real de implementação das RFCs
+- Mantenha continuidade com o trabalho anterior
+- Atualize TASKS.md ao fazer mudanças significativas
+
+### 📝 Estrutura de Branches e Issues
+
+Quando trabalhar em tarefas:
+```bash
+# Formato: tipo/descrição-clara
+git checkout -b feat/101-workflow-examples    # Para RFC-007 item 1
+git checkout -b feat/102-github-templates     # Para RFC-007 item 2
+git checkout -b fix/104-lint-warning          # Para correções
+```
+
+### 🚨 Lembrete Final
+
+**Se o usuário perguntar "qual o próximo passo?":**
+1. NÃO responda imediatamente
+2. Leia TASKS.md primeiro
+3. Identifique a tarefa de maior prioridade pendente
+4. Sugira com base no que REALMENTE precisa ser feito
+
+**Este sistema existe para NUNCA MAIS causar frustração sobre próximos passos!**

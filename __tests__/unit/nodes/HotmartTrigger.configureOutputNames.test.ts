@@ -44,16 +44,16 @@ describe('configureOutputNames function', () => {
         outputNameSuper5: 'Custom Refund',
         outputNameSuper6: 'Custom Charge',
         outputNameSuper7: 'Custom Billet',
-        outputNameSuper17: 'Custom PIX', // Note: PIX is Super17, not Super8
-        outputNameSuper8: 'Custom Dispute',
-        outputNameSuper9: 'Custom Expired',
-        outputNameSuper10: 'Custom Delayed',
-        outputNameSuper11: 'Custom Abandon',
-        outputNameSuper12: 'Custom Sub Cancel',
-        outputNameSuper13: 'Custom Switch',
-        outputNameSuper14: 'Custom Date',
-        outputNameSuper15: 'Custom First',
-        outputNameSuper16: 'Custom Module',
+        outputNameSuper8: 'Custom PIX', // Note: PIX is now Super8 (corrected alignment)
+        outputNameSuper9: 'Custom Dispute',
+        outputNameSuper10: 'Custom Expired',
+        outputNameSuper11: 'Custom Delayed',
+        outputNameSuper12: 'Custom Abandon',
+        outputNameSuper13: 'Custom Sub Cancel',
+        outputNameSuper14: 'Custom Switch',
+        outputNameSuper15: 'Custom Date',
+        outputNameSuper16: 'Custom First',
+        outputNameSuper17: 'Custom Module',
       };
 
       const result = configureOutputNames(parameters);

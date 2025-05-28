@@ -1,0 +1,107 @@
+name: ❓ Pergunta ou Dúvida
+description: Tire dúvidas sobre como usar o n8n-nodes-hotmart
+title: "[Dúvida]: "
+labels: ["question", "needs-triage"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Tem uma dúvida sobre como usar o n8n-nodes-hotmart?
+        Estamos aqui para ajudar! 
+        
+        💡 **Dica**: Verifique primeiro nossa [documentação](https://github.com/thaleslaray/n8n-nodes-hotmart#readme) e os [exemplos](https://github.com/thaleslaray/n8n-nodes-hotmart/tree/main/examples).
+        
+  - type: textarea
+    id: question
+    attributes:
+      label: Sua Pergunta
+      description: Descreva sua dúvida de forma clara e detalhada
+      placeholder: |
+        Como faço para processar webhooks de múltiplos produtos ao mesmo tempo?
+        Preciso separar as vendas por produto mas não sei como configurar.
+    validations:
+      required: true
+      
+  - type: textarea
+    id: context
+    attributes:
+      label: Contexto
+      description: Forneça contexto sobre o que você está tentando fazer
+      placeholder: |
+        Estou criando um sistema de relatórios automatizados que precisa:
+        - Receber webhooks de vendas
+        - Separar por produto
+        - Gerar relatórios individuais
+        - Enviar por email
+    validations:
+      required: true
+      
+  - type: textarea
+    id: tried
+    attributes:
+      label: O que Já Tentou
+      description: Descreva o que você já tentou fazer
+      placeholder: |
+        - Tentei usar o modo Smart do webhook mas não consegui separar por produto
+        - Olhei a documentação mas não encontrei exemplo específico
+        - Testei com Switch node mas ficou muito complexo
+      
+  - type: dropdown
+    id: experience
+    attributes:
+      label: Experiência com n8n
+      description: Qual seu nível de experiência com n8n?
+      options:
+        - Iniciante - Comecei recentemente
+        - Intermediário - Uso há alguns meses
+        - Avançado - Uso há mais de 1 ano
+        - Expert - Contribuo com a comunidade
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: category
+    attributes:
+      label: Categoria da Dúvida
+      description: Sobre qual aspecto é sua dúvida?
+      options:
+        - Configuração inicial
+        - Autenticação/Credenciais
+        - Webhooks/Triggers
+        - Operações específicas
+        - Tratamento de erros
+        - Performance/Otimização
+        - Integração com outros nós
+        - Outro
+    validations:
+      required: true
+      
+  - type: textarea
+    id: workflow
+    attributes:
+      label: Workflow Atual
+      description: |
+        Se possível, compartilhe seu workflow atual.
+        Você pode exportar como JSON no n8n.
+      render: json
+      placeholder: |
+        {
+          "nodes": [...],
+          "connections": {...}
+        }
+        
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      description: "Confirme que você:"
+      options:
+        - label: Verifiquei a documentação README
+          required: true
+        - label: Olhei os exemplos na pasta examples/
+          required: false
+        - label: Procurei em issues anteriores
+          required: true
+        - label: É uma dúvida de uso, não um bug
+          required: true

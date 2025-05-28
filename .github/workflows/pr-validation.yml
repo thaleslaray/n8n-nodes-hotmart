@@ -1,0 +1,245 @@
+name: PR - Validação de Pull Request
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+
+jobs:
+  # Validar informações do PR
+  validate-pr:
+    name: 📝 Validar PR
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📥 Checkout do código
+      uses: actions/checkout@v4
+      
+    - name: 🏷️ Verificar labels
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const labels = context.payload.pull_request.labels.map(l => l.name);
+          
+          // Verificar se tem pelo menos uma label de tipo
+          const typeLabels = ['bug', 'enhancement', 'documentation', 'refactor', 'test', 'build'];
+          const hasTypeLabel = labels.some(label => typeLabels.includes(label));
+          
+          if (!hasTypeLabel) {
+            core.setFailed('❌ PR precisa de pelo menos uma label de tipo: ' + typeLabels.join(', '));
+          }
+          
+          // Avisar sobre breaking changes
+          if (labels.includes('breaking-change')) {
+            core.warning('⚠️ Este PR contém breaking changes! Certifique-se de atualizar a documentação.');
+          }
+    
+    - name: 📋 Verificar template do PR
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const body = context.payload.pull_request.body || '';
+          
+          // Verificar se o template foi usado
+          const requiredSections = [
+            '## 📋 Descrição',
+            '## 🔗 Issue Relacionada',
+            '## 💡 Tipo de Mudança',
+            '## ✅ Checklist'
+          ];
+          
+          const missingSections = requiredSections.filter(section => !body.includes(section));
+          
+          if (missingSections.length > 0) {
+            core.warning('⚠️ Seções faltando no PR: ' + missingSections.join(', '));
+          }
+          
+          // Verificar se o checklist tem itens marcados
+          const checklistItems = (body.match(/\[[ x]\]/g) || []);
+          const checkedItems = (body.match(/\[x\]/g) || []);
+          
+          if (checklistItems.length > 0 && checkedItems.length === 0) {
+            core.warning('⚠️ Nenhum item do checklist foi marcado!');
+          }
+          
+          console.log(`✅ Checklist: ${checkedItems.length}/${checklistItems.length} itens marcados`);
+
+  # Verificar commits
+  check-commits:
+    name: 📝 Verificar Commits
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📥 Checkout do código
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        
+    - name: 🔍 Validar mensagens de commit
+      uses: wagoid/commitlint-github-action@v5
+      with:
+        configFile: commitlint.config.js
+        failOnWarnings: false
+        
+    - name: 📊 Analisar tipos de commits
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const commits = context.payload.pull_request.commits;
+          
+          // Buscar commits do PR
+          const { data: prCommits } = await github.rest.pulls.listCommits({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            pull_number: context.issue.number
+          });
+          
+          // Contar tipos de commits
+          const commitTypes = {};
+          prCommits.forEach(commit => {
+            const match = commit.commit.message.match(/^(\w+)(\(.+\))?:/);
+            if (match) {
+              const type = match[1];
+              commitTypes[type] = (commitTypes[type] || 0) + 1;
+            }
+          });
+          
+          console.log('📊 Tipos de commits no PR:');
+          Object.entries(commitTypes).forEach(([type, count]) => {
+            console.log(`  - ${type}: ${count}`);
+          });
+
+  # Verificar arquivos alterados
+  check-files:
+    name: 📁 Verificar Arquivos
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📥 Checkout do código
+      uses: actions/checkout@v4
+      
+    - name: 🔍 Analisar arquivos alterados
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const { data: files } = await github.rest.pulls.listFiles({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            pull_number: context.issue.number
+          });
+          
+          // Estatísticas
+          let totalAdditions = 0;
+          let totalDeletions = 0;
+          const fileTypes = {};
+          
+          files.forEach(file => {
+            totalAdditions += file.additions;
+            totalDeletions += file.deletions;
+            
+            const ext = file.filename.split('.').pop();
+            fileTypes[ext] = (fileTypes[ext] || 0) + 1;
+            
+            // Avisos específicos
+            if (file.filename.includes('package.json') && !file.filename.includes('package-lock.json')) {
+              core.warning('⚠️ package.json foi modificado. Certifique-se de atualizar pnpm-lock.yaml');
+            }
+            
+            if (file.filename.endsWith('.test.ts') || file.filename.endsWith('.spec.ts')) {
+              console.log(`✅ Teste incluído/modificado: ${file.filename}`);
+            }
+            
+            if (file.additions > 500) {
+              core.warning(`⚠️ Arquivo muito grande: ${file.filename} (+${file.additions} linhas)`);
+            }
+          });
+          
+          console.log('\n📊 Resumo das alterações:');
+          console.log(`  - Arquivos: ${files.length}`);
+          console.log(`  - Adições: +${totalAdditions}`);
+          console.log(`  - Deleções: -${totalDeletions}`);
+          console.log(`  - Total: ${totalAdditions - totalDeletions}`);
+          
+          console.log('\n📁 Tipos de arquivo:');
+          Object.entries(fileTypes).forEach(([ext, count]) => {
+            console.log(`  - .${ext}: ${count}`);
+          });
+          
+          // Verificar se há testes para arquivos modificados
+          const srcFiles = files.filter(f => f.filename.includes('/nodes/') && f.filename.endsWith('.ts') && !f.filename.includes('.test.'));
+          const testFiles = files.filter(f => f.filename.includes('.test.ts') || f.filename.includes('.spec.ts'));
+          
+          if (srcFiles.length > 0 && testFiles.length === 0) {
+            core.warning('⚠️ Arquivos fonte modificados mas nenhum teste foi adicionado/atualizado!');
+          }
+
+  # Executar verificações automáticas
+  auto-checks:
+    name: 🤖 Verificações Automáticas
+    runs-on: ubuntu-latest
+    needs: [validate-pr, check-commits, check-files]
+    
+    steps:
+    - name: 📥 Checkout do código
+      uses: actions/checkout@v4
+      
+    - name: 💬 Comentar resumo no PR
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const comment = `## 🤖 Validação Automática do PR
+          
+          ### ✅ Verificações Concluídas
+          
+          - 📝 Informações do PR validadas
+          - 📝 Commits verificados
+          - 📁 Arquivos analisados
+          
+          ### 📋 Próximos Passos
+          
+          1. Aguarde a conclusão dos testes de CI
+          2. Solicite review de pelo menos 1 maintainer
+          3. Responda aos comentários de review
+          4. Após aprovação, o PR será mergeado
+          
+          ---
+          
+          💡 **Dica**: Use \`pnpm test:watch\` localmente para testar durante o desenvolvimento.
+          
+          <details>
+          <summary>📚 Links Úteis</summary>
+          
+          - [Guia de Contribuição](https://github.com/thaleslaray/n8n-nodes-hotmart/blob/main/CONTRIBUTING.md)
+          - [Documentação](https://github.com/thaleslaray/n8n-nodes-hotmart#readme)
+          - [Exemplos](https://github.com/thaleslaray/n8n-nodes-hotmart/tree/main/examples)
+          
+          </details>`;
+          
+          // Procurar por comentário existente
+          const { data: comments } = await github.rest.issues.listComments({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number: context.issue.number
+          });
+          
+          const botComment = comments.find(comment => 
+            comment.user.type === 'Bot' && 
+            comment.body.includes('🤖 Validação Automática do PR')
+          );
+          
+          if (botComment) {
+            // Atualizar comentário existente
+            await github.rest.issues.updateComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: botComment.id,
+              body: comment
+            });
+          } else {
+            // Criar novo comentário
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: comment
+            });
+          }
