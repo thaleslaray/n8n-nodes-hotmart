@@ -12,6 +12,41 @@ interface PaginationOptions {
 // Valor máximo permitido pela API Hotmart para max_results
 const MAX_API_RESULTS = 500;
 
+/**
+ * Busca todos os itens de um endpoint da API Hotmart usando paginação automática.
+ * 
+ * @description Esta função implementa paginação automática para coletar todos os resultados
+ * de endpoints da API Hotmart que suportam paginação. Usa o valor máximo permitido
+ * (500 itens por página) para otimizar o número de requisições.
+ * 
+ * @template T - Tipo do objeto de dados retornado, extende IDataObject
+ * @param {IExecuteFunctions} this - Contexto de execução do n8n
+ * @param {PaginationOptions} options - Configurações da paginação
+ * @param {string} options.resource - Recurso da API (ex: 'subscription', 'sales')
+ * @param {string} options.operation - Operação da API (ex: 'getAll', 'getHistory')
+ * @param {IDataObject} [options.query] - Parâmetros de query adicionais
+ * @param {IDataObject} [options.body] - Dados do corpo da requisição
+ * @param {number} options.maxResults - Número máximo de resultados (ignorado se returnAll=true)
+ * 
+ * @returns {Promise<T[]>} Array com todos os itens encontrados
+ * 
+ * @throws {NodeOperationError} Quando a API retorna erro ou estrutura inválida
+ * 
+ * @example
+ * ```typescript
+ * // Buscar todas as assinaturas ativas
+ * const subscriptions = await getAllItems.call(this, {
+ *   resource: 'subscription',
+ *   operation: 'getAll',
+ *   query: { status: 'ACTIVE' },
+ *   maxResults: 1000
+ * });
+ * ```
+ * 
+ * @performance Usa 500 itens por página para otimizar número de requisições
+ * @since v0.1.0 - Implementação inicial
+ * @since v0.6.0 - Otimizada para usar MAX_API_RESULTS (500)
+ */
 export async function getAllItems<T extends IDataObject = IDataObject>(
   this: IExecuteFunctions,
   options: PaginationOptions

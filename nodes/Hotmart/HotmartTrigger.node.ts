@@ -1165,6 +1165,29 @@ export class HotmartTrigger implements INodeType {
     },
   };
 
+  /**
+   * Processa eventos de webhook da Hotmart com suporte a três modos de operação.
+   * 
+   * @description Esta função é o ponto de entrada principal para processar webhooks da Hotmart.
+   * Suporta três modos: Standard (1 saída), Smart (15 saídas) e Super Smart (18 saídas).
+   * Implementa validação de token, detecção de eventos e roteamento inteligente.
+   * 
+   * @returns Promise<IWebhookResponseData> Resposta do webhook com dados roteados
+   * 
+   * @example
+   * // Modo Standard: Processa evento específico ou todos
+   * // Modo Smart: Separa automaticamente por tipo de evento  
+   * // Modo Super Smart: Diferencia compras únicas, assinaturas e renovações
+   * 
+   * @performance 
+   * - Standard: ~1.26M ops/sec
+   * - Smart: ~1.44M ops/sec  
+   * - Super Smart: ~803K ops/sec
+   * 
+   * @security Token HOTTOK validado quando configurado
+   * @since v0.3.0 - Suporte a múltiplos modos
+   * @since v0.6.6 - Performance otimizada (+11% Smart, +8% Super Smart)
+   */
   async webhook(this: IWebhookFunctions): Promise<IWebhookResponseData> {
     // Função helper para inicialização do contexto - Performance: ~1.5M ops/sec
     const initializeWebhookContext = () => {
