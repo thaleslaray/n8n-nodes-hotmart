@@ -111,7 +111,7 @@
       "id": "e8e6f6d0-51b9-4e9f-b3f5-d43c5e5b62a9",
       "name": "Criar Resumo Final",
       "type": "n8n-nodes-base.set",
-      "typeVersion": 3.2,
+      "typeVersion": 1,
       "position": [1120, 300],
       "notes": "Cria um resumo consolidado com:\n- Total de produtos\n- Produtos ativos\n- Total de vendas\n- Quantidade de best sellers\n- Data/hora de geração\n- Lista completa de produtos\n\nÚtil para dashboards ou relatórios."
     }

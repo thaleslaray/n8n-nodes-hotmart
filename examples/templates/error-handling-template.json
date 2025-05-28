@@ -110,7 +110,7 @@
       "id": "wait-before-retry",
       "name": "Aguardar 5 Segundos",
       "type": "n8n-nodes-base.wait",
-      "typeVersion": 1.1,
+      "typeVersion": 1,
       "position": [1340, 100],
       "notes": "Aguarda antes de tentar novamente.\n\nPara rate limit, considere\naumentar o tempo de espera."
     },
@@ -144,7 +144,7 @@
             {
               "id": "final-status",
               "name": "finalStatus",
-              "value": "={{ $('Verificar se Houve Erro').item.json.error ? 'FAILED' : 'SUCCESS' }}",
+              "value": "={{ $node["Verificar se Houve Erro"].item.json.error ? 'FAILED' : 'SUCCESS' }}",
               "type": "string"
             },
             {
@@ -156,7 +156,7 @@
             {
               "id": "has-errors",
               "name": "hasErrors",
-              "value": "={{ $('Verificar se Houve Erro').item.json.error ? true : false }}",
+              "value": "={{ $node["Verificar se Houve Erro"].item.json.error ? true : false }}",
               "type": "boolean"
             }
           ]
@@ -166,7 +166,7 @@
       "id": "finalize-execution",
       "name": "Finalizar Execução",
       "type": "n8n-nodes-base.set",
-      "typeVersion": 3.2,
+      "typeVersion": 1,
       "position": [1560, 300],
       "notes": "Ponto final do workflow.\n\nConsolida status final\ne prepara para logging."
     }

@@ -139,7 +139,7 @@
       "id": "prepare-log-entry",
       "name": "Preparar para Logging",
       "type": "n8n-nodes-base.set",
-      "typeVersion": 3.2,
+      "typeVersion": 1,
       "position": [900, 325],
       "notes": "Prepara dados padronizados para logging.\n\nCria estrutura consistente com:\n- Timestamp\n- Tipo de evento\n- ID da transação\n- Email do cliente\n- Nome do produto\n- Valor envolvido\n- Próximas ações\n\nPróximos passos:\n- Salvar em banco de dados\n- Enviar para sistema de logs\n- Criar dashboard de monitoramento"
     }
