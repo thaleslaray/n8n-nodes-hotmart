@@ -1310,35 +1310,54 @@ describe('HotmartTrigger Node - Complete Coverage', () => {
       expect(result).toEqual({ noWebhookResponse: true });
     });
 
-    it('should cover default case in super-smart mode (line 1449)', async () => {
-      // Para cobrir a linha 1449, precisamos de um evento válido mas com dados que não se encaixam em nenhum case
+    it('should cover CLUB_MODULE_COMPLETED case in super-smart mode (line 1449)', async () => {
+      // Para cobrir a linha 1449, precisamos enviar evento CLUB_MODULE_COMPLETED
       (mockWebhookFunctions.getNodeParameter as jest.Mock).mockImplementation((name) => {
         if (name === 'triggerMode') return 'super-smart';
         if (name === 'options') return {};
         return undefined;
       });
       
-      // Usar um evento válido mas modificar o mock para não bater em nenhum case
-      // Vamos usar um evento que existe mas simular uma situação onde o switch não encontra match
+      // Mock headers para passar validação
+      (mockWebhookFunctions.getHeaderData as jest.Mock).mockReturnValue({
+        'x-hotmart-hottok': 'valid-token'
+      });
+      
+      // Enviar evento CLUB_MODULE_COMPLETED para cobrir case da linha 1449
       (mockWebhookFunctions.getBodyData as jest.Mock).mockReturnValue({
-        event: 'PURCHASE_APPROVED', // Evento válido
+        event: 'CLUB_MODULE_COMPLETED',
         data: {
-          purchase: {
-            payment: {
-              type: 'unknown_payment_type' // Tipo de pagamento desconhecido
+          subscription: {
+            subscriber: {
+              email: 'test@example.com'
             }
           },
           product: {
-            id: '123'
+            id: '123',
+            name: 'Curso Test'
+          },
+          club: {
+            module: {
+              id: 'mod123',
+              name: 'Módulo 1'
+            }
           }
         }
       });
 
       const result = await hotmartTrigger.webhook.call(mockWebhookFunctions as IWebhookFunctions);
-
-      // O resultado ainda deve ser processado, apenas com índice diferente
+      
+      // Resultado deve ter workflowData com dados na posição correta (output 17)
       expect(result).toBeDefined();
-      expect(Array.isArray(result)).toBe(true);
+      expect(result).toHaveProperty('workflowData');
+      const outputs = result.workflowData as any[];
+      expect(Array.isArray(outputs)).toBe(true);
+      expect(outputs.length).toBe(18); // Super smart tem 18 outputs
+      expect(outputs[17]).toBeDefined(); // Output index 17 para CLUB_MODULE_COMPLETED deve ter dados
+      expect(outputs[17]).toEqual(expect.objectContaining({
+        event: 'CLUB_MODULE_COMPLETED',
+        eventType: 'CLUB_MODULE_COMPLETED'
+      }));
     });
   });
 });
