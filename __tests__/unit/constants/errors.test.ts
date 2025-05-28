@@ -81,6 +81,50 @@ describe('errors.ts - 100% Coverage', () => {
       expect(resultResourceUndefined).toBe('Erro base');
       expect(resultOperationUndefined).toBe('Erro base');
     });
+
+    it('should not append resource/operation with falsy values', () => {
+      const resultEmptyResource = createErrorMessage('Erro base', { resource: '', operation: 'getAll' });
+      const resultEmptyOperation = createErrorMessage('Erro base', { resource: 'subscription', operation: '' });
+      const resultBothEmpty = createErrorMessage('Erro base', { resource: '', operation: '' });
+      const resultNullDetails = createErrorMessage('Erro base', null as any);
+      
+      expect(resultEmptyResource).toBe('Erro base');
+      expect(resultEmptyOperation).toBe('Erro base');
+      expect(resultBothEmpty).toBe('Erro base');
+      expect(resultNullDetails).toBe('Erro base');
+    });
+
+    it('should test short-circuit evaluation: resource truthy but operation falsy', () => {
+      // Este é o edge case específico: resource é truthy, mas operation é falsy
+      // Testa o segundo branch da condição details?.resource && details?.operation
+      // 
+      // NOTA: Há 1 branch não testável (97.22% coverage) relacionado ao optional chaining
+      // Ver documentação: EDGE-CASE-ANALYSIS.md para detalhes técnicos
+      const resultTruthyResourceFalsyOperation = createErrorMessage('Erro base', { 
+        resource: 'subscription', 
+        operation: false as any  // boolean false
+      });
+      
+      const resultTruthyResourceNullOperation = createErrorMessage('Erro base', { 
+        resource: 'subscription', 
+        operation: null as any  // null
+      });
+
+      const resultTruthyResourceZeroOperation = createErrorMessage('Erro base', { 
+        resource: 'subscription', 
+        operation: 0 as any  // number 0
+      });
+
+      const resultTruthyResourceNaNOperation = createErrorMessage('Erro base', { 
+        resource: 'subscription', 
+        operation: NaN as any  // NaN
+      });
+      
+      expect(resultTruthyResourceFalsyOperation).toBe('Erro base');
+      expect(resultTruthyResourceNullOperation).toBe('Erro base');
+      expect(resultTruthyResourceZeroOperation).toBe('Erro base');
+      expect(resultTruthyResourceNaNOperation).toBe('Erro base');
+    });
   });
 
   describe('getErrorMessageByStatus function', () => {
