@@ -1,6 +1,6 @@
 # n8n-nodes-hotmart 🤖
 
-![Version](https://img.shields.io/badge/version-0.6.4-blue)
+![Version](https://img.shields.io/badge/version-0.6.6-blue)
 ![Stable](https://img.shields.io/badge/stable-✅-green)
 ![Tests](https://github.com/thaleslaray/n8n-nodes-hotmart/actions/workflows/tests.yml/badge.svg)
 ![Build](https://github.com/thaleslaray/n8n-nodes-hotmart/actions/workflows/build.yml/badge.svg)
@@ -230,6 +230,65 @@ de compra e histórico de cada segmento de cliente"
 - 📊 **Insights Contextuais**: AI pode correlacionar dados da Hotmart com outras fontes
 - ⚡ **Resposta Instantânea**: Execução e análise em tempo real para tomada de decisão
 - 🛡️ **Validação Automática**: Prevenção de erros através de validação inteligente de parâmetros
+
+## 🎯 RFC-007: Repository Enhancements - COMPLETO
+
+### 🚀 Novidades da v0.6.6
+
+A versão 0.6.6 marca a conclusão da **RFC-007 Repository Enhancements**, trazendo melhorias significativas para desenvolvedores e usuários:
+
+#### 📋 1. Workflows de Exemplo (examples/)
+Workflows prontos para uso que demonstram o poder do n8n-nodes-hotmart:
+
+- **📝 examples/basic/** - Workflows fundamentais para iniciantes
+  - `01-simple-product-list.json` - Lista produtos da Hotmart
+  - `02-subscription-management.json` - Gestão de assinaturas
+  - `03-webhook-handler.json` - Processamento de webhooks modo Smart
+
+- **⚡ examples/intermediate/** - Automações avançadas
+  - `01-sales-report-automation.json` - Relatórios automatizados com análise
+
+- **🛠️ examples/templates/** - Templates reutilizáveis
+  - `error-handling-template.json` - Tratamento robusto de erros
+
+**Como usar:**
+```bash
+# Importe diretamente no n8n
+# Vá em Import > Selecione o arquivo .json desejado
+```
+
+#### 🏷️ 2. Templates GitHub em PT-BR (.github/)
+Templates profissionais para melhorar colaboração:
+
+- **📋 Issue Templates** - Formulários estruturados para:
+  - 🐛 Reportar bugs (`bug_report.yml`)
+  - ✨ Sugerir funcionalidades (`feature_request.yml`)
+  - ❓ Fazer perguntas (`question.yml`)
+  - 🔒 Reportar vulnerabilidades (`security.yml`)
+
+- **📝 Pull Request Template** - Checklist padronizado para PRs
+- **⚙️ Configuração** - Links úteis e direcionamento automático
+
+#### 🚀 3. CI/CD Completo (.github/workflows/)
+Pipeline automatizado de qualidade:
+
+- **🧪 ci.yml** - Testes em matriz (Node 18/20, Ubuntu/macOS/Windows)
+- **✅ pr-validation.yml** - Validação automática de Pull Requests
+- **📦 release.yml** - Release automático com changelog
+- **🔐 dependencies.yml** - Auditoria e gestão de dependências
+- **🤖 dependabot.yml** - Atualizações automáticas de dependências
+
+#### 🔧 4. Melhorias de Qualidade
+- **Lint 100% limpo** - Zero warnings
+- **Documentação revisada** - ROADMAP baseado em docs oficiais da Hotmart
+- **Testes robustos** - 538 testes com 93% de cobertura
+
+### 📈 Benefícios para Usuários
+
+- **🚀 Onboarding mais rápido** - Workflows de exemplo aceleram aprendizado
+- **🔧 Menos bugs** - CI/CD automatizado garante qualidade
+- **📋 Melhor suporte** - Templates facilitam reportar problemas
+- **⚡ Atualizações automáticas** - Dependabot mantém tudo atualizado
 
 ## 📁 Estrutura do Projeto
 
