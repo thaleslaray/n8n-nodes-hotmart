@@ -95,7 +95,7 @@ body:
     id: checklist
     attributes:
       label: Checklist
-      description: Confirme que você:
+      description: "Confirme que você:"
       options:
         - label: Verifiquei a documentação README
           required: true

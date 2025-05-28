@@ -203,43 +203,43 @@ export const configureOutputNames = (parameters: INodeParameters) => {
         },
         {
           type: 'main',
-          displayName: parameters.outputNameSuper17 || 'PIX',
+          displayName: parameters.outputNameSuper8 || 'PIX',
         },
         {
           type: 'main',
-          displayName: parameters.outputNameSuper8 || 'Disputa',
+          displayName: parameters.outputNameSuper9 || 'Disputa',
         },
         {
           type: 'main',
-          displayName: parameters.outputNameSuper9 || 'Expirada',
+          displayName: parameters.outputNameSuper10 || 'Expirada',
         },
         {
           type: 'main',
-          displayName: parameters.outputNameSuper10 || 'Atrasada',
+          displayName: parameters.outputNameSuper11 || 'Atrasada',
         },
         {
           type: 'main',
-          displayName: parameters.outputNameSuper11 || 'Abandono',
+          displayName: parameters.outputNameSuper12 || 'Abandono',
         },
         {
           type: 'main',
-          displayName: parameters.outputNameSuper12 || 'Ass. Cancelada',
+          displayName: parameters.outputNameSuper13 || 'Ass. Cancelada',
         },
         {
           type: 'main',
-          displayName: parameters.outputNameSuper13 || 'Troca de Plano',
+          displayName: parameters.outputNameSuper14 || 'Troca de Plano',
         },
         {
           type: 'main',
-          displayName: parameters.outputNameSuper14 || 'Troca de Data',
+          displayName: parameters.outputNameSuper15 || 'Troca de Data',
         },
         {
           type: 'main',
-          displayName: parameters.outputNameSuper15 || 'Primeiro Acesso',
+          displayName: parameters.outputNameSuper16 || 'Primeiro Acesso',
         },
         {
           type: 'main',
-          displayName: parameters.outputNameSuper16 || 'Módulo Completo',
+          displayName: parameters.outputNameSuper17 || 'Módulo Completo',
         },
       ];
     } else {
@@ -955,7 +955,7 @@ export class HotmartTrigger implements INodeType {
       },
       {
         displayName: 'Nome alternativo para: PURCHASE_BILLET_PRINTED (PIX)',
-        name: 'outputNameSuper17',
+        name: 'outputNameSuper8',
         type: 'string',
         default: 'PIX',
         description: 'Nome personalizado para a saída de PIX Gerado',
