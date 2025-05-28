@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Script simplificado do CodeRabbit
+# Uso: ./scripts/coderabbit [PR_NUMBER]
+
+set -e
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Se número do PR foi passado, usar diretamente
+if [ ! -z "$1" ]; then
+    if [[ "$1" =~ ^[0-9]+$ ]]; then
+        "$SCRIPT_DIR/coderabbit-final.sh" "$1"
+        exit 0
+    else
+        echo "❌ Número de PR inválido. Use: $0 [NUMERO_PR]"
+        exit 1
+    fi
+fi
+
+# Senão, usar interface interativa
+"$SCRIPT_DIR/coderabbit-analysis.sh"

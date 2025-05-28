@@ -132,14 +132,14 @@ TOTAL_EXECUTION_TIME=$((END_TIME - START_TIME))
 EXECUTION_TIME="${TOTAL_EXECUTION_TIME}s"
 
 # Capturar dados dos webhooks se disponível
-if [ -f "test-report-real-data.json" ]; then
-    WEBHOOK_TOTAL=$(jq -r '.summary.total // 48' test-report-real-data.json)
-    WEBHOOK_SUCCESS=$(jq -r '.summary.success // 48' test-report-real-data.json)
-    WEBHOOK_RATE=$(jq -r '.summary.successRate // "100.00"' test-report-real-data.json)
-    WEBHOOK_AVG_TIME=$(jq -r '.results | map(.responseTime) | add / length | floor' test-report-real-data.json 2>/dev/null || echo "23")
-    WEBHOOK_STANDARD=$(jq -r '[.results[] | select(.workflow == "standard")] | length' test-report-real-data.json || echo "15")
-    WEBHOOK_SMART=$(jq -r '[.results[] | select(.workflow == "smart")] | length' test-report-real-data.json || echo "15")
-    WEBHOOK_SUPERSMART=$(jq -r '[.results[] | select(.workflow == "super-smart")] | length' test-report-real-data.json || echo "18")
+if [ -f "docs/reports/test-report-real-data.json" ]; then
+    WEBHOOK_TOTAL=$(jq -r '.summary.total // 48' docs/reports/test-report-real-data.json)
+    WEBHOOK_SUCCESS=$(jq -r '.summary.success // 48' docs/reports/test-report-real-data.json)
+    WEBHOOK_RATE=$(jq -r '.summary.successRate // "100.00"' docs/reports/test-report-real-data.json)
+    WEBHOOK_AVG_TIME=$(jq -r '.results | map(.responseTime) | add / length | floor' docs/reports/test-report-real-data.json 2>/dev/null || echo "23")
+    WEBHOOK_STANDARD=$(jq -r '[.results[] | select(.workflow == "standard")] | length' docs/reports/test-report-real-data.json || echo "15")
+    WEBHOOK_SMART=$(jq -r '[.results[] | select(.workflow == "smart")] | length' docs/reports/test-report-real-data.json || echo "15")
+    WEBHOOK_SUPERSMART=$(jq -r '[.results[] | select(.workflow == "super-smart")] | length' docs/reports/test-report-real-data.json || echo "18")
 else
     WEBHOOK_TOTAL=48
     WEBHOOK_SUCCESS=48
@@ -163,7 +163,7 @@ else
     SUCCESS_RATE=$(echo "scale=1; $TOTAL_SUCCESS * 100 / $TOTAL_TESTS" | bc -l)
 fi
 
-cat > test-report-full.md << EOF
+cat > docs/reports/test-report-full.md << EOF
 # 📊 Relatório de Teste - n8n-nodes-hotmart
 **Data**: $TIMESTAMP_BR  
 **Versão**: $VERSION  

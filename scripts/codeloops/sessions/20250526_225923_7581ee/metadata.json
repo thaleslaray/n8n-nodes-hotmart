@@ -1,0 +1,46 @@
+{
+  "id": "20250526_225923_7581ee",
+  "created": "2025-05-27T01:59:23Z",
+  "updated": "2025-05-27T01:59:23Z",
+  "task": "o que voe sabe fazer",
+  "tags": [],
+  "related_sessions": [],
+  "parent_session": null,
+  "status": "new",
+  "phases": {
+    "actor": {
+      "status": "in_progress",
+      "started": "2025-05-27T01:59:23Z",
+      "completed": null
+    },
+    "critic": {
+      "status": "pending",
+      "started": null,
+      "completed": null
+    },
+    "improve": {
+      "status": "pending",
+      "started": null,
+      "completed": null
+    }
+  },
+  "metrics": {
+    "iterations": 0,
+    "issues_found": 0,
+    "issues_fixed": 0,
+    "duration_seconds": 0,
+    "validation_score": 0,
+    "code_lines": 0
+  },
+  "files": {
+    "actor_response": null,
+    "critic_response": null,
+    "improve_response": null,
+    "final_code": null
+  },
+  "learnings": {
+    "patterns": [],
+    "mistakes": [],
+    "decisions": []
+  }
+}

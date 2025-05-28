@@ -54,9 +54,19 @@ CLAUDE.md
 *.py
 
 # Diretórios adicionais para ignorar
-docs/
-scripts/
 archive/
+
+# Ignorar apenas conteúdo específico em docs/
+docs/contexto/
+docs/reports/test-report-*.md
+docs/reports/test-report-*.json
+docs/reports/created-workflows-*.json
+docs/reports/coderabbit-report-*.md
+
+# Scripts temporários e locais
+scripts/*.bak
+scripts/*.tmp
+scripts/*.local
 
 # Exceções para scripts essenciais
 !scripts/verify-build.js
