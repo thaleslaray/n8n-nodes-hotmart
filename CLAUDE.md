@@ -986,3 +986,80 @@ docs/
 - Mantenha arquivos que ainda vai modificar
 - Use `--priority high` para trabalhos complexos
 - Crie arquivo de sessão para histórico completo
+
+## 📋 Sistema de Rastreamento de Tarefas - CRÍTICO
+
+### ⚠️ PROBLEMA QUE RESOLVE
+Evita confusão sobre "qual o próximo passo" quando o contexto é perdido ou em novas sessões.
+
+### 🎯 REGRA DE OURO: SEMPRE consulte TASKS.md
+
+**ANTES de sugerir qualquer próximo passo:**
+1. **SEMPRE leia o arquivo `TASKS.md` na raiz**
+2. **NUNCA sugira tarefas genéricas do ROADMAP.md**
+3. **VERIFIQUE o status real das RFCs e tarefas em andamento**
+
+### 📄 Arquivo TASKS.md - Single Source of Truth
+
+Localização: `/Users/thaleslaray/code/projetos/n8n-hotmart/TASKS.md`
+
+Este arquivo contém:
+- **Em Progresso**: O que está sendo feito agora
+- **Próximas Tarefas**: Ordenadas por prioridade (ALTA/MÉDIA/BAIXA)
+- **Concluído Recentemente**: Histórico do que foi feito
+- **Links para documentação**: RFCs, análises, etc.
+
+### 🔄 Workflow Obrigatório
+
+1. **Ao iniciar sessão**: 
+   ```
+   1. Ler TASKS.md
+   2. Identificar próxima tarefa prioritária
+   3. Verificar se há work-in-progress
+   ```
+
+2. **Antes de sugerir próximos passos**:
+   ```
+   1. Consultar TASKS.md
+   2. Verificar RFCs relacionadas
+   3. Confirmar o que já foi implementado
+   ```
+
+3. **Ao concluir trabalho**:
+   ```
+   1. Atualizar TASKS.md
+   2. Mover tarefas para "Concluído"
+   3. Ajustar prioridades se necessário
+   ```
+
+### ❌ NUNCA faça isso:
+- Sugerir implementar algo que já foi feito
+- Propor tarefas genéricas sem verificar TASKS.md
+- Ignorar RFCs documentadas e seu status
+- Criar novas tarefas sem contexto das existentes
+
+### ✅ SEMPRE faça isso:
+- Leia TASKS.md antes de qualquer sugestão
+- Verifique o status real de implementação das RFCs
+- Mantenha continuidade com o trabalho anterior
+- Atualize TASKS.md ao fazer mudanças significativas
+
+### 📝 Estrutura de Branches e Issues
+
+Quando trabalhar em tarefas:
+```bash
+# Formato: tipo/descrição-clara
+git checkout -b feat/101-workflow-examples    # Para RFC-007 item 1
+git checkout -b feat/102-github-templates     # Para RFC-007 item 2
+git checkout -b fix/104-lint-warning          # Para correções
+```
+
+### 🚨 Lembrete Final
+
+**Se o usuário perguntar "qual o próximo passo?":**
+1. NÃO responda imediatamente
+2. Leia TASKS.md primeiro
+3. Identifique a tarefa de maior prioridade pendente
+4. Sugira com base no que REALMENTE precisa ser feito
+
+**Este sistema existe para NUNCA MAIS causar frustração sobre próximos passos!**
