@@ -1241,4 +1241,72 @@ describe('HotmartTrigger Node - Complete Coverage', () => {
       expect(allEvents.length).toBe(15); // All events are covered
     });
   });
+
+  describe('100% Coverage - Uncovered Lines', () => {
+    let mockWebhookFunctions: Partial<IWebhookFunctions>;
+    let mockResponse: any;
+
+    beforeEach(() => {
+      mockResponse = {
+        status: jest.fn().mockReturnThis(),
+        send: jest.fn().mockReturnThis(),
+        json: jest.fn().mockReturnThis(),
+      };
+
+      mockWebhookFunctions = {
+        getNodeParameter: jest.fn(),
+        getBodyData: jest.fn(),
+        getHeaderData: jest.fn().mockReturnValue({}),
+        getResponseObject: jest.fn().mockReturnValue(mockResponse),
+        helpers: {
+          returnJsonArray: jest.fn((data) => data),
+        },
+        logger: {
+          debug: jest.fn(),
+          info: jest.fn(),
+          error: jest.fn(),
+          warn: jest.fn(),
+          verbose: jest.fn(),
+        },
+      } as any;
+    });
+
+    it('should handle unknown event in Smart mode (lines 1272-1274)', async () => {
+      (mockWebhookFunctions.getNodeParameter as jest.Mock).mockImplementation((name) => {
+        if (name === 'triggerMode') return 'smart';
+        if (name === 'options') return {};
+        return undefined;
+      });
+      
+      (mockWebhookFunctions.getBodyData as jest.Mock).mockReturnValue({
+        event: 'TOTALLY_UNKNOWN_EVENT',
+        data: { test: true }
+      });
+
+      const result = await hotmartTrigger.webhook.call(mockWebhookFunctions as IWebhookFunctions);
+
+      expect(mockResponse.status).toHaveBeenCalledWith(400);
+      expect(mockResponse.send).toHaveBeenCalledWith('Evento desconhecido');
+      expect(result).toEqual({ noWebhookResponse: true });
+    });
+
+    it('should handle unknown event in Super Smart mode (lines 1314-1316)', async () => {
+      (mockWebhookFunctions.getNodeParameter as jest.Mock).mockImplementation((name) => {
+        if (name === 'triggerMode') return 'super-smart';
+        if (name === 'options') return {};
+        return undefined;
+      });
+      
+      (mockWebhookFunctions.getBodyData as jest.Mock).mockReturnValue({
+        event: 'ANOTHER_UNKNOWN_EVENT',
+        data: { test: true }
+      });
+
+      const result = await hotmartTrigger.webhook.call(mockWebhookFunctions as IWebhookFunctions);
+
+      expect(mockResponse.status).toHaveBeenCalledWith(400);
+      expect(mockResponse.send).toHaveBeenCalledWith('Evento desconhecido');
+      expect(result).toEqual({ noWebhookResponse: true });
+    });
+  });
 });

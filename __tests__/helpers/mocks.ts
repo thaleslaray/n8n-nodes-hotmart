@@ -1,4 +1,4 @@
-import { IExecuteFunctions } from 'n8n-workflow';
+import { IExecuteFunctions, IWebhookFunctions } from 'n8n-workflow';
 
 /**
  * Creates a mock IExecuteFunctions context for testing
@@ -25,8 +25,47 @@ export function createMockExecuteFunction(
     getCredentials: jest.fn().mockResolvedValue({
       environment: 'production'
     }),
+    logger: {
+      debug: jest.fn(),
+      info: jest.fn(),
+      error: jest.fn(),
+      warn: jest.fn(),
+      verbose: jest.fn()
+    },
     ...overrides,
   } as unknown as IExecuteFunctions;
+}
+
+// Alias for backwards compatibility
+export const createMockExecuteFunctions = createMockExecuteFunction;
+
+/**
+ * Creates a mock IWebhookFunctions context for testing
+ */
+export function createMockWebhookFunctions(
+  overrides?: Partial<IWebhookFunctions>
+): IWebhookFunctions {
+  return {
+    getNodeParameter: jest.fn(),
+    getHeaderData: jest.fn().mockReturnValue({}),
+    getBodyData: jest.fn().mockReturnValue({}),
+    getResponseObject: jest.fn().mockReturnValue({
+      status: jest.fn().mockReturnThis(),
+      send: jest.fn().mockReturnThis(),
+      json: jest.fn().mockReturnThis()
+    }),
+    helpers: {
+      returnJsonArray: jest.fn((data) => data),
+    },
+    logger: {
+      debug: jest.fn(),
+      info: jest.fn(),
+      error: jest.fn(),
+      warn: jest.fn(),
+      verbose: jest.fn()
+    },
+    ...overrides,
+  } as unknown as IWebhookFunctions;
 }
 
 /**
