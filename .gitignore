@@ -86,6 +86,7 @@ __tests__/fixtures/webhook-fixtures/
 
 # Arquivos temporários de teste e relatórios
 test-report*.md
+test-report*.json
 test-results.json
 test-report.log
 created-workflows*.json
