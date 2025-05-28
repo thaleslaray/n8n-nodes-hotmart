@@ -1,6 +1,6 @@
 # n8n-nodes-hotmart 🤖
 
-![Version](https://img.shields.io/badge/version-0.6.6-blue)
+![Version](https://img.shields.io/badge/version-0.6.7-blue)
 ![Stable](https://img.shields.io/badge/stable-✅-green)
 ![Tests](https://github.com/thaleslaray/n8n-nodes-hotmart/actions/workflows/tests.yml/badge.svg)
 ![Build](https://github.com/thaleslaray/n8n-nodes-hotmart/actions/workflows/build.yml/badge.svg)
