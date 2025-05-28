@@ -91,6 +91,7 @@
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "@jest/globals": "^29.7.0",
+    "@octokit/rest": "^22.0.0",
     "@types/express": "5.0.2",
     "@types/jest": "^29.5.14",
     "@types/node": "22.15.21",

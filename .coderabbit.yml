@@ -1,0 +1,32 @@
+# CodeRabbit Configuration
+reviews:
+  profile: chill
+  request_changes_workflow: false
+  high_level_summary: true
+  poem: false
+  review_status: true
+  collapse_empty_files: true
+  auto_review:
+    enabled: true
+    drafts: false
+  path_filters:
+    - "!dist/**"
+    - "!coverage/**" 
+    - "!node_modules/**"
+    - "!**/*.min.js"
+    - "!**/*.test.ts"
+    - "!**/*.spec.ts"
+  
+chat:
+  auto_reply: true
+  
+language: portuguese
+
+tone: helpful
+
+focus_areas:
+  - security
+  - performance
+  - maintainability
+  - best_practices
+  - type_safety
