@@ -1,0 +1,42 @@
+{
+  "timestamp": "2025-05-28T03:34:59.834Z",
+  "version": "baseline-before-optimization",
+  "results": [
+    {
+      "scenario": "Standard Mode - Single Event",
+      "iterations": 1090,
+      "totalTime": 0.864,
+      "avgTime": 0.001,
+      "minTime": 0,
+      "maxTime": 0.036,
+      "ops_per_second": 1262151
+    },
+    {
+      "scenario": "Smart Mode - Multiple Outputs",
+      "iterations": 1090,
+      "totalTime": 0.755,
+      "avgTime": 0.001,
+      "minTime": 0.001,
+      "maxTime": 0.013,
+      "ops_per_second": 1443334
+    },
+    {
+      "scenario": "Super Smart Mode - Complex Routing",
+      "iterations": 1090,
+      "totalTime": 1.356,
+      "avgTime": 0.001,
+      "minTime": 0.001,
+      "maxTime": 0.011,
+      "ops_per_second": 803975
+    },
+    {
+      "scenario": "Super Smart Mode - Subscription",
+      "iterations": 1090,
+      "totalTime": 1.329,
+      "avgTime": 0.001,
+      "minTime": 0.001,
+      "maxTime": 0.011,
+      "ops_per_second": 820048
+    }
+  ]
+}
