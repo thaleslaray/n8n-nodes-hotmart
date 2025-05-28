@@ -1,0 +1,34 @@
+{
+  "created": "2025-05-28T00:42:41.446Z",
+  "workflows": [
+    {
+      "id": "EE7u9kNqrkniHPZP",
+      "name": "[AUTO-TEST] Hotmart standard",
+      "mode": "standard",
+      "webhookUrl": "http://localhost:5678/webhook/bf27a12293cfb1a7/hotmart-standard",
+      "webhookId": "bf27a12293cfb1a7",
+      "triggerMode": "standard",
+      "responseMode": "lastNode"
+    },
+    {
+      "id": "BlUeBKGvTEy7f7sR",
+      "name": "[AUTO-TEST] Hotmart smart",
+      "mode": "smart",
+      "webhookUrl": "http://localhost:5678/webhook/75e7a271d91b1784/hotmart-smart",
+      "webhookId": "75e7a271d91b1784",
+      "triggerMode": "smart",
+      "responseMode": "lastNode"
+    },
+    {
+      "id": "SoCJ0zG6tD75YtcE",
+      "name": "[AUTO-TEST] Hotmart super-smart",
+      "mode": "super-smart",
+      "webhookUrl": "http://localhost:5678/webhook/931ae0774a0c5697/hotmart-super-smart",
+      "webhookId": "931ae0774a0c5697",
+      "triggerMode": "super-smart",
+      "responseMode": "lastNode"
+    }
+  ],
+  "totalCreated": 3,
+  "description": "3 workflows otimizados - 1 por modo com Last Node"
+}

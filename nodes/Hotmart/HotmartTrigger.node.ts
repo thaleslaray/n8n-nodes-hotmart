@@ -1268,6 +1268,9 @@ export class HotmartTrigger implements INodeType {
       // Usar EVENT_CONFIG para determinar a saída
       const eventConfig = getEventConfig(eventName);
       
+      // Este check é teoricamente impossível devido ao isValidEvent anterior,
+      // mas mantemos por segurança caso a validação mude no futuro
+      /* istanbul ignore if */
       if (!eventConfig) {
         this.logger.debug(`[${nodeName}] Evento não reconhecido: ${eventName}`);
         res.status(400).send('Evento desconhecido');
@@ -1310,6 +1313,9 @@ export class HotmartTrigger implements INodeType {
       // Verificar se o evento é válido
       const eventConfig = getEventConfig(eventName);
       
+      // Este check é teoricamente impossível devido ao isValidEvent anterior,
+      // mas mantemos por segurança caso a validação mude no futuro
+      /* istanbul ignore if */
       if (!eventConfig) {
         this.logger.debug(`[${nodeName}] Evento não reconhecido: ${eventName}`);
         res.status(400).send('Evento desconhecido');
@@ -1444,6 +1450,7 @@ export class HotmartTrigger implements INodeType {
           outputIndex = SUPER_SMART_INDICES.CLUB_MODULE_COMPLETED;
           break;
           
+        /* istanbul ignore next */
         default:
           // Não deveria chegar aqui pois já validamos o evento
           outputIndex = -1;

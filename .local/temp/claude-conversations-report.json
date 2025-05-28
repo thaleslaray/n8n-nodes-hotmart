@@ -1,0 +1,75 @@
+{
+  "generatedAt": "2025-05-25T12:07:03.675Z",
+  "stats": {
+    "totalFiles": 70,
+    "totalMessages": 27946,
+    "userMessages": 14428,
+    "assistantMessages": 13161,
+    "totalCharacters": 4546652,
+    "toolUses": {
+      "TodoWrite": 1133,
+      "Task": 203,
+      "Glob": 108,
+      "Read": 2346,
+      "Write": 1818,
+      "LS": 110,
+      "Bash": 3518,
+      "Batch": 143,
+      "Edit": 1723,
+      "Grep": 211,
+      "WebSearch": 45,
+      "TodoRead": 42,
+      "MultiEdit": 411,
+      "mcp__mcp-local__Hotmart": 1,
+      "mcp__mcp-local__Hotmart1": 1,
+      "WebFetch": 37,
+      "BatchEditor": 1
+    },
+    "keywords": {
+      "hotmart": 7689,
+      "n8n": 5620,
+      "error": 845,
+      "solved": 191,
+      "success": 131,
+      "webhook": 3709,
+      "trigger": 2659,
+      "smart": 1208,
+      "super smart": 214,
+      "router": 312,
+      "aha": 8,
+      "eureka": 6,
+      "switchy": 24,
+      "finally": 10,
+      "breakthrough": 1
+    },
+    "dates": {
+      "2025-05-14": 2470,
+      "2025-05-24": 6185,
+      "2025-05-21": 402,
+      "2025-05-12": 1624,
+      "2025-05-13": 3465,
+      "2025-05-20": 1593,
+      "2025-05-15": 399,
+      "2025-05-25": 2674,
+      "2025-05-22": 4840,
+      "2025-05-23": 3381,
+      "2025-05-19": 288,
+      "2025-05-16": 268
+    },
+    "models": {
+      "claude-3-7-sonnet-20250219": 5875,
+      "claude-opus-4-20250514": 6799,
+      "<synthetic>": 23,
+      "claude-sonnet-4-20250514": 464
+    },
+    "errors": 0
+  },
+  "summary": {
+    "totalConversations": 70,
+    "totalMessages": 27946,
+    "period": "2025-05-12 to 2025-05-25",
+    "totalDays": 12,
+    "averageMessagesPerDay": 2329,
+    "averageMessagesPerConversation": 399
+  }
+}
