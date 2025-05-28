@@ -51,7 +51,7 @@ jobs:
         pnpm jest --coverage --coverageReporters=text --coverageReporters=lcov --coverageReporters=html --coverageReporters=json-summary
     
     - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v4
+      uses: codecov/codecov-action@v5
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         files: ./coverage/lcov.info
@@ -70,7 +70,7 @@ jobs:
         retention-days: 30
     
     - name: Comment PR with coverage
-      uses: codecov/codecov-action@v4
+      uses: codecov/codecov-action@v5
       if: github.event_name == 'pull_request'
       with:
         token: ${{ secrets.CODECOV_TOKEN }}

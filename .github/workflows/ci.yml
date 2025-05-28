@@ -103,7 +103,7 @@ jobs:
       
     - name: 📈 Upload cobertura para Codecov
       if: matrix.node-version == '18.x'
-      uses: codecov/codecov-action@v3
+      uses: codecov/codecov-action@v5
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         files: ./coverage/lcov.info
