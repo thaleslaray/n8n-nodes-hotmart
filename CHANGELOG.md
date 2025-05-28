@@ -1,66 +1,8 @@
 # Changelog
 
-Todas as alterações significativas deste projeto serão documentadas neste arquivo.
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/),
-e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
-
-## [Unreleased]
-
-### 🚀 Adicionado
-
-- **Cobertura de Testes Quase Perfeita** 🎯
-  - Statements: 99.41% (100% com istanbul ignore)
-  - Functions: 100% ✅
-  - Lines: 99.39% (100% com istanbul ignore)
-  - Branches: 94.15%
-  - Adicionados testes para branches não cobertos
-  - Uso de `istanbul ignore` para código defensivo impossível de testar
-  - Total de testes: 500+
-
-- **Sistema Guardião** 🛡️
-  - Monitor inteligente de arquivos para desenvolvimento
-  - Detecção de mudanças em tempo real
-  - Snapshots automáticos durante desenvolvimento
-  - Integrado com `npm run dev`
-  - Scripts: `guardiao:watch`, `dev:original`
-  - Movido para `.local/scripts/guardiao/`
-
-- **Organização do Projeto** 📁
-  - Criada estrutura `.local/` para arquivos de desenvolvimento local
-  - Movidos logs, backups, archive, scripts locais para `.local/`
-  - Diretório raiz reduzido de 33 para 28 arquivos
-  - Scripts executáveis organizados em `.local/bin/`
-  - Documentação detalhada da estrutura em `.local/README.md`
-
-- **Integração CodeRabbit + Claude Code** 🤖
-  - Script de sincronização entre CodeRabbit e Claude Code
-  - Aplicação automática de sugestões de code review
-  - Documentação em README-CODERABBIT-INTEGRATION.md
-
-- **Melhorias de Testes** 📈
-  - RFC-006: Conventional commits com commitlint
-  - Teste comprehensive para HotmartTrigger
-  - Novos mocks: `createMockWebhookFunctions`
-  - Testes para aiDocumentation com context null/undefined
-  - Validação completa dos modos Smart e Super-Smart
-
-### 🔧 Alterado
-
-- **Otimização do Gulpfile** 
-  - Task `clean` agora limpa apenas `nodes/` e `credentials/`
-  - Evita remover arquivos de configuração importantes
-
-- **Estrutura de Diretórios**
-  - `documentation/` renomeado para `docs/`
-  - Documentação pessoal movida para `.local/docs/`
-  - Scripts de teste movidos para `.local/scripts/test-automation/`
-
-### 📦 Dependências
-
-- Adicionado `@commitlint/cli` e `@commitlint/config-conventional`
-- Adicionado `chokidar` para monitoramento de arquivos
-- Adicionado `axios` e `chalk` para funcionalidades auxiliares
+### [0.6.6](https://github.com/thaleslaray/n8n-nodes-hotmart/compare/v0.6.5...v0.6.6) (2025-05-28)
 
 ## [0.6.4] - 2025-05-25
 

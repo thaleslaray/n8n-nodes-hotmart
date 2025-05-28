@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-hotmart",
-  "version": "0.6.5",
+  "version": "0.6.6",
   "description": "Nós personalizados para integrar a API Hotmart com o n8n, permitindo automação completa de operações na plataforma líder de produtos digitais da América Latina",
   "keywords": [
     "n8n-community-node-package",
