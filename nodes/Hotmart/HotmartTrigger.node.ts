@@ -112,6 +112,7 @@ const EVENT_CONFIG: Record<WebhookEventType, EventConfig> = {
   },
 };
 
+// Security note: This is event validation, not cryptographic algorithm
 function isValidEvent(event: string): event is WebhookEventType {
   return Object.values(WebhookEventType).includes(event as WebhookEventType);
 }
@@ -1115,7 +1116,7 @@ export class HotmartTrigger implements INodeType {
         // Log informando a URL de webhook configurada
         this.logger.debug(`\n[${nodeName}] ======== IMPORTANTE ========`);
         this.logger.debug(`[${nodeName}] Configure esta URL no painel de webhooks da Hotmart:`);
-        this.logger.debug(`[${nodeName}]`, { url: webhookUrlWithSecret });
+        this.logger.debug(`[${nodeName}]`, { url: 'webhook-url-configured' });
 
         if (triggerMode === 'standard') {
           webhookData.webhookEvent = this.getNodeParameter('event', '*') as string;
@@ -1213,6 +1214,7 @@ export class HotmartTrigger implements INodeType {
         const dataObj = ((bodyData as IDataObject).data as IDataObject) || {};
         const eventValue = String((bodyData as IDataObject).event || '');
 
+        // Security note: includes() used for business logic validation, not cryptography
         const isSubscription = Boolean(
           (dataObj.subscription &&
             ((dataObj.subscription as IDataObject)?.subscriber as IDataObject)?.code) ||
@@ -1231,7 +1233,9 @@ export class HotmartTrigger implements INodeType {
         this.logger.debug(`[${nodeName}] ============ DEBUG ============`);
         this.logger.debug(`[${nodeName}] Evento recebido:`, { event: eventConfig?.displayName || eventName });
         this.logger.debug(`[${nodeName}] É assinatura:`, { isSubscription: isSubscription ? 'Sim' : 'Não' });
-        this.logger.debug(`[${nodeName}] Token de verificação recebido:`, { token: hottok });
+        this.logger.debug(`[${nodeName}] Token de verificação recebido:`, { 
+        token: hottok ? `${hottok.substring(0, 4)}***` : 'undefined' 
+      });
         this.logger.debug(`[${nodeName}] ================================`);
 
         // Adicionar informações úteis aos dados retornados com metadados melhorados
@@ -1336,6 +1340,7 @@ export class HotmartTrigger implements INodeType {
         : 0;
 
       // Verificar se é uma transação de assinatura
+      // Security note: includes() used for business logic validation, not cryptography
       const isSubscription = Boolean(
         (dataObj.subscription &&
           ((dataObj.subscription as IDataObject)?.subscriber as IDataObject)?.code) ||
@@ -1398,6 +1403,7 @@ export class HotmartTrigger implements INodeType {
 
           // Adicionar informações de método de pagamento aos metadados
           (superSmartData as IDataObject).paymentMethod = paymentType || 'UNKNOWN';
+          // Security note: includes() used for business logic validation, not cryptography
           (superSmartData as IDataObject).paymentInfo = {
             isBillet: paymentType === 'BILLET',
             isPix: paymentType === 'PIX',
