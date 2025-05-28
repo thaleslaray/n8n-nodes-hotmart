@@ -968,7 +968,7 @@ export class HotmartTrigger implements INodeType {
       },
       {
         displayName: 'Nome alternativo para: PURCHASE_PROTEST',
-        name: 'outputNameSuper8',
+        name: 'outputNameSuper9',
         type: 'string',
         default: 'Disputa',
         description: 'Nome personalizado para a saída de Compra em Disputa',
@@ -981,7 +981,7 @@ export class HotmartTrigger implements INodeType {
       },
       {
         displayName: 'Nome alternativo para: PURCHASE_EXPIRED',
-        name: 'outputNameSuper9',
+        name: 'outputNameSuper10',
         type: 'string',
         default: 'Expirada',
         description: 'Nome personalizado para a saída de Compra Expirada',
@@ -994,7 +994,7 @@ export class HotmartTrigger implements INodeType {
       },
       {
         displayName: 'Nome alternativo para: PURCHASE_DELAYED',
-        name: 'outputNameSuper10',
+        name: 'outputNameSuper11',
         type: 'string',
         default: 'Atrasada',
         description: 'Nome personalizado para a saída de Compra Atrasada',
@@ -1007,7 +1007,7 @@ export class HotmartTrigger implements INodeType {
       },
       {
         displayName: 'Nome alternativo para: PURCHASE_OUT_OF_SHOPPING_CART',
-        name: 'outputNameSuper11',
+        name: 'outputNameSuper12',
         type: 'string',
         default: 'Abandono',
         description: 'Nome personalizado para a saída de Abandono de Carrinho',
@@ -1020,7 +1020,7 @@ export class HotmartTrigger implements INodeType {
       },
       {
         displayName: 'Nome alternativo para: SUBSCRIPTION_CANCELLATION',
-        name: 'outputNameSuper12',
+        name: 'outputNameSuper13',
         type: 'string',
         default: 'Ass. Cancelada',
         description: 'Nome personalizado para a saída de Assinatura Cancelada',
@@ -1033,7 +1033,7 @@ export class HotmartTrigger implements INodeType {
       },
       {
         displayName: 'Nome alternativo para: SWITCH_PLAN',
-        name: 'outputNameSuper13',
+        name: 'outputNameSuper14',
         type: 'string',
         default: 'Troca de Plano',
         description: 'Nome personalizado para a saída de Troca de Plano',
@@ -1046,7 +1046,7 @@ export class HotmartTrigger implements INodeType {
       },
       {
         displayName: 'Nome alternativo para: UPDATE_SUBSCRIPTION_CHARGE_DATE',
-        name: 'outputNameSuper14',
+        name: 'outputNameSuper15',
         type: 'string',
         default: 'Troca de Data',
         description: 'Nome personalizado para a saída de Troca de dia de Cobrança',
@@ -1059,7 +1059,7 @@ export class HotmartTrigger implements INodeType {
       },
       {
         displayName: 'Nome alternativo para: CLUB_FIRST_ACCESS',
-        name: 'outputNameSuper15',
+        name: 'outputNameSuper16',
         type: 'string',
         default: 'Primeiro Acesso',
         description: 'Nome personalizado para a saída de Primeiro Acesso',
@@ -1072,7 +1072,7 @@ export class HotmartTrigger implements INodeType {
       },
       {
         displayName: 'Nome alternativo para: CLUB_MODULE_COMPLETED',
-        name: 'outputNameSuper16',
+        name: 'outputNameSuper17',
         type: 'string',
         default: 'Módulo Completo',
         description: 'Nome personalizado para a saída de Módulo Completo',
