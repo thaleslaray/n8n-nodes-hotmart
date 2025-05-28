@@ -80,7 +80,7 @@
     "release:major": "standard-version --release-as major",
     "prepare": "husky",
     "dev": "npm run guardiao:watch & npm run build:watch",
-    "guardiao:watch": "node scripts/guardiao-watch.js",
+    "guardiao:watch": "node .local/scripts/guardiao/guardiao-watch.js",
     "dev:original": "npm run build:watch"
   },
   "dependencies": {
