@@ -137,6 +137,40 @@ O node Hotmart é totalmente compatível com **AI Agents** do n8n, permitindo qu
 - 🔄 **Integração**: Funciona com qualquer AI Agent compatível
 - 📊 **Insights**: AI pode analisar dados e sugerir ações
 
+## 📁 Estrutura do Projeto
+
+### Diretório Principal
+O diretório raiz contém apenas arquivos essenciais do projeto:
+- Código fonte (`nodes/`, `credentials/`, `__tests__/`)
+- Configurações (`package.json`, `tsconfig.json`, etc.)
+- Documentação principal (`README.md`, `CHANGELOG.md`)
+- Scripts essenciais (`install`, `test`)
+
+### Diretório .local/
+Arquivos de desenvolvimento local (não versionados):
+```
+.local/
+├── archive/     # Documentação antiga e releases .tgz
+├── backups/     # Backups automáticos e manuais
+├── bin/         # Scripts executáveis organizados
+│   ├── test/    # Scripts de teste
+│   └── utils/   # Utilitários diversos
+├── coverage/    # Relatórios de cobertura (gerado pelo Jest)
+├── docs/        # Documentação detalhada, RFCs, PRDs
+├── logs/        # Logs de desenvolvimento
+├── scripts/     # Scripts de automação local
+└── temp/        # Arquivos temporários
+```
+
+### Configurando Ambiente Local
+
+```bash
+# Configurar scripts de teste locais (opcional)
+./scripts/setup-local-tests.sh
+
+# Os scripts locais não são necessários para uso normal do node
+```
+
 ## Instalação
 
 ### 🏷️ Versão Estável: 0.6.4

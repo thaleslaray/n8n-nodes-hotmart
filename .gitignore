@@ -24,6 +24,11 @@ coverage/
 .nyc_output/
 *.lcov
 junit.xml
+
+# Diretórios temporários (agora em .local)
+logs/
+backups/
+archive/
 !gulpfile.js
 !eslint.config.js
 
@@ -111,3 +116,11 @@ REFACTORING-*.md
 
 # Contextos e resumos de sessão (não devem ir pro git)
 docs/contexto/
+
+# Scripts e configurações locais (não versionados)
+.local/
+*.local
+*.local.*
+
+# CodeRabbit + Claude Code Integration
+claude-coderabbit-sync.md
