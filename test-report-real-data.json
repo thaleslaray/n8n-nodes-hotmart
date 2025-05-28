@@ -1,5 +1,5 @@
 {
-  "tested": "2025-05-28T10:22:59.268Z",
+  "tested": "2025-05-28T13:53:11.114Z",
   "summary": {
     "total": 48,
     "success": 48,
@@ -15,7 +15,7 @@
       "workflow": "standard",
       "event": "PURCHASE_APPROVED",
       "status": 200,
-      "responseTime": 20,
+      "responseTime": 19,
       "data": [
         {
           "data": {
@@ -25,7 +25,7 @@
               "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
             },
             "purchase": {
-              "transaction": "HP7797888158",
+              "transaction": "HP2079155710",
               "status": "APPROVED",
               "price": {
                 "currency_value": "BRL",
@@ -35,8 +35,8 @@
                 "type": "CREDIT_CARD",
                 "installments_number": 1
               },
-              "order_date": 1748427773926,
-              "approved_date": 1748427773926
+              "order_date": 1748440385217,
+              "approved_date": 1748440385217
             },
             "buyer": {
               "name": "Teste Automático",
@@ -44,14 +44,14 @@
               "document": "123.456.789-00"
             }
           },
-          "id": "1748427773926-uists0vhy",
-          "creation_date": 1748427773926,
+          "id": "1748440385217-o9hufnuwq",
+          "creation_date": 1748440385217,
           "event": "PURCHASE_APPROVED",
           "version": "2.0.0",
           "eventName": "Compra Aprovada",
           "eventType": "PURCHASE_APPROVED",
           "eventCategory": "purchase",
-          "receivedAt": "2025-05-28T10:22:53.938Z",
+          "receivedAt": "2025-05-28T13:53:05.228Z",
           "isSubscription": false,
           "metadata": {
             "hottok": "test-token-hotmart-2025",
@@ -74,7 +74,7 @@
       "workflow": "standard",
       "event": "PURCHASE_COMPLETE",
       "status": 200,
-      "responseTime": 8,
+      "responseTime": 9,
       "data": [
         {
           "data": {
@@ -84,7 +84,7 @@
               "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
             },
             "purchase": {
-              "transaction": "HP7234164064",
+              "transaction": "HP0135741954",
               "status": "APPROVED",
               "price": {
                 "currency_value": "BRL",
@@ -94,8 +94,8 @@
                 "type": "CREDIT_CARD",
                 "installments_number": 1
               },
-              "order_date": 1748427774048,
-              "approved_date": 1748427774048
+              "order_date": 1748440385338,
+              "approved_date": 1748440385338
             },
             "buyer": {
               "name": "Teste Automático",
@@ -103,14 +103,14 @@
               "document": "123.456.789-00"
             }
           },
-          "id": "1748427774048-y1hgfumfu",
-          "creation_date": 1748427774048,
+          "id": "1748440385338-l0j8w6gt3",
+          "creation_date": 1748440385338,
           "event": "PURCHASE_COMPLETE",
           "version": "2.0.0",
           "eventName": "Compra Completa",
           "eventType": "PURCHASE_COMPLETE",
           "eventCategory": "purchase",
-          "receivedAt": "2025-05-28T10:22:54.050Z",
+          "receivedAt": "2025-05-28T13:53:05.341Z",
           "isSubscription": false,
           "metadata": {
             "hottok": "test-token-hotmart-2025",
@@ -133,7 +133,7 @@
       "workflow": "standard",
       "event": "PURCHASE_CANCELED",
       "status": 200,
-      "responseTime": 8,
+      "responseTime": 22,
       "data": [
         {
           "data": {
@@ -143,7 +143,7 @@
               "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
             },
             "purchase": {
-              "transaction": "HP8223381757",
+              "transaction": "HP9038342765",
               "status": "APPROVED",
               "price": {
                 "currency_value": "BRL",
@@ -153,8 +153,8 @@
                 "type": "CREDIT_CARD",
                 "installments_number": 1
               },
-              "order_date": 1748427774156,
-              "approved_date": 1748427774156
+              "order_date": 1748440385449,
+              "approved_date": 1748440385449
             },
             "buyer": {
               "name": "Teste Automático",
@@ -162,14 +162,14 @@
               "document": "123.456.789-00"
             }
           },
-          "id": "1748427774156-fhdzm1a9h",
-          "creation_date": 1748427774156,
+          "id": "1748440385449-kwp882t6k",
+          "creation_date": 1748440385449,
           "event": "PURCHASE_CANCELED",
           "version": "2.0.0",
           "eventName": "Compra Cancelada",
           "eventType": "PURCHASE_CANCELED",
           "eventCategory": "purchase",
-          "receivedAt": "2025-05-28T10:22:54.159Z",
+          "receivedAt": "2025-05-28T13:53:05.456Z",
           "isSubscription": false,
           "metadata": {
             "hottok": "test-token-hotmart-2025",
@@ -192,7 +192,7 @@
       "workflow": "standard",
       "event": "PURCHASE_REFUNDED",
       "status": 200,
-      "responseTime": 10,
+      "responseTime": 27,
       "data": [
         {
           "data": {
@@ -202,7 +202,7 @@
               "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
             },
             "purchase": {
-              "transaction": "HP6406322832",
+              "transaction": "HP1391339676",
               "status": "APPROVED",
               "price": {
                 "currency_value": "BRL",
@@ -212,8 +212,8 @@
                 "type": "CREDIT_CARD",
                 "installments_number": 1
               },
-              "order_date": 1748427774265,
-              "approved_date": 1748427774265
+              "order_date": 1748440385572,
+              "approved_date": 1748440385572
             },
             "buyer": {
               "name": "Teste Automático",
@@ -221,14 +221,14 @@
               "document": "123.456.789-00"
             }
           },
-          "id": "1748427774265-18ty3128i",
-          "creation_date": 1748427774265,
+          "id": "1748440385572-xwul06qlr",
+          "creation_date": 1748440385572,
           "event": "PURCHASE_REFUNDED",
           "version": "2.0.0",
           "eventName": "Compra Reembolsada",
           "eventType": "PURCHASE_REFUNDED",
           "eventCategory": "purchase",
-          "receivedAt": "2025-05-28T10:22:54.268Z",
+          "receivedAt": "2025-05-28T13:53:05.581Z",
           "isSubscription": false,
           "metadata": {
             "hottok": "test-token-hotmart-2025",
@@ -251,7 +251,7 @@
       "workflow": "standard",
       "event": "PURCHASE_CHARGEBACK",
       "status": 200,
-      "responseTime": 8,
+      "responseTime": 27,
       "data": [
         {
           "data": {
@@ -261,7 +261,7 @@
               "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
             },
             "purchase": {
-              "transaction": "HP0984078300",
+              "transaction": "HP1423420863",
               "status": "APPROVED",
               "price": {
                 "currency_value": "BRL",
@@ -271,8 +271,8 @@
                 "type": "CREDIT_CARD",
                 "installments_number": 1
               },
-              "order_date": 1748427774376,
-              "approved_date": 1748427774376
+              "order_date": 1748440385701,
+              "approved_date": 1748440385701
             },
             "buyer": {
               "name": "Teste Automático",
@@ -280,14 +280,14 @@
               "document": "123.456.789-00"
             }
           },
-          "id": "1748427774376-xt6kyt46v",
-          "creation_date": 1748427774376,
+          "id": "1748440385701-9mqdjiyct",
+          "creation_date": 1748440385701,
           "event": "PURCHASE_CHARGEBACK",
           "version": "2.0.0",
           "eventName": "Compra Chargeback",
           "eventType": "PURCHASE_CHARGEBACK",
           "eventCategory": "purchase",
-          "receivedAt": "2025-05-28T10:22:54.379Z",
+          "receivedAt": "2025-05-28T13:53:05.709Z",
           "isSubscription": false,
           "metadata": {
             "hottok": "test-token-hotmart-2025",
@@ -310,7 +310,7 @@
       "workflow": "standard",
       "event": "PURCHASE_DELAYED",
       "status": 200,
-      "responseTime": 8,
+      "responseTime": 25,
       "data": [
         {
           "data": {
@@ -320,7 +320,7 @@
               "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
             },
             "purchase": {
-              "transaction": "HP1953975983",
+              "transaction": "HP5887486891",
               "status": "APPROVED",
               "price": {
                 "currency_value": "BRL",
@@ -330,8 +330,8 @@
                 "type": "CREDIT_CARD",
                 "installments_number": 1
               },
-              "order_date": 1748427774485,
-              "approved_date": 1748427774485
+              "order_date": 1748440385830,
+              "approved_date": 1748440385830
             },
             "buyer": {
               "name": "Teste Automático",
@@ -339,14 +339,14 @@
               "document": "123.456.789-00"
             }
           },
-          "id": "1748427774485-wne9ccdf2",
-          "creation_date": 1748427774485,
+          "id": "1748440385830-axiyjxldy",
+          "creation_date": 1748440385830,
           "event": "PURCHASE_DELAYED",
           "version": "2.0.0",
           "eventName": "Compra Atrasada",
           "eventType": "PURCHASE_DELAYED",
           "eventCategory": "purchase",
-          "receivedAt": "2025-05-28T10:22:54.488Z",
+          "receivedAt": "2025-05-28T13:53:05.838Z",
           "isSubscription": false,
           "metadata": {
             "hottok": "test-token-hotmart-2025",
@@ -369,7 +369,7 @@
       "workflow": "standard",
       "event": "PURCHASE_PROTEST",
       "status": 200,
-      "responseTime": 7,
+      "responseTime": 27,
       "data": [
         {
           "data": {
@@ -379,7 +379,7 @@
               "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
             },
             "purchase": {
-              "transaction": "HP4961731010",
+              "transaction": "HP5578328770",
               "status": "APPROVED",
               "price": {
                 "currency_value": "BRL",
@@ -389,8 +389,8 @@
                 "type": "CREDIT_CARD",
                 "installments_number": 1
               },
-              "order_date": 1748427774594,
-              "approved_date": 1748427774594
+              "order_date": 1748440385956,
+              "approved_date": 1748440385956
             },
             "buyer": {
               "name": "Teste Automático",
@@ -398,14 +398,14 @@
               "document": "123.456.789-00"
             }
           },
-          "id": "1748427774594-0w4tvv14z",
-          "creation_date": 1748427774594,
+          "id": "1748440385956-rc71tsye2",
+          "creation_date": 1748440385956,
           "event": "PURCHASE_PROTEST",
           "version": "2.0.0",
           "eventName": "Compra em Disputa",
           "eventType": "PURCHASE_PROTEST",
           "eventCategory": "purchase",
-          "receivedAt": "2025-05-28T10:22:54.597Z",
+          "receivedAt": "2025-05-28T13:53:05.964Z",
           "isSubscription": false,
           "metadata": {
             "hottok": "test-token-hotmart-2025",
@@ -428,7 +428,7 @@
       "workflow": "standard",
       "event": "PURCHASE_BILLET_PRINTED",
       "status": 200,
-      "responseTime": 7,
+      "responseTime": 26,
       "data": [
         {
           "data": {
@@ -438,7 +438,7 @@
               "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
             },
             "purchase": {
-              "transaction": "HP6652577906",
+              "transaction": "HP0912908743",
               "status": "APPROVED",
               "price": {
                 "currency_value": "BRL",
@@ -448,8 +448,8 @@
                 "type": "CREDIT_CARD",
                 "installments_number": 1
               },
-              "order_date": 1748427774703,
-              "approved_date": 1748427774703
+              "order_date": 1748440386085,
+              "approved_date": 1748440386085
             },
             "buyer": {
               "name": "Teste Automático",
@@ -457,14 +457,14 @@
               "document": "123.456.789-00"
             }
           },
-          "id": "1748427774703-exj02on2i",
-          "creation_date": 1748427774703,
+          "id": "1748440386085-y11cp8g7z",
+          "creation_date": 1748440386085,
           "event": "PURCHASE_BILLET_PRINTED",
           "version": "2.0.0",
           "eventName": "Boleto Impresso",
           "eventType": "PURCHASE_BILLET_PRINTED",
           "eventCategory": "purchase",
-          "receivedAt": "2025-05-28T10:22:54.705Z",
+          "receivedAt": "2025-05-28T13:53:06.092Z",
           "isSubscription": false,
           "metadata": {
             "hottok": "test-token-hotmart-2025",
@@ -487,7 +487,7 @@
       "workflow": "standard",
       "event": "PURCHASE_EXPIRED",
       "status": 200,
-      "responseTime": 7,
+      "responseTime": 26,
       "data": [
         {
           "data": {
@@ -497,7 +497,7 @@
               "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
             },
             "purchase": {
-              "transaction": "HP7423186890",
+              "transaction": "HP4542482583",
               "status": "APPROVED",
               "price": {
                 "currency_value": "BRL",
@@ -507,8 +507,8 @@
                 "type": "CREDIT_CARD",
                 "installments_number": 1
               },
-              "order_date": 1748427774811,
-              "approved_date": 1748427774811
+              "order_date": 1748440386213,
+              "approved_date": 1748440386213
             },
             "buyer": {
               "name": "Teste Automático",
@@ -516,14 +516,14 @@
               "document": "123.456.789-00"
             }
           },
-          "id": "1748427774811-necwse9zm",
-          "creation_date": 1748427774811,
+          "id": "1748440386213-wezlp55ba",
+          "creation_date": 1748440386213,
           "event": "PURCHASE_EXPIRED",
           "version": "2.0.0",
           "eventName": "Compra Expirada",
           "eventType": "PURCHASE_EXPIRED",
           "eventCategory": "purchase",
-          "receivedAt": "2025-05-28T10:22:54.814Z",
+          "receivedAt": "2025-05-28T13:53:06.223Z",
           "isSubscription": false,
           "metadata": {
             "hottok": "test-token-hotmart-2025",
@@ -546,7 +546,7 @@
       "workflow": "standard",
       "event": "PURCHASE_OUT_OF_SHOPPING_CART",
       "status": 200,
-      "responseTime": 9,
+      "responseTime": 28,
       "data": [
         {
           "data": {
@@ -556,7 +556,7 @@
               "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
             },
             "purchase": {
-              "transaction": "HP6702463272",
+              "transaction": "HP3135047864",
               "status": "APPROVED",
               "price": {
                 "currency_value": "BRL",
@@ -566,8 +566,8 @@
                 "type": "CREDIT_CARD",
                 "installments_number": 1
               },
-              "order_date": 1748427774921,
-              "approved_date": 1748427774921
+              "order_date": 1748440386340,
+              "approved_date": 1748440386340
             },
             "buyer": {
               "name": "Teste Automático",
@@ -575,14 +575,14 @@
               "document": "123.456.789-00"
             }
           },
-          "id": "1748427774921-u1a0axrkg",
-          "creation_date": 1748427774921,
+          "id": "1748440386340-nw3cuhrfz",
+          "creation_date": 1748440386340,
           "event": "PURCHASE_OUT_OF_SHOPPING_CART",
           "version": "2.0.0",
           "eventName": "Abandono de Carrinho",
           "eventType": "PURCHASE_OUT_OF_SHOPPING_CART",
           "eventCategory": "purchase",
-          "receivedAt": "2025-05-28T10:22:54.923Z",
+          "receivedAt": "2025-05-28T13:53:06.347Z",
           "isSubscription": false,
           "metadata": {
             "hottok": "test-token-hotmart-2025",
@@ -605,7 +605,7 @@
       "workflow": "standard",
       "event": "SUBSCRIPTION_CANCELLATION",
       "status": 200,
-      "responseTime": 6,
+      "responseTime": 21,
       "data": [
         {
           "data": {
@@ -626,16 +626,16 @@
               "email": "teste@automacao.com",
               "document": "123.456.789-00"
             },
-            "cancellation_date": 1748427775031
+            "cancellation_date": 1748440386470
           },
-          "id": "1748427775031-j7p4a655m",
-          "creation_date": 1748427775031,
+          "id": "1748440386469-h4htw9wtk",
+          "creation_date": 1748440386469,
           "event": "SUBSCRIPTION_CANCELLATION",
           "version": "2.0.0",
           "eventName": "Assinatura Cancelada",
           "eventType": "SUBSCRIPTION_CANCELLATION",
           "eventCategory": "subscription",
-          "receivedAt": "2025-05-28T10:22:55.033Z",
+          "receivedAt": "2025-05-28T13:53:06.476Z",
           "isSubscription": true,
           "metadata": {
             "hottok": "test-token-hotmart-2025",
@@ -658,7 +658,7 @@
       "workflow": "standard",
       "event": "SWITCH_PLAN",
       "status": 200,
-      "responseTime": 8,
+      "responseTime": 25,
       "data": [
         {
           "data": {
@@ -668,7 +668,7 @@
               "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
             },
             "purchase": {
-              "transaction": "HP6071884951",
+              "transaction": "HP4847989570",
               "status": "APPROVED",
               "price": {
                 "currency_value": "BRL",
@@ -678,8 +678,8 @@
                 "type": "CREDIT_CARD",
                 "installments_number": 1
               },
-              "order_date": 1748427775139,
-              "approved_date": 1748427775139
+              "order_date": 1748440386592,
+              "approved_date": 1748440386592
             },
             "buyer": {
               "name": "Teste Automático",
@@ -687,14 +687,14 @@
               "document": "123.456.789-00"
             }
           },
-          "id": "1748427775139-afvmpaq9k",
-          "creation_date": 1748427775139,
+          "id": "1748440386592-34dgvjcbd",
+          "creation_date": 1748440386592,
           "event": "SWITCH_PLAN",
           "version": "2.0.0",
           "eventName": "Troca de Plano de Assinatura",
           "eventType": "SWITCH_PLAN",
           "eventCategory": "subscription",
-          "receivedAt": "2025-05-28T10:22:55.142Z",
+          "receivedAt": "2025-05-28T13:53:06.601Z",
           "isSubscription": true,
           "metadata": {
             "hottok": "test-token-hotmart-2025",
@@ -717,7 +717,7 @@
       "workflow": "standard",
       "event": "UPDATE_SUBSCRIPTION_CHARGE_DATE",
       "status": 200,
-      "responseTime": 9,
+      "responseTime": 21,
       "data": [
         {
           "data": {
@@ -727,7 +727,7 @@
               "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
             },
             "purchase": {
-              "transaction": "HP3397157824",
+              "transaction": "HP8143275651",
               "status": "APPROVED",
               "price": {
                 "currency_value": "BRL",
@@ -737,8 +737,8 @@
                 "type": "CREDIT_CARD",
                 "installments_number": 1
               },
-              "order_date": 1748427775248,
-              "approved_date": 1748427775248
+              "order_date": 1748440386719,
+              "approved_date": 1748440386719
             },
             "buyer": {
               "name": "Teste Automático",
@@ -746,14 +746,14 @@
               "document": "123.456.789-00"
             }
           },
-          "id": "1748427775248-psx3d0wi3",
-          "creation_date": 1748427775248,
+          "id": "1748440386719-z22muva2v",
+          "creation_date": 1748440386719,
           "event": "UPDATE_SUBSCRIPTION_CHARGE_DATE",
           "version": "2.0.0",
           "eventName": "Troca de dia de Cobrança",
           "eventType": "UPDATE_SUBSCRIPTION_CHARGE_DATE",
           "eventCategory": "subscription",
-          "receivedAt": "2025-05-28T10:22:55.251Z",
+          "receivedAt": "2025-05-28T13:53:06.725Z",
           "isSubscription": true,
           "metadata": {
             "hottok": "test-token-hotmart-2025",
@@ -776,7 +776,7 @@
       "workflow": "standard",
       "event": "CLUB_FIRST_ACCESS",
       "status": 200,
-      "responseTime": 9,
+      "responseTime": 23,
       "data": [
         {
           "data": {
@@ -786,7 +786,7 @@
               "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
             },
             "purchase": {
-              "transaction": "HP8147504558",
+              "transaction": "HP7925325500",
               "status": "APPROVED",
               "price": {
                 "currency_value": "BRL",
@@ -796,8 +796,8 @@
                 "type": "CREDIT_CARD",
                 "installments_number": 1
               },
-              "order_date": 1748427775358,
-              "approved_date": 1748427775358
+              "order_date": 1748440386841,
+              "approved_date": 1748440386841
             },
             "buyer": {
               "name": "Teste Automático",
@@ -805,14 +805,14 @@
               "document": "123.456.789-00"
             }
           },
-          "id": "1748427775358-720wkz9hq",
-          "creation_date": 1748427775358,
+          "id": "1748440386841-80wi3t957",
+          "creation_date": 1748440386841,
           "event": "CLUB_FIRST_ACCESS",
           "version": "2.0.0",
           "eventName": "Primeiro Acesso",
           "eventType": "CLUB_FIRST_ACCESS",
           "eventCategory": "club",
-          "receivedAt": "2025-05-28T10:22:55.360Z",
+          "receivedAt": "2025-05-28T13:53:06.848Z",
           "isSubscription": false,
           "metadata": {
             "hottok": "test-token-hotmart-2025",
@@ -835,7 +835,7 @@
       "workflow": "standard",
       "event": "CLUB_MODULE_COMPLETED",
       "status": 200,
-      "responseTime": 7,
+      "responseTime": 22,
       "data": [
         {
           "data": {
@@ -845,7 +845,7 @@
               "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
             },
             "purchase": {
-              "transaction": "HP4295428466",
+              "transaction": "HP1269831449",
               "status": "APPROVED",
               "price": {
                 "currency_value": "BRL",
@@ -855,8 +855,8 @@
                 "type": "CREDIT_CARD",
                 "installments_number": 1
               },
-              "order_date": 1748427775467,
-              "approved_date": 1748427775467
+              "order_date": 1748440386966,
+              "approved_date": 1748440386966
             },
             "buyer": {
               "name": "Teste Automático",
@@ -864,14 +864,14 @@
               "document": "123.456.789-00"
             }
           },
-          "id": "1748427775467-8kmq7nmgq",
-          "creation_date": 1748427775467,
+          "id": "1748440386966-9p8hczchx",
+          "creation_date": 1748440386966,
           "event": "CLUB_MODULE_COMPLETED",
           "version": "2.0.0",
           "eventName": "Módulo Completo",
           "eventType": "CLUB_MODULE_COMPLETED",
           "eventCategory": "club",
-          "receivedAt": "2025-05-28T10:22:55.469Z",
+          "receivedAt": "2025-05-28T13:53:06.973Z",
           "isSubscription": false,
           "metadata": {
             "hottok": "test-token-hotmart-2025",
@@ -894,7 +894,7 @@
       "workflow": "smart",
       "event": "PURCHASE_APPROVED",
       "status": 200,
-      "responseTime": 8,
+      "responseTime": 21,
       "data": [
         {
           "data": {
@@ -904,7 +904,7 @@
               "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
             },
             "purchase": {
-              "transaction": "HP4349403671",
+              "transaction": "HP4322751810",
               "status": "APPROVED",
               "price": {
                 "currency_value": "BRL",
@@ -914,8 +914,8 @@
                 "type": "CREDIT_CARD",
                 "installments_number": 1
               },
-              "order_date": 1748427775575,
-              "approved_date": 1748427775575
+              "order_date": 1748440387089,
+              "approved_date": 1748440387089
             },
             "buyer": {
               "name": "Teste Automático",
@@ -923,14 +923,14 @@
               "document": "123.456.789-00"
             }
           },
-          "id": "1748427775575-yds28870y",
-          "creation_date": 1748427775575,
+          "id": "1748440387089-6x5n0qw0p",
+          "creation_date": 1748440387089,
           "event": "PURCHASE_APPROVED",
           "version": "2.0.0",
           "eventName": "Compra Aprovada",
           "eventType": "PURCHASE_APPROVED",
           "eventCategory": "purchase",
-          "receivedAt": "2025-05-28T10:22:55.578Z",
+          "receivedAt": "2025-05-28T13:53:07.097Z",
           "metadata": {
             "hottok": "test-token-hotmart-2025",
             "headers": {
@@ -952,7 +952,7 @@
       "workflow": "smart",
       "event": "PURCHASE_COMPLETE",
       "status": 200,
-      "responseTime": 7,
+      "responseTime": 20,
       "data": []
     },
     {
@@ -960,7 +960,7 @@
       "workflow": "smart",
       "event": "PURCHASE_CANCELED",
       "status": 200,
-      "responseTime": 9,
+      "responseTime": 18,
       "data": []
     },
     {
@@ -968,7 +968,7 @@
       "workflow": "smart",
       "event": "PURCHASE_REFUNDED",
       "status": 200,
-      "responseTime": 7,
+      "responseTime": 12,
       "data": []
     },
     {
@@ -976,7 +976,7 @@
       "workflow": "smart",
       "event": "PURCHASE_CHARGEBACK",
       "status": 200,
-      "responseTime": 7,
+      "responseTime": 19,
       "data": []
     },
     {
@@ -984,7 +984,7 @@
       "workflow": "smart",
       "event": "PURCHASE_DELAYED",
       "status": 200,
-      "responseTime": 6,
+      "responseTime": 23,
       "data": []
     },
     {
@@ -992,7 +992,7 @@
       "workflow": "smart",
       "event": "PURCHASE_PROTEST",
       "status": 200,
-      "responseTime": 11,
+      "responseTime": 22,
       "data": []
     },
     {
@@ -1000,7 +1000,7 @@
       "workflow": "smart",
       "event": "PURCHASE_BILLET_PRINTED",
       "status": 200,
-      "responseTime": 13,
+      "responseTime": 21,
       "data": []
     },
     {
@@ -1008,7 +1008,7 @@
       "workflow": "smart",
       "event": "PURCHASE_EXPIRED",
       "status": 200,
-      "responseTime": 13,
+      "responseTime": 21,
       "data": []
     },
     {
@@ -1016,7 +1016,7 @@
       "workflow": "smart",
       "event": "PURCHASE_OUT_OF_SHOPPING_CART",
       "status": 200,
-      "responseTime": 13,
+      "responseTime": 21,
       "data": []
     },
     {
@@ -1024,7 +1024,7 @@
       "workflow": "smart",
       "event": "SUBSCRIPTION_CANCELLATION",
       "status": 200,
-      "responseTime": 12,
+      "responseTime": 22,
       "data": []
     },
     {
@@ -1032,7 +1032,7 @@
       "workflow": "smart",
       "event": "SWITCH_PLAN",
       "status": 200,
-      "responseTime": 15,
+      "responseTime": 10,
       "data": []
     },
     {
@@ -1040,7 +1040,7 @@
       "workflow": "smart",
       "event": "UPDATE_SUBSCRIPTION_CHARGE_DATE",
       "status": 200,
-      "responseTime": 7,
+      "responseTime": 9,
       "data": []
     },
     {
@@ -1048,7 +1048,7 @@
       "workflow": "smart",
       "event": "CLUB_FIRST_ACCESS",
       "status": 200,
-      "responseTime": 12,
+      "responseTime": 18,
       "data": []
     },
     {
@@ -1056,7 +1056,7 @@
       "workflow": "smart",
       "event": "CLUB_MODULE_COMPLETED",
       "status": 200,
-      "responseTime": 13,
+      "responseTime": 24,
       "data": []
     },
     {
@@ -1064,7 +1064,7 @@
       "workflow": "super-smart",
       "event": "PURCHASE_APPROVED",
       "status": 200,
-      "responseTime": 10,
+      "responseTime": 29,
       "data": [
         {
           "data": {
@@ -1074,7 +1074,7 @@
               "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
             },
             "purchase": {
-              "transaction": "HP8102103600",
+              "transaction": "HP0095623169",
               "status": "APPROVED",
               "price": {
                 "currency_value": "BRL",
@@ -1084,8 +1084,8 @@
                 "type": "CREDIT_CARD",
                 "installments_number": 1
               },
-              "order_date": 1748427777254,
-              "approved_date": 1748427777254
+              "order_date": 1748440388889,
+              "approved_date": 1748440388889
             },
             "buyer": {
               "name": "Teste Automático",
@@ -1093,14 +1093,14 @@
               "document": "123.456.789-00"
             }
           },
-          "id": "1748427777254-0w7ilc9q0",
-          "creation_date": 1748427777254,
+          "id": "1748440388889-8f9w05aru",
+          "creation_date": 1748440388889,
           "event": "PURCHASE_APPROVED",
           "version": "2.0.0",
           "eventName": "Compra Aprovada",
           "eventType": "PURCHASE_APPROVED",
           "eventCategory": "purchase",
-          "receivedAt": "2025-05-28T10:22:57.257Z",
+          "receivedAt": "2025-05-28T13:53:08.897Z",
           "isSubscription": false,
           "isRenewal": false,
           "recurrenceNumber": 0,
@@ -1126,7 +1126,7 @@
       "workflow": "super-smart",
       "event": "PURCHASE_APPROVED",
       "status": 200,
-      "responseTime": 9,
+      "responseTime": 28,
       "data": [
         {
           "data": {
@@ -1136,7 +1136,7 @@
               "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
             },
             "purchase": {
-              "transaction": "HP2341872392",
+              "transaction": "HP7563234530",
               "status": "APPROVED",
               "price": {
                 "currency_value": "BRL",
@@ -1146,8 +1146,8 @@
                 "type": "CREDIT_CARD",
                 "installments_number": 1
               },
-              "order_date": 1748427777365,
-              "approved_date": 1748427777365,
+              "order_date": 1748440389019,
+              "approved_date": 1748440389019,
               "recurrence_number": 1
             },
             "buyer": {
@@ -1159,14 +1159,14 @@
               "id": 12345
             }
           },
-          "id": "1748427777365-jz5or564u",
-          "creation_date": 1748427777365,
+          "id": "1748440389019-tx4k3plly",
+          "creation_date": 1748440389019,
           "event": "PURCHASE_APPROVED",
           "version": "2.0.0",
           "eventName": "Compra Aprovada",
           "eventType": "PURCHASE_APPROVED",
           "eventCategory": "purchase",
-          "receivedAt": "2025-05-28T10:22:57.367Z",
+          "receivedAt": "2025-05-28T13:53:09.026Z",
           "isSubscription": false,
           "isRenewal": false,
           "recurrenceNumber": 1,
@@ -1192,7 +1192,7 @@
       "workflow": "super-smart",
       "event": "PURCHASE_APPROVED",
       "status": 200,
-      "responseTime": 8,
+      "responseTime": 27,
       "data": [
         {
           "data": {
@@ -1202,7 +1202,7 @@
               "ucode": "42f81a37-b160-4b0e-9085-80b1be72a64d"
             },
             "purchase": {
-              "transaction": "HP6400768030",
+              "transaction": "HP3059209323",
               "status": "APPROVED",
               "price": {
                 "currency_value": "BRL",
@@ -1212,8 +1212,8 @@
                 "type": "CREDIT_CARD",
                 "installments_number": 1
               },
-              "order_date": 1748427777476,
-              "approved_date": 1748427777476,
+              "order_date": 1748440389149,
+              "approved_date": 1748440389149,
               "recurrence_number": 2
             },
             "buyer": {
@@ -1225,14 +1225,14 @@
               "id": 12345
             }
           },
-          "id": "1748427777476-pn14q0y9t",
-          "creation_date": 1748427777476,
+          "id": "1748440389149-era2r35ks",
+          "creation_date": 1748440389149,
           "event": "PURCHASE_APPROVED",
           "version": "2.0.0",
           "eventName": "Compra Aprovada",
           "eventType": "PURCHASE_APPROVED",
           "eventCategory": "purchase",
-          "receivedAt": "2025-05-28T10:22:57.478Z",
+          "receivedAt": "2025-05-28T13:53:09.155Z",
           "isSubscription": false,
           "isRenewal": false,
           "recurrenceNumber": 2,
@@ -1258,7 +1258,7 @@
       "workflow": "super-smart",
       "event": "PURCHASE_COMPLETE",
       "status": 200,
-      "responseTime": 7,
+      "responseTime": 24,
       "data": []
     },
     {
@@ -1266,7 +1266,7 @@
       "workflow": "super-smart",
       "event": "PURCHASE_CANCELED",
       "status": 200,
-      "responseTime": 16,
+      "responseTime": 19,
       "data": []
     },
     {
@@ -1274,7 +1274,7 @@
       "workflow": "super-smart",
       "event": "PURCHASE_REFUNDED",
       "status": 200,
-      "responseTime": 14,
+      "responseTime": 20,
       "data": []
     },
     {
@@ -1282,7 +1282,7 @@
       "workflow": "super-smart",
       "event": "PURCHASE_CHARGEBACK",
       "status": 200,
-      "responseTime": 6,
+      "responseTime": 20,
       "data": []
     },
     {
@@ -1290,7 +1290,7 @@
       "workflow": "super-smart",
       "event": "PURCHASE_BILLET_PRINTED",
       "status": 200,
-      "responseTime": 8,
+      "responseTime": 22,
       "data": []
     },
     {
@@ -1298,7 +1298,7 @@
       "workflow": "super-smart",
       "event": "PURCHASE_BILLET_PRINTED",
       "status": 200,
-      "responseTime": 12,
+      "responseTime": 21,
       "data": []
     },
     {
@@ -1306,7 +1306,7 @@
       "workflow": "super-smart",
       "event": "PURCHASE_PROTEST",
       "status": 200,
-      "responseTime": 12,
+      "responseTime": 20,
       "data": []
     },
     {
@@ -1314,7 +1314,7 @@
       "workflow": "super-smart",
       "event": "PURCHASE_EXPIRED",
       "status": 200,
-      "responseTime": 8,
+      "responseTime": 21,
       "data": []
     },
     {
@@ -1322,7 +1322,7 @@
       "workflow": "super-smart",
       "event": "PURCHASE_DELAYED",
       "status": 200,
-      "responseTime": 12,
+      "responseTime": 26,
       "data": []
     },
     {
@@ -1330,7 +1330,7 @@
       "workflow": "super-smart",
       "event": "PURCHASE_OUT_OF_SHOPPING_CART",
       "status": 200,
-      "responseTime": 9,
+      "responseTime": 19,
       "data": []
     },
     {
@@ -1338,7 +1338,7 @@
       "workflow": "super-smart",
       "event": "SUBSCRIPTION_CANCELLATION",
       "status": 200,
-      "responseTime": 14,
+      "responseTime": 22,
       "data": []
     },
     {
@@ -1346,7 +1346,7 @@
       "workflow": "super-smart",
       "event": "SWITCH_PLAN",
       "status": 200,
-      "responseTime": 14,
+      "responseTime": 19,
       "data": []
     },
     {
@@ -1354,7 +1354,7 @@
       "workflow": "super-smart",
       "event": "UPDATE_SUBSCRIPTION_CHARGE_DATE",
       "status": 200,
-      "responseTime": 10,
+      "responseTime": 21,
       "data": []
     },
     {
@@ -1362,7 +1362,7 @@
       "workflow": "super-smart",
       "event": "CLUB_FIRST_ACCESS",
       "status": 200,
-      "responseTime": 7,
+      "responseTime": 20,
       "data": []
     },
     {
@@ -1370,7 +1370,7 @@
       "workflow": "super-smart",
       "event": "CLUB_MODULE_COMPLETED",
       "status": 200,
-      "responseTime": 13,
+      "responseTime": 24,
       "data": []
     }
   ]

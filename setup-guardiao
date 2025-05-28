@@ -1,0 +1,86 @@
+#!/bin/bash
+
+# 🛡️ Setup Automático do Guardião
+# Configura tudo para inicialização automática
+
+echo "🛡️ Setup do Guardião Automático"
+echo "==============================="
+
+# 1. Verificar dependências
+echo "📦 Verificando dependências..."
+
+if ! command -v node &> /dev/null; then
+    echo "❌ Node.js não instalado. Instale primeiro: https://nodejs.org"
+    exit 1
+fi
+
+if ! command -v npm &> /dev/null; then
+    echo "❌ npm não encontrado"
+    exit 1
+fi
+
+echo "✅ Node.js e npm encontrados"
+
+# 2. Instalar dependências se necessário
+if [ ! -d "node_modules" ]; then
+    echo "📦 Instalando dependências..."
+    npm install
+fi
+
+# 3. Verificar se chokidar está instalado
+if ! npm list chokidar &>/dev/null; then
+    echo "📦 Instalando chokidar..."
+    npm install --save-dev chokidar
+fi
+
+echo "✅ Dependências verificadas"
+
+# 4. Verificar estrutura de arquivos
+if [ ! -f "scripts/guardiao-watch.js" ]; then
+    echo "❌ Guardião não encontrado. Execute este script da raiz do projeto."
+    exit 1
+fi
+
+if [ ! -f "scripts/dev-with-guardiao.sh" ]; then
+    echo "❌ Script de desenvolvimento não encontrado"
+    exit 1
+fi
+
+echo "✅ Estrutura de arquivos OK"
+
+# 5. Adicionar ao .gitignore se necessário
+if [ -f ".gitignore" ]; then
+    if ! grep -q ".guardiao-snapshot.json" .gitignore 2>/dev/null; then
+        echo "" >> .gitignore
+        echo "# Guardião Automático" >> .gitignore
+        echo ".guardiao-snapshot.json" >> .gitignore
+        echo ".guardiao.log" >> .gitignore
+        echo ".tsc.log" >> .gitignore
+        echo "✅ Adicionado ao .gitignore"
+    fi
+fi
+
+# 6. Teste rápido
+echo "🧪 Testando configuração..."
+timeout 5s node scripts/guardiao-watch.js > /dev/null 2>&1 &
+TEST_PID=$!
+sleep 2
+
+if ps -p $TEST_PID > /dev/null 2>&1; then
+    kill $TEST_PID
+    echo "✅ Teste OK - Guardião funciona"
+else
+    echo "❌ Erro no teste do Guardião"
+    exit 1
+fi
+
+echo ""
+echo "🎉 Setup completo!"
+echo ""
+echo "📋 Como usar:"
+echo "  ./start-dev              # Inicia ambiente completo"
+echo "  npm run dev              # Mesma coisa"
+echo "  npm run guardiao:status  # Ver status"
+echo "  npm run guardiao:stop    # Parar Guardião"
+echo ""
+echo "✨ Agora o Guardião inicia automaticamente sempre!"

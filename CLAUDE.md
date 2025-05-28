@@ -508,6 +508,58 @@ Você já tem estas proteções ativas:
 - ✅ **476+ testes** executados automaticamente
 - ✅ **Scripts de backup** automáticos
 
+## 🛡️ Guardião Automático
+
+O projeto inclui um sistema de proteção automática de UI que detecta mudanças em tempo real.
+
+### Inicialização Automática
+
+```bash
+# Ambiente completo (Guardião + TypeScript Watch)
+./start-dev
+# ou
+npm run dev
+
+# Apenas Guardião
+npm run guardiao:start
+
+# Ver status
+npm run guardiao:status
+
+# Parar
+npm run guardiao:stop
+
+# CodeRabbit (análise de PRs)
+npm run coderabbit          # Interface interativa
+npm run coderabbit:pr 14    # Analisar PR específico  
+npm run coderabbit:list     # Listar PRs disponíveis
+```
+
+### Como Funciona
+
+O Guardião monitora automaticamente:
+- `displayName` - Nomes exibidos
+- `description` - Descrições  
+- `placeholder` - Placeholders
+- `hint` - Dicas de ajuda
+- `label` - Labels
+- `default` - Valores padrão
+- `type` - Tipos de campo
+
+**Detecção em tempo real:**
+```
+📝 MUDANÇA DETECTADA: nodes/Hotmart/v1/actions/product/getAll.operation.ts
+  🆕 NOVO: displayName = "Novo Nome" (linha 42)
+  💾 Snapshot atualizado: +1 novos, -0 removidos
+  ⏰ 10:47:23
+```
+
+### Setup Inicial (Apenas na Primeira Vez)
+
+```bash
+./setup-guardiao
+```
+
 ## 🧪 Testes
 
 ### Executar Testes

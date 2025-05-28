@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# 🚀 Script Principal de Desenvolvimento
+# Inicialização completa com Guardião automático
+
+echo "🚀 n8n-nodes-hotmart - Ambiente de Desenvolvimento"
+echo "=================================================="
+
+# Verificar se estamos na raiz do projeto
+if [ ! -f "package.json" ]; then
+    echo "❌ Execute este script na raiz do projeto!"
+    exit 1
+fi
+
+# Parar processos anteriores
+pkill -f "guardiao-watch" 2>/dev/null || true
+pkill -f "tsc --watch" 2>/dev/null || true
+
+echo "✅ Iniciando ambiente completo..."
+echo ""
+
+# Executar npm run dev (que chama dev-with-guardiao.sh)
+npm run dev

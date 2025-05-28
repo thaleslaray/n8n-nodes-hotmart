@@ -1,0 +1,70 @@
+#!/bin/bash
+
+# Script de migração para nova estrutura de scripts
+# Limpa configurações antigas e configura novas
+
+echo "🔄 Migrando para Nova Estrutura de Scripts"
+echo "=========================================="
+
+# 1. Parar processos antigos
+echo "🛑 Parando processos antigos..."
+pkill -f "guardiao-watch" 2>/dev/null || true
+pkill -f ".local/scripts/guardiao" 2>/dev/null || true
+
+# 2. Limpar logs antigos
+echo "🧹 Limpando logs antigos..."
+rm -f ~/.guardiao.log
+rm -f .guardiao.log
+rm -f .tsc.log
+
+# 3. Verificar nova estrutura
+echo "📁 Verificando nova estrutura..."
+if [ ! -f "scripts/guardiao-watch.js" ]; then
+    echo "❌ Nova estrutura não encontrada. Certifique-se de estar na raiz do projeto."
+    exit 1
+fi
+
+if [ ! -f "scripts/coderabbit-analysis.sh" ]; then
+    echo "❌ Scripts do CodeRabbit não encontrados."
+    exit 1
+fi
+
+echo "✅ Nova estrutura verificada"
+
+# 4. Atualizar permissões
+echo "🔧 Atualizando permissões..."
+chmod +x scripts/*.sh
+chmod +x scripts/coderabbit
+chmod +x scripts/guardiao-watch.js
+chmod +x start-dev
+chmod +x setup-guardiao
+
+# 5. Teste rápido
+echo "🧪 Testando nova estrutura..."
+if timeout 5s node scripts/guardiao-watch.js > /dev/null 2>&1 &; then
+    TEST_PID=$!
+    sleep 2
+    if ps -p $TEST_PID > /dev/null 2>&1; then
+        kill $TEST_PID
+        echo "✅ Guardião funciona na nova estrutura"
+    else
+        echo "❌ Erro no teste do Guardião"
+        exit 1
+    fi
+fi
+
+# 6. Informações finais
+echo ""
+echo "🎉 Migração completa!"
+echo ""
+echo "📋 Comandos atualizados:"
+echo "  npm run dev              # Ambiente completo"
+echo "  npm run guardiao:start   # Apenas Guardião"
+echo "  npm run guardiao:status  # Ver status"
+echo "  npm run coderabbit       # Análise de PRs"
+echo ""
+echo "🔗 Scripts principais:"
+echo "  ./start-dev              # Iniciar desenvolvimento"
+echo "  ./scripts/coderabbit     # CodeRabbit direto"
+echo ""
+echo "✨ Agora todos os scripts estão versionados no Git!"
