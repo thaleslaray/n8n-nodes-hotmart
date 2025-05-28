@@ -1241,4 +1241,104 @@ describe('HotmartTrigger Node - Complete Coverage', () => {
       expect(allEvents.length).toBe(15); // All events are covered
     });
   });
+
+  describe('100% Coverage - Uncovered Lines', () => {
+    let mockWebhookFunctions: Partial<IWebhookFunctions>;
+    let mockResponse: any;
+
+    beforeEach(() => {
+      mockResponse = {
+        status: jest.fn().mockReturnThis(),
+        send: jest.fn().mockReturnThis(),
+        json: jest.fn().mockReturnThis(),
+      };
+
+      mockWebhookFunctions = {
+        getNodeParameter: jest.fn(),
+        getBodyData: jest.fn(),
+        getHeaderData: jest.fn().mockReturnValue({}),
+        getResponseObject: jest.fn().mockReturnValue(mockResponse),
+        getWorkflowStaticData: jest.fn().mockReturnValue({}), // Adicionando o mock que faltava
+        helpers: {
+          returnJsonArray: jest.fn((data) => data),
+        },
+        logger: {
+          debug: jest.fn(),
+          info: jest.fn(),
+          error: jest.fn(),
+          warn: jest.fn(),
+          verbose: jest.fn(),
+        },
+      } as any;
+    });
+
+    it('should handle unknown event in Smart mode (lines 1272-1274)', async () => {
+      (mockWebhookFunctions.getNodeParameter as jest.Mock).mockImplementation((name) => {
+        if (name === 'triggerMode') return 'smart';
+        if (name === 'options') return {};
+        return undefined;
+      });
+      
+      (mockWebhookFunctions.getBodyData as jest.Mock).mockReturnValue({
+        event: 'TOTALLY_UNKNOWN_EVENT',
+        data: { test: true }
+      });
+
+      const result = await hotmartTrigger.webhook.call(mockWebhookFunctions as IWebhookFunctions);
+
+      expect(mockResponse.status).toHaveBeenCalledWith(400);
+      expect(mockResponse.send).toHaveBeenCalledWith('Evento desconhecido');
+      expect(result).toEqual({ noWebhookResponse: true });
+    });
+
+    it('should handle unknown event in Super Smart mode (lines 1314-1316)', async () => {
+      (mockWebhookFunctions.getNodeParameter as jest.Mock).mockImplementation((name) => {
+        if (name === 'triggerMode') return 'super-smart';
+        if (name === 'options') return {};
+        return undefined;
+      });
+      
+      (mockWebhookFunctions.getBodyData as jest.Mock).mockReturnValue({
+        event: 'ANOTHER_UNKNOWN_EVENT',
+        data: { test: true }
+      });
+
+      const result = await hotmartTrigger.webhook.call(mockWebhookFunctions as IWebhookFunctions);
+
+      expect(mockResponse.status).toHaveBeenCalledWith(400);
+      expect(mockResponse.send).toHaveBeenCalledWith('Evento desconhecido');
+      expect(result).toEqual({ noWebhookResponse: true });
+    });
+
+    it('should cover default case in super-smart mode (line 1449)', async () => {
+      // Para cobrir a linha 1449, precisamos de um evento válido mas com dados que não se encaixam em nenhum case
+      (mockWebhookFunctions.getNodeParameter as jest.Mock).mockImplementation((name) => {
+        if (name === 'triggerMode') return 'super-smart';
+        if (name === 'options') return {};
+        return undefined;
+      });
+      
+      // Usar um evento válido mas modificar o mock para não bater em nenhum case
+      // Vamos usar um evento que existe mas simular uma situação onde o switch não encontra match
+      (mockWebhookFunctions.getBodyData as jest.Mock).mockReturnValue({
+        event: 'PURCHASE_APPROVED', // Evento válido
+        data: {
+          purchase: {
+            payment: {
+              type: 'unknown_payment_type' // Tipo de pagamento desconhecido
+            }
+          },
+          product: {
+            id: '123'
+          }
+        }
+      });
+
+      const result = await hotmartTrigger.webhook.call(mockWebhookFunctions as IWebhookFunctions);
+
+      // O resultado ainda deve ser processado, apenas com índice diferente
+      expect(result).toBeDefined();
+      expect(Array.isArray(result)).toBe(true);
+    });
+  });
 });

@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Script para testar APENAS webhooks
+echo "🌐 Testando apenas webhooks..."
+
+# Verificar se n8n está rodando
+if ! curl -s http://localhost:5678/healthz > /dev/null 2>&1; then
+    echo "❌ n8n não está rodando! Execute ./start-n8n primeiro"
+    exit 1
+fi
+
+# Sempre criar workflows novos (para garantir que existem)
+echo "📋 Criando workflows de teste..."
+node scripts/test-automation/create-three-modes-optimal.js > /dev/null 2>&1
+
+# Executar teste de webhooks
+echo "🧪 Executando 48 testes de webhook..."
+node scripts/test-automation/test-with-real-data.js
