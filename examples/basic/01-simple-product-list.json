@@ -1,0 +1,187 @@
+{
+  "name": "Hotmart - Lista Simples de Produtos",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "e6d6f6d0-51b9-4e9f-b3f5-d43c5e5b62a9",
+      "name": "Ao clicar em 'Executar Workflow'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [240, 300],
+      "notes": "Trigger manual para testar o workflow.\nClique no botão 'Execute Workflow' para começar."
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "product",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "status": "ACTIVE"
+        }
+      },
+      "id": "b8e6f6d0-51b9-4e9f-b3f5-d43c5e5b62a9",
+      "name": "Listar Produtos Hotmart",
+      "type": "@thaleslaray/n8n-nodes-hotmart.hotmart",
+      "typeVersion": 1,
+      "position": [460, 300],
+      "credentials": {
+        "hotmartOAuth2Api": {
+          "id": "1",
+          "name": "Hotmart OAuth2"
+        }
+      },
+      "notes": "Lista todos os produtos ATIVOS da sua conta Hotmart.\n\nConfigurações:\n- returnAll: true = busca todos os produtos\n- status: ACTIVE = apenas produtos ativos\n\nVocê pode mudar para:\n- INACTIVE: produtos inativos\n- BLOCKED: produtos bloqueados"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Processar produtos e extrair informações relevantes\nconst products = $input.all();\n\n// Mapear produtos com informações essenciais\nreturn products.map(item => {\n  const product = item.json;\n  \n  return {\n    json: {\n      // Informações básicas\n      id: product.id,\n      name: product.name,\n      ucode: product.ucode,\n      \n      // Preços\n      price: product.price?.value || 0,\n      currency: product.price?.currency_value || 'BRL',\n      formattedPrice: `R$ ${(product.price?.value || 0).toFixed(2).replace('.', ',')}`,\n      \n      // Status e vendas\n      status: product.status,\n      salesCount: product.sales?.count || 0,\n      checkoutUrl: product.sales?.checkout_url || '',\n      \n      // Datas\n      createdAt: new Date(product.creation_date).toLocaleDateString('pt-BR'),\n      \n      // Flags úteis\n      isBestSeller: (product.sales?.count || 0) > 100,\n      hasStock: product.stock?.available !== false,\n      \n      // Tipo de produto\n      productType: product.type || 'DIGITAL',\n      \n      // Comissões\n      commission: product.commission?.value || 0,\n      commissionType: product.commission?.type || 'PERCENTAGE'\n    },\n    // Manter dados originais para referência\n    original: product\n  };\n});"
+      },
+      "id": "c8e6f6d0-51b9-4e9f-b3f5-d43c5e5b62a9",
+      "name": "Processar e Formatar Produtos",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [680, 300],
+      "notes": "Processa os produtos retornados e extrai:\n- Informações básicas (ID, nome, código)\n- Preços formatados em Real\n- Status de vendas\n- Flags úteis (best seller, tem estoque)\n- Datas formatadas\n\nOs dados originais são mantidos em 'original' caso precise."
+    },
+    {
+      "parameters": {
+        "operation": "sort",
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "salesCount",
+              "order": "descending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d8e6f6d0-51b9-4e9f-b3f5-d43c5e5b62a9",
+      "name": "Ordenar por Mais Vendidos",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [900, 300],
+      "notes": "Ordena produtos por número de vendas (decrescente).\n\nOs mais vendidos aparecem primeiro.\n\nVocê pode mudar para ordenar por:\n- price: preço\n- createdAt: data de criação\n- name: nome alfabético"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4c6ef353-1967-4ba3-8bfe-dc2a111bb6f5",
+              "name": "summary.totalProducts",
+              "value": "={{ $items().length }}",
+              "type": "number"
+            },
+            {
+              "id": "5d7ef464-2078-4cb4-9cfe-ed3b222cc7f6",
+              "name": "summary.activeProducts",
+              "value": "={{ $items().filter(item => item.json.status === 'ACTIVE').length }}",
+              "type": "number"
+            },
+            {
+              "id": "6e8ef575-3189-4dc5-0dfe-fe4c333dd8g7",
+              "name": "summary.totalSales",
+              "value": "={{ $items().reduce((sum, item) => sum + item.json.salesCount, 0) }}",
+              "type": "number"
+            },
+            {
+              "id": "7f9ef686-4200-4ed6-1efe-gf5d444ee9h8",
+              "name": "summary.bestSellers",
+              "value": "={{ $items().filter(item => item.json.isBestSeller).length }}",
+              "type": "number"
+            },
+            {
+              "id": "8g0ef797-5311-4fe7-2fef-hg6e555ff0i9",
+              "name": "summary.generatedAt",
+              "value": "={{ new Date().toLocaleString('pt-BR') }}",
+              "type": "string"
+            },
+            {
+              "id": "9h1ef808-6422-4gf8-3gfg-ih7f666gg1j0",
+              "name": "products",
+              "value": "={{ $items().map(item => item.json) }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e8e6f6d0-51b9-4e9f-b3f5-d43c5e5b62a9",
+      "name": "Criar Resumo Final",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [1120, 300],
+      "notes": "Cria um resumo consolidado com:\n- Total de produtos\n- Produtos ativos\n- Total de vendas\n- Quantidade de best sellers\n- Data/hora de geração\n- Lista completa de produtos\n\nÚtil para dashboards ou relatórios."
+    }
+  ],
+  "connections": {
+    "Ao clicar em 'Executar Workflow'": {
+      "main": [
+        [
+          {
+            "node": "Listar Produtos Hotmart",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Listar Produtos Hotmart": {
+      "main": [
+        [
+          {
+            "node": "Processar e Formatar Produtos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Processar e Formatar Produtos": {
+      "main": [
+        [
+          {
+            "node": "Ordenar por Mais Vendidos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ordenar por Mais Vendidos": {
+      "main": [
+        [
+          {
+            "node": "Criar Resumo Final",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "description": "Lista todos os produtos da Hotmart e processa as informações relevantes.\n\nO que este workflow faz:\n1. Busca todos os produtos ativos\n2. Extrai e formata informações importantes\n3. Ordena por número de vendas\n4. Cria um resumo consolidado\n\nÚtil para:\n- Relatórios de produtos\n- Análise de vendas\n- Integração com outros sistemas\n- Base para workflows mais complexos"
+  },
+  "tags": [
+    {
+      "name": "Hotmart",
+      "createdAt": "2025-05-28T10:00:00.000Z"
+    },
+    {
+      "name": "Exemplo",
+      "createdAt": "2025-05-28T10:00:00.000Z"
+    },
+    {
+      "name": "Básico",
+      "createdAt": "2025-05-28T10:00:00.000Z"
+    }
+  ]
+}

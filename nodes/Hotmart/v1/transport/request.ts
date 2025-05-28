@@ -83,17 +83,30 @@ export async function hotmartApiRequest<T>(
     });
 
     return fullResponse && fullResponse.body ? fullResponse.body : {} as T;
-  } catch (error: any) {
+  } catch (error) {
+    // Type guard to safely access error properties
+    const apiError = error as {
+      message?: string;
+      statusCode?: number;
+      response?: {
+        statusCode?: number;
+        body?: {
+          message?: string;
+          code?: string;
+        };
+      };
+    };
+
     this.logger.debug('\n[Hotmart API Error]', {
-      message: error.message,
-      statusCode: error.statusCode,
-      response: error.response?.body || error.response,
+      message: apiError.message,
+      statusCode: apiError.statusCode,
+      response: apiError.response?.body || apiError.response,
     });
 
     // Extract error details
-    const statusCode = error.statusCode || error.response?.statusCode;
-    const errorMessage = error.response?.body?.message || error.message;
-    // const errorCode = error.response?.body?.code; // Reserved for future use
+    const statusCode = apiError.statusCode || apiError.response?.statusCode;
+    const errorMessage = apiError.response?.body?.message || apiError.message;
+    // const errorCode = apiError.response?.body?.code; // Reserved for future use
 
     // Create user-friendly error message
     let userMessage = '';
@@ -108,7 +121,14 @@ export async function hotmartApiRequest<T>(
     }
 
     // Create NodeApiError with detailed information
-    throw new NodeApiError(this.getNode(), error, {
+    // NodeApiError expects a simple object, not IDataObject
+    const errorData = {
+      message: apiError.message || 'Unknown error',
+      ...(apiError.statusCode !== undefined && { statusCode: apiError.statusCode }),
+      ...(apiError.response !== undefined && { response: apiError.response }),
+    };
+    
+    throw new NodeApiError(this.getNode(), errorData, {
       message: userMessage,
       description: errorMessage,
       httpCode: statusCode ? statusCode.toString() : undefined,

@@ -1,0 +1,119 @@
+name: 🔒 Reportar Vulnerabilidade de Segurança
+description: Reporte uma vulnerabilidade de segurança de forma responsável
+title: "[Security]: "
+labels: ["security", "priority-critical"]
+assignees: ["thaleslaray"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        🔒 **Obrigado por reportar uma vulnerabilidade de segurança!**
+        
+        ⚠️ **IMPORTANTE**: Se esta é uma vulnerabilidade crítica que pode ser explorada ativamente, considere reportar de forma privada através de:
+        - Email direto para o mantenedor
+        - Mensagem privada no GitHub
+        
+        Use este formulário apenas para vulnerabilidades de baixo/médio risco ou já corrigidas.
+        
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severidade
+      description: Qual a severidade desta vulnerabilidade?
+      options:
+        - Crítica - Exploração remota, vazamento de dados sensíveis
+        - Alta - Acesso não autorizado, bypass de autenticação
+        - Média - Exposição de informações, DoS local
+        - Baixa - Informações não sensíveis, requer acesso físico
+    validations:
+      required: true
+      
+  - type: textarea
+    id: description
+    attributes:
+      label: Descrição da Vulnerabilidade
+      description: Descreva a vulnerabilidade encontrada
+      placeholder: |
+        Descobri que as credenciais OAuth2 podem ser expostas quando...
+        Isso permite que um atacante...
+    validations:
+      required: true
+      
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impacto
+      description: Qual o impacto potencial desta vulnerabilidade?
+      placeholder: |
+        Um atacante poderia:
+        - Obter tokens de acesso de outros usuários
+        - Executar ações não autorizadas na API
+        - Acessar dados sensíveis
+    validations:
+      required: true
+      
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Passos para Reproduzir
+      description: Como reproduzir esta vulnerabilidade?
+      value: |
+        1. Configure o nó com credenciais válidas
+        2. 
+        3. 
+        4. Observe que...
+    validations:
+      required: true
+      
+  - type: textarea
+    id: poc
+    attributes:
+      label: Prova de Conceito
+      description: |
+        Se possível, forneça código ou comandos que demonstrem a vulnerabilidade.
+        ⚠️ Não inclua dados reais ou sensíveis.
+      render: shell
+      
+  - type: textarea
+    id: mitigation
+    attributes:
+      label: Mitigação Sugerida
+      description: Se você tem sugestões de como corrigir, compartilhe aqui
+      placeholder: |
+        Para corrigir, sugiro:
+        - Validar entrada antes de...
+        - Sanitizar dados quando...
+        - Implementar rate limiting em...
+        
+  - type: input
+    id: affected-versions
+    attributes:
+      label: Versões Afetadas
+      description: Quais versões são vulneráveis?
+      placeholder: "< 0.6.4"
+    validations:
+      required: true
+      
+  - type: checkboxes
+    id: disclosure
+    attributes:
+      label: Divulgação Responsável
+      description: Por favor, confirme
+      options:
+        - label: Não divulguei publicamente esta vulnerabilidade
+          required: true
+        - label: Aguardarei 90 dias ou correção antes de divulgar
+          required: true
+        - label: Estou disponível para ajudar na correção
+          required: false
+          
+  - type: textarea
+    id: contact
+    attributes:
+      label: Contato Privado
+      description: |
+        Se preferir discussão privada, forneça um meio de contato.
+        Esta informação será visível publicamente.
+      placeholder: |
+        Email: security@exemplo.com
+        Telegram: @usuario

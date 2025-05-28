@@ -1,0 +1,130 @@
+name: 💡 Sugestão de Funcionalidade
+description: Sugira uma nova funcionalidade ou melhoria para o n8n-nodes-hotmart
+title: "[Feature]: "
+labels: ["enhancement", "needs-triage"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado por sugerir uma melhoria! 
+        Suas ideias nos ajudam a tornar o n8n-nodes-hotmart ainda melhor.
+        
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problema que Resolve
+      description: Descreva qual problema ou necessidade esta funcionalidade resolveria
+      placeholder: |
+        Atualmente, preciso fazer múltiplas chamadas para obter dados relacionados de vendas e comissões.
+        Isso torna o workflow complexo e lento, especialmente quando preciso gerar relatórios consolidados.
+    validations:
+      required: true
+      
+  - type: textarea
+    id: solution
+    attributes:
+      label: Solução Proposta
+      description: Como você imagina que esta funcionalidade deveria funcionar?
+      placeholder: |
+        Criar uma nova operação "Get Sales with Details" que retorne:
+        - Dados da venda
+        - Informações do comprador
+        - Detalhes de comissão
+        - Status de pagamento
+        Tudo em uma única chamada.
+    validations:
+      required: true
+      
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternativas Consideradas
+      description: Você considerou outras formas de resolver este problema?
+      placeholder: |
+        Tentei usar múltiplos nós em sequência, mas:
+        - Performance fica comprometida
+        - Complexidade do workflow aumenta
+        - Dificulta manutenção
+        
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Prioridade
+      description: Qual a importância desta funcionalidade para você?
+      options:
+        - Crítica - Bloqueando meu trabalho
+        - Alta - Muito importante para meus workflows
+        - Média - Seria muito útil ter
+        - Baixa - Nice to have
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: resource
+    attributes:
+      label: Recurso Relacionado
+      description: A qual recurso da API Hotmart esta funcionalidade se relaciona?
+      options:
+        - Assinaturas (Subscription)
+        - Vendas (Sales)
+        - Produtos (Product)
+        - Cupons (Coupon)
+        - Área de Membros (Club)
+        - Ingressos (Tickets)
+        - Negociação (Negotiate)
+        - Webhook/Trigger
+        - Múltiplos recursos
+        - Novo recurso
+        - Outro
+    validations:
+      required: true
+      
+  - type: textarea
+    id: example
+    attributes:
+      label: Exemplo de Uso
+      description: |
+        Forneça um exemplo de como você usaria esta funcionalidade.
+        Pode ser um workflow, código, ou descrição.
+      placeholder: |
+        Workflow exemplo:
+        1. Trigger: Novo pedido aprovado
+        2. Nó Hotmart: Get Sales with Details
+        3. Nó Email: Enviar relatório consolidado
+        
+        Isso eliminaria 3-4 nós intermediários do meu workflow atual.
+      
+  - type: textarea
+    id: api-reference
+    attributes:
+      label: Referência da API
+      description: |
+        Se esta funcionalidade existe na API Hotmart, forneça links ou documentação.
+        Isso nos ajuda a implementar mais rapidamente.
+      placeholder: |
+        https://developers.hotmart.com/docs/pt-BR/endpoint-especifico
+        
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribuição
+      description: Como você pode ajudar com esta funcionalidade?
+      options:
+        - label: Posso ajudar a testar a funcionalidade
+        - label: Posso fornecer casos de uso detalhados
+        - label: Posso contribuir com código (PR)
+        - label: Posso ajudar com documentação
+        
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Checklist
+      description: Por favor, confirme os itens abaixo
+      options:
+        - label: Procurei por issues similares antes de criar esta
+          required: true
+        - label: Esta funcionalidade não existe atualmente
+          required: true
+        - label: A funcionalidade beneficiaria outros usuários
+          required: false

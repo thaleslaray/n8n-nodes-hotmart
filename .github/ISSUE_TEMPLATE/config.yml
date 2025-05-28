@@ -1,0 +1,17 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📚 Documentação
+    url: https://github.com/thaleslaray/n8n-nodes-hotmart#readme
+    about: Comece por aqui! Documentação completa do projeto
+  - name: 📂 Exemplos de Workflows
+    url: https://github.com/thaleslaray/n8n-nodes-hotmart/tree/main/examples
+    about: Veja exemplos práticos de como usar os nós
+  - name: 💬 Comunidade n8n
+    url: https://community.n8n.io
+    about: Participe da comunidade oficial do n8n
+  - name: 🎓 Escola de Automação
+    url: https://www.escoladeautomacao.com.br/
+    about: Aprenda mais sobre automação com Thales Laray
+  - name: 📖 Documentação API Hotmart
+    url: https://developers.hotmart.com/docs/pt-BR/
+    about: Referência oficial da API Hotmart

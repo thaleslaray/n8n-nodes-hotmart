@@ -1,82 +1,203 @@
-name: Release
+name: Release - Publicação Automática
 
 on:
-  release:
-    types: [created]
+  push:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
-      version:
-        description: 'Version to release (e.g., 0.5.0)'
+      release-type:
+        description: 'Tipo de release (patch, minor, major)'
         required: true
-        type: string
-
-permissions:
-  contents: write
-  packages: write
+        default: 'patch'
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+      dry-run:
+        description: 'Executar em modo dry-run (não cria release)'
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   release:
-    name: Build and Publish
+    name: 🚀 Release Automático
     runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[release]')
     
     steps:
-    - name: Checkout código
+    - name: 📥 Checkout do código
       uses: actions/checkout@v4
       with:
+        fetch-depth: 0
         token: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Setup Node.js
+        
+    - name: 🔧 Configurar Git
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+    - name: 🔧 Configurar Node.js
       uses: actions/setup-node@v4
       with:
         node-version: '18.x'
         registry-url: 'https://registry.npmjs.org'
-
-    - name: Install pnpm
+        
+    - name: 📦 Instalar pnpm
       uses: pnpm/action-setup@v2
       with:
-        version: 10.10.0
-
-    - name: Install dependencies
+        version: 8
+        
+    - name: 📦 Instalar dependências
       run: pnpm install --frozen-lockfile
-
-    - name: Run tests
+      
+    - name: 🧪 Executar testes
       run: pnpm test
-
-    - name: Build project
+      
+    - name: 🔨 Build do projeto
+      run: pnpm build
+      
+    - name: 📊 Verificar cobertura
+      run: pnpm test:coverage:check
+      
+    - name: 🏷️ Determinar tipo de release
+      id: determine-release
       run: |
-        pnpm clean
-        pnpm build
-
-    - name: Update version
-      if: github.event_name == 'workflow_dispatch'
+        if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+          echo "release_type=${{ github.event.inputs.release-type }}" >> $GITHUB_OUTPUT
+        else
+          # Analisar commits para determinar tipo
+          LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+          
+          # Verificar breaking changes
+          if git log $LAST_TAG..HEAD --pretty=format:"%s" | grep -q "BREAKING CHANGE"; then
+            echo "release_type=major" >> $GITHUB_OUTPUT
+          # Verificar features
+          elif git log $LAST_TAG..HEAD --pretty=format:"%s" | grep -qE "^feat(\(.+\))?:"; then
+            echo "release_type=minor" >> $GITHUB_OUTPUT
+          # Verificar fixes
+          elif git log $LAST_TAG..HEAD --pretty=format:"%s" | grep -qE "^fix(\(.+\))?:"; then
+            echo "release_type=patch" >> $GITHUB_OUTPUT
+          else
+            echo "❌ Nenhum commit de feat/fix encontrado"
+            exit 1
+          fi
+        fi
+        
+    - name: 📝 Gerar versão e changelog
+      id: version
       run: |
-        npm version ${{ github.event.inputs.version }} --no-git-tag-version
-        git config user.name github-actions
-        git config user.email github-actions@github.com
-        git add package.json
-        git commit -m "chore: bump version to ${{ github.event.inputs.version }}"
-        git push
-
-    - name: Create package
-      run: pnpm pack
-
-    - name: Publish to NPM
-      run: npm publish --access public
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-    - name: Upload Release Assets
-      if: github.event_name == 'release'
-      uses: actions/upload-release-asset@v1
+        if [ "${{ github.event.inputs.dry-run }}" == "true" ]; then
+          echo "🔍 Modo DRY-RUN ativado"
+          pnpm release:${{ steps.determine-release.outputs.release_type }} --dry-run
+        else
+          # Gerar nova versão
+          pnpm release:${{ steps.determine-release.outputs.release_type }}
+          
+          # Capturar nova versão
+          NEW_VERSION=$(node -p "require('./package.json').version")
+          echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
+        fi
+        
+    - name: 📦 Criar pacote
+      if: github.event.inputs.dry-run != 'true'
+      run: |
+        pnpm pack
+        ls -la *.tgz
+        
+    - name: 🏷️ Criar tag e push
+      if: github.event.inputs.dry-run != 'true'
+      run: |
+        git push --follow-tags origin main
+        
+    - name: 📋 Gerar notas de release
+      if: github.event.inputs.dry-run != 'true'
+      id: release-notes
+      run: |
+        # Extrair changelog da última versão
+        VERSION=${{ steps.version.outputs.new_version }}
+        NOTES=$(awk -v ver="$VERSION" '
+          /^## / { if (found) exit; if ($0 ~ ver) found=1; next }
+          found { print }
+        ' CHANGELOG.md)
+        
+        # Salvar em arquivo
+        echo "$NOTES" > release-notes.md
+        
+        # Adicionar informações extras
+        echo "" >> release-notes.md
+        echo "## 📦 Instalação" >> release-notes.md
+        echo "" >> release-notes.md
+        echo "\`\`\`bash" >> release-notes.md
+        echo "# Via npm local" >> release-notes.md
+        echo "npm install --prefix ~/.n8n/nodes n8n-nodes-hotmart-$VERSION.tgz" >> release-notes.md
+        echo "" >> release-notes.md
+        echo "# Ou usando o script" >> release-notes.md
+        echo "./install" >> release-notes.md
+        echo "\`\`\`" >> release-notes.md
+        echo "" >> release-notes.md
+        echo "## 🔗 Links" >> release-notes.md
+        echo "- [Documentação](https://github.com/thaleslaray/n8n-nodes-hotmart#readme)" >> release-notes.md
+        echo "- [Exemplos](https://github.com/thaleslaray/n8n-nodes-hotmart/tree/main/examples)" >> release-notes.md
+        echo "- [Changelog Completo](https://github.com/thaleslaray/n8n-nodes-hotmart/blob/main/CHANGELOG.md)" >> release-notes.md
+        
+    - name: 🚀 Criar Release no GitHub
+      if: github.event.inputs.dry-run != 'true'
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: v${{ steps.version.outputs.new_version }}
+        name: v${{ steps.version.outputs.new_version }}
+        body_path: release-notes.md
+        files: |
+          n8n-nodes-hotmart-*.tgz
+        draft: false
+        prerelease: false
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ github.event.release.upload_url }}
-        asset_path: ./n8n-nodes-hotmart-*.tgz
-        asset_name: n8n-nodes-hotmart-${{ github.event.release.tag_name }}.tgz
-        asset_content_type: application/gzip
-
-    - name: Update CHANGELOG
+        
+    - name: 📊 Executar validação pós-release
+      if: github.event.inputs.dry-run != 'true'
       run: |
-        echo "📝 Release ${{ github.event.release.tag_name }} published!" >> release-notes.txt
-        echo "NPM: https://www.npmjs.com/package/n8n-nodes-hotmart" >> release-notes.txt
+        echo "🔍 Validando release..."
+        ./scripts/test-automation/post-release-validation.sh || true
+        
+    - name: 🎉 Notificar sucesso
+      if: success() && github.event.inputs.dry-run != 'true'
+      run: |
+        echo "## 🎉 Release v${{ steps.version.outputs.new_version }} criado com sucesso!"
+        echo ""
+        echo "### 📋 Próximos passos:"
+        echo "1. Verificar a [release page](https://github.com/${{ github.repository }}/releases/tag/v${{ steps.version.outputs.new_version }})"
+        echo "2. Testar a instalação do pacote"
+        echo "3. Anunciar na comunidade"
+        echo ""
+        echo "### 📦 Comando de instalação:"
+        echo "\`\`\`bash"
+        echo "npm install --prefix ~/.n8n/nodes https://github.com/${{ github.repository }}/releases/download/v${{ steps.version.outputs.new_version }}/n8n-nodes-hotmart-${{ steps.version.outputs.new_version }}.tgz"
+        echo "\`\`\`"
+
+  # Job para publicar no NPM (futuro)
+  publish-npm:
+    name: 📦 Publicar no NPM
+    runs-on: ubuntu-latest
+    needs: release
+    if: false  # Desabilitado por enquanto - habilitar quando configurar NPM
+    
+    steps:
+    - name: 📥 Checkout do código
+      uses: actions/checkout@v4
+      
+    - name: 🔧 Configurar Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18.x'
+        registry-url: 'https://registry.npmjs.org'
+        
+    - name: 📦 Publicar no NPM
+      run: |
+        echo "📦 Publicando no NPM..."
+        # npm publish --access public
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

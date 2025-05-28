@@ -1,0 +1,230 @@
+name: Dependencies - Atualização e Segurança
+
+on:
+  schedule:
+    # Executar toda segunda-feira às 9h (UTC)
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+
+jobs:
+  # Verificar vulnerabilidades
+  security-check:
+    name: 🔒 Verificação de Segurança
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📥 Checkout do código
+      uses: actions/checkout@v4
+      
+    - name: 🔧 Configurar Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18.x'
+        
+    - name: 📦 Instalar pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        version: 8
+        
+    - name: 🔍 Audit de dependências
+      id: audit
+      run: |
+        echo "## 🔍 Relatório de Segurança" > security-report.md
+        echo "" >> security-report.md
+        echo "Data: $(date)" >> security-report.md
+        echo "" >> security-report.md
+        
+        # Executar audit
+        if pnpm audit --production; then
+          echo "✅ Nenhuma vulnerabilidade encontrada!" >> security-report.md
+        else
+          echo "⚠️ Vulnerabilidades encontradas:" >> security-report.md
+          pnpm audit --production >> security-report.md || true
+        fi
+        
+    - name: 📊 Upload relatório
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: security-report
+        path: security-report.md
+        retention-days: 30
+
+  # Atualizar dependências
+  update-dependencies:
+    name: 🔄 Atualizar Dependências
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    
+    steps:
+    - name: 📥 Checkout do código
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: 🔧 Configurar Git
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+    - name: 🔧 Configurar Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18.x'
+        
+    - name: 📦 Instalar pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        version: 8
+        
+    - name: 📦 Instalar dependências
+      run: pnpm install
+      
+    - name: 🔄 Verificar atualizações
+      id: check-updates
+      run: |
+        echo "## 📦 Dependências Desatualizadas" > update-report.md
+        echo "" >> update-report.md
+        
+        # Verificar outdated
+        pnpm outdated --format json > outdated.json || true
+        
+        # Processar resultado
+        if [ -s outdated.json ] && [ "$(cat outdated.json)" != "{}" ]; then
+          echo "has_updates=true" >> $GITHUB_OUTPUT
+          
+          # Formatar relatório
+          node -e "
+            const outdated = require('./outdated.json');
+            const deps = Object.entries(outdated);
+            
+            if (deps.length > 0) {
+              console.log('### Dependências com atualizações disponíveis:\n');
+              deps.forEach(([name, info]) => {
+                console.log(\`- **\${name}**: \${info.current} → \${info.wanted} (latest: \${info.latest})\`);
+              });
+            }
+          " >> update-report.md
+        else
+          echo "has_updates=false" >> $GITHUB_OUTPUT
+          echo "✅ Todas as dependências estão atualizadas!" >> update-report.md
+        fi
+        
+    - name: 🔄 Atualizar dependências (minor/patch)
+      if: steps.check-updates.outputs.has_updates == 'true'
+      run: |
+        # Atualizar apenas minor e patch
+        pnpm update --no-save
+        
+        # Verificar se houve mudanças
+        if git diff --quiet pnpm-lock.yaml; then
+          echo "Nenhuma atualização aplicada"
+        else
+          echo "Atualizações aplicadas!"
+          git add pnpm-lock.yaml
+        fi
+        
+    - name: 🧪 Executar testes
+      if: steps.check-updates.outputs.has_updates == 'true'
+      run: |
+        pnpm test
+        pnpm lint
+        pnpm typecheck
+        pnpm build
+        
+    - name: 🔀 Criar Pull Request
+      if: steps.check-updates.outputs.has_updates == 'true'
+      uses: peter-evans/create-pull-request@v5
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        commit-message: 'chore: atualizar dependências (minor/patch)'
+        title: '🔄 Atualização Automática de Dependências'
+        body: |
+          ## 🔄 Atualização Automática de Dependências
+          
+          Este PR foi criado automaticamente para atualizar dependências minor e patch.
+          
+          ### 📋 O que foi feito:
+          - ✅ Dependências atualizadas (apenas minor/patch)
+          - ✅ Testes executados com sucesso
+          - ✅ Lint e TypeScript verificados
+          - ✅ Build testado
+          
+          ### 📊 Relatório de Atualizações:
+          
+          ${{ steps.check-updates.outputs.update_report }}
+          
+          ### ⚠️ Atenção:
+          - Revise as mudanças antes de fazer merge
+          - Teste manualmente se possível
+          - Verifique o CHANGELOG das dependências principais
+          
+          ---
+          
+          🤖 *PR criado automaticamente pelo GitHub Actions*
+        branch: deps/auto-update
+        delete-branch: true
+        labels: |
+          dependencies
+          automated
+        assignees: thaleslaray
+        reviewers: thaleslaray
+
+  # Verificar licenças
+  license-check:
+    name: 📜 Verificação de Licenças
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📥 Checkout do código
+      uses: actions/checkout@v4
+      
+    - name: 🔧 Configurar Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18.x'
+        
+    - name: 📦 Instalar pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        version: 8
+        
+    - name: 📦 Instalar dependências
+      run: pnpm install
+      
+    - name: 📜 Verificar licenças
+      run: |
+        echo "## 📜 Relatório de Licenças" > license-report.md
+        echo "" >> license-report.md
+        
+        # Instalar ferramenta
+        npm install -g license-checker
+        
+        # Gerar relatório
+        license-checker --production --summary >> license-report.md
+        
+        # Verificar licenças problemáticas
+        echo "" >> license-report.md
+        echo "### ⚠️ Verificação de Licenças Problemáticas:" >> license-report.md
+        
+        # Licenças que podem ser problemáticas
+        PROBLEMATIC="GPL|AGPL|LGPL|SSPL|BUSL"
+        
+        if license-checker --production | grep -E "$PROBLEMATIC"; then
+          echo "❌ Encontradas licenças que podem ser incompatíveis!" >> license-report.md
+          license-checker --production | grep -E "$PROBLEMATIC" >> license-report.md
+        else
+          echo "✅ Nenhuma licença problemática encontrada!" >> license-report.md
+        fi
+        
+    - name: 📊 Upload relatório
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: license-report
+        path: license-report.md
+        retention-days: 30

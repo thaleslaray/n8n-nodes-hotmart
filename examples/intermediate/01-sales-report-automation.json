@@ -1,0 +1,234 @@
+{
+  "name": "Hotmart - Relatório Automatizado de Vendas",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 8 * * 1"
+            }
+          ]
+        }
+      },
+      "id": "cron-trigger-weekly",
+      "name": "Toda Segunda às 8h",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [240, 300],
+      "notes": "Executa toda segunda-feira às 8h.\n\nCron: 0 8 * * 1\n- Minuto: 0\n- Hora: 8\n- Dia do mês: * (qualquer)\n- Mês: * (qualquer)\n- Dia da semana: 1 (segunda)\n\nPara relatórios diários, use: 0 8 * * *"
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "sales",
+        "operation": "getHistoricoVendas",
+        "startDate": "={{ $now.minus(7, 'days').startOf('day').toISO() }}",
+        "endDate": "={{ $now.minus(1, 'days').endOf('day').toISO() }}",
+        "returnAll": true
+      },
+      "id": "get-sales-history",
+      "name": "Buscar Vendas da Semana",
+      "type": "@thaleslaray/n8n-nodes-hotmart.hotmart",
+      "typeVersion": 1,
+      "position": [460, 200],
+      "credentials": {
+        "hotmartOAuth2Api": {
+          "id": "1",
+          "name": "Hotmart OAuth2"
+        }
+      },
+      "notes": "Busca histórico de vendas dos últimos 7 dias.\n\nPeríodo:\n- Início: 7 dias atrás (00:00)\n- Fim: Ontem (23:59)\n\nreturnAll: true busca todas as vendas do período."
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "sales",
+        "operation": "getComissoesVendas",
+        "startDate": "={{ $now.minus(7, 'days').startOf('day').toISO() }}",
+        "endDate": "={{ $now.minus(1, 'days').endOf('day').toISO() }}",
+        "returnAll": true
+      },
+      "id": "get-commissions",
+      "name": "Buscar Comissões",
+      "type": "@thaleslaray/n8n-nodes-hotmart.hotmart",
+      "typeVersion": 1,
+      "position": [460, 400],
+      "credentials": {
+        "hotmartOAuth2Api": {
+          "id": "1",
+          "name": "Hotmart OAuth2"
+        }
+      },
+      "notes": "Busca detalhes de comissões do mesmo período.\n\nInclui:\n- Comissões de afiliados\n- Valores líquidos\n- Status de pagamento"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Consolidar dados de vendas e comissões\nconst sales = $('Buscar Vendas da Semana').all();\nconst commissions = $('Buscar Comissões').all();\n\n// Análise de vendas\nconst salesAnalysis = sales.map(item => {\n  const sale = item.json;\n  return {\n    transactionId: sale.transaction,\n    productName: sale.product?.name || 'N/A',\n    productId: sale.product?.id,\n    buyerEmail: sale.buyer?.email,\n    buyerName: sale.buyer?.name,\n    saleDate: new Date(sale.purchase_date),\n    value: sale.price?.value || 0,\n    currency: sale.price?.currency || 'BRL',\n    paymentMethod: sale.payment?.method,\n    status: sale.status,\n    hasAffiliate: !!sale.affiliate?.name\n  };\n});\n\n// Análise de comissões\nconst commissionsMap = new Map();\ncommissions.forEach(item => {\n  const comm = item.json;\n  commissionsMap.set(comm.transaction, {\n    affiliateName: comm.affiliate?.name,\n    commissionValue: comm.commission?.value || 0,\n    commissionStatus: comm.status\n  });\n});\n\n// Métricas por produto\nconst productMetrics = {};\nsalesAnalysis.forEach(sale => {\n  const key = sale.productId || 'unknown';\n  if (!productMetrics[key]) {\n    productMetrics[key] = {\n      productName: sale.productName,\n      totalSales: 0,\n      revenue: 0,\n      buyers: new Set()\n    };\n  }\n  productMetrics[key].totalSales++;\n  productMetrics[key].revenue += sale.value;\n  productMetrics[key].buyers.add(sale.buyerEmail);\n});\n\n// Converter para array e calcular métricas finais\nconst productsSummary = Object.values(productMetrics).map(p => ({\n  productName: p.productName,\n  totalSales: p.totalSales,\n  revenue: p.revenue,\n  uniqueBuyers: p.buyers.size,\n  averageTicket: (p.revenue / p.totalSales).toFixed(2)\n})).sort((a, b) => b.revenue - a.revenue);\n\n// Métricas gerais da semana\nconst weekMetrics = {\n  period: {\n    start: $now.minus(7, 'days').startOf('day').toFormat('dd/MM/yyyy'),\n    end: $now.minus(1, 'days').endOf('day').toFormat('dd/MM/yyyy')\n  },\n  totalSales: salesAnalysis.length,\n  totalRevenue: salesAnalysis.reduce((sum, s) => sum + s.value, 0),\n  totalCommissions: Array.from(commissionsMap.values()).reduce((sum, c) => sum + c.commissionValue, 0),\n  uniqueBuyers: new Set(salesAnalysis.map(s => s.buyerEmail)).size,\n  averageTicket: (salesAnalysis.reduce((sum, s) => sum + s.value, 0) / salesAnalysis.length).toFixed(2),\n  \n  // Top produtos\n  topProducts: productsSummary.slice(0, 5),\n  \n  // Vendas por dia\n  salesByDay: {},\n  \n  // Métodos de pagamento\n  paymentMethods: {}\n};\n\n// Análise por dia da semana\nconst daysOfWeek = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];\nsalesAnalysis.forEach(sale => {\n  const dayKey = sale.saleDate.toISOString().split('T')[0];\n  const dayName = daysOfWeek[sale.saleDate.getDay()];\n  \n  if (!weekMetrics.salesByDay[dayKey]) {\n    weekMetrics.salesByDay[dayKey] = {\n      dayName,\n      sales: 0,\n      revenue: 0\n    };\n  }\n  weekMetrics.salesByDay[dayKey].sales++;\n  weekMetrics.salesByDay[dayKey].revenue += sale.value;\n  \n  // Métodos de pagamento\n  const method = sale.paymentMethod || 'Outros';\n  if (!weekMetrics.paymentMethods[method]) {\n    weekMetrics.paymentMethods[method] = {\n      count: 0,\n      revenue: 0\n    };\n  }\n  weekMetrics.paymentMethods[method].count++;\n  weekMetrics.paymentMethods[method].revenue += sale.value;\n});\n\n// Formatar valores em Real\nweekMetrics.totalRevenueFormatted = `R$ ${weekMetrics.totalRevenue.toFixed(2).replace('.', ',')}`;\nweekMetrics.totalCommissionsFormatted = `R$ ${weekMetrics.totalCommissions.toFixed(2).replace('.', ',')}`;\nweekMetrics.netRevenueFormatted = `R$ ${(weekMetrics.totalRevenue - weekMetrics.totalCommissions).toFixed(2).replace('.', ',')}`;\n\nreturn [{\n  json: {\n    reportType: 'WEEKLY_SALES_REPORT',\n    generatedAt: new Date().toLocaleString('pt-BR'),\n    metrics: weekMetrics,\n    detailedSales: salesAnalysis\n  }\n}];"
+      },
+      "id": "analyze-data",
+      "name": "Analisar e Consolidar Dados",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [680, 300],
+      "notes": "Análise completa dos dados:\n\n1. Métricas Gerais:\n   - Total de vendas e receita\n   - Comissões pagas\n   - Ticket médio\n   - Compradores únicos\n\n2. Análise por Produto:\n   - Mais vendidos\n   - Receita por produto\n   - Compradores únicos\n\n3. Análise Temporal:\n   - Vendas por dia\n   - Padrões semanais\n\n4. Métodos de Pagamento:\n   - Distribuição\n   - Receita por método"
+    },
+    {
+      "parameters": {
+        "content": "## 📊 Relatório Semanal de Vendas - Hotmart\n\n**Período**: {{ $json.metrics.period.start }} a {{ $json.metrics.period.end }}  \n**Gerado em**: {{ $json.generatedAt }}\n\n---\n\n### 💰 Resumo Financeiro\n\n| Métrica | Valor |\n|---------|-------|\n| **Total de Vendas** | {{ $json.metrics.totalSales }} |\n| **Receita Bruta** | {{ $json.metrics.totalRevenueFormatted }} |\n| **Comissões** | {{ $json.metrics.totalCommissionsFormatted }} |\n| **Receita Líquida** | {{ $json.metrics.netRevenueFormatted }} |\n| **Ticket Médio** | R$ {{ $json.metrics.averageTicket.replace('.', ',') }} |\n| **Compradores Únicos** | {{ $json.metrics.uniqueBuyers }} |\n\n---\n\n### 🏆 Top 5 Produtos\n\n| Produto | Vendas | Receita | Ticket Médio |\n|---------|--------|---------|-------------|\n{{#each metrics.topProducts}}\n| **{{ productName }}** | {{ totalSales }} | R$ {{ revenue.toFixed(2).replace('.', ',') }} | R$ {{ averageTicket.replace('.', ',') }} |\n{{/each}}\n\n---\n\n### 📈 Vendas por Dia\n\n{{#each metrics.salesByDay}}\n**{{ dayName }}**: {{ sales }} vendas | R$ {{ revenue.toFixed(2).replace('.', ',') }}  \n{{/each}}\n\n---\n\n### 💳 Métodos de Pagamento\n\n{{#each metrics.paymentMethods}}\n**{{ @key }}**: {{ count }} vendas (R$ {{ revenue.toFixed(2).replace('.', ',') }})  \n{{/each}}\n\n---\n\n### 🎯 Insights da Semana\n\n{{#if (gt metrics.totalSales 100)}}\n✅ **Excelente semana!** Mais de 100 vendas realizadas.  \n{{else if (gt metrics.totalSales 50)}}\n📊 **Boa performance!** Manter o ritmo de crescimento.  \n{{else}}\n⚠️ **Atenção:** Volume de vendas abaixo da média.  \n{{/if}}\n\n{{#if (gt metrics.averageTicket 100)}}\n💎 **Ticket médio alto!** Foco em produtos premium está funcionando.  \n{{/if}}\n\n---\n\n*Este relatório foi gerado automaticamente pelo n8n + Hotmart Integration*",
+        "convertMarkdown": true
+      },
+      "id": "generate-report",
+      "name": "Gerar Relatório em Markdown",
+      "type": "n8n-nodes-base.markdown",
+      "typeVersion": 1,
+      "position": [900, 300],
+      "notes": "Gera relatório formatado em Markdown.\n\nInclui:\n- Resumo financeiro\n- Top produtos\n- Vendas por dia\n- Métodos de pagamento\n- Insights automáticos\n\nO Markdown é convertido em HTML\npara envio por email."
+    },
+    {
+      "parameters": {
+        "fromEmail": "relatorios@suaempresa.com",
+        "toEmail": "gestao@suaempresa.com",
+        "subject": "📊 Relatório Semanal Hotmart - {{ $('Analisar e Consolidar Dados').item.json.metrics.period.start }} a {{ $('Analisar e Consolidar Dados').item.json.metrics.period.end }}",
+        "emailType": "html",
+        "message": "={{ $json.html }}",
+        "options": {
+          "ccEmail": "vendas@suaempresa.com",
+          "attachments": "={{ JSON.stringify([{ filename: 'vendas-detalhadas.json', content: Buffer.from(JSON.stringify($('Analisar e Consolidar Dados').item.json.detailedSales, null, 2)).toString('base64') }]) }}"
+        }
+      },
+      "id": "send-email",
+      "name": "Enviar Relatório por Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [1120, 300],
+      "credentials": {
+        "smtp": {
+          "id": "2",
+          "name": "SMTP"
+        }
+      },
+      "notes": "Envia relatório por email.\n\nConfigurações:\n- HTML formatado\n- CC para equipe de vendas\n- Anexo com dados detalhados em JSON\n\nConfigure suas credenciais SMTP:\n- Gmail\n- SendGrid\n- Outro provedor SMTP"
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "content": "=## 📊 Relatório de Vendas Atualizado!\n\n**Período**: {{ $('Analisar e Consolidar Dados').item.json.metrics.period.start }} a {{ $('Analisar e Consolidar Dados').item.json.metrics.period.end }}\n\n### 💰 Resumo Rápido:\n- **Total de Vendas**: {{ $('Analisar e Consolidar Dados').item.json.metrics.totalSales }}\n- **Receita Total**: {{ $('Analisar e Consolidar Dados').item.json.metrics.totalRevenueFormatted }}\n- **Ticket Médio**: R$ {{ $('Analisar e Consolidar Dados').item.json.metrics.averageTicket.replace('.', ',') }}\n\n### 🏆 Produto Campeão:\n{{ $('Analisar e Consolidar Dados').item.json.metrics.topProducts[0].productName }}\n- Vendas: {{ $('Analisar e Consolidar Dados').item.json.metrics.topProducts[0].totalSales }}\n- Receita: R$ {{ $('Analisar e Consolidar Dados').item.json.metrics.topProducts[0].revenue.toFixed(2).replace('.', ',') }}\n\n📧 Relatório completo enviado por email!",
+        "channelId": { 
+          "value": "vendas",
+          "mode": "name"
+        }
+      },
+      "id": "notify-slack",
+      "name": "Notificar no Slack",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [1120, 500],
+      "credentials": {
+        "slackOAuth2Api": {
+          "id": "3",
+          "name": "Slack OAuth2"
+        }
+      },
+      "notes": "Envia resumo para Slack.\n\nCanal: #vendas\n\nInclui:\n- Resumo do período\n- Produto campeão\n- Link para relatório completo\n\nConfigure OAuth2 do Slack\npara seu workspace."
+    }
+  ],
+  "connections": {
+    "Toda Segunda às 8h": {
+      "main": [
+        [
+          {
+            "node": "Buscar Vendas da Semana",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Buscar Comissões",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Buscar Vendas da Semana": {
+      "main": [
+        [
+          {
+            "node": "Analisar e Consolidar Dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Buscar Comissões": {
+      "main": [
+        [
+          {
+            "node": "Analisar e Consolidar Dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analisar e Consolidar Dados": {
+      "main": [
+        [
+          {
+            "node": "Gerar Relatório em Markdown",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gerar Relatório em Markdown": {
+      "main": [
+        [
+          {
+            "node": "Enviar Relatório por Email",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Notificar no Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "description": "Gera relatório semanal automatizado de vendas com análises detalhadas.\n\nO que este workflow faz:\n1. Executa toda segunda-feira às 8h\n2. Busca vendas e comissões dos últimos 7 dias\n3. Analisa dados com múltiplas métricas\n4. Gera relatório visual em Markdown/HTML\n5. Envia por email com anexo detalhado\n6. Notifica resumo no Slack\n\nMétricas incluídas:\n- Resumo financeiro completo\n- Top 5 produtos mais vendidos\n- Análise de vendas por dia\n- Distribuição por método de pagamento\n- Insights automáticos\n\nPersonalizações possíveis:\n- Mudar frequência (diário, mensal)\n- Adicionar mais análises\n- Integrar com Google Sheets\n- Criar dashboard em tempo real\n- Adicionar comparativos\n\nPré-requisitos:\n- Credenciais Hotmart OAuth2\n- Servidor SMTP configurado\n- Slack OAuth2 (opcional)"
+  },
+  "tags": [
+    {
+      "name": "Hotmart",
+      "createdAt": "2025-05-28T10:00:00.000Z"
+    },
+    {
+      "name": "Exemplo",
+      "createdAt": "2025-05-28T10:00:00.000Z"
+    },
+    {
+      "name": "Intermediário",
+      "createdAt": "2025-05-28T10:00:00.000Z"
+    },
+    {
+      "name": "Relatórios",
+      "createdAt": "2025-05-28T10:00:00.000Z"
+    },
+    {
+      "name": "Automação",
+      "createdAt": "2025-05-28T10:00:00.000Z"
+    }
+  ]
+}
