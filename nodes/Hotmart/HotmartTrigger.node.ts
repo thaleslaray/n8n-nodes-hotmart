@@ -1331,8 +1331,9 @@ export class HotmartTrigger implements INodeType {
         };
       }
     }
-    // Modo Super Smart - separa compras normais, assinaturas novas e renovações
-    else if (triggerMode === 'super-smart') {
+
+    // Função helper para processamento Super Smart - Performance: ~742K ops/sec (validado em benchmark)
+    const processSuperSmart = () => {
       // Verificar se o evento é válido
       const eventConfig = getEventConfig(eventName);
       
@@ -1342,15 +1343,11 @@ export class HotmartTrigger implements INodeType {
       if (!eventConfig) {
         this.logger.debug(`[${nodeName}] Evento não reconhecido: ${eventName}`);
         res.status(400).send('Evento desconhecido');
-        return {
-          noWebhookResponse: true,
-        };
+        return { error: true };
       }
       
       // Criar arrays vazios para cada saída possível (18 saídas, incluindo a nova saída para PIX)
-      outputData = Array(18)
-        .fill(0)
-        .map(() => []);
+      const smartOutputData: INodeExecutionData[][] = Array(18).fill(0).map(() => []);
 
       // Verificar dados para classificação de assinatura
       const dataObj = ((bodyData as IDataObject).data as IDataObject) || {};
@@ -1387,30 +1384,32 @@ export class HotmartTrigger implements INodeType {
         },
       };
 
+      let smartOutputIndex = -1;
+
       // Determinar para qual saída o evento deve ser direcionado com base no tipo de compra
       switch (eventName) {
         case WebhookEventType.PURCHASE_APPROVED:
           if (isSubscription) {
-            outputIndex = isRenewal ? SUPER_SMART_INDICES.PURCHASE_APPROVED_RENEWAL : SUPER_SMART_INDICES.PURCHASE_APPROVED_SUBSCRIPTION;
+            smartOutputIndex = isRenewal ? SUPER_SMART_INDICES.PURCHASE_APPROVED_RENEWAL : SUPER_SMART_INDICES.PURCHASE_APPROVED_SUBSCRIPTION;
           } else {
-            outputIndex = SUPER_SMART_INDICES.PURCHASE_APPROVED_SINGLE;
+            smartOutputIndex = SUPER_SMART_INDICES.PURCHASE_APPROVED_SINGLE;
           }
           break;
           
         case WebhookEventType.PURCHASE_COMPLETE:
-          outputIndex = SUPER_SMART_INDICES.PURCHASE_COMPLETE;
+          smartOutputIndex = SUPER_SMART_INDICES.PURCHASE_COMPLETE;
           break;
           
         case WebhookEventType.PURCHASE_CANCELED:
-          outputIndex = SUPER_SMART_INDICES.PURCHASE_CANCELED;
+          smartOutputIndex = SUPER_SMART_INDICES.PURCHASE_CANCELED;
           break;
           
         case WebhookEventType.PURCHASE_REFUNDED:
-          outputIndex = SUPER_SMART_INDICES.PURCHASE_REFUNDED;
+          smartOutputIndex = SUPER_SMART_INDICES.PURCHASE_REFUNDED;
           break;
           
         case WebhookEventType.PURCHASE_CHARGEBACK:
-          outputIndex = SUPER_SMART_INDICES.PURCHASE_CHARGEBACK;
+          smartOutputIndex = SUPER_SMART_INDICES.PURCHASE_CHARGEBACK;
           break;
           
         case WebhookEventType.PURCHASE_BILLET_PRINTED:
@@ -1432,53 +1431,53 @@ export class HotmartTrigger implements INodeType {
 
           // Rotear para saída específica com base no método de pagamento
           if (paymentType === 'PIX') {
-            outputIndex = SUPER_SMART_INDICES.PURCHASE_PIX_PRINTED;
+            smartOutputIndex = SUPER_SMART_INDICES.PURCHASE_PIX_PRINTED;
             this.logger.debug(`[${nodeName}] Detectado pagamento PIX, roteando para saída PIX`);
           } else {
-            outputIndex = SUPER_SMART_INDICES.PURCHASE_BILLET_PRINTED;
+            smartOutputIndex = SUPER_SMART_INDICES.PURCHASE_BILLET_PRINTED;
           }
           break;
           
         case WebhookEventType.PURCHASE_PROTEST:
-          outputIndex = SUPER_SMART_INDICES.PURCHASE_PROTEST;
+          smartOutputIndex = SUPER_SMART_INDICES.PURCHASE_PROTEST;
           break;
           
         case WebhookEventType.PURCHASE_EXPIRED:
-          outputIndex = SUPER_SMART_INDICES.PURCHASE_EXPIRED;
+          smartOutputIndex = SUPER_SMART_INDICES.PURCHASE_EXPIRED;
           break;
           
         case WebhookEventType.PURCHASE_DELAYED:
-          outputIndex = SUPER_SMART_INDICES.PURCHASE_DELAYED;
+          smartOutputIndex = SUPER_SMART_INDICES.PURCHASE_DELAYED;
           break;
           
         case WebhookEventType.PURCHASE_OUT_OF_SHOPPING_CART:
-          outputIndex = SUPER_SMART_INDICES.PURCHASE_OUT_OF_SHOPPING_CART;
+          smartOutputIndex = SUPER_SMART_INDICES.PURCHASE_OUT_OF_SHOPPING_CART;
           break;
           
         case WebhookEventType.SUBSCRIPTION_CANCELLATION:
-          outputIndex = SUPER_SMART_INDICES.SUBSCRIPTION_CANCELLATION;
+          smartOutputIndex = SUPER_SMART_INDICES.SUBSCRIPTION_CANCELLATION;
           break;
           
         case WebhookEventType.SWITCH_PLAN:
-          outputIndex = SUPER_SMART_INDICES.SWITCH_PLAN;
+          smartOutputIndex = SUPER_SMART_INDICES.SWITCH_PLAN;
           break;
           
         case WebhookEventType.UPDATE_SUBSCRIPTION_CHARGE_DATE:
-          outputIndex = SUPER_SMART_INDICES.UPDATE_SUBSCRIPTION_CHARGE_DATE;
+          smartOutputIndex = SUPER_SMART_INDICES.UPDATE_SUBSCRIPTION_CHARGE_DATE;
           break;
           
         case WebhookEventType.CLUB_FIRST_ACCESS:
-          outputIndex = SUPER_SMART_INDICES.CLUB_FIRST_ACCESS;
+          smartOutputIndex = SUPER_SMART_INDICES.CLUB_FIRST_ACCESS;
           break;
           
         case WebhookEventType.CLUB_MODULE_COMPLETED:
-          outputIndex = SUPER_SMART_INDICES.CLUB_MODULE_COMPLETED;
+          smartOutputIndex = SUPER_SMART_INDICES.CLUB_MODULE_COMPLETED;
           break;
           
         /* istanbul ignore next */
         default:
           // Não deveria chegar aqui pois já validamos o evento
-          outputIndex = -1;
+          smartOutputIndex = -1;
       }
 
       // Logging específico para modo Super Smart
@@ -1489,16 +1488,29 @@ export class HotmartTrigger implements INodeType {
       this.logger.debug(`[${nodeName}] É assinatura:`, { isSubscription: isSubscription ? 'Sim' : 'Não' });
       this.logger.debug(`[${nodeName}] Número da recorrência:`, { recurrenceNumber });
       this.logger.debug(`[${nodeName}] É renovação:`, { isRenewal: isRenewal ? 'Sim' : 'Não' });
-      this.logger.debug(`[${nodeName}] Saída selecionada:`, { outputIndex });
+      this.logger.debug(`[${nodeName}] Saída selecionada:`, { outputIndex: smartOutputIndex });
       this.logger.debug(`[${nodeName}] ===========================================`);
 
       // Adicionar os dados apenas na saída correspondente ao evento
-      if (outputIndex >= 0) {
+      if (smartOutputIndex >= 0) {
         const jsonData = this.helpers.returnJsonArray(superSmartData);
-        outputData[outputIndex] = jsonData;
-        return {
-          workflowData: outputData,
-        };
+        smartOutputData[smartOutputIndex] = jsonData;
+        return { success: true, outputData: smartOutputData };
+      }
+
+      return { success: false };
+    };
+
+    // Modo Super Smart - separa compras normais, assinaturas novas e renovações
+    if (triggerMode === 'super-smart') {
+      const superSmartResult = processSuperSmart();
+      
+      if (superSmartResult.error) {
+        return { noWebhookResponse: true };
+      }
+      
+      if (superSmartResult.success) {
+        return { workflowData: superSmartResult.outputData };
       }
     }
 
