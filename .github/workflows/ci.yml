@@ -113,7 +113,7 @@ jobs:
         
     - name: 💾 Armazenar relatórios de teste
       if: always() && matrix.node-version == '18.x'
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: test-reports
         path: |
