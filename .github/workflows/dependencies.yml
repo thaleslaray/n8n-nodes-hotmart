@@ -48,7 +48,7 @@ jobs:
         
     - name: 📊 Upload relatório
       if: always()
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: security-report
         path: security-report.md
@@ -223,7 +223,7 @@ jobs:
         
     - name: 📊 Upload relatório
       if: always()
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: license-report
         path: license-report.md
