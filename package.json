@@ -102,7 +102,7 @@
     "@octokit/rest": "^22.0.0",
     "@types/express": "5.0.2",
     "@types/jest": "^29.5.14",
-    "@types/node": "22.15.21",
+    "@types/node": "22.15.29",
     "@types/request-promise-native": "1.0.21",
     "@typescript-eslint/eslint-plugin": "^8.32.1",
     "@typescript-eslint/parser": "^8.32.1",
